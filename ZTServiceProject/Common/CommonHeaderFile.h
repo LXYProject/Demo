@@ -16,6 +16,7 @@
 #import "UIViewExt.h"
 #import "EJVerticalButton.h"
 #import "UIImage+Size.h"
+#import "YYRequest.h"
 //第三方
 
 

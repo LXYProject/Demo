@@ -8,14 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
+		299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */; };
+		299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */; };
+		299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA71EE7CD5D0045A884 /* NJKWebViewProgress.m */; };
+		299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA91EE7CD5D0045A884 /* NJKWebViewProgressView.m */; };
+		299E2CBE1EE7CDDD0045A884 /* BannerHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CAD1EE7CDDD0045A884 /* BannerHeaderCell.m */; };
+		299E2CBF1EE7CDDD0045A884 /* BannerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CAE1EE7CDDD0045A884 /* BannerHeaderCell.xib */; };
+		299E2CC01EE7CDDD0045A884 /* ItemBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CB01EE7CDDD0045A884 /* ItemBtnCell.m */; };
+		299E2CC11EE7CDDD0045A884 /* ItemBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CB11EE7CDDD0045A884 /* ItemBtnCell.xib */; };
+		299E2CC21EE7CDDD0045A884 /* NearByHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CB31EE7CDDD0045A884 /* NearByHeaderCell.m */; };
+		299E2CC31EE7CDDD0045A884 /* NearByHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CB41EE7CDDD0045A884 /* NearByHeaderCell.xib */; };
+		299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CB61EE7CDDD0045A884 /* NearByServiceCell.m */; };
+		299E2CC51EE7CDDD0045A884 /* NearByServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CB71EE7CDDD0045A884 /* NearByServiceCell.xib */; };
+		299E2CC61EE7CDDD0045A884 /* ProductItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CB91EE7CDDD0045A884 /* ProductItemCell.m */; };
+		299E2CC71EE7CDDD0045A884 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CBA1EE7CDDD0045A884 /* ProductItemCell.xib */; };
+		299E2CC81EE7CDDD0045A884 /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */; };
+		299E2CC91EE7CDDD0045A884 /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */; };
 		6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
-		7B2C4DE71EE6E83E00745071 /* ProductItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE51EE6E83E00745071 /* ProductItemCell.m */; };
-		7B2C4DE81EE6E83E00745071 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */; };
-		7B2C4DEC1EE6EDCA00745071 /* NearByHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */; };
-		7B2C4DED1EE6EDCA00745071 /* NearByHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */; };
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
@@ -34,14 +46,6 @@
 		7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8F0D1F1EE3BE1F00ED16E3 /* LaunchScreen.storyboard */; };
 		7B8F0D2C1EE3BE1F00ED16E3 /* ZTServiceProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D2B1EE3BE1F00ED16E3 /* ZTServiceProjectTests.m */; };
 		7B8F0D371EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D361EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m */; };
-		7BA1675C1EE63BB0000ECCE6 /* BannerHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1675A1EE63BB0000ECCE6 /* BannerHeaderCell.m */; };
-		7BA1675D1EE63BB0000ECCE6 /* BannerHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA1675B1EE63BB0000ECCE6 /* BannerHeaderCell.xib */; };
-		7BA167671EE63BB8000ECCE6 /* ItemBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1675F1EE63BB8000ECCE6 /* ItemBtnCell.m */; };
-		7BA167681EE63BB8000ECCE6 /* ItemBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167601EE63BB8000ECCE6 /* ItemBtnCell.xib */; };
-		7BA167691EE63BB8000ECCE6 /* NearByServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167621EE63BB8000ECCE6 /* NearByServiceCell.m */; };
-		7BA1676A1EE63BB8000ECCE6 /* NearByServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167631EE63BB8000ECCE6 /* NearByServiceCell.xib */; };
-		7BA1676B1EE63BB8000ECCE6 /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167651EE63BB8000ECCE6 /* SectionHeaderCell.m */; };
-		7BA1676C1EE63BB8000ECCE6 /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167661EE63BB8000ECCE6 /* SectionHeaderCell.xib */; };
 		7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1676E1EE64561000ECCE6 /* HomeViewController.m */; };
 		7BA167711EE64561000ECCE6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */; };
 		7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167741EE64B27000ECCE6 /* NoticeView.m */; };
@@ -107,6 +111,32 @@
 /* Begin PBXFileReference section */
 		299E2C9C1EE7C5620045A884 /* YYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRequest.h; sourceTree = "<group>"; };
 		299E2C9D1EE7C5620045A884 /* YYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRequest.m; sourceTree = "<group>"; };
+		299E2C9F1EE7CBCA0045A884 /* AdvertisementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementModel.h; sourceTree = "<group>"; };
+		299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementModel.m; sourceTree = "<group>"; };
+		299E2CA21EE7CD3D0045A884 /* BaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
+		299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
+		299E2CA61EE7CD5D0045A884 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		299E2CA71EE7CD5D0045A884 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		299E2CA81EE7CD5D0045A884 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		299E2CA91EE7CD5D0045A884 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		299E2CAC1EE7CDDD0045A884 /* BannerHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerHeaderCell.h; sourceTree = "<group>"; };
+		299E2CAD1EE7CDDD0045A884 /* BannerHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerHeaderCell.m; sourceTree = "<group>"; };
+		299E2CAE1EE7CDDD0045A884 /* BannerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerHeaderCell.xib; sourceTree = "<group>"; };
+		299E2CAF1EE7CDDD0045A884 /* ItemBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBtnCell.h; sourceTree = "<group>"; };
+		299E2CB01EE7CDDD0045A884 /* ItemBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBtnCell.m; sourceTree = "<group>"; };
+		299E2CB11EE7CDDD0045A884 /* ItemBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemBtnCell.xib; sourceTree = "<group>"; };
+		299E2CB21EE7CDDD0045A884 /* NearByHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHeaderCell.h; sourceTree = "<group>"; };
+		299E2CB31EE7CDDD0045A884 /* NearByHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHeaderCell.m; sourceTree = "<group>"; };
+		299E2CB41EE7CDDD0045A884 /* NearByHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByHeaderCell.xib; sourceTree = "<group>"; };
+		299E2CB51EE7CDDD0045A884 /* NearByServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByServiceCell.h; sourceTree = "<group>"; };
+		299E2CB61EE7CDDD0045A884 /* NearByServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByServiceCell.m; sourceTree = "<group>"; };
+		299E2CB71EE7CDDD0045A884 /* NearByServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByServiceCell.xib; sourceTree = "<group>"; };
+		299E2CB81EE7CDDD0045A884 /* ProductItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductItemCell.h; sourceTree = "<group>"; };
+		299E2CB91EE7CDDD0045A884 /* ProductItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductItemCell.m; sourceTree = "<group>"; };
+		299E2CBA1EE7CDDD0045A884 /* ProductItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
+		299E2CBB1EE7CDDD0045A884 /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
+		299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
+		299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
 		3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.debug.xcconfig"; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
@@ -114,12 +144,6 @@
 		7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		7B2C4DE11EE6DD5A00745071 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
-		7B2C4DE41EE6E83E00745071 /* ProductItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductItemCell.h; sourceTree = "<group>"; };
-		7B2C4DE51EE6E83E00745071 /* ProductItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductItemCell.m; sourceTree = "<group>"; };
-		7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
-		7B2C4DE91EE6EDCA00745071 /* NearByHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHeaderCell.h; sourceTree = "<group>"; };
-		7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHeaderCell.m; sourceTree = "<group>"; };
-		7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByHeaderCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -152,18 +176,6 @@
 		7B8F0D321EE3BE1F00ED16E3 /* ZTServiceProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZTServiceProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8F0D361EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTServiceProjectUITests.m; sourceTree = "<group>"; };
 		7B8F0D381EE3BE1F00ED16E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7BA167591EE63BB0000ECCE6 /* BannerHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerHeaderCell.h; sourceTree = "<group>"; };
-		7BA1675A1EE63BB0000ECCE6 /* BannerHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerHeaderCell.m; sourceTree = "<group>"; };
-		7BA1675B1EE63BB0000ECCE6 /* BannerHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerHeaderCell.xib; sourceTree = "<group>"; };
-		7BA1675E1EE63BB8000ECCE6 /* ItemBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBtnCell.h; sourceTree = "<group>"; };
-		7BA1675F1EE63BB8000ECCE6 /* ItemBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBtnCell.m; sourceTree = "<group>"; };
-		7BA167601EE63BB8000ECCE6 /* ItemBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemBtnCell.xib; sourceTree = "<group>"; };
-		7BA167611EE63BB8000ECCE6 /* NearByServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByServiceCell.h; sourceTree = "<group>"; };
-		7BA167621EE63BB8000ECCE6 /* NearByServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByServiceCell.m; sourceTree = "<group>"; };
-		7BA167631EE63BB8000ECCE6 /* NearByServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByServiceCell.xib; sourceTree = "<group>"; };
-		7BA167641EE63BB8000ECCE6 /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
-		7BA167651EE63BB8000ECCE6 /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
-		7BA167661EE63BB8000ECCE6 /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
 		7BA1676D1EE64561000ECCE6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7BA1676E1EE64561000ECCE6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -249,6 +261,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		299E2CA51EE7CD5D0045A884 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				299E2CA61EE7CD5D0045A884 /* NJKWebViewProgress.h */,
+				299E2CA71EE7CD5D0045A884 /* NJKWebViewProgress.m */,
+				299E2CA81EE7CD5D0045A884 /* NJKWebViewProgressView.h */,
+				299E2CA91EE7CD5D0045A884 /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 		61FDE1498E5ED572E89BB93D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +284,8 @@
 		7B6C26961EE3C2AB0090BE5C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CA21EE7CD3D0045A884 /* BaseWebViewController.h */,
+				299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */,
 				7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */,
 				7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */,
 				7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */,
@@ -330,24 +355,6 @@
 				7BA1676D1EE64561000ECCE6 /* HomeViewController.h */,
 				7BA1676E1EE64561000ECCE6 /* HomeViewController.m */,
 				7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */,
-				7BA167591EE63BB0000ECCE6 /* BannerHeaderCell.h */,
-				7BA1675A1EE63BB0000ECCE6 /* BannerHeaderCell.m */,
-				7BA1675B1EE63BB0000ECCE6 /* BannerHeaderCell.xib */,
-				7BA1675E1EE63BB8000ECCE6 /* ItemBtnCell.h */,
-				7BA1675F1EE63BB8000ECCE6 /* ItemBtnCell.m */,
-				7BA167601EE63BB8000ECCE6 /* ItemBtnCell.xib */,
-				7BA167611EE63BB8000ECCE6 /* NearByServiceCell.h */,
-				7BA167621EE63BB8000ECCE6 /* NearByServiceCell.m */,
-				7BA167631EE63BB8000ECCE6 /* NearByServiceCell.xib */,
-				7B2C4DE91EE6EDCA00745071 /* NearByHeaderCell.h */,
-				7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */,
-				7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */,
-				7BA167641EE63BB8000ECCE6 /* SectionHeaderCell.h */,
-				7BA167651EE63BB8000ECCE6 /* SectionHeaderCell.m */,
-				7BA167661EE63BB8000ECCE6 /* SectionHeaderCell.xib */,
-				7B2C4DE41EE6E83E00745071 /* ProductItemCell.h */,
-				7B2C4DE51EE6E83E00745071 /* ProductItemCell.m */,
-				7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +362,8 @@
 		7B6C269C1EE3C2AB0090BE5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				299E2C9F1EE7CBCA0045A884 /* AdvertisementModel.h */,
+				299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +371,24 @@
 		7B6C269D1EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CAC1EE7CDDD0045A884 /* BannerHeaderCell.h */,
+				299E2CAD1EE7CDDD0045A884 /* BannerHeaderCell.m */,
+				299E2CAE1EE7CDDD0045A884 /* BannerHeaderCell.xib */,
+				299E2CAF1EE7CDDD0045A884 /* ItemBtnCell.h */,
+				299E2CB01EE7CDDD0045A884 /* ItemBtnCell.m */,
+				299E2CB11EE7CDDD0045A884 /* ItemBtnCell.xib */,
+				299E2CB21EE7CDDD0045A884 /* NearByHeaderCell.h */,
+				299E2CB31EE7CDDD0045A884 /* NearByHeaderCell.m */,
+				299E2CB41EE7CDDD0045A884 /* NearByHeaderCell.xib */,
+				299E2CB51EE7CDDD0045A884 /* NearByServiceCell.h */,
+				299E2CB61EE7CDDD0045A884 /* NearByServiceCell.m */,
+				299E2CB71EE7CDDD0045A884 /* NearByServiceCell.xib */,
+				299E2CB81EE7CDDD0045A884 /* ProductItemCell.h */,
+				299E2CB91EE7CDDD0045A884 /* ProductItemCell.m */,
+				299E2CBA1EE7CDDD0045A884 /* ProductItemCell.xib */,
+				299E2CBB1EE7CDDD0045A884 /* SectionHeaderCell.h */,
+				299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */,
+				299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -633,6 +660,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CA51EE7CD5D0045A884 /* NJKWebViewProgress */,
 				7BA167731EE64B27000ECCE6 /* NoticeView.h */,
 				7BA167741EE64B27000ECCE6 /* NoticeView.m */,
 			);
@@ -803,22 +831,23 @@
 			files = (
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
+				299E2CBF1EE7CDDD0045A884 /* BannerHeaderCell.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
-				7BA1675D1EE63BB0000ECCE6 /* BannerHeaderCell.xib in Resources */,
-				7BA167681EE63BB8000ECCE6 /* ItemBtnCell.xib in Resources */,
 				7BA1678A1EE66DA8000ECCE6 /* TenementViewController.xib in Resources */,
 				7BA167791EE64B55000ECCE6 /* noticeYellow@3x.png in Resources */,
 				7B8F0D1E1EE3BE1F00ED16E3 /* Assets.xcassets in Resources */,
-				7BA1676A1EE63BB8000ECCE6 /* NearByServiceCell.xib in Resources */,
+				299E2CC51EE7CDDD0045A884 /* NearByServiceCell.xib in Resources */,
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
+				299E2CC11EE7CDDD0045A884 /* ItemBtnCell.xib in Resources */,
 				7B6C26C61EE3C3230090BE5C /* NearByViewController.xib in Resources */,
-				7B2C4DE81EE6E83E00745071 /* ProductItemCell.xib in Resources */,
+				299E2CC71EE7CDDD0045A884 /* ProductItemCell.xib in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
+				299E2CC31EE7CDDD0045A884 /* NearByHeaderCell.xib in Resources */,
 				7BF4B22D1EE3D6470058185F /* nav_more_btn@3x.png in Resources */,
 				7BA167831EE65C7C000ECCE6 /* PropertyBannerCell.xib in Resources */,
 				7BF4B2181EE3D45A0058185F /* order_tabbar_default@3x.png in Resources */,
@@ -832,12 +861,11 @@
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
 				7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */,
-				7B2C4DED1EE6EDCA00745071 /* NearByHeaderCell.xib in Resources */,
-				7BA1676C1EE63BB8000ECCE6 /* SectionHeaderCell.xib in Resources */,
 				7BF4B21D1EE3D45A0058185F /* worktable_tabbar_selected@2x.png in Resources */,
 				7BF4B21A1EE3D45A0058185F /* order_tabbar_selected@3x.png in Resources */,
 				7BF4B22E1EE3D6470058185F /* scan_40px@2x.png in Resources */,
 				7BF4B2141EE3D45A0058185F /* my_tabbar_default@3x.png in Resources */,
+				299E2CC91EE7CDDD0045A884 /* SectionHeaderCell.xib in Resources */,
 				7BF4B21B1EE3D45A0058185F /* worktable_tabbar_default@2x.png in Resources */,
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
@@ -921,33 +949,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				299E2CC61EE7CDDD0045A884 /* ProductItemCell.m in Sources */,
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
+				299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
 				7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */,
+				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7BA167891EE66DA8000ECCE6 /* TenementViewController.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
-				7BA167691EE63BB8000ECCE6 /* NearByServiceCell.m in Sources */,
-				7B2C4DE71EE6E83E00745071 /* ProductItemCell.m in Sources */,
-				7BA1676B1EE63BB8000ECCE6 /* SectionHeaderCell.m in Sources */,
+				299E2CC81EE7CDDD0045A884 /* SectionHeaderCell.m in Sources */,
+				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */,
 				7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */,
-				7B2C4DEC1EE6EDCA00745071 /* NearByHeaderCell.m in Sources */,
+				299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */,
 				7B6C26D81EE3C3710090BE5C /* LoginViewController.m in Sources */,
+				299E2CBE1EE7CDDD0045A884 /* BannerHeaderCell.m in Sources */,
 				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
+				299E2CC21EE7CDDD0045A884 /* NearByHeaderCell.m in Sources */,
+				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
 				7BA167821EE65C7C000ECCE6 /* PropertyBannerCell.m in Sources */,
-				7BA167671EE63BB8000ECCE6 /* ItemBtnCell.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,
-				7BA1675C1EE63BB0000ECCE6 /* BannerHeaderCell.m in Sources */,
+				299E2CC01EE7CDDD0045A884 /* ItemBtnCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
