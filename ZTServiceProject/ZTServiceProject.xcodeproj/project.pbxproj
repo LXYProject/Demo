@@ -24,6 +24,14 @@
 		299E2CC71EE7CDDD0045A884 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CBA1EE7CDDD0045A884 /* ProductItemCell.xib */; };
 		299E2CC81EE7CDDD0045A884 /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */; };
 		299E2CC91EE7CDDD0045A884 /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */; };
+		299E2CCC1EE7DDA10045A884 /* GLViewPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CCB1EE7DDA10045A884 /* GLViewPagerViewController.m */; };
+		299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CCE1EE7E07A0045A884 /* NearByItemModel.m */; };
+		299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */; };
+		299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CD41EE7E6040045A884 /* BaseTableView.m */; };
+		299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CD71EE7EB590045A884 /* HttpAPIManager.m */; };
+		299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */; };
+		299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */; };
+		299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CE81EE806B00045A884 /* NearByHttpManager.m */; };
 		6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
@@ -137,6 +145,22 @@
 		299E2CBB1EE7CDDD0045A884 /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
 		299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
 		299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
+		299E2CCA1EE7DDA10045A884 /* GLViewPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLViewPagerViewController.h; path = ../../Moulde/Nearby/Controller/GLViewPagerViewController.h; sourceTree = "<group>"; };
+		299E2CCB1EE7DDA10045A884 /* GLViewPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLViewPagerViewController.m; path = ../../Moulde/Nearby/Controller/GLViewPagerViewController.m; sourceTree = "<group>"; };
+		299E2CCD1EE7E07A0045A884 /* NearByItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByItemModel.h; sourceTree = "<group>"; };
+		299E2CCE1EE7E07A0045A884 /* NearByItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByItemModel.m; sourceTree = "<group>"; };
+		299E2CD01EE7E5090045A884 /* NearByHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHomeViewController.h; sourceTree = "<group>"; };
+		299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHomeViewController.m; sourceTree = "<group>"; };
+		299E2CD31EE7E6040045A884 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		299E2CD41EE7E6040045A884 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		299E2CD61EE7EB590045A884 /* HttpAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpAPIManager.h; sourceTree = "<group>"; };
+		299E2CD71EE7EB590045A884 /* HttpAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpAPIManager.m; sourceTree = "<group>"; };
+		299E2CDB1EE7F6C10045A884 /* CommonTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
+		299E2CDC1EE7FDBE0045A884 /* NearByItemsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByItemsCell.h; sourceTree = "<group>"; };
+		299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByItemsCell.m; sourceTree = "<group>"; };
+		299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByItemsCell.xib; sourceTree = "<group>"; };
+		299E2CE71EE806B00045A884 /* NearByHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHttpManager.h; sourceTree = "<group>"; };
+		299E2CE81EE806B00045A884 /* NearByHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHttpManager.m; sourceTree = "<group>"; };
 		3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.debug.xcconfig"; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
@@ -201,7 +225,6 @@
 		7BF4B1F91EE3D2F00058185F /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		7BF4B1FA1EE3D2F00058185F /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		7BF4B1FC1EE3D3220058185F /* CommonHeaderFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonHeaderFile.h; sourceTree = "<group>"; };
-		7BF4B1FD1EE3D3350058185F /* CommonTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonTools.h; sourceTree = "<group>"; };
 		7BF4B1FF1EE3D45A0058185F /* message_tabbar_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tabbar_default@2x.png"; sourceTree = "<group>"; };
 		7BF4B2001EE3D45A0058185F /* message_tabbar_default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tabbar_default@3x.png"; sourceTree = "<group>"; };
 		7BF4B2011EE3D45A0058185F /* message_tabbar_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message_tabbar_selected@2x.png"; sourceTree = "<group>"; };
@@ -272,6 +295,50 @@
 			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
+		299E2CE11EE806630045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		299E2CE21EE8066A0045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		299E2CE31EE806730045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		299E2CE41EE8067A0045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		299E2CE51EE806810045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+				299E2CE71EE806B00045A884 /* NearByHttpManager.h */,
+				299E2CE81EE806B00045A884 /* NearByHttpManager.m */,
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		299E2CE61EE8068B0045A884 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
 		61FDE1498E5ED572E89BB93D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +351,8 @@
 		7B6C26961EE3C2AB0090BE5C /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CD31EE7E6040045A884 /* BaseTableView.h */,
+				299E2CD41EE7E6040045A884 /* BaseTableView.m */,
 				299E2CA21EE7CD3D0045A884 /* BaseWebViewController.h */,
 				299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */,
 				7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */,
@@ -312,7 +381,7 @@
 				7BF4B1F91EE3D2F00058185F /* Tools.h */,
 				7BF4B1FA1EE3D2F00058185F /* Tools.m */,
 				7BF4B1FC1EE3D3220058185F /* CommonHeaderFile.h */,
-				7BF4B1FD1EE3D3350058185F /* CommonTools.h */,
+				299E2CDB1EE7F6C10045A884 /* CommonTools.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -322,6 +391,8 @@
 			children = (
 				299E2C9C1EE7C5620045A884 /* YYRequest.h */,
 				299E2C9D1EE7C5620045A884 /* YYRequest.m */,
+				299E2CD61EE7EB590045A884 /* HttpAPIManager.h */,
+				299E2CD71EE7EB590045A884 /* HttpAPIManager.m */,
 			);
 			path = HttpManager;
 			sourceTree = "<group>";
@@ -342,6 +413,7 @@
 		7B6C269A1EE3C2AB0090BE5C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE21EE8066A0045A884 /* HttpManager */,
 				7B6C269B1EE3C2AB0090BE5C /* Controller */,
 				7B6C269C1EE3C2AB0090BE5C /* Model */,
 				7B6C269D1EE3C2AB0090BE5C /* View */,
@@ -396,6 +468,7 @@
 		7B6C269E1EE3C2AB0090BE5C /* MessageCenter */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE31EE806730045A884 /* HttpManager */,
 				7B6C269F1EE3C2AB0090BE5C /* Controller */,
 				7B6C26A01EE3C2AB0090BE5C /* Model */,
 				7B6C26A11EE3C2AB0090BE5C /* View */,
@@ -430,6 +503,7 @@
 		7B6C26A21EE3C2AB0090BE5C /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE41EE8067A0045A884 /* HttpManager */,
 				7B6C26A31EE3C2AB0090BE5C /* Controller */,
 				7B6C26A41EE3C2AB0090BE5C /* Model */,
 				7B6C26A51EE3C2AB0090BE5C /* View */,
@@ -467,6 +541,7 @@
 		7B6C26A61EE3C2AB0090BE5C /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE51EE806810045A884 /* HttpManager */,
 				7B6C26A71EE3C2AB0090BE5C /* Controller */,
 				7B6C26A81EE3C2AB0090BE5C /* Model */,
 				7B6C26A91EE3C2AB0090BE5C /* View */,
@@ -477,6 +552,8 @@
 		7B6C26A71EE3C2AB0090BE5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CD01EE7E5090045A884 /* NearByHomeViewController.h */,
+				299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */,
 				7B6C26C21EE3C3230090BE5C /* NearByViewController.h */,
 				7B6C26C31EE3C3230090BE5C /* NearByViewController.m */,
 				7B6C26C41EE3C3230090BE5C /* NearByViewController.xib */,
@@ -487,6 +564,8 @@
 		7B6C26A81EE3C2AB0090BE5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CCD1EE7E07A0045A884 /* NearByItemModel.h */,
+				299E2CCE1EE7E07A0045A884 /* NearByItemModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,6 +573,9 @@
 		7B6C26A91EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CDC1EE7FDBE0045A884 /* NearByItemsCell.h */,
+				299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */,
+				299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,6 +583,7 @@
 		7B6C26AA1EE3C2AB0090BE5C /* Tenement */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE61EE8068B0045A884 /* HttpManager */,
 				7B6C26AB1EE3C2AB0090BE5C /* Controller */,
 				7B6C26AC1EE3C2AB0090BE5C /* Model */,
 				7B6C26AD1EE3C2AB0090BE5C /* View */,
@@ -554,6 +637,7 @@
 		7B6C26CC1EE3C35A0090BE5C /* LoginAndRegister */ = {
 			isa = PBXGroup;
 			children = (
+				299E2CE11EE806630045A884 /* HttpManager */,
 				7B6C26CD1EE3C35A0090BE5C /* Controller */,
 				7B6C26D11EE3C35A0090BE5C /* Model */,
 				7B6C26D21EE3C35A0090BE5C /* View */,
@@ -663,6 +747,8 @@
 				299E2CA51EE7CD5D0045A884 /* NJKWebViewProgress */,
 				7BA167731EE64B27000ECCE6 /* NoticeView.h */,
 				7BA167741EE64B27000ECCE6 /* NoticeView.m */,
+				299E2CCA1EE7DDA10045A884 /* GLViewPagerViewController.h */,
+				299E2CCB1EE7DDA10045A884 /* GLViewPagerViewController.m */,
 			);
 			name = Lib;
 			path = Base/Lib;
@@ -839,6 +925,7 @@
 				7B8F0D1E1EE3BE1F00ED16E3 /* Assets.xcassets in Resources */,
 				299E2CC51EE7CDDD0045A884 /* NearByServiceCell.xib in Resources */,
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
+				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
 				299E2CC11EE7CDDD0045A884 /* ItemBtnCell.xib in Resources */,
@@ -953,26 +1040,33 @@
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
+				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */,
+				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
+				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
 				7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7BA167891EE66DA8000ECCE6 /* TenementViewController.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
+				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
 				299E2CC81EE7CDDD0045A884 /* SectionHeaderCell.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */,
+				299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */,
 				7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */,
 				299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */,
+				299E2CCC1EE7DDA10045A884 /* GLViewPagerViewController.m in Sources */,
 				7B6C26D81EE3C3710090BE5C /* LoginViewController.m in Sources */,
 				299E2CBE1EE7CDDD0045A884 /* BannerHeaderCell.m in Sources */,
 				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
 				299E2CC21EE7CDDD0045A884 /* NearByHeaderCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
+				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
 				7BA167821EE65C7C000ECCE6 /* PropertyBannerCell.m in Sources */,

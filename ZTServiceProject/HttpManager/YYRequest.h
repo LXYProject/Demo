@@ -203,11 +203,12 @@ typedef NS_ENUM(NSInteger, YYNetworkStatus) {
  @param urlString 下载路径
  @param paramter 参数
  @param success 成功回调
- @param failure 失败回调
+ @param savePath 保存路径
  @param progress 下载进度
  @return 返回任务请求
  */
 + (NSURLSessionDataTask *)requestDownloadFileWithURLString:(NSString *)urlString
+                                                  savePath:(NSString *)savePath
                                                  paramater:(id)paramter
                                                    success:(YYDownloadCompletionBlock)success
                                                   progress:(YYProgress)progress;

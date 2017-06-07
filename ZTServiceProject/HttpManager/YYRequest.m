@@ -288,6 +288,7 @@ static NSMutableArray* requestTasksPool = nil;
 
 #pragma mark - 文件下载请求
 + (NSURLSessionDataTask *)requestDownloadFileWithURLString:(NSString *)urlString
+                                                  savePath:(NSString *)savePath
                                                  paramater:(id)paramter
                                                    success:(YYDownloadCompletionBlock)success
                                                   progress:(YYProgress)progress{
@@ -302,10 +303,15 @@ static NSMutableArray* requestTasksPool = nil;
             progress(downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
         }
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:response.suggestedFilename];
-        NSLog(@"targetPath:%@",targetPath);
-        NSLog(@"fullPath:%@",fullPath);
-        return [NSURL fileURLWithPath:fullPath];
+        if(!savePath) {
+            NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:response.suggestedFilename];
+            NSLog(@"targetPath:%@",targetPath);
+            NSLog(@"fullPath:%@",fullPath);
+            return [NSURL fileURLWithPath:fullPath];
+        }
+        else {
+            return [NSURL fileURLWithPath:savePath];
+        }
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         success(response,filePath,error);
          [[self allTasks] removeObject:session];
