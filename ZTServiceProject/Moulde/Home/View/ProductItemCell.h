@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class NearByItemModel;
 @interface ProductItemCell : UITableViewCell
-
+@property (nonatomic,strong)NearByItemModel *model;
 @end

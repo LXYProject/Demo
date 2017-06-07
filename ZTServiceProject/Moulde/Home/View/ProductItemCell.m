@@ -7,7 +7,7 @@
 //
 
 #import "ProductItemCell.h"
-
+#import "NearByHeaderCell.h"
 @implementation ProductItemCell
 
 - (void)awakeFromNib {
@@ -15,10 +15,7 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setModel:(NearByItemModel *)model {
 
-    // Configure the view for the selected state
 }
-
 @end

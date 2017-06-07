@@ -6,8 +6,8 @@
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "GLViewPagerViewController.h"
 
 @interface NearByViewController : BaseViewController
-
+@property (nonatomic,strong)NSArray *dataSource;
 @end

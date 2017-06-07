@@ -10,8 +10,8 @@
 //static CGFloat firstBtnTotate;
 //static CGFloat SecondBtnTotate;
 #define BtnBaseTag      1000
-#define ScreenWidth     [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight    [UIScreen mainScreen].bounds.size.height
+//#define ScreenWidth     [UIScreen mainScreen].bounds.size.width
+
 #define Scaling         [UIScreen mainScreen].bounds.size.width/375
 
 @interface NoticeView ()

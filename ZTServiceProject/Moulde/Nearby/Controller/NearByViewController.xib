@@ -11,7 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NearByViewController">
             <connections>
+<<<<<<< HEAD
                 <outlet property="tableView" destination="9OP-7L-kiR" id="nVP-eG-p2U"/>
+=======
+                <outlet property="tableView" destination="Jhe-Lt-MFN" id="ev1-0e-WXL"/>
+>>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,23 +24,40 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+<<<<<<< HEAD
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9OP-7L-kiR">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="g90-n2-MzC"/>
                         <outlet property="delegate" destination="-1" id="wlY-gq-MCo"/>
+=======
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jhe-Lt-MFN" customClass="BaseTableView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="pgz-pU-gJo"/>
+                        <outlet property="delegate" destination="-1" id="XTg-fL-Dhd"/>
+>>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+<<<<<<< HEAD
                 <constraint firstAttribute="bottom" secondItem="9OP-7L-kiR" secondAttribute="bottom" id="U6e-In-3tl"/>
                 <constraint firstAttribute="trailing" secondItem="9OP-7L-kiR" secondAttribute="trailing" id="Zys-py-jRS"/>
                 <constraint firstItem="9OP-7L-kiR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bNH-BI-lHu"/>
                 <constraint firstItem="9OP-7L-kiR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dma-vN-jq8"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
+=======
+                <constraint firstAttribute="bottom" secondItem="Jhe-Lt-MFN" secondAttribute="bottom" id="9mj-k0-wUc"/>
+                <constraint firstAttribute="trailing" secondItem="Jhe-Lt-MFN" secondAttribute="trailing" id="AgO-hx-2Lo"/>
+                <constraint firstItem="Jhe-Lt-MFN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NNW-c7-dJp"/>
+                <constraint firstItem="Jhe-Lt-MFN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="doS-Sp-LAK"/>
+            </constraints>
+>>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
         </view>
     </objects>
 </document>
