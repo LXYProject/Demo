@@ -9,11 +9,10 @@
 #import "NearByViewController.h"
 #import "NearByCell.h"
 
-<<<<<<< HEAD
-@interface NearByViewController ()
-=======
+
+
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
->>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -53,31 +52,7 @@
 //    }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    return 119;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.001f;
-}
-- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10.0f;
-}
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
 
 
 

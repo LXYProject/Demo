@@ -36,15 +36,8 @@
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
-<<<<<<< HEAD
-		7B2C4DE71EE6E83E00745071 /* ProductItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE51EE6E83E00745071 /* ProductItemCell.m */; };
-		7B2C4DE81EE6E83E00745071 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */; };
-		7B2C4DEC1EE6EDCA00745071 /* NearByHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */; };
-		7B2C4DED1EE6EDCA00745071 /* NearByHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */; };
 		7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3238C61EE7AD8E00403495 /* NearByCell.m */; };
 		7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3238C71EE7AD8E00403495 /* NearByCell.xib */; };
-=======
->>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */; };
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
@@ -52,7 +45,6 @@
 		7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26BE1EE3C3140090BE5C /* MineViewController.m */; };
 		7B6C26C11EE3C3140090BE5C /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BF1EE3C3140090BE5C /* MineViewController.xib */; };
 		7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26C31EE3C3230090BE5C /* NearByViewController.m */; };
-		7B6C26C61EE3C3230090BE5C /* NearByViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26C41EE3C3230090BE5C /* NearByViewController.xib */; };
 		7B6C26D81EE3C3710090BE5C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26D61EE3C3710090BE5C /* LoginViewController.m */; };
 		7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26D71EE3C3710090BE5C /* LoginViewController.xib */; };
 		7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D121EE3BE1F00ED16E3 /* main.m */; };
@@ -106,6 +98,7 @@
 		7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4B2291EE3D6470058185F /* warn_press_40px@3x.png */; };
 		7BF4B2361EE3D9190058185F /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B2351EE3D9190058185F /* PushManager.m */; };
 		7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4B2371EE3DCD50058185F /* unLoginVCList.plist */; };
+		7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7D7681EE8543200DB1486 /* NearByViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,18 +170,9 @@
 		7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		7B2C4DE11EE6DD5A00745071 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		7B2C4DE41EE6E83E00745071 /* ProductItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductItemCell.h; sourceTree = "<group>"; };
-		7B2C4DE51EE6E83E00745071 /* ProductItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductItemCell.m; sourceTree = "<group>"; };
-		7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
-		7B2C4DE91EE6EDCA00745071 /* NearByHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHeaderCell.h; sourceTree = "<group>"; };
-		7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHeaderCell.m; sourceTree = "<group>"; };
-		7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByHeaderCell.xib; sourceTree = "<group>"; };
 		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByCell.h; sourceTree = "<group>"; };
 		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByCell.m; sourceTree = "<group>"; };
 		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByCell.xib; sourceTree = "<group>"; };
-=======
->>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -201,7 +185,6 @@
 		7B6C26BF1EE3C3140090BE5C /* MineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineViewController.xib; sourceTree = "<group>"; };
 		7B6C26C21EE3C3230090BE5C /* NearByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByViewController.h; sourceTree = "<group>"; };
 		7B6C26C31EE3C3230090BE5C /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
-		7B6C26C41EE3C3230090BE5C /* NearByViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByViewController.xib; sourceTree = "<group>"; };
 		7B6C26D51EE3C3710090BE5C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7B6C26D61EE3C3710090BE5C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7B6C26D71EE3C3710090BE5C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -275,6 +258,7 @@
 		7BF4B2341EE3D9190058185F /* PushManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushManager.h; sourceTree = "<group>"; };
 		7BF4B2351EE3D9190058185F /* PushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushManager.m; sourceTree = "<group>"; };
 		7BF4B2371EE3DCD50058185F /* unLoginVCList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unLoginVCList.plist; sourceTree = "<group>"; };
+		7BF7D7681EE8543200DB1486 /* NearByViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByViewController.xib; sourceTree = "<group>"; };
 		8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -577,7 +561,7 @@
 				299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */,
 				7B6C26C21EE3C3230090BE5C /* NearByViewController.h */,
 				7B6C26C31EE3C3230090BE5C /* NearByViewController.m */,
-				7B6C26C41EE3C3230090BE5C /* NearByViewController.xib */,
+				7BF7D7681EE8543200DB1486 /* NearByViewController.xib */,
 				7B3238C51EE7AD8E00403495 /* NearByCell.h */,
 				7B3238C61EE7AD8E00403495 /* NearByCell.m */,
 				7B3238C71EE7AD8E00403495 /* NearByCell.xib */,
@@ -900,6 +884,7 @@
 				TargetAttributes = {
 					7B8F0D0D1EE3BE1F00ED16E3 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 2TQWE9ET85;
 						ProvisioningStyle = Automatic;
 					};
 					7B8F0D261EE3BE1F00ED16E3 = {
@@ -953,7 +938,6 @@
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
 				299E2CC11EE7CDDD0045A884 /* ItemBtnCell.xib in Resources */,
-				7B6C26C61EE3C3230090BE5C /* NearByViewController.xib in Resources */,
 				299E2CC71EE7CDDD0045A884 /* ProductItemCell.xib in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
@@ -987,6 +971,7 @@
 				7BF4B2111EE3D45A0058185F /* message_tabbar_selected@2x.png in Resources */,
 				7BF4B2151EE3D45A0058185F /* my_tabbar_selected@2x.png in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
+				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
 				7BA167711EE64561000ECCE6 /* HomeViewController.xib in Resources */,
 			);
@@ -1065,13 +1050,10 @@
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
-<<<<<<< HEAD
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
-=======
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
->>>>>>> 1a4461bbb709b1cbe2807c8113a4bc1358eada04
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
@@ -1252,7 +1234,7 @@
 			baseConfigurationReference = 3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TQWE9ET85;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
@@ -1268,7 +1250,7 @@
 			baseConfigurationReference = C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2TQWE9ET85;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
