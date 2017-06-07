@@ -1,0 +1,15 @@
+//
+//  ZTServiceProject.pch
+//  ZTServiceProject
+//
+//  Created by ZT on 2017/6/4.
+//  Copyright © 2017年 ZT. All rights reserved.
+//
+
+#ifndef ZTServiceProject_pch
+#define ZTServiceProject_pch
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#import "BaseViewController.h"
+#import "CommonTools.h"
+#import "CommonHeaderFile.h"
+#endif
