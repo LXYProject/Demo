@@ -8,12 +8,15 @@
 
 #import "TenementViewController.h"
 #import "MacroDefinition.h"
-#import "PropertyBannerCell.h"
 #import "ItemBtnCell.h"
 #import "ItemBtnCell.h"
+#import "HomeHttpManager.h"
+#import "TenemnetHeaderCell.h"
+#import "BannerHeaderCell.h"
 @interface TenementViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataSourceArray;
+@property (nonatomic,strong)NSArray *imageURLArray;
 @end
 
 @implementation TenementViewController
@@ -23,33 +26,56 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationController.navigationBarHidden = YES;
-    self.automaticallyAdjustsScrollViewInsets = NO;
     imageNames = @[
                    @"timg.jpeg",
                    @"timg.jpeg",
                    @"timg.jpeg",
                    ];
+    [self requestBanner];
+}
+
+//请求广告图
+- (void)requestBanner {
+    @weakify(self);
+    [HomeHttpManager requestBanner:Tenement_Banner city:@"" zoneId:@"" success:^(NSArray * response) {
+        @strongify(self);
+        self.imageURLArray = response;
+        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSourceArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    if (section==0) {
+        return 1;
+    }
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        PropertyBannerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PropertyBannerCell"];
+        BannerHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BannerHeaderCell"];
         if (!cell) {
-            cell = [[[NSBundle mainBundle]loadNibNamed:@"PropertyBannerCell" owner:nil options:nil] lastObject];
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"BannerHeaderCell" owner:nil options:nil] lastObject];
         }
         cell.modelArray = imageNames;
         return cell;
     }
     
     else {
+        if (indexPath.row ==0 ){
+            TenemnetHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TenemnetHeaderCell"];
+            if (!cell) {
+                cell = [[[NSBundle mainBundle]loadNibNamed:@"TenemnetHeaderCell" owner:nil options:nil] lastObject];
+            }
+            return cell;
+        }
+        else {
+        
         ItemBtnCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemBtnCell"];
         if (!cell) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"ItemBtnCell" owner:nil options:nil] lastObject];
@@ -61,6 +87,8 @@
         };
         cell.titleAndImageDictArray = self.dataSourceArray[indexPath.section];
         return cell;
+        }
+        
     }
 }
 
@@ -69,6 +97,9 @@
         return 160;
     }
     else {
+        if (indexPath.row ==0) {
+            return 49;
+        }
         ItemBtnCell *cell = (ItemBtnCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
         return cell.cellHeight;
     }

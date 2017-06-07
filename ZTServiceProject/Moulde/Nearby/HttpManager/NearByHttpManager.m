@@ -8,6 +8,7 @@
 
 #import "NearByHttpManager.h"
 #import "NearByItemModel.h"
+#import "NearByTitleModel.h"
 @implementation NearByHttpManager
 + (void)requestDataWithKeyWord:(NSString *)keyWord
                           city:(NSString *)city
@@ -33,6 +34,19 @@
                                };
     [[HttpAPIManager sharedHttpAPIManager]postWithUrl:@"" paramter:paramter success:^(id response) {
         NSArray *modelArray = [NearByItemModel mj_objectArrayWithKeyValuesArray:response];
+        success(modelArray);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
+
++ (void)rqeuestQueryType:(NSInteger)queryType
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure {
+    NSDictionary *paramter = @{@"queryType":@(queryType)};
+    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:@"" paramter:paramter success:^(id response) {
+        NSArray *modelArray = [NearByTitleModel mj_objectArrayWithKeyValuesArray:response];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

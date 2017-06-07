@@ -9,5 +9,8 @@
 #import "GLViewPagerViewController.h"
 
 @interface NearByViewController : BaseViewController
-@property (nonatomic,strong)NSArray *dataSource;
+@property (nonatomic,copy)NSString *keywords;
+@property (nonatomic,copy)NSString *city;
+@property (nonatomic,copy)NSString *district;
+@property (nonatomic,copy)NSString *categoryId;
 @end

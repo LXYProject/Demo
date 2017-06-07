@@ -8,7 +8,7 @@
 
 #import "BaseTabbarController.h"
 #import "HomeViewController.h"
-#import "NearByViewController.h"
+#import "NearByHomeViewController.h"
 #import "MineViewController.h"
 #import "MessageCenterViewController.h"
 #import "TenementViewController.h"
@@ -42,7 +42,7 @@
                        image:@"order_tabbar_default"
                     selectImage:@"order_tabbar_selected"];
     //周边
-    NearByViewController *nearByVC = [[NearByViewController alloc] init];
+    NearByHomeViewController *nearByVC = [[NearByHomeViewController alloc] init];
     [self addViewControllers:nearByVC
                        title:@"周边"
                   tabbarItem:@"周边"

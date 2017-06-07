@@ -60,8 +60,6 @@
 		7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167741EE64B27000ECCE6 /* NoticeView.m */; };
 		7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167761EE64B55000ECCE6 /* noticeYellow@2x.png */; };
 		7BA167791EE64B55000ECCE6 /* noticeYellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167771EE64B55000ECCE6 /* noticeYellow@3x.png */; };
-		7BA167821EE65C7C000ECCE6 /* PropertyBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167801EE65C7C000ECCE6 /* PropertyBannerCell.m */; };
-		7BA167831EE65C7C000ECCE6 /* PropertyBannerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167811EE65C7C000ECCE6 /* PropertyBannerCell.xib */; };
 		7BA167891EE66DA8000ECCE6 /* TenementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167871EE66DA8000ECCE6 /* TenementViewController.m */; };
 		7BA1678A1EE66DA8000ECCE6 /* TenementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167881EE66DA8000ECCE6 /* TenementViewController.xib */; };
 		7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */; };
@@ -99,6 +97,10 @@
 		7BF4B2361EE3D9190058185F /* PushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B2351EE3D9190058185F /* PushManager.m */; };
 		7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7BF4B2371EE3DCD50058185F /* unLoginVCList.plist */; };
 		7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7D7681EE8543200DB1486 /* NearByViewController.xib */; };
+		7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D76B1EE8554700DB1486 /* HomeHttpManager.m */; };
+		7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */; };
+		7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */; };
+		7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,9 +213,6 @@
 		7BA167741EE64B27000ECCE6 /* NoticeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeView.m; sourceTree = "<group>"; };
 		7BA167761EE64B55000ECCE6 /* noticeYellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeYellow@2x.png"; sourceTree = "<group>"; };
 		7BA167771EE64B55000ECCE6 /* noticeYellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeYellow@3x.png"; sourceTree = "<group>"; };
-		7BA1677F1EE65C7C000ECCE6 /* PropertyBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropertyBannerCell.h; sourceTree = "<group>"; };
-		7BA167801EE65C7C000ECCE6 /* PropertyBannerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PropertyBannerCell.m; sourceTree = "<group>"; };
-		7BA167811EE65C7C000ECCE6 /* PropertyBannerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyBannerCell.xib; sourceTree = "<group>"; };
 		7BA167861EE66DA8000ECCE6 /* TenementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenementViewController.h; sourceTree = "<group>"; };
 		7BA167871EE66DA8000ECCE6 /* TenementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenementViewController.m; sourceTree = "<group>"; };
 		7BA167881EE66DA8000ECCE6 /* TenementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenementViewController.xib; sourceTree = "<group>"; };
@@ -259,6 +258,13 @@
 		7BF4B2351EE3D9190058185F /* PushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushManager.m; sourceTree = "<group>"; };
 		7BF4B2371EE3DCD50058185F /* unLoginVCList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = unLoginVCList.plist; sourceTree = "<group>"; };
 		7BF7D7681EE8543200DB1486 /* NearByViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByViewController.xib; sourceTree = "<group>"; };
+		7BF7D76A1EE8554700DB1486 /* HomeHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHttpManager.h; sourceTree = "<group>"; };
+		7BF7D76B1EE8554700DB1486 /* HomeHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHttpManager.m; sourceTree = "<group>"; };
+		7BF7D7731EE857D000DB1486 /* NearByTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByTitleModel.h; sourceTree = "<group>"; };
+		7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByTitleModel.m; sourceTree = "<group>"; };
+		7BF7D7761EE85E9E00DB1486 /* TenemnetHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenemnetHeaderCell.h; sourceTree = "<group>"; };
+		7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenemnetHeaderCell.m; sourceTree = "<group>"; };
+		7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenemnetHeaderCell.xib; sourceTree = "<group>"; };
 		8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -310,13 +316,8 @@
 		299E2CE21EE8066A0045A884 /* HttpManager */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = HttpManager;
-			sourceTree = "<group>";
-		};
-		299E2CE31EE806730045A884 /* HttpManager */ = {
-			isa = PBXGroup;
-			children = (
+				7BF7D76A1EE8554700DB1486 /* HomeHttpManager.h */,
+				7BF7D76B1EE8554700DB1486 /* HomeHttpManager.m */,
 			);
 			path = HttpManager;
 			sourceTree = "<group>";
@@ -473,10 +474,10 @@
 		7B6C269E1EE3C2AB0090BE5C /* MessageCenter */ = {
 			isa = PBXGroup;
 			children = (
-				299E2CE31EE806730045A884 /* HttpManager */,
+				7BF7D7701EE855B700DB1486 /* HttpManager */,
+				7BF7D7711EE855B700DB1486 /* Model */,
+				7BF7D7721EE855B700DB1486 /* View */,
 				7B6C269F1EE3C2AB0090BE5C /* Controller */,
-				7B6C26A01EE3C2AB0090BE5C /* Model */,
-				7B6C26A11EE3C2AB0090BE5C /* View */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -489,20 +490,6 @@
 				7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7B6C26A01EE3C2AB0090BE5C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7B6C26A11EE3C2AB0090BE5C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7B6C26A21EE3C2AB0090BE5C /* Mine */ = {
@@ -574,6 +561,8 @@
 			children = (
 				299E2CCD1EE7E07A0045A884 /* NearByItemModel.h */,
 				299E2CCE1EE7E07A0045A884 /* NearByItemModel.m */,
+				7BF7D7731EE857D000DB1486 /* NearByTitleModel.h */,
+				7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -605,9 +594,6 @@
 				7BA167861EE66DA8000ECCE6 /* TenementViewController.h */,
 				7BA167871EE66DA8000ECCE6 /* TenementViewController.m */,
 				7BA167881EE66DA8000ECCE6 /* TenementViewController.xib */,
-				7BA1677F1EE65C7C000ECCE6 /* PropertyBannerCell.h */,
-				7BA167801EE65C7C000ECCE6 /* PropertyBannerCell.m */,
-				7BA167811EE65C7C000ECCE6 /* PropertyBannerCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -622,6 +608,9 @@
 		7B6C26AD1EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BF7D7761EE85E9E00DB1486 /* TenemnetHeaderCell.h */,
+				7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */,
+				7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -806,6 +795,27 @@
 			path = NavgationIcon;
 			sourceTree = "<group>";
 		};
+		7BF7D7701EE855B700DB1486 /* HttpManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		7BF7D7711EE855B700DB1486 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF7D7721EE855B700DB1486 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B888996B7B1B5FD535107966 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +946,7 @@
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
+				7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
 				299E2CC11EE7CDDD0045A884 /* ItemBtnCell.xib in Resources */,
 				299E2CC71EE7CDDD0045A884 /* ProductItemCell.xib in Resources */,
@@ -944,7 +955,6 @@
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
 				299E2CC31EE7CDDD0045A884 /* NearByHeaderCell.xib in Resources */,
 				7BF4B22D1EE3D6470058185F /* nav_more_btn@3x.png in Resources */,
-				7BA167831EE65C7C000ECCE6 /* PropertyBannerCell.xib in Resources */,
 				7BF4B2181EE3D45A0058185F /* order_tabbar_default@3x.png in Resources */,
 				7B6C26C11EE3C3140090BE5C /* MineViewController.xib in Resources */,
 				7BF4B2121EE3D45A0058185F /* message_tabbar_selected@3x.png in Resources */,
@@ -1051,6 +1061,7 @@
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
+				7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */,
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
@@ -1067,6 +1078,7 @@
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */,
+				7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */,
 				299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */,
 				7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */,
 				299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */,
@@ -1078,9 +1090,9 @@
 				299E2CC21EE7CDDD0045A884 /* NearByHeaderCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
+				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
-				7BA167821EE65C7C000ECCE6 /* PropertyBannerCell.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,

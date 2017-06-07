@@ -13,11 +13,13 @@
 #import "SectionHeaderCell.h"
 #import "ProductItemCell.h"
 #import "NearByHeaderCell.h"
+#import "HomeHttpManager.h"
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
 @property (nonatomic,strong)NSArray *notificationNewsArray;
 @property (nonatomic,assign)NSInteger nearBySelectIndex;
+@property (nonatomic,strong)NSArray *imageURLArray;
 @end
 
 @implementation HomeViewController
@@ -28,9 +30,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-
-//    self.navigationController.navigationBarHidden = YES;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -42,6 +41,20 @@
                     ];
     //数据源标题
     noticeNews = @[@"通知1",@"通知2",@"通知3",@"通知4",@"通知5",@"通知6"];
+    
+    [self requestBanner];
+}
+
+//请求广告图
+- (void)requestBanner {
+    @weakify(self);
+    [HomeHttpManager requestBanner:Home_Banner city:@"" zoneId:@"" success:^(NSArray * response) {
+        @strongify(self);
+        self.imageURLArray = response;
+        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,6 +114,7 @@
     if (indexPath.row == 0) {
         BannerHeaderCell *cell = (BannerHeaderCell *)[self creatCell:tableView indenty:@"BannerHeaderCell"];
         cell.modelArray = imageNames;
+//        cell.modelArray = self.imageURLArray;
         return cell;
     }
     else {

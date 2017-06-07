@@ -7,27 +7,69 @@
 //
 
 #import "NearByViewController.h"
-#import "NearByCell.h"
+#import "NearByItemsCell.h"
 
-
+#import "NearByHttpManager.h"
 
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+@property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic,assign)NSInteger currentPage;
 @end
 
 @implementation NearByViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 0;
+        [self requestData];
+    }];
     
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestData];
+    }];
+//    [self.tableView beginHeaderRefreshing];
 }
 
-- (void)setDataSource:(NSArray *)dataSource {
-    _dataSource = dataSource;
-    [self.tableView reloadData];
+- (void)requestData{
+    [NearByHttpManager requestDataWithKeyWord:_keywords city:_city district:_district categoryId:_categoryId sort:@"" page:self.currentPage success:^(NSArray * response) {
+        [self.tableView endRefreshing];
+        if (self.currentPage==0){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
 }
+
+- (void)setCategoryId:(NSString *)categoryId {
+    _categoryId = categoryId;
+    [self requestData];
+}
+
+- (void)setKeywords:(NSString *)keywords {
+    _keywords = keywords;
+    [self requestData];
+}
+
+- (void)setDistrict:(NSString *)district {
+    _district = district;
+    [self requestData];
+}
+
+-(void)setCity:(NSString *)city {
+    _city = city;
+    [self requestData];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //    return self.dataSourceArray.count;
     return 10;
@@ -37,23 +79,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NearByItemsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NearByItemsCell"];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"NearByItemsCell" owner:nil options:nil] lastObject];
+    }
+//    cell.model = self.dataSourcep[indexPath.row];
+    return cell;
+}
 
-        NearByCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NearByCell"];
-        if (!cell) {
-            cell = [[[NSBundle mainBundle]loadNibNamed:@"NearByCell" owner:nil options:nil] lastObject];
-        }
-//        @weakify(self);
-//        cell.btnClickBlock = ^(NSInteger value) {
-//            @strongify(self);
-//            [PushManager pushViewControllerWithName:self.dataSourceArray[indexPath.section][value][@"vcName"] animated:YES block:nil];
-//        };
-//        cell.titleAndImageDictArray = self.dataSourceArray[indexPath.section];
-        return cell;
-//    }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 120;
 }
 
 
-
-
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 
 @end

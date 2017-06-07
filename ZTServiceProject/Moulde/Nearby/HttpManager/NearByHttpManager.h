@@ -19,4 +19,9 @@
                           page:(NSInteger)pageNum
                        success:(HttpRequestSuccess)success
                        failure:(HttpRequestFailure)failure;
+
+//请求周边上面的滚动title
++ (void)rqeuestQueryType:(NSInteger)queryType
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
 @end
