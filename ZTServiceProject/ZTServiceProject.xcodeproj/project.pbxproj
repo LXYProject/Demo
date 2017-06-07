@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
 		6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
@@ -106,6 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		299E2C9C1EE7C5620045A884 /* YYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRequest.h; sourceTree = "<group>"; };
+		299E2C9D1EE7C5620045A884 /* YYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRequest.m; sourceTree = "<group>"; };
 		3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.debug.xcconfig"; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 		7B6C26981EE3C2AB0090BE5C /* HttpManager */ = {
 			isa = PBXGroup;
 			children = (
+				299E2C9C1EE7C5620045A884 /* YYRequest.h */,
+				299E2C9D1EE7C5620045A884 /* YYRequest.m */,
 			);
 			path = HttpManager;
 			sourceTree = "<group>";
@@ -765,7 +770,6 @@
 				TargetAttributes = {
 					7B8F0D0D1EE3BE1F00ED16E3 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 2TQWE9ET85;
 						ProvisioningStyle = Automatic;
 					};
 					7B8F0D261EE3BE1F00ED16E3 = {
@@ -944,6 +948,7 @@
 				7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */,
 				7B2C4DEC1EE6EDCA00745071 /* NearByHeaderCell.m in Sources */,
 				7B6C26D81EE3C3710090BE5C /* LoginViewController.m in Sources */,
+				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
@@ -1102,7 +1107,7 @@
 			baseConfigurationReference = 3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2TQWE9ET85;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
@@ -1118,7 +1123,7 @@
 			baseConfigurationReference = C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2TQWE9ET85;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
