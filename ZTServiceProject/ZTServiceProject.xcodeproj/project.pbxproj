@@ -15,6 +15,8 @@
 		7B2C4DE81EE6E83E00745071 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE61EE6E83E00745071 /* ProductItemCell.xib */; };
 		7B2C4DEC1EE6EDCA00745071 /* NearByHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */; };
 		7B2C4DED1EE6EDCA00745071 /* NearByHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */; };
+		7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3238C61EE7AD8E00403495 /* NearByCell.m */; };
+		7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3238C71EE7AD8E00403495 /* NearByCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */; };
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
@@ -117,6 +119,9 @@
 		7B2C4DE91EE6EDCA00745071 /* NearByHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHeaderCell.h; sourceTree = "<group>"; };
 		7B2C4DEA1EE6EDCA00745071 /* NearByHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHeaderCell.m; sourceTree = "<group>"; };
 		7B2C4DEB1EE6EDCA00745071 /* NearByHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByHeaderCell.xib; sourceTree = "<group>"; };
+		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByCell.h; sourceTree = "<group>"; };
+		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByCell.m; sourceTree = "<group>"; };
+		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -448,6 +453,9 @@
 				7B6C26C21EE3C3230090BE5C /* NearByViewController.h */,
 				7B6C26C31EE3C3230090BE5C /* NearByViewController.m */,
 				7B6C26C41EE3C3230090BE5C /* NearByViewController.xib */,
+				7B3238C51EE7AD8E00403495 /* NearByCell.h */,
+				7B3238C61EE7AD8E00403495 /* NearByCell.m */,
+				7B3238C71EE7AD8E00403495 /* NearByCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -837,6 +845,7 @@
 				7BF4B21B1EE3D45A0058185F /* worktable_tabbar_default@2x.png in Resources */,
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
+				7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
 				7BF4B2131EE3D45A0058185F /* my_tabbar_default@2x.png in Resources */,
@@ -920,6 +929,7 @@
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
+				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
 				7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */,
