@@ -40,12 +40,12 @@
 
 - (void)setModelArray:(NSArray *)modelArray {
     _modelArray = modelArray;
-//    NSMutableArray *imageURLArray = [NSMutableArray arrayWithCapacity:1];
-//    for (AdvertisementModel *model in modelArray) {
-//        [imageURLArray addObject:model.imageUrl];
-//    }
-//    self.bannerView.imageURLStringsGroup = imageURLArray;
-    
+    NSMutableArray *imageURLArray = [NSMutableArray arrayWithCapacity:1];
+    for (AdvertisementModel *model in modelArray) {
+        [imageURLArray addObject:model.imageUrl];
+    }
+    self.bannerView.imageURLStringsGroup = imageURLArray;
+
 //    self.bannerView.localizationImageNamesGroup = modelArray;
 }
 

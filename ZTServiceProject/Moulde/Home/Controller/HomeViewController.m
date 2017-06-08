@@ -14,6 +14,8 @@
 #import "ProductItemCell.h"
 #import "NearByHeaderCell.h"
 #import "HomeHttpManager.h"
+#import "secondHandCell.h"
+
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
@@ -42,13 +44,13 @@
     //数据源标题
     noticeNews = @[@"通知1",@"通知2",@"通知3",@"通知4",@"通知5",@"通知6"];
     
-    [self requestBanner];
+//    [self requestBanner];
 }
 
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Home_Banner city:@"510100" zoneId:@"" success:^(NSArray * response) {
+    [HomeHttpManager requestBanner:Home_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
         @strongify(self);
         self.imageURLArray = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -73,18 +75,18 @@
         return 3;
     }
     else if (section == 3) {
-        return 1;
+        return 2;
     }
     else if (section == 4) {
         return 1;
     }
     else {
-        return 0;
+        return 2;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -98,13 +100,13 @@
         return [self sectionTwoWithTableView:tableView indexPath:indexPath];
     }
     else if (indexPath.section ==3) {
-        return nil;
+        return [self sectionThirdTableView:tableView indexPath:indexPath];
     }
     else if (indexPath.section ==4) {
-        return nil;
+        return [self sectionFourWithTableView:tableView indexPath:indexPath];
     }
     else {
-        return nil;
+        return [self sectionFiveWithTableView:tableView indexPath:indexPath];
     }
     
 }
@@ -113,8 +115,8 @@
                        indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         BannerHeaderCell *cell = (BannerHeaderCell *)[self creatCell:tableView indenty:@"BannerHeaderCell"];
-        cell.modelArray = imageNames;
-//        cell.modelArray = self.imageURLArray;
+//        cell.modelArray = imageNames;
+        cell.modelArray = self.imageURLArray;
         return cell;
     }
     else {
@@ -155,21 +157,41 @@
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
         return cell;
     }
-    
-    
-    
 }
 
 //第3组
-- (void)sectionZeroThirdTableView:(UITableView *)tableView
+- (UITableViewCell *)sectionThirdTableView:(UITableView *)tableView
                         indexPath:(NSIndexPath *)indexPath {
-    
+
+    if(indexPath.row == 0) {
+        NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
+        return cell;
+    }
+    else {
+        secondHandCell *cell = (secondHandCell *)[self creatCell:tableView indenty:@"secondHandCell"];
+        return cell;
+    }
 }
 
 //第4组
-- (void)sectionFourWithTableView:(UITableView *)tableView
+- (UITableViewCell *)sectionFourWithTableView:(UITableView *)tableView
                        indexPath:(NSIndexPath *)indexPath {
     
+    ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+    return cell;
+}
+
+//第5组
+- (UITableViewCell *)sectionFiveWithTableView:(UITableView *)tableView
+                                    indexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row == 0) {
+        NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
+        return cell;
+    }
+    else {
+        ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+        return cell;
+    }
 }
 
 
@@ -203,13 +225,19 @@
         return 120;
     }
     else if (indexPath.section ==3) {
-        return 0;
+        if (indexPath.row==0) {
+            return 44;
+        }
+        return 150;
     }
     else if (indexPath.section ==4) {
-        return 0;
+        return 120;
     }
     else {
-        return 0;
+        if (indexPath.row ==0) {
+            return 44;
+        }
+        return 120;
     }
 
 }

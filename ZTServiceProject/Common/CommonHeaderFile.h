@@ -25,6 +25,8 @@
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import <UIButton+WebCache.h>
+#import "AFNetworking.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 //类别
 
 #endif /* CommonHeaderFile_h */

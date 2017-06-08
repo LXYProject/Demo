@@ -10,4 +10,7 @@
 
 @interface BannerHeaderCell : UITableViewCell
 @property (nonatomic,strong)NSArray *modelArray;
+
+@property (nonatomic, copy)UIImage *image;
+
 @end

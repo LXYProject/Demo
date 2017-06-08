@@ -18,33 +18,67 @@
 @property (nonatomic,strong)NSArray *dataSourceArray;
 @property (nonatomic,strong)NSArray *imageURLArray;
 @property (nonatomic,strong)NSArray *titleHeader;
+@property (nonatomic, strong)NSMutableArray *imageUrlArr;
+@property (nonatomic, strong)NSMutableArray *imageNames;
 
 @end
 
 @implementation TenementViewController
 {
-    NSArray *imageNames;
+//    NSArray *imageNames;
     NSInteger _times;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    imageNames = @[
-                   @"timg.jpeg",
-                   @"timg.jpeg",
-                   @"timg.jpeg",
-                   ];
+//    imageNames = @[
+//                   @"timg.jpeg",
+//                   @"timg.jpeg",
+//                   @"timg.jpeg",
+//                   ];
+    _imageUrlArr = [[NSMutableArray alloc] init];
+//    [self requestB];
     [self requestBanner];
 }
 
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Tenement_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
+    [HomeHttpManager requestzoneId:@"510029841228" success:^(NSArray * response) {
         @strongify(self);
         self.imageURLArray = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *error, NSString *message) {
         
+    }];
+}
+- (void)requestB
+{
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    NSDictionary *parameters = @{
+                                 @"userId":@"1",
+                                 @"token":@"1",
+                                 @"city":@"510100",
+                                 @"zoneId":@"510029841228"
+                                 };
+    NSString *path = MRRemote(A_UrlB);
+    
+    [sessionManager POST:path parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"post success:%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        NSArray *adList = [dictResult objectForKey:@"adList"];
+        NSLog(@"adList==%@", adList);
+        for (NSDictionary *dic in adList) {
+            NSLog(@"dic==%@", dic);
+            NSString *imageUrl = [dic objectForKey:@"imageUrl"];
+
+            [_imageUrlArr addObject:imageUrl];
+            NSLog(@"_imageUrlArr==%@", _imageUrlArr);
+        }
+        ;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"post failure:%@",error);
     }];
 }
 
@@ -64,8 +98,14 @@
         if (!cell) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"BannerHeaderCell" owner:nil options:nil] lastObject];
         }
-        cell.modelArray = imageNames;
+//        cell.modelArray = imageNames;
 //        cell.modelArray = self.imageURLArray;
+
+//        UIImageView *imageView;
+//        [imageView sd_setImageWithURL:[NSURL URLWithString:_imageUrlArr[indexPath.row]]
+//                     placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+//
+        cell.modelArray = _imageUrlArr;
         return cell;
     }
     

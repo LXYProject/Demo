@@ -22,4 +22,9 @@ typedef enum : NSUInteger {
                zoneId:(NSString *)zoneId
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
+
++ (void)requestzoneId:(NSString *)zoneId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
+
 @end

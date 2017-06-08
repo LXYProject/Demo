@@ -129,7 +129,7 @@ static NSMutableArray* requestTasksPool = nil;
                                           progress:(YYProgress)progress{
     __block NSURLSessionDataTask *session = nil;
     session = [[self manager] POST:urlString parameters:paramter progress:^(NSProgress * _Nonnull uploadProgress) {
-        if(uploadProgress) {
+        if(progress) {
             progress (uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -161,7 +161,7 @@ static NSMutableArray* requestTasksPool = nil;
                                           progress:(YYProgress)progress {
     __block NSURLSessionDataTask *session = nil;
     session = [[self manager] GET:urlString parameters:paramter progress:^(NSProgress * _Nonnull downloadProgress) {
-        if(downloadProgress) {
+        if(progress) {
             progress (downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -304,7 +304,7 @@ static NSMutableArray* requestTasksPool = nil;
     NSURL *downloadUrl = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:downloadUrl];
     [[self manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-        if(downloadProgress){
+        if(progress){
             progress(downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
         }
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {

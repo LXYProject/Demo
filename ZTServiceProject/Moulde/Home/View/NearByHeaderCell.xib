@@ -61,6 +61,9 @@
                     <constraint firstItem="s5b-YX-Ajq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TfQ-fm-mx9"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="nearTitleLabel" destination="i7B-aa-8lt" id="lIl-bQ-zj2"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

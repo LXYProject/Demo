@@ -47,6 +47,8 @@
 		7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26C31EE3C3230090BE5C /* NearByViewController.m */; };
 		7B6C26D81EE3C3710090BE5C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26D61EE3C3710090BE5C /* LoginViewController.m */; };
 		7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26D71EE3C3710090BE5C /* LoginViewController.xib */; };
+		7B78ABF71EE9801800FDFE7C /* secondHandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78ABF51EE9801800FDFE7C /* secondHandCell.m */; };
+		7B78ABF81EE9801800FDFE7C /* secondHandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */; };
 		7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D121EE3BE1F00ED16E3 /* main.m */; };
 		7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D151EE3BE1F00ED16E3 /* AppDelegate.m */; };
 		7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D181EE3BE1F00ED16E3 /* ViewController.m */; };
@@ -101,6 +103,10 @@
 		7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */; };
 		7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */; };
 		7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */; };
+		7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFE483E1EE9346A0006FF3B /* MessageHeaderCell.m */; };
+		7BFE48411EE9346A0006FF3B /* MessageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE483F1EE9346A0006FF3B /* MessageHeaderCell.xib */; };
+		7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFE48431EE937BA0006FF3B /* MessageCell.m */; };
+		7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE48441EE937BA0006FF3B /* MessageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +197,9 @@
 		7B6C26D51EE3C3710090BE5C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7B6C26D61EE3C3710090BE5C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		7B6C26D71EE3C3710090BE5C /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		7B78ABF41EE9801800FDFE7C /* secondHandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondHandCell.h; sourceTree = "<group>"; };
+		7B78ABF51EE9801800FDFE7C /* secondHandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondHandCell.m; sourceTree = "<group>"; };
+		7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = secondHandCell.xib; sourceTree = "<group>"; };
 		7B8F0D0E1EE3BE1F00ED16E3 /* ZTServiceProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZTServiceProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8F0D121EE3BE1F00ED16E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7B8F0D141EE3BE1F00ED16E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -218,9 +227,9 @@
 		7BA167871EE66DA8000ECCE6 /* TenementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenementViewController.m; sourceTree = "<group>"; };
 		7BA167881EE66DA8000ECCE6 /* TenementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenementViewController.xib; sourceTree = "<group>"; };
 		7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 3 Copy@3x.png"; sourceTree = "<group>"; };
-		7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineBtnCell.h; sourceTree = "<group>"; };
-		7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineBtnCell.m; sourceTree = "<group>"; };
-		7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineBtnCell.xib; sourceTree = "<group>"; };
+		7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MineBtnCell.h; path = ../Controller/MineBtnCell.h; sourceTree = "<group>"; };
+		7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MineBtnCell.m; path = ../Controller/MineBtnCell.m; sourceTree = "<group>"; };
+		7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MineBtnCell.xib; path = ../Controller/MineBtnCell.xib; sourceTree = "<group>"; };
 		7BBE15721EE3C56A0064BEF3 /* ZTServiceProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTServiceProject.pch; sourceTree = "<group>"; };
 		7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
@@ -266,6 +275,12 @@
 		7BF7D7761EE85E9E00DB1486 /* TenemnetHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenemnetHeaderCell.h; sourceTree = "<group>"; };
 		7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenemnetHeaderCell.m; sourceTree = "<group>"; };
 		7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenemnetHeaderCell.xib; sourceTree = "<group>"; };
+		7BFE483D1EE9346A0006FF3B /* MessageHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHeaderCell.h; path = ../Controller/MessageHeaderCell.h; sourceTree = "<group>"; };
+		7BFE483E1EE9346A0006FF3B /* MessageHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageHeaderCell.m; path = ../Controller/MessageHeaderCell.m; sourceTree = "<group>"; };
+		7BFE483F1EE9346A0006FF3B /* MessageHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageHeaderCell.xib; path = ../Controller/MessageHeaderCell.xib; sourceTree = "<group>"; };
+		7BFE48421EE937BA0006FF3B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageCell.h; path = ../Controller/MessageCell.h; sourceTree = "<group>"; };
+		7BFE48431EE937BA0006FF3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageCell.m; path = ../Controller/MessageCell.m; sourceTree = "<group>"; };
+		7BFE48441EE937BA0006FF3B /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCell.xib; path = ../Controller/MessageCell.xib; sourceTree = "<group>"; };
 		8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -469,6 +484,9 @@
 				299E2CBB1EE7CDDD0045A884 /* SectionHeaderCell.h */,
 				299E2CBC1EE7CDDD0045A884 /* SectionHeaderCell.m */,
 				299E2CBD1EE7CDDD0045A884 /* SectionHeaderCell.xib */,
+				7B78ABF41EE9801800FDFE7C /* secondHandCell.h */,
+				7B78ABF51EE9801800FDFE7C /* secondHandCell.m */,
+				7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,9 +529,6 @@
 				7B6C26BD1EE3C3140090BE5C /* MineViewController.h */,
 				7B6C26BE1EE3C3140090BE5C /* MineViewController.m */,
 				7B6C26BF1EE3C3140090BE5C /* MineViewController.xib */,
-				7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */,
-				7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */,
-				7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -528,6 +543,9 @@
 		7B6C26A51EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */,
+				7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */,
+				7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -814,6 +832,12 @@
 		7BF7D7721EE855B700DB1486 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BFE483D1EE9346A0006FF3B /* MessageHeaderCell.h */,
+				7BFE483E1EE9346A0006FF3B /* MessageHeaderCell.m */,
+				7BFE483F1EE9346A0006FF3B /* MessageHeaderCell.xib */,
+				7BFE48421EE937BA0006FF3B /* MessageCell.h */,
+				7BFE48431EE937BA0006FF3B /* MessageCell.m */,
+				7BFE48441EE937BA0006FF3B /* MessageCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -965,6 +989,7 @@
 				7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */,
 				7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */,
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
+				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
 				7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */,
@@ -977,8 +1002,10 @@
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
 				7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */,
+				7BFE48411EE9346A0006FF3B /* MessageHeaderCell.xib in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
+				7B78ABF81EE9801800FDFE7C /* secondHandCell.xib in Resources */,
 				7BF4B2131EE3D45A0058185F /* my_tabbar_default@2x.png in Resources */,
 				7BF4B2111EE3D45A0058185F /* message_tabbar_selected@2x.png in Resources */,
 				7BF4B2151EE3D45A0058185F /* my_tabbar_selected@2x.png in Resources */,
@@ -1092,11 +1119,14 @@
 				299E2CC21EE7CDDD0045A884 /* NearByHeaderCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
+				7B78ABF71EE9801800FDFE7C /* secondHandCell.m in Sources */,
+				7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
+				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,
 				299E2CC01EE7CDDD0045A884 /* ItemBtnCell.m in Sources */,
 			);
