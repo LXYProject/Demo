@@ -172,6 +172,7 @@
 		7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		7B2C4DE11EE6DD5A00745071 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		7B2EC4CB1EE8E9B4008B8770 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByCell.h; sourceTree = "<group>"; };
 		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByCell.m; sourceTree = "<group>"; };
 		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByCell.xib; sourceTree = "<group>"; };
@@ -374,6 +375,7 @@
 		7B6C26971EE3C2AB0090BE5C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7B2EC4CB1EE8E9B4008B8770 /* Constant.h */,
 				7B2C4DE11EE6DD5A00745071 /* UIViewExt.h */,
 				7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */,
 				7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */,

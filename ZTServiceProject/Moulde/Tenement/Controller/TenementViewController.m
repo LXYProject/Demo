@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataSourceArray;
 @property (nonatomic,strong)NSArray *imageURLArray;
+@property (nonatomic,strong)NSArray *titleHeader;
+
 @end
 
 @implementation TenementViewController
@@ -37,7 +39,7 @@
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Tenement_Banner city:@"" zoneId:@"" success:^(NSArray * response) {
+    [HomeHttpManager requestBanner:Tenement_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
         @strongify(self);
         self.imageURLArray = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -63,6 +65,7 @@
             cell = [[[NSBundle mainBundle]loadNibNamed:@"BannerHeaderCell" owner:nil options:nil] lastObject];
         }
         cell.modelArray = imageNames;
+//        cell.modelArray = self.imageURLArray;
         return cell;
     }
     
@@ -72,6 +75,7 @@
             if (!cell) {
                 cell = [[[NSBundle mainBundle]loadNibNamed:@"TenemnetHeaderCell" owner:nil options:nil] lastObject];
             }
+            cell.titleHeader = _titleHeader[indexPath.section];
             return cell;
         }
         else {
@@ -115,6 +119,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (NSArray *)titleHeader
+{
+    if (!_titleHeader) {
+        _titleHeader = @[
+                         @"小区信息",
+                         @"物业服务",
+                         @"小区安保",
+                         @"缴费"
+                         ];
+    }
+    return _titleHeader;
 }
 
 - (NSArray *)dataSourceArray {

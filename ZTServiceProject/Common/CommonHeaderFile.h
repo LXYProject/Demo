@@ -19,7 +19,7 @@
 #import "HttpAPIManager.h"
 #import "BaseTableView.h"
 #import "BaseViewController.h"
-
+#import "Constant.h"    
 //第三方
 #import <MJRefresh.h>
 #import <MJExtension.h>

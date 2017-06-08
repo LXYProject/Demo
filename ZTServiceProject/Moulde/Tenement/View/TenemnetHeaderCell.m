@@ -20,5 +20,12 @@
 
     // Configure the view for the selected state
 }
-
+- (void)setTitleHeader:(UILabel *)titleHeader
+{
+    _titleHeader = titleHeader;
+}
+- (void)setTitleArr:(NSArray *)titleArr
+{
+    
+}
 @end
