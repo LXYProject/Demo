@@ -14,7 +14,9 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
            paramter:(id)paramter
             success:(HttpRequestSuccess)success
             failure:(HttpRequestFailure)failure {
+    
     [YYRequest requestPostWithURLString:[self dealWithURL:url] paramater:[self dealWithParamter:paramter] success:^(YYNetWorkSuccess *successful) {
+        NSLog(@"请求返回的值：%@",successful.responseObject);
         if ([successful.responseObject[@"code"] integerValue]==200) {
             success(successful.responseObject[@"result"]);
         }
@@ -22,6 +24,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
             failure(nil,successful.responseObject[@"message"]);
         }
     } failure:^(YYNetWorkFailure *failured) {
+        NSLog(@"请求错误信息：%@",failured.error);
          failure(failured.error,nil);
     } progress:nil];
 }
@@ -112,13 +115,14 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     else {
     
     }
-    
+    NSLog(@"请求的参数：%@",paramter);
     return paramter;
 }
 
 //为了URL管理
 - (NSString *)dealWithURL:(NSString *)urlString {
-    return urlString;
+    NSLog(@"请求路径：%@",MRRemote(urlString));
+    return MRRemote(urlString);
 }
 
 
