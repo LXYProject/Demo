@@ -169,6 +169,7 @@
     }
     else {
         secondHandCell *cell = (secondHandCell *)[self creatCell:tableView indenty:@"secondHandCell"];
+        cell.model = @[@"1",@"2",@"3"];
         return cell;
     }
 }
@@ -228,7 +229,7 @@
         if (indexPath.row==0) {
             return 44;
         }
-        return 150;
+        return 175;
     }
     else if (indexPath.section ==4) {
         return 120;

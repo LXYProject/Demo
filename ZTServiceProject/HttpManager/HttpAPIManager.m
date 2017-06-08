@@ -15,8 +15,10 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
             success:(HttpRequestSuccess)success
             failure:(HttpRequestFailure)failure {
     
-    [YYRequest requestPostWithURLString:[self dealWithURL:url] paramater:[self dealWithParamter:paramter] success:^(YYNetWorkSuccess *successful) {
-        NSLog(@"请求返回的值：%@",successful.responseObject);
+    NSString *newUrl = [self dealWithURL:url];
+    id newParamter = [self dealWithParamter:paramter];
+    [YYRequest requestPostWithURLString:newUrl paramater:newParamter success:^(YYNetWorkSuccess *successful) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
         if ([successful.responseObject[@"code"] integerValue]==200) {
             success(successful.responseObject[@"result"]);
         }
@@ -24,7 +26,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
             failure(nil,successful.responseObject[@"message"]);
         }
     } failure:^(YYNetWorkFailure *failured) {
-        NSLog(@"请求错误信息：%@",failured.error);
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
          failure(failured.error,nil);
     } progress:nil];
 }
@@ -33,7 +35,11 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
           paramter:(id)paramter
            success:(HttpRequestSuccess)success
            failure:(HttpRequestFailure)failure {
-    [YYRequest requestGETtWithURLString:[self dealWithURL:url] paramater:[self dealWithParamter:paramter] success:^(YYNetWorkSuccess *successful) {
+    NSString *newUrl = [self dealWithURL:url];
+    id newParamter = [self dealWithParamter:paramter];
+    
+    [YYRequest requestGETtWithURLString:newUrl paramater:newParamter success:^(YYNetWorkSuccess *successful) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
         if ([successful.responseObject[@"code"] integerValue]==200) {
             success(successful.responseObject[@"result"]);
         }
@@ -41,6 +47,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
             failure(nil,successful.responseObject[@"message"]);
         }
     } failure:^(YYNetWorkFailure *failured) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
         failure(failured.error,nil);
     } progress:nil];
 }
@@ -54,11 +61,18 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
             progressBlock:(HttpRequestProgress)progressBlock
                   success:(HttpRequestSuccess)success
                   failure:(HttpRequestFailure)failure {
-    [YYRequest uploadFileWithUrl:[self dealWithURL:url] fileData:data type:type name:name mimeType:mimeType paramter:[self dealWithParamter:paramter] progress:^(int64_t bytesRead, int64_t totalBytes) {
+    
+    NSString *newUrl = [self dealWithURL:url];
+    id newParamter = [self dealWithParamter:paramter];
+
+    [YYRequest uploadFileWithUrl:url fileData:data type:type name:name mimeType:mimeType paramter:paramter progress:^(int64_t bytesRead, int64_t totalBytes) {
         progressBlock((CGFloat)bytesRead/totalBytes);
     } success:^(YYNetWorkSuccess *successful) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
+
         success(successful.responseObject);
     } failure:^(YYNetWorkFailure *failured) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
         failure(failured.error,nil);
     }];
     
@@ -73,11 +87,18 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
                  progressBlock:(HttpRequestProgress)progressBlock
                        success:(HttpRequestSuccess)success
                        failure:(HttpRequestFailure)failure {
-    [YYRequest uploadFilesWithUrl:[self dealWithURL:url] fileDatas:data type:type name:name mimeType:mimeType paramter:[self dealWithParamter:paramter] progress:^(int64_t bytesRead, int64_t totalBytes) {
+    NSString *newUrl = [self dealWithURL:url];
+    id newParamter = [self dealWithParamter:paramter];
+
+    [YYRequest uploadFilesWithUrl:url fileDatas:data type:type name:name mimeType:mimeType paramter:newParamter progress:^(int64_t bytesRead, int64_t totalBytes) {
         progressBlock((CGFloat)bytesRead/totalBytes);
     } success:^(YYNetWorkSuccess *successful) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
+
         success(successful.responseObject);
     } failure:^(YYNetWorkFailure *failured) {
+        failure(failured.error,nil);
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
         failure(failured.error,nil);
     }];
 }
@@ -115,13 +136,16 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     else {
     
     }
-    NSLog(@"请求的参数：%@",newParamter);
+    
+    NSString *token = [newParamter objectForKey:@"token"];
+    NSString *userId = [newParamter objectForKey:@"userId"];
+    NSAssert(token.length>0, @"token不能为空");
+    NSAssert(userId.length>0, @"userId不能为空");
     return newParamter;
 }
 
 //为了URL管理
 - (NSString *)dealWithURL:(NSString *)urlString {
-    NSLog(@"请求路径：%@",MRRemote(urlString));
     return MRRemote(urlString);
 }
 

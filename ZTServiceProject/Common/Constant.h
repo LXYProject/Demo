@@ -28,6 +28,9 @@
 
 #define MRRemote(A)             [NSString stringWithFormat:@"%@%@%@", MR_Http, MR_Host_Test, (A)]
 
+//#define MRRemote(A)             [NSString stringWithFormat:@"http://appbi.aicailang.com/app/publicRequest/appAdvertRequestHandler%@",(A)]
+
+
 // 首页轮播图
 #define A_UrlA                   @"?service=adPhotoService&function=cityAdList"
 // 物业轮播图

@@ -17,14 +17,16 @@
               failure:(HttpRequestFailure)failure {
     NSMutableDictionary *paramter = [[NSMutableDictionary alloc]init];
     [paramter setValue:city forKey:@"city"];
-
+    NSString *url = nil;
     if (bannerType == Home_Banner) {
+        url = A_UrlA;
     }
     else {
-        [paramter setValue:zoneId forKey:@"zoneId"];
+//        [paramter setValue:zoneId forKey:@"zoneId"];
         NSAssert(zoneId.length>0, @"请求物业的banner的时候zoneId不能为空");
+        url = A_UrlB;
     }
-    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:A_UrlB paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:url paramter:paramter success:^(id response) {
         NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {

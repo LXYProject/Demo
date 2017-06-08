@@ -36,8 +36,8 @@
 //                   @"timg.jpeg",
 //                   ];
     _imageUrlArr = [[NSMutableArray alloc] init];
-//    [self requestB];
-    [self requestBanner];
+    [self requestB];
+//    [self requestBanner];
 }
 
 //请求广告图
@@ -61,7 +61,6 @@
                                  @"zoneId":@"510029841228"
                                  };
     NSString *path = MRRemote(A_UrlB);
-    
     [sessionManager POST:path parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"post success:%@",responseObject);
         
@@ -115,7 +114,7 @@
             if (!cell) {
                 cell = [[[NSBundle mainBundle]loadNibNamed:@"TenemnetHeaderCell" owner:nil options:nil] lastObject];
             }
-            cell.titleHeader = _titleHeader[indexPath.section];
+            cell.titleHeader.text = self.titleHeader[indexPath.section-1];
             return cell;
         }
         else {

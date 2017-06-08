@@ -1,5 +1,5 @@
 //
-//  secondHandCell.h
+//  ProductCollecttionCell.h
 //  ZTServiceProject
 //
 //  Created by ZT on 2017/6/8.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface secondHandCell : UITableViewCell
-@property (nonatomic,strong)NSArray *model;
+@interface ProductCollecttionCell : UICollectionViewCell
+
 @end

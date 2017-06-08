@@ -12,6 +12,5 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleHeader;
 
-@property (nonatomic,strong)NSArray *titleArr;
 
 @end

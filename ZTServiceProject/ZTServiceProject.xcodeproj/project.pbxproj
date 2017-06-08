@@ -49,6 +49,9 @@
 		7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26D71EE3C3710090BE5C /* LoginViewController.xib */; };
 		7B78ABF71EE9801800FDFE7C /* secondHandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78ABF51EE9801800FDFE7C /* secondHandCell.m */; };
 		7B78ABF81EE9801800FDFE7C /* secondHandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */; };
+		7B78AC081EE99A9200FDFE7C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B78AC071EE99A9200FDFE7C /* Security.framework */; };
+		7B78AC1A1EE9A81E00FDFE7C /* ProductCollecttionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B78AC181EE9A81E00FDFE7C /* ProductCollecttionCell.m */; };
+		7B78AC1B1EE9A81E00FDFE7C /* ProductCollecttionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B78AC191EE9A81E00FDFE7C /* ProductCollecttionCell.xib */; };
 		7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D121EE3BE1F00ED16E3 /* main.m */; };
 		7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D151EE3BE1F00ED16E3 /* AppDelegate.m */; };
 		7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D181EE3BE1F00ED16E3 /* ViewController.m */; };
@@ -57,6 +60,8 @@
 		7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B8F0D1F1EE3BE1F00ED16E3 /* LaunchScreen.storyboard */; };
 		7B8F0D2C1EE3BE1F00ED16E3 /* ZTServiceProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D2B1EE3BE1F00ED16E3 /* ZTServiceProjectTests.m */; };
 		7B8F0D371EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D361EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m */; };
+		7B9EA83C1EE9B212003A5DF2 /* Pic_blank_328px@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA83A1EE9B212003A5DF2 /* Pic_blank_328px@2x.png */; };
+		7B9EA83D1EE9B212003A5DF2 /* Pic_blank_328px@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EA83B1EE9B212003A5DF2 /* Pic_blank_328px@3x.png */; };
 		7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1676E1EE64561000ECCE6 /* HomeViewController.m */; };
 		7BA167711EE64561000ECCE6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */; };
 		7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167741EE64B27000ECCE6 /* NoticeView.m */; };
@@ -200,6 +205,10 @@
 		7B78ABF41EE9801800FDFE7C /* secondHandCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondHandCell.h; sourceTree = "<group>"; };
 		7B78ABF51EE9801800FDFE7C /* secondHandCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondHandCell.m; sourceTree = "<group>"; };
 		7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = secondHandCell.xib; sourceTree = "<group>"; };
+		7B78AC071EE99A9200FDFE7C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7B78AC171EE9A81E00FDFE7C /* ProductCollecttionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCollecttionCell.h; sourceTree = "<group>"; };
+		7B78AC181EE9A81E00FDFE7C /* ProductCollecttionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCollecttionCell.m; sourceTree = "<group>"; };
+		7B78AC191EE9A81E00FDFE7C /* ProductCollecttionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCollecttionCell.xib; sourceTree = "<group>"; };
 		7B8F0D0E1EE3BE1F00ED16E3 /* ZTServiceProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZTServiceProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8F0D121EE3BE1F00ED16E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7B8F0D141EE3BE1F00ED16E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -216,6 +225,8 @@
 		7B8F0D321EE3BE1F00ED16E3 /* ZTServiceProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZTServiceProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8F0D361EE3BE1F00ED16E3 /* ZTServiceProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZTServiceProjectUITests.m; sourceTree = "<group>"; };
 		7B8F0D381EE3BE1F00ED16E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B9EA83A1EE9B212003A5DF2 /* Pic_blank_328px@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pic_blank_328px@2x.png"; sourceTree = "<group>"; };
+		7B9EA83B1EE9B212003A5DF2 /* Pic_blank_328px@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pic_blank_328px@3x.png"; sourceTree = "<group>"; };
 		7BA1676D1EE64561000ECCE6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7BA1676E1EE64561000ECCE6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -290,6 +301,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B78AC081EE99A9200FDFE7C /* Security.framework in Frameworks */,
 				6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +499,9 @@
 				7B78ABF41EE9801800FDFE7C /* secondHandCell.h */,
 				7B78ABF51EE9801800FDFE7C /* secondHandCell.m */,
 				7B78ABF61EE9801800FDFE7C /* secondHandCell.xib */,
+				7B78AC171EE9A81E00FDFE7C /* ProductCollecttionCell.h */,
+				7B78AC181EE9A81E00FDFE7C /* ProductCollecttionCell.m */,
+				7B78AC191EE9A81E00FDFE7C /* ProductCollecttionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -638,6 +653,8 @@
 		7B6C26AE1EE3C2AB0090BE5C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7B9EA83A1EE9B212003A5DF2 /* Pic_blank_328px@2x.png */,
+				7B9EA83B1EE9B212003A5DF2 /* Pic_blank_328px@3x.png */,
 				7BF4B21F1EE3D6470058185F /* NavgationIcon */,
 				7BF4B1FE1EE3D45A0058185F /* TabbarIcon */,
 			);
@@ -845,6 +862,7 @@
 		B888996B7B1B5FD535107966 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B78AC071EE99A9200FDFE7C /* Security.framework */,
 				8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */,
 			);
 			name = Frameworks;
@@ -971,6 +989,7 @@
 				299E2CC51EE7CDDD0045A884 /* NearByServiceCell.xib in Resources */,
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
+				7B9EA83D1EE9B212003A5DF2 /* Pic_blank_328px@3x.png in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
 				7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
@@ -991,6 +1010,7 @@
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
 				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
+				7B9EA83C1EE9B212003A5DF2 /* Pic_blank_328px@2x.png in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
 				7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */,
 				7BF4B21D1EE3D45A0058185F /* worktable_tabbar_selected@2x.png in Resources */,
@@ -1008,6 +1028,7 @@
 				7B78ABF81EE9801800FDFE7C /* secondHandCell.xib in Resources */,
 				7BF4B2131EE3D45A0058185F /* my_tabbar_default@2x.png in Resources */,
 				7BF4B2111EE3D45A0058185F /* message_tabbar_selected@2x.png in Resources */,
+				7B78AC1B1EE9A81E00FDFE7C /* ProductCollecttionCell.xib in Resources */,
 				7BF4B2151EE3D45A0058185F /* my_tabbar_selected@2x.png in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
@@ -1103,6 +1124,7 @@
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
+				7B78AC1A1EE9A81E00FDFE7C /* ProductCollecttionCell.m in Sources */,
 				299E2CC81EE7CDDD0045A884 /* SectionHeaderCell.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
@@ -1282,7 +1304,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zt.ZTServiceProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1298,7 +1320,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
 				INFOPLIST_FILE = ZTServiceProject/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zt.ZTServiceProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
