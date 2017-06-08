@@ -115,8 +115,8 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     else {
     
     }
-    NSLog(@"请求的参数：%@",paramter);
-    return paramter;
+    NSLog(@"请求的参数：%@",newParamter);
+    return newParamter;
 }
 
 //为了URL管理

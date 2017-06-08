@@ -39,16 +39,18 @@ static NSMutableArray* requestTasksPool = nil;
             manager = [AFHTTPSessionManager manager];
             // 导入证书
             NSString *certFilePath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"cer"];
-            NSData *certData = [NSData dataWithContentsOfFile:certFilePath];
-            NSSet *certSet = [NSSet setWithObject:certData];
-            AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:certSet];
-            // 是否允许无效的证书 默认为NO
-            securityPolicy.allowInvalidCertificates = YES;
-            // 是否验证证书所属域名 默认为YES
-            securityPolicy.validatesDomainName = NO;
-            
-            manager.securityPolicy = securityPolicy;
-            
+            if (certFilePath) {            
+                NSData *certData = [NSData dataWithContentsOfFile:certFilePath];
+                NSSet *certSet = [NSSet setWithObject:certData];
+                AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:certSet];
+                // 是否允许无效的证书 默认为NO
+                securityPolicy.allowInvalidCertificates = YES;
+                // 是否验证证书所属域名 默认为YES
+                securityPolicy.validatesDomainName = NO;
+                
+                manager.securityPolicy = securityPolicy;
+                
+            }
             //默认解析模式
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
             manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
@@ -126,7 +128,7 @@ static NSMutableArray* requestTasksPool = nil;
                                            failure:(YYFailure)failure
                                           progress:(YYProgress)progress{
     __block NSURLSessionDataTask *session = nil;
-    session = [manager POST:urlString parameters:paramter progress:^(NSProgress * _Nonnull uploadProgress) {
+    session = [[self manager] POST:urlString parameters:paramter progress:^(NSProgress * _Nonnull uploadProgress) {
         if(uploadProgress) {
             progress (uploadProgress.completedUnitCount,uploadProgress.totalUnitCount);
         }
@@ -142,6 +144,7 @@ static NSMutableArray* requestTasksPool = nil;
         YYNetWorkFailure *failureful = [[YYNetWorkFailure alloc]init];
         failureful.task = task;
         failureful.error = error;
+        failure(failureful);
         [[self allTasks] removeObject:session];
     }];
     if(session) {
@@ -157,7 +160,7 @@ static NSMutableArray* requestTasksPool = nil;
                                            failure:(YYFailure)failure
                                           progress:(YYProgress)progress {
     __block NSURLSessionDataTask *session = nil;
-    session = [manager GET:urlString parameters:paramter progress:^(NSProgress * _Nonnull downloadProgress) {
+    session = [[self manager] GET:urlString parameters:paramter progress:^(NSProgress * _Nonnull downloadProgress) {
         if(downloadProgress) {
             progress (downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
         }
@@ -173,6 +176,7 @@ static NSMutableArray* requestTasksPool = nil;
         YYNetWorkFailure *failureful = [[YYNetWorkFailure alloc]init];
         failureful.task = task;
         failureful.error = error;
+        failure(failureful);
         [[self allTasks] removeObject:session];
     }];
     if(session) {
@@ -192,7 +196,7 @@ static NSMutableArray* requestTasksPool = nil;
                                     success:(YYSuccess)success
                                     failure:(YYFailure)failure {
     __block NSURLSessionDataTask *session = nil;
-    session = [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    session = [[self manager] POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         NSString *fileName = nil;
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyyMMddHHmmss";
@@ -218,6 +222,7 @@ static NSMutableArray* requestTasksPool = nil;
         YYNetWorkFailure *failureful = [[YYNetWorkFailure alloc]init];
         failureful.task = task;
         failureful.error = error;
+        failure(failureful);
         [[self allTasks] removeObject:session];
     }];
     [session resume];
@@ -298,7 +303,7 @@ static NSMutableArray* requestTasksPool = nil;
     __block NSURLSessionDataTask *session = nil;
     NSURL *downloadUrl = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:downloadUrl];
-    [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+    [[self manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
         if(downloadProgress){
             progress(downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
         }
