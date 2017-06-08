@@ -21,9 +21,9 @@
     }
     else {
         [paramter setValue:zoneId forKey:@"zoneId"];
-        NSAssert(zoneId.length==0, @"请求物业的banner的时候zoneId不能为空");
+        NSAssert(zoneId.length>0, @"请求物业的banner的时候zoneId不能为空");
     }
-    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:A_URL paramter:nil success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:A_URL paramter:paramter success:^(id response) {
         NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
