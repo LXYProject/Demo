@@ -33,7 +33,7 @@
     self.tabAnimationType = GLTabAnimationType_whileScrolling;
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSArray *response = @[@"的观点",@"十大",@"第三方",@"奥术大师多"];
         [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self.tagTitles addObject:obj];
@@ -92,6 +92,9 @@ contentViewControllerForTabAtIndex:(NSUInteger)index {
     currentLabel.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.0, 1.0);
     prevLabel.textColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     currentLabel.textColor = [UIColor colorWithWhite:0.0 alpha:1.0];
+    if (self.viewControllers.count==0) {
+        return;
+    }
     NearByViewController *vc  = self.viewControllers[index];
     vc.navigationItem.title = self.tagTitles[index];
     vc.keywords = self.keywords;

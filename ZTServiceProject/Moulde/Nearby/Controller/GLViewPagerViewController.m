@@ -85,7 +85,7 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
 #pragma mark - life cycle
 - (id)init {
     if (self = [super init]) {
-        [self commonInit];
+        
     }
     return self;
 }
@@ -122,7 +122,7 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self commonInit];
 
 }
 
@@ -131,19 +131,25 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
 #pragma mark - UIPageViewControllerDataSource
 
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    NSUInteger index = [self.contentViewControllers indexOfObject:viewController];
-    if (index == 0) {
-        return nil;
+    if (self.contentViewControllers.count>0){
+        NSUInteger index = [self.contentViewControllers indexOfObject:viewController];
+        if (index == 0) {
+            return nil;
+        }
+        return [self.contentViewControllers objectAtIndex:index - 1];
     }
-    return [self.contentViewControllers objectAtIndex:index - 1];
+    return nil;
 }
 
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    NSUInteger index = [self.contentViewControllers indexOfObject:viewController];
-    if (index == self.contentViewControllers.count - 1 ) {
-        return nil;
+    if (self.contentViewControllers.count>0) {
+        NSUInteger index = [self.contentViewControllers indexOfObject:viewController];
+        if (index == self.contentViewControllers.count - 1 ) {
+            return nil;
+        }
+        return [self.contentViewControllers objectAtIndex:index + 1];
     }
-    return [self.contentViewControllers objectAtIndex:index + 1];
+    return nil;
 }
 
 
@@ -382,7 +388,7 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
 }
 
 - (UIView *)tabViewAtIndex:(NSUInteger)index {
-    return [self.tabViews objectAtIndex:index];
+    return self.tabViews.count>0?[self.tabViews objectAtIndex:index]:nil;
 }
 
 /**
@@ -467,23 +473,25 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
     }
     
     /** Center active tab in scrollview */
-    UIView *tabView = self.tabViews[tabIndex];
-    CGRect frame = tabView.frame;
-    if (1) {
-        
-        frame.origin.x += (CGRectGetWidth(frame) / 2);
-        frame.origin.x -= CGRectGetWidth(self.tabContentView.frame) / 2;
-        frame.size.width = CGRectGetWidth(self.tabContentView.frame);
-        
-        if (frame.origin.x < 0) {
-            frame.origin.x = 0;
+    if (self.tabViews.count>0) {
+        UIView *tabView = self.tabViews[tabIndex];
+        CGRect frame = tabView.frame;
+        if (1) {
+            
+            frame.origin.x += (CGRectGetWidth(frame) / 2);
+            frame.origin.x -= CGRectGetWidth(self.tabContentView.frame) / 2;
+            frame.size.width = CGRectGetWidth(self.tabContentView.frame);
+            
+            if (frame.origin.x < 0) {
+                frame.origin.x = 0;
+            }
+            if ((frame.origin.x + CGRectGetWidth(frame)) > self.tabContentView.contentSize.width) {
+                frame.origin.x = (self.tabContentView.contentSize.width - CGRectGetWidth(self.tabContentView.frame));
+            }
         }
-        if ((frame.origin.x + CGRectGetWidth(frame)) > self.tabContentView.contentSize.width) {
-            frame.origin.x = (self.tabContentView.contentSize.width - CGRectGetWidth(self.tabContentView.frame));
-        }
+        [self.tabContentView scrollRectToVisible:frame animated:YES];
     }
 
-    [self.tabContentView scrollRectToVisible:frame animated:YES];
 }
 
 /** 设置当前页 */
@@ -494,13 +502,14 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
     if (pageIndex > _currentPageIndex) {
         direction = UIPageViewControllerNavigationDirectionForward;
     }
-    
-    [self.pageViewController setViewControllers:@[self.contentViewControllers[pageIndex]]
-                                      direction:direction
-                                       animated:YES
-                                     completion:^(BOOL finished) {
-                                        
-                                     }];
+    if (self.contentViewControllers.count>0) {
+        [self.pageViewController setViewControllers:@[self.contentViewControllers[pageIndex]]
+                                          direction:direction
+                                           animated:YES
+                                         completion:^(BOOL finished) {
+                                             
+                                         }];
+    }
 }
 
 
@@ -512,12 +521,16 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
  */
 - (CGFloat)_getTabWidthAtIndex:(NSUInteger)tabIndex {
     CGFloat tabWidth = 0.0;
-    UIView *tabView = [self.tabViews objectAtIndex:tabIndex];
-    if (_delegateHas.widthForTabIndex) {
-        tabWidth = [_delegate viewPager:self widthForTabIndex:tabIndex];
-    }
+    if (self.tabViews.count>0) {
     
-    return tabWidth == 0 ? tabView.intrinsicContentSize.width : tabWidth;
+        UIView *tabView = [self.tabViews objectAtIndex:tabIndex];
+        if (_delegateHas.widthForTabIndex) {
+            tabWidth = [_delegate viewPager:self widthForTabIndex:tabIndex];
+        }
+        
+        return tabWidth == 0 ? tabView.intrinsicContentSize.width : tabWidth;
+    }
+    return tabWidth;
 }
 
 /** 计算标签位置大小等 */
@@ -553,6 +566,9 @@ static const GLTabAnimationType kTabAnimationType = GLTabAnimationType_none;
 - (void)_caculateTabOffsetWidth:(NSUInteger)pageIndex {
     /** 计算当前标签间隔宽度 */
     NSUInteger currentTabIndex = pageIndex;
+    if (self.tabViews.count==0) {
+        return;
+    }
     UIView *currentTabView = self.tabViews[currentTabIndex];
     UIView *previousTabView = (currentTabIndex  > 0) ? self.tabViews[currentTabIndex - 1]:nil;
     UIView *afterTabView = (currentTabIndex < self.tabViews.count - 1) ? self.tabViews[currentTabIndex + 1] : nil;
