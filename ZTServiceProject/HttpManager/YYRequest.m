@@ -53,9 +53,12 @@ static NSMutableArray* requestTasksPool = nil;
             }
             //默认解析模式
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
-            manager.responseSerializer = [AFJSONResponseSerializer serializer];
+            manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
             manager.requestSerializer.timeoutInterval = requestTimeout;
             //配置请求序列化
+            AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
+            [serializer setRemovesKeysWithNullValues:YES];
+            manager.responseSerializer = serializer;
             
             //配置响应序列化
             NSSet *contentTypes = [NSSet setWithArray:@[@"application/json",
