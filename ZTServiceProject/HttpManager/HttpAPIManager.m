@@ -123,11 +123,20 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 
 
 //预留接口方便参数加密
-- (id)dealWithParamter:(NSDictionary *)paramter{
-    NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
-//    [newParamter setValuesForKeysWithDictionary:paramter];
-    [newParamter setValue:@"1" forKey:@"token"];
-    [newParamter setValue:@"1" forKey:@"userId"];
+- (id)dealWithParamter:(id)paramter{
+    NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]init];
+    if ([paramter isKindOfClass:[NSArray class]]) {
+    
+    }
+    else if ([paramter isKindOfClass:[NSDictionary class]]) {
+        [newParamter setValuesForKeysWithDictionary:paramter];
+        [newParamter setValue:@"1" forKey:@"token"];
+        [newParamter setValue:@"1" forKey:@"userId"];
+    }
+    else {
+    
+    }
+    
     NSString *token = [newParamter objectForKey:@"token"];
     NSString *userId = [newParamter objectForKey:@"userId"];
     NSAssert(token.length>0, @"token不能为空");
