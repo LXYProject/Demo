@@ -2,8 +2,9 @@
 //  ItemBtnCell.m
 //  Aa
 //
-//  Created by 张圆圆 on 17/6/5.
-//  Copyright © 2017年 张圆圆. All rights reserved.
+//  Created by ZT on 2017/6/7.
+//  Copyright © 2017年 ZT. All rights reserved.
+
 //
 
 #import "ItemBtnCell.h"
@@ -14,11 +15,7 @@
 @implementation ItemBtnCell
 
 - (void)awakeFromNib {
-    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[UIButton class]]) {
-            [obj removeFromSuperview];
-        }
-    }];
+    [super awakeFromNib];
 
 }
 
@@ -29,6 +26,12 @@
 
 - (void)setTitleAndImageDictArray:(NSArray *)titleAndImageDictArray {
     _titleAndImageDictArray = titleAndImageDictArray;
+    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[UIButton class]]) {
+            [obj removeFromSuperview];
+        }
+    }];
+    
     [self initSubView];
 }
 

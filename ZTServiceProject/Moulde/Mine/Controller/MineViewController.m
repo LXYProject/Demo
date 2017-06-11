@@ -27,6 +27,7 @@
     self.navigationItem.title = nil;
     self.navigationBarBackGroudColor = [UIColor clearColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
     [self createTableview];
     
     _sectionOneTitle = @[@"我的消息", @"我的邻里圈", @"我的发布"];

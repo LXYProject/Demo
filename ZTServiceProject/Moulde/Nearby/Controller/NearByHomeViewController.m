@@ -2,7 +2,7 @@
 //  NearByHomeViewController.m
 //  ZTServiceProject
 //
-//  Created by zhangyy on 2017/6/7.
+//  Created by ZT on 2017/6/7.
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
@@ -21,6 +21,9 @@
 @end
 
 @implementation NearByHomeViewController
+{
+    NSInteger queryType;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = self;
@@ -41,13 +44,35 @@
             [self reloadData];
         }];
     });
+    UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
+    segment.width = 200;
     
-//    [self requestTitleArrayData];
+    segment.layer.cornerRadius = 15.0f;
+    segment.layer.borderWidth = 1;
+    segment.layer.borderColor = [UIColor whiteColor].CGColor;
+    segment.layer.masksToBounds = YES;
+    segment.tintColor = [UIColor whiteColor];
+    segment.selectedSegmentIndex = 0;
+    [segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = segment;
+    
+    queryType = 1;
+    [self requestTitleArrayData];
+    
+}
+-(void)segmentClick:(UISegmentedControl *)segment{
+    
+    if (segment.selectedSegmentIndex==0) {
+        queryType=1;
+    }else{
+        queryType=0;
+    }
+    [self requestTitleArrayData];
 }
 
 - (void)requestTitleArrayData {
     @weakify(self);
-    [NearByHttpManager rqeuestQueryType:1 success:^(NSArray * response) {
+    [NearByHttpManager rqeuestQueryType:queryType success:^(NSArray * response) {
         @strongify(self);
         self.titleArray = response;
         [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

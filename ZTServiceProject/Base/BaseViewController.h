@@ -12,6 +12,8 @@
 //导航栏的背景颜色
 @property (nonatomic,strong)UIColor *navigationBarBackGroudColor;
 
+@property (nonatomic,strong)UIColor *navigationBarTitleColor;
+
 - (UIButton *)addLeftBtnWithImage:(UIImage*)image action:(SEL)action;
 - (UIButton *)addRightBtnWithImage:(UIImage*)image action:(SEL)action;
 

@@ -22,26 +22,28 @@
         url = A_UrlA;
     }
     else {
-//        [paramter setValue:zoneId forKey:@"zoneId"];
-        NSAssert(zoneId.length>0, @"请求物业的banner的时候zoneId不能为空");
+        [paramter setValue:zoneId forKey:@"zoneId"];
         url = A_UrlB;
+
+        NSAssert(zoneId.length>0, @"请求物业的banner的时候zoneId不能为空");
     }
-    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:url paramter:paramter success:^(id response) {
-        NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response];
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response[@"adList"]];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
 }
 
+//请求物业广告图
 + (void)requestzoneId:(NSString *)zoneId
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure {
     NSMutableDictionary *paramter = [[NSMutableDictionary alloc]init];
     [paramter setValue:zoneId forKey:@"zoneId"];
     
-    [[HttpAPIManager sharedHttpAPIManager]postWithUrl:A_UrlB paramter:paramter success:^(id response) {
-        NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response];
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_UrlB paramter:paramter success:^(id response) {
+        NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response[@"adList"]];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

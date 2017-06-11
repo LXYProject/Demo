@@ -2,8 +2,8 @@
 //  HomeViewController.m
 //  Aa
 //
-//  Created by 张圆圆 on 17/6/5.
-//  Copyright © 2017年 张圆圆. All rights reserved.
+//  Created by ZT on 2017/6/7.
+//  Copyright © 2017年 ZT. All rights reserved.
 //
 
 #import "HomeViewController.h"
@@ -16,6 +16,7 @@
 #import "HomeHttpManager.h"
 #import "secondHandCell.h"
 
+#define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
@@ -32,25 +33,43 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self changeNavBarAlpha:0];
+    self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
+    self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
     _nearBySelectIndex = 0;
     imageNames = @[
                    @"timg.jpeg",
                    @"timg.jpeg",
                    @"timg.jpeg",
                     ];
-    //数据源标题
-    noticeNews = @[@"通知1",@"通知2",@"通知3",@"通知4",@"通知5",@"通知6"];
     
-//    [self requestBanner];
+    [self requestBanner];
+    [self createLeftBtnAndRightBtn];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    
+}
+
+
+- (void)changeNavBarAlpha:(CGFloat)alpha{
+    self.navigationController.navigationBar.subviews.firstObject.alpha = alpha;
+    self.navigationBarBackGroudColor = [UIColorFromRGB(0xe64e51) colorWithAlphaComponent:alpha];
+    self.navigationBarTitleColor = [[UIColor whiteColor] colorWithAlphaComponent:alpha];
+
+}
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Home_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
+    [HomeHttpManager requestBanner:Home_Banner city:@"510100" zoneId:@"" success:^(NSArray * response) {
         @strongify(self);
         self.imageURLArray = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -58,7 +77,35 @@
         
     }];
 }
-
+- (void)createLeftBtnAndRightBtn
+{
+    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 50, 40)];
+    [leftBtn setImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
+    [leftBtn setTitle:@"北京" forState:UIControlStateNormal];
+    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+//    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 8, 0, SCREEN_WIDTH - 50)];
+//    [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH - 100)];
+     [leftBtn setContentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+//    leftBtn.backgroundColor = [UIColor whiteColor];
+    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:leftBtn];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightBtn.frame = CGRectMake(SCREEN_WIDTH-35, 35, 20, 20);
+    [rightBtn setBackgroundImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rightBtn];
+    
+}
+- (void)leftBtnClick
+{
+    NSLog(@"leftBtnClick");
+}
+- (void)rightBtnClick
+{
+    NSLog(@"rightBtnClick");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -110,6 +157,22 @@
     }
     
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.tableView == scrollView) {
+        if (scrollView.contentOffset.y
+            <= ScrollDistance) {
+            [self changeNavBarAlpha:scrollView.contentOffset.y/ScrollDistance];
+        }
+        else if (scrollView.contentOffset.y<=0){
+            [self changeNavBarAlpha:0];
+        }
+        else {
+            [self changeNavBarAlpha:1];
+        }
+    }
+}
+
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                        indexPath:(NSIndexPath *)indexPath {

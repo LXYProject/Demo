@@ -184,9 +184,9 @@
 		7B2C4DE11EE6DD5A00745071 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
 		7B2EC4CB1EE8E9B4008B8770 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
-		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByCell.h; sourceTree = "<group>"; };
-		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByCell.m; sourceTree = "<group>"; };
-		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByCell.xib; sourceTree = "<group>"; };
+		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearByCell.h; path = ../Controller/NearByCell.h; sourceTree = "<group>"; };
+		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearByCell.m; path = ../Controller/NearByCell.m; sourceTree = "<group>"; };
+		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NearByCell.xib; path = ../Controller/NearByCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -579,14 +579,11 @@
 		7B6C26A71EE3C2AB0090BE5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				299E2CD01EE7E5090045A884 /* NearByHomeViewController.h */,
-				299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */,
 				7B6C26C21EE3C3230090BE5C /* NearByViewController.h */,
 				7B6C26C31EE3C3230090BE5C /* NearByViewController.m */,
 				7BF7D7681EE8543200DB1486 /* NearByViewController.xib */,
-				7B3238C51EE7AD8E00403495 /* NearByCell.h */,
-				7B3238C61EE7AD8E00403495 /* NearByCell.m */,
-				7B3238C71EE7AD8E00403495 /* NearByCell.xib */,
+				299E2CD01EE7E5090045A884 /* NearByHomeViewController.h */,
+				299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -605,6 +602,9 @@
 		7B6C26A91EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B3238C51EE7AD8E00403495 /* NearByCell.h */,
+				7B3238C61EE7AD8E00403495 /* NearByCell.m */,
+				7B3238C71EE7AD8E00403495 /* NearByCell.xib */,
 				299E2CDC1EE7FDBE0045A884 /* NearByItemsCell.h */,
 				299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */,
 				299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */,

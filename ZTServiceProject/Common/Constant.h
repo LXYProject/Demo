@@ -23,6 +23,7 @@
 
 //#define MR_Host_Test            @"182.92.67.88:8091/attendance-web"
 
+//#define MR_Host_Test  @"192.168.1.109:8080/Service"
 #define MR_Host_Test  @"192.168.1.96:8080/ZtscApp/Service"
 
 
@@ -40,12 +41,12 @@
 // 找服务
 #define A_FindUrl               @"?service=serviceService&function=searchService"
 
-// 服务或求助类型列
+// 服务或求助类型列 //服务或求助类型列(0-服务,1-求助,2-单位)
 #define A_Leixin                @"?service=serviceService&function=serviceOrAppealCategory"
 
 
 
-#define A_URL @"http://192.168.1.96:8080/ZtscApp/Service?service=adPhotoService&function=propertyAdList"
+
 
 
 

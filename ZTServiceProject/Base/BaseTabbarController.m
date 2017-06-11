@@ -44,14 +44,14 @@
     //周边
     NearByHomeViewController *nearByVC = [[NearByHomeViewController alloc] init];
     [self addViewControllers:nearByVC
-                       title:@"周边"
+                       title:@""
                   tabbarItem:@"周边"
                        image:@"message_tabbar_default"
                  selectImage:@"message_tabbar_selected"];
     //论坛
     MessageCenterViewController *messageVc = [[MessageCenterViewController alloc]init];
     [self addViewControllers:messageVc
-                       title:@"论坛"
+                       title:@"邻里圈"
                   tabbarItem:@"论坛"
                        image:@"message_tabbar_default"
                  selectImage:@"message_tabbar_selected"];

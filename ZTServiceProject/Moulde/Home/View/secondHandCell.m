@@ -19,6 +19,7 @@
     [super awakeFromNib];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView registerNib:[UINib nibWithNibName:@"ProductCollecttionCell" bundle:nil] forCellWithReuseIdentifier:@"ProductCollecttionCell"];
 }
 

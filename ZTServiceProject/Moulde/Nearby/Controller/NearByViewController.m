@@ -8,9 +8,7 @@
 
 #import "NearByViewController.h"
 #import "NearByItemsCell.h"
-
 #import "NearByHttpManager.h"
-
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -22,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 0;
         [self requestData];
@@ -31,11 +30,47 @@
         self.currentPage = 1;
         [self requestData];
     }];
-//    [self.tableView beginHeaderRefreshing];
+    [self.tableView beginHeaderRefreshing];
+    
+    [self requestData];
+}
+
+- (void)requestDataOne{
+    
+    [NearByHttpManager requestQuery:@"2" page:@"1" pageCount:@"1" success:^(NSArray *response) {
+        [self.tableView endRefreshing];
+        if (self.currentPage==0){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+}
+- (void)requestDataTwo{
+    
+    [NearByHttpManager requestDataWithQuery:@"2" keyWords:_keywords city:_city district:_district categoryId:_categoryId sort:@"" page:self.currentPage success:^(NSArray *response) {
+        [self.tableView endRefreshing];
+        if (self.currentPage==0){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
 }
 
 - (void)requestData{
-    [NearByHttpManager requestDataWithKeyWord:_keywords city:_city district:_district categoryId:_categoryId sort:@"" page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithQuery:2 KeyWord:_keywords city:_city district:_district categoryId:_categoryId sort:@"" page:self.currentPage success:^(NSArray * response) {
         [self.tableView endRefreshing];
         if (self.currentPage==0){
             [self.dataSource removeAllObjects];
@@ -53,21 +88,29 @@
 - (void)setCategoryId:(NSString *)categoryId {
     _categoryId = categoryId;
     [self requestData];
+//    [self requestDataOne];
+
 }
 
 - (void)setKeywords:(NSString *)keywords {
     _keywords = keywords;
     [self requestData];
+//    [self requestDataOne];
+
 }
 
 - (void)setDistrict:(NSString *)district {
     _district = district;
     [self requestData];
+//    [self requestDataOne];
+
 }
 
 -(void)setCity:(NSString *)city {
     _city = city;
     [self requestData];
+//    [self requestDataOne];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -83,7 +126,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"NearByItemsCell" owner:nil options:nil] lastObject];
     }
-//    cell.model = self.dataSourcep[indexPath.row];
+//    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 

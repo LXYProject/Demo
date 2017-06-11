@@ -23,12 +23,19 @@
 //初始化所有导航栏基本设置
 - (void)initNavigation {
     //设置导航栏字体颜色和字体大小
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:[UIColor darkGrayColor]}];
+    self.navigationBarTitleColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBackgroundImage:[Tools createImageWithColor:UIColorFromRGB(0xe64e51)] forBarMetrics:UIBarMetricsDefault];
     if(self.rt_navigationController.rt_viewControllers.count>1){
         [self addLeftBtnWithImage:[UIImage imageNamed:@"nav_back_btn"] action:@selector(navBackAction)];
     }
 }
+
+-(void)setNavigationBarTitleColor:(UIColor *)navigationBarTitleColor {
+    if (navigationBarTitleColor) {
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17],NSForegroundColorAttributeName:navigationBarTitleColor}];
+    }
+}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;

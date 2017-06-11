@@ -18,7 +18,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     NSString *newUrl = [self dealWithURL:url];
     id newParamter = [self dealWithParamter:paramter];
     [YYRequest requestPostWithURLString:newUrl paramater:newParamter success:^(YYNetWorkSuccess *successful) {
-        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********    请求返回的值：%@",newUrl,newParamter,successful.responseObject);
         if ([successful.responseObject[@"code"] integerValue]==200) {
             success(successful.responseObject[@"result"]);
         }
@@ -123,27 +123,37 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 
 
 //预留接口方便参数加密
-- (id)dealWithParamter:(id)paramter{
-    NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]init];
-    if ([paramter isKindOfClass:[NSArray class]]) {
-    
-    }
-    else if ([paramter isKindOfClass:[NSDictionary class]]) {
-        [newParamter setValuesForKeysWithDictionary:paramter];
-        [newParamter setValue:@"1" forKey:@"token"];
-        [newParamter setValue:@"1" forKey:@"userId"];
-    }
-    else {
-    
-    }
-    
+//- (id)dealWithParamter:(id)paramter{
+//    NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]init];
+//    if ([paramter isKindOfClass:[NSArray class]]) {
+//    
+//    }
+//    else if ([paramter isKindOfClass:[NSDictionary class]]) {
+//        [newParamter setValuesForKeysWithDictionary:paramter];
+//        [newParamter setValue:@"1" forKey:@"token"];
+//        [newParamter setValue:@"1" forKey:@"userId"];
+//    }
+//    else {
+//    
+//    }
+//    
+//    NSString *token = [newParamter objectForKey:@"token"];
+//    NSString *userId = [newParamter objectForKey:@"userId"];
+//    NSAssert(token.length>0, @"token不能为空");
+//    NSAssert(userId.length>0, @"userId不能为空");
+//    return newParamter;
+//}
+- (id)dealWithParamter:(NSDictionary *)paramter{
+    NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
+    //    [newParamter setValuesForKeysWithDictionary:paramter];
+    [newParamter setValue:@"1" forKey:@"token"];
+    [newParamter setValue:@"1" forKey:@"userId"];
     NSString *token = [newParamter objectForKey:@"token"];
     NSString *userId = [newParamter objectForKey:@"userId"];
     NSAssert(token.length>0, @"token不能为空");
     NSAssert(userId.length>0, @"userId不能为空");
     return newParamter;
 }
-
 //为了URL管理
 - (NSString *)dealWithURL:(NSString *)urlString {
     return MRRemote(urlString);
