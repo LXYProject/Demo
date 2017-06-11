@@ -18,7 +18,7 @@
 
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet BaseTableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
 @property (nonatomic,strong)NSArray *notificationNewsArray;
 @property (nonatomic,assign)NSInteger nearBySelectIndex;
@@ -33,8 +33,22 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self.tableView setHeaderRefreshBlock:^{
+//        [NSThread sleepForTimeInterval:3];
+//        [self.tableView endRefreshing];
+//    }];
+//    
+//    [self.tableView setFooterRefreshBlock:^{
+//        
+//    }];
+    
+//    [self.tableView beginHeaderRefreshing];
+    
+    
+    
     [self changeNavBarAlpha:0];
     self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
+    self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     _nearBySelectIndex = 0;
