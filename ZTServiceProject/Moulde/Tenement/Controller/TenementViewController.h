@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface TenementViewController : BaseViewController
-
+//@property (nonatomic,copy)NSString *categrayId;
 @end

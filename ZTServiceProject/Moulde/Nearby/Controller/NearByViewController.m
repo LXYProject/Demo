@@ -9,6 +9,7 @@
 #import "NearByViewController.h"
 #import "NearByItemsCell.h"
 #import "NearByHttpManager.h"
+#import "TenementViewController.h"
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -132,6 +133,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    @weakify(self);
+//    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
+//        @strongify(self);
+//        viewController.categrayId = [self.dataSource[indexPath.row] categrayId];
+//    }];
 }
 
 

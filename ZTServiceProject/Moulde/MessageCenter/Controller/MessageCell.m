@@ -7,6 +7,13 @@
 //
 
 #import "MessageCell.h"
+#import "NearByItemModel.h"
+
+@interface MessageCell()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageViewH;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *imageViewArray;
+
+@end
 
 @implementation MessageCell
 
@@ -18,7 +25,20 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+}
+
+- (void)setModel:(NearByItemModel *)model {
+    _model = model;
+    if (_model.smallImageList.count==0) {
+        self.imageViewH.constant = 0;
+    }
+    else {
+        self.imageViewH.constant = 70*ScreenWidth/320;
+        [self.imageViewArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIImageView *imageView = obj;
+            imageView.image = [UIImage imageNamed:model.smallImageList[idx]];
+        }];
+    }
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class NearByItemModel;
 @interface MessageCell : UITableViewCell
-
+@property (nonatomic,strong)NearByItemModel* model;
 @end
