@@ -186,5 +186,10 @@
 }
 
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[HttpAPIManager sharedHttpAPIManager]cancelAllRequest];
+}
+
 
 @end

@@ -13,5 +13,7 @@
 @property (nonatomic,copy)NSString *city;
 @property (nonatomic,copy)NSString *district;
 @property (nonatomic,copy)NSString *categoryId;
+//这个到时候用的时候判断_isFindService它的值为YES就是"找服务"，为NO就是"去帮忙" 直接在控制器里面随便哪里都可以用
+@property (nonatomic,assign)BOOL isFindService;
 
 @end

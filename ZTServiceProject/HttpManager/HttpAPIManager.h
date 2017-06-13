@@ -90,4 +90,10 @@ ZX_DECLARE_SINGLETON(HttpAPIManager);
                     success:(HttpRequestCompletionBlock)success
                     failure:(HttpRequestFailure)failure;
 
+
+/**
+ 取消所有网络请求
+ */
+- (void)cancelAllRequest;
+
 @end

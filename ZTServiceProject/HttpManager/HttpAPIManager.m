@@ -121,6 +121,9 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     }];
 }
 
+- (void)cancelAllRequest {
+    [YYRequest cancleAllRequest];
+}
 
 //预留接口方便参数加密
 //- (id)dealWithParamter:(id)paramter{
@@ -158,6 +161,8 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 - (NSString *)dealWithURL:(NSString *)urlString {
     return MRRemote(urlString);
 }
+
+
 
 
 @end

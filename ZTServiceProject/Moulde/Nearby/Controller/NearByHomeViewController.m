@@ -24,6 +24,7 @@
 @implementation NearByHomeViewController
 {
     NSInteger queryType;
+//    NSMutableArray *response;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,15 +38,7 @@
     self.tabAnimationType = GLTabAnimationType_whileScrolling;
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        NSArray *response = @[@"的观点",@"十大",@"第三方",@"奥术大师多"];
-//        [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            [self.tagTitles addObject:obj];
-//            [self.viewControllers addObject:[[NearByViewController alloc]init]];
-//            [self reloadData];
-//        }];
-//    });
-    UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
+       UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
     segment.width = 200;
     
     segment.layer.cornerRadius = 15.0f;
@@ -56,9 +49,25 @@
     segment.selectedSegmentIndex = 0;
     [segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segment;
-    
     queryType = 1;
     [self requestTitleArrayData];
+//    response = [NSMutableArray arrayWithArray:@[@"的观点",@"十大",@"第三方",@"奥术大师多"]];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        self.titleArray = response;
+//        if (self.titleArray.count != self.viewControllers.count) {
+//            [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                [self.tagTitles addObject:response[idx]];
+//                if(self.viewControllers.count<response.count) {
+//                    [self.viewControllers addObject:[[NearByViewController alloc]init]];
+//                }
+//            }];
+//            NSInteger differencCount = self.viewControllers.count - response.count;
+//            [self.viewControllers removeObjectsInRange:NSMakeRange(self.viewControllers.count - differencCount -1 , differencCount)];
+//        }
+//        [self reloadData];
+//    });
+
     
 }
 -(void)segmentClick:(UISegmentedControl *)segment{
@@ -70,6 +79,7 @@
     }
     [self requestTitleArrayData];
     
+    
 }
 
 // 请求周边上面的滚动title
@@ -78,14 +88,24 @@
     [NearByHttpManager rqeuestQueryType:queryType success:^(NSArray * response) {
         @strongify(self);
         [self.tagTitles removeAllObjects];
-        [self.viewControllers removeAllObjects];
+//        [self.viewControllers removeAllObjects];
         self.titleArray = response;
-        [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NearByTitleModel *model = obj;
-            [self.tagTitles addObject:model.categoryName];
-            [self.viewControllers addObject:[[NearByViewController alloc]init]];
-            [self reloadData];
-        }];
+        if (self.titleArray.count != self.viewControllers.count) {
+            [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NearByTitleModel *model = obj;
+                [self.tagTitles addObject:model.categoryName];
+                if(self.viewControllers.count-1<idx) {
+                    [self.viewControllers addObject:[[NearByViewController alloc]init]];
+                }
+                else if(self.viewControllers.count - 1 == idx){
+                    *stop = YES;
+                }
+                else {
+                    [self.viewControllers removeObjectsInRange:NSMakeRange(idx, self.viewControllers.count-1-idx)];
+                }
+            }];
+        }
+        [self reloadData];
         
     } failure:^(NSError *error, NSString *message) {
         
@@ -127,6 +147,7 @@ contentViewControllerForTabAtIndex:(NSUInteger)index {
     }
     NearByViewController *vc  = self.viewControllers[index];
     vc.navigationItem.title = self.tagTitles[index];
+    vc.isFindService = queryType==1?NO:YES;
     vc.keywords = self.keywords;
     vc.city = self.city;
     vc.district = self.district;

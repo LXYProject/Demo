@@ -75,6 +75,10 @@
     [self requestData];
 }
 
+- (void)setIsFindService:(BOOL)isFindService {
+    _isFindService = isFindService;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
 //    return 10;
