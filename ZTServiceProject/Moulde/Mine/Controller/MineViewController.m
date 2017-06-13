@@ -50,7 +50,7 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
     headerView.backgroundColor = [UIColor colorWithRed:227.0/255 green:72.0/255 blue:77.0/255 alpha:1];
-    
+    //头像
     UIImageView *headImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, headerView.frame.size.height/2-40, 100, 100)];
     headImage.layer.masksToBounds = YES;
     headImage.layer.cornerRadius = headImage.bounds.size.width * 0.5;
@@ -61,11 +61,24 @@
 //    [headImage sd_setImageWithURL:url placeholderImage:nil];
     [headerView addSubview:headImage];
     
+    
+    //登录注册按钮
+    UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    loginBtn.frame = CGRectMake(SCREEN_WIDTH/2-50, headImage.frame.origin.y+100, 100, 25);
+    [loginBtn setTitle:@"登录/注册" forState:UIControlStateNormal];
+    [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [headerView addSubview:loginBtn];
+    
     _tableView.tableHeaderView =headerView;
     _tableView.showsVerticalScrollIndicator = NO;
 
     [self.view addSubview:_tableView];
 
+}
+- (void)loginBtnClick
+{
+    NSLog(@"loginBtnClick");
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {

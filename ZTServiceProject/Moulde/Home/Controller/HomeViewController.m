@@ -198,7 +198,7 @@
         @weakify(self);
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
-            [PushManager pushViewControllerWithName:self.itemDataSourceArray[indexPath.row][value][@"vcName"] animated:YES block:nil];
+            [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:nil];
         };
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;

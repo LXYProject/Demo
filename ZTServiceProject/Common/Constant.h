@@ -31,18 +31,78 @@
 
 //#define MRRemote(A)             [NSString stringWithFormat:@"http://appbi.aicailang.com/app/publicRequest/appAdvertRequestHandler%@",(A)]
 
+//============================广告位服务===========================================
 
 // 首页轮播图
-#define A_UrlA                   @"?service=adPhotoService&function=cityAdList"
+#define A_UrlA                  @"?service=adPhotoService&function=cityAdList"
 // 物业轮播图
 #define A_UrlB                  @"?service=adPhotoService&function=propertyAdList"
 // 去帮忙
 #define A_HelpUrl               @"?service=serviceService&function=searchAppeal"
 // 找服务
 #define A_FindUrl               @"?service=serviceService&function=searchService"
-
 // 服务或求助类型列 //服务或求助类型列(0-服务,1-求助,2-单位)
 #define A_Leixin                @"?service=serviceService&function=serviceOrAppealCategory"
+// 上传坐标
+#define A_upUserXY              @"?service=adPhotoService&function=upUserXY"
+// 上传心跳
+#define A_upUserOnline          @"?service=adPhotoService&function=upUserOnline"
+// 小区物业电话
+#define A_villagePropertyTel    @"?service=adPhotoService&function=villagePropertyTel"
+// 查看区域的发布的服务数量
+#define A_lookServiceNumByArea  @"?service=adPhotoService&function=lookServiceNumByArea"
+// 查看区域的发布的求助数量
+#define A_lookAppealNumByArea   @"?service=adPhotoService&function=lookAppealNumByArea"
+
+//============================用户接口===========================================
+// 注册发送验证码
+#define A_registerUrl           @"?service=user&function=getCodeForRegister"
+// 注册验证码核对
+#define A_registerCheck         @"?service=user&function=checkZCCode"
+// 登录发送验证码
+#define A_loginUrl              @"?service=user&function=getCodeForLogin"
+// 登录验证码核对
+#define A_loginCheck            @"?service=user&function=checkLoginCode"
+// 密码登录
+#define A_phoneNumLogin         @"?service=user&function=phoneNumLogin"
+// token登录
+#define A_tokenLogin            @"?service=user&function=tokenLogin"
+// 修改密码
+#define A_updatePassWord        @"?service=user&function=updatePassWord"
+// 修改个人信息
+#define A_updateUser            @"?service=user&function=updateUser"
+// 修改个人头像
+#define A_updateHeadImage       @"?service=user&function=updateHeadImage"
+// 上传个人图片
+#define A_upUserPhoto           @"?service=user&function=upUserPhoto"
+// 删除个人图片
+#define A_delUserPhoto          @"?service=user&function=delUserPhoto"
+// 通过id查询用户信息
+#define A_findUserInfoById      @"?service=user&function=findUserInfoById"
+// 通过手机号查询用户信息
+#define A_findUserInfoByPhone   @"?service=user&function=findUserInfoByPhone"
+
+//============================房屋接口===========================================
+// 查看所有与我有关的房屋
+#define A_lookAllHouseWithMe    @"?service=userHouse&function=lookAllHouseWithMe"
+// 新增绑定房屋
+#define A_addBindHouse          @"?service=userHouse&function=addBindHouse"
+// 添加房屋关注
+#define A_addLikeHouse          @"?service=userHouse&function=addLikeHouse"
+// 取消绑定，取消关注
+#define A_unHouse               @"?service=userHouse&function=unHouse"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
