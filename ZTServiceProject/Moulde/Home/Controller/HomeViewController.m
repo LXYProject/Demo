@@ -15,7 +15,7 @@
 #import "NearByHeaderCell.h"
 #import "HomeHttpManager.h"
 #import "secondHandCell.h"
-
+#import "NearByHttpManager.h"
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -23,6 +23,9 @@
 @property (nonatomic,strong)NSArray *notificationNewsArray;
 @property (nonatomic,assign)NSInteger nearBySelectIndex;
 @property (nonatomic,strong)NSArray *imageURLArray;
+
+@property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic, assign) NSInteger currentPage;
 @end
 
 @implementation HomeViewController
@@ -33,16 +36,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self.tableView setHeaderRefreshBlock:^{
-//        [NSThread sleepForTimeInterval:3];
-//        [self.tableView endRefreshing];
-//    }];
-//    
-//    [self.tableView setFooterRefreshBlock:^{
-//        
-//    }];
+    self.currentPage = 1;
     
-//    [self.tableView beginHeaderRefreshing];
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestData];
+    }];
+    
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestData];
+    }];
+    [self.tableView beginHeaderRefreshing];
     
     
     
@@ -51,6 +56,8 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
     _nearBySelectIndex = 0;
     imageNames = @[
                    @"timg.jpeg",
@@ -59,7 +66,7 @@
                     ];
     
     [self requestBanner];
-    [self createLeftBtnAndRightBtn];
+//    [self createLeftBtnAndRightBtn];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -91,35 +98,53 @@
         
     }];
 }
-- (void)createLeftBtnAndRightBtn
+
+- (void)requestData
 {
-    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 50, 40)];
-    [leftBtn setImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
-    [leftBtn setTitle:@"北京" forState:UIControlStateNormal];
-    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-//    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 8, 0, SCREEN_WIDTH - 50)];
-//    [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH - 100)];
-     [leftBtn setContentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-//    leftBtn.backgroundColor = [UIColor whiteColor];
-    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:leftBtn];
-    
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightBtn.frame = CGRectMake(SCREEN_WIDTH-35, 35, 20, 20);
-    [rightBtn setBackgroundImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
-    [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:rightBtn];
-    
+    [NearByHttpManager requestDataWithNearType:ToHelp query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
+        [self.tableView endRefreshing];
+        if (self.currentPage==1){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
+
 }
-- (void)leftBtnClick
-{
-    NSLog(@"leftBtnClick");
-}
-- (void)rightBtnClick
-{
-    NSLog(@"rightBtnClick");
-}
+//- (void)createLeftBtnAndRightBtn
+//{
+//    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 50, 40)];
+//    [leftBtn setImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
+//    [leftBtn setTitle:@"北京" forState:UIControlStateNormal];
+//    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+////    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 8, 0, SCREEN_WIDTH - 50)];
+////    [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH - 100)];
+//     [leftBtn setContentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+////    leftBtn.backgroundColor = [UIColor whiteColor];
+//    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:leftBtn];
+//    
+//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightBtn.frame = CGRectMake(SCREEN_WIDTH-35, 35, 20, 20);
+//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
+//    [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:rightBtn];
+//    
+//}
+//- (void)leftBtnClick
+//{
+//    NSLog(@"leftBtnClick");
+//}
+//- (void)rightBtnClick
+//{
+//    NSLog(@"rightBtnClick");
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -133,7 +158,7 @@
         return 1;
     }
     else if (section ==2 ){
-        return 3;
+        return self.dataSource.count+2;
     }
     else if (section == 3) {
         return 2;
@@ -147,6 +172,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 6;
 }
 
@@ -232,6 +258,7 @@
     }
     else {
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+//        cell.model = self.dataSource[indexPath.row+2];
         return cell;
     }
 }
@@ -358,6 +385,38 @@
     }
     return _notificationNewsArray;
  }
+- (void)setCategoryId:(NSString *)categoryId {
+    _categoryId = categoryId;
+    [self requestData];
+}
 
+- (void)setKeywords:(NSString *)keywords {
+    _keywords = keywords;
+    [self requestData];
+}
 
+- (void)setDistrict:(NSString *)district {
+    _district = district;
+    [self requestData];
+}
+
+-(void)setCity:(NSString *)city {
+    _city = city;
+    [self requestData];
+}
+
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
+- (void)leftBarClick
+{
+    NSLog(@"leftBarClick");
+}
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
+}
 @end

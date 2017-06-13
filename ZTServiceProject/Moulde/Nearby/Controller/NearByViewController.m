@@ -11,6 +11,7 @@
 #import "NearByHttpManager.h"
 #import "TenementViewController.h"
 #import "NearByHomeViewController.h"
+
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -37,8 +38,8 @@
     [self.tableView beginHeaderRefreshing];
     
 //    [self requestData];
-}
 
+}
 - (void)requestData{
     [NearByHttpManager requestDataWithNearType:ToHelp query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
         [self.tableView endRefreshing];

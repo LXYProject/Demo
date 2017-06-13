@@ -38,7 +38,10 @@
     self.tabAnimationType = GLTabAnimationType_whileScrolling;
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
-       UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
+    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
+
+    UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
     segment.width = 200;
     
     segment.layer.cornerRadius = 15.0f;
@@ -70,6 +73,15 @@
 
     
 }
+- (void)leftBarClick
+{
+    NSLog(@"leftBarClick");
+}
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
+}
+
 -(void)segmentClick:(UISegmentedControl *)segment{
     
     if (segment.selectedSegmentIndex==0) {
@@ -78,8 +90,6 @@
         queryType=0;
     }
     [self requestTitleArrayData];
-    
-    
 }
 
 // 请求周边上面的滚动title

@@ -45,4 +45,11 @@
                      titleColor:(UIColor *)titleColor
                        selector:(SEL)selector
                          target:(id)target;
+
+- (void)leftItemWithNormalName:(NSString*)normalName
+                          title:(NSString *)title
+                     titleColor:(UIColor *)titleColor
+                       selector:(SEL)selector
+                         target:(id)target;
+
 @end

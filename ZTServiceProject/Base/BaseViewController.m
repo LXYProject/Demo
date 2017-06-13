@@ -99,6 +99,23 @@
     self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:rightBtn];
 }
 
+- (void)leftItemWithNormalName:(NSString*)normalName
+                         title:(NSString *)title
+                    titleColor:(UIColor *)titleColor
+                      selector:(SEL)selector
+                        target:(id)target
+{
+    UIButton *lefttBtn = [self creatNavBtnWithTitle:title
+                                             norImg:normalName
+                                           hightImg:normalName
+                                         titleColor:titleColor
+                                             target:target
+                                             action:selector
+                                             isLeft:NO];
+    
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:lefttBtn];
+
+}
 - (void)leftBarButtomItemWithTitle:(NSString*)title
                           selector:(SEL)selector
                             target:(id)target {

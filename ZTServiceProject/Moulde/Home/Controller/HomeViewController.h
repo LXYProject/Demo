@@ -9,5 +9,9 @@
 #import "BaseViewController.h"
 
 @interface HomeViewController : BaseViewController
+@property (nonatomic,copy)NSString *keywords;
+@property (nonatomic,copy)NSString *city;
+@property (nonatomic,copy)NSString *district;
+@property (nonatomic,copy)NSString *categoryId;
 
 @end
