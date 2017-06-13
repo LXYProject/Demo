@@ -34,8 +34,12 @@
     _sectionTwoTitle = @[@"我的房屋", @"我的小区"];
     _sectionOneImg = @[@"message_tabbar_default",@"message_tabbar_selected", @"my_tabbar_default"];
     _sectionTwoImg= @[@"message_tabbar_default",@"message_tabbar_selected"];
-
-
+    
+    [self rightBarButtomItemWithNormalName:@"warn_40px" highName:@"warn_40px" selector:@selector(rightBarClick) target:self];
+}
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
 }
 - (void)createTableview
 {
@@ -57,11 +61,6 @@
 //    [headImage sd_setImageWithURL:url placeholderImage:nil];
     [headerView addSubview:headImage];
     
-    UIButton *setBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    setBtn.frame = CGRectMake(SCREEN_WIDTH-45-20, 25, 40, 40);
-    [setBtn setBackgroundImage:[UIImage imageNamed:@"nav_more_btn"] forState:UIControlStateNormal];
-    [headerView addSubview:setBtn];
-
     _tableView.tableHeaderView =headerView;
     _tableView.showsVerticalScrollIndicator = NO;
 

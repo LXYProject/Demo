@@ -82,6 +82,7 @@
                 cell = [[[NSBundle mainBundle]loadNibNamed:@"TenemnetHeaderCell" owner:nil options:nil] lastObject];
             }
             cell.titleHeader.text = self.titleHeader[indexPath.section-1];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
         else {
@@ -96,6 +97,7 @@
             [PushManager pushViewControllerWithName:self.dataSourceArray[indexPath.section][value][@"vcName"] animated:YES block:nil];
         };
         cell.titleAndImageDictArray = self.dataSourceArray[indexPath.section];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         }
         

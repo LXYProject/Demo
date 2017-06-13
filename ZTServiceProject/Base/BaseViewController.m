@@ -116,6 +116,7 @@
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc]initWithCustomView:lefttBtn];
 
 }
+
 - (void)leftBarButtomItemWithTitle:(NSString*)title
                           selector:(SEL)selector
                             target:(id)target {

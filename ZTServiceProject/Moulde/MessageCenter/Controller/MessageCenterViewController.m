@@ -20,7 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self rightBarButtomItemWithNormalName:@"warn_40px" highName:@"warn_40px" selector:@selector(rightBarClick) target:self];
     self.tableView.estimatedRowHeight = 100;
+}
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -51,6 +56,7 @@
                              @"timg.jpeg",
                              ];
     cell.model = modle;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
 //    }
 

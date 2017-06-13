@@ -116,35 +116,6 @@
     }];
 
 }
-//- (void)createLeftBtnAndRightBtn
-//{
-//    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, 25, 50, 40)];
-//    [leftBtn setImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
-//    [leftBtn setTitle:@"北京" forState:UIControlStateNormal];
-//    leftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [leftBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-////    [leftBtn setImageEdgeInsets:UIEdgeInsetsMake(2, 8, 0, SCREEN_WIDTH - 50)];
-////    [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, SCREEN_WIDTH - 100)];
-//     [leftBtn setContentEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-////    leftBtn.backgroundColor = [UIColor whiteColor];
-//    [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:leftBtn];
-//    
-//    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    rightBtn.frame = CGRectMake(SCREEN_WIDTH-35, 35, 20, 20);
-//    [rightBtn setBackgroundImage:[UIImage imageNamed:@"noticeYellow"] forState:UIControlStateNormal];
-//    [rightBtn addTarget:self action:@selector(rightBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:rightBtn];
-//    
-//}
-//- (void)leftBtnClick
-//{
-//    NSLog(@"leftBtnClick");
-//}
-//- (void)rightBtnClick
-//{
-//    NSLog(@"rightBtnClick");
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -224,6 +195,11 @@
     }
     else {
         ItemBtnCell *cell = (ItemBtnCell *)[self creatCell:tableView indenty:@"ItemBtnCell"];
+        @weakify(self);
+        cell.btnClickBlock = ^(NSInteger value) {
+            @strongify(self);
+            [PushManager pushViewControllerWithName:self.itemDataSourceArray[indexPath.row][value][@"vcName"] animated:YES block:nil];
+        };
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;
     }
@@ -258,7 +234,7 @@
     }
     else {
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
-//        cell.model = self.dataSource[indexPath.row+2];
+        cell.model = self.dataSource[indexPath.row-2];
         return cell;
     }
 }
@@ -359,21 +335,29 @@
     if(!_itemDataSourceArray) {
         _itemDataSourceArray = @[
                                  @{@"title":@"二手物品"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"求购"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"NearByViewController"},
                                  @{@"title":@"房屋租赁"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"求租"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"我的小区"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"我的房屋"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"物业"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"生活缴费"
-                                   ,@"icon":@"order_tabbar_selected"},
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
                                  ];
     }
     return _itemDataSourceArray;
