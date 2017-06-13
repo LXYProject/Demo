@@ -94,16 +94,12 @@
             [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 NearByTitleModel *model = obj;
                 [self.tagTitles addObject:model.categoryName];
-                if(self.viewControllers.count-1<idx) {
+                if(self.viewControllers.count<response.count) {
                     [self.viewControllers addObject:[[NearByViewController alloc]init]];
                 }
-                else if(self.viewControllers.count - 1 == idx){
-                    *stop = YES;
-                }
-                else {
-                    [self.viewControllers removeObjectsInRange:NSMakeRange(idx, self.viewControllers.count-1-idx)];
-                }
             }];
+            NSInteger differencCount = self.viewControllers.count - response.count;
+            [self.viewControllers removeObjectsInRange:NSMakeRange(self.viewControllers.count - differencCount -1 , differencCount)];
         }
         [self reloadData];
         
