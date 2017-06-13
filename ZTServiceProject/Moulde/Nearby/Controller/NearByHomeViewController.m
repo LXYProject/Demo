@@ -18,6 +18,7 @@
 @property (nonatomic,copy)NSString *keywords;
 @property (nonatomic,copy)NSString *city;
 @property (nonatomic,copy)NSString *district;
+
 @end
 
 @implementation NearByHomeViewController
@@ -36,14 +37,14 @@
     self.tabAnimationType = GLTabAnimationType_whileScrolling;
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSArray *response = @[@"的观点",@"十大",@"第三方",@"奥术大师多"];
-        [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.tagTitles addObject:obj];
-            [self.viewControllers addObject:[[NearByViewController alloc]init]];
-            [self reloadData];
-        }];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSArray *response = @[@"的观点",@"十大",@"第三方",@"奥术大师多"];
+//        [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            [self.tagTitles addObject:obj];
+//            [self.viewControllers addObject:[[NearByViewController alloc]init]];
+//            [self reloadData];
+//        }];
+//    });
     UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
     segment.width = 200;
     
@@ -68,12 +69,16 @@
         queryType=0;
     }
     [self requestTitleArrayData];
+    
 }
 
+// 请求周边上面的滚动title
 - (void)requestTitleArrayData {
     @weakify(self);
     [NearByHttpManager rqeuestQueryType:queryType success:^(NSArray * response) {
         @strongify(self);
+        [self.tagTitles removeAllObjects];
+        [self.viewControllers removeAllObjects];
         self.titleArray = response;
         [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NearByTitleModel *model = obj;

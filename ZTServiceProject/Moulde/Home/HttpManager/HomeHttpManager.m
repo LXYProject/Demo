@@ -35,19 +35,4 @@
     }];
 }
 
-//请求物业广告图
-+ (void)requestzoneId:(NSString *)zoneId
-              success:(HttpRequestSuccess)success
-              failure:(HttpRequestFailure)failure {
-    NSMutableDictionary *paramter = [[NSMutableDictionary alloc]init];
-    [paramter setValue:zoneId forKey:@"zoneId"];
-    
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_UrlB paramter:paramter success:^(id response) {
-        NSArray *modelArray = [AdvertisementModel mj_objectArrayWithKeyValuesArray:response[@"adList"]];
-        success(modelArray);
-    } failure:^(NSError *error, NSString *message) {
-        failure(error,message);
-    }];
-}
-
 @end

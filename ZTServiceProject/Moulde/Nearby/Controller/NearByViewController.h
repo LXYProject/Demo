@@ -13,4 +13,5 @@
 @property (nonatomic,copy)NSString *city;
 @property (nonatomic,copy)NSString *district;
 @property (nonatomic,copy)NSString *categoryId;
+
 @end

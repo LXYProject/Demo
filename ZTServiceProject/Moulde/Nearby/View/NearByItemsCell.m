@@ -31,9 +31,14 @@
 
 - (void)setModel:(NearByItemModel *)model {
     _model =  model;
+    
+    [_icon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    
     [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
-    _name.text = model.userName;
-    _price.text = model.price;
+    
+//    _price.text = model.price;
+
+    _price.text = [NSString stringWithFormat:@"%.0f元",[model.price doubleValue]];
     _detail.text = model.content;
     _title.text = model.title;
     _address.text = model.address;

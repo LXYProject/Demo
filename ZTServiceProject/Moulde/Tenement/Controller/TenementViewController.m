@@ -45,7 +45,7 @@
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestzoneId:@"510029841228" success:^(NSArray * response) {
+    [HomeHttpManager requestBanner:Tenement_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
         @strongify(self);
         self.imageURLArray = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];

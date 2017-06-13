@@ -9,18 +9,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    ToHelp,
+    LookingService
+} NaerType;
+
 @interface NearByHttpManager : NSObject
 
-
-//去帮忙
-+ (void)requestQuery:(NSString *)query
-                 page:(NSString *)page
-            pageCount:(NSString *)pageCount
-              success:(HttpRequestSuccess)success
-              failure:(HttpRequestFailure)failure;
-
-+ (void)requestDataWithQuery:(NSString *)query
-                    keyWords:(NSString *)keyWords
+//周边的网络请求
++ (void)requestDataWithNearType:(NaerType)nearType
+                       query:(NSInteger)query
+                     keyWord:(NSString *)keyWord
                         city:(NSString *)city
                     district:(NSString *)district
                   categoryId:(NSString *)categoryId
@@ -28,22 +27,14 @@
                         page:(NSInteger)pageNum
                      success:(HttpRequestSuccess)success
                      failure:(HttpRequestFailure)failure;
+
+
+
 
 //请求周边上面的滚动title
 + (void)rqeuestQueryType:(NSInteger)queryType
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure;
 
-
-//周边的网络请求
-+ (void)requestDataWithQuery:(NSInteger)query
-                     KeyWord:(NSString *)keyWord
-                        city:(NSString *)city
-                    district:(NSString *)district
-                  categoryId:(NSString *)categoryId
-                        sort:(NSString *)sort
-                        page:(NSInteger)pageNum
-                     success:(HttpRequestSuccess)success
-                     failure:(HttpRequestFailure)failure;
 
 @end
