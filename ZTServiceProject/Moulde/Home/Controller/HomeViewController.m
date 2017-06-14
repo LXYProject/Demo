@@ -28,6 +28,10 @@
 
 @property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger currentPage;
+
+//collectView 的数据相关的
+@property (nonatomic,strong)NSArray *secondCellDataSource;
+@property (nonatomic,assign)NSInteger secondCellCurrentPage;
 @end
 
 @implementation HomeViewController
@@ -41,6 +45,7 @@
     _nearBySelectIndex = 0;
 
     self.currentPage = 1;
+    self.secondCellCurrentPage = 1;
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
@@ -48,6 +53,7 @@
             [self requestServiceData];
         }
         [self requestData];
+        [self requestDataSecondCellData];
     }];
     
     [self.tableView setFooterRefreshBlock:^{
@@ -56,6 +62,7 @@
             [self requestServiceData];
         }
         [self requestData];
+        [self requestDataSecondCellData];
     }];
     [self.tableView beginHeaderRefreshing];
     
@@ -77,6 +84,9 @@
     [self requestBanner];
 //    [self createLeftBtnAndRightBtn];
 }
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -142,6 +152,15 @@
         [self.tableView endRefreshing];
     }];
     
+}
+
+//请求collectView的数据
+- (void)requestDataSecondCellData {
+    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"" sort:@"" pageNum:self.secondCellCurrentPage success:^(id response) {
+        self.secondCellDataSource = response;
+         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } failure:^(NSError *error, NSString *message) {
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -282,7 +301,7 @@
     }
     else {
         secondHandCell *cell = (secondHandCell *)[self creatCell:tableView indenty:@"secondHandCell"];
-        cell.model = @[@"1",@"2",@"3"];
+        cell.model = self.secondCellDataSource;
         return cell;
     }
 }
