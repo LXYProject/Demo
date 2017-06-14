@@ -55,7 +55,7 @@
     
     CGFloat x = 0.0;
     CGFloat y = 0.0;
-    CGFloat radius = 0.0;
+//    CGFloat radius = 0.0;
     NSDictionary *paramter = @{@"queryType":@(queryType),
                                @"secondInfoId":secondInfoId?secondInfoId:@"",
                                @"keywords":keywords?keywords:@"",
@@ -70,7 +70,7 @@
                                @"sort":sort?sort:@"",
                                @"x":@(x),
                                @"y":@(y),
-                               @"radius":@(radius),
+//                               @"radius":@(radius),
                                @"page":@(pageNum),
                                @"pageCount":@(10),
                                };
@@ -82,6 +82,60 @@
             failure(error,message);
         }];
         
+
+}
+
++ (void)requestQueryType:(NSInteger)queryType
+                keywords:(NSString *)keywords
+                  cityId:(NSString *)cityId
+              districtId:(NSString *)districtId
+                minPrice:(NSString *)minPrice
+                maxPrice:(NSString *)maxPrice
+               houseType:(NSString *)houseType
+               direction:(NSString *)direction
+                 minArea:(NSString *)minArea
+                 maxArea:(NSString *)maxArea
+             heatingMode:(NSString *)heatingMode
+                   floor:(NSString *)floor
+             hasElevator:(NSString *)hasElevator
+            houseFitment:(NSString *)houseFitment
+         basicFacilities:(NSString *)basicFacilities
+      extendedFacilities:(NSString *)extendedFacilities
+                    sort:(NSString *)sort
+                 pageNum:(NSInteger)pageNum
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure{
+    
+    CGFloat x = 0.0;
+    CGFloat y = 0.0;
+        CGFloat radius = 0.0;
+    NSDictionary *paramter = @{@"queryType":@(queryType),
+                               @"keywords":keywords?keywords:@"",
+                               @"cityId":cityId?cityId:@"",
+                               @"districtId":districtId?districtId:@"",
+                               @"minPrice":minPrice?minPrice:@"",
+                               @"maxPrice":maxPrice?maxPrice:@"",
+                               @"houseType":houseType?houseType:@"",
+                               @"direction":direction?direction:@"",
+                               @"minArea":minArea?minArea:@"",
+                               @"maxArea":maxArea?maxArea:@"",
+                               @"heatingMode":heatingMode?heatingMode:@"",
+                               @"floor":floor?floor:@"",
+                               @"hasElevator":hasElevator?hasElevator:@"",
+                               @"sort":sort?sort:@"",
+                               @"x":@(x),
+                               @"y":@(y),
+                               @"radius":@(radius),
+                               @"page":@(pageNum),
+                               @"pageCount":@(10),
+                               };
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_queryRent paramter:paramter success:^(id response) {
+        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:response[@"houseRentList"]];
+        success(modelArray);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
 
 }
 @end

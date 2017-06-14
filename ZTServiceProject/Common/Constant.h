@@ -98,6 +98,9 @@
 #define A_query                 @"?service=secondHand&function=query"
 
 
+//============================房屋服务===========================================
+// 租房查询
+#define A_queryRent                 @"?service=house&function=queryRent"
 
 
 

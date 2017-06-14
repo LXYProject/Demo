@@ -26,12 +26,18 @@
 @property (nonatomic,assign)NSInteger nearBySelectIndex;
 @property (nonatomic,strong)NSArray *imageURLArray;
 
+//周边服务 的数据相关的
 @property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger currentPage;
 
 //collectView 的数据相关的
 @property (nonatomic,strong)NSArray *secondCellDataSource;
 @property (nonatomic,assign)NSInteger secondCellCurrentPage;
+
+//租房查询 的数据相关的
+@property (nonatomic,strong)NSArray *rentHouseDataSource;
+@property (nonatomic,assign)NSInteger rentHouseCurrentPage;
+
 @end
 
 @implementation HomeViewController
@@ -54,6 +60,7 @@
         }
         [self requestData];
         [self requestDataSecondCellData];
+        [self requestRentHouseData];
     }];
     
     [self.tableView setFooterRefreshBlock:^{
@@ -63,6 +70,7 @@
         }
         [self requestData];
         [self requestDataSecondCellData];
+        [self requestRentHouseData];
     }];
     [self.tableView beginHeaderRefreshing];
     
@@ -156,13 +164,21 @@
 
 //请求collectView的数据
 - (void)requestDataSecondCellData {
-    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"" sort:@"" pageNum:self.secondCellCurrentPage success:^(id response) {
+    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
         self.secondCellDataSource = response;
          [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *error, NSString *message) {
     }];
 }
 
+//请求租房查询
+- (void)requestRentHouseData
+{
+    [HomeHttpManager requestQueryType:2 keywords:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" houseType:@"" direction:@"" minArea:@"" maxArea:@"" heatingMode:@"" floor:@"" hasElevator:@"" houseFitment:@"" basicFacilities:@"" extendedFacilities:@"" sort:@"0" pageNum:self.currentPage success:^(id response) {
+        self.rentHouseDataSource = response;
+    } failure:^(NSError *error, NSString *message) {
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -182,10 +198,10 @@
         return 2;
     }
     else if (section == 4) {
-        return 1;
+        return 10;
     }
     else {
-        return 2;
+        return 10;
     }
 }
 
@@ -311,6 +327,7 @@
                        indexPath:(NSIndexPath *)indexPath {
     
     ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+    cell.secondModel = self.secondCellDataSource[indexPath.row];
     return cell;
 }
 
@@ -323,6 +340,7 @@
     }
     else {
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+        cell.rentHouseModel = self.rentHouseDataSource[indexPath.row];
         return cell;
     }
 }

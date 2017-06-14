@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class NearByItemModel;
+@class SecondHandModel;
+@class RentHouseModel;
 @interface ProductItemCell : UITableViewCell
 @property (nonatomic,strong)NearByItemModel *model;
+@property (nonatomic, strong)SecondHandModel *secondModel;
+@property (nonatomic, strong)RentHouseModel *rentHouseModel;
 @end

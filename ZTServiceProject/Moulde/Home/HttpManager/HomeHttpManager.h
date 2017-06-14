@@ -39,5 +39,27 @@ typedef enum : NSUInteger {
                  pageNum:(NSInteger)pageNum
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure;
-;
+
+//租房查询
++ (void)requestQueryType:(NSInteger)queryType
+                keywords:(NSString *)keywords
+                  cityId:(NSString *)cityId
+              districtId:(NSString *)districtId
+                minPrice:(NSString *)minPrice
+                maxPrice:(NSString *)maxPrice
+               houseType:(NSString *)houseType
+               direction:(NSString *)direction
+                 minArea:(NSString *)minArea
+                 maxArea:(NSString *)maxArea
+             heatingMode:(NSString *)heatingMode
+                   floor:(NSString *)floor
+             hasElevator:(NSString *)hasElevator
+            houseFitment:(NSString *)houseFitment
+         basicFacilities:(NSString *)basicFacilities
+      extendedFacilities:(NSString *)extendedFacilities
+                    sort:(NSString *)sort
+                 pageNum:(NSInteger)pageNum
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
+
 @end

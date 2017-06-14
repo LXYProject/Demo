@@ -43,6 +43,7 @@
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
+		7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2AB1EF1343100CA415D /* RentHouseModel.m */; };
 		7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */; };
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
 		7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */; };
@@ -201,6 +202,8 @@
 		7B46E2A51EF0D59E00CA415D /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
 		7B46E2A71EF103C700CA415D /* SecondHandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandModel.h; sourceTree = "<group>"; };
 		7B46E2A81EF103C700CA415D /* SecondHandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandModel.m; sourceTree = "<group>"; };
+		7B46E2AA1EF1343100CA415D /* RentHouseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentHouseModel.h; sourceTree = "<group>"; };
+		7B46E2AB1EF1343100CA415D /* RentHouseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentHouseModel.m; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		7B6C26B81EE3C3070090BE5C /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
@@ -487,6 +490,8 @@
 				299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */,
 				7B46E2A71EF103C700CA415D /* SecondHandModel.h */,
 				7B46E2A81EF103C700CA415D /* SecondHandModel.m */,
+				7B46E2AA1EF1343100CA415D /* RentHouseModel.h */,
+				7B46E2AB1EF1343100CA415D /* RentHouseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1171,6 +1176,7 @@
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
+				7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
 				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,

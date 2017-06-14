@@ -104,6 +104,8 @@
 
 @property (nonatomic,strong)NSArray *secondHandNormalImageList;
 @property (nonatomic,strong)NSArray *secondHandSmallImageList;
+//@property (nonatomic,copy)NSString *url;
+
 @property (nonatomic,copy)NSString *secondHandTitle;
 @property (nonatomic,copy)NSString *y;
 @property (nonatomic,copy)NSString *x;
