@@ -7,7 +7,19 @@
 //
 
 #import "NearByCell.h"
+#import "ServiceModel.h"
+@interface NearByCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *content;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UIImageView *headImg;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *sold;
+@property (weak, nonatomic) IBOutlet UILabel *distance;
+@property (nonatomic,copy)NSString *url;
 
+@end
 @implementation NearByCell
 
 - (void)awakeFromNib {
@@ -19,6 +31,30 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (void)setModel:(ServiceModel *)model {
+    _model =  model;
+    
+    //self.itemDataSourceArray[value][@"vcName"]
+
+    for (NSDictionary *dic in model.normalImageList) {
+        NSString *imageUrl = [dic objectForKey:@"url"];
+        NSLog(@"imageUrl==%@", imageUrl);
+        self.url = imageUrl;
+    }
+    
+    
+    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+
+    
+//    [_icon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    
+    _title.text = model.title;
+    _userName.text = model.userName;
+    _price.text = [NSString stringWithFormat:@"%.0f/单",[model.price doubleValue]];
+    _content.text = model.content;
 }
 
 @end

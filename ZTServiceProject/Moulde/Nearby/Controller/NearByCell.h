@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ServiceModel;
 @interface NearByCell : UITableViewCell
+@property (nonatomic,strong)ServiceModel *model;
 
 @end

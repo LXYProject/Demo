@@ -41,6 +41,8 @@
 		7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3238C61EE7AD8E00403495 /* NearByCell.m */; };
 		7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3238C71EE7AD8E00403495 /* NearByCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
+		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
+		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
 		7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */; };
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
 		7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */; };
@@ -195,6 +197,10 @@
 		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NearByCell.xib; path = ../Controller/NearByCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
+		7B46E2A41EF0D59E00CA415D /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
+		7B46E2A51EF0D59E00CA415D /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
+		7B46E2A71EF103C700CA415D /* SecondHandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandModel.h; sourceTree = "<group>"; };
+		7B46E2A81EF103C700CA415D /* SecondHandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandModel.m; sourceTree = "<group>"; };
 		7B6C26B01EE3C2DC0090BE5C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		7B6C26B11EE3C2DC0090BE5C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		7B6C26B81EE3C3070090BE5C /* MessageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCenterViewController.h; sourceTree = "<group>"; };
@@ -479,6 +485,8 @@
 			children = (
 				299E2C9F1EE7CBCA0045A884 /* AdvertisementModel.h */,
 				299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */,
+				7B46E2A71EF103C700CA415D /* SecondHandModel.h */,
+				7B46E2A81EF103C700CA415D /* SecondHandModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -603,6 +611,8 @@
 				299E2CCE1EE7E07A0045A884 /* NearByItemModel.m */,
 				7BF7D7731EE857D000DB1486 /* NearByTitleModel.h */,
 				7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */,
+				7B46E2A41EF0D59E00CA415D /* ServiceModel.h */,
+				7B46E2A51EF0D59E00CA415D /* ServiceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1127,6 +1137,8 @@
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
+				7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */,
+				7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
 				7BA167701EE64561000ECCE6 /* HomeViewController.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,

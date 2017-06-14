@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *detail;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *distance;
+@property (nonatomic,copy)NSString *url;
 
 @end
 
@@ -32,7 +33,13 @@
 - (void)setModel:(NearByItemModel *)model {
     _model =  model;
     
-    [_icon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    for (NSDictionary *dic in model.normalImageList) {
+        NSString *imageUrl = [dic objectForKey:@"url"];
+        NSLog(@"imageUrl==%@", imageUrl);
+        self.url = imageUrl;
+    }
+
+    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
     
     [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
     

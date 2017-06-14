@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class SecondHandModel;
 @interface ProductCollecttionCell : UICollectionViewCell
+
+@property (nonatomic,strong)SecondHandModel *model;
 
 @end

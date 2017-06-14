@@ -9,6 +9,7 @@
 #import "NearByHttpManager.h"
 #import "NearByItemModel.h"
 #import "NearByTitleModel.h"
+#import "ServiceModel.h"
 @implementation NearByHttpManager
 
 + (void)requestDataWithNearType:(NaerType)nearType
@@ -36,21 +37,26 @@
                                @"page":@(pageNum),
                                @"pageCount":@(10),
                                };
-    
-    NSString *url = nil;
-    if (nearType == ToHelp) {
-        url = A_HelpUrl;
+        if (nearType == ToHelp) {
+        
+        [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_HelpUrl paramter:paramter success:^(id response) {
+            NSArray *modelArray = [NearByItemModel mj_objectArrayWithKeyValuesArray:response];
+            success(modelArray);
+        } failure:^(NSError *error, NSString *message) {
+            failure(error,message);
+        }];
+
     }
     else {
-        url = A_FindUrl;
+        [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_FindUrl paramter:paramter success:^(id response) {
+            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response];
+            success(modelArray);
+        } failure:^(NSError *error, NSString *message) {
+            failure(error,message);
+        }];
+
     }
 
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        NSArray *modelArray = [NearByItemModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
-    } failure:^(NSError *error, NSString *message) {
-        failure(error,message);
-    }];
 }
 
 // 请求周边上面的滚动title

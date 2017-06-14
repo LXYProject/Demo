@@ -15,8 +15,7 @@ typedef enum : NSUInteger {
 
 @interface HomeHttpManager : NSObject
 
-
-
+//首页物业轮播图
 + (void)requestBanner:(BannerType)bannerType
                  city:(NSString *)city
                zoneId:(NSString *)zoneId
@@ -24,4 +23,21 @@ typedef enum : NSUInteger {
               failure:(HttpRequestFailure)failure;
 
 
+//二手物品查询
++ (void)requestQueryType:(NSInteger)queryType
+            secondInfoId:(NSString *)secondInfoId
+                keywords:(NSString *)keywords
+                 classId:(NSString *)classId
+                   resId:(NSString *)resId
+                  cityId:(NSString *)cityId
+              districtId:(NSString *)districtId
+                minPrice:(NSString *)minPrice
+                maxPrice:(NSString *)maxPrice
+                newOrOld:(NSString *)newOrOld
+                delivery:(NSString *)delivery
+                    sort:(NSString *)sort
+                 pageNum:(NSInteger)pageNum
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
+;
 @end

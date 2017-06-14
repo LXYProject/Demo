@@ -16,6 +16,8 @@
 #import "HomeHttpManager.h"
 #import "secondHandCell.h"
 #import "NearByHttpManager.h"
+#import "NearByCell.h"
+
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -36,15 +38,23 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _nearBySelectIndex = 0;
+
     self.currentPage = 1;
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
+        if (_nearBySelectIndex==1) {
+            [self requestServiceData];
+        }
         [self requestData];
     }];
     
     [self.tableView setFooterRefreshBlock:^{
         self.currentPage++;
+        if (_nearBySelectIndex==1) {
+            [self requestServiceData];
+        }
         [self requestData];
     }];
     [self.tableView beginHeaderRefreshing];
@@ -58,7 +68,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
-    _nearBySelectIndex = 0;
     imageNames = @[
                    @"timg.jpeg",
                    @"timg.jpeg",
@@ -98,7 +107,7 @@
         
     }];
 }
-
+// 去帮忙
 - (void)requestData
 {
     [NearByHttpManager requestDataWithNearType:ToHelp query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
@@ -116,6 +125,25 @@
     }];
 
 }
+// 找服务
+- (void)requestServiceData
+{
+    [NearByHttpManager requestDataWithNearType:LookingService query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
+        [self.tableView endRefreshing];
+        if (self.currentPage==1){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -233,6 +261,11 @@
         return cell;
     }
     else {
+        if (_nearBySelectIndex==1) {
+            NearByCell *cell = (NearByCell *)[self creatCell:tableView indenty:@"NearByCell"];
+            cell.model = self.dataSource[indexPath.row-2];
+            return cell;
+        }
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
         cell.model = self.dataSource[indexPath.row-2];
         return cell;
@@ -371,21 +404,33 @@
  }
 - (void)setCategoryId:(NSString *)categoryId {
     _categoryId = categoryId;
+    if (_nearBySelectIndex==1) {
+        [self requestServiceData];
+    }
     [self requestData];
 }
 
 - (void)setKeywords:(NSString *)keywords {
     _keywords = keywords;
+    if (_nearBySelectIndex==1) {
+        [self requestServiceData];
+    }
     [self requestData];
 }
 
 - (void)setDistrict:(NSString *)district {
     _district = district;
+    if (_nearBySelectIndex==1) {
+        [self requestServiceData];
+    }
     [self requestData];
 }
 
 -(void)setCity:(NSString *)city {
     _city = city;
+    if (_nearBySelectIndex==1) {
+        [self requestServiceData];
+    }
     [self requestData];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "ProductCollecttionCell.h"
-
+#import "SecondHandModel.h"
 
 @interface ProductCollecttionCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
@@ -21,6 +21,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setModel:(SecondHandModel *)model {
+    _model = model;
+    
+    [_icon sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    _title.text = model.secondHandTitle;
+    _price.text = [NSString stringWithFormat:@"%.0f元",[model.secPrice doubleValue]];
+    
 }
 
 @end

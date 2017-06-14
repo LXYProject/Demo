@@ -93,6 +93,9 @@
 #define A_unHouse               @"?service=userHouse&function=unHouse"
 
 
+//============================二手物品===========================================
+// 查询
+#define A_query                 @"?service=secondHand&function=query"
 
 
 
