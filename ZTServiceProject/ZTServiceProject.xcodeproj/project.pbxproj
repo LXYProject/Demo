@@ -35,6 +35,10 @@
 		6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */; };
 		7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */; };
 		7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F941EEFEF05003B4E1B /* LoginDataModel.m */; };
+		7B24C01E1EF22D1D00889902 /* SecondHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */; };
+		7B24C01F1EF22D1D00889902 /* SecondHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */; };
+		7B24C0231EF230C300889902 /* SearchHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B24C0211EF230C300889902 /* SearchHeadCell.m */; };
+		7B24C0241EF230C300889902 /* SearchHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B24C0221EF230C300889902 /* SearchHeadCell.xib */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
@@ -186,6 +190,12 @@
 		7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHttpManager.m; sourceTree = "<group>"; };
 		7B249F931EEFEF05003B4E1B /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDataModel.h; sourceTree = "<group>"; };
 		7B249F941EEFEF05003B4E1B /* LoginDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataModel.m; sourceTree = "<group>"; };
+		7B24C01B1EF22D1D00889902 /* SecondHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandViewController.h; sourceTree = "<group>"; };
+		7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandViewController.m; sourceTree = "<group>"; };
+		7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandViewController.xib; sourceTree = "<group>"; };
+		7B24C0201EF230C300889902 /* SearchHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHeadCell.h; sourceTree = "<group>"; };
+		7B24C0211EF230C300889902 /* SearchHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHeadCell.m; sourceTree = "<group>"; };
+		7B24C0221EF230C300889902 /* SearchHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeadCell.xib; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
 		7B2C4DDE1EE6DD3800745071 /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
@@ -479,6 +489,9 @@
 				7BA1676D1EE64561000ECCE6 /* HomeViewController.h */,
 				7BA1676E1EE64561000ECCE6 /* HomeViewController.m */,
 				7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */,
+				7B24C01B1EF22D1D00889902 /* SecondHandViewController.h */,
+				7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */,
+				7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -523,6 +536,9 @@
 				7B78AC171EE9A81E00FDFE7C /* ProductCollecttionCell.h */,
 				7B78AC181EE9A81E00FDFE7C /* ProductCollecttionCell.m */,
 				7B78AC191EE9A81E00FDFE7C /* ProductCollecttionCell.xib */,
+				7B24C0201EF230C300889902 /* SearchHeadCell.h */,
+				7B24C0211EF230C300889902 /* SearchHeadCell.m */,
+				7B24C0221EF230C300889902 /* SearchHeadCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -531,9 +547,9 @@
 			isa = PBXGroup;
 			children = (
 				7BF7D7701EE855B700DB1486 /* HttpManager */,
+				7B6C269F1EE3C2AB0090BE5C /* Controller */,
 				7BF7D7711EE855B700DB1486 /* Model */,
 				7BF7D7721EE855B700DB1486 /* View */,
-				7B6C269F1EE3C2AB0090BE5C /* Controller */,
 			);
 			path = MessageCenter;
 			sourceTree = "<group>";
@@ -1004,6 +1020,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
+				7B24C0241EF230C300889902 /* SearchHeadCell.xib in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
 				299E2CBF1EE7CDDD0045A884 /* BannerHeaderCell.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
@@ -1012,6 +1029,7 @@
 				7BA167791EE64B55000ECCE6 /* noticeYellow@3x.png in Resources */,
 				7B8F0D1E1EE3BE1F00ED16E3 /* Assets.xcassets in Resources */,
 				299E2CC51EE7CDDD0045A884 /* NearByServiceCell.xib in Resources */,
+				7B24C01F1EF22D1D00889902 /* SecondHandViewController.xib in Resources */,
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7B9EA83D1EE9B212003A5DF2 /* Pic_blank_328px@3x.png in Resources */,
@@ -1135,8 +1153,10 @@
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
+				7B24C01E1EF22D1D00889902 /* SecondHandViewController.m in Sources */,
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
 				7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */,
+				7B24C0231EF230C300889902 /* SearchHeadCell.m in Sources */,
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CC41EE7CDDD0045A884 /* NearByServiceCell.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,

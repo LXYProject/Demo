@@ -406,7 +406,7 @@
         _itemDataSourceArray = @[
                                  @{@"title":@"二手物品"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"SecondHandViewController"},
                                  @{@"title":@"求购"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"NearByViewController"},
