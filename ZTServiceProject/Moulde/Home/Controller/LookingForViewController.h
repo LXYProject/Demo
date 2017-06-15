@@ -1,5 +1,5 @@
 //
-//  SecondHandViewController.h
+//  LookingForViewController.h
 //  ZTServiceProject
 //
 //  Created by ZT on 2017/6/15.
@@ -8,7 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SecondHandViewController : BaseViewController
-
+@interface LookingForViewController : BaseViewController
 
 @end

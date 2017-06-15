@@ -9,11 +9,18 @@
 #import "SecondHandViewController.h"
 #import "SearchHeadCell.h"
 #import "ItemBtnCell.h"
-
+#import "ImageCell.h"
+#import "secondHandCell.h"
+#import "MessageCell.h"
+#import "NearByItemModel.h"
+#import "HomeHttpManager.h"
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
+//collectView 的数据相关的
+@property (nonatomic,strong)NSArray *secondCellDataSource;
+@property (nonatomic,assign)NSInteger secondCellCurrentPage;
 
 @end
 
@@ -22,26 +29,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.secondCellCurrentPage = 1;
+    
+    [self requestDataSecondCellData];
+}
+
+//请求collectView的数据
+- (void)requestDataSecondCellData {
+    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
+        self.secondCellDataSource = response;
+        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    } failure:^(NSError *error, NSString *message) {
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section ==0) {
         return 2;
-    }else{
+    }else if(section ==1){
         return 1;
+    }else if(section ==2){
+        return 1;
+    }
+    else{
+        return 0;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
-    }else{
+    }
+    else if (indexPath.section ==1) {
+        return [self sectionOneWithTableView:tableView indexPath:indexPath];
+    }
+    else if (indexPath.section ==2) {
+        return [self sectionTwoTableView:tableView indexPath:indexPath];
+    }
+
+    else{
         return nil;
     }
 }
@@ -51,7 +84,6 @@
                                     indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         SearchHeadCell *cell = (SearchHeadCell *)[self creatCell:tableView indenty:@"SearchHeadCell"];
-        //        cell.modelArray = imageNames;
         return cell;
     }
     else {
@@ -64,10 +96,22 @@
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;
     }
-//    return nil;
 }
 
+//第1组
+- (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+    ImageCell *cell = (ImageCell *)[self creatCell:tableView indenty:@"ImageCell"];
+    return cell;
+}
 
+//第2组
+- (UITableViewCell *)sectionTwoTableView:(UITableView *)tableView
+                                 indexPath:(NSIndexPath *)indexPath {
+    secondHandCell *cell = (secondHandCell *)[self creatCell:tableView indenty:@"secondHandCell"];
+    cell.model = self.secondCellDataSource;
+    return cell;
+}
 
 //公共创建cell的方法
 - (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
@@ -76,6 +120,27 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:indenty owner:nil options:nil] lastObject];
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 0) {
+        if(indexPath.row ==0){
+            return 45;
+        }
+        ItemBtnCell *cell = (ItemBtnCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+        return cell.cellHeight;
+    }
+    else if (indexPath.section ==1) {
+        return 150;
+    }
+    else if (indexPath.section ==2) {
+        return 175;
+    }
+    else {
+        return 0;
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -125,19 +190,6 @@
     return _itemDataSourceArray;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

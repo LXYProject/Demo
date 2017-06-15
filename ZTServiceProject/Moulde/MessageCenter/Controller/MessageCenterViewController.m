@@ -33,19 +33,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-//    if (indexPath.row ==0 ){
-//        MessageHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageHeaderCell"];
-//        if (!cell) {
-//            cell = [[[NSBundle mainBundle]loadNibNamed:@"MessageHeaderCell" owner:nil options:nil] lastObject];
-//        }
-////        cell.titleHeader = _titleHeader[indexPath.section];
-//        return cell;
-//    }
-//    else {
-    
-        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell"];
         if (!cell) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"MessageCell" owner:nil options:nil] lastObject];
         }
@@ -58,7 +49,6 @@
     cell.model = modle;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-//    }
 
 }
 

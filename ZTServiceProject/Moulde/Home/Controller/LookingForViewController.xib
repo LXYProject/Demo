@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondHandViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LookingForViewController">
             <connections>
-                <outlet property="tableView" destination="eSo-36-GdR" id="sm2-sN-nze"/>
+                <outlet property="tableView" destination="G6p-1q-aHP" id="Knf-p9-zr3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,23 +20,22 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eSo-36-GdR">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="G6p-1q-aHP">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="hck-Yd-Yk4"/>
-                        <outlet property="delegate" destination="-1" id="5O5-aM-sar"/>
+                        <outlet property="dataSource" destination="-1" id="GDk-Xr-b3R"/>
+                        <outlet property="delegate" destination="-1" id="Cvp-eJ-boL"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="eSo-36-GdR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AkL-k4-HSN"/>
-                <constraint firstAttribute="bottom" secondItem="eSo-36-GdR" secondAttribute="bottom" id="PYT-cP-ZeM"/>
-                <constraint firstItem="eSo-36-GdR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eiC-7f-1nR"/>
-                <constraint firstAttribute="trailing" secondItem="eSo-36-GdR" secondAttribute="trailing" id="nve-dw-W8P"/>
+                <constraint firstItem="G6p-1q-aHP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="N5G-of-eiA"/>
+                <constraint firstAttribute="trailing" secondItem="G6p-1q-aHP" secondAttribute="trailing" id="U0g-dN-dGf"/>
+                <constraint firstAttribute="bottom" secondItem="G6p-1q-aHP" secondAttribute="bottom" id="Wru-QT-Tcs"/>
+                <constraint firstItem="G6p-1q-aHP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dsm-ML-xef"/>
             </constraints>
-            <point key="canvasLocation" x="-28" y="52"/>
         </view>
     </objects>
 </document>

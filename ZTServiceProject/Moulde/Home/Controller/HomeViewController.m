@@ -17,6 +17,7 @@
 #import "secondHandCell.h"
 #import "NearByHttpManager.h"
 #import "NearByCell.h"
+#import "SecondHandViewController.h"
 
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -409,7 +410,7 @@
                                    ,@"vcName":@"SecondHandViewController"},
                                  @{@"title":@"求购"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"NearByViewController"},
+                                   ,@"vcName":@"LookingForViewController"},
                                  @{@"title":@"房屋租赁"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"TenementViewController"},
