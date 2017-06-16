@@ -39,7 +39,7 @@
 
     for (NSDictionary *dic in model.normalImageList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
-        NSLog(@"imageUrl==%@", imageUrl);
+//        NSLog(@"imageUrl==%@", imageUrl);
         self.url = imageUrl;
     }
     

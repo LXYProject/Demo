@@ -20,5 +20,10 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)selectPhotos:(id)sender {
+    NSLog(@"hhhh");
+    
+    
+}
 
 @end

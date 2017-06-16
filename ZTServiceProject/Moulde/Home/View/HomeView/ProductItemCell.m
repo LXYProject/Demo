@@ -45,7 +45,7 @@
     
     for (NSDictionary *dic in secondModel.secondHandNormalImageList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
-        NSLog(@"imageUrl==%@", imageUrl);
+//        NSLog(@"imageUrl==%@", imageUrl);
         self.url = imageUrl;
     }
     
@@ -63,7 +63,7 @@
     
     for (NSDictionary *dic in rentHouseModel.housePicList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
-        NSLog(@"imageUrl==%@", imageUrl);
+//        NSLog(@"imageUrl==%@", imageUrl);
         self.url = imageUrl;
     }
     

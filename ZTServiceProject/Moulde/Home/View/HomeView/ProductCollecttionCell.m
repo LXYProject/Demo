@@ -29,7 +29,7 @@
     
     for (NSDictionary *dic in model.secondHandNormalImageList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
-        NSLog(@"imageUrl==%@", imageUrl);
+//        NSLog(@"imageUrl==%@", imageUrl);
         self.url = imageUrl;
     }
 
