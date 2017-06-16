@@ -45,6 +45,10 @@ ZX_DECLARE_SINGLETON(HttpAPIManager);
            failure:(HttpRequestFailure)failure;
 
 
+- (void)getWithTwoUrl:(NSString *)url
+             paramter:(id)paramter
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
 
 /**
  单文件上传

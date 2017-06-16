@@ -56,6 +56,22 @@
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
 		7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3238C61EE7AD8E00403495 /* NearByCell.m */; };
 		7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3238C71EE7AD8E00403495 /* NearByCell.xib */; };
+		7B33B7511EF368AF005FBBBB /* FrameAutoBtnWithTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7441EF368AF005FBBBB /* FrameAutoBtnWithTitle.m */; };
+		7B33B7521EF368AF005FBBBB /* HClTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7461EF368AF005FBBBB /* HClTextView.m */; };
+		7B33B7531EF368AF005FBBBB /* HClTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7471EF368AF005FBBBB /* HClTextView.xib */; };
+		7B33B7541EF368AF005FBBBB /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7491EF368AF005FBBBB /* NSString+Additions.m */; };
+		7B33B7551EF368AF005FBBBB /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B74B1EF368AF005FBBBB /* NSString+Valid.m */; };
+		7B33B7561EF368AF005FBBBB /* PlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B74D1EF368AF005FBBBB /* PlaceholderTextView.m */; };
+		7B33B7571EF368AF005FBBBB /* reimbursement_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B74E1EF368AF005FBBBB /* reimbursement_delete@2x.png */; };
+		7B33B7581EF368AF005FBBBB /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7501EF368AF005FBBBB /* UIColor+Additions.m */; };
+		7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B79E1EF37657005FBBBB /* StaticlCell.m */; };
+		7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B79F1EF37657005FBBBB /* StaticlCell.xib */; };
+		7B33B7A51EF37C0C005FBBBB /* SolicitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7A31EF37C0C005FBBBB /* SolicitingViewController.m */; };
+		7B33B7A61EF37C0C005FBBBB /* SolicitingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7A41EF37C0C005FBBBB /* SolicitingViewController.xib */; };
+		7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7A91EF38499005FBBBB /* SolicitingHeadCell.m */; };
+		7B33B7AC1EF38499005FBBBB /* SolicitingHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7AA1EF38499005FBBBB /* SolicitingHeadCell.xib */; };
+		7B33B7B01EF389B6005FBBBB /* SolicitBtnItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */; };
+		7B33B7B11EF389B6005FBBBB /* SolicitBtnItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
@@ -91,9 +107,6 @@
 		7BA167D51EE6AA10000ECCE6 /* MineBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */; };
 		7BC9D9B61EF25D2600B01A14 /* LookingForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */; };
 		7BC9D9B71EF25D2600B01A14 /* LookingForViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */; };
-		7BC9DA091EF2704A00B01A14 /* GBFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9DA041EF2704A00B01A14 /* GBFlatButton.m */; };
-		7BC9DA0A1EF2704A00B01A14 /* GBFlatSelectableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9DA061EF2704A00B01A14 /* GBFlatSelectableButton.m */; };
-		7BC9DA0B1EF2704A00B01A14 /* UIColor+GBFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9DA081EF2704A00B01A14 /* UIColor+GBFlatButton.m */; };
 		7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */; };
 		7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F71EE3D26C0058185F /* BaseTabbarController.m */; };
 		7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1FA1EE3D2F00058185F /* Tools.m */; };
@@ -237,6 +250,32 @@
 		7B3238C51EE7AD8E00403495 /* NearByCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NearByCell.h; path = ../Controller/NearByCell.h; sourceTree = "<group>"; };
 		7B3238C61EE7AD8E00403495 /* NearByCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NearByCell.m; path = ../Controller/NearByCell.m; sourceTree = "<group>"; };
 		7B3238C71EE7AD8E00403495 /* NearByCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NearByCell.xib; path = ../Controller/NearByCell.xib; sourceTree = "<group>"; };
+		7B33B7431EF368AF005FBBBB /* FrameAutoBtnWithTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameAutoBtnWithTitle.h; sourceTree = "<group>"; };
+		7B33B7441EF368AF005FBBBB /* FrameAutoBtnWithTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameAutoBtnWithTitle.m; sourceTree = "<group>"; };
+		7B33B7451EF368AF005FBBBB /* HClTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HClTextView.h; sourceTree = "<group>"; };
+		7B33B7461EF368AF005FBBBB /* HClTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HClTextView.m; sourceTree = "<group>"; };
+		7B33B7471EF368AF005FBBBB /* HClTextView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HClTextView.xib; sourceTree = "<group>"; };
+		7B33B7481EF368AF005FBBBB /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		7B33B7491EF368AF005FBBBB /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		7B33B74A1EF368AF005FBBBB /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
+		7B33B74B1EF368AF005FBBBB /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
+		7B33B74C1EF368AF005FBBBB /* PlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceholderTextView.h; sourceTree = "<group>"; };
+		7B33B74D1EF368AF005FBBBB /* PlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceholderTextView.m; sourceTree = "<group>"; };
+		7B33B74E1EF368AF005FBBBB /* reimbursement_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reimbursement_delete@2x.png"; sourceTree = "<group>"; };
+		7B33B74F1EF368AF005FBBBB /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
+		7B33B7501EF368AF005FBBBB /* UIColor+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
+		7B33B79D1EF37657005FBBBB /* StaticlCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticlCell.h; sourceTree = "<group>"; };
+		7B33B79E1EF37657005FBBBB /* StaticlCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticlCell.m; sourceTree = "<group>"; };
+		7B33B79F1EF37657005FBBBB /* StaticlCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticlCell.xib; sourceTree = "<group>"; };
+		7B33B7A21EF37C0C005FBBBB /* SolicitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolicitingViewController.h; sourceTree = "<group>"; };
+		7B33B7A31EF37C0C005FBBBB /* SolicitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolicitingViewController.m; sourceTree = "<group>"; };
+		7B33B7A41EF37C0C005FBBBB /* SolicitingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitingViewController.xib; sourceTree = "<group>"; };
+		7B33B7A81EF38499005FBBBB /* SolicitingHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolicitingHeadCell.h; sourceTree = "<group>"; };
+		7B33B7A91EF38499005FBBBB /* SolicitingHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolicitingHeadCell.m; sourceTree = "<group>"; };
+		7B33B7AA1EF38499005FBBBB /* SolicitingHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitingHeadCell.xib; sourceTree = "<group>"; };
+		7B33B7AD1EF389B6005FBBBB /* SolicitBtnItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolicitBtnItemCell.h; sourceTree = "<group>"; };
+		7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolicitBtnItemCell.m; sourceTree = "<group>"; };
+		7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitBtnItemCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B46E2A41EF0D59E00CA415D /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
@@ -295,12 +334,6 @@
 		7BC9D9B31EF25D2600B01A14 /* LookingForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookingForViewController.h; sourceTree = "<group>"; };
 		7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookingForViewController.m; sourceTree = "<group>"; };
 		7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LookingForViewController.xib; sourceTree = "<group>"; };
-		7BC9DA031EF2704A00B01A14 /* GBFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBFlatButton.h; sourceTree = "<group>"; };
-		7BC9DA041EF2704A00B01A14 /* GBFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBFlatButton.m; sourceTree = "<group>"; };
-		7BC9DA051EF2704A00B01A14 /* GBFlatSelectableButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBFlatSelectableButton.h; sourceTree = "<group>"; };
-		7BC9DA061EF2704A00B01A14 /* GBFlatSelectableButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBFlatSelectableButton.m; sourceTree = "<group>"; };
-		7BC9DA071EF2704A00B01A14 /* UIColor+GBFlatButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GBFlatButton.h"; sourceTree = "<group>"; };
-		7BC9DA081EF2704A00B01A14 /* UIColor+GBFlatButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GBFlatButton.m"; sourceTree = "<group>"; };
 		7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		7BF4B1F61EE3D26C0058185F /* BaseTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabbarController.h; sourceTree = "<group>"; };
@@ -446,6 +479,9 @@
 		7B1661F31EF2861C00644A7B /* LookingForView */ = {
 			isa = PBXGroup;
 			children = (
+				7B33B79D1EF37657005FBBBB /* StaticlCell.h */,
+				7B33B79E1EF37657005FBBBB /* StaticlCell.m */,
+				7B33B79F1EF37657005FBBBB /* StaticlCell.xib */,
 				7B1661F41EF2861C00644A7B /* AddPhotosCell.h */,
 				7B1661F51EF2861C00644A7B /* AddPhotosCell.m */,
 				7B1661F61EF2861C00644A7B /* AddPhotosCell.xib */,
@@ -501,6 +537,41 @@
 				7B1662261EF2862900644A7B /* SectionHeaderCell.xib */,
 			);
 			path = HomeView;
+			sourceTree = "<group>";
+		};
+		7B33B7421EF368AF005FBBBB /* HCTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7B33B7431EF368AF005FBBBB /* FrameAutoBtnWithTitle.h */,
+				7B33B7441EF368AF005FBBBB /* FrameAutoBtnWithTitle.m */,
+				7B33B7451EF368AF005FBBBB /* HClTextView.h */,
+				7B33B7461EF368AF005FBBBB /* HClTextView.m */,
+				7B33B7471EF368AF005FBBBB /* HClTextView.xib */,
+				7B33B7481EF368AF005FBBBB /* NSString+Additions.h */,
+				7B33B7491EF368AF005FBBBB /* NSString+Additions.m */,
+				7B33B74A1EF368AF005FBBBB /* NSString+Valid.h */,
+				7B33B74B1EF368AF005FBBBB /* NSString+Valid.m */,
+				7B33B74C1EF368AF005FBBBB /* PlaceholderTextView.h */,
+				7B33B74D1EF368AF005FBBBB /* PlaceholderTextView.m */,
+				7B33B74E1EF368AF005FBBBB /* reimbursement_delete@2x.png */,
+				7B33B74F1EF368AF005FBBBB /* UIColor+Additions.h */,
+				7B33B7501EF368AF005FBBBB /* UIColor+Additions.m */,
+			);
+			path = HCTextView;
+			sourceTree = "<group>";
+		};
+		7B33B7A71EF37E2D005FBBBB /* SolicitingView */ = {
+			isa = PBXGroup;
+			children = (
+				7B33B7A81EF38499005FBBBB /* SolicitingHeadCell.h */,
+				7B33B7A91EF38499005FBBBB /* SolicitingHeadCell.m */,
+				7B33B7AA1EF38499005FBBBB /* SolicitingHeadCell.xib */,
+				7B33B7AD1EF389B6005FBBBB /* SolicitBtnItemCell.h */,
+				7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */,
+				7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */,
+			);
+			name = SolicitingView;
+			path = LookingForView/SolicitingView;
 			sourceTree = "<group>";
 		};
 		7B6C26961EE3C2AB0090BE5C /* Base */ = {
@@ -589,6 +660,9 @@
 				7BC9D9B31EF25D2600B01A14 /* LookingForViewController.h */,
 				7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */,
 				7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */,
+				7B33B7A21EF37C0C005FBBBB /* SolicitingViewController.h */,
+				7B33B7A31EF37C0C005FBBBB /* SolicitingViewController.m */,
+				7B33B7A41EF37C0C005FBBBB /* SolicitingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -609,6 +683,7 @@
 		7B6C269D1EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B33B7A71EF37E2D005FBBBB /* SolicitingView */,
 				7B16620E1EF2862900644A7B /* HomeView */,
 				7B1662031EF2862300644A7B /* SecondHandView */,
 				7B1661F31EF2861C00644A7B /* LookingForView */,
@@ -892,7 +967,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				7BC9DA021EF2704A00B01A14 /* GBBtn */,
+				7B33B7421EF368AF005FBBBB /* HCTextView */,
 				299E2CA51EE7CD5D0045A884 /* NJKWebViewProgress */,
 				7BA167731EE64B27000ECCE6 /* NoticeView.h */,
 				7BA167741EE64B27000ECCE6 /* NoticeView.m */,
@@ -901,19 +976,6 @@
 			);
 			name = Lib;
 			path = Base/Lib;
-			sourceTree = "<group>";
-		};
-		7BC9DA021EF2704A00B01A14 /* GBBtn */ = {
-			isa = PBXGroup;
-			children = (
-				7BC9DA031EF2704A00B01A14 /* GBFlatButton.h */,
-				7BC9DA041EF2704A00B01A14 /* GBFlatButton.m */,
-				7BC9DA051EF2704A00B01A14 /* GBFlatSelectableButton.h */,
-				7BC9DA061EF2704A00B01A14 /* GBFlatSelectableButton.m */,
-				7BC9DA071EF2704A00B01A14 /* UIColor+GBFlatButton.h */,
-				7BC9DA081EF2704A00B01A14 /* UIColor+GBFlatButton.m */,
-			);
-			path = GBBtn;
 			sourceTree = "<group>";
 		};
 		7BF4B1FE1EE3D45A0058185F /* TabbarIcon */ = {
@@ -1106,6 +1168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */,
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
@@ -1151,9 +1214,11 @@
 				7BF4B22E1EE3D6470058185F /* scan_40px@2x.png in Resources */,
 				7BF4B2141EE3D45A0058185F /* my_tabbar_default@3x.png in Resources */,
 				7BF4B21B1EE3D45A0058185F /* worktable_tabbar_default@2x.png in Resources */,
+				7B33B7571EF368AF005FBBBB /* reimbursement_delete@2x.png in Resources */,
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
 				7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */,
+				7B33B7AC1EF38499005FBBBB /* SolicitingHeadCell.xib in Resources */,
 				7BFE48411EE9346A0006FF3B /* MessageHeaderCell.xib in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
@@ -1161,6 +1226,9 @@
 				7B16622E1EF2862900644A7B /* NearByServiceCell.xib in Resources */,
 				7B1662321EF2862900644A7B /* ProductItemCell.xib in Resources */,
 				7BF4B2111EE3D45A0058185F /* message_tabbar_selected@2x.png in Resources */,
+				7B33B7B11EF389B6005FBBBB /* SolicitBtnItemCell.xib in Resources */,
+				7B33B7531EF368AF005FBBBB /* HClTextView.xib in Resources */,
+				7B33B7A61EF37C0C005FBBBB /* SolicitingViewController.xib in Resources */,
 				7BF4B2151EE3D45A0058185F /* my_tabbar_selected@2x.png in Resources */,
 				7B16620D1EF2862300644A7B /* SearchHeadCell.xib in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
@@ -1254,7 +1322,6 @@
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
-				7BC9DA091EF2704A00B01A14 /* GBFlatButton.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
 				7B1661FD1EF2861C00644A7B /* AddPhotosCell.m in Sources */,
 				7B16620C1EF2862300644A7B /* SearchHeadCell.m in Sources */,
@@ -1270,10 +1337,14 @@
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
 				7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
+				7B33B7511EF368AF005FBBBB /* FrameAutoBtnWithTitle.m in Sources */,
+				7B33B7A51EF37C0C005FBBBB /* SolicitingViewController.m in Sources */,
+				7B33B7551EF368AF005FBBBB /* NSString+Valid.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7B1662331EF2862900644A7B /* secondHandCell.m in Sources */,
 				7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */,
+				7B33B7581EF368AF005FBBBB /* UIColor+Additions.m in Sources */,
 				7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */,
 				7B16622D1EF2862900644A7B /* NearByServiceCell.m in Sources */,
 				299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */,
@@ -1290,17 +1361,21 @@
 				7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
+				7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */,
 				7BC9D9B61EF25D2600B01A14 /* LookingForViewController.m in Sources */,
+				7B33B7521EF368AF005FBBBB /* HClTextView.m in Sources */,
 				7B1662011EF2861C00644A7B /* BtnItemCell.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
+				7B33B7B01EF389B6005FBBBB /* SolicitBtnItemCell.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */,
+				7B33B7541EF368AF005FBBBB /* NSString+Additions.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
-				7BC9DA0A1EF2704A00B01A14 /* GBFlatSelectableButton.m in Sources */,
 				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
+				7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */,
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
+				7B33B7561EF368AF005FBBBB /* PlaceholderTextView.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,
-				7BC9DA0B1EF2704A00B01A14 /* UIColor+GBFlatButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

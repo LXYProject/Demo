@@ -7,6 +7,7 @@
 //
 
 #import "LookingForViewController.h"
+#import "StaticlCell.h"
 #import "BtnItemCell.h"
 #import "AddPhotosCell.h"
 #import "BabyDescriptionCell.h"
@@ -15,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic,strong)NSArray *titleArray;
-@property (nonatomic,strong)NSArray *describeArray;
+@property (nonatomic,assign)NSInteger section;
 
 @end
 
@@ -31,12 +32,12 @@
                    @"新旧程度：",
                    @"价格范围：",
                    ];
-    self.describeArray = @[
-                        @"请输入物品的名称",
-                        @"请输入品牌的型号",
-                        @"八成新",
-                        @"1000-2000",
-                        ];
+    
+//    if (self.section==0) {
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    }else{
+//        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,7 +63,6 @@
 {
     if (indexPath.section == 0) {
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
-        
     }
     else if (indexPath.section ==1) {
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
@@ -78,25 +78,9 @@
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
-    static NSString *cellID = @"cell";
-    // 根据标识去缓存池找cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    // 不写这句直接崩掉，找不到循环引用的cell
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:cellID];
-    }
-    if (indexPath.row !=0) {
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    }
-    cell.textLabel.text = self.titleArray[indexPath.row];
-    cell.detailTextLabel.text = self.describeArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-    cell.textLabel.textColor = [UIColor blackColor];
-    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
-
-
+    StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
     return cell;
+
 }
 
 //第1组
@@ -115,7 +99,7 @@
     return cell;
 }
 
-//第2组
+//第3组
 - (UITableViewCell *)sectionThirdTableView:(UITableView *)tableView
                                indexPath:(NSIndexPath *)indexPath {
     

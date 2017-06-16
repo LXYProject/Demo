@@ -18,6 +18,7 @@
 #import "NearByHttpManager.h"
 #import "NearByCell.h"
 #import "SecondHandViewController.h"
+#import "RentHouseModel.h"
 
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -38,7 +39,6 @@
 //租房查询 的数据相关的
 @property (nonatomic,strong)NSArray *rentHouseDataSource;
 @property (nonatomic,assign)NSInteger rentHouseCurrentPage;
-
 @end
 
 @implementation HomeViewController
@@ -91,11 +91,7 @@
                     ];
     
     [self requestBanner];
-//    [self createLeftBtnAndRightBtn];
 }
-
-
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -104,7 +100,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     
 }
 
@@ -179,7 +174,9 @@
         self.rentHouseDataSource = response;
     } failure:^(NSError *error, NSString *message) {
     }];
+    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -189,20 +186,18 @@
     if(section ==0) {
         return 2;
     }
-    else if (section == 1) {
+    else if (section == 1){
         return 1;
-    }
-    else if (section ==2 ){
+    }else if (section ==2 ){
         return self.dataSource.count+2;
-    }
-    else if (section == 3) {
+    }else if (section == 3){
         return 2;
-    }
-    else if (section == 4) {
+    }else if (section == 4){
         return 10;
-    }
-    else {
-        return 10;
+    }else if (section == 5){
+        return self.rentHouseDataSource.count+1;
+    }else{
+        return 0;
     }
 }
 
@@ -341,7 +336,7 @@
     }
     else {
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
-        cell.rentHouseModel = self.rentHouseDataSource[indexPath.row];
+        cell.rentHouseModel = self.rentHouseDataSource[indexPath.row-1];
         return cell;
     }
 }
@@ -416,7 +411,7 @@
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"求租"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"SolicitingViewController"},
                                  @{@"title":@"我的小区"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"TenementViewController"},
@@ -478,6 +473,7 @@
     }
     return _dataSource;
 }
+
 - (void)leftBarClick
 {
     NSLog(@"leftBarClick");

@@ -51,6 +51,26 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
         failure(failured.error,nil);
     } progress:nil];
 }
+- (void)getWithTwoUrl:(NSString *)url
+          paramter:(id)paramter
+           success:(HttpRequestSuccess)success
+           failure:(HttpRequestFailure)failure {
+    NSString *newUrl = [self dealWithURL:url];
+//    id newParamter = [self dealWithParamter:paramter];
+    
+    [YYRequest requestGETtWithURLString:newUrl paramater:paramter success:^(YYNetWorkSuccess *successful) {
+        //        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
+        if ([successful.responseObject[@"code"] integerValue]==200) {
+            success(successful.responseObject[@"result"]);
+        }
+        else {
+            failure(nil,successful.responseObject[@"message"]);
+        }
+    } failure:^(YYNetWorkFailure *failured) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,paramter,failured.error);
+        failure(failured.error,nil);
+    } progress:nil];
+}
 
 - (void)uploadDataWithUrl:(NSString *)url
                  fileData:(NSData *)data

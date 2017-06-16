@@ -9,7 +9,7 @@
 #import "HomeHttpManager.h"
 #import "AdvertisementModel.h"
 #import "SecondHandModel.h" 
-
+#import "RentHouseModel.h"
 @implementation HomeHttpManager
 
 + (void)requestBanner:(BannerType)bannerType
@@ -106,32 +106,32 @@
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure{
     
-    CGFloat x = 0.0;
-    CGFloat y = 0.0;
-        CGFloat radius = 0.0;
+//    CGFloat x = 0.0;
+//    CGFloat y = 0.0;
+//        CGFloat radius = 0.0;
     NSDictionary *paramter = @{@"queryType":@(queryType),
-                               @"keywords":keywords?keywords:@"",
-                               @"cityId":cityId?cityId:@"",
-                               @"districtId":districtId?districtId:@"",
-                               @"minPrice":minPrice?minPrice:@"",
-                               @"maxPrice":maxPrice?maxPrice:@"",
-                               @"houseType":houseType?houseType:@"",
-                               @"direction":direction?direction:@"",
-                               @"minArea":minArea?minArea:@"",
-                               @"maxArea":maxArea?maxArea:@"",
-                               @"heatingMode":heatingMode?heatingMode:@"",
-                               @"floor":floor?floor:@"",
-                               @"hasElevator":hasElevator?hasElevator:@"",
+//                               @"keywords":keywords?keywords:@"",
+//                               @"cityId":cityId?cityId:@"",
+//                               @"districtId":districtId?districtId:@"",
+//                               @"minPrice":minPrice?minPrice:@"",
+//                               @"maxPrice":maxPrice?maxPrice:@"",
+//                               @"houseType":houseType?houseType:@"",
+//                               @"direction":direction?direction:@"",
+//                               @"minArea":minArea?minArea:@"",
+//                               @"maxArea":maxArea?maxArea:@"",
+//                               @"heatingMode":heatingMode?heatingMode:@"",
+//                               @"floor":floor?floor:@"",
+//                               @"hasElevator":hasElevator?hasElevator:@"",
                                @"sort":sort?sort:@"",
-                               @"x":@(x),
-                               @"y":@(y),
-                               @"radius":@(radius),
+//                               @"x":@(x),
+//                               @"y":@(y),
+//                               @"radius":@(radius),
                                @"page":@(pageNum),
                                @"pageCount":@(10),
                                };
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_queryRent paramter:paramter success:^(id response) {
-        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:response[@"houseRentList"]];
+    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_queryRent paramter:paramter success:^(id response) {
+        NSArray *modelArray = [RentHouseModel mj_objectArrayWithKeyValuesArray:response[@"houseRentList"]];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
