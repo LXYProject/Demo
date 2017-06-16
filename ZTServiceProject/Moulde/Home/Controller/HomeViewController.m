@@ -172,6 +172,7 @@
 {
     [HomeHttpManager requestQueryType:2 keywords:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" houseType:@"" direction:@"" minArea:@"" maxArea:@"" heatingMode:@"" floor:@"" hasElevator:@"" houseFitment:@"" basicFacilities:@"" extendedFacilities:@"" sort:@"0" pageNum:self.currentPage success:^(id response) {
         self.rentHouseDataSource = response;
+         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *error, NSString *message) {
     }];
     
@@ -222,8 +223,11 @@
     else if (indexPath.section ==4) {
         return [self sectionFourWithTableView:tableView indexPath:indexPath];
     }
-    else {
+    else if(indexPath.section == 5){
         return [self sectionFiveWithTableView:tableView indexPath:indexPath];
+    }
+    else {
+        return nil;
     }
     
 }
