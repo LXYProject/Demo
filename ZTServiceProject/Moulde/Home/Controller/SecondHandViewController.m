@@ -178,12 +178,12 @@
                                  @{@"title":@"网游"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"TenementViewController"},
-//                                 @{@"title":@"美容"
-//                                   ,@"icon":@"order_tabbar_selected"
-//                                   ,@"vcName":@"TenementViewController"},
-//                                 @{@"title":@"更多"
-//                                   ,@"icon":@"order_tabbar_selected"
-//                                   ,@"vcName":@"TenementViewController"},
+                                 @{@"title":@"美容"
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
+                                 @{@"title":@"更多"
+                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"vcName":@"TenementViewController"},
 
                                  ];
     }

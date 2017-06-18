@@ -412,7 +412,7 @@
                                    ,@"vcName":@"LookingForViewController"},
                                  @{@"title":@"房屋租赁"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"HouseRentViewController"},
                                  @{@"title":@"求租"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"SolicitingViewController"},

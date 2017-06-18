@@ -143,10 +143,34 @@
 		7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7741EE857D000DB1486 /* NearByTitleModel.m */; };
 		7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */; };
 		7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */; };
+		7BFBDE5D1EF589AB00F2D354 /* StaticOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFBDE5B1EF589AB00F2D354 /* StaticOneCell.m */; };
+		7BFBDE5E1EF589AB00F2D354 /* StaticOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFBDE5C1EF589AB00F2D354 /* StaticOneCell.xib */; };
+		7BFBDE621EF593A800F2D354 /* HouseRentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFBDE601EF593A800F2D354 /* HouseRentViewController.m */; };
+		7BFBDE631EF593A800F2D354 /* HouseRentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFBDE611EF593A800F2D354 /* HouseRentViewController.xib */; };
+		7BFBDE671EF5946200F2D354 /* HouseRentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFBDE651EF5946200F2D354 /* HouseRentCell.m */; };
+		7BFBDE681EF5946200F2D354 /* HouseRentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFBDE661EF5946200F2D354 /* HouseRentCell.xib */; };
 		7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFE483E1EE9346A0006FF3B /* MessageHeaderCell.m */; };
 		7BFE48411EE9346A0006FF3B /* MessageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE483F1EE9346A0006FF3B /* MessageHeaderCell.xib */; };
 		7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFE48431EE937BA0006FF3B /* MessageCell.m */; };
 		7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE48441EE937BA0006FF3B /* MessageCell.xib */; };
+		7BFFBEF51EF65C8A001202EE /* AnnounceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBEF31EF65C8A001202EE /* AnnounceViewController.m */; };
+		7BFFBEF61EF65C8A001202EE /* AnnounceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBEF41EF65C8A001202EE /* AnnounceViewController.xib */; };
+		7BFFBEFB1EF65E28001202EE /* AnnounceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBEF91EF65E28001202EE /* AnnounceCell.m */; };
+		7BFFBEFC1EF65E28001202EE /* AnnounceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBEFA1EF65E28001202EE /* AnnounceCell.xib */; };
+		7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBEFE1EF664C6001202EE /* DoorServiceController.m */; };
+		7BFFBF011EF664C6001202EE /* DoorServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBEFF1EF664C6001202EE /* DoorServiceController.xib */; };
+		7BFFBF061EF66C52001202EE /* DoorServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF041EF66C52001202EE /* DoorServiceCell.m */; };
+		7BFFBF071EF66C52001202EE /* DoorServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF051EF66C52001202EE /* DoorServiceCell.xib */; };
+		7BFFBF0B1EF6785D001202EE /* PublicThingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF091EF6785D001202EE /* PublicThingsController.m */; };
+		7BFFBF0C1EF6785D001202EE /* PublicThingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF0A1EF6785D001202EE /* PublicThingsController.xib */; };
+		7BFFBF101EF67E6B001202EE /* PraiseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF0E1EF67E6B001202EE /* PraiseViewController.m */; };
+		7BFFBF111EF67E6B001202EE /* PraiseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF0F1EF67E6B001202EE /* PraiseViewController.xib */; };
+		7BFFBF161EF68026001202EE /* PraiseTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF141EF68026001202EE /* PraiseTextCell.m */; };
+		7BFFBF171EF68026001202EE /* PraiseTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF151EF68026001202EE /* PraiseTextCell.xib */; };
+		7BFFBF1B1EF682A9001202EE /* ComplaintsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF191EF682A9001202EE /* ComplaintsController.m */; };
+		7BFFBF1C1EF682A9001202EE /* ComplaintsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF1A1EF682A9001202EE /* ComplaintsController.xib */; };
+		7BFFBF211EF6833D001202EE /* ComplaintsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFBF1F1EF6833D001202EE /* ComplaintsCell.m */; };
+		7BFFBF221EF6833D001202EE /* ComplaintsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BFFBF201EF6833D001202EE /* ComplaintsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,12 +402,48 @@
 		7BF7D7761EE85E9E00DB1486 /* TenemnetHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenemnetHeaderCell.h; sourceTree = "<group>"; };
 		7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenemnetHeaderCell.m; sourceTree = "<group>"; };
 		7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TenemnetHeaderCell.xib; sourceTree = "<group>"; };
+		7BFBDE5A1EF589AB00F2D354 /* StaticOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticOneCell.h; sourceTree = "<group>"; };
+		7BFBDE5B1EF589AB00F2D354 /* StaticOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticOneCell.m; sourceTree = "<group>"; };
+		7BFBDE5C1EF589AB00F2D354 /* StaticOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticOneCell.xib; sourceTree = "<group>"; };
+		7BFBDE5F1EF593A800F2D354 /* HouseRentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseRentViewController.h; sourceTree = "<group>"; };
+		7BFBDE601EF593A800F2D354 /* HouseRentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseRentViewController.m; sourceTree = "<group>"; };
+		7BFBDE611EF593A800F2D354 /* HouseRentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseRentViewController.xib; sourceTree = "<group>"; };
+		7BFBDE641EF5946200F2D354 /* HouseRentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseRentCell.h; sourceTree = "<group>"; };
+		7BFBDE651EF5946200F2D354 /* HouseRentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseRentCell.m; sourceTree = "<group>"; };
+		7BFBDE661EF5946200F2D354 /* HouseRentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseRentCell.xib; sourceTree = "<group>"; };
 		7BFE483D1EE9346A0006FF3B /* MessageHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageHeaderCell.h; path = ../Controller/MessageHeaderCell.h; sourceTree = "<group>"; };
 		7BFE483E1EE9346A0006FF3B /* MessageHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageHeaderCell.m; path = ../Controller/MessageHeaderCell.m; sourceTree = "<group>"; };
 		7BFE483F1EE9346A0006FF3B /* MessageHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageHeaderCell.xib; path = ../Controller/MessageHeaderCell.xib; sourceTree = "<group>"; };
 		7BFE48421EE937BA0006FF3B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageCell.h; path = ../Controller/MessageCell.h; sourceTree = "<group>"; };
 		7BFE48431EE937BA0006FF3B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageCell.m; path = ../Controller/MessageCell.m; sourceTree = "<group>"; };
 		7BFE48441EE937BA0006FF3B /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCell.xib; path = ../Controller/MessageCell.xib; sourceTree = "<group>"; };
+		7BFFBEF21EF65C8A001202EE /* AnnounceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceViewController.h; sourceTree = "<group>"; };
+		7BFFBEF31EF65C8A001202EE /* AnnounceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceViewController.m; sourceTree = "<group>"; };
+		7BFFBEF41EF65C8A001202EE /* AnnounceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnounceViewController.xib; sourceTree = "<group>"; };
+		7BFFBEF81EF65E28001202EE /* AnnounceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceCell.h; sourceTree = "<group>"; };
+		7BFFBEF91EF65E28001202EE /* AnnounceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceCell.m; sourceTree = "<group>"; };
+		7BFFBEFA1EF65E28001202EE /* AnnounceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnnounceCell.xib; sourceTree = "<group>"; };
+		7BFFBEFD1EF664C6001202EE /* DoorServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorServiceController.h; sourceTree = "<group>"; };
+		7BFFBEFE1EF664C6001202EE /* DoorServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorServiceController.m; sourceTree = "<group>"; };
+		7BFFBEFF1EF664C6001202EE /* DoorServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoorServiceController.xib; sourceTree = "<group>"; };
+		7BFFBF031EF66C52001202EE /* DoorServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorServiceCell.h; sourceTree = "<group>"; };
+		7BFFBF041EF66C52001202EE /* DoorServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoorServiceCell.m; sourceTree = "<group>"; };
+		7BFFBF051EF66C52001202EE /* DoorServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoorServiceCell.xib; sourceTree = "<group>"; };
+		7BFFBF081EF6785D001202EE /* PublicThingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicThingsController.h; sourceTree = "<group>"; };
+		7BFFBF091EF6785D001202EE /* PublicThingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicThingsController.m; sourceTree = "<group>"; };
+		7BFFBF0A1EF6785D001202EE /* PublicThingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublicThingsController.xib; sourceTree = "<group>"; };
+		7BFFBF0D1EF67E6B001202EE /* PraiseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PraiseViewController.h; sourceTree = "<group>"; };
+		7BFFBF0E1EF67E6B001202EE /* PraiseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PraiseViewController.m; sourceTree = "<group>"; };
+		7BFFBF0F1EF67E6B001202EE /* PraiseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PraiseViewController.xib; sourceTree = "<group>"; };
+		7BFFBF131EF68026001202EE /* PraiseTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PraiseTextCell.h; sourceTree = "<group>"; };
+		7BFFBF141EF68026001202EE /* PraiseTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PraiseTextCell.m; sourceTree = "<group>"; };
+		7BFFBF151EF68026001202EE /* PraiseTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PraiseTextCell.xib; sourceTree = "<group>"; };
+		7BFFBF181EF682A9001202EE /* ComplaintsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintsController.h; sourceTree = "<group>"; };
+		7BFFBF191EF682A9001202EE /* ComplaintsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintsController.m; sourceTree = "<group>"; };
+		7BFFBF1A1EF682A9001202EE /* ComplaintsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplaintsController.xib; sourceTree = "<group>"; };
+		7BFFBF1E1EF6833D001202EE /* ComplaintsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintsCell.h; sourceTree = "<group>"; };
+		7BFFBF1F1EF6833D001202EE /* ComplaintsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintsCell.m; sourceTree = "<group>"; };
+		7BFFBF201EF6833D001202EE /* ComplaintsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplaintsCell.xib; sourceTree = "<group>"; };
 		8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -482,6 +542,9 @@
 				7B33B79D1EF37657005FBBBB /* StaticlCell.h */,
 				7B33B79E1EF37657005FBBBB /* StaticlCell.m */,
 				7B33B79F1EF37657005FBBBB /* StaticlCell.xib */,
+				7BFBDE5A1EF589AB00F2D354 /* StaticOneCell.h */,
+				7BFBDE5B1EF589AB00F2D354 /* StaticOneCell.m */,
+				7BFBDE5C1EF589AB00F2D354 /* StaticOneCell.xib */,
 				7B1661F41EF2861C00644A7B /* AddPhotosCell.h */,
 				7B1661F51EF2861C00644A7B /* AddPhotosCell.m */,
 				7B1661F61EF2861C00644A7B /* AddPhotosCell.xib */,
@@ -663,6 +726,9 @@
 				7B33B7A21EF37C0C005FBBBB /* SolicitingViewController.h */,
 				7B33B7A31EF37C0C005FBBBB /* SolicitingViewController.m */,
 				7B33B7A41EF37C0C005FBBBB /* SolicitingViewController.xib */,
+				7BFBDE5F1EF593A800F2D354 /* HouseRentViewController.h */,
+				7BFBDE601EF593A800F2D354 /* HouseRentViewController.m */,
+				7BFBDE611EF593A800F2D354 /* HouseRentViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -687,6 +753,9 @@
 				7B16620E1EF2862900644A7B /* HomeView */,
 				7B1662031EF2862300644A7B /* SecondHandView */,
 				7B1661F31EF2861C00644A7B /* LookingForView */,
+				7BFBDE641EF5946200F2D354 /* HouseRentCell.h */,
+				7BFBDE651EF5946200F2D354 /* HouseRentCell.m */,
+				7BFBDE661EF5946200F2D354 /* HouseRentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -816,6 +885,21 @@
 				7BA167861EE66DA8000ECCE6 /* TenementViewController.h */,
 				7BA167871EE66DA8000ECCE6 /* TenementViewController.m */,
 				7BA167881EE66DA8000ECCE6 /* TenementViewController.xib */,
+				7BFFBEF21EF65C8A001202EE /* AnnounceViewController.h */,
+				7BFFBEF31EF65C8A001202EE /* AnnounceViewController.m */,
+				7BFFBEF41EF65C8A001202EE /* AnnounceViewController.xib */,
+				7BFFBEFD1EF664C6001202EE /* DoorServiceController.h */,
+				7BFFBEFE1EF664C6001202EE /* DoorServiceController.m */,
+				7BFFBEFF1EF664C6001202EE /* DoorServiceController.xib */,
+				7BFFBF081EF6785D001202EE /* PublicThingsController.h */,
+				7BFFBF091EF6785D001202EE /* PublicThingsController.m */,
+				7BFFBF0A1EF6785D001202EE /* PublicThingsController.xib */,
+				7BFFBF0D1EF67E6B001202EE /* PraiseViewController.h */,
+				7BFFBF0E1EF67E6B001202EE /* PraiseViewController.m */,
+				7BFFBF0F1EF67E6B001202EE /* PraiseViewController.xib */,
+				7BFFBF181EF682A9001202EE /* ComplaintsController.h */,
+				7BFFBF191EF682A9001202EE /* ComplaintsController.m */,
+				7BFFBF1A1EF682A9001202EE /* ComplaintsController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -830,6 +914,10 @@
 		7B6C26AD1EE3C2AB0090BE5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BFFBF1D1EF68321001202EE /* ComplaintView */,
+				7BFFBF121EF68004001202EE /* PraiseTextView */,
+				7BFFBF021EF66C21001202EE /* DoorService */,
+				7BFFBEF71EF65E05001202EE /* AnnounceView */,
 				7BF7D7761EE85E9E00DB1486 /* TenemnetHeaderCell.h */,
 				7BF7D7771EE85E9E00DB1486 /* TenemnetHeaderCell.m */,
 				7BF7D7781EE85E9E00DB1486 /* TenemnetHeaderCell.xib */,
@@ -1049,6 +1137,46 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7BFFBEF71EF65E05001202EE /* AnnounceView */ = {
+			isa = PBXGroup;
+			children = (
+				7BFFBEF81EF65E28001202EE /* AnnounceCell.h */,
+				7BFFBEF91EF65E28001202EE /* AnnounceCell.m */,
+				7BFFBEFA1EF65E28001202EE /* AnnounceCell.xib */,
+			);
+			path = AnnounceView;
+			sourceTree = "<group>";
+		};
+		7BFFBF021EF66C21001202EE /* DoorService */ = {
+			isa = PBXGroup;
+			children = (
+				7BFFBF031EF66C52001202EE /* DoorServiceCell.h */,
+				7BFFBF041EF66C52001202EE /* DoorServiceCell.m */,
+				7BFFBF051EF66C52001202EE /* DoorServiceCell.xib */,
+			);
+			path = DoorService;
+			sourceTree = "<group>";
+		};
+		7BFFBF121EF68004001202EE /* PraiseTextView */ = {
+			isa = PBXGroup;
+			children = (
+				7BFFBF131EF68026001202EE /* PraiseTextCell.h */,
+				7BFFBF141EF68026001202EE /* PraiseTextCell.m */,
+				7BFFBF151EF68026001202EE /* PraiseTextCell.xib */,
+			);
+			path = PraiseTextView;
+			sourceTree = "<group>";
+		};
+		7BFFBF1D1EF68321001202EE /* ComplaintView */ = {
+			isa = PBXGroup;
+			children = (
+				7BFFBF1E1EF6833D001202EE /* ComplaintsCell.h */,
+				7BFFBF1F1EF6833D001202EE /* ComplaintsCell.m */,
+				7BFFBF201EF6833D001202EE /* ComplaintsCell.xib */,
+			);
+			path = ComplaintView;
+			sourceTree = "<group>";
+		};
 		B888996B7B1B5FD535107966 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BFFBEFC1EF65E28001202EE /* AnnounceCell.xib in Resources */,
 				7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */,
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
@@ -1188,10 +1317,12 @@
 				7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
 				7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */,
+				7BFFBF071EF66C52001202EE /* DoorServiceCell.xib in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
 				7BF4B22D1EE3D6470058185F /* nav_more_btn@3x.png in Resources */,
+				7BFBDE631EF593A800F2D354 /* HouseRentViewController.xib in Resources */,
 				7BF4B2181EE3D45A0058185F /* order_tabbar_default@3x.png in Resources */,
 				7B6C26C11EE3C3140090BE5C /* MineViewController.xib in Resources */,
 				7BF4B2121EE3D45A0058185F /* message_tabbar_selected@3x.png in Resources */,
@@ -1204,6 +1335,7 @@
 				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7B16622C1EF2862900644A7B /* NearByHeaderCell.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
+				7BFFBF1C1EF682A9001202EE /* ComplaintsController.xib in Resources */,
 				7B9EA83C1EE9B212003A5DF2 /* Pic_blank_328px@2x.png in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
 				7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */,
@@ -1215,10 +1347,12 @@
 				7BF4B2141EE3D45A0058185F /* my_tabbar_default@3x.png in Resources */,
 				7BF4B21B1EE3D45A0058185F /* worktable_tabbar_default@2x.png in Resources */,
 				7B33B7571EF368AF005FBBBB /* reimbursement_delete@2x.png in Resources */,
+				7BFFBF111EF67E6B001202EE /* PraiseViewController.xib in Resources */,
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
 				7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */,
 				7B33B7AC1EF38499005FBBBB /* SolicitingHeadCell.xib in Resources */,
+				7BFFBF0C1EF6785D001202EE /* PublicThingsController.xib in Resources */,
 				7BFE48411EE9346A0006FF3B /* MessageHeaderCell.xib in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
@@ -1230,10 +1364,16 @@
 				7B33B7531EF368AF005FBBBB /* HClTextView.xib in Resources */,
 				7B33B7A61EF37C0C005FBBBB /* SolicitingViewController.xib in Resources */,
 				7BF4B2151EE3D45A0058185F /* my_tabbar_selected@2x.png in Resources */,
+				7BFBDE681EF5946200F2D354 /* HouseRentCell.xib in Resources */,
+				7BFFBF011EF664C6001202EE /* DoorServiceController.xib in Resources */,
 				7B16620D1EF2862300644A7B /* SearchHeadCell.xib in Resources */,
+				7BFFBF171EF68026001202EE /* PraiseTextCell.xib in Resources */,
+				7BFFBF221EF6833D001202EE /* ComplaintsCell.xib in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
+				7BFFBEF61EF65C8A001202EE /* AnnounceViewController.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
+				7BFBDE5E1EF589AB00F2D354 /* StaticOneCell.xib in Resources */,
 				7B16620B1EF2862300644A7B /* ImageCell.xib in Resources */,
 				7B1662001EF2861C00644A7B /* BabyDescriptionCell.xib in Resources */,
 				7BA167711EE64561000ECCE6 /* HomeViewController.xib in Resources */,
@@ -1309,7 +1449,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BFFBEFB1EF65E28001202EE /* AnnounceCell.m in Sources */,
 				7B1662311EF2862900644A7B /* ProductItemCell.m in Sources */,
+				7BFFBF161EF68026001202EE /* PraiseTextCell.m in Sources */,
 				7B16622F1EF2862900644A7B /* ProductCollecttionCell.m in Sources */,
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
@@ -1318,12 +1460,14 @@
 				7B24C01E1EF22D1D00889902 /* SecondHandViewController.m in Sources */,
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
 				7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */,
+				7BFFBF211EF6833D001202EE /* ComplaintsCell.m in Sources */,
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
 				7B1661FD1EF2861C00644A7B /* AddPhotosCell.m in Sources */,
+				7BFBDE671EF5946200F2D354 /* HouseRentCell.m in Sources */,
 				7B16620C1EF2862300644A7B /* SearchHeadCell.m in Sources */,
 				7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */,
 				7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */,
@@ -1337,10 +1481,12 @@
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
 				7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
+				7BFFBEF51EF65C8A001202EE /* AnnounceViewController.m in Sources */,
 				7B33B7511EF368AF005FBBBB /* FrameAutoBtnWithTitle.m in Sources */,
 				7B33B7A51EF37C0C005FBBBB /* SolicitingViewController.m in Sources */,
 				7B33B7551EF368AF005FBBBB /* NSString+Valid.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
+				7BFFBF0B1EF6785D001202EE /* PublicThingsController.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7B1662331EF2862900644A7B /* secondHandCell.m in Sources */,
 				7BA167751EE64B27000ECCE6 /* NoticeView.m in Sources */,
@@ -1356,13 +1502,18 @@
 				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
+				7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */,
+				7BFFBF1B1EF682A9001202EE /* ComplaintsController.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
+				7BFBDE5D1EF589AB00F2D354 /* StaticOneCell.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */,
 				7BC9D9B61EF25D2600B01A14 /* LookingForViewController.m in Sources */,
+				7BFFBF061EF66C52001202EE /* DoorServiceCell.m in Sources */,
+				7BFBDE621EF593A800F2D354 /* HouseRentViewController.m in Sources */,
 				7B33B7521EF368AF005FBBBB /* HClTextView.m in Sources */,
 				7B1662011EF2861C00644A7B /* BtnItemCell.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
@@ -1373,6 +1524,7 @@
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
 				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
 				7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */,
+				7BFFBF101EF67E6B001202EE /* PraiseViewController.m in Sources */,
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
 				7B33B7561EF368AF005FBBBB /* PlaceholderTextView.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,

@@ -11,6 +11,7 @@
 @interface SolicitingHeadCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UITextField *content;
+@property (weak, nonatomic) IBOutlet UILabel *rightContent;
 
 
 @end

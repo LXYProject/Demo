@@ -84,6 +84,7 @@
 #define RGB(r,g,b) RGBA(r,g,b,1.0f)
 //背景色
 #define BACKGROUND_COLOR [UIColor colorWithRed:242.0/255.0 green:236.0/255.0 blue:231.0/255.0 alpha:1.0]
+#define TEXT_COLOR [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
 //清除背景色
 #define CLEARCOLOR [UIColor clearColor]
 //----------------------颜色相关--------------------------

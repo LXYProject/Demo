@@ -15,20 +15,30 @@
 
 @interface SolicitingViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong)NSArray *itemDataSourceArray;
 
 @end
 
 @implementation SolicitingViewController
-
+{
+    NSArray *_titleArray;
+    NSArray *_contentArray;
+    NSArray *_rightArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
+    _titleArray = @[@"租金", @"户型", @"朝向"];
+    _contentArray = @[@"请填写租金", @"请选择户型", @""];
+    _rightArray = @[@"", @"选择", @"南"];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+
+    [self.tableView reloadData];
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 5;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -49,13 +59,13 @@
     }else if (indexPath.section==1){
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
     }
-//    else if (indexPath.section==1){
-//        return [self sectionTwoWithTableView:tableView indexPath:indexPath];
-//    }else if (indexPath.section==1){
-//        return [self sectionThirdrdTableView:tableView indexPath:indexPath];
-//    }else if (indexPath.section==1){
-//        return [self sectionFourTableView:tableView indexPath:indexPath];
-//    }
+    else if (indexPath.section==2){
+        return [self sectionTwoWithTableView:tableView indexPath:indexPath];
+    }else if (indexPath.section==3){
+        return [self sectionThirdrdTableView:tableView indexPath:indexPath];
+    }else if (indexPath.section==4){
+        return [self sectionFourTableView:tableView indexPath:indexPath];
+    }
     return nil;
 }
 
@@ -64,11 +74,29 @@
                                     indexPath:(NSIndexPath *)indexPath {
     SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
     if (indexPath.row==0) {
-    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-//    cell.title = self.titleArray[indexPath.row];
-//    cell.content = self.detailsArray[indexPath.row];
+    if (indexPath.row==2) {
+        [cell.content removeFromSuperview];
+    }
+    cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
+    cell.content.placeholder = _contentArray[indexPath.row];
+    cell.rightContent.text = _rightArray[indexPath.row];
+    if (IS_IPHONE_4&&IS_IPHONE_5) {
+        cell.title.font = [UIFont systemFontOfSize:13];
+        cell.rightContent.font = [UIFont systemFontOfSize:13];
+        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+    }else{
+        cell.title.font = [UIFont systemFontOfSize:14];
+        cell.rightContent.font = [UIFont systemFontOfSize:14];
+        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    }
+    cell.title.textColor = TEXT_COLOR;
+    cell.rightContent.textColor = TEXT_COLOR;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
 }
@@ -78,6 +106,7 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     SolicitBtnItemCell *cell = (SolicitBtnItemCell *)[self creatCell:tableView indenty:@"SolicitBtnItemCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -86,6 +115,7 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     BtnItemCell *cell = (BtnItemCell *)[self creatCell:tableView indenty:@"BtnItemCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -94,14 +124,16 @@
                                indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-//第3组
+//第4组
 - (UITableViewCell *)sectionFourTableView:(UITableView *)tableView
                                  indexPath:(NSIndexPath *)indexPath {
     
     BabyDescriptionCell *cell = (BabyDescriptionCell *)[self creatCell:tableView indenty:@"BabyDescriptionCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -119,7 +151,7 @@
     if (section==0) {
         return 0.f;
     }else{
-        return 10.f;
+        return 5.f;
     }
 }
 
@@ -140,33 +172,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 44;
-//    if (indexPath.section == 0) {
-//        return 44;
-//    }
-//    else if (indexPath.section==1){
-//        return 44;
-//    }
-//    else if (indexPath.section ==2) {
-//        return 85;
-//    }
-//    else {
-//        return 100;
-//    }
-}
-- (NSArray *)itemDataSourceArray {
-    if(!_itemDataSourceArray) {
-        _itemDataSourceArray = @[
-                                 @{@"title":@"租金"
-                                   ,@"content":@"请填写租金"},
-                                 @{@"title":@"户型"
-                                   ,@"content":@"请填写户型"},
-                                 @{@"title":@"朝向"
-                                   ,@"content":@""},
-
-                                 ];
+    if (indexPath.section == 0 || indexPath.section==1) {
+        return 44;
     }
-    return _itemDataSourceArray;
+    else if (indexPath.section ==2) {
+        return 85;
+    }
+    else {
+        return 100;
+    }
 }
 
 @end

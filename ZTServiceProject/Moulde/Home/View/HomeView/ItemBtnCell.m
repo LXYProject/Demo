@@ -8,12 +8,13 @@
 //
 
 #import "ItemBtnCell.h"
-#define ItemsNumber 8
-#define ItemCloums 4
+#define ItemsNumber 10
 #define BtnTag  10000000
 #define ScreenW ([UIScreen mainScreen].bounds.size.width)
 @implementation ItemBtnCell
-
+{
+    NSInteger _itemCloums;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
 
@@ -26,6 +27,12 @@
 
 - (void)setTitleAndImageDictArray:(NSArray *)titleAndImageDictArray {
     _titleAndImageDictArray = titleAndImageDictArray;
+    if (_titleAndImageDictArray.count%5==0) {
+        _itemCloums = 5;
+    }
+    else {
+        _itemCloums = 4;
+    }
     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[UIButton class]]) {
             [obj removeFromSuperview];
@@ -42,11 +49,11 @@
     CGFloat bottom = 18;
     CGFloat btnW = 50;
     CGFloat btnH = 60;
-    CGFloat rowSpace = (ScreenW - left- right-btnW*ItemCloums)/(ItemCloums - 1);
+    CGFloat rowSpace = (ScreenW - left- right-btnW*_itemCloums)/(_itemCloums - 1);
     CGFloat listSpace = 18;
     for(int i =0;i<_titleAndImageDictArray.count;i++) {
-        NSInteger row = i/ItemCloums;
-        NSInteger list = i%ItemCloums;
+        NSInteger row = i/_itemCloums;
+        NSInteger list = i%_itemCloums;
         EJVerticalButton *btn = [EJVerticalButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(left+list*(btnW+rowSpace), top+row*(btnH+listSpace), btnW, btnH);
         [btn setTitle:_titleAndImageDictArray[i][@"title"] forState:UIControlStateNormal];

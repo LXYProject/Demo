@@ -149,7 +149,7 @@
                              @[
                                  @{@"title":@"小区公告",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  
                                  @{@"title":@"小区全景",
                                    @"icon":@"my_tabbar_selected",
@@ -166,19 +166,19 @@
                              @[
                                  @{@"title":@"上门服务",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"DoorServiceController"},
                                  
                                  @{@"title":@"公共报事",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"PublicThingsController"},
                                  
                                  @{@"title":@"表扬",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"PraiseViewController"},
                                  
                                  @{@"title":@"投诉",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"ComplaintsController"},
                                  ],
                              @[
                                  @{@"title":@"呼叫保安",
