@@ -31,6 +31,14 @@
     _contentArray = @[@"输入您的姓名", @"输入您的电话"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
 
+    [self titleViewWithTitle:@"公共报事" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"提交" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
+}
+
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -116,6 +124,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.textLabel.text = @"位置选择";
+    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
     }else{

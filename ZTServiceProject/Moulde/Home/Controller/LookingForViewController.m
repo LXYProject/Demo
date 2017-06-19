@@ -35,8 +35,18 @@
     _contentArray = @[@"请输入物品的名称", @"请输入品牌的型号"];
     _titleOneArray = @[@"新旧程度：",@"价格范围："];
     _contentOneArray = @[@"八成新", @"1000-2000"];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+    
+    [self titleViewWithTitle:@"求购" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
+
 }
 
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section ==0) {
         return 4;

@@ -19,6 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self titleViewWithTitle:@"房屋租赁" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
+}
+
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

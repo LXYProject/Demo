@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06B79DB6DA195EC61E73756A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66D9467C18BBC85FA9CA649 /* libPods-ZTServiceProject.a */; };
 		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
 		299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */; };
 		299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */; };
@@ -20,7 +21,6 @@
 		299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */; };
 		299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */; };
 		299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CE81EE806B00045A884 /* NearByHttpManager.m */; };
-		6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */; };
 		7B1661FD1EF2861C00644A7B /* AddPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661F51EF2861C00644A7B /* AddPhotosCell.m */; };
 		7B1661FE1EF2861C00644A7B /* AddPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1661F61EF2861C00644A7B /* AddPhotosCell.xib */; };
 		7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661F81EF2861C00644A7B /* BabyDescriptionCell.m */; };
@@ -49,8 +49,6 @@
 		7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662261EF2862900644A7B /* SectionHeaderCell.xib */; };
 		7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */; };
 		7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F941EEFEF05003B4E1B /* LoginDataModel.m */; };
-		7B24C01E1EF22D1D00889902 /* SecondHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */; };
-		7B24C01F1EF22D1D00889902 /* SecondHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
@@ -72,6 +70,10 @@
 		7B33B7AC1EF38499005FBBBB /* SolicitingHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7AA1EF38499005FBBBB /* SolicitingHeadCell.xib */; };
 		7B33B7B01EF389B6005FBBBB /* SolicitBtnItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */; };
 		7B33B7B11EF389B6005FBBBB /* SolicitBtnItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */; };
+		7B3CFE631EF77099009AC748 /* 否@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CFE611EF77099009AC748 /* 否@3x.png */; };
+		7B3CFE641EF77099009AC748 /* 是@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CFE621EF77099009AC748 /* 是@3x.png */; };
+		7B3CFE681EF77A74009AC748 /* SolicitBtnItemOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CFE661EF77A74009AC748 /* SolicitBtnItemOneCell.m */; };
+		7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CFE671EF77A74009AC748 /* SolicitBtnItemOneCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
@@ -105,6 +107,12 @@
 		7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */; };
 		7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */; };
 		7BA167D51EE6AA10000ECCE6 /* MineBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */; };
+		7BAFBC161EF7B21C00AFB6C7 /* SecondHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */; };
+		7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */; };
+		7BAFBC1B1EF7B25D00AFB6C7 /* ReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC191EF7B25D00AFB6C7 /* ReleaseViewController.m */; };
+		7BAFBC1C1EF7B25D00AFB6C7 /* ReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFBC1A1EF7B25D00AFB6C7 /* ReleaseViewController.xib */; };
+		7BAFBC201EF7BAF700AFB6C7 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC1E1EF7BAF700AFB6C7 /* SwitchCell.m */; };
+		7BAFBC211EF7BAF700AFB6C7 /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFBC1F1EF7BAF700AFB6C7 /* SwitchCell.xib */; };
 		7BC9D9B61EF25D2600B01A14 /* LookingForViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */; };
 		7BC9D9B71EF25D2600B01A14 /* LookingForViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */; };
 		7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */; };
@@ -261,9 +269,6 @@
 		7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHttpManager.m; sourceTree = "<group>"; };
 		7B249F931EEFEF05003B4E1B /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDataModel.h; sourceTree = "<group>"; };
 		7B249F941EEFEF05003B4E1B /* LoginDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataModel.m; sourceTree = "<group>"; };
-		7B24C01B1EF22D1D00889902 /* SecondHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandViewController.h; sourceTree = "<group>"; };
-		7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandViewController.m; sourceTree = "<group>"; };
-		7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandViewController.xib; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
 		7B2C4DDE1EE6DD3800745071 /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
@@ -300,6 +305,11 @@
 		7B33B7AD1EF389B6005FBBBB /* SolicitBtnItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolicitBtnItemCell.h; sourceTree = "<group>"; };
 		7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolicitBtnItemCell.m; sourceTree = "<group>"; };
 		7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitBtnItemCell.xib; sourceTree = "<group>"; };
+		7B3CFE611EF77099009AC748 /* 否@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "否@3x.png"; sourceTree = "<group>"; };
+		7B3CFE621EF77099009AC748 /* 是@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "是@3x.png"; sourceTree = "<group>"; };
+		7B3CFE651EF77A74009AC748 /* SolicitBtnItemOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolicitBtnItemOneCell.h; sourceTree = "<group>"; };
+		7B3CFE661EF77A74009AC748 /* SolicitBtnItemOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolicitBtnItemOneCell.m; sourceTree = "<group>"; };
+		7B3CFE671EF77A74009AC748 /* SolicitBtnItemOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitBtnItemOneCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		7B46E2A41EF0D59E00CA415D /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
@@ -354,6 +364,15 @@
 		7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MineBtnCell.h; path = ../Controller/MineBtnCell.h; sourceTree = "<group>"; };
 		7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MineBtnCell.m; path = ../Controller/MineBtnCell.m; sourceTree = "<group>"; };
 		7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MineBtnCell.xib; path = ../Controller/MineBtnCell.xib; sourceTree = "<group>"; };
+		7BAFBC131EF7B21C00AFB6C7 /* SecondHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandViewController.h; sourceTree = "<group>"; };
+		7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandViewController.m; sourceTree = "<group>"; };
+		7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandViewController.xib; sourceTree = "<group>"; };
+		7BAFBC181EF7B25D00AFB6C7 /* ReleaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseViewController.h; sourceTree = "<group>"; };
+		7BAFBC191EF7B25D00AFB6C7 /* ReleaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseViewController.m; sourceTree = "<group>"; };
+		7BAFBC1A1EF7B25D00AFB6C7 /* ReleaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseViewController.xib; sourceTree = "<group>"; };
+		7BAFBC1D1EF7BAF700AFB6C7 /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		7BAFBC1E1EF7BAF700AFB6C7 /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		7BAFBC1F1EF7BAF700AFB6C7 /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		7BBE15721EE3C56A0064BEF3 /* ZTServiceProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTServiceProject.pch; sourceTree = "<group>"; };
 		7BC9D9B31EF25D2600B01A14 /* LookingForViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LookingForViewController.h; sourceTree = "<group>"; };
 		7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LookingForViewController.m; sourceTree = "<group>"; };
@@ -444,7 +463,7 @@
 		7BFFBF1E1EF6833D001202EE /* ComplaintsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplaintsCell.h; sourceTree = "<group>"; };
 		7BFFBF1F1EF6833D001202EE /* ComplaintsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplaintsCell.m; sourceTree = "<group>"; };
 		7BFFBF201EF6833D001202EE /* ComplaintsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComplaintsCell.xib; sourceTree = "<group>"; };
-		8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A66D9467C18BBC85FA9CA649 /* libPods-ZTServiceProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZTServiceProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -454,7 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B78AC081EE99A9200FDFE7C /* Security.framework in Frameworks */,
-				6E87237A595FB44B3C668D2A /* libPods-ZTServiceProject.a in Frameworks */,
+				06B79DB6DA195EC61E73756A /* libPods-ZTServiceProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +586,9 @@
 				7B1662071EF2862300644A7B /* SearchHeadCell.h */,
 				7B1662081EF2862300644A7B /* SearchHeadCell.m */,
 				7B1662091EF2862300644A7B /* SearchHeadCell.xib */,
+				7BAFBC1D1EF7BAF700AFB6C7 /* SwitchCell.h */,
+				7BAFBC1E1EF7BAF700AFB6C7 /* SwitchCell.m */,
+				7BAFBC1F1EF7BAF700AFB6C7 /* SwitchCell.xib */,
 			);
 			path = SecondHandView;
 			sourceTree = "<group>";
@@ -632,6 +654,9 @@
 				7B33B7AD1EF389B6005FBBBB /* SolicitBtnItemCell.h */,
 				7B33B7AE1EF389B6005FBBBB /* SolicitBtnItemCell.m */,
 				7B33B7AF1EF389B6005FBBBB /* SolicitBtnItemCell.xib */,
+				7B3CFE651EF77A74009AC748 /* SolicitBtnItemOneCell.h */,
+				7B3CFE661EF77A74009AC748 /* SolicitBtnItemOneCell.m */,
+				7B3CFE671EF77A74009AC748 /* SolicitBtnItemOneCell.xib */,
 			);
 			name = SolicitingView;
 			path = LookingForView/SolicitingView;
@@ -714,12 +739,10 @@
 		7B6C269B1EE3C2AB0090BE5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7BAFBC121EF7B21B00AFB6C7 /* SecondHandVC */,
 				7BA1676D1EE64561000ECCE6 /* HomeViewController.h */,
 				7BA1676E1EE64561000ECCE6 /* HomeViewController.m */,
 				7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */,
-				7B24C01B1EF22D1D00889902 /* SecondHandViewController.h */,
-				7B24C01C1EF22D1D00889902 /* SecondHandViewController.m */,
-				7B24C01D1EF22D1D00889902 /* SecondHandViewController.xib */,
 				7BC9D9B31EF25D2600B01A14 /* LookingForViewController.h */,
 				7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */,
 				7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */,
@@ -928,6 +951,8 @@
 		7B6C26AE1EE3C2AB0090BE5C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7B3CFE611EF77099009AC748 /* 否@3x.png */,
+				7B3CFE621EF77099009AC748 /* 是@3x.png */,
 				7B9EA83A1EE9B212003A5DF2 /* Pic_blank_328px@2x.png */,
 				7B9EA83B1EE9B212003A5DF2 /* Pic_blank_328px@3x.png */,
 				7BF4B21F1EE3D6470058185F /* NavgationIcon */,
@@ -1066,6 +1091,19 @@
 			path = Base/Lib;
 			sourceTree = "<group>";
 		};
+		7BAFBC121EF7B21B00AFB6C7 /* SecondHandVC */ = {
+			isa = PBXGroup;
+			children = (
+				7BAFBC131EF7B21C00AFB6C7 /* SecondHandViewController.h */,
+				7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */,
+				7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */,
+				7BAFBC181EF7B25D00AFB6C7 /* ReleaseViewController.h */,
+				7BAFBC191EF7B25D00AFB6C7 /* ReleaseViewController.m */,
+				7BAFBC1A1EF7B25D00AFB6C7 /* ReleaseViewController.xib */,
+			);
+			path = SecondHandVC;
+			sourceTree = "<group>";
+		};
 		7BF4B1FE1EE3D45A0058185F /* TabbarIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,7 +1219,7 @@
 			isa = PBXGroup;
 			children = (
 				7B78AC071EE99A9200FDFE7C /* Security.framework */,
-				8BBD845A957BEB11338C7841 /* libPods-ZTServiceProject.a */,
+				A66D9467C18BBC85FA9CA649 /* libPods-ZTServiceProject.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1302,13 +1340,13 @@
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
+				7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
 				7B1662281EF2862900644A7B /* BannerHeaderCell.xib in Resources */,
 				7B16622A1EF2862900644A7B /* ItemBtnCell.xib in Resources */,
 				7BA1678A1EE66DA8000ECCE6 /* TenementViewController.xib in Resources */,
 				7BA167791EE64B55000ECCE6 /* noticeYellow@3x.png in Resources */,
 				7B8F0D1E1EE3BE1F00ED16E3 /* Assets.xcassets in Resources */,
-				7B24C01F1EF22D1D00889902 /* SecondHandViewController.xib in Resources */,
 				7BF4B2331EE3D6470058185F /* warn_press_40px@3x.png in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7B9EA83D1EE9B212003A5DF2 /* Pic_blank_328px@3x.png in Resources */,
@@ -1320,6 +1358,7 @@
 				7BFFBF071EF66C52001202EE /* DoorServiceCell.xib in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
+				7B3CFE631EF77099009AC748 /* 否@3x.png in Resources */,
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
 				7BF4B22D1EE3D6470058185F /* nav_more_btn@3x.png in Resources */,
 				7BFBDE631EF593A800F2D354 /* HouseRentViewController.xib in Resources */,
@@ -1334,7 +1373,9 @@
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
 				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7B16622C1EF2862900644A7B /* NearByHeaderCell.xib in Resources */,
+				7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
+				7B3CFE641EF77099009AC748 /* 是@3x.png in Resources */,
 				7BFFBF1C1EF682A9001202EE /* ComplaintsController.xib in Resources */,
 				7B9EA83C1EE9B212003A5DF2 /* Pic_blank_328px@2x.png in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
@@ -1348,6 +1389,7 @@
 				7BF4B21B1EE3D45A0058185F /* worktable_tabbar_default@2x.png in Resources */,
 				7B33B7571EF368AF005FBBBB /* reimbursement_delete@2x.png in Resources */,
 				7BFFBF111EF67E6B001202EE /* PraiseViewController.xib in Resources */,
+				7BAFBC211EF7BAF700AFB6C7 /* SwitchCell.xib in Resources */,
 				7B6C26D91EE3C3710090BE5C /* LoginViewController.xib in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
 				7B3238C91EE7AD8E00403495 /* NearByCell.xib in Resources */,
@@ -1370,6 +1412,7 @@
 				7BFFBF171EF68026001202EE /* PraiseTextCell.xib in Resources */,
 				7BFFBF221EF6833D001202EE /* ComplaintsCell.xib in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
+				7BAFBC1C1EF7B25D00AFB6C7 /* ReleaseViewController.xib in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
 				7BFFBEF61EF65C8A001202EE /* AnnounceViewController.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
@@ -1457,10 +1500,10 @@
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B16620A1EF2862300644A7B /* ImageCell.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
-				7B24C01E1EF22D1D00889902 /* SecondHandViewController.m in Sources */,
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
 				7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */,
 				7BFFBF211EF6833D001202EE /* ComplaintsCell.m in Sources */,
+				7BAFBC1B1EF7B25D00AFB6C7 /* ReleaseViewController.m in Sources */,
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
@@ -1493,6 +1536,7 @@
 				7B33B7581EF368AF005FBBBB /* UIColor+Additions.m in Sources */,
 				7BF7D7791EE85E9E00DB1486 /* TenemnetHeaderCell.m in Sources */,
 				7B16622D1EF2862900644A7B /* NearByServiceCell.m in Sources */,
+				7BAFBC161EF7B21C00AFB6C7 /* SecondHandViewController.m in Sources */,
 				299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */,
 				7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */,
 				299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */,
@@ -1509,6 +1553,7 @@
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
+				7BAFBC201EF7BAF700AFB6C7 /* SwitchCell.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */,
 				7BC9D9B61EF25D2600B01A14 /* LookingForViewController.m in Sources */,
@@ -1527,6 +1572,7 @@
 				7BFFBF101EF67E6B001202EE /* PraiseViewController.m in Sources */,
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
 				7B33B7561EF368AF005FBBBB /* PlaceholderTextView.m in Sources */,
+				7B3CFE681EF77A74009AC748 /* SolicitBtnItemOneCell.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

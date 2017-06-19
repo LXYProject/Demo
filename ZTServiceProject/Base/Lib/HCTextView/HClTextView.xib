@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uoy-0D-MsL" customClass="PlaceholderTextView">
-                    <rect key="frame" x="87" y="5" width="223" height="71"/>
+                    <rect key="frame" x="87" y="10" width="223" height="66"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,13 +31,6 @@
                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oew-R4-Hs6" userLabel="分隔线">
-                    <rect key="frame" x="0.0" y="99" width="320" height="1"/>
-                    <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="Grz-xx-zoW"/>
-                    </constraints>
-                </view>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2y-8s-JTZ" userLabel="clearButton">
                     <rect key="frame" x="290" y="61" width="15" height="15"/>
                     <constraints>
@@ -51,7 +44,7 @@
                         <action selector="clearButtonClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="LoZ-cR-d3L"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝描述：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhV-SF-EFu">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宝贝描述：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhV-SF-EFu">
                     <rect key="frame" x="15" y="11" width="72" height="15"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="72" id="0Ac-Xi-IL9"/>
@@ -64,26 +57,21 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="oew-R4-Hs6" secondAttribute="trailing" id="1JI-LJ-U3n"/>
                 <constraint firstItem="fhV-SF-EFu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="1af-Jg-eXP"/>
-                <constraint firstItem="uoy-0D-MsL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="DLc-Mh-61V"/>
+                <constraint firstItem="uoy-0D-MsL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="DLc-Mh-61V"/>
+                <constraint firstItem="D2y-8s-JTZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="61" id="KmS-fg-Mfk"/>
                 <constraint firstAttribute="trailing" secondItem="wrs-0z-ece" secondAttribute="trailing" constant="15" id="R03-MF-4OZ"/>
                 <constraint firstAttribute="trailing" secondItem="D2y-8s-JTZ" secondAttribute="trailing" constant="15" id="UYo-uA-PrZ"/>
                 <constraint firstItem="wrs-0z-ece" firstAttribute="top" secondItem="D2y-8s-JTZ" secondAttribute="bottom" constant="5" id="f3p-Ak-eGV"/>
-                <constraint firstItem="oew-R4-Hs6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fd8-u6-7mS"/>
                 <constraint firstItem="fhV-SF-EFu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="hzp-R5-E8l"/>
                 <constraint firstItem="uoy-0D-MsL" firstAttribute="leading" secondItem="fhV-SF-EFu" secondAttribute="trailing" id="tVo-Eb-m7R"/>
-                <constraint firstAttribute="bottom" secondItem="oew-R4-Hs6" secondAttribute="bottom" id="vE0-FL-EUp"/>
-                <constraint firstItem="oew-R4-Hs6" firstAttribute="top" secondItem="wrs-0z-ece" secondAttribute="bottom" constant="5" id="vur-sW-oFK"/>
                 <constraint firstAttribute="trailing" secondItem="uoy-0D-MsL" secondAttribute="trailing" constant="10" id="wBw-6v-A7j"/>
                 <constraint firstItem="wrs-0z-ece" firstAttribute="top" secondItem="uoy-0D-MsL" secondAttribute="bottom" constant="5" id="ymS-MV-S66"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bottomDivLine" destination="oew-R4-Hs6" id="KMf-oY-ze3"/>
                 <outlet property="clearButton" destination="D2y-8s-JTZ" id="NTv-Z9-Jg0"/>
-                <outlet property="divLineHeight" destination="Grz-xx-zoW" id="HML-9D-mh5"/>
                 <outlet property="leftLabel" destination="fhV-SF-EFu" id="b36-qM-h4V"/>
                 <outlet property="textCountLabel" destination="wrs-0z-ece" id="SXB-iO-OAe"/>
                 <outlet property="textView" destination="uoy-0D-MsL" id="jab-CZ-RqE"/>

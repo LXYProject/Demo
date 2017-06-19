@@ -28,7 +28,12 @@
 {
     [self setPlaceholderColor:[UIColor lightGrayColor]];
     self.placeholder = [NSString string];
-    self.placeholderFont = self.font;
+//    self.placeholderFont = self.font;
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        self.placeholderFont = [UIFont systemFontOfSize:11];
+    }else{
+        self.placeholderFont = [UIFont systemFontOfSize:12];
+    }
     self.maxLength = 100;
     self.showWordCountLabel = NO;
     [self addSubview:self.wordCountLabel];

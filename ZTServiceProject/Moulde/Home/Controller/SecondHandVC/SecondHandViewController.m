@@ -31,10 +31,15 @@
     // Do any additional setup after loading the view from its nib.
     
     self.secondCellCurrentPage = 1;
-    
+
+    [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     [self requestDataSecondCellData];
 }
-
+- (void)rightBarClick
+{
+    [PushManager pushViewControllerWithName:@"ReleaseViewController" animated:YES block:nil];
+}
 //请求collectView的数据
 - (void)requestDataSecondCellData {
     [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {

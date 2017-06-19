@@ -191,7 +191,24 @@
     return btn;
 }
 
+- (void)titleViewWithTitle:(NSString *)title
+                titleColor:(UIColor *)titleColor
+{
+    UILabel *label = [self creatNavWithTitle:title
+                                  titleColor:titleColor];
+    self.navigationItem.titleView = label;
+}
 
+- (UILabel *)creatNavWithTitle:(NSString *)title
+                     titleColor:(UIColor *)titleColor
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(0, 0, 50, 40);
+    label.text = title;
+    label.textColor = titleColor;
+    
+    return label;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

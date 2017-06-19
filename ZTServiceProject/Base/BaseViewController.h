@@ -51,5 +51,7 @@
                      titleColor:(UIColor *)titleColor
                        selector:(SEL)selector
                          target:(id)target;
-
+// 添加导航栏title
+- (void)titleViewWithTitle:(NSString *)title
+                titleColor:(UIColor *)titleColor;
 @end

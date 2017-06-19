@@ -27,6 +27,8 @@
 //    _divLineHeight.constant = 0.5;
     _divLineHeight.constant = 1;
     self.textView.delegate = self;
+    
+    self.textCountLabel.hidden = YES;
 }
 
 

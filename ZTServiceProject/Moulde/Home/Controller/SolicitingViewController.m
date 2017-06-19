@@ -9,6 +9,7 @@
 #import "SolicitingViewController.h"
 #import "SolicitingHeadCell.h"
 #import "SolicitBtnItemCell.h"
+#import "SolicitBtnItemOneCell.h"
 #import "BtnItemCell.h"
 #import "AddPhotosCell.h"
 #import "BabyDescriptionCell.h"
@@ -32,10 +33,20 @@
     _contentArray = @[@"请填写租金", @"请选择户型", @""];
     _rightArray = @[@"", @"选择", @"南"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
+    
+    [self titleViewWithTitle:@"求租" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
 
     [self.tableView reloadData];
     
 }
+
+- (void)rightBarClick
+{
+    NSLog(@"rightBarClick");
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;
@@ -85,7 +96,7 @@
     cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
     cell.content.placeholder = _contentArray[indexPath.row];
     cell.rightContent.text = _rightArray[indexPath.row];
-    if (IS_IPHONE_4&&IS_IPHONE_5) {
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.title.font = [UIFont systemFontOfSize:13];
         cell.rightContent.font = [UIFont systemFontOfSize:13];
         [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
@@ -104,10 +115,16 @@
 //第1组
 - (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
-    
-    SolicitBtnItemCell *cell = (SolicitBtnItemCell *)[self creatCell:tableView indenty:@"SolicitBtnItemCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    if (indexPath.row==0) {
+        SolicitBtnItemCell *cell = (SolicitBtnItemCell *)[self creatCell:tableView indenty:@"SolicitBtnItemCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+
+    }else{
+        SolicitBtnItemOneCell *cell = (SolicitBtnItemOneCell *)[self creatCell:tableView indenty:@"SolicitBtnItemOneCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 
 //第2组
