@@ -93,17 +93,93 @@
 #define A_unHouse               @"?service=userHouse&function=unHouse"
 
 
-//============================二手物品===========================================
-// 查询
-#define A_query                 @"?service=secondHand&function=query"
+//============================小区接口===========================================
+// 查看所有与我有关的小区
+#define A_lookAllVillageWithMe  @"?service=userVillage&function=lookAllVillageWithMe"
+// 添加小区关注
+#define A_addConcernVillage     @"?service=userVillage&function=addConcernVillage"
+// 取消小区关注
+#define A_unConcernVillage      @"?service=userVillage&function=unConcernVillage"
+
+
+//============================共通接口===========================================
+// 关键字搜索小区
+#define A_searchVillagesByKeyWords  @"?service=common&function=searchVillagesByKeyWords"
+// 小区id搜索楼
+#define A_searchBuildingByVillage   @"?service=common&function=searchBuildingByVillage"
+// 根据楼查询房屋表
+#define A_searchHouses          @"?service=common&function=searchHouses"
+
+
+//============================好友接口===========================================
+// 添加好友关注
+#define A_addFriend             @"?service=friendService&function=addFriend"
+// 取消好友关注
+#define A_deleteFriend          @"?service=friendService&function=deleteFriend"
+// 查看我的好友列表
+#define A_myFriends             @"?service=friendService&function=myFriends"
+// 根据小区查看附近的人
+#define A_lookPepoleByVillage   @"?service=friendService&function=lookPepoleByVillage"
+// 查找最近登录的人
+#define A_lookRecentLoginUser   @"?service=friendService&function=lookRecentLoginUser"
+// 查看用户详细信息
+#define A_lookUserAll           @"?service=friendService&function=lookUserAll"
+
 
 
 //============================房屋服务===========================================
+// 停止出租
+#define A_stopRent     @"?service=house&function=stopRent"
+// 收藏租房信息
+#define A_keepRent     @"?service=house&function=keepRent"
 // 租房查询
 #define A_queryRent                 @"?service=house&function=queryRent"
+// 出租
+#define A_rent         @"?service=house&function=rent"
+// 租赁标签字典
+#define A_rentTagDic   @"?service=house&function=rentTagDic"
+// 基本信息字典
+#define A_basicInfoDic    @"?service=house&function=basicInfoDic"
+// 小区信息
+#define A_villageInfo     @"?service=house&function=villageInfo"
+// 房屋信息
+#define A_houseInfo       @"?service=house&function=houseInfo"
 
 
+//============================生活缴费服务===========================================
+// 根据房屋及缴费类型获取公司
+#define A_companyList     @"?service=lifeCostService&function=companyList"
+// 获取缴费基本信息
+#define A_costBaseList    @"?service=lifeCostService&function=costBaseList"
+// 绑定缴费账号
+#define A_bindAccount     @"?service=lifeCostService&function=bindAccount"
+// 缴费
+#define A_costing         @"?service=lifeCostService&function=costing"
+// 获取缴费记录
+#define A_costRecordList   @"?service=lifeCostService&function=costRecordList"
+// 修改缴费账号
+#define A_updateCostAccount  @"?service=lifeCostService&function=updateCostAccount"
+// 删除缴费账号
+#define A_delCostAccount     @"?service=lifeCostService&function=delCostAccount"
 
+
+//============================物业接口===========================================
+// 服务类型列表
+#define A_serviceList         @"?service=propertyService&function=serviceList"
+// 报事类型列表
+#define A_affairCategoryList   @"?service=propertyService&function=affairCategoryList"
+// 公告列表
+#define A_bulletinList        @"?service=propertyService&function=bulletinList"
+// 便民服务
+#define A_convenience         @"?service=propertyService&function=convenience"
+// 投诉
+#define A_complain            @"?service=propertyService&function=complain"
+// 查看投诉信息
+#define A_complainList        @"?service=propertyService&function=complainList"
+// 
+//============================二手物品===========================================
+// 查询
+#define A_query                 @"?service=secondHand&function=query"
 
 
 

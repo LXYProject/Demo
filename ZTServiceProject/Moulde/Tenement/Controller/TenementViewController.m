@@ -14,14 +14,18 @@
 #import "TenemnetHeaderCell.h"
 #import "BannerHeaderCell.h"
 #import "AdvertisementModel.h"
+#import "DQTextFild.h"
 
-@interface TenementViewController ()
+@interface TenementViewController ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataSourceArray;
 @property (nonatomic,strong)NSArray *imageURLArray;
 @property (nonatomic,strong)NSArray *titleHeader;
 @property (nonatomic, strong)NSMutableArray *imageUrlArr;
 @property (nonatomic, strong)NSMutableArray *imageNames;
+
+@property (nonatomic, strong) DQTextFild *BYsearchTextFd;
 
 @end
 
@@ -38,10 +42,30 @@
 //                   @"timg.jpeg",
 //                   ];
     _imageUrlArr = [[NSMutableArray alloc] init];
+    [self createNav];
     
     [self requestBanner];
 }
 
+- (void)createNav
+{
+    self.BYsearchTextFd = [[DQTextFild alloc]initWithFrame:CGRectMake(50, 33,self.view.frame.size.width-100,31)];
+    self.BYsearchTextFd.placeholder = @"请输入关键词";
+    [self.BYsearchTextFd setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    self.BYsearchTextFd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    UILabel * placeholderLabel = [self.BYsearchTextFd valueForKey:@"_placeholderLabel"];
+    placeholderLabel.textAlignment = NSTextAlignmentCenter;
+    self.BYsearchTextFd.backgroundColor = [UIColor clearColor];
+    self.BYsearchTextFd.background = [UIImage imageNamed:@"搜索-背景"];
+    self.BYsearchTextFd.delegate = self;
+    self.BYsearchTextFd.keyboardType = UIKeyboardTypeWebSearch;
+    UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cancel"]];
+    img.frame = CGRectMake(10, 0,20,20);
+    self.BYsearchTextFd.rightView = img;
+    self.BYsearchTextFd.rightViewMode = UITextFieldViewModeAlways;
+    self.BYsearchTextFd.font = [UIFont fontWithName:@"Arial" size:14];
+    self.navigationItem.titleView = self.BYsearchTextFd;
+}
 //请求广告图
 - (void)requestBanner {
     @weakify(self);

@@ -34,6 +34,7 @@
 
     [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    
     [self requestDataSecondCellData];
 }
 - (void)rightBarClick

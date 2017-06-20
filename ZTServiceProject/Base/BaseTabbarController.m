@@ -37,7 +37,7 @@
     //物业
     TenementViewController *tenementVc = [[TenementViewController alloc] init];
     [self addViewControllers:tenementVc
-                       title:@"物业"
+                       title:@""
                   tabbarItem:@"物业"
                        image:@"order_tabbar_default"
                     selectImage:@"order_tabbar_selected"];

@@ -19,9 +19,10 @@
 #import "NearByCell.h"
 #import "SecondHandViewController.h"
 #import "RentHouseModel.h"
+#import "CityListViewController.h"
 
 #define ScrollDistance  100
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate, CityListViewDelegate>
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
 @property (nonatomic,strong)NSArray *notificationNewsArray;
@@ -481,7 +482,24 @@
 - (void)leftBarClick
 {
     NSLog(@"leftBarClick");
+    CityListViewController *cityListView = [[CityListViewController alloc]init];
+    cityListView.delegate = self;
+    //热门城市列表
+    cityListView.arrayHotCity = [NSMutableArray arrayWithObjects:@"广州",@"北京",@"天津",@"厦门",@"重庆",@"福州",@"泉州",@"济南",@"深圳",@"长沙",@"无锡", nil];
+    //历史选择城市列表
+    cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",@"厦门",@"泉州", nil];
+    //定位城市列表
+    cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:@"北京市", nil];
+    
+    [self presentViewController:cityListView animated:YES completion:nil];
+
 }
+
+- (void)didClickedWithCityName:(NSString*)cityName
+{
+//    [_button setTitle:cityName forState:UIControlStateNormal];
+}
+
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");

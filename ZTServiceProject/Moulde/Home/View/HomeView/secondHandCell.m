@@ -9,6 +9,7 @@
 #import "secondHandCell.h"
 #import "ProductCollecttionCell.h"
 #import "HomeHttpManager.h"
+//#import "SecondDetailsController.h" 
 
 @interface secondHandCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -62,4 +63,10 @@
     
 }
 
+//点击Cell
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSLog(@"indexPath.row==%ld", (long)indexPath.row);
+    [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:nil];
+}
 @end
