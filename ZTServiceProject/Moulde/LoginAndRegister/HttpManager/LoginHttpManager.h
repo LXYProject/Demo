@@ -49,21 +49,49 @@ typedef enum : NSUInteger {
                 failure:(HttpRequestFailure)failure;
 
 //token登陆
-+ (void)requestToken:(NSString *)token
-              machineId:(NSString *)machineId
-            machineName:(NSString *)machineName
-             clientType:(NSString *)clientType
-                success:(HttpRequestSuccess)success
-             failure:(HttpRequestFailure)failure;
++ (void)requestMachineId:(NSString *)machineId
+             machineName:(NSString *)machineName
+              clientType:(NSString *)clientType
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
 
 //修改密码
 + (void)requestPhoneNum:(NSString *)phoneNum
-           machineId:(NSString *)machineId
-         machineName:(NSString *)machineName
-               token:(NSString *)token
-          clientType:(NSString *)clientType
-         newPassWord:(NSString *)newPassWord
+              machineId:(NSString *)machineId
+            machineName:(NSString *)machineName
+             clientType:(NSString *)clientType
+            newPassWord:(NSString *)newPassWord
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure;
+
+//修改个人信息
++ (void)requestProps:(NSString *)props
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure;
+
+//修改头像
++ (void)requestImage:(NSString *)image
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure;
+
+
+//上传个人图片
++ (void)requestImages:(NSString *)images
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure;
+
+
+
+//通过id查询用户信息
++ (void)requestTargetUserId:(NSString *)targetUserId
+                    success:(HttpRequestSuccess)success
+                    failure:(HttpRequestFailure)failure;
+
+
+//通过手机号查询用户信息
++ (void)requestPhone:(NSString *)phone
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure;
+
 
 @end

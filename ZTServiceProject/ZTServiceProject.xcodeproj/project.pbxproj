@@ -76,6 +76,12 @@
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
 		7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2AB1EF1343100CA415D /* RentHouseModel.m */; };
+		7B50F8901EFA19E700352F00 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F88E1EFA19E700352F00 /* SearchViewController.m */; };
+		7B50F8911EFA19E700352F00 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B50F88F1EFA19E700352F00 /* SearchViewController.xib */; };
+		7B50F8981EFA1A8400352F00 /* SearchItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F8931EFA1A8400352F00 /* SearchItemCell.m */; };
+		7B50F8991EFA1A8400352F00 /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B50F8941EFA1A8400352F00 /* SearchItemCell.xib */; };
+		7B50F89A1EFA1A8400352F00 /* SearchOneHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F8961EFA1A8400352F00 /* SearchOneHeadCell.m */; };
+		7B50F89B1EFA1A8400352F00 /* SearchOneHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B50F8971EFA1A8400352F00 /* SearchOneHeadCell.xib */; };
 		7B5C92161EF8B5E200C545A8 /* ButtonGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C91FC1EF8B5E200C545A8 /* ButtonGroupView.m */; };
 		7B5C92171EF8B5E200C545A8 /* CityButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C91FE1EF8B5E200C545A8 /* CityButton.m */; };
 		7B5C92181EF8B5E200C545A8 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C91FF1EF8B5E200C545A8 /* citydict.plist */; };
@@ -140,6 +146,8 @@
 		7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */; };
 		7BA167D41EE6AA10000ECCE6 /* MineBtnCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */; };
 		7BA167D51EE6AA10000ECCE6 /* MineBtnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */; };
+		7BA783151EFA58ED00BB8591 /* MyCommunityListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA783131EFA58ED00BB8591 /* MyCommunityListController.m */; };
+		7BA783161EFA58ED00BB8591 /* MyCommunityListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA783141EFA58ED00BB8591 /* MyCommunityListController.xib */; };
 		7BAFBC161EF7B21C00AFB6C7 /* SecondHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */; };
 		7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */; };
 		7BAFBC1B1EF7B25D00AFB6C7 /* ReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC191EF7B25D00AFB6C7 /* ReleaseViewController.m */; };
@@ -349,6 +357,15 @@
 		7B46E2A81EF103C700CA415D /* SecondHandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandModel.m; sourceTree = "<group>"; };
 		7B46E2AA1EF1343100CA415D /* RentHouseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentHouseModel.h; sourceTree = "<group>"; };
 		7B46E2AB1EF1343100CA415D /* RentHouseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentHouseModel.m; sourceTree = "<group>"; };
+		7B50F88D1EFA19E700352F00 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		7B50F88E1EFA19E700352F00 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		7B50F88F1EFA19E700352F00 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		7B50F8921EFA1A8400352F00 /* SearchItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchItemCell.h; sourceTree = "<group>"; };
+		7B50F8931EFA1A8400352F00 /* SearchItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchItemCell.m; sourceTree = "<group>"; };
+		7B50F8941EFA1A8400352F00 /* SearchItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
+		7B50F8951EFA1A8400352F00 /* SearchOneHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOneHeadCell.h; sourceTree = "<group>"; };
+		7B50F8961EFA1A8400352F00 /* SearchOneHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOneHeadCell.m; sourceTree = "<group>"; };
+		7B50F8971EFA1A8400352F00 /* SearchOneHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchOneHeadCell.xib; sourceTree = "<group>"; };
 		7B5C91FB1EF8B5E200C545A8 /* ButtonGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGroupView.h; sourceTree = "<group>"; };
 		7B5C91FC1EF8B5E200C545A8 /* ButtonGroupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonGroupView.m; sourceTree = "<group>"; };
 		7B5C91FD1EF8B5E200C545A8 /* CityButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityButton.h; sourceTree = "<group>"; };
@@ -450,6 +467,9 @@
 		7BA167D11EE6AA10000ECCE6 /* MineBtnCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MineBtnCell.h; path = ../Controller/MineBtnCell.h; sourceTree = "<group>"; };
 		7BA167D21EE6AA10000ECCE6 /* MineBtnCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MineBtnCell.m; path = ../Controller/MineBtnCell.m; sourceTree = "<group>"; };
 		7BA167D31EE6AA10000ECCE6 /* MineBtnCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MineBtnCell.xib; path = ../Controller/MineBtnCell.xib; sourceTree = "<group>"; };
+		7BA783121EFA58ED00BB8591 /* MyCommunityListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommunityListController.h; sourceTree = "<group>"; };
+		7BA783131EFA58ED00BB8591 /* MyCommunityListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommunityListController.m; sourceTree = "<group>"; };
+		7BA783141EFA58ED00BB8591 /* MyCommunityListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCommunityListController.xib; sourceTree = "<group>"; };
 		7BAFBC131EF7B21C00AFB6C7 /* SecondHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandViewController.h; sourceTree = "<group>"; };
 		7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandViewController.m; sourceTree = "<group>"; };
 		7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandViewController.xib; sourceTree = "<group>"; };
@@ -690,6 +710,12 @@
 				7B5C92491EF8CC1400C545A8 /* SecondBtnItemCell.h */,
 				7B5C924A1EF8CC1400C545A8 /* SecondBtnItemCell.m */,
 				7B5C924B1EF8CC1400C545A8 /* SecondBtnItemCell.xib */,
+				7B50F8921EFA1A8400352F00 /* SearchItemCell.h */,
+				7B50F8931EFA1A8400352F00 /* SearchItemCell.m */,
+				7B50F8941EFA1A8400352F00 /* SearchItemCell.xib */,
+				7B50F8951EFA1A8400352F00 /* SearchOneHeadCell.h */,
+				7B50F8961EFA1A8400352F00 /* SearchOneHeadCell.m */,
+				7B50F8971EFA1A8400352F00 /* SearchOneHeadCell.xib */,
 			);
 			path = SecondHandView;
 			sourceTree = "<group>";
@@ -1092,6 +1118,9 @@
 				7BFFBF181EF682A9001202EE /* ComplaintsController.h */,
 				7BFFBF191EF682A9001202EE /* ComplaintsController.m */,
 				7BFFBF1A1EF682A9001202EE /* ComplaintsController.xib */,
+				7BA783121EFA58ED00BB8591 /* MyCommunityListController.h */,
+				7BA783131EFA58ED00BB8591 /* MyCommunityListController.m */,
+				7BA783141EFA58ED00BB8591 /* MyCommunityListController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1271,6 +1300,9 @@
 				7B5C92351EF8BE5B00C545A8 /* SecondDetailsController.h */,
 				7B5C92361EF8BE5B00C545A8 /* SecondDetailsController.m */,
 				7B5C92371EF8BE5B00C545A8 /* SecondDetailsController.xib */,
+				7B50F88D1EFA19E700352F00 /* SearchViewController.h */,
+				7B50F88E1EFA19E700352F00 /* SearchViewController.m */,
+				7B50F88F1EFA19E700352F00 /* SearchViewController.xib */,
 			);
 			path = SecondHandVC;
 			sourceTree = "<group>";
@@ -1510,6 +1542,7 @@
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
+				7BA783161EFA58ED00BB8591 /* MyCommunityListController.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
 				7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
@@ -1527,6 +1560,7 @@
 				7B5C92391EF8BE5B00C545A8 /* SecondDetailsController.xib in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7BC9D9B71EF25D2600B01A14 /* LookingForViewController.xib in Resources */,
+				7B50F8991EFA1A8400352F00 /* SearchItemCell.xib in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
 				7BF7D77A1EE85E9E00DB1486 /* TenemnetHeaderCell.xib in Resources */,
 				7BF4B2171EE3D45A0058185F /* order_tabbar_default@2x.png in Resources */,
@@ -1543,6 +1577,7 @@
 				7BF4B2191EE3D45A0058185F /* order_tabbar_selected@2x.png in Resources */,
 				7BA167D51EE6AA10000ECCE6 /* MineBtnCell.xib in Resources */,
 				7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */,
+				7B50F8911EFA19E700352F00 /* SearchViewController.xib in Resources */,
 				7B1661FE1EF2861C00644A7B /* AddPhotosCell.xib in Resources */,
 				7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */,
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
@@ -1561,6 +1596,7 @@
 				7B5C92481EF8C5E200C545A8 /* SecondDetailsCell.xib in Resources */,
 				7B5C922F1EF8B8EC00C545A8 /* cancel@2x.png in Resources */,
 				7BF4B21A1EE3D45A0058185F /* order_tabbar_selected@3x.png in Resources */,
+				7B50F89B1EFA1A8400352F00 /* SearchOneHeadCell.xib in Resources */,
 				7B1662021EF2861C00644A7B /* BtnItemCell.xib in Resources */,
 				7BF4B22E1EE3D6470058185F /* scan_40px@2x.png in Resources */,
 				7BF4B2141EE3D45A0058185F /* my_tabbar_default@3x.png in Resources */,
@@ -1712,6 +1748,7 @@
 				7B5C921C1EF8B5E200C545A8 /* ChineseToPinyinResource.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
+				7B50F8901EFA19E700352F00 /* SearchViewController.m in Sources */,
 				7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
 				7BFFBEF51EF65C8A001202EE /* AnnounceViewController.m in Sources */,
@@ -1742,11 +1779,13 @@
 				7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
 				7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */,
+				7BA783151EFA58ED00BB8591 /* MyCommunityListController.m in Sources */,
 				7B5C92421EF8C1F200C545A8 /* SecondBannerCell.m in Sources */,
 				7BFFBF1B1EF682A9001202EE /* ComplaintsController.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				7BFBDE5D1EF589AB00F2D354 /* StaticOneCell.m in Sources */,
 				7B5C921A1EF8B5E200C545A8 /* CityListViewController.m in Sources */,
+				7B50F8981EFA1A8400352F00 /* SearchItemCell.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7BFE48401EE9346A0006FF3B /* MessageHeaderCell.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
@@ -1773,6 +1812,7 @@
 				7BFFBF101EF67E6B001202EE /* PraiseViewController.m in Sources */,
 				7B5C92381EF8BE5B00C545A8 /* SecondDetailsController.m in Sources */,
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
+				7B50F89A1EFA1A8400352F00 /* SearchOneHeadCell.m in Sources */,
 				7B33B7561EF368AF005FBBBB /* PlaceholderTextView.m in Sources */,
 				7B5C924C1EF8CC1400C545A8 /* SecondBtnItemCell.m in Sources */,
 				7B3CFE681EF77A74009AC748 /* SolicitBtnItemOneCell.m in Sources */,

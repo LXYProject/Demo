@@ -34,7 +34,8 @@
                    ];
     
     [self titleViewWithTitle:@"手游" titleColor:[UIColor whiteColor]];
-   [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];    self.tableView.backgroundColor = RGB(247, 247, 247);
+    [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
     
     Model *model = [[Model alloc] initWithTitle:@"hahahh" content:@"撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热"];
     [self.dataArray addObject:model];

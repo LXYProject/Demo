@@ -15,8 +15,9 @@
 #import "BannerHeaderCell.h"
 #import "AdvertisementModel.h"
 #import "DQTextFild.h"
+#import "MyCommunityListController.h"
 
-@interface TenementViewController ()<UITextFieldDelegate>
+@interface TenementViewController ()<UITextFieldDelegate, MyCommunityListControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataSourceArray;
@@ -33,6 +34,7 @@
 {
 //    NSArray *imageNames;
     NSInteger _times;
+    MyCommunityListController *_myVC;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +45,8 @@
 //                   ];
     _imageUrlArr = [[NSMutableArray alloc] init];
     [self createNav];
+
+    _myVC.delegate = self;
     
     [self requestBanner];
 }
@@ -60,12 +64,34 @@
     self.BYsearchTextFd.delegate = self;
     self.BYsearchTextFd.keyboardType = UIKeyboardTypeWebSearch;
     UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cancel"]];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     img.frame = CGRectMake(10, 0,20,20);
-    self.BYsearchTextFd.rightView = img;
+    btn.frame = CGRectMake(10, 0,20,20);
+    self.BYsearchTextFd.rightView = btn;
     self.BYsearchTextFd.rightViewMode = UITextFieldViewModeAlways;
     self.BYsearchTextFd.font = [UIFont fontWithName:@"Arial" size:14];
     self.navigationItem.titleView = self.BYsearchTextFd;
 }
+
+- (void)btnClick
+{
+//    [PushManager pushViewControllerWithName:@"" animated:YES block:nil];
+    MyCommunityListController *myVC = [[MyCommunityListController alloc] init];
+    [self.navigationController pushViewController:myVC animated:YES];
+//    [self presentViewController:myVC animated:YES completion:nil];
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSLog(@"textFieldDidBeginEditing");
+}
+
+#pragma mark 实现传值协议方法
+-(void)passTrendValues:(NSString *)values{
+    NSLog(@"values:::%@",values);
+}
+
 //请求广告图
 - (void)requestBanner {
     @weakify(self);

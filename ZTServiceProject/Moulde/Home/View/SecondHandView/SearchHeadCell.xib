@@ -24,6 +24,9 @@
                             <constraint firstAttribute="height" constant="44" id="ccT-yq-2I3"/>
                         </constraints>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="ubE-8Q-xFp"/>
+                        </connections>
                     </searchBar>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYz-aa-aQd">
                         <rect key="frame" x="0.0" y="49" width="320" height="0.5"/>
@@ -45,6 +48,9 @@
                     <constraint firstAttribute="trailing" secondItem="vYz-aa-aQd" secondAttribute="trailing" id="mty-CK-Jim"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="searchBar" destination="eVX-ds-TIf" id="dlV-6Y-FKR"/>
+            </connections>
             <point key="canvasLocation" x="-1" y="34"/>
         </tableViewCell>
     </objects>
