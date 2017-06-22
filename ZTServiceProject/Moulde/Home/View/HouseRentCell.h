@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class RentHouseModel;
 @interface HouseRentCell : UITableViewCell
+
+@property (nonatomic, strong)RentHouseModel *rentHouseModel;
 
 @end

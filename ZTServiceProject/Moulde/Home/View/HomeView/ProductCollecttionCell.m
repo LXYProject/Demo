@@ -35,7 +35,7 @@
 
     [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
     _title.text = model.secondHandTitle;
-    _price.text = [NSString stringWithFormat:@"%.0f元",[model.secPrice doubleValue]];
+    _price.text = [NSString stringWithFormat:@"￥%.0f",[model.secPrice doubleValue]];
     
 }
 

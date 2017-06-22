@@ -34,6 +34,9 @@
                                 <state key="normal" title="查看更多">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="moreBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vf9-WC-Cuw"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周边服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7B-aa-8lt">
                                 <rect key="frame" x="125.5" y="12" width="69.5" height="21"/>

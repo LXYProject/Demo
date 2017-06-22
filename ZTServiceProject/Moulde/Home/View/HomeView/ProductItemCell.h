@@ -10,8 +10,10 @@
 @class NearByItemModel;
 @class SecondHandModel;
 @class RentHouseModel;
+@class ServiceModel;
 @interface ProductItemCell : UITableViewCell
 @property (nonatomic,strong)NearByItemModel *model;
 @property (nonatomic, strong)SecondHandModel *secondModel;
 @property (nonatomic, strong)RentHouseModel *rentHouseModel;
+@property (nonatomic, strong)ServiceModel *serviceModel;
 @end

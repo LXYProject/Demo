@@ -12,8 +12,11 @@
 #import "BabyDescriptionCell.h"
 #import "SwitchCell.h"
 
-#define btnY 440
-#define labelY 428
+//#define btnY 440
+//#define labelY 428
+//#define btnX 15
+#define btnY 542
+#define labelY 530
 #define btnX 15
 @interface ReleaseViewController ()
 
@@ -40,9 +43,14 @@
     _switchArray = @[@"", @"支持快递", @"原价"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
 
+    [self titleViewWithTitle:@"发布宝贝" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布须知" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     [self createUI];
 }
-
+- (void)rightBarClick
+{
+    
+}
 - (void)createUI
 {
     UIButton *chooseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -92,7 +100,7 @@
     if (section==0 || section==2) {
         return 1;
     }else if (section==1){
-        return 3;
+        return 4;
     }
     else{
         return 3;
@@ -130,32 +138,32 @@
     if (indexPath.row==3) {
         BabyDescriptionCell *cell = (BabyDescriptionCell *)[self creatCell:tableView indenty:@"BabyDescriptionCell"];
         cell.selectionStyle = UITableViewCellAccessoryNone;
-    }else{
-        SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-        cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
-        cell.content.placeholder = _contentArray[indexPath.row];
-        if (indexPath.row==1) {
-            cell.rightContent.text = @"选择";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }else{
-            [cell.rightContent removeFromSuperview];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.title.font = [UIFont systemFontOfSize:13];
-            cell.rightContent.font = [UIFont systemFontOfSize:13];
-            [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-        }else{
-            cell.title.font = [UIFont systemFontOfSize:14];
-            cell.rightContent.font = [UIFont systemFontOfSize:14];
-            [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-        }
-        cell.title.textColor = TEXT_COLOR;
-        cell.rightContent.textColor = TEXT_COLOR;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    return nil;
+    
+    SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
+    cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
+    cell.content.placeholder = _contentArray[indexPath.row];
+    if (indexPath.row==1) {
+        cell.rightContent.text = @"选择";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else{
+        [cell.rightContent removeFromSuperview];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.title.font = [UIFont systemFontOfSize:13];
+        cell.rightContent.font = [UIFont systemFontOfSize:13];
+        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+    }else{
+        cell.title.font = [UIFont systemFontOfSize:14];
+        cell.rightContent.font = [UIFont systemFontOfSize:14];
+        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    }
+    cell.title.textColor = TEXT_COLOR;
+    cell.rightContent.textColor = TEXT_COLOR;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
     
 }
 

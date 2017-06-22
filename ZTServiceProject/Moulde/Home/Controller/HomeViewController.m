@@ -47,6 +47,7 @@
     NSArray *imageNames;
     NSArray *noticeNews;
     NSInteger _times;
+    NSString *_citySelected;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -83,7 +84,7 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self leftItemWithNormalName:@"noticeYellow" title:_citySelected titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
     imageNames = @[
                    @"timg.jpeg",
@@ -298,10 +299,9 @@
     }
     else {
         if (_nearBySelectIndex==1) {
-            NearByCell *cell = (NearByCell *)[self creatCell:tableView indenty:@"NearByCell"];
-            cell.model = self.dataSource[indexPath.row-2];
-            return cell;
-        }
+            ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+            cell.serviceModel = self.dataSource[indexPath.row-2];
+            return cell;        }
         ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
         cell.model = self.dataSource[indexPath.row-2];
         return cell;
@@ -394,12 +394,36 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0001;
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 0.0001;
+//}
+
+//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 10;
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return 0.f;
+    }else{
+        return 10.f;
+    }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    view.backgroundColor = RGB(247, 247, 247);
+    return view;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *footView = [[UIView alloc] init];
+    footView.backgroundColor = [UIColor clearColor];
+    return footView;
+}
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return 1;
 }
 
 - (NSArray *)itemDataSourceArray {
@@ -497,7 +521,8 @@
 
 - (void)didClickedWithCityName:(NSString*)cityName
 {
-//    [_button setTitle:cityName forState:UIControlStateNormal];
+    _citySelected = cityName;
+    
 }
 
 - (void)rightBarClick

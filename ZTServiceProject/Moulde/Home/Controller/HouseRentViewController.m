@@ -8,9 +8,15 @@
 
 #import "HouseRentViewController.h"
 #import "HouseRentCell.h"
+#import "HomeHttpManager.h"
 
 @interface HouseRentViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//租房查询 的数据相关的
+@property (nonatomic,strong)NSMutableArray *rentHouseDataSource;
+@property (nonatomic,assign)NSInteger currentPage;
+
 
 @end
 
@@ -22,7 +28,20 @@
     
     [self titleViewWithTitle:@"房屋租赁" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
-
+    
+    self.currentPage = 1;
+    
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestRentHouseData];
+    }];
+    
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestRentHouseData];
+    }];
+    [self.tableView beginHeaderRefreshing];
+    
 }
 
 - (void)rightBarClick
@@ -30,9 +49,32 @@
     NSLog(@"rightBarClick");
 }
 
+//请求租房查询
+- (void)requestRentHouseData
+{
+    [HomeHttpManager requestQueryType:2 keywords:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" houseType:@"" direction:@"" minArea:@"" maxArea:@"" heatingMode:@"" floor:@"" hasElevator:@"" houseFitment:@"" basicFacilities:@"" extendedFacilities:@"" sort:@"0" pageNum:self.currentPage success:^(NSArray *response) {
+        
+//        self.rentHouseDataSource = response;
+//        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.tableView endRefreshing];
+        if (self.currentPage==1){
+            [self.rentHouseDataSource removeAllObjects];
+        }
+        [self.rentHouseDataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-        return 10;
+    return self.rentHouseDataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -48,6 +90,8 @@
         //通过xib的名称加载自定义的cell
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HouseRentCell" owner:self options:nil] lastObject];
     }
+    cell.rentHouseModel = self.rentHouseDataSource[indexPath.section];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,4 +105,12 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
 }
+
+- (NSArray *)rentHouseDataSource {
+    if (!_rentHouseDataSource) {
+        _rentHouseDataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _rentHouseDataSource;
+}
+
 @end

@@ -20,5 +20,8 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)moreBtn:(id)sender {
+//    [PushManager pushViewControllerWithName:@"NearByViewController" animated:YES block:nil];
+}
 
 @end

@@ -49,11 +49,15 @@
     
 //    [_icon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
     
+    _headImg.layer.masksToBounds = YES;
+    _headImg.layer.cornerRadius = _headImg.bounds.size.width * 0.5;
+    _headImg.layer.borderColor = [UIColor whiteColor].CGColor;
     [_headImg sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
     
     _title.text = model.title;
     _userName.text = model.userName;
-    _price.text = [NSString stringWithFormat:@"%.0f/单",[model.price doubleValue]];
+    _price.text = [NSString stringWithFormat:@"%@/单", model.price];
+//    _price.text = [NSString stringWithFormat:@"%.0f/单",[model.price doubleValue]];
     _content.text = model.content;
 }
 
