@@ -100,5 +100,10 @@ return _sharedInstance; \
 // 基本设备信息
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
+#define DefaultSaveKeyValue(key,value) [[NSUserDefaults standardUserDefaults]setValue:value forKey:key];\
+[[NSUserDefaults standardUserDefaults]synchronize];
+
+#define GetValueForKey(key) [[NSUserDefaults standardUserDefaults]objectForKey:key]
+
 
 #endif /* CommonTools_h */

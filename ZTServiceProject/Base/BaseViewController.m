@@ -26,7 +26,7 @@
     self.navigationBarTitleColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setBackgroundImage:[Tools createImageWithColor:UIColorFromRGB(0xe64e51)] forBarMetrics:UIBarMetricsDefault];
     if(self.rt_navigationController.rt_viewControllers.count>1){
-        [self leftBarButtomItemWithNormalName:@"nav_back_btn" highName:@"nav_back_btn" selector:@selector(navBackAction) target:self];
+        [self leftBarButtomItemWithNormalName:@"nav_back" highName:@"nav_back" selector:@selector(navBackAction) target:self];
     }
 }
 

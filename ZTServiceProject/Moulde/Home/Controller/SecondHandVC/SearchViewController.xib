@@ -4,13 +4,16 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
-                <outlet property="tableView" destination="ckV-Ly-EZv" id="gut-Da-UFv"/>
+                <outlet property="collectionView" destination="L5Q-aV-GgF" id="f7t-5y-fwc"/>
+                <outlet property="searchBar" destination="Lmn-Ib-luC" id="CpO-aM-ifh"/>
+                <outlet property="searchBtn" destination="odD-bB-1gK" id="zsv-kI-L3B"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,21 +22,70 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ckV-Ly-EZv">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="L5Q-aV-GgF">
+                    <rect key="frame" x="0.0" y="49" width="375" height="618"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZgO-kS-Vv7">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="KrU-gt-KvO"/>
-                        <outlet property="delegate" destination="-1" id="sMm-Fd-OoB"/>
+                        <outlet property="dataSource" destination="-1" id="x2K-nD-7VW"/>
+                        <outlet property="delegate" destination="-1" id="mJt-Aq-7f6"/>
                     </connections>
-                </tableView>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tty-JJ-srN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmn-Ib-luC">
+                            <rect key="frame" x="15" y="9.5" width="270" height="30"/>
+                            <color key="backgroundColor" red="0.90970492362976074" green="0.90986090898513794" blue="0.9096950888633728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="4cK-of-IQu"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="CTV-al-CXz"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odD-bB-1gK">
+                            <rect key="frame" x="285" y="9.5" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5Y4-hw-AAq"/>
+                                <constraint firstAttribute="width" constant="75" id="wUb-h7-lPl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="搜索"/>
+                            <connections>
+                                <action selector="searchBtnClick:" destination="-1" eventType="touchUpInside" id="k2M-ny-TsX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="1UL-fe-9X1"/>
+                        <constraint firstAttribute="trailing" secondItem="odD-bB-1gK" secondAttribute="trailing" constant="15" id="8wz-94-shd"/>
+                        <constraint firstItem="Lmn-Ib-luC" firstAttribute="leading" secondItem="Tty-JJ-srN" secondAttribute="leading" constant="15" id="Leo-Q2-aH1"/>
+                        <constraint firstItem="odD-bB-1gK" firstAttribute="leading" secondItem="Lmn-Ib-luC" secondAttribute="trailing" id="YWh-eA-Gsf"/>
+                        <constraint firstItem="Lmn-Ib-luC" firstAttribute="centerY" secondItem="Tty-JJ-srN" secondAttribute="centerY" id="Ycb-Cc-2Ga"/>
+                        <constraint firstItem="odD-bB-1gK" firstAttribute="centerY" secondItem="Tty-JJ-srN" secondAttribute="centerY" id="kut-sK-l9Y"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="ckV-Ly-EZv" secondAttribute="bottom" id="3v7-xN-AcG"/>
-                <constraint firstItem="ckV-Ly-EZv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DMM-eY-WcN"/>
-                <constraint firstAttribute="trailing" secondItem="ckV-Ly-EZv" secondAttribute="trailing" id="dlP-KN-3E7"/>
-                <constraint firstItem="ckV-Ly-EZv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uWK-4z-GdJ"/>
+                <constraint firstAttribute="trailing" secondItem="L5Q-aV-GgF" secondAttribute="trailing" id="0FG-KE-mFc"/>
+                <constraint firstItem="Tty-JJ-srN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="H0C-nK-0pj"/>
+                <constraint firstAttribute="bottom" secondItem="L5Q-aV-GgF" secondAttribute="bottom" id="OSx-Xl-47B"/>
+                <constraint firstItem="L5Q-aV-GgF" firstAttribute="top" secondItem="Tty-JJ-srN" secondAttribute="bottom" id="Zir-sU-Lw8"/>
+                <constraint firstAttribute="trailing" secondItem="Tty-JJ-srN" secondAttribute="trailing" id="ajH-7T-hE6"/>
+                <constraint firstItem="L5Q-aV-GgF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ld1-JB-hiV"/>
+                <constraint firstItem="Tty-JJ-srN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zE9-tH-MEU"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

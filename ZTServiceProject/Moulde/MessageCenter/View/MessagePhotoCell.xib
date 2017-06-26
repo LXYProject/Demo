@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MessagePhotoCell" id="gTV-IL-0wX" customClass="MessagePhotoCell">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UtB-Fa-Y75">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UtB-Fa-Y75" secondAttribute="bottom" id="CoO-ao-gF8"/>
+                <constraint firstItem="UtB-Fa-Y75" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Le7-by-Fta"/>
+                <constraint firstItem="UtB-Fa-Y75" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lN0-jK-Ih8"/>
+                <constraint firstAttribute="trailing" secondItem="UtB-Fa-Y75" secondAttribute="trailing" id="xpI-8n-HDP"/>
+            </constraints>
+            <connections>
+                <outlet property="icon" destination="UtB-Fa-Y75" id="Gm4-jL-6jG"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,52 +19,35 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koM-JL-Not">
                         <rect key="frame" x="77" y="0.0" width="167" height="100"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-R8-Ctz">
+                                <rect key="frame" x="0.0" y="0.0" width="167" height="100"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f0x-aJ-fsg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="leading" secondItem="koM-JL-Not" secondAttribute="leading" id="8aP-CN-bFV"/>
+                            <constraint firstAttribute="trailing" secondItem="kqN-R8-Ctz" secondAttribute="trailing" id="O9d-dW-Uxd"/>
+                            <constraint firstAttribute="bottom" secondItem="kqN-R8-Ctz" secondAttribute="bottom" id="Yzh-KS-W7n"/>
+                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="top" secondItem="koM-JL-Not" secondAttribute="top" id="Zqq-4b-KL5"/>
                             <constraint firstAttribute="height" constant="100" id="f98-aC-lbd"/>
                             <constraint firstAttribute="width" constant="167" id="otD-NS-F6N"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NNt-fw-LSL">
-                        <rect key="frame" x="125" y="11" width="70" height="50"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKQ-d1-sd3">
-                                <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="NRU-mB-2Cf"/>
-                                    <constraint firstAttribute="width" constant="70" id="mJ7-7f-elg"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="Pic_blank_328px.png"/>
-                                <connections>
-                                    <action selector="selectPhotos:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8eB-i9-cUI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加照片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68Q-xM-mi1">
-                        <rect key="frame" x="126" y="69" width="68" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="68" id="7lD-kO-TgG"/>
-                            <constraint firstAttribute="height" constant="17" id="E6W-SK-4jB"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="NNt-fw-LSL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6K6-ii-vlT"/>
                     <constraint firstAttribute="bottom" secondItem="koM-JL-Not" secondAttribute="bottom" id="F7Z-EV-cF7"/>
-                    <constraint firstItem="68Q-xM-mi1" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="MJ1-Ys-0KA"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="68Q-xM-mi1" secondAttribute="bottom" constant="5.5" id="Zii-9n-Iat"/>
                     <constraint firstItem="koM-JL-Not" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aT6-Sk-L0z"/>
-                    <constraint firstItem="68Q-xM-mi1" firstAttribute="top" secondItem="NNt-fw-LSL" secondAttribute="bottom" constant="8" symbolic="YES" id="bj6-IJ-djh"/>
                     <constraint firstItem="koM-JL-Not" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="c6Z-Ms-BDd"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="placeholdView" destination="koM-JL-Not" id="KkI-pU-afK"/>
+            </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Pic_blank_328px.png" width="164" height="164"/>
-    </resources>
 </document>

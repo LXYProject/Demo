@@ -20,9 +20,10 @@
 #import "SecondHandViewController.h"
 #import "RentHouseModel.h"
 #import "CityListViewController.h"
+#import "CoreLocation/CoreLocation.h"
 
 #define ScrollDistance  100
-@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate, CityListViewDelegate>
+@interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate, CLLocationManagerDelegate, CityListViewDelegate>
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
 @property (nonatomic,strong)NSArray *itemDataSourceArray;
 @property (nonatomic,strong)NSArray *notificationNewsArray;
@@ -40,6 +41,10 @@
 //租房查询 的数据相关的
 @property (nonatomic,strong)NSArray *rentHouseDataSource;
 @property (nonatomic,assign)NSInteger rentHouseCurrentPage;
+
+@property (strong, nonatomic) CLLocationManager* locationManager;
+
+
 @end
 
 @implementation HomeViewController
@@ -84,7 +89,7 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self leftItemWithNormalName:@"noticeYellow" title:_citySelected titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self leftItemWithNormalName:@"address" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
     imageNames = @[
                    @"timg.jpeg",
@@ -92,6 +97,7 @@
                    @"timg.jpeg",
                     ];
     
+    [self startLocation];
     [self requestBanner];
 }
 
@@ -503,6 +509,75 @@
     return _dataSource;
 }
 
+//开始定位的时候，首先判断是否能定位
+-(void)startLocation{
+    
+    if ([CLLocationManager locationServicesEnabled]) {//判断定位操作是否被允许
+        
+        self.locationManager = [[CLLocationManager alloc] init];
+        
+        self.locationManager.delegate = self;//遵循代理
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        self.locationManager.distanceFilter = 10.0f;
+        
+        [_locationManager requestWhenInUseAuthorization];//使用程序其间允许访问位置数据（iOS8以上版本定位需要）
+        
+        [self.locationManager startUpdatingLocation];//开始定位
+        
+    }else{//不能定位用户的位置的情况再次进行判断，并给与用户提示
+        
+        //1.提醒用户检查当前的网络状况
+        
+        //2.提醒用户打开定位开关
+    }
+    
+}
+//代理方法
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+    //当前所在城市的坐标值
+    CLLocation *currLocation = [locations lastObject];
+    
+    NSLog(@"经度=%f 纬度=%f 高度=%f", currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude);
+    
+    //根据经纬度反向地理编译出地址信息
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    
+    [geoCoder reverseGeocodeLocation:currLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        for (CLPlacemark * placemark in placemarks) {
+            
+            NSDictionary *address = [placemark addressDictionary];
+            
+            [self leftItemWithNormalName:@"address" title:[address objectForKey:@"City"] titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+            
+            //  Country(国家)  State(省)  City（市）
+            NSLog(@"#####%@",address);
+            
+            NSLog(@"%@", [address objectForKey:@"Country"]);
+            
+            NSLog(@"%@", [address objectForKey:@"State"]);
+            
+            NSLog(@"%@", [address objectForKey:@"City"]);
+            
+        }
+        
+    }];
+    
+}
+//定位失败，调用此方法
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    
+    if ([error code] == kCLErrorDenied){
+        //访问被拒绝
+    }
+    if ([error code] == kCLErrorLocationUnknown) {
+        //无法获取位置信息
+    }
+}
+
 - (void)leftBarClick
 {
     NSLog(@"leftBarClick");
@@ -522,6 +597,7 @@
 - (void)didClickedWithCityName:(NSString*)cityName
 {
     _citySelected = cityName;
+    [self leftItemWithNormalName:@"noticeYellow" title:_citySelected titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     
 }
 

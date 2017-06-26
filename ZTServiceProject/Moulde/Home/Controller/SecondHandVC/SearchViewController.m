@@ -9,136 +9,152 @@
 #import "SearchViewController.h" 
 #import "SearchOneHeadCell.h"
 #import "SearchItemCell.h"
-
+#import "SecondHandSearchHeaderView.h"
+#import "SecondHanditemCell.h"
 #define RGB(r,g,b) RGBA(r,g,b,1.0f)
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define HistoryKey @"HistoryKey"
+#define HistoryMaxCount 20
 
-@interface SearchViewController ()
+@interface SearchViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
-@property (nonatomic,strong) NSMutableArray *tagAry;
-@property (nonatomic,assign) float maxHeight;
-
-@property (nonatomic,strong) NSMutableArray *dataSouse;
-@property (nonatomic,strong) NSArray *groupTitleArray;
-
+@property (weak, nonatomic) IBOutlet UIButton *searchBtn;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UITextField *searchBar;
+@property (nonatomic,strong)NSArray *historyArray;
+@property (nonatomic,strong)NSArray *hotArry;
 @end
 
 @implementation SearchViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.dataSouse = [[NSMutableArray alloc] init];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
-
-    self.groupTitleArray = @[@"历史记录", @"热门搜索"];
-    
-    SearchOneHeadCell *searchHead =   [[NSBundle mainBundle] loadNibNamed:@"SearchOneHeadCell" owner:nil
-                                                     options:nil
-                          ].lastObject;
-    
-    self.tableView.tableHeaderView =searchHead;
-    
-    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textChnage:) name:UITextFieldTextDidChangeNotification object:self.searchBar];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"SecondHandSearchHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SecondHandSearchHeaderView"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"SecondHanditemCell" bundle:nil] forCellWithReuseIdentifier:@"SecondHanditemCell"];
+    self.hotArry = @[@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+//坚挺输入框文字变化
+- (void)textChnage:(NSNotification *)noti {
+    UITextField *textField = [noti object];
+    textField.text =[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet ]];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+   
 }
 
+//搜索按钮点击
+- (IBAction)searchBtnClick:(id)sender {
+    NSString *currentText = self.searchBar.text;
+    [self saveHistoryKeywordsWithText:currentText];
+    self.historyArray = GetValueForKey(HistoryKey);
+    [self.collectionView reloadData];
+}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        return [self sectionZeroWithTableView:tableView indexPath:indexPath];
-    }else{
-        return nil;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    return YES;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    if (self.historyArray.count>0&&self.hotArry.count>0) {
+        return 2;
+    }
+    else if(self.historyArray.count==0&&self.hotArry.count==0){
+        return 0;
+    }
+    else {
+        return 1;
     }
 }
 
-//第0组
-- (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
-                                    indexPath:(NSIndexPath *)indexPath {
-    SearchItemCell *cell = (SearchItemCell *)[self creatCell:tableView indenty:@"SearchItemCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if(section==0) {
+        return self.historyArray.count>0?self.historyArray.count:self.hotArry.count;
+    }
+    else {
+        return self.hotArry.count;
+    }
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SecondHanditemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SecondHanditemCell" forIndexPath:indexPath];
+    if (indexPath.section==0) {
+        cell.title = self.historyArray.count>0?self.historyArray[indexPath.row]:self.hotArry[indexPath.row];
+    }
+    else {
+        cell.title = self.hotArry[indexPath.row];
+    }
     return cell;
 }
 
-//第1组
-- (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
-                                   indexPath:(NSIndexPath *)indexPath {
-//    SearchItemCell *cell = (SearchItemCell *)[self creatCell:tableView indenty:@"SearchItemCell"];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    return cell;
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        SecondHandSearchHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SecondHandSearchHeaderView" forIndexPath:indexPath];
+        if (indexPath.section ==0) {
+            headerView.text = self.historyArray.count>0?@"历史记录":@"热门搜索";
+        }
+        else {
+            headerView.text = @"热门搜索";
+        }
+        return headerView;
+    }
     return nil;
-
 }
-//公共创建cell的方法
-- (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indenty];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:indenty owner:nil options:nil] lastObject];
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+   return  CGSizeMake(ScreenWidth, 44);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((ScreenWidth-2)/3, 44);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 1;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 1;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(1,0 , 1, 0);
+}
+
+- (void)saveHistoryKeywordsWithText:(NSString *)currentText {
+    NSArray *keyWords = GetValueForKey(HistoryKey);
+    NSMutableArray *array = [NSMutableArray arrayWithArray:keyWords];
+    if (array) {
+        if (array.count>0) {
+            if ([array containsObject:currentText]) {
+                [array removeObject:currentText];
+                [array insertObject:currentText atIndex:0];
+            }
+            else {
+                if (array.count<HistoryMaxCount) {
+                    [array insertObject:currentText atIndex:0];
+                }
+                else {
+                    array.count==HistoryMaxCount?[array removeLastObject]:[array removeObjectsInRange:NSMakeRange(18, array.count-19)];
+                    [array insertObject:currentText atIndex:0];
+                }
+            }
+        }
+        else {
+            [array addObject:currentText];
+        }
     }
-    return cell;
-}
-
-
-/*设置标题头的名称*/
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return @"历史记录";
+    else {
+        array = [NSMutableArray arrayWithCapacity:1];
+        [array addObject:currentText];
     }
-    else
-        return @"热门搜索";
-}
-
-/*设置标题头的宽度*/
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section==0) {
-        return 44.f;
-    }else{
-        return 44.f;
-    }
-}
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 0.0001;
-//}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
-}
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-//    view.backgroundColor = RGB(247, 247, 247);
-//    return view;
-//}
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIView *footView = [[UIView alloc] init];
-//    footView.backgroundColor = [UIColor clearColor];
-//    return footView;
-//}
-//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 1;
-//}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 132;
+    DefaultSaveKeyValue(HistoryKey, array);
 }
 @end

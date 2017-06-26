@@ -32,36 +32,36 @@
     [self addViewControllers:homeVc
                        title:@"首页"
                   tabbarItem:@"首页"
-                       image:@"worktable_tabbar_default"
-                 selectImage:@"worktable_tabbar_selected"];
+                       image:@"tabbar_sy_normal"
+                 selectImage:@"tabbar_sy_selected"];
     //物业
     TenementViewController *tenementVc = [[TenementViewController alloc] init];
     [self addViewControllers:tenementVc
                        title:@""
                   tabbarItem:@"物业"
-                       image:@"order_tabbar_default"
-                    selectImage:@"order_tabbar_selected"];
+                       image:@"tabbar_wy_normal"
+                    selectImage:@"tabbar_wy__selected"];
     //周边
     NearByHomeViewController *nearByVC = [[NearByHomeViewController alloc] init];
     [self addViewControllers:nearByVC
                        title:@""
                   tabbarItem:@"周边"
-                       image:@"message_tabbar_default"
-                 selectImage:@"message_tabbar_selected"];
+                       image:@"tabbar_zb_normal"
+                 selectImage:@"tabbar_zb_selected"];
     //论坛
     MessageCenterViewController *messageVc = [[MessageCenterViewController alloc]init];
     [self addViewControllers:messageVc
                        title:@"邻里圈"
                   tabbarItem:@"论坛"
-                       image:@"message_tabbar_default"
-                 selectImage:@"message_tabbar_selected"];
+                       image:@"tabbar_llq_normal"
+                 selectImage:@"tabbar_llq_selected"];
     //个人
     MineViewController *acountVc = [[MineViewController alloc]init];
     [self addViewControllers:acountVc
                        title:@"个人"
                   tabbarItem:@"个人"
-                       image:@"my_tabbar_default"
-                 selectImage:@"my_tabbar_selected"];
+                       image:@"tabbar_wd_normal"
+                 selectImage:@"tabbar_wd_selected"];
 }
 
 #pragma  mark - 添加子控制器

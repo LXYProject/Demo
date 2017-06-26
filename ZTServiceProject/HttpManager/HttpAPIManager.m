@@ -170,7 +170,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
     //    [newParamter setValuesForKeysWithDictionary:paramter];
     [newParamter setValue:@"1" forKey:@"token"];
-    [newParamter setValue:@"1" forKey:@"userId"];
+    [newParamter setValue:@"20170607093552" forKey:@"userId"];
     NSString *token = [newParamter objectForKey:@"token"];
     NSString *userId = [newParamter objectForKey:@"userId"];
     NSAssert(token.length>0, @"token不能为空");

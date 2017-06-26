@@ -27,6 +27,9 @@
 #import <UIButton+WebCache.h>
 #import "AFNetworking.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UITableView+FDTemplateLayoutCell.h>
+#import <IQKeyboardManager.h>
+#import "XLPhotoBrowser.h"
 //类别
 
 #endif /* CommonHeaderFile_h */

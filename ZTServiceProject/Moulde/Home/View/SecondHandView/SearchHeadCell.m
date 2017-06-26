@@ -9,7 +9,7 @@
 #import "SearchHeadCell.h"
 #import "SearchViewController.h"    
 
-@interface SearchHeadCell ()
+@interface SearchHeadCell ()<UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
@@ -31,23 +31,29 @@
     // Configure the view for the selected state
 }
 
-//searchBar 响应键盘
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    
-    NSLog(@"跳转");
-    //    if (_historyArray.count != 0) {
-    //        //        _historyViewController.historyRecords = _historyArray;
-    //        //        [self showTheHistoryRecords];
-    //        [self.searchBar becomeFirstResponder];
-    //    }
-    [self showTheHistoryRecords];
-    [self.searchBar becomeFirstResponder];
-
-    if (jump) {
-        [PushManager pushViewControllerWithName:@"SearchViewController" animated:YES block:nil];
-        jump = NO;
-    }
+    [self.contentView endEditing:YES];
+    [PushManager pushViewControllerWithName:@"SearchViewController" animated:YES block:nil];
 }
+
+
+////searchBar 响应键盘
+//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+//    
+//    NSLog(@"跳转");
+//    //    if (_historyArray.count != 0) {
+//    //        //        _historyViewController.historyRecords = _historyArray;
+//    //        //        [self showTheHistoryRecords];
+//    //        [self.searchBar becomeFirstResponder];
+//    //    }
+//    [self showTheHistoryRecords];
+//    [self.searchBar becomeFirstResponder];
+//
+//    if (jump) {
+//       
+//        jump = NO;
+//    }
+//}
 
 #pragma  mark- history records
 - (void)showTheHistoryRecords

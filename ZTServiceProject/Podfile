@@ -4,7 +4,7 @@ pod 'AFNetworking', '~> 3.1.0'
 pod 'MJExtension'
 #pod 'CYLTabBarController', '~> 1.6.0'
 pod 'MJRefresh', '~> 3.1.12'
-pod 'SDWebImage'
+pod 'SDWebImage', '~> 4.0.0'
 pod 'MBProgressHUD', '~> 1.0.0'
 pod 'YYCache', '~> 1.0.3'
 pod 'GTMBase64', '~> 1.0.0'
@@ -13,7 +13,8 @@ pod 'IQKeyboardManager','~> 3.3.7'
 pod 'TZImagePickerController'
 pod 'RTRootNavigationController'
 pod 'SDCycleScrollView'
-
-
+#pod 'XLPhotoBrowser+CoderXL','~> 1.2.0'
+#pod 'MWPhotoBrowser'
+pod 'DACircularProgress'
 
 end

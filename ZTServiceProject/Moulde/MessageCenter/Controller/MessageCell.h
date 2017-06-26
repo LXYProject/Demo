@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-@class NearByItemModel;
+@class MessageModel;
 @interface MessageCell : UITableViewCell
-@property (nonatomic,strong)NearByItemModel* model;
+@property (nonatomic,strong)MessageModel* model;
+@property (nonatomic,copy)Void_Block reloadBlock;
 @end

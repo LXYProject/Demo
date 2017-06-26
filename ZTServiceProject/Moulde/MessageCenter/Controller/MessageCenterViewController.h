@@ -10,4 +10,11 @@
 
 @interface MessageCenterViewController : BaseViewController
 
+@property (nonatomic,copy)NSString *topicId;
+
+@property (nonatomic,assign)NSInteger commentType;
+
+@property (nonatomic,copy)NSString *targetUserId;
+
+
 @end

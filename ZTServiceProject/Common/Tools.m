@@ -21,4 +21,11 @@
     return theImage;
 }
 
+//#warning 第三步
+// 在AppTool.m实现方法，并执行block
+- (void)sendBlock:(AppToolBlock)block
+{
+    NSString *string;
+    block(string);
+}
 @end

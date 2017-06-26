@@ -76,6 +76,7 @@ static PushManager *_pushManager = nil;
 {
     UIViewController *pushVC = [[NSClassFromString(vCClass) alloc] init];
     pushVC.hidesBottomBarWhenPushed=YES;
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
     if (block) {
         block(pushVC);
     }

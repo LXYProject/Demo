@@ -16,6 +16,7 @@
     UIButton *_selectedBtn;
 }
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

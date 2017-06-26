@@ -182,6 +182,21 @@
 #define A_query                 @"?service=secondHand&function=query"
 
 
+//============================帖子服务===========================================
+// 加载帖子
+#define A_loadTopic            @"?service=topic&function=loadTopic"
+// 发帖记录
+#define A_topicHis             @"?service=topic&function=topicHis"
+// 删除帖子
+#define A_deleteTopic          @"?service=topic&function=deleteTopic"
+// 删除回复
+#define A_deleteReply          @"?service=topic&function=deleteReply"
+// 点赞
+#define A_thumbsUp             @"?service=topic&function=thumbsUp"
+// 回复
+#define A_reply                @"?service=topic&function=reply"
+// 发布
+#define A_newTopic             @"?service=topic&function=newTopic"
 
 
 
@@ -192,98 +207,5 @@
 
 
 
-
-
-
-
-
-
-
-
-// 发送验证码
-#define A_getcode                       @"services/common/sendCode"
-// 登录
-#define A_login                         @"services/user/phoneLogin"
-// 忘记密码
-#define A_forgotPasswd                  @"services/user/forgotPasswd"
-// 查询部门接口
-#define A_allDept                       @"services/dept/allDept"
-// 修改密码
-#define A_changeUserPassword            @"UserAdministration/user/changeUserPassword"
-
-// 更新ClientID
-#define A_ClientId                      @"UsersManageController/user/updateClientId"
-
-// 查询当天打卡的所有记录
-#define A_details                     @"services/attendance/dianji"
-
-// •	查询用户个人信息
-#define A_getUser                    @"UserAdministration/user/getUser"
-
-// •	查询所有用户
-#define A_getdepartment                    @"UserAdministration/department/getdepartment"
-
-// 用户提交意见
-#define A_opinion                        @"UserAdministration/Opinion/setOpinion"
-
-
-// 外勤人员统计
-#define A_attendanceOutStatistics        @"services/attendance/attendanceOutStatistics"
-
-
-// 用户修改自己的头像
-#define A_modifyHeadImg        @"UserAdministration/department/setuserportrait"
-
-// 查询通知最后下班人
-#define A_findRemindHomeMsgById       @"services/msgManager/findRemindHomeMsgById"
-
-// Hr推送消息
-#define A_slectWebMsgById      @"services/msgManager/selectWebMsgById"
-
-// 查询公司通知
-#define A_findCompanyMsgById      @"services/msgManager/findCompanyMsgById"
-
-// 查询消息列表
-#define A_findPersonMsgByPage      @"services/msgManager/findPersonMsgByPage"
-
-// 获取验证码
-#define A_getCodeTwo                  @"services/user/getCode"
-
-// 根据手机号和验证码登录
-#define A_getloginuser                @"services/user/getloginuser"
-
-// 移动端用户token验证
-#define A_loginUserANDtoken           @"services/user/loginUserANDtoken"
-
-
-// 加班申请填写
-#define A_addApplyfor           @"services/UserWorkOvertimeApplyfor/addApplyfor"
-// 修改手机发送验证码
-#define A_updatePhoneSendCode           @"services/user/updatePhoneSendCode"
-
-// 修改手机
-#define A_updatePhone          @"services/user/updatePhone"
-// 返回指定用户考勤打卡次数
-#define A_workOvertimePunchCardCount           @"services/workOvertime/workOvertimePunchCardCount"
-
-// 移动端个人考勤信息接口
-#define A_selectUserWorkAttendance          @"services/workAttendance/selectUserWorkAttendance"
-
-// 修改移动端的个人信息查看与否
-#define A_updateMsgNewOrOldStautsById        @"services/msgManager/updateMsgNewOrOldStautsOrById"
-
-
-
-
-// 用户打卡上传(上班)
-#define A_goToWork                       @"services/attendance/goToWork"
-// 用户打卡上传(下班)
-#define A_goOffWork                       @"services/attendance/goOffWork"
-
-// 打卡记录
-#define A_attendanceStatistics                       @"services/attendance/attendanceStatistics"
-
-// 打卡违纪记录
-#define A_attendanceLateStatistics                       @"services/attendance/attendanceLateStatistics"
 
 #endif
