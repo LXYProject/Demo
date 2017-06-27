@@ -35,7 +35,7 @@
     if (index==0) {
         [PushManager pushViewControllerWithName:@"BannerJumpController" animated:YES block:nil];
     }else{
-        
+        [PushManager pushViewControllerWithName:@"BannerJumpController" animated:YES block:nil];
     }
 }
 
