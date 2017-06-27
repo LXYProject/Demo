@@ -44,8 +44,6 @@
 
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
-@property (nonatomic,strong)NSArray *cellTitleImg;
-
 @end
 
 @implementation HomeViewController
@@ -53,7 +51,6 @@
     NSArray *imageNames;
     NSArray *noticeNews;
     NSInteger _times;
-    NSString *_citySelected;
     NSString *_LocatingCity;
 }
 - (void)viewDidLoad {
@@ -435,18 +432,6 @@
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 1;
-}
-
-- (NSArray *)cellTitleImg
-{
-    if (!_cellTitleImg) {
-        _cellTitleImg = @[
-                         @"peripheral_services_img",
-                         @"Item_recom_img",
-                         @"rent_house_img"
-                         ];
-    }
-    return _cellTitleImg;
 }
 
 - (NSArray *)itemDataSourceArray {
