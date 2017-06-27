@@ -14,6 +14,8 @@
 #import "MessageCell.h"
 #import "NearByItemModel.h"
 #import "HomeHttpManager.h"
+#import "ItemMoreViewController.h"
+
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -25,7 +27,9 @@
 @end
 
 @implementation SecondHandViewController
-
+{
+    ItemMoreViewController *_itemMoreVC;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -103,6 +107,7 @@
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
             [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:nil];
+            _itemMoreVC.itemTitle = self.itemDataSourceArray[value][@"title"];
         };
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;
@@ -167,34 +172,34 @@
         _itemDataSourceArray = @[
                                  @{@"title":@"数码"
                                    ,@"icon":@"home_eswp_smcp"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"服饰"
                                    ,@"icon":@"home_eswp_fzxm"
-                                   ,@"vcName":@"NearByViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"出行"
                                    ,@"icon":@"home_eswp_jtgj"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"母婴"
                                    ,@"icon":@"home_eswp_myyp"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"家具"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"影音"
                                    ,@"icon":@"home_eswp_tsyx"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"收藏"
                                    ,@"icon":@"home_eswp_yssc"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"网游"
                                    ,@"icon":@"home_eswp_wyxn"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"美容"
                                    ,@"icon":@"home_eswp_mrbj"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"更多"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"ItemMoreViewController"},
 
                                  ];
     }

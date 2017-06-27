@@ -129,6 +129,8 @@
 		7B4634041F0200A40023E7F2 /* my_house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634021F0200A40023E7F2 /* my_house@2x.png */; };
 		7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634031F0200A40023E7F2 /* peripheral_services_img@2x.png */; };
 		7B4634071F0201790023E7F2 /* looking_for@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634061F0201790023E7F2 /* looking_for@2x.png */; };
+		7B46340B1F02295A0023E7F2 /* ItemMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4634091F02295A0023E7F2 /* ItemMoreViewController.m */; };
+		7B46340C1F02295A0023E7F2 /* ItemMoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B46340A1F02295A0023E7F2 /* ItemMoreViewController.xib */; };
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
 		7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2AB1EF1343100CA415D /* RentHouseModel.m */; };
@@ -544,6 +546,9 @@
 		7B4634021F0200A40023E7F2 /* my_house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_house@2x.png"; sourceTree = "<group>"; };
 		7B4634031F0200A40023E7F2 /* peripheral_services_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peripheral_services_img@2x.png"; sourceTree = "<group>"; };
 		7B4634061F0201790023E7F2 /* looking_for@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "looking_for@2x.png"; sourceTree = "<group>"; };
+		7B4634081F02295A0023E7F2 /* ItemMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMoreViewController.h; sourceTree = "<group>"; };
+		7B4634091F02295A0023E7F2 /* ItemMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMoreViewController.m; sourceTree = "<group>"; };
+		7B46340A1F02295A0023E7F2 /* ItemMoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemMoreViewController.xib; sourceTree = "<group>"; };
 		7B46E2A41EF0D59E00CA415D /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
 		7B46E2A51EF0D59E00CA415D /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
 		7B46E2A71EF103C700CA415D /* SecondHandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandModel.h; sourceTree = "<group>"; };
@@ -1857,6 +1862,9 @@
 				7B50F88D1EFA19E700352F00 /* SearchViewController.h */,
 				7B50F88E1EFA19E700352F00 /* SearchViewController.m */,
 				7B50F88F1EFA19E700352F00 /* SearchViewController.xib */,
+				7B4634081F02295A0023E7F2 /* ItemMoreViewController.h */,
+				7B4634091F02295A0023E7F2 /* ItemMoreViewController.m */,
+				7B46340A1F02295A0023E7F2 /* ItemMoreViewController.xib */,
 			);
 			path = SecondHandVC;
 			sourceTree = "<group>";
@@ -2256,6 +2264,7 @@
 				7BFFBF0C1EF6785D001202EE /* PublicThingsController.xib in Resources */,
 				7B5C92181EF8B5E200C545A8 /* citydict.plist in Resources */,
 				7B966BD01EFFB5D400326C88 /* UIBarButtonItemArrowLeft@3x.png in Resources */,
+				7B46340C1F02295A0023E7F2 /* ItemMoreViewController.xib in Resources */,
 				7B4633FD1F01FFDD0023E7F2 /* to_more_btn@2x.png in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
@@ -2415,6 +2424,7 @@
 				7BA167891EE66DA8000ECCE6 /* TenementViewController.m in Sources */,
 				7B1662271EF2862900644A7B /* BannerHeaderCell.m in Sources */,
 				7B5C92471EF8C5E200C545A8 /* SecondDetailsCell.m in Sources */,
+				7B46340B1F02295A0023E7F2 /* ItemMoreViewController.m in Sources */,
 				7B205E681F00EDFE00E46B74 /* ACMediaManager.m in Sources */,
 				7B5C921C1EF8B5E200C545A8 /* ChineseToPinyinResource.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:@"动态" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"banner动态" titleColor:[UIColor whiteColor]];
 }
 
 - (void)didReceiveMemoryWarning {
