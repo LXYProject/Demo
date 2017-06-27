@@ -10,5 +10,6 @@
 
 @interface NearByHeaderCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *cellHeadIcon;
 
 @end

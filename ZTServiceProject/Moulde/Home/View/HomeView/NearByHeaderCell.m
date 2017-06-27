@@ -7,9 +7,11 @@
 //
 
 #import "NearByHeaderCell.h"
-
+#import "BaseTabbarController.h"
 @implementation NearByHeaderCell
-
+{
+    BaseTabbarController *_tabBarController;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -21,7 +23,11 @@
     // Configure the view for the selected state
 }
 - (IBAction)moreBtn:(id)sender {
+    NSLog(@"moreBtn");
+
 //    [PushManager pushViewControllerWithName:@"NearByViewController" animated:YES block:nil];
+//    self.tabBarController.selectedIndex=2
+
 }
 
 @end

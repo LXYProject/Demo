@@ -29,30 +29,31 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbi-ia-0WM">
-                                <rect key="frame" x="264" y="10" width="41" height="24"/>
+                                <rect key="frame" x="271" y="14.5" width="34" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <state key="normal" title="查看更多">
+                                <state key="normal" backgroundImage="to_more_btn.png">
                                     <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="moreBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vf9-WC-Cuw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周边服务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7B-aa-8lt">
-                                <rect key="frame" x="125.5" y="12" width="69.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="peripheral_services_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="jPi-5s-SI2">
+                                <rect key="frame" x="122.5" y="14.5" width="75" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="7XE-ue-q2Y"/>
+                                    <constraint firstAttribute="width" constant="75" id="iML-f9-LEV"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vt9-9m-1hT" secondAttribute="trailing" id="1rU-mt-peN"/>
-                            <constraint firstItem="i7B-aa-8lt" firstAttribute="centerY" secondItem="s5b-YX-Ajq" secondAttribute="centerY" id="3af-f8-3SD"/>
+                            <constraint firstItem="jPi-5s-SI2" firstAttribute="centerX" secondItem="s5b-YX-Ajq" secondAttribute="centerX" id="Fox-H2-HJ7"/>
                             <constraint firstItem="cbi-ia-0WM" firstAttribute="centerY" secondItem="s5b-YX-Ajq" secondAttribute="centerY" id="Yqk-wh-Gkj"/>
+                            <constraint firstItem="jPi-5s-SI2" firstAttribute="centerY" secondItem="s5b-YX-Ajq" secondAttribute="centerY" id="fa2-MK-66q"/>
                             <constraint firstItem="vt9-9m-1hT" firstAttribute="leading" secondItem="s5b-YX-Ajq" secondAttribute="leading" id="fhL-H7-Vc0"/>
                             <constraint firstAttribute="bottom" secondItem="vt9-9m-1hT" secondAttribute="bottom" id="lgq-Gs-uGe"/>
-                            <constraint firstItem="i7B-aa-8lt" firstAttribute="centerX" secondItem="s5b-YX-Ajq" secondAttribute="centerX" id="vIW-gn-h45"/>
                             <constraint firstAttribute="trailing" secondItem="cbi-ia-0WM" secondAttribute="trailing" constant="15" id="vOM-Va-vSI"/>
                         </constraints>
                     </view>
@@ -64,6 +65,13 @@
                     <constraint firstItem="s5b-YX-Ajq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TfQ-fm-mx9"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="cellHeadIcon" destination="jPi-5s-SI2" id="fPj-m4-r6q"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="peripheral_services_img.png" width="66" height="13"/>
+        <image name="to_more_btn.png" width="34" height="15"/>
+    </resources>
 </document>

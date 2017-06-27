@@ -115,6 +115,20 @@
 		7B3CFE681EF77A74009AC748 /* SolicitBtnItemOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3CFE661EF77A74009AC748 /* SolicitBtnItemOneCell.m */; };
 		7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3CFE671EF77A74009AC748 /* SolicitBtnItemOneCell.xib */; };
 		7B3D4F921EE5595D009E0784 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7B3D4F911EE5595D009E0784 /* timg.jpeg */; };
+		7B4633E61F01FD390023E7F2 /* BannerJumpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4633E41F01FD390023E7F2 /* BannerJumpController.m */; };
+		7B4633E71F01FD390023E7F2 /* BannerJumpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633E51F01FD390023E7F2 /* BannerJumpController.xib */; };
+		7B4633F41F01FFDD0023E7F2 /* Item_recom_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633E91F01FFDD0023E7F2 /* Item_recom_img@2x.png */; };
+		7B4633F51F01FFDD0023E7F2 /* life_pay_cost@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633EA1F01FFDD0023E7F2 /* life_pay_cost@2x.png */; };
+		7B4633F61F01FFDD0023E7F2 /* management_fee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633EB1F01FFDD0023E7F2 /* management_fee@2x.png */; };
+		7B4633F91F01FFDD0023E7F2 /* popular_dynamic_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633EE1F01FFDD0023E7F2 /* popular_dynamic_img@2x.png */; };
+		7B4633FA1F01FFDD0023E7F2 /* rent_house_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633EF1F01FFDD0023E7F2 /* rent_house_img@2x.png */; };
+		7B4633FB1F01FFDD0023E7F2 /* second_hand_ goods@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633F01F01FFDD0023E7F2 /* second_hand_ goods@2x.png */; };
+		7B4633FC1F01FFDD0023E7F2 /* soliciting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633F11F01FFDD0023E7F2 /* soliciting@2x.png */; };
+		7B4633FD1F01FFDD0023E7F2 /* to_more_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4633F21F01FFDD0023E7F2 /* to_more_btn@2x.png */; };
+		7B4634011F02009B0023E7F2 /* house_lease@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634001F02009B0023E7F2 /* house_lease@2x.png */; };
+		7B4634041F0200A40023E7F2 /* my_house@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634021F0200A40023E7F2 /* my_house@2x.png */; };
+		7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634031F0200A40023E7F2 /* peripheral_services_img@2x.png */; };
+		7B4634071F0201790023E7F2 /* looking_for@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4634061F0201790023E7F2 /* looking_for@2x.png */; };
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
 		7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2AB1EF1343100CA415D /* RentHouseModel.m */; };
@@ -515,6 +529,21 @@
 		7B3CFE671EF77A74009AC748 /* SolicitBtnItemOneCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SolicitBtnItemOneCell.xib; sourceTree = "<group>"; };
 		7B3D4F901EE55817009E0784 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		7B3D4F911EE5595D009E0784 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
+		7B4633E31F01FD390023E7F2 /* BannerJumpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerJumpController.h; sourceTree = "<group>"; };
+		7B4633E41F01FD390023E7F2 /* BannerJumpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerJumpController.m; sourceTree = "<group>"; };
+		7B4633E51F01FD390023E7F2 /* BannerJumpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerJumpController.xib; sourceTree = "<group>"; };
+		7B4633E91F01FFDD0023E7F2 /* Item_recom_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Item_recom_img@2x.png"; sourceTree = "<group>"; };
+		7B4633EA1F01FFDD0023E7F2 /* life_pay_cost@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "life_pay_cost@2x.png"; sourceTree = "<group>"; };
+		7B4633EB1F01FFDD0023E7F2 /* management_fee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "management_fee@2x.png"; sourceTree = "<group>"; };
+		7B4633EE1F01FFDD0023E7F2 /* popular_dynamic_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popular_dynamic_img@2x.png"; sourceTree = "<group>"; };
+		7B4633EF1F01FFDD0023E7F2 /* rent_house_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rent_house_img@2x.png"; sourceTree = "<group>"; };
+		7B4633F01F01FFDD0023E7F2 /* second_hand_ goods@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second_hand_ goods@2x.png"; sourceTree = "<group>"; };
+		7B4633F11F01FFDD0023E7F2 /* soliciting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "soliciting@2x.png"; sourceTree = "<group>"; };
+		7B4633F21F01FFDD0023E7F2 /* to_more_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "to_more_btn@2x.png"; sourceTree = "<group>"; };
+		7B4634001F02009B0023E7F2 /* house_lease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "house_lease@2x.png"; sourceTree = "<group>"; };
+		7B4634021F0200A40023E7F2 /* my_house@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "my_house@2x.png"; sourceTree = "<group>"; };
+		7B4634031F0200A40023E7F2 /* peripheral_services_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peripheral_services_img@2x.png"; sourceTree = "<group>"; };
+		7B4634061F0201790023E7F2 /* looking_for@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "looking_for@2x.png"; sourceTree = "<group>"; };
 		7B46E2A41EF0D59E00CA415D /* ServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceModel.h; sourceTree = "<group>"; };
 		7B46E2A51EF0D59E00CA415D /* ServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceModel.m; sourceTree = "<group>"; };
 		7B46E2A71EF103C700CA415D /* SecondHandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandModel.h; sourceTree = "<group>"; };
@@ -1027,6 +1056,18 @@
 		7B205DF51F00E6C900E46B74 /* HomeIcon */ = {
 			isa = PBXGroup;
 			children = (
+				7B4634061F0201790023E7F2 /* looking_for@2x.png */,
+				7B4634021F0200A40023E7F2 /* my_house@2x.png */,
+				7B4634031F0200A40023E7F2 /* peripheral_services_img@2x.png */,
+				7B4634001F02009B0023E7F2 /* house_lease@2x.png */,
+				7B4633E91F01FFDD0023E7F2 /* Item_recom_img@2x.png */,
+				7B4633EA1F01FFDD0023E7F2 /* life_pay_cost@2x.png */,
+				7B4633EB1F01FFDD0023E7F2 /* management_fee@2x.png */,
+				7B4633EE1F01FFDD0023E7F2 /* popular_dynamic_img@2x.png */,
+				7B4633EF1F01FFDD0023E7F2 /* rent_house_img@2x.png */,
+				7B4633F01F01FFDD0023E7F2 /* second_hand_ goods@2x.png */,
+				7B4633F11F01FFDD0023E7F2 /* soliciting@2x.png */,
+				7B4633F21F01FFDD0023E7F2 /* to_more_btn@2x.png */,
 				7B205E321F00E73E00E46B74 /* address@2x.png */,
 			);
 			path = HomeIcon;
@@ -1311,6 +1352,9 @@
 				7BA1676D1EE64561000ECCE6 /* HomeViewController.h */,
 				7BA1676E1EE64561000ECCE6 /* HomeViewController.m */,
 				7BA1676F1EE64561000ECCE6 /* HomeViewController.xib */,
+				7B4633E31F01FD390023E7F2 /* BannerJumpController.h */,
+				7B4633E41F01FD390023E7F2 /* BannerJumpController.m */,
+				7B4633E51F01FD390023E7F2 /* BannerJumpController.xib */,
 				7BC9D9B31EF25D2600B01A14 /* LookingForViewController.h */,
 				7BC9D9B41EF25D2600B01A14 /* LookingForViewController.m */,
 				7BC9D9B51EF25D2600B01A14 /* LookingForViewController.xib */,
@@ -2072,24 +2116,30 @@
 			files = (
 				7BFFBEFC1EF65E28001202EE /* AnnounceCell.xib in Resources */,
 				7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */,
+				7B4633FA1F01FFDD0023E7F2 /* rent_house_img@2x.png in Resources */,
+				7B4633F61F01FFDD0023E7F2 /* management_fee@2x.png in Resources */,
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7B205E191F00E6C900E46B74 /* home_eswp_smcp@2x.png in Resources */,
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
 				7B966BC01EFFB5D400326C88 /* ImageSelectedOn@2x.png in Resources */,
 				7B966A681EFF8B8900326C88 /* CommentPhotoCell.xib in Resources */,
+				7B4634011F02009B0023E7F2 /* house_lease@2x.png in Resources */,
 				7BA783161EFA58ED00BB8591 /* MyCommunityListController.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
 				7B966AD71EFFB29500326C88 /* FSActionSheet_cancel@2x.png in Resources */,
+				7B4633FC1F01FFDD0023E7F2 /* soliciting@2x.png in Resources */,
 				7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */,
 				7B966BD71EFFB5D400326C88 /* VideoOverlay.png in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
 				7B205E281F00E6C900E46B74 /* tabbar_wd_selected@2x.png in Resources */,
 				7B966BD11EFFB5D400326C88 /* UIBarButtonItemArrowRight.png in Resources */,
+				7B4633F41F01FFDD0023E7F2 /* Item_recom_img@2x.png in Resources */,
 				7B1662281EF2862900644A7B /* BannerHeaderCell.xib in Resources */,
 				7B966BB91EFFB5D400326C88 /* ImageError.png in Resources */,
 				7B966BCD1EFFB5D400326C88 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
 				7B5C92301EF8B8EC00C545A8 /* cancel@3x.png in Resources */,
+				7B4633F91F01FFDD0023E7F2 /* popular_dynamic_img@2x.png in Resources */,
 				7B205E1E1F00E6C900E46B74 /* tabbar_llq_normal@2x.png in Resources */,
 				7B16622A1EF2862900644A7B /* ItemBtnCell.xib in Resources */,
 				7B5C922E1EF8B8EC00C545A8 /* bg@3x.png in Resources */,
@@ -2110,8 +2160,10 @@
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7B205E1C1F00E6C900E46B74 /* home_eswp_yssc@2x.png in Resources */,
 				7BC9D9B71EF25D2600B01A14 /* LookingForViewController.xib in Resources */,
+				7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */,
 				7B50F8991EFA1A8400352F00 /* SearchItemCell.xib in Resources */,
 				7B966BC51EFFB5D400326C88 /* ImageSelectedSmallOn.png in Resources */,
+				7B4633FB1F01FFDD0023E7F2 /* second_hand_ goods@2x.png in Resources */,
 				7B205E2B1F00E6C900E46B74 /* tabbar_wy__selected@3x.png in Resources */,
 				7B966BCE1EFFB5D400326C88 /* UIBarButtonItemArrowLeft.png in Resources */,
 				7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */,
@@ -2154,6 +2206,7 @@
 				7B5C92431EF8C1F200C545A8 /* SecondBannerCell.xib in Resources */,
 				7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
+				7B4634041F0200A40023E7F2 /* my_house@2x.png in Resources */,
 				7B205E241F00E6C900E46B74 /* tabbar_sy_selected@2x.png in Resources */,
 				7B205E311F00E6C900E46B74 /* tabbar_zb_selected@3x.png in Resources */,
 				7BFFBF1C1EF682A9001202EE /* ComplaintsController.xib in Resources */,
@@ -2165,6 +2218,7 @@
 				7B1662301EF2862900644A7B /* ProductCollecttionCell.xib in Resources */,
 				7BF4B21D1EE3D45A0058185F /* worktable_tabbar_selected@2x.png in Resources */,
 				7B5C925B1EF8FE5800C545A8 /* SecondAddressCell.xib in Resources */,
+				7B4633E71F01FD390023E7F2 /* BannerJumpController.xib in Resources */,
 				7B5C92481EF8C5E200C545A8 /* SecondDetailsCell.xib in Resources */,
 				7B966BCB1EFFB5D400326C88 /* PlayButtonOverlayLargeTap.png in Resources */,
 				7B205E251F00E6C900E46B74 /* tabbar_sy_selected@3x.png in Resources */,
@@ -2202,11 +2256,13 @@
 				7BFFBF0C1EF6785D001202EE /* PublicThingsController.xib in Resources */,
 				7B5C92181EF8B5E200C545A8 /* citydict.plist in Resources */,
 				7B966BD01EFFB5D400326C88 /* UIBarButtonItemArrowLeft@3x.png in Resources */,
+				7B4633FD1F01FFDD0023E7F2 /* to_more_btn@2x.png in Resources */,
 				7BF4B21C1EE3D45A0058185F /* worktable_tabbar_default@3x.png in Resources */,
 				7BF4B2161EE3D45A0058185F /* my_tabbar_selected@3x.png in Resources */,
 				7BF4B2131EE3D45A0058185F /* my_tabbar_default@2x.png in Resources */,
 				7B205E181F00E6C900E46B74 /* home_eswp_myyp@2x.png in Resources */,
 				7B16622E1EF2862900644A7B /* NearByServiceCell.xib in Resources */,
+				7B4634071F0201790023E7F2 /* looking_for@2x.png in Resources */,
 				7B205E351F00E95200E46B74 /* nav_back@2x.png in Resources */,
 				7B1662321EF2862900644A7B /* ProductItemCell.xib in Resources */,
 				7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */,
@@ -2235,6 +2291,7 @@
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
 				7B5C92521EF8EBF200C545A8 /* SecondUserCell.xib in Resources */,
 				7BAFBC1C1EF7B25D00AFB6C7 /* ReleaseViewController.xib in Resources */,
+				7B4633F51F01FFDD0023E7F2 /* life_pay_cost@2x.png in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
 				7BFFBEF61EF65C8A001202EE /* AnnounceViewController.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
@@ -2324,6 +2381,7 @@
 				7B16622F1EF2862900644A7B /* ProductCollecttionCell.m in Sources */,
 				7B966BDF1EFFB5D400326C88 /* MWTapDetectingImageView.m in Sources */,
 				7B966AD31EFFB29500326C88 /* FSActionSheet.m in Sources */,
+				7B4633E61F01FD390023E7F2 /* BannerJumpController.m in Sources */,
 				7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */,
 				7B966AD61EFFB29500326C88 /* FSActionSheetItem.m in Sources */,
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,

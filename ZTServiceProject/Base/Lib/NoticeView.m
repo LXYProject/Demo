@@ -59,7 +59,8 @@
             [btn setTitleColor:UIColorFromRGB(0xb2b2b2) forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
             btn.titleLabel.font = [UIFont systemFontOfSize:12];
-            btn.frame = CGRectMake(47, 2, self.frame.size.width - 47-10, self.frame.size.height-4);
+            //====
+            btn.frame = CGRectMake(0, 2, self.superview.frame.size.width-15, self.frame.size.height-4);
             btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             btn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
             if (i != 0) {

@@ -9,6 +9,7 @@
 #import "BannerHeaderCell.h"
 #import <SDCycleScrollView.h>
 #import "AdvertisementModel.h"
+
 @interface BannerHeaderCell()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *bannerView;
 
@@ -31,7 +32,11 @@
 
 /** 点击图片回调 */
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    
+    if (index==0) {
+        [PushManager pushViewControllerWithName:@"BannerJumpController" animated:YES block:nil];
+    }else{
+        
+    }
 }
 
 /** 图片滚动回调 */

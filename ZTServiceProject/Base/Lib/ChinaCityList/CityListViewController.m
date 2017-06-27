@@ -414,7 +414,7 @@
     if ([_tableView respondsToSelector:@selector(setSectionIndexColor:)]) {
         _tableView.sectionIndexBackgroundColor = KSectionIndexBackgroundColor;  //修改索引试图未选中时的背景颜色
         _tableView.sectionIndexTrackingBackgroundColor = kSectionIndexTrackingBackgroundColor;//修改索引试图选中时的背景颜色
-        _tableView.sectionIndexColor = kSectionIndexColor;//修改索引试图字体颜色
+//        _tableView.sectionIndexColor = kSectionIndexColor;//修改索引试图字体颜色
     }
     
     

@@ -44,6 +44,7 @@
 
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
+@property (nonatomic,strong)NSArray *cellTitleImg;
 
 @end
 
@@ -53,6 +54,7 @@
     NSArray *noticeNews;
     NSInteger _times;
     NSString *_citySelected;
+    NSString *_LocatingCity;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,7 +91,7 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self leftItemWithNormalName:@"address" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self leftItemWithNormalName:@"address" title:@"定位中..." titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
     imageNames = @[
                    @"timg.jpeg",
@@ -289,6 +291,7 @@
                       indexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
+        cell.cellHeadIcon.image = [UIImage imageNamed:@"peripheral_services_img"];
         return cell;
     }
     else if (indexPath.row==1) {
@@ -320,6 +323,7 @@
 
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
+        cell.cellHeadIcon.image = [UIImage imageNamed:@"Item_recom_img"];
         return cell;
     }
     else {
@@ -343,6 +347,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
+        cell.cellHeadIcon.image = [UIImage imageNamed:@"rent_house_img"];
         return cell;
     }
     else {
@@ -432,32 +437,44 @@
     return 1;
 }
 
+- (NSArray *)cellTitleImg
+{
+    if (!_cellTitleImg) {
+        _cellTitleImg = @[
+                         @"peripheral_services_img",
+                         @"Item_recom_img",
+                         @"rent_house_img"
+                         ];
+    }
+    return _cellTitleImg;
+}
+
 - (NSArray *)itemDataSourceArray {
     if(!_itemDataSourceArray) {
         _itemDataSourceArray = @[
                                  @{@"title":@"二手物品"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"second_hand_ goods"
                                    ,@"vcName":@"SecondHandViewController"},
                                  @{@"title":@"求购"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"looking_for"
                                    ,@"vcName":@"LookingForViewController"},
                                  @{@"title":@"房屋租赁"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"house_lease"
                                    ,@"vcName":@"HouseRentViewController"},
                                  @{@"title":@"求租"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"soliciting"
                                    ,@"vcName":@"SolicitingViewController"},
                                  @{@"title":@"我的小区"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"我的房屋"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"my_house"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"物业"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"management_fee"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"生活缴费"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"life_pay_cost"
                                    ,@"vcName":@"TenementViewController"},
                                  ];
     }
@@ -551,7 +568,8 @@
             
             NSDictionary *address = [placemark addressDictionary];
             
-            [self leftItemWithNormalName:@"address" title:[address objectForKey:@"City"] titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+            _LocatingCity = [address objectForKey:@"City"];
+            [self leftItemWithNormalName:@"address" title:_LocatingCity titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
             
             //  Country(国家)  State(省)  City（市）
             NSLog(@"#####%@",address);
@@ -588,7 +606,8 @@
     //历史选择城市列表
     cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",@"厦门",@"泉州", nil];
     //定位城市列表
-    cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:@"北京市", nil];
+    cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:_LocatingCity, nil];
+
     
     [self presentViewController:cityListView animated:YES completion:nil];
 
@@ -596,8 +615,7 @@
 
 - (void)didClickedWithCityName:(NSString*)cityName
 {
-    _citySelected = cityName;
-    [self leftItemWithNormalName:@"noticeYellow" title:_citySelected titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self leftItemWithNormalName:@"noticeYellow" title:cityName titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
     
 }
 

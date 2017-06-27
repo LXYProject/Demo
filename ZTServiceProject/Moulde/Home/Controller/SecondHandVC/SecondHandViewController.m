@@ -166,31 +166,31 @@
     if(!_itemDataSourceArray) {
         _itemDataSourceArray = @[
                                  @{@"title":@"数码"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_smcp"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"服饰"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_fzxm"
                                    ,@"vcName":@"NearByViewController"},
                                  @{@"title":@"出行"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_jtgj"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"母婴"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_myyp"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"家具"
                                    ,@"icon":@"order_tabbar_selected"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"影音"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_tsyx"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"收藏"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_yssc"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"网游"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_wyxn"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"美容"
-                                   ,@"icon":@"order_tabbar_selected"
+                                   ,@"icon":@"home_eswp_mrbj"
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"更多"
                                    ,@"icon":@"order_tabbar_selected"

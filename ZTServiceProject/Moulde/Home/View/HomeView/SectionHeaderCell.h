@@ -11,4 +11,7 @@
 @interface SectionHeaderCell : UITableViewCell
 @property (nonatomic,strong)NSArray *notificationNews;
 
+@property (weak, nonatomic) IBOutlet UIImageView *cellHeadImg;
+
+
 @end

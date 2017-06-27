@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,26 +18,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noticeYellow.png" translatesAutoresizingMaskIntoConstraints="NO" id="1FC-kH-k52">
-                        <rect key="frame" x="8" y="16" width="13" height="12"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popular_dynamic_img.png" translatesAutoresizingMaskIntoConstraints="NO" id="1FC-kH-k52">
+                        <rect key="frame" x="15" y="15.5" width="66" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="12" id="Npm-dw-eIR"/>
-                            <constraint firstAttribute="width" constant="13" id="upV-bR-Emn"/>
+                            <constraint firstAttribute="width" constant="66" id="4QD-Gg-nv8"/>
+                            <constraint firstAttribute="height" constant="13" id="tCx-PY-rEW"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBL-yl-YrJ" customClass="NoticeView">
-                        <rect key="frame" x="31" y="8" width="274" height="28"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="frame" x="91" y="8" width="214" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="Q01-jt-OZC"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1FC-kH-k52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="JO1-nT-h8c"/>
-                    <constraint firstAttribute="trailing" secondItem="PBL-yl-YrJ" secondAttribute="trailing" constant="15" id="PqU-e4-bqm"/>
-                    <constraint firstItem="1FC-kH-k52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Tl2-cU-aZz"/>
-                    <constraint firstAttribute="bottom" secondItem="PBL-yl-YrJ" secondAttribute="bottom" constant="8" id="eSd-S1-qfj"/>
-                    <constraint firstItem="1FC-kH-k52" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iK3-kY-Pvo"/>
-                    <constraint firstItem="PBL-yl-YrJ" firstAttribute="leading" secondItem="1FC-kH-k52" secondAttribute="trailing" constant="10" id="lfd-Ea-Anb"/>
-                    <constraint firstItem="PBL-yl-YrJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xsV-T3-kYC"/>
+                    <constraint firstAttribute="trailing" secondItem="PBL-yl-YrJ" secondAttribute="trailing" constant="15" id="1fD-zV-s6Y"/>
+                    <constraint firstItem="1FC-kH-k52" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Pd2-Lc-hk7"/>
+                    <constraint firstItem="PBL-yl-YrJ" firstAttribute="leading" secondItem="1FC-kH-k52" secondAttribute="trailing" constant="10" id="sDB-ZI-Ymj"/>
+                    <constraint firstItem="1FC-kH-k52" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tx5-RH-Ef6"/>
+                    <constraint firstItem="PBL-yl-YrJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="w8p-7b-pLP"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -48,6 +47,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="noticeYellow.png" width="13" height="12"/>
+        <image name="popular_dynamic_img.png" width="66" height="13"/>
     </resources>
 </document>
