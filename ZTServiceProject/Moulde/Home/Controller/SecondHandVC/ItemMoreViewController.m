@@ -96,6 +96,10 @@
     return _pickerView;
 }
 
+//- (void)setDataSource:(NSArray *)dataSource{
+//    _dataSource = dataSource;
+//
+//}
 
 #pragma Mark -- UIPickerViewDataSource
 // pickerView 列数
