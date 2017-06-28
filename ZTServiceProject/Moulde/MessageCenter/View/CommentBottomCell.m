@@ -108,6 +108,9 @@
  这个是点赞的网络请求，你直接放点赞的点击方法里面调用
  */
 - (void)likeOrDislike {
-    
+    //把这个代码放在网络请求的成功回调里面
+    if (self.commentSuccessBlock) {
+        self.commentSuccessBlock();
+    }
 }
 @end
