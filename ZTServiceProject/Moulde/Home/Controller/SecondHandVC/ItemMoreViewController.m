@@ -41,17 +41,6 @@
 }
 - (IBAction)btnClick:(UIButton *)sender {
     NSLog(@"%ld",sender.tag);
-//    sender.selected = !sender.selected;
-//    if (sender.selected) {
-//        //userInteractionEnabled
-//        [self createPicker];
-//        [sender setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-//    }
-//    else {
-//        [self.pickerView removeFromSuperview];
-//        [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-//    }
-    
     if (sender.selected) {
         sender.selected = NO;
         [self dismissPickView];
@@ -69,8 +58,8 @@
         self.dataSource = self.sortingList;
     }
     //刷新
-    [self showPickView];
     [self.pickerView reloadAllComponents];
+    [self showPickView];
 
 }
 - (void)showPickView {
@@ -107,10 +96,6 @@
     return _pickerView;
 }
 
-//- (void)setDataSource:(NSArray *)dataSource{
-//    _dataSource = dataSource;
-//
-//}
 
 #pragma Mark -- UIPickerViewDataSource
 // pickerView 列数
@@ -160,8 +145,6 @@
     UILabel* pickerLabel = (UILabel*)view;
     if (!pickerLabel){
         pickerLabel = [[UILabel alloc] init];
-        // Setup label properties - frame, font, colors etc
-        //adjustsFontSizeToFitWidth property to YES
         pickerLabel.adjustsFontSizeToFitWidth = YES;
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
         [pickerLabel setFont:[UIFont systemFontOfSize:14]];
