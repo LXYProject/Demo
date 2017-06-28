@@ -138,6 +138,12 @@
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //这理我已经帮你写好了
+        @weakify(self);
+        cell.commentSuccessBlock = ^{
+            @strongify(self);
+            [self requestMessageData];
+        };
         return cell;
     }
     else {

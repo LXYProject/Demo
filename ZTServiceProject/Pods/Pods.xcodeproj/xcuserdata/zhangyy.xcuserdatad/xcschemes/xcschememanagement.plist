@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>DACircularProgress.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>GTMBase64.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -72,6 +77,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>00426CB4725CEA9520A45C47246404C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>00C96FACC8E50D614208313BFAF0786C</key>
 		<dict>
 			<key>primary</key>
@@ -87,12 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1ADF4CF3C2589B5CB9B52469C52D1516</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>45806B3352B847CDE80ADF2FB2826D8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>59F4EC70DA726BC6B5451264735E7322</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +142,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B7C8E9E5CC2278148A50AFBB4013A979</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C791F0A928C1A8FE97074DFC9ACF4E75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D5CC6C19558B6640B3EC20DE866F4540</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E0111C067A9C9DF4319B1C0902CE6BDB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -133,6 +168,16 @@
 			<true/>
 		</dict>
 		<key>EA5961A01B630EA98A3A02CCE249D878</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F19C8989BE28E0937C7C81C574E312B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF1CA6873BA28192984BA19D845B979C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

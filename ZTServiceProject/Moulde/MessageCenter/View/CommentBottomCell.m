@@ -79,19 +79,35 @@
         }
     }
 }
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    NSLog(@"textFieldDidBeginEditing");
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSString *context = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if (context.length>0) {
+        [self commentRequestWithText:context];
+        return YES;
+    }
+    return NO;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"textFieldDidEndEditing");
+#pragma mark - 这个方法里面写上评论的请求
+
+/**
+ 评论帖子
+
+ @param text 评论的内容
+ */
+- (void)commentRequestWithText:(NSString *)text{
+    //把这个代码放在网络请求的成功回调里面
+    if (self.commentSuccessBlock) {
+        self.commentSuccessBlock();
+    }
+}
+
+
+/**
+ 这个是点赞的网络请求，你直接放点赞的点击方法里面调用
+ */
+- (void)likeOrDislike {
     
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    NSLog(@"点击了发表");
-    return YES;
 }
 @end
