@@ -164,7 +164,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    @weakify(self);
+//    @weakify(self);
 //    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
 //        @strongify(self);
 //        viewController.categrayId = [self.dataSource[indexPath.row] categrayId];
