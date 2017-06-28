@@ -9,6 +9,8 @@
 #import "CommentBottomCell.h"
 #import "MessageModel.h"
 #import "CommentUserModel.h"
+#import "MesssgeHttpManager.h"  
+
 @interface CommentBottomCell()<UITextFieldDelegate>
 //地址
 @property (weak, nonatomic) IBOutlet UILabel *address;
@@ -23,16 +25,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *thumbUpNumber;
 @property (weak, nonatomic) IBOutlet UILabel *comments;
 @property (weak, nonatomic) IBOutlet UILabel *shareNumber;
+
+@property (nonatomic, copy) NSString *topicId;
+@property (nonatomic,assign)NSInteger commentType;
+
+
 @end
 
 @implementation CommentBottomCell
-
+{
+    BOOL ReplyComment;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     self.commentTextField.delegate = self;//设置代理
     self.commentTextField.enablesReturnKeyAutomatically = YES;
     self.commentTextField.returnKeyType = UIReturnKeySend;//变为搜索按钮
+    
+    if (ReplyComment==YES) {
+        _commentType = 0;//话题评论
+    }else{
+        _commentType = 1;//回复评论
+    }
+
 
 }
 
@@ -47,6 +63,8 @@
         _address.text = _model.address.length>0?_model.address:@"未知位置";
         _thumbUpNumber.text = [NSString stringWithFormat:@"%lu", (unsigned long)model.likeList.count];
         _comments.text = model.commentCount;
+        _topicId = model.topicId;
+        
         NSMutableString *likeStr = [[NSMutableString alloc]initWithCapacity:1];
         [_model.likeList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CommentUserModel *userModel = obj;
@@ -89,26 +107,31 @@
     return NO;
 }
 
-#pragma mark - 这个方法里面写上评论的请求
+#pragma mark - 评论的请求
 
 /**
  评论帖子
-
+//回复
  @param text 评论的内容
  */
 - (void)commentRequestWithText:(NSString *)text{
-    //把这个代码放在网络请求的成功回调里面
-    if (self.commentSuccessBlock) {
-        self.commentSuccessBlock();
-    }
+    
+    [MesssgeHttpManager requestTopicId:_topicId comment:text commentType:_commentType targetUserId:@"" success:^(id response) {
+        //网络请求的成功回调里面
+        if (self.commentSuccessBlock) {
+            self.commentSuccessBlock();
+        }
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
 }
 
 
 /**
- 这个是点赞的网络请求，你直接放点赞的点击方法里面调用
+ 点赞的网络请求，放点赞的点击方法里面调用
  */
 - (void)likeOrDislike {
-    //把这个代码放在网络请求的成功回调里面
+    //这个代码放在网络请求的成功回调里面
     if (self.commentSuccessBlock) {
         self.commentSuccessBlock();
     }

@@ -167,7 +167,7 @@
 //    @weakify(self);
 //    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
 //        @strongify(self);
-//        viewController.categrayId = [self.dataSource[indexPath.row] categrayId];
+//        viewController.categrayId = [self.dataSource[indexPath.row] categoryId];
 //    }];
 }
 

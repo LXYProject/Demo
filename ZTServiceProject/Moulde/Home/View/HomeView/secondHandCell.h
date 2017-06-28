@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface secondHandCell : UITableViewCell
+
 @property (nonatomic,strong)NSArray *model;
+
 @end

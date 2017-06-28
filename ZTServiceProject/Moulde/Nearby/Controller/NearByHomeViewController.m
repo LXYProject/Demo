@@ -38,8 +38,26 @@
     self.tabAnimationType = GLTabAnimationType_whileScrolling;
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
-    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
-    [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
+    
+    UIButton * button =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 45)];
+    //文字
+    [button setTitle:@"北京" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    //图片
+    [button setImage:[UIImage imageNamed:@"drop_down"] forState:UIControlStateNormal];
+    
+    /////////////修改///////////////////
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    button.imageEdgeInsets = UIEdgeInsetsMake(0,50, 0, 0); //上左下右
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    UIBarButtonItem *leftItemBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [button addTarget:self action:@selector(leftBarClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = leftItemBtn;
+
+    
+//    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"selech_icon" highName:@"selech_icon" selector:@selector(rightBarClick) target:self];
 
     UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
     segment.width = 200;

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CommentContentCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oWw-Dp-Wg3">
+                        <rect key="frame" x="15" y="10" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="16H-SN-yga"/>
+                            <constraint firstAttribute="width" constant="26" id="XVe-q6-jWq"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朱元璋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5L-6A-aX4">
+                        <rect key="frame" x="51" y="13" width="43" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="82O-mo-xxs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPn-AX-Fcm">
+                        <rect key="frame" x="285" y="13.5" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="L1a-PZ-N2z"/>
+                            <constraint firstAttribute="width" constant="20" id="jmH-yq-uCr"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="comments.png"/>
+                        <connections>
+                            <action selector="commentsBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dL9-gf-clE"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7Y-e5-OaM">
+                        <rect key="frame" x="230" y="13.5" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="1V3-5c-1Rz"/>
+                            <constraint firstAttribute="height" constant="20" id="A8b-Pm-VIa"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="thumb_up.png"/>
+                        <connections>
+                            <action selector="ThumbupbtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S2r-xF-Xhw"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="T5L-6A-aX4" firstAttribute="leading" secondItem="oWw-Dp-Wg3" secondAttribute="trailing" constant="10" id="0ED-tL-Tme"/>
+                    <constraint firstAttribute="trailing" secondItem="bPn-AX-Fcm" secondAttribute="trailing" constant="15" id="CgZ-DQ-YIm"/>
+                    <constraint firstItem="T5L-6A-aX4" firstAttribute="centerY" secondItem="oWw-Dp-Wg3" secondAttribute="centerY" id="HFD-9g-kZE"/>
+                    <constraint firstItem="T7Y-e5-OaM" firstAttribute="centerY" secondItem="T5L-6A-aX4" secondAttribute="centerY" id="ISZ-Fi-gUx"/>
+                    <constraint firstItem="oWw-Dp-Wg3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="KAv-Lj-jaT"/>
+                    <constraint firstItem="oWw-Dp-Wg3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="aIy-gn-74W"/>
+                    <constraint firstItem="bPn-AX-Fcm" firstAttribute="leading" secondItem="T7Y-e5-OaM" secondAttribute="trailing" constant="35" id="dhp-WF-Ci4"/>
+                    <constraint firstItem="bPn-AX-Fcm" firstAttribute="centerY" secondItem="T5L-6A-aX4" secondAttribute="centerY" id="kI5-ed-tOr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dzBtn" destination="T7Y-e5-OaM" id="8wu-MA-8KM"/>
+                <outlet property="headIcon" destination="oWw-Dp-Wg3" id="nNJ-CA-QNn"/>
+                <outlet property="name" destination="T5L-6A-aX4" id="8Rt-Z5-KST"/>
+                <outlet property="plBtn" destination="bPn-AX-Fcm" id="r9i-I9-fc7"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="comments.png" width="10" height="10"/>
+        <image name="thumb_up.png" width="10" height="10"/>
+    </resources>
+</document>

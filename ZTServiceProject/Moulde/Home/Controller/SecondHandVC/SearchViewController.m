@@ -8,7 +8,6 @@
 
 #import "SearchViewController.h" 
 #import "SearchOneHeadCell.h"
-#import "SearchItemCell.h"
 #import "SecondHandSearchHeaderView.h"
 #import "SecondHanditemCell.h"
 #define RGB(r,g,b) RGBA(r,g,b,1.0f)

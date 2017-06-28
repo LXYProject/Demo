@@ -1,14 +1,14 @@
 //
-//  SearchItemCell.m
-//  SearchTable
+//  DialheadCell.m
+//  ZTServiceProject
 //
-//  Created by ZT on 2017/6/21.
-//  Copyright © 2017年 张圆圆. All rights reserved.
+//  Created by ZT on 2017/6/28.
+//  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "SearchItemCell.h"
+#import "DialheadCell.h"
 
-@implementation SearchItemCell
+@implementation DialheadCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -207,11 +207,11 @@
                                  
                                  @{@"title":@"便民信息",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  
                                  @{@"title":@"小区主页",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  ],
                              @[
                                  @{@"title":@"上门服务",
@@ -233,23 +233,23 @@
                              @[
                                  @{@"title":@"呼叫保安",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  
                                  @{@"title":@"保安团队",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  
                                  @{@"title":@"设施设备",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"}
+                                   @"vcName":@"AnnounceViewController"}
                                  ],
                              @[
                                  @{@"title":@"物业费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"},
+                                   @"vcName":@"AnnounceViewController"},
                                  @{@"title":@"生活缴费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"HomeViewController"}
+                                   @"vcName":@"AnnounceViewController"}
                                  ],
                              ];
     }

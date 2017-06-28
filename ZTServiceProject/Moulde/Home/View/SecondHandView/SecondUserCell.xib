@@ -27,9 +27,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朱元璋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQH-e3-aDc">
-                        <rect key="frame" x="51" y="4" width="50" height="15"/>
+                        <rect key="frame" x="51" y="4" width="150" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="U6Q-Be-IGs"/>
+                            <constraint firstAttribute="width" constant="150" id="U6Q-Be-IGs"/>
                             <constraint firstAttribute="height" constant="15" id="X8v-s5-cOb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -37,20 +37,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17年06月20日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2Y-GO-WAb">
-                        <rect key="frame" x="51" y="25" width="67" height="15"/>
+                        <rect key="frame" x="51" y="25" width="150" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="6XW-WV-Avz"/>
-                            <constraint firstAttribute="width" constant="67" id="AOn-Zb-3mG"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18:16:44" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkE-Yz-a9C">
-                        <rect key="frame" x="128" y="25" width="42" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="V0i-Zd-ooT"/>
-                            <constraint firstAttribute="width" constant="42" id="sJo-o1-anW"/>
+                            <constraint firstAttribute="width" constant="150" id="AOn-Zb-3mG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,19 +69,24 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="LGi-6D-nwt" secondAttribute="trailing" constant="15" id="3fE-yf-Oys"/>
+                    <constraint firstItem="LGi-6D-nwt" firstAttribute="baseline" secondItem="o2Y-GO-WAb" secondAttribute="baseline" id="5i9-Az-Biu"/>
+                    <constraint firstItem="6W6-Yv-1tP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-5" id="GEB-sf-vsI"/>
                     <constraint firstItem="LGi-6D-nwt" firstAttribute="top" secondItem="6W6-Yv-1tP" secondAttribute="bottom" constant="4" id="JT1-jD-e9N"/>
-                    <constraint firstItem="TkE-Yz-a9C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="KcF-eP-TY7"/>
-                    <constraint firstItem="TkE-Yz-a9C" firstAttribute="leading" secondItem="o2Y-GO-WAb" secondAttribute="trailing" constant="10" id="MNL-y7-Wsz"/>
                     <constraint firstItem="996-KE-Wf6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Pj4-vV-X4E"/>
                     <constraint firstItem="6W6-Yv-1tP" firstAttribute="trailing" secondItem="LGi-6D-nwt" secondAttribute="trailing" id="Pxq-4D-AWM"/>
                     <constraint firstItem="996-KE-Wf6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VPN-VE-ELn"/>
-                    <constraint firstItem="LGi-6D-nwt" firstAttribute="centerY" secondItem="TkE-Yz-a9C" secondAttribute="centerY" id="WOd-72-Wjs"/>
-                    <constraint firstItem="TkE-Yz-a9C" firstAttribute="centerY" secondItem="o2Y-GO-WAb" secondAttribute="centerY" id="pOj-wN-EJG"/>
                     <constraint firstItem="o2Y-GO-WAb" firstAttribute="top" secondItem="wQH-e3-aDc" secondAttribute="bottom" constant="6" id="xAi-2Q-a53"/>
                     <constraint firstItem="o2Y-GO-WAb" firstAttribute="leading" secondItem="996-KE-Wf6" secondAttribute="trailing" constant="10" id="yQm-mD-IJ8"/>
                     <constraint firstItem="wQH-e3-aDc" firstAttribute="leading" secondItem="o2Y-GO-WAb" secondAttribute="leading" id="zd7-wJ-F1Q"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headIcon" destination="996-KE-Wf6" id="BSN-za-YPd"/>
+                <outlet property="name" destination="wQH-e3-aDc" id="Jl8-Kr-8jH"/>
+                <outlet property="originalPrice" destination="LGi-6D-nwt" id="Tc9-Hg-rhE"/>
+                <outlet property="presentPrice" destination="6W6-Yv-1tP" id="Oye-Vg-sM5"/>
+                <outlet property="time" destination="o2Y-GO-WAb" id="SYa-41-r70"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

@@ -88,8 +88,8 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self leftItemWithNormalName:@"address" title:@"定位中..." titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
-    [self rightBarButtomItemWithNormalName:@"noticeYellow@3x" highName:@"noticeYellow@3x" selector:@selector(rightBarClick) target:self];
+    [self leftItemWithNormalName:@"address_One" title:@"定位中..." titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"notice" highName:@"notice" selector:@selector(rightBarClick) target:self];
     imageNames = @[
                    @"timg.jpeg",
                    @"timg.jpeg",
@@ -554,7 +554,7 @@
             NSDictionary *address = [placemark addressDictionary];
             
             _LocatingCity = [address objectForKey:@"City"];
-            [self leftItemWithNormalName:@"address" title:_LocatingCity titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
+            [self leftItemWithNormalName:@"address_One" title:_LocatingCity titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
             
             //  Country(国家)  State(省)  City（市）
             NSLog(@"#####%@",address);

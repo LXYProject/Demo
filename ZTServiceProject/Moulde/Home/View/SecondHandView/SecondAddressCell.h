@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class SecondHandModel;
+
 @interface SecondAddressCell : UITableViewCell
+@property (nonatomic,strong)SecondHandModel *model;
 
 @end

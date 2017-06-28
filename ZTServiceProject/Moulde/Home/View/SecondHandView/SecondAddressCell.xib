@@ -18,15 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cz7-w8-0QM">
-                        <rect key="frame" x="15" y="14" width="15" height="15"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="address.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cz7-w8-0QM">
+                        <rect key="frame" x="15" y="17" width="10" height="10"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="ay5-70-l6Z"/>
-                            <constraint firstAttribute="width" constant="15" id="g2r-Xc-kUB"/>
+                            <constraint firstAttribute="height" constant="10" id="ay5-70-l6Z"/>
+                            <constraint firstAttribute="width" constant="10" id="g2r-Xc-kUB"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北京市  海淀区" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx7-AK-zlP">
-                        <rect key="frame" x="40" y="12" width="80.5" height="21"/>
+                        <rect key="frame" x="30" y="12" width="80.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="bOf-aC-Co4"/>
                         </constraints>
@@ -44,7 +44,7 @@
                         <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-Di-NjL">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collection_ normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="fAc-Di-NjL">
                         <rect key="frame" x="250" y="10" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="Hrb-Pu-rA7"/>
@@ -61,7 +61,7 @@
                         <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPQ-22-CDJ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comments_One.png" translatesAutoresizingMaskIntoConstraints="NO" id="iPQ-22-CDJ">
                         <rect key="frame" x="175" y="10" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="4yl-29-ipq"/>
@@ -79,11 +79,21 @@
                     <constraint firstItem="Cz7-w8-0QM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="h4M-Sm-Kxf"/>
                     <constraint firstItem="2Gc-Ea-t81" firstAttribute="leading" secondItem="fAc-Di-NjL" secondAttribute="trailing" id="qYr-pA-udZ"/>
                     <constraint firstAttribute="trailing" secondItem="2Gc-Ea-t81" secondAttribute="trailing" constant="15" id="sLK-7p-8EU"/>
-                    <constraint firstItem="vx7-AK-zlP" firstAttribute="leading" secondItem="Cz7-w8-0QM" secondAttribute="trailing" constant="10" id="v8E-bq-xZN"/>
+                    <constraint firstItem="vx7-AK-zlP" firstAttribute="leading" secondItem="Cz7-w8-0QM" secondAttribute="trailing" constant="5" id="v8E-bq-xZN"/>
                     <constraint firstItem="blO-Om-Aje" firstAttribute="leading" secondItem="iPQ-22-CDJ" secondAttribute="trailing" id="wb2-sj-B5v"/>
                     <constraint firstItem="Cz7-w8-0QM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="x67-BH-QDF"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="address" destination="vx7-AK-zlP" id="QE4-Gc-4uM"/>
+                <outlet property="comments" destination="2Gc-Ea-t81" id="X3u-hV-uev"/>
+                <outlet property="thumbup" destination="blO-Om-Aje" id="pCT-ca-ARP"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="address.png" width="10" height="10"/>
+        <image name="collection_ normal.png" width="10" height="10"/>
+        <image name="comments_One.png" width="20" height="20"/>
+    </resources>
 </document>

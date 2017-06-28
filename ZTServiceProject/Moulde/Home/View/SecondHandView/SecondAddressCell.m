@@ -7,7 +7,15 @@
 //
 
 #import "SecondAddressCell.h"
+#import "SecondHandModel.h"
 
+@interface SecondAddressCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *thumbup;
+@property (weak, nonatomic) IBOutlet UILabel *comments;
+
+@end
 @implementation SecondAddressCell
 
 - (void)awakeFromNib {
@@ -19,6 +27,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (void)setModel:(SecondHandModel *)model {
+    _model = model;
+    
+    _address.text = model.address;
+    _thumbup.text = model.isLiked;
+    _comments.text = model.commentCount;
+
 }
 
 @end

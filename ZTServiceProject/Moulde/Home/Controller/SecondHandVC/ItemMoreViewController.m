@@ -41,6 +41,17 @@
 }
 - (IBAction)btnClick:(UIButton *)sender {
     NSLog(@"%ld",sender.tag);
+//    sender.selected = !sender.selected;
+//    if (sender.selected) {
+//        //userInteractionEnabled
+//        [self createPicker];
+//        [sender setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+//    }
+//    else {
+//        [self.pickerView removeFromSuperview];
+//        [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+//    }
+    
     if (sender.selected) {
         sender.selected = NO;
         [self dismissPickView];
@@ -53,14 +64,12 @@
     if (sender.tag==1) {
         self.dataSource = self.areaList;
     }else if (sender.tag==2){
-        self.dataSource = self.typeList;
+        
     }else{
-        self.dataSource = self.sortingList;
+        
     }
     //刷新
-    [self.pickerView reloadAllComponents];
     [self showPickView];
-
 }
 - (void)showPickView {
     if (_isShowing) {
@@ -87,7 +96,7 @@
 - (UIPickerView *)pickerView{
     
     if (!_pickerView){
-        _pickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 200)];
+        _pickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, 200)];
         // 显示选中框
         self.pickerView.showsSelectionIndicator=YES;
         self.pickerView.dataSource = self;
@@ -149,6 +158,8 @@
     UILabel* pickerLabel = (UILabel*)view;
     if (!pickerLabel){
         pickerLabel = [[UILabel alloc] init];
+        // Setup label properties - frame, font, colors etc
+        //adjustsFontSizeToFitWidth property to YES
         pickerLabel.adjustsFontSizeToFitWidth = YES;
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
         [pickerLabel setFont:[UIFont systemFontOfSize:14]];

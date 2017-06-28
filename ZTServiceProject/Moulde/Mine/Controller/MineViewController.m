@@ -35,7 +35,7 @@
     _sectionOneImg = @[@"message_tabbar_default",@"message_tabbar_selected", @"my_tabbar_default"];
     _sectionTwoImg= @[@"message_tabbar_default",@"message_tabbar_selected"];
     
-    [self rightBarButtomItemWithNormalName:@"warn_40px" highName:@"warn_40px" selector:@selector(rightBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"setting_btn" highName:@"setting_btn" selector:@selector(rightBarClick) target:self];
 }
 - (void)rightBarClick
 {
@@ -136,9 +136,9 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return 50;
+        return 60;
     }else{
-        return 45;
+        return 44;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

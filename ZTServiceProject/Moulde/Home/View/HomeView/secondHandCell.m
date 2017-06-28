@@ -9,7 +9,8 @@
 #import "secondHandCell.h"
 #import "ProductCollecttionCell.h"
 #import "HomeHttpManager.h"
-//#import "SecondDetailsController.h" 
+#import "SecondDetailsController.h"
+#import "SecondHandModel.h"
 
 @interface secondHandCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -66,7 +67,20 @@
 //点击Cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"indexPath.row==%ld", (long)indexPath.row);
-    [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:nil];
+        @weakify(self);
+        [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
+            @strongify(self);
+
+            viewController.titleStr = [self.model[indexPath.row] secondHandTitle];
+            viewController.content = [self.model[indexPath.row] secondHandContent];
+            
+            viewController.model = self.model;
+
+//            viewController.name = [self.model[indexPath.row] onwerName];
+////            NSString *imagStr = [self.model[indexPath.row] ownerImageUrl];
+//            [viewController.headIcon sd_setImageWithURL:[NSURL URLWithString:[self.model[indexPath.row] ownerImageUrl]] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+
+         
+        }];
 }
 @end

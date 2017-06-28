@@ -12,6 +12,8 @@
 #import "SecondBtnItemCell.h"
 #import "SecondUserCell.h"  
 #import "SecondAddressCell.h"
+#import "CommentsHeadCell.h"
+#import "CommentContentCell.h"
 
 @interface SecondDetailsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -37,10 +39,10 @@
     [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     self.tableView.backgroundColor = RGB(247, 247, 247);
     
-    Model *model = [[Model alloc] initWithTitle:@"hahahh" content:@"撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热"];
+    Model *model = [[Model alloc] initWithTitle:_titleStr content:_content];
     [self.dataArray addObject:model];
 
-    Model *mode2 = [[Model alloc] initWithTitle:@"hahahh" content:@"撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热撒大声地聚聚不不不好好好好回家多大的呜呜呜进给速度密码是什么忙项目明细内心世界你打我电话我那还好一头热"];
+    Model *mode2 = [[Model alloc] initWithTitle:_titleStr content:_content];
     [self.dataArray addObject:mode2];
     
 }
@@ -52,7 +54,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -61,7 +63,7 @@
     }else if (section==1){
         return 1;
     }else{
-        return 0;
+        return 2;
     }
 }
 
@@ -72,9 +74,10 @@
     }else if (indexPath.section==1){
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
     }
-//    else if (indexPath.section==2){
-//        return [self sectionTwoWithTableView:tableView indexPath:indexPath];
-//    }else if (indexPath.section==3){
+    else if (indexPath.section==2){
+        return [self sectionTwoWithTableView:tableView indexPath:indexPath];
+    }
+//    else if (indexPath.section==3){
 //        return [self sectionThirdrdTableView:tableView indexPath:indexPath];
 //    }
     return nil;
@@ -87,7 +90,7 @@
     if (indexPath.row == 0) {
         SecondBannerCell *cell = (SecondBannerCell *)[self creatCell:tableView indenty:@"SecondBannerCell"];
         cell.secondModelArray = imageNames;
-//        cell.modelArray = self.imageURLArray;
+//        cell.modelArray = _imageURLArray;
         return cell;
     }else if (indexPath.row==1){
         SecondDetailsCell *cell = (SecondDetailsCell *)[self creatCell:tableView indenty:@"SecondDetailsCell"];
@@ -96,11 +99,16 @@
         return cell;
     }else if (indexPath.row==2){
         SecondUserCell *cell = (SecondUserCell *)[self creatCell:tableView indenty:@"SecondUserCell"];
+//        cell.headIcon = _headIcon;
+//        cell.name.text = _name;
+        cell.model = self.model[indexPath.section];
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
 
         SecondAddressCell *cell = (SecondAddressCell *)[self creatCell:tableView indenty:@"SecondAddressCell"];
+        cell.model = self.model[indexPath.section];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -113,6 +121,21 @@
     SecondBtnItemCell *cell = (SecondBtnItemCell *)[self creatCell:tableView indenty:@"SecondBtnItemCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+//第2组
+- (UITableViewCell *)sectionTwoWithTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.row==0) {
+        CommentsHeadCell *cell = (CommentsHeadCell *)[self creatCell:tableView indenty:@"CommentsHeadCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else{
+        CommentContentCell *cell = (CommentContentCell *)[self creatCell:tableView indenty:@"CommentContentCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
 }
 //公共创建cell的方法
 - (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
@@ -163,7 +186,11 @@
         return 44;
     }
     else{
-        return 0;
+        if (indexPath.row==0) {
+            return 44;
+        }else{
+            return 150;
+        }
     }
 }
 

@@ -39,7 +39,7 @@
     self.currentPage = 1;
 
     
-    [self rightBarButtomItemWithNormalName:@"warn_40px" highName:@"warn_40px" selector:@selector(rightBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"add_btn" highName:@"add_btn" selector:@selector(rightBarClick) target:self];
     [self.tableView registerNib:[UINib nibWithNibName:@"HeaderCell" bundle:nil] forCellReuseIdentifier:@"HeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
@@ -138,7 +138,7 @@
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //这理我已经帮你写好了
+        //OK
         @weakify(self);
         cell.commentSuccessBlock = ^{
             @strongify(self);
