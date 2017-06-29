@@ -15,6 +15,7 @@
 #import "NearByItemModel.h"
 #import "HomeHttpManager.h"
 #import "ItemMoreViewController.h"
+#import "SecondHeadCell.h"
 
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -68,13 +69,13 @@
         return 1;
     }
     else{
-        return 0;
+        return 1;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -88,6 +89,9 @@
     else if (indexPath.section ==2) {
         return [self sectionTwoTableView:tableView indexPath:indexPath];
     }
+    else if (indexPath.section==3){
+    return [self sectionThirdrdTableView:tableView indexPath:indexPath];
+}
 
     else{
         return nil;
@@ -129,6 +133,14 @@
     return cell;
 }
 
+//第3组
+- (UITableViewCell *)sectionThirdrdTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+    SecondHeadCell *cell = (SecondHeadCell *)[self creatCell:tableView indenty:@"SecondHeadCell"];
+//    cell.model = self.secondCellDataSource;
+    return cell;
+
+}
 //公共创建cell的方法
 - (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indenty];
@@ -154,7 +166,7 @@
         return 175;
     }
     else {
-        return 0;
+        return 44;
     }
     
 }

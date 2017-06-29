@@ -45,6 +45,8 @@
 		7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662231EF2862900644A7B /* secondHandCell.xib */; };
 		7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1662251EF2862900644A7B /* SectionHeaderCell.m */; };
 		7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662261EF2862900644A7B /* SectionHeaderCell.xib */; };
+		7B1A05831F04923B0086ED7B /* SecondHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1A05811F04923B0086ED7B /* SecondHeadCell.m */; };
+		7B1A05841F04923B0086ED7B /* SecondHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A05821F04923B0086ED7B /* SecondHeadCell.xib */; };
 		7B205DF31F00B18A00E46B74 /* AddPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */; };
 		7B205DF41F00B18A00E46B74 /* AddPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */; };
 		7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF71F00E6C900E46B74 /* home_eswp_fzxm@2x.png */; };
@@ -451,6 +453,9 @@
 		7B1662241EF2862900644A7B /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
 		7B1662251EF2862900644A7B /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
 		7B1662261EF2862900644A7B /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
+		7B1A05801F04923B0086ED7B /* SecondHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHeadCell.h; sourceTree = "<group>"; };
+		7B1A05811F04923B0086ED7B /* SecondHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHeadCell.m; sourceTree = "<group>"; };
+		7B1A05821F04923B0086ED7B /* SecondHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHeadCell.xib; sourceTree = "<group>"; };
 		7B205DF01F00B18A00E46B74 /* AddPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotosCell.h; sourceTree = "<group>"; };
 		7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotosCell.m; sourceTree = "<group>"; };
 		7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhotosCell.xib; sourceTree = "<group>"; };
@@ -1038,6 +1043,9 @@
 				7B1662071EF2862300644A7B /* SearchHeadCell.h */,
 				7B1662081EF2862300644A7B /* SearchHeadCell.m */,
 				7B1662091EF2862300644A7B /* SearchHeadCell.xib */,
+				7B1A05801F04923B0086ED7B /* SecondHeadCell.h */,
+				7B1A05811F04923B0086ED7B /* SecondHeadCell.m */,
+				7B1A05821F04923B0086ED7B /* SecondHeadCell.xib */,
 				7BAFBC1D1EF7BAF700AFB6C7 /* SwitchCell.h */,
 				7BAFBC1E1EF7BAF700AFB6C7 /* SwitchCell.m */,
 				7BAFBC1F1EF7BAF700AFB6C7 /* SwitchCell.xib */,
@@ -2304,6 +2312,7 @@
 				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7B16622C1EF2862900644A7B /* NearByHeaderCell.xib in Resources */,
 				7B5C92431EF8C1F200C545A8 /* SecondBannerCell.xib in Resources */,
+				7B1A05841F04923B0086ED7B /* SecondHeadCell.xib in Resources */,
 				7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */,
 				7BF4B22A1EE3D6470058185F /* nav_back_btn@2x.png in Resources */,
 				7B8F2A6B1F039A6F00D5D1DF /* address_One@2x.png in Resources */,
@@ -2489,6 +2498,7 @@
 				7BFFBEFB1EF65E28001202EE /* AnnounceCell.m in Sources */,
 				7B1662311EF2862900644A7B /* ProductItemCell.m in Sources */,
 				7B966BDB1EFFB5D400326C88 /* MWGridCell.m in Sources */,
+				7B1A05831F04923B0086ED7B /* SecondHeadCell.m in Sources */,
 				7BFFBF161EF68026001202EE /* PraiseTextCell.m in Sources */,
 				7B16622F1EF2862900644A7B /* ProductCollecttionCell.m in Sources */,
 				7B966BDF1EFFB5D400326C88 /* MWTapDetectingImageView.m in Sources */,
