@@ -18,6 +18,10 @@ typedef NS_ENUM(NSUInteger, ClearButtonType) {
 @protocol HClTextViewDelegate;
 
 @interface HClTextView : UIView
+
+@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
+
+
 @property (nonatomic,assign) id delegate;
 @property (assign, nonatomic) ClearButtonType clearButtonType;
 ///设置左侧Label文字(需优先设置,则会改变部分占位文字)!!!

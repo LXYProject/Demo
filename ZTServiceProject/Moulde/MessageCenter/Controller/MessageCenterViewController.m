@@ -75,6 +75,8 @@
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
+    [PushManager pushViewControllerWithName:@"PostMessageController" animated:YES block:nil];
+
 }
 
 //请求帖子

@@ -1,5 +1,5 @@
 //
-//  SecondHeadCell.h
+//  PostContentCell.h
 //  ZTServiceProject
 //
 //  Created by ZT on 2017/6/29.
@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SecondHandModel;
-
-@interface SecondHeadCell : UITableViewCell
-
-@property (nonatomic,strong)SecondHandModel *model;
-
+@interface PostContentCell : UITableViewCell
 
 @end

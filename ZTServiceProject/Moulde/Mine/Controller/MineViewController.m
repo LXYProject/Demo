@@ -40,6 +40,7 @@
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
+    [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
 }
 - (void)createTableview
 {
@@ -79,6 +80,8 @@
 - (void)loginBtnClick
 {
     NSLog(@"loginBtnClick");
+    [PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
+
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section==0) {

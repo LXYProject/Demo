@@ -1,20 +1,21 @@
 //
-//  DialheadCell.m
+//  DetailsCell.m
 //  ZTServiceProject
 //
-//  Created by ZT on 2017/6/28.
+//  Created by ZT on 2017/6/29.
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "DialheadCell.h"
+#import "DetailsCell.h"
 
-@interface DialheadCell()
-
+@interface DetailsCell ()
+@property (weak, nonatomic) IBOutlet UILabel *villagersName;
 @property (weak, nonatomic) IBOutlet UILabel *phoneNumber;
-@property (weak, nonatomic) IBOutlet UIButton *callBtn;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+
 
 @end
-@implementation DialheadCell
+@implementation DetailsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -26,7 +27,7 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)callBtnClick:(id)sender {
+- (IBAction)callBtnClick {
 }
 
 @end

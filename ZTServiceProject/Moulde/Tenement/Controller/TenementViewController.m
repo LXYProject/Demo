@@ -207,7 +207,7 @@
                                  
                                  @{@"title":@"便民信息",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"},
+                                   @"vcName":@"InformationController"},
                                  
                                  @{@"title":@"小区主页",
                                    @"icon":@"my_tabbar_selected",

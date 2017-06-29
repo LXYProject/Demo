@@ -15,7 +15,7 @@
 #import "NearByItemModel.h"
 #import "HomeHttpManager.h"
 #import "ItemMoreViewController.h"
-#import "SecondHeadCell.h"
+#import "SecondMessageCell.h"   
 
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -56,6 +56,7 @@
     [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
         self.secondCellDataSource = response;
         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
     } failure:^(NSError *error, NSString *message) {
     }];
 }
@@ -136,8 +137,8 @@
 //第3组
 - (UITableViewCell *)sectionThirdrdTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
-    SecondHeadCell *cell = (SecondHeadCell *)[self creatCell:tableView indenty:@"SecondHeadCell"];
-//    cell.model = self.secondCellDataSource;
+    SecondMessageCell *cell = (SecondMessageCell *)[self creatCell:tableView indenty:@"SecondMessageCell"];
+    cell.model = self.secondCellDataSource[indexPath.row];
     return cell;
 
 }
@@ -166,7 +167,7 @@
         return 175;
     }
     else {
-        return 44;
+        return 94;
     }
     
 }

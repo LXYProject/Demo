@@ -12,7 +12,6 @@
 @property (nonatomic,assign) NSUInteger maxTextCount;
 
 @property (weak, nonatomic) IBOutlet PlaceholderTextView *textView;
-@property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *textCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomDivLine;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
