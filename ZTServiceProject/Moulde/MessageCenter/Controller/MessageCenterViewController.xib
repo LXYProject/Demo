@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageCenterViewController">
             <connections>
-                <outlet property="tableView" destination="3c9-MJ-Zab" id="GXI-dx-mn2"/>
+                <outlet property="tableView" destination="3c9-MJ-Zab" id="L9D-RL-bZH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

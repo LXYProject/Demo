@@ -21,6 +21,6 @@
 @property (nonatomic, copy) void(^secondBlock)(NSString *);
 
 //这个block专门给而外界调用的
-@property (nonatomic,copy)Void_Block commentSuccessBlock;
+@property (nonatomic,copy)Id_Block commentSuccessBlock;
 
 @end

@@ -65,22 +65,11 @@
 }
 
 //点击Cell
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-        @weakify(self);
-        [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
-            @strongify(self);
-
-            viewController.titleStr = [self.model[indexPath.row] secondHandTitle];
-            viewController.content = [self.model[indexPath.row] secondHandContent];
-            
-            viewController.model = self.model;
-
-//            viewController.name = [self.model[indexPath.row] onwerName];
-////            NSString *imagStr = [self.model[indexPath.row] ownerImageUrl];
-//            [viewController.headIcon sd_setImageWithURL:[NSURL URLWithString:[self.model[indexPath.row] ownerImageUrl]] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
-
-         
-        }];
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
+            viewController.titleStr = [_model[indexPath.row] secondHandTitle];
+            viewController.content = [_model[indexPath.row] secondHandContent];
+            viewController.model = _model;
+    }];
 }
 @end

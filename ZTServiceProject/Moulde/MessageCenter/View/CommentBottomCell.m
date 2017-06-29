@@ -115,11 +115,12 @@
  @param text 评论的内容
  */
 - (void)commentRequestWithText:(NSString *)text{
-    
+    @weakify(self);
     [MesssgeHttpManager requestTopicId:_topicId comment:text commentType:_commentType targetUserId:@"" success:^(id response) {
+        @strongify(self);
         //网络请求的成功回调里面
         if (self.commentSuccessBlock) {
-            self.commentSuccessBlock();
+            self.commentSuccessBlock(response);
         }
     } failure:^(NSError *error, NSString *message) {
         
@@ -131,9 +132,15 @@
  点赞的网络请求，放点赞的点击方法里面调用
  */
 - (void)likeOrDislike {
-    //这个代码放在网络请求的成功回调里面
-    if (self.commentSuccessBlock) {
-        self.commentSuccessBlock();
-    }
+    @weakify(self);
+    [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_topicId success:^(id response) {
+        @strongify(self);
+        //这个代码放在网络请求的成功回调里面
+        if (self.commentSuccessBlock) {
+            self.commentSuccessBlock(response);
+        }
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
 }
 @end

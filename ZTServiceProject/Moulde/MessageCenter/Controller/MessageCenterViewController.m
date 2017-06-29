@@ -47,15 +47,15 @@
 //    [self.dataSource addObjectsFromArray:modelArray];
 //    [self.tableView reloadData];
     
-    [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
-        [self requestMessageData];
-    }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-        [self requestMessageData];
-    }];
-    [self.tableView beginHeaderRefreshing];
+//    [self.tableView setHeaderRefreshBlock:^{
+//        self.currentPage = 1;
+//        [self requestMessageData];
+//    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//        [self requestMessageData];
+//    }];
+//    [self.tableView beginHeaderRefreshing];
    
     
     
@@ -100,8 +100,7 @@
 }
 
 //回复
-- (void)requestReplyData
-{
+- (void)requestReplyData {
     [MesssgeHttpManager requestTopicId:self.selectTopicId comment:@"" commentType:_commentType targetUserId:@"" success:^(id response) {
         
     } failure:^(NSError *error, NSString *message) {
@@ -117,8 +116,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
 }
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 5;
+//}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3+[[self.dataSource[section] commentList] count];
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row ==0) {
@@ -142,9 +144,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //OK
         @weakify(self);
-        cell.commentSuccessBlock = ^{
-            @strongify(self);
-            [self requestMessageData];
+        cell.commentSuccessBlock = ^(MessageModel * obj) {
+          @strongify(self);
+            [self.dataSource replaceObjectAtIndex:indexPath.section withObject:obj];
+            NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
+            [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
         };
         return cell;
     }
@@ -206,7 +210,7 @@
 //    self.selectTopicId = [self.dataSource[indexPath.row] topicId];
 //}
 
-- (NSArray *)dataSource {
+- (NSMutableArray *)dataSource {
     if (!_dataSource) {
         _dataSource = [NSMutableArray arrayWithCapacity:1];
     }
