@@ -16,6 +16,7 @@
 #import "AdvertisementModel.h"
 #import "DQTextFild.h"
 #import "MyCommunityListController.h"
+#import "MKPAlertView.h"
 
 @interface TenementViewController ()<UITextFieldDelegate, MyCommunityListControllerDelegate>
 
@@ -144,7 +145,16 @@
         @weakify(self);
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
-            [PushManager pushViewControllerWithName:self.dataSourceArray[indexPath.section][value][@"vcName"] animated:YES block:nil];
+
+            if ([self.dataSourceArray[indexPath.section][value][@"vcName"] isEqualToString:@"MKPAlertView"]) {
+                
+                // 弹出框
+                [self creareAlert];
+            }else{
+                
+                // push控制器
+                [PushManager pushViewControllerWithName:self.dataSourceArray[indexPath.section][value][@"vcName"] animated:YES block:nil];
+            }
         };
         cell.titleAndImageDictArray = self.dataSourceArray[indexPath.section];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -191,6 +201,18 @@
     return _titleHeader;
 }
 
+- (void)creareAlert
+{
+    MKPAlertView *alertView = [[MKPAlertView alloc]initWithTitle:@"呼叫保安" message:@"" sureBtn:@"确认呼叫" cancleBtn:@"取消呼叫"];
+    alertView.resultIndex = ^(NSInteger index)
+    {
+        // 回调 -- 处理
+        NSLog(@"%s",__func__);
+        
+    };
+    [alertView showMKPAlertView];
+
+}
 - (NSArray *)dataSourceArray {
     if (!_dataSourceArray) {
         _dataSourceArray = @[
@@ -233,7 +255,7 @@
                              @[
                                  @{@"title":@"呼叫保安",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"},
+                                   @"vcName":@"MKPAlertView"},
                                  
                                  @{@"title":@"保安团队",
                                    @"icon":@"my_tabbar_selected",

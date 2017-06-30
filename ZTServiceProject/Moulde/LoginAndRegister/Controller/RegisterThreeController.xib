@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="phoneNumberField" destination="bhH-aq-VoI" id="d5D-Ja-rEm"/>
                 <outlet property="sendBtn" destination="AJD-dB-9X5" id="LgX-eg-Keb"/>
+                <outlet property="sureBtn" destination="AJD-dB-9X5" id="Cj9-jr-cT3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

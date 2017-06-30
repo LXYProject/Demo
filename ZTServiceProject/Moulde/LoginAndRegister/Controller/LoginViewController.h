@@ -10,4 +10,8 @@
 
 @interface LoginViewController : BaseViewController
 @property (nonatomic,copy)LoginSuccess loginSuccess;
+
+@property (nonatomic,assign)NSInteger selectIndex;
+
+
 @end

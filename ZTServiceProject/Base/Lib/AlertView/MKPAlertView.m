@@ -37,7 +37,8 @@
     if(self == [super init])
     {
         self.frame = [UIScreen mainScreen].bounds;
-        self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
+//        self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.5];
+        self.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
         self.alertView = [[UIView alloc]init];
         self.alertView.backgroundColor = [UIColor whiteColor];
         self.alertView.layer.cornerRadius = 5.0;

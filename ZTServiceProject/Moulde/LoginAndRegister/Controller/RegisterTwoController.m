@@ -22,7 +22,12 @@
     [super viewDidLoad];
     
     [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
-        
+    
+    self.sendBtn.layer.masksToBounds = YES;
+    self.sendBtn.layer.cornerRadius = self.sendBtn.bounds.size.width * 0.01;
+    self.sendBtn.layer.borderColor = [UIColor clearColor].CGColor;
+
+    
 }
 - (IBAction)sendBtnClick {
     [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
