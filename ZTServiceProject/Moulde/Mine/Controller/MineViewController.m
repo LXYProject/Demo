@@ -43,7 +43,7 @@
     _sectionOneImg = @[@"message_tabbar_default",@"message_tabbar_selected", @"my_tabbar_default"];
     _sectionTwoImg= @[@"message_tabbar_default",@"message_tabbar_selected", @"message_tabbar_selected"];
     
-    login = YES;
+    login = NO;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

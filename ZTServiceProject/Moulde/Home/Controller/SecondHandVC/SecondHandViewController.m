@@ -16,7 +16,8 @@
 #import "HomeHttpManager.h"
 #import "ItemMoreViewController.h"
 #import "SecondMessageCell.h"   
-
+#import "CommentPhotoCell.h"
+#import "SecondHandModel.h"
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -34,16 +35,755 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"SecondMessageCell" bundle:nil] forCellReuseIdentifier:@"SecondMessageCell"];
     self.secondCellCurrentPage = 1;
 
     [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+//    [self requestDataSecondCellData];
+    //创建数据源
+    NSDictionary *dict = @{
+                           @"secondHandList" : @[
+                                   @{
+        
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                 
+                                                 @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                 
+                                                 },
+                                                                     
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                    @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                 
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                  },
+                                              
+                                              @{
+                                                  @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                  },
+                                              @{
+                                                  @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                  }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+  @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       },
+                                   @{
+                                       
+                                       @"address" : @"",
+                                       @"classId" : @"SCB014",
+                                       @"commentCount" : @"1",
+                                       @"commentList" :
+                                           @[
+                                               @{
+                                                   @"comment" : @"好手机",
+                                                   @"commentCount" : @"0",
+                                                   @"commentId" : @"sr2017051015141",
+                                                   @"commentTime" : @"2017-05-10 15:14:14",
+                                                   @"isLiked" : @"0",
+                                                   @"likeCount" :@"0",
+                                                   @"subCommentList" :
+                                                       @[
+                                                           ],
+                                                   @"userId" : @"1890918872220170322150921",
+                                                   @"userImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                                   @"userName" : @"王磊",
+                                                   }
+                                               ],
+                                       @"createTime" : @"2017-05-10 15:13:55",
+                                       @"delTime" : @"",
+                                       @"delivery" : @"1",
+                                       @"keepList" :
+                                           @[
+                                               ],
+                                       @"newOrOld" : @"0",
+                                       @"onwerName" : @"王磊",
+                                       @"oriPrice" : @"0",
+                                       @"ownerHuanxinId" :@"201705231745429",
+                                       @"ownerId" : @"1890918872220170322150921",
+                                       @"ownerImageUrl" : @"http://192.168.1.96:8080/ZtscApp/file/headImage/1890918872220170322150921-20170608125616.png",
+                                       @"postStatus" : @"1",
+                                       @"secPrice" : @"1288",
+                                       @"secondHandContent" : @"99新红米手机，只要998，需要的亲快快联系我哦",
+                                       @"secondHandId": @"s20170510151355",
+                                       @"secondHandNormalImageList" :
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   
+                                                   },
+                                               
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   
+                                                   },
+                                               
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   
+                                                   }
+                                               ],
+                                       
+                                       @"secondHandSmallImageList":
+                                           @[
+                                               @{
+                                                   
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                   },
+                                               
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                   },
+                                               @{
+                                                   @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                   }
+                                               ],
+                                       @"secondHandTitle" : @"红米手机出手啦",
+                                       @"x" :@" 1",
+                                       @"y" : @"1",
+                                       @"zoneId" : @"",
+                                       @"zoneName" : @"",
+                                       }
+                                   ]
+                           };
     
-    [self requestDataSecondCellData];
+    
+    NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
+    self.secondCellDataSource = modelArray;
+    [self.tableView reloadData];
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
-//    
+//
+    
 //    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
     
 }
@@ -55,8 +795,7 @@
 - (void)requestDataSecondCellData {
     [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
         self.secondCellDataSource = response;
-        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
     } failure:^(NSError *error, NSString *message) {
     }];
 }
@@ -70,13 +809,13 @@
         return 1;
     }
     else{
-        return 1;
+        return 2;
     }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4;
+    return 3+self.secondCellDataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,12 +829,8 @@
     else if (indexPath.section ==2) {
         return [self sectionTwoTableView:tableView indexPath:indexPath];
     }
-    else if (indexPath.section==3){
+    else {
     return [self sectionThirdrdTableView:tableView indexPath:indexPath];
-}
-
-    else{
-        return nil;
     }
 }
 
@@ -137,9 +872,20 @@
 //第3组
 - (UITableViewCell *)sectionThirdrdTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
-    SecondMessageCell *cell = (SecondMessageCell *)[self creatCell:tableView indenty:@"SecondMessageCell"];
-    cell.model = self.secondCellDataSource[indexPath.row];
-    return cell;
+    if (indexPath.row==0) {
+        SecondMessageCell *cell = (SecondMessageCell *)[self creatCell:tableView indenty:@"SecondMessageCell"];
+        cell.model = self.secondCellDataSource[indexPath.section -3];
+        return cell;
+    }
+    else if (indexPath.row ==1){
+          SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
+        CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
+        [cell smallImgs:model.secondHandSmallImageList normalImgs:model.secondHandNormalImageList];
+        return cell;
+    }
+    else {
+        return nil;
+    }
 
 }
 //公共创建cell的方法
@@ -167,7 +913,21 @@
         return 175;
     }
     else {
-        return 94;
+        if (indexPath.row==0) {
+            return [tableView fd_heightForCellWithIdentifier:@"SecondMessageCell" configuration:^(SecondMessageCell* cell) {
+                cell.model = self.secondCellDataSource[indexPath.section - 3];
+            }];
+        }
+        else if (indexPath.row == 1){
+            NSArray *smallImgs = [self.secondCellDataSource[indexPath.section - 3] secondHandSmallImageList];
+            if (smallImgs.count>0) {
+                NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
+                return count *100+(count-1)*15;
+            }
+            return 0;
+
+        }
+        return 44;
     }
     
 }

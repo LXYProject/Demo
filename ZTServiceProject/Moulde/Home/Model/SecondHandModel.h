@@ -90,6 +90,7 @@
 
 @property (nonatomic,copy)NSString *createTime;
 @property (nonatomic,copy)NSString *delTime;
+//
 @property (nonatomic,strong)NSArray *keepList;
 @property (nonatomic,copy)NSString *TnewOrOld;
 @property (nonatomic,copy)NSString *onwerName;

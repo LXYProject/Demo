@@ -67,9 +67,7 @@
 //点击Cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
-            viewController.titleStr = [_model[indexPath.row] secondHandTitle];
-            viewController.content = [_model[indexPath.row] secondHandContent];
-            viewController.model = _model;
+            viewController.model = _model[indexPath.row];
     }];
 }
 @end

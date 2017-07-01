@@ -8,7 +8,7 @@
 
 #import "ProductCollecttionCell.h"
 #import "SecondHandModel.h"
-
+#import "MessagePhotoModel.h"
 @interface ProductCollecttionCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -27,10 +27,8 @@
 - (void)setModel:(SecondHandModel *)model {
     _model = model;
     
-    for (NSDictionary *dic in model.secondHandNormalImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-//        NSLog(@"imageUrl==%@", imageUrl);
-        self.url = imageUrl;
+    for (MessagePhotoModel *photoModel in model.secondHandNormalImageList) {
+        self.url = photoModel.url;
     }
 
     [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];

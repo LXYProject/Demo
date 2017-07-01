@@ -10,5 +10,12 @@
 
 @class MessageModel;
 @interface CommentPhotoCell : UITableViewCell
-@property (nonatomic,strong)MessageModel* model;
+/**
+ 存放小图和大图
+ 
+ @param smallImgs 小图
+ @param normalImg 大图
+ */
+- (void)smallImgs:(NSArray *)smallImgs
+       normalImgs:(NSArray *)normalImg;
 @end

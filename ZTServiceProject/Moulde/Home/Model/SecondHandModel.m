@@ -9,5 +9,8 @@
 #import "SecondHandModel.h"
 
 @implementation SecondHandModel
-
++(NSDictionary *)mj_objectClassInArray {
+    return @{@"secondHandNormalImageList":@"MessagePhotoModel",
+             @"secondHandSmallImageList":@"MessagePhotoModel"};
+}
 @end

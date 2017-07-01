@@ -14,10 +14,9 @@
 #import "SecondAddressCell.h"
 #import "CommentsHeadCell.h"
 #import "CommentContentCell.h"
-
+#import "SecondHandModel.h"
 @interface SecondDetailsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong)NSMutableArray *dataArray;
 
 @end
 
@@ -38,13 +37,7 @@
     [self titleViewWithTitle:@"手游" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    
-    Model *model = [[Model alloc] initWithTitle:_titleStr content:_content];
-    [self.dataArray addObject:model];
-
-    Model *mode2 = [[Model alloc] initWithTitle:_titleStr content:_content];
-    [self.dataArray addObject:mode2];
-    
+    [self.tableView registerNib:[UINib nibWithNibName:@"SecondDetailsCell" bundle:nil] forCellReuseIdentifier:@"SecondDetailsCell"];
 }
 
 - (void)rightBarClick
@@ -89,26 +82,23 @@
     
     if (indexPath.row == 0) {
         SecondBannerCell *cell = (SecondBannerCell *)[self creatCell:tableView indenty:@"SecondBannerCell"];
-        cell.secondModelArray = imageNames;
-//        cell.modelArray = _imageURLArray;
+        cell.secondModelArray = self.model.secondHandNormalImageList;
         return cell;
     }else if (indexPath.row==1){
         SecondDetailsCell *cell = (SecondDetailsCell *)[self creatCell:tableView indenty:@"SecondDetailsCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.model = self.dataArray[indexPath.row];
+        cell.model = self.model;
         return cell;
     }else if (indexPath.row==2){
         SecondUserCell *cell = (SecondUserCell *)[self creatCell:tableView indenty:@"SecondUserCell"];
-//        cell.headIcon = _headIcon;
-//        cell.name.text = _name;
-        cell.model = self.model[indexPath.section];
+        cell.model = self.model;
 
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
 
         SecondAddressCell *cell = (SecondAddressCell *)[self creatCell:tableView indenty:@"SecondAddressCell"];
-        cell.model = self.model[indexPath.section];
+        cell.model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -176,8 +166,9 @@
         if (indexPath.row==0) {
             return 270;
         }else if (indexPath.row==1){
-            Model *model = self.dataArray[indexPath.row];
-            return model.cellHeight;
+                return [tableView fd_heightForCellWithIdentifier:@"SecondDetailsCell" configuration:^(SecondDetailsCell* cell) {
+                    cell.model = self.model;
+                }];
         }
         else{
             return 44;
@@ -192,18 +183,6 @@
             return 150;
         }
     }
-}
-
--(NSMutableArray *)dataArray{
-    
-    
-    if (!_dataArray) {
-        
-        
-        _dataArray = [NSMutableArray array];
-        
-    }
-    return _dataArray;
 }
 
 @end

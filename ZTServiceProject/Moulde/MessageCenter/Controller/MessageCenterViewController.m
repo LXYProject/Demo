@@ -134,7 +134,7 @@
     }
     else if (indexPath.row == 1) {
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
-        cell.model = self.dataSource[indexPath.section];
+        [cell smallImgs:[self.dataSource[indexPath.section] topicSmallImageList] normalImgs:[self.dataSource[indexPath.section] topicNormalImageList]];
         return cell;
     }
     else  if (indexPath.row ==2){

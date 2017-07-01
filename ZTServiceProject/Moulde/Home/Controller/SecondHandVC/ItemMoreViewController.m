@@ -24,6 +24,8 @@
 {
     UIButton *_button;
     BOOL _isShowing;
+//    0、局左对齐 1、中间对其 2、右对齐
+    NSInteger _textAliment;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,9 +57,12 @@
     //根据点击不同的btn赋值不同的数据源
     if (sender == self.btn1) {
         self.dataSource = self.areaList;
+        _textAliment = 0;
     }else if (sender==self.btn2){
+        _textAliment = 1;
         self.dataSource = self.typeList;
     }else{
+        _textAliment = 2;
         self.dataSource = self.sortingList;
     }
     [self.pickerView reloadAllComponents];
@@ -147,18 +152,15 @@
         }
     }
     
-    UILabel* pickerLabel = (UILabel*)view;
-    if (!pickerLabel){
-        pickerLabel = [[UILabel alloc] init];
-        // Setup label properties - frame, font, colors etc
-        //adjustsFontSizeToFitWidth property to YES
-        pickerLabel.adjustsFontSizeToFitWidth = YES;
-        [pickerLabel setBackgroundColor:[UIColor clearColor]];
-        [pickerLabel setFont:[UIFont systemFontOfSize:14]];
-    }
-    // Fill the label text here
-    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
-    return pickerLabel;
+        
+        // 这里用label来展示要显示的文字, 然后可以用label的textAlignment来设置文字的对齐模式
+        UILabel *myView = [[UILabel alloc] initWithFrame:CGRectMake(50, 0.0, ScreenWidth-100, 35)];
+        myView.font = [UIFont systemFontOfSize:16];
+        myView.backgroundColor = [UIColor clearColor];
+        myView.textAlignment = _textAliment==0?NSTextAlignmentLeft:(_textAliment == 1?NSTextAlignmentCenter:NSTextAlignmentRight);
+    myView.text = self.dataSource[row];
+    
+    return myView;
 }
 
 @end

@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Model.h"
+@class SecondHandModel;
 
 @interface SecondDetailsCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
-@property (nonatomic,strong)Model *model;
+@property (nonatomic,strong)SecondHandModel *model;
 
 
 @end

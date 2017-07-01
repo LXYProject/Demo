@@ -16,7 +16,9 @@
 @end
 
 @implementation CommentPhotoCell
-
+{
+    NSArray *_smallModes;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.collectionView.delegate = self;
@@ -30,13 +32,14 @@
     // Configure the view for the selected state
 }
 
-- (void)setModel:(MessageModel *)model {
-    _model = model;
-    if (model) {
-        if(model.topicSmallImageList.count>0) {
+- (void)smallImgs:(NSArray *)smallImgs normalImgs:(NSArray *)normalImg {
+    _smallModes = smallImgs;
+    [self.imgUrlArray removeAllObjects];
+    if (normalImg) {
+        if(normalImg.count>0) {
             [self.collectionView reloadData];
         }
-        [model.topicNormalImageList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [normalImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             MessagePhotoModel *model = obj;
             [self.imgUrlArray addObject:model.url];
         }];
@@ -44,12 +47,12 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _model.topicSmallImageList.count;
+    return _smallModes.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagePhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MessagePhotoCell" forIndexPath:indexPath];
-    MessagePhotoModel *model = _model.topicSmallImageList[indexPath.row];
+    MessagePhotoModel *model = _smallModes[indexPath.row];
     cell.url = model.url;
     return cell;
 }

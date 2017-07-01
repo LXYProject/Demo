@@ -9,7 +9,7 @@
 #import "SecondBannerCell.h"
 #import <SDCycleScrollView.h>
 #import "AdvertisementModel.h"
-
+#import "MessagePhotoModel.h"
 @interface SecondBannerCell ()<SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *bannerView;
 
@@ -56,7 +56,14 @@
 
 - (void)setSecondModelArray:(NSArray *)secondModelArray
 {
-    self.bannerView.localizationImageNamesGroup = secondModelArray;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+    [secondModelArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        MessagePhotoModel *model = obj;
+        if (model.url){
+            [array addObject:model.url];
+        }
+    }];
+    self.bannerView.imageURLStringsGroup = array;
 
 }
 @end

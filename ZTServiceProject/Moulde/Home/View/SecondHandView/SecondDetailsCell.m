@@ -7,7 +7,7 @@
 //
 
 #import "SecondDetailsCell.h"
-
+#import "SecondHandModel.h"
 @interface SecondDetailsCell ()
 
 
@@ -23,11 +23,10 @@
 
 }
 
--(void)setModel:(Model *)model{
-    
+-(void)setModel:( SecondHandModel*)model{
     _model = model;
-    _titleLabel.text = model.title;
-    _detailsLabel.text = model.content;
+    _titleLabel.text = model.secondHandTitle;
+    _detailsLabel.text = model.secondHandContent;
     
 }
 
