@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:_itemTitle titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:self.itemTitle titleColor:[UIColor whiteColor]];
     
     //    self.pickView.transform =CGAffineTransformMakeTranslation(0, 200);
     [self.view addSubview:self.pickerView];

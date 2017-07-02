@@ -30,9 +30,7 @@
 @end
 
 @implementation SecondHandViewController
-{
-    ItemMoreViewController *_itemMoreVC;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -847,8 +845,10 @@
         @weakify(self);
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
-            [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:nil];
-            _itemMoreVC.itemTitle = self.itemDataSourceArray[value][@"title"];
+            [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:^(ItemMoreViewController* viewController) {
+                
+                viewController.itemTitle = self.itemDataSourceArray[value][@"title"];
+            }];
         };
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;
