@@ -38,7 +38,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uF9-qE-TT8"/>
+                                    <action selector="serviceOrderbtn" destination="KGk-i7-Jjw" eventType="touchUpInside" id="89p-7x-grc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,7 +58,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xMv-Rh-bzO"/>
+                                    <action selector="turnToOrderBtn" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sEO-co-765"/>
                                 </connections>
                             </button>
                         </subviews>

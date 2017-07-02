@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MineBtnCell : UITableViewCell
-@property (nonatomic,assign)NSInteger selectIndex;
-@property (nonatomic,copy)Int_Block btnClickBlock;
+//@property (nonatomic,assign)NSInteger selectIndex;
+//@property (nonatomic,copy)Int_Block btnClickBlock;
 @end

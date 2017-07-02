@@ -17,6 +17,7 @@
 #import "ItemMoreViewController.h"
 #import "SecondMessageCell.h"   
 #import "CommentPhotoCell.h"
+#import "SecondAddressCell.h"
 #import "SecondHandModel.h"
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -809,7 +810,7 @@
         return 1;
     }
     else{
-        return 2;
+        return 3;
     }
 }
 
@@ -884,7 +885,9 @@
         return cell;
     }
     else {
-        return nil;
+        SecondAddressCell *cell = (SecondAddressCell *)[self creatCell:tableView indenty:@"SecondAddressCell"];
+        cell.model = self.secondCellDataSource[indexPath.section -3];
+        return cell;
     }
 
 }

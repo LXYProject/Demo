@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    Second_Type,
+    Nearby_Type,
+    Rent_Type
+
+}PushType;
+
 @interface NearByHeaderCell : UITableViewCell
-
 @property (weak, nonatomic) IBOutlet UIImageView *cellHeadIcon;
-
+@property (nonatomic,assign)PushType type;
 @end

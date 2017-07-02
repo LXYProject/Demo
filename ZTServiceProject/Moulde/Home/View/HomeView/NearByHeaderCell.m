@@ -24,10 +24,25 @@
 }
 - (IBAction)moreBtn:(id)sender {
     NSLog(@"moreBtn");
-
-//    [PushManager pushViewControllerWithName:@"NearByViewController" animated:YES block:nil];
-//    self.tabBarController.selectedIndex=2
-
+    switch (self.type) {
+        case Nearby_Type: {
+            BaseTabbarController *tabbar = (BaseTabbarController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+            tabbar.selectedIndex = 2;
+            break;
+        }
+        case Rent_Type: {
+            [PushManager pushViewControllerWithName:@"HouseRentViewController" animated:YES block:nil];
+            break;
+        }
+        case Second_Type: {
+            [PushManager pushViewControllerWithName:@"SecondHandViewController" animated:YES block:nil];
+            break;
+        }
+            
+        default:
+            break;
+    }
+   
 }
 
 @end

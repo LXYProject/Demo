@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ServiceHeadCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval 3 Copy.png" translatesAutoresizingMaskIntoConstraints="NO" id="THf-ud-rkL">
+                        <rect key="frame" x="15" y="9" width="26" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="26" id="Bdz-L1-qtS"/>
+                            <constraint firstAttribute="height" constant="26" id="LWt-nW-xFx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="朱元璋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFd-X6-u8s">
+                        <rect key="frame" x="51" y="9" width="37" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等待卖家确认" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCn-1y-7do">
+                        <rect key="frame" x="223" y="14.5" width="74" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="CZ8-yp-MHG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17-05-05 18:32:25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bI-Hm-vZb">
+                        <rect key="frame" x="51" y="23" width="91.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NFd-X6-u8s" firstAttribute="leading" secondItem="THf-ud-rkL" secondAttribute="trailing" constant="10" id="12u-cF-Mwp"/>
+                    <constraint firstItem="THf-ud-rkL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="1C8-hG-qaT"/>
+                    <constraint firstItem="NFd-X6-u8s" firstAttribute="top" secondItem="THf-ud-rkL" secondAttribute="top" id="Mde-4g-E6v"/>
+                    <constraint firstItem="OCn-1y-7do" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QzN-KP-7lg"/>
+                    <constraint firstItem="3bI-Hm-vZb" firstAttribute="bottom" secondItem="THf-ud-rkL" secondAttribute="bottom" id="dgM-zu-qwI"/>
+                    <constraint firstItem="3bI-Hm-vZb" firstAttribute="leading" secondItem="NFd-X6-u8s" secondAttribute="leading" id="fa5-48-Z7i"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="OCn-1y-7do" secondAttribute="trailing" constant="15" id="oDU-FJ-9hJ"/>
+                    <constraint firstItem="THf-ud-rkL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rGW-83-LYO"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Oval 3 Copy.png" width="16" height="16"/>
+    </resources>
+</document>

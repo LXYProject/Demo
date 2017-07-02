@@ -182,6 +182,16 @@
 		7B6C26C11EE3C3140090BE5C /* MineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BF1EE3C3140090BE5C /* MineViewController.xib */; };
 		7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26C31EE3C3230090BE5C /* NearByViewController.m */; };
 		7B78AC081EE99A9200FDFE7C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B78AC071EE99A9200FDFE7C /* Security.framework */; };
+		7B8907AB1F08DAB600B3EDFF /* ServiceOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8907A91F08DAB600B3EDFF /* ServiceOrderController.m */; };
+		7B8907AC1F08DAB600B3EDFF /* ServiceOrderController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8907AA1F08DAB600B3EDFF /* ServiceOrderController.xib */; };
+		7B8907B01F08DB8D00B3EDFF /* ServiceOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8907AE1F08DB8D00B3EDFF /* ServiceOrderCell.m */; };
+		7B8907B11F08DB8D00B3EDFF /* ServiceOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8907AF1F08DB8D00B3EDFF /* ServiceOrderCell.xib */; };
+		7B8907B51F08DDD000B3EDFF /* ServiceBodyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8907B31F08DDD000B3EDFF /* ServiceBodyCell.m */; };
+		7B8907B61F08DDD000B3EDFF /* ServiceBodyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8907B41F08DDD000B3EDFF /* ServiceBodyCell.xib */; };
+		7B8907BA1F08DE2D00B3EDFF /* ServiceHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8907B81F08DE2D00B3EDFF /* ServiceHeadCell.m */; };
+		7B8907BB1F08DE2D00B3EDFF /* ServiceHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8907B91F08DE2D00B3EDFF /* ServiceHeadCell.xib */; };
+		7B8907BF1F08E88400B3EDFF /* BtnSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8907BD1F08E88400B3EDFF /* BtnSelectCell.m */; };
+		7B8907C01F08E88400B3EDFF /* BtnSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8907BE1F08E88400B3EDFF /* BtnSelectCell.xib */; };
 		7B8BDB361EFFBD2300F58957 /* SecondHanditemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BDB341EFFBD2300F58957 /* SecondHanditemCell.m */; };
 		7B8BDB371EFFBD2300F58957 /* SecondHanditemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BDB351EFFBD2300F58957 /* SecondHanditemCell.xib */; };
 		7B8BDB3B1EFFBDAB00F58957 /* SecondHandSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BDB391EFFBDAB00F58957 /* SecondHandSearchHeaderView.m */; };
@@ -679,6 +689,21 @@
 		7B6C26C21EE3C3230090BE5C /* NearByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByViewController.h; sourceTree = "<group>"; };
 		7B6C26C31EE3C3230090BE5C /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
 		7B78AC071EE99A9200FDFE7C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7B8907A81F08DAB600B3EDFF /* ServiceOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderController.h; sourceTree = "<group>"; };
+		7B8907A91F08DAB600B3EDFF /* ServiceOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderController.m; sourceTree = "<group>"; };
+		7B8907AA1F08DAB600B3EDFF /* ServiceOrderController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceOrderController.xib; sourceTree = "<group>"; };
+		7B8907AD1F08DB8D00B3EDFF /* ServiceOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceOrderCell.h; sourceTree = "<group>"; };
+		7B8907AE1F08DB8D00B3EDFF /* ServiceOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceOrderCell.m; sourceTree = "<group>"; };
+		7B8907AF1F08DB8D00B3EDFF /* ServiceOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceOrderCell.xib; sourceTree = "<group>"; };
+		7B8907B21F08DDD000B3EDFF /* ServiceBodyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceBodyCell.h; sourceTree = "<group>"; };
+		7B8907B31F08DDD000B3EDFF /* ServiceBodyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceBodyCell.m; sourceTree = "<group>"; };
+		7B8907B41F08DDD000B3EDFF /* ServiceBodyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceBodyCell.xib; sourceTree = "<group>"; };
+		7B8907B71F08DE2D00B3EDFF /* ServiceHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHeadCell.h; sourceTree = "<group>"; };
+		7B8907B81F08DE2D00B3EDFF /* ServiceHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHeadCell.m; sourceTree = "<group>"; };
+		7B8907B91F08DE2D00B3EDFF /* ServiceHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceHeadCell.xib; sourceTree = "<group>"; };
+		7B8907BC1F08E88400B3EDFF /* BtnSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BtnSelectCell.h; sourceTree = "<group>"; };
+		7B8907BD1F08E88400B3EDFF /* BtnSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BtnSelectCell.m; sourceTree = "<group>"; };
+		7B8907BE1F08E88400B3EDFF /* BtnSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BtnSelectCell.xib; sourceTree = "<group>"; };
 		7B8BDB331EFFBD2300F58957 /* SecondHanditemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHanditemCell.h; sourceTree = "<group>"; };
 		7B8BDB341EFFBD2300F58957 /* SecondHanditemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHanditemCell.m; sourceTree = "<group>"; };
 		7B8BDB351EFFBD2300F58957 /* SecondHanditemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHanditemCell.xib; sourceTree = "<group>"; };
@@ -1547,6 +1572,9 @@
 				7BBB102C1F05052800BCCF4B /* SettingViewController.h */,
 				7BBB102D1F05052800BCCF4B /* SettingViewController.m */,
 				7BBB102E1F05052800BCCF4B /* SettingViewController.xib */,
+				7B8907A81F08DAB600B3EDFF /* ServiceOrderController.h */,
+				7B8907A91F08DAB600B3EDFF /* ServiceOrderController.m */,
+				7B8907AA1F08DAB600B3EDFF /* ServiceOrderController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1573,6 +1601,18 @@
 				7B69295F1F0640E1000108F3 /* GroupNumberCell.h */,
 				7B6929601F0640E1000108F3 /* GroupNumberCell.m */,
 				7B6929611F0640E1000108F3 /* GroupNumberCell.xib */,
+				7B8907AD1F08DB8D00B3EDFF /* ServiceOrderCell.h */,
+				7B8907AE1F08DB8D00B3EDFF /* ServiceOrderCell.m */,
+				7B8907AF1F08DB8D00B3EDFF /* ServiceOrderCell.xib */,
+				7B8907B71F08DE2D00B3EDFF /* ServiceHeadCell.h */,
+				7B8907B81F08DE2D00B3EDFF /* ServiceHeadCell.m */,
+				7B8907B91F08DE2D00B3EDFF /* ServiceHeadCell.xib */,
+				7B8907B21F08DDD000B3EDFF /* ServiceBodyCell.h */,
+				7B8907B31F08DDD000B3EDFF /* ServiceBodyCell.m */,
+				7B8907B41F08DDD000B3EDFF /* ServiceBodyCell.xib */,
+				7B8907BC1F08E88400B3EDFF /* BtnSelectCell.h */,
+				7B8907BD1F08E88400B3EDFF /* BtnSelectCell.m */,
+				7B8907BE1F08E88400B3EDFF /* BtnSelectCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2356,6 +2396,7 @@
 				7BFFBEFC1EF65E28001202EE /* AnnounceCell.xib in Resources */,
 				7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */,
 				7B4633FA1F01FFDD0023E7F2 /* rent_house_img@2x.png in Resources */,
+				7B8907B61F08DDD000B3EDFF /* ServiceBodyCell.xib in Resources */,
 				7B4633F61F01FFDD0023E7F2 /* management_fee@2x.png in Resources */,
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7B205E191F00E6C900E46B74 /* home_eswp_smcp@2x.png in Resources */,
@@ -2423,6 +2464,7 @@
 				7B8F2A591F038B9D00D5D1DF /* comments@2x.png in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
+				7B8907AC1F08DAB600B3EDFF /* ServiceOrderController.xib in Resources */,
 				7B8F2A6C1F039A6F00D5D1DF /* address@2x.png in Resources */,
 				7B966BC91EFFB5D400326C88 /* PlayButtonOverlayLarge@2x.png in Resources */,
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
@@ -2444,6 +2486,7 @@
 				7B6929631F0640E1000108F3 /* GroupNumberCell.xib in Resources */,
 				7B966A6D1EFF8BA900326C88 /* CommentBottomCell.xib in Resources */,
 				7B8F2A761F039A7D00D5D1DF /* setting_btn@2x.png in Resources */,
+				7B8907BB1F08DE2D00B3EDFF /* ServiceHeadCell.xib in Resources */,
 				7B966BCC1EFFB5D400326C88 /* PlayButtonOverlayLargeTap@2x.png in Resources */,
 				7BA167D51EE6AA10000ECCE6 /* MineBtnCell.xib in Resources */,
 				7B205E301F00E6C900E46B74 /* tabbar_zb_selected@2x.png in Resources */,
@@ -2469,6 +2512,7 @@
 				7B205E311F00E6C900E46B74 /* tabbar_zb_selected@3x.png in Resources */,
 				7B6929461F0600F2000108F3 /* RegisterFourController.xib in Resources */,
 				7BFFBF1C1EF682A9001202EE /* ComplaintsController.xib in Resources */,
+				7B8907B11F08DB8D00B3EDFF /* ServiceOrderCell.xib in Resources */,
 				7BF4B20F1EE3D45A0058185F /* message_tabbar_default@2x.png in Resources */,
 				7B8F2A7B1F039DD600D5D1DF /* InformationController.xib in Resources */,
 				7B205E1A1F00E6C900E46B74 /* home_eswp_tsyx@2x.png in Resources */,
@@ -2567,6 +2611,7 @@
 				7B4633F51F01FFDD0023E7F2 /* life_pay_cost@2x.png in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
 				7BFFBEF61EF65C8A001202EE /* AnnounceViewController.xib in Resources */,
+				7B8907C01F08E88400B3EDFF /* BtnSelectCell.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
 				7BFBDE5E1EF589AB00F2D354 /* StaticOneCell.xib in Resources */,
 				7B16620B1EF2862300644A7B /* ImageCell.xib in Resources */,
@@ -2677,6 +2722,7 @@
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
+				7B8907AB1F08DAB600B3EDFF /* ServiceOrderController.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7B966ADD1EFFB29500326C88 /* XLPhotoBrowser.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
@@ -2757,7 +2803,9 @@
 				7B205E6C1F00EDFE00E46B74 /* UIView+ACMediaExt.m in Sources */,
 				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */,
+				7B8907B01F08DB8D00B3EDFF /* ServiceOrderCell.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
+				7B8907B51F08DDD000B3EDFF /* ServiceBodyCell.m in Sources */,
 				7BA02BA21F04D012004F8AB9 /* LookingForViewController.m in Sources */,
 				7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */,
 				7BA783151EFA58ED00BB8591 /* MyCommunityListController.m in Sources */,
@@ -2791,6 +2839,7 @@
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */,
 				7B966AD51EFFB29500326C88 /* FSActionSheetConfig.m in Sources */,
+				7B8907BF1F08E88400B3EDFF /* BtnSelectCell.m in Sources */,
 				7B5C92231EF8B5E200C545A8 /* ZYPinYinSearch.m in Sources */,
 				7B5C921D1EF8B5E200C545A8 /* HanyuPinyinOutputFormat.m in Sources */,
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
@@ -2810,6 +2859,7 @@
 				7B3CFE681EF77A74009AC748 /* SolicitBtnItemOneCell.m in Sources */,
 				7B5C925F1EF90D9F00C545A8 /* DQTextFild.m in Sources */,
 				7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */,
+				7B8907BA1F08DE2D00B3EDFF /* ServiceHeadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

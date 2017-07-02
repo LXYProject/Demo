@@ -43,7 +43,7 @@
     _sectionOneImg = @[@"message_tabbar_default",@"message_tabbar_selected", @"my_tabbar_default"];
     _sectionTwoImg= @[@"message_tabbar_default",@"message_tabbar_selected", @"message_tabbar_selected"];
     
-    login = NO;
+    login = YES;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -187,6 +187,10 @@
         if (indexPath.section==0) {
             [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:nil];
         }else if (indexPath.section==4){
+            [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
+        }
+    }else{
+        if (indexPath.section==3) {
             [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
         }
     }

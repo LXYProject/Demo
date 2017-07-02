@@ -31,7 +31,7 @@
 - (void)setModel:(SecondHandModel *)model {
     _model = model;
     
-    _address.text = model.address;
+    _address.text = _model.address.length>0?_model.address:@"未知位置";
     _thumbup.text = model.isLiked;
     _comments.text = model.commentCount;
 

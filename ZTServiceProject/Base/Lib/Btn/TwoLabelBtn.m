@@ -2,9 +2,10 @@
 //  TwoLabelBtn.m
 //  DingDing
 //
-//  Created by xinzhen on 16/9/12.
-//  Copyright © 2016年 GanYue. All rights reserved.
+//  Created by ZT on 2017/6/30.
+//  Copyright © 2017年 ZT. All rights reserved.
 //
+
 
 #import "TwoLabelBtn.h"
 
@@ -19,7 +20,7 @@
         [self addSubview:_label];
         _label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_label.frame) + 10, self.frame.size.width , 12)];
         _label1.textAlignment = NSTextAlignmentCenter;
-        _label1.font = [UIFont systemFontOfSize:11];
+        _label1.font = [UIFont systemFontOfSize:12];
         [self addSubview:_label1];
     }
     return self;

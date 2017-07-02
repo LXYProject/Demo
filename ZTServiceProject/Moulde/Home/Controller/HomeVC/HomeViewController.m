@@ -289,6 +289,7 @@
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
         cell.cellHeadIcon.image = [UIImage imageNamed:@"peripheral_services_img"];
+        cell.type = Nearby_Type;
         return cell;
     }
     else if (indexPath.row==1) {
@@ -321,6 +322,7 @@
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
         cell.cellHeadIcon.image = [UIImage imageNamed:@"Item_recom_img"];
+        cell.type = Second_Type;
         return cell;
     }
     else {
@@ -345,6 +347,7 @@
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
         cell.cellHeadIcon.image = [UIImage imageNamed:@"rent_house_img"];
+        cell.type = Rent_Type;
         return cell;
     }
     else {
