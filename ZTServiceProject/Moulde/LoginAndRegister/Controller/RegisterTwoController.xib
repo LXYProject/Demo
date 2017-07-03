@@ -74,18 +74,22 @@
                             </constraints>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-aq-VoI">
-                            <rect key="frame" x="15" y="7" width="104" height="30"/>
+                            <rect key="frame" x="15" y="7" width="345" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="COV-wB-hob"/>
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="Bsp-vN-GEG"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="2J4-rY-oDa"/>
+                        <constraint firstAttribute="trailing" secondItem="bhH-aq-VoI" secondAttribute="trailing" constant="15" id="2KQ-W4-tcC"/>
                         <constraint firstAttribute="trailing" secondItem="m8s-3K-XnU" secondAttribute="trailing" id="G3O-qP-XpL"/>
                         <constraint firstItem="bhH-aq-VoI" firstAttribute="leading" secondItem="b3Y-dG-QdU" secondAttribute="leading" constant="15" id="LBd-wo-4OE"/>
                         <constraint firstItem="bhH-aq-VoI" firstAttribute="centerY" secondItem="b3Y-dG-QdU" secondAttribute="centerY" id="oV5-GF-wFZ"/>

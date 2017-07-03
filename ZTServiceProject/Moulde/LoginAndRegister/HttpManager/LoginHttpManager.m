@@ -26,14 +26,21 @@
     
     NSString *url = nil;
     if (LoginRegisterCode == LoginCode) {
-        url = A_registerUrl;
-    }
-    else {
         url = A_loginUrl;
     }
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+    else {
+        url = A_registerUrl;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:url paramter:paramter success:^(id response) {
+        
+        NSLog(@"response1111==%@", response);
+
+        success(response);
+        
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
+//        success(modelArray);
+        
+        
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -55,9 +62,11 @@
                                };
     
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_registerCheck paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_registerCheck paramter:paramter success:^(id response) {
+        
+        success(response);
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
+//        success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

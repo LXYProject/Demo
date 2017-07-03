@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="160" height="71.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMN-iD-bCJ">
-                                <rect key="frame" x="31" y="24" width="98" height="24"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="71.5"/>
                                 <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="服务订单" image="order_tabbar_selected.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,7 +44,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NMN-iD-bCJ" firstAttribute="leading" secondItem="gJf-ph-Wfx" secondAttribute="leading" id="5yr-8T-fDF"/>
+                            <constraint firstItem="NMN-iD-bCJ" firstAttribute="top" secondItem="gJf-ph-Wfx" secondAttribute="top" id="BPw-cz-oGl"/>
                             <constraint firstItem="NMN-iD-bCJ" firstAttribute="centerY" secondItem="gJf-ph-Wfx" secondAttribute="centerY" id="PoD-2a-gE0"/>
+                            <constraint firstAttribute="trailing" secondItem="NMN-iD-bCJ" secondAttribute="trailing" id="V4V-BU-Wgt"/>
+                            <constraint firstAttribute="bottom" secondItem="NMN-iD-bCJ" secondAttribute="bottom" id="hw8-RE-EM9"/>
                             <constraint firstItem="NMN-iD-bCJ" firstAttribute="centerX" secondItem="gJf-ph-Wfx" secondAttribute="centerX" id="iqW-cp-S52"/>
                         </constraints>
                     </view>
@@ -52,7 +56,7 @@
                         <rect key="frame" x="161" y="0.0" width="159" height="71.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omp-Gc-8O0">
-                                <rect key="frame" x="30.5" y="24" width="98" height="24"/>
+                                <rect key="frame" x="0.0" y="0.0" width="159" height="71.5"/>
                                 <inset key="imageEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="求助订单" image="order_tabbar_selected.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,7 +68,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="omp-Gc-8O0" firstAttribute="leading" secondItem="ZQS-fA-XuT" secondAttribute="leading" id="Gr3-HP-B7H"/>
                             <constraint firstItem="omp-Gc-8O0" firstAttribute="centerY" secondItem="ZQS-fA-XuT" secondAttribute="centerY" id="KBq-hU-DcJ"/>
+                            <constraint firstItem="omp-Gc-8O0" firstAttribute="top" secondItem="ZQS-fA-XuT" secondAttribute="top" id="Mon-7E-NpL"/>
+                            <constraint firstAttribute="trailing" secondItem="omp-Gc-8O0" secondAttribute="trailing" id="Xfz-Hf-LqR"/>
+                            <constraint firstAttribute="bottom" secondItem="omp-Gc-8O0" secondAttribute="bottom" id="imh-yw-iwn"/>
                             <constraint firstItem="omp-Gc-8O0" firstAttribute="centerX" secondItem="ZQS-fA-XuT" secondAttribute="centerX" id="rqL-Ki-lrk"/>
                         </constraints>
                     </view>

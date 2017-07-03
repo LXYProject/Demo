@@ -96,7 +96,7 @@
                    @"timg.jpeg",
                     ];
     
-    [self startLocation];
+//    [self startLocation];
     [self requestBanner];
 }
 

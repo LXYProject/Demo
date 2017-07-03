@@ -121,6 +121,8 @@
 		7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A51EF0D59E00CA415D /* ServiceModel.m */; };
 		7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2A81EF103C700CA415D /* SecondHandModel.m */; };
 		7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B46E2AB1EF1343100CA415D /* RentHouseModel.m */; };
+		7B4D972C1F09EEA200731969 /* RegularTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D972B1F09EEA200731969 /* RegularTool.m */; };
+		7B4D972F1F09EF4200731969 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D972E1F09EF4200731969 /* AlertViewController.m */; };
 		7B50F8901EFA19E700352F00 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F88E1EFA19E700352F00 /* SearchViewController.m */; };
 		7B50F8911EFA19E700352F00 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B50F88F1EFA19E700352F00 /* SearchViewController.xib */; };
 		7B50F89A1EFA1A8400352F00 /* SearchOneHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B50F8961EFA1A8400352F00 /* SearchOneHeadCell.m */; };
@@ -295,6 +297,7 @@
 		7B966BE01EFFB5D400326C88 /* MWTapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B966BB41EFFB5D400326C88 /* MWTapDetectingView.m */; };
 		7B966BE11EFFB5D400326C88 /* MWZoomingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B966BB61EFFB5D400326C88 /* MWZoomingScrollView.m */; };
 		7B966BE21EFFB5D400326C88 /* UIImage+MWPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B966BB81EFFB5D400326C88 /* UIImage+MWPhotoBrowser.m */; };
+		7B9838BC1F091EBA005AD407 /* CustomCategrayBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9838BB1F091EBA005AD407 /* CustomCategrayBtn.m */; };
 		7BA02B8A1F04CE91004F8AB9 /* SecondMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA02B881F04CE91004F8AB9 /* SecondMessageCell.m */; };
 		7BA02B8B1F04CE91004F8AB9 /* SecondMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA02B891F04CE91004F8AB9 /* SecondMessageCell.xib */; };
 		7BA02B9C1F04D012004F8AB9 /* BannerJumpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA02B8E1F04D012004F8AB9 /* BannerJumpController.m */; };
@@ -595,6 +598,10 @@
 		7B46E2A81EF103C700CA415D /* SecondHandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandModel.m; sourceTree = "<group>"; };
 		7B46E2AA1EF1343100CA415D /* RentHouseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RentHouseModel.h; sourceTree = "<group>"; };
 		7B46E2AB1EF1343100CA415D /* RentHouseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RentHouseModel.m; sourceTree = "<group>"; };
+		7B4D972A1F09EEA200731969 /* RegularTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegularTool.h; sourceTree = "<group>"; };
+		7B4D972B1F09EEA200731969 /* RegularTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegularTool.m; sourceTree = "<group>"; };
+		7B4D972D1F09EF4200731969 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
+		7B4D972E1F09EF4200731969 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
 		7B50F88D1EFA19E700352F00 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		7B50F88E1EFA19E700352F00 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		7B50F88F1EFA19E700352F00 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -852,6 +859,8 @@
 		7B966BB61EFFB5D400326C88 /* MWZoomingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWZoomingScrollView.m; sourceTree = "<group>"; };
 		7B966BB71EFFB5D400326C88 /* UIImage+MWPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MWPhotoBrowser.h"; sourceTree = "<group>"; };
 		7B966BB81EFFB5D400326C88 /* UIImage+MWPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MWPhotoBrowser.m"; sourceTree = "<group>"; };
+		7B9838BA1F091EBA005AD407 /* CustomCategrayBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCategrayBtn.h; sourceTree = "<group>"; };
+		7B9838BB1F091EBA005AD407 /* CustomCategrayBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCategrayBtn.m; sourceTree = "<group>"; };
 		7BA02B871F04CE91004F8AB9 /* SecondMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondMessageCell.h; sourceTree = "<group>"; };
 		7BA02B881F04CE91004F8AB9 /* SecondMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondMessageCell.m; sourceTree = "<group>"; };
 		7BA02B891F04CE91004F8AB9 /* SecondMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondMessageCell.xib; sourceTree = "<group>"; };
@@ -1341,6 +1350,15 @@
 			path = LookingForView/SolicitingView;
 			sourceTree = "<group>";
 		};
+		7B4D97291F09EEA200731969 /* Regular */ = {
+			isa = PBXGroup;
+			children = (
+				7B4D972A1F09EEA200731969 /* RegularTool.h */,
+				7B4D972B1F09EEA200731969 /* RegularTool.m */,
+			);
+			path = Regular;
+			sourceTree = "<group>";
+		};
 		7B5C91FA1EF8B5E200C545A8 /* ChinaCityList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,6 +1542,8 @@
 				7BFBDE641EF5946200F2D354 /* HouseRentCell.h */,
 				7BFBDE651EF5946200F2D354 /* HouseRentCell.m */,
 				7BFBDE661EF5946200F2D354 /* HouseRentCell.xib */,
+				7B9838BA1F091EBA005AD407 /* CustomCategrayBtn.h */,
+				7B9838BB1F091EBA005AD407 /* CustomCategrayBtn.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2060,6 +2080,8 @@
 			children = (
 				7BA02BAC1F04E473004F8AB9 /* MKPAlertView.h */,
 				7BA02BAD1F04E473004F8AB9 /* MKPAlertView.m */,
+				7B4D972D1F09EF4200731969 /* AlertViewController.h */,
+				7B4D972E1F09EF4200731969 /* AlertViewController.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -2067,6 +2089,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7B4D97291F09EEA200731969 /* Regular */,
 				7B69295B1F064061000108F3 /* Btn */,
 				7BBB0FFD1F04F29200BCCF4B /* TextView */,
 				7BA02BAB1F04E473004F8AB9 /* AlertView */,
@@ -2806,11 +2829,13 @@
 				7B8907B01F08DB8D00B3EDFF /* ServiceOrderCell.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
 				7B8907B51F08DDD000B3EDFF /* ServiceBodyCell.m in Sources */,
+				7B4D972F1F09EF4200731969 /* AlertViewController.m in Sources */,
 				7BA02BA21F04D012004F8AB9 /* LookingForViewController.m in Sources */,
 				7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */,
 				7BA783151EFA58ED00BB8591 /* MyCommunityListController.m in Sources */,
 				7B5C92421EF8C1F200C545A8 /* SecondBannerCell.m in Sources */,
 				7BFFBF1B1EF682A9001202EE /* ComplaintsController.m in Sources */,
+				7B4D972C1F09EEA200731969 /* RegularTool.m in Sources */,
 				7B966A671EFF8B8900326C88 /* CommentPhotoCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				7BBB10161F04F29200BCCF4B /* UIColor+Additions.m in Sources */,
@@ -2838,6 +2863,7 @@
 				7B33B7B01EF389B6005FBBBB /* SolicitBtnItemCell.m in Sources */,
 				7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */,
 				7B46E2AC1EF1343100CA415D /* RentHouseModel.m in Sources */,
+				7B9838BC1F091EBA005AD407 /* CustomCategrayBtn.m in Sources */,
 				7B966AD51EFFB29500326C88 /* FSActionSheetConfig.m in Sources */,
 				7B8907BF1F08E88400B3EDFF /* BtnSelectCell.m in Sources */,
 				7B5C92231EF8B5E200C545A8 /* ZYPinYinSearch.m in Sources */,

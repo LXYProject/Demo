@@ -10,5 +10,4 @@
 
 @interface SecondHandViewController : BaseViewController
 
-
 @end

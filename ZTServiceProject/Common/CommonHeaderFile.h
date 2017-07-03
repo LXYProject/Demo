@@ -30,6 +30,12 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <IQKeyboardManager.h>
 #import "XLPhotoBrowser.h"
+
+
 //类别
+#import "RegularTool.h"
+#import "AlertViewController.h"
+
+
 
 #endif /* CommonHeaderFile_h */

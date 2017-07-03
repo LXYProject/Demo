@@ -7,6 +7,10 @@
 //
 
 #import "RegisterTwoController.h"
+#import "LoginHttpManager.h"
+
+#define DeviceUUIDKey @"deviceUUID"
+#define DeviceModel @"deviceModel"
 
 @interface RegisterTwoController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
@@ -29,7 +33,23 @@
 
     
 }
+
+// 注册验证码核对
+- (void)checkCode
+{
+    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
+    [LoginHttpManager requestPhoneNum:self.phoneNumberField.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) code:self.phoneNumberField.text success:^(id response) {
+        
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+}
+
 - (IBAction)sendBtnClick {
+    
+    
+    [self checkCode];
+    
     [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
 }
 
