@@ -21,12 +21,15 @@
     NSInteger _inter;
     NSString *_deviceUUID;
     NSString *_deviceModel;
+    UIButton *_button;
+    BOOL disableloginBtn;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
     
+    self.phoneNumberField.keyboardType = UIKeyboardTypeNumberPad;
     self.sendBtn.layer.masksToBounds = YES;
     self.sendBtn.layer.cornerRadius = self.sendBtn.bounds.size.width * 0.01;
     self.sendBtn.layer.borderColor = [UIColor clearColor].CGColor;
@@ -45,63 +48,101 @@
     _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceModel"];
     NSLog(@"deviceM==%@", _deviceModel);
 
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textChange)name:UITextFieldTextDidChangeNotification object:self.phoneNumberField.text];
+    if (self.phoneNumberField.text.length>11) {
+        self.sendBtn.userInteractionEnabled=YES;
+       // self.rightBtn.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"btn_xiayibu"]];
+        self.sendBtn.backgroundColor = [UIColor redColor];
+
+    }else{
+        self.sendBtn.userInteractionEnabled=NO;
+        self.sendBtn.backgroundColor = [UIColor lightGrayColor];
+    }
+
 }
 
 // 注册发送验证码
 - (void)sendCode{
    
     NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
-    
+    [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
+
     [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:self.phoneNumberField.text machineId:_deviceUUID machineName:_deviceModel success:^(id response) {
         
         NSLog(@"response==%@", response);
-        
-        
+        NSString *phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
+        [[NSUserDefaults standardUserDefaults] setObject:phoneNumStatus forKey:@"phoneNumStatus"];
     } failure:^(NSError *error, NSString *message) {
     }];
-
-
 
 }
 
 
 - (IBAction)sendBtnClick {
     
-    if ([RegularTool isValidateMobile:self.phoneNumberField.text]) {
+    
+    
+    
+    if (_button.selected) {
         
-        [self sendCode];
+        if ([RegularTool isValidateMobile:self.phoneNumberField.text] && self.phoneNumberField.text.length == 11) {
+            
+            if (disableloginBtn) {
+                
+            }
+            self.sendBtn.userInteractionEnabled = YES;
+            [self.sendBtn setBackgroundColor:[UIColor redColor]];
+            
+            [self sendCode];
+            
+            if ([GetValueForKey(@"phoneNumStatus") integerValue] ==0) {
+                [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+            }else{
+                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号已注册" preferredStyle:UIAlertControllerStyleAlert controller:self];
+            }
+        }else{
+            [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+        }
 
-        
-        // 加跳转
-        
-        [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
-        
-        // 不跳转
-        //    phoneNumberField==18516835791
-        //    2017-07-03 15:14:33.113183+0800 ZTServiceProject[5075:2090521] response1111=={
-        //        phoneNumStatus = 1;
-        //    }
-        //    2017-07-03 15:14:33.113350+0800 ZTServiceProject[5075:2090521] response=={
-        //        phoneNumStatus = 1;
-        //    }
-
-        
-        
-//        请求路径：http://192.168.1.96:8080/ZtscApp/Service?service=user&function=getCodeForRegister
-//        ************* 请求参数：{
-//        machineId = "7E62D14B-13E0-49FE-9C3F-11CB366FD6F7";
-//        machineName = iPhone;
-//        phoneNum = 18516835791;
-//    }  ******** 请求错误信息：Error Domain=NSURLErrorDomain Code=-999 "cancelled" UserInfo={NSErrorFailingURLKey=http://192.168.1.96:8080/ZtscApp/Service?service=user&function=getCodeForRegister&machineId=7E62D14B-13E0-49FE-9C3F-11CB366FD6F7&machineName=iPhone&phoneNum=18516835791, NSLocalizedDescription=cancelled, NSErrorFailingURLStringKey=http://192.168.1.96:8080/ZtscApp/Service?service=user&function=getCodeForRegister&machineId=7E62D14B-13E0-49FE-9C3F-11CB366FD6F7&machineName=iPhone&phoneNum=18516835791}
-
-
-        
     }else{
-       [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请先阅读并同意用户协议" preferredStyle:UIAlertControllerStyleAlert controller:self];
     }
     
     
+//    if (_button.selected && [RegularTool isValidateMobile:self.phoneNumberField.text]) {
+//        if ([GetValueForKey(@"phoneNumStatus") integerValue] ==0) {
+//            [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+//        }else{
+//            [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号已注册" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//        }
+//
+//    }else{
+//        self.sendBtn.userInteractionEnabled = NO;
+//    }
+    
 }
 
+-(void)textChange
+{
+    if (self.phoneNumberField.text.length>11) {
+        self.sendBtn.userInteractionEnabled=YES;
+//        [self.sendBtn setBackgroundImage:[UIImage imageNamed:@"btn_xiayibu"] forState:UIControlStateNormal];
+        self.sendBtn.backgroundColor = [UIColor redColor];
+    }else{
+        self.sendBtn.userInteractionEnabled=NO;
+        self.sendBtn.backgroundColor = [UIColor lightGrayColor];
+    }
 
+}
+- (void)delayMethod
+{
+    [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+
+}
+- (IBAction)btnselect:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    _button = sender;
+
+}
 @end

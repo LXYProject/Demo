@@ -32,9 +32,6 @@
         url = A_registerUrl;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:url paramter:paramter success:^(id response) {
-        
-        NSLog(@"response1111==%@", response);
-
         success(response);
         
 //        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
