@@ -351,6 +351,7 @@
 		7BBB102B1F0502CF00BCCF4B /* RegisterThreeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBB10291F0502CF00BCCF4B /* RegisterThreeController.xib */; };
 		7BBB102F1F05052800BCCF4B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB102D1F05052800BCCF4B /* SettingViewController.m */; };
 		7BBB10301F05052800BCCF4B /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBB102E1F05052800BCCF4B /* SettingViewController.xib */; };
+		7BC844071F0B66E100ADF5C6 /* 隐藏密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */; };
 		7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */; };
 		7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F71EE3D26C0058185F /* BaseTabbarController.m */; };
 		7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1FA1EE3D2F00058185F /* Tools.m */; };
@@ -943,6 +944,7 @@
 		7BBB102D1F05052800BCCF4B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		7BBB102E1F05052800BCCF4B /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		7BBE15721EE3C56A0064BEF3 /* ZTServiceProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTServiceProject.pch; sourceTree = "<group>"; };
+		7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "隐藏密码@2x.png"; sourceTree = "<group>"; };
 		7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		7BF4B1F61EE3D26C0058185F /* BaseTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabbarController.h; sourceTree = "<group>"; };
@@ -1890,6 +1892,7 @@
 		7B8F2A561F038B9D00D5D1DF /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */,
 				7B8F2A6F1F039A7D00D5D1DF /* notice@2x.png */,
 				7B8F2A701F039A7D00D5D1DF /* point@2x.png */,
 				7B8F2A711F039A7D00D5D1DF /* selech_icon@2x.png */,
@@ -2541,6 +2544,7 @@
 				7B205E1A1F00E6C900E46B74 /* home_eswp_tsyx@2x.png in Resources */,
 				7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */,
 				7B8F2A811F039F1E00D5D1DF /* DialheadCell.xib in Resources */,
+				7BC844071F0B66E100ADF5C6 /* 隐藏密码@2x.png in Resources */,
 				7B5C92311EF8B8EC00C545A8 /* Pic_blank_328px@2x.png in Resources */,
 				7B966BD21EFFB5D400326C88 /* UIBarButtonItemArrowRight@2x.png in Resources */,
 				7B1662301EF2862900644A7B /* ProductCollecttionCell.xib in Resources */,

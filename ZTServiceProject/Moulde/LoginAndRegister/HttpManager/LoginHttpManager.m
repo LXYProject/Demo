@@ -148,7 +148,7 @@
 + (void)requestPhoneNum:(NSString *)phoneNum
               machineId:(NSString *)machineId
             machineName:(NSString *)machineName
-             clientType:(NSString *)clientType
+                  token:(NSString *)token
             newPassWord:(NSString *)newPassWord
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure{
@@ -156,12 +156,12 @@
     NSDictionary *paramter = @{@"phoneNum":phoneNum?phoneNum:@"",
                                @"machineId":machineId?machineId:@"",
                                @"machineName":machineName?machineName:@"",
-                               @"clientType":clientType?clientType:@"",
+                               @"token":token?token:@"",
                                @"newPassWord":newPassWord?newPassWord:@"",
                                };
     
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updatePassWord paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_updatePassWord paramter:paramter success:^(id response) {
         NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {

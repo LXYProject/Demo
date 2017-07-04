@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "LoginHttpManager.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
@@ -42,6 +43,47 @@
     NSLog(@"rightBarClick");
     [PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
 }
+
+//手机号密码登录
+- (void)passwordLogin
+{
+    NSLog(@"sss%@sss%@", self.textField1.text, self.textField1.text);
+    
+    // GetValueForKey(@"phoneNumber")
+   [LoginHttpManager requestPhoneNum:self.textField1.text passWord:self.textField2.text machineId:@"" machineName:GetValueForKey(DeviceModel) clientType:@"" success:^(id response) {
+       
+   } failure:^(NSError *error, NSString *message) {
+       
+   }];
+}
+
+
+
+- (IBAction)loginBtnClick {
+    
+    
+    NSLog(@"%ld", _selectIndex);
+    
+    
+    
+    
+//    if (self.textField1.text.length>0 && self.textField2.text.length>0) {
+//        
+//        if ([RegularTool isValidateMobile:self.textField1.text]){
+//            
+//        }else{
+//            [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//        }
+//    }else{
+//      [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入手机号和密码" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//
+//    }
+//    [self passwordLogin];
+}
+
+- (IBAction)forgetBtnClick {
+}
+
 - (void)setSelectIndex:(NSInteger)selectIndex {
     _selectIndex = selectIndex;
 
@@ -54,7 +96,6 @@
 
     }
 }
-
 - (IBAction)btnClick:(UIButton *)sender {
     
     _selectedBtn.selected  = NO;
@@ -85,9 +126,5 @@
     }
 
 }
-- (IBAction)forgetBtnClick {
-}
 
-- (IBAction)loginBtnClick {
-}
 @end

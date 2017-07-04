@@ -11,8 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterThreeController">
             <connections>
+                <outlet property="passwordField" destination="qEr-Cl-uCd" id="kgv-BP-fIg"/>
                 <outlet property="phoneNumberField" destination="bhH-aq-VoI" id="d5D-Ja-rEm"/>
-                <outlet property="sendBtn" destination="AJD-dB-9X5" id="LgX-eg-Keb"/>
                 <outlet property="sureBtn" destination="AJD-dB-9X5" id="Cj9-jr-cT3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -75,7 +75,7 @@
                             </constraints>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhH-aq-VoI">
-                            <rect key="frame" x="15" y="7" width="75.5" height="30"/>
+                            <rect key="frame" x="15" y="7" width="345" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="COV-wB-hob"/>
                             </constraints>
@@ -83,12 +83,27 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CwK-ep-B3L">
+                            <rect key="frame" x="330" y="12" width="30" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="Ps0-Ji-n3c"/>
+                                <constraint firstAttribute="height" constant="20" id="pBl-O1-jY8"/>
+                            </constraints>
+                            <state key="normal" image="隐藏密码.png"/>
+                            <state key="selected" image="collection_ select.png"/>
+                            <connections>
+                                <action selector="rightBtn:" destination="-1" eventType="touchUpInside" id="hse-2o-Sg2"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="2J4-rY-oDa"/>
+                        <constraint firstItem="CwK-ep-B3L" firstAttribute="centerY" secondItem="b3Y-dG-QdU" secondAttribute="centerY" id="6t7-eT-u5F"/>
                         <constraint firstAttribute="trailing" secondItem="m8s-3K-XnU" secondAttribute="trailing" id="G3O-qP-XpL"/>
                         <constraint firstItem="bhH-aq-VoI" firstAttribute="leading" secondItem="b3Y-dG-QdU" secondAttribute="leading" constant="15" id="LBd-wo-4OE"/>
+                        <constraint firstAttribute="trailing" secondItem="CwK-ep-B3L" secondAttribute="trailing" constant="15" id="WNY-cv-p5h"/>
+                        <constraint firstAttribute="trailing" secondItem="bhH-aq-VoI" secondAttribute="trailing" constant="15" id="ZLl-0G-VKD"/>
                         <constraint firstItem="bhH-aq-VoI" firstAttribute="centerY" secondItem="b3Y-dG-QdU" secondAttribute="centerY" id="oV5-GF-wFZ"/>
                         <constraint firstItem="m8s-3K-XnU" firstAttribute="leading" secondItem="b3Y-dG-QdU" secondAttribute="leading" id="sDF-ov-htu"/>
                         <constraint firstItem="m8s-3K-XnU" firstAttribute="top" secondItem="b3Y-dG-QdU" secondAttribute="top" id="t8q-30-Chg"/>
@@ -105,24 +120,6 @@
                         <action selector="sendBtnClick" destination="-1" eventType="touchUpInside" id="sQb-c7-NqQ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我已阅读并同意《正图用户协议》" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksI-oe-GCz">
-                    <rect key="frame" x="96" y="235" width="184" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="QQg-n6-NzG"/>
-                        <constraint firstAttribute="height" constant="21" id="dNg-Zb-S7g"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfB-HX-3b3">
-                    <rect key="frame" x="71" y="238" width="15" height="15"/>
-                    <color key="backgroundColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="15" id="FIw-S0-ad5"/>
-                        <constraint firstAttribute="height" constant="15" id="ftv-np-0Xr"/>
-                    </constraints>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzJ-eO-55P">
                     <rect key="frame" x="0.0" y="116" width="375" height="44"/>
                     <subviews>
@@ -135,7 +132,7 @@
                             </constraints>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请确认密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEr-Cl-uCd">
-                            <rect key="frame" x="15" y="7" width="75.5" height="30"/>
+                            <rect key="frame" x="15" y="7" width="345" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="9wK-yr-Gtg"/>
                                 <constraint firstAttribute="height" constant="30" id="Onu-nJ-oow"/>
@@ -147,6 +144,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="qEr-Cl-uCd" secondAttribute="trailing" constant="15" id="0w7-iC-vfO"/>
                         <constraint firstItem="gfY-QB-RnM" firstAttribute="top" secondItem="ZzJ-eO-55P" secondAttribute="top" id="OGX-Bk-gnH"/>
                         <constraint firstItem="qEr-Cl-uCd" firstAttribute="leading" secondItem="ZzJ-eO-55P" secondAttribute="leading" constant="15" id="bU8-XC-SsS"/>
                         <constraint firstItem="gfY-QB-RnM" firstAttribute="leading" secondItem="ZzJ-eO-55P" secondAttribute="leading" id="fPp-4O-F8D"/>
@@ -163,20 +161,19 @@
                 <constraint firstAttribute="trailing" secondItem="b3Y-dG-QdU" secondAttribute="trailing" id="9kv-zw-7mu"/>
                 <constraint firstItem="ZzJ-eO-55P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EkL-Lg-mbx"/>
                 <constraint firstItem="e1A-BF-0pZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TMt-Sc-lsX"/>
-                <constraint firstItem="ksI-oe-GCz" firstAttribute="leading" secondItem="cfB-HX-3b3" secondAttribute="trailing" constant="10" id="UDA-ba-fae"/>
                 <constraint firstItem="e1A-BF-0pZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a9K-wZ-ndD"/>
                 <constraint firstItem="ZzJ-eO-55P" firstAttribute="top" secondItem="b3Y-dG-QdU" secondAttribute="bottom" id="aEE-gb-NQU"/>
                 <constraint firstItem="AJD-dB-9X5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="cB1-N9-NsV"/>
-                <constraint firstItem="cfB-HX-3b3" firstAttribute="centerY" secondItem="ksI-oe-GCz" secondAttribute="centerY" id="cka-Ea-biK"/>
                 <constraint firstAttribute="trailing" secondItem="AJD-dB-9X5" secondAttribute="trailing" constant="15" id="iQw-P2-pV4"/>
-                <constraint firstItem="ksI-oe-GCz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lPL-Dy-LSC"/>
                 <constraint firstItem="AJD-dB-9X5" firstAttribute="top" secondItem="ZzJ-eO-55P" secondAttribute="bottom" constant="15" id="uCM-Uq-s9J"/>
-                <constraint firstItem="ksI-oe-GCz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="w6o-TE-G0Z"/>
                 <constraint firstAttribute="trailing" secondItem="ZzJ-eO-55P" secondAttribute="trailing" id="y6E-7z-rwT"/>
                 <constraint firstItem="b3Y-dG-QdU" firstAttribute="top" secondItem="e1A-BF-0pZ" secondAttribute="bottom" id="yYr-yt-4vb"/>
-                <constraint firstItem="ksI-oe-GCz" firstAttribute="top" secondItem="AJD-dB-9X5" secondAttribute="bottom" constant="10" id="ydB-0G-K1g"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="collection_ select.png" width="20" height="20"/>
+        <image name="隐藏密码.png" width="20" height="20"/>
+    </resources>
 </document>

@@ -10,6 +10,12 @@
 #define weishi_Constant_h
 
 
+#define PhoneNumberKey @"phoneNumber"
+#define DeviceUUIDKey  @"deviceUUID"
+#define DeviceModel    @"deviceModel"
+
+
+
 #define BALANCE @"balance"
 
 

@@ -16,5 +16,5 @@ pod 'SDCycleScrollView'
 #pod 'XLPhotoBrowser+CoderXL','~> 1.2.0'
 #pod 'MWPhotoBrowser'
 pod 'DACircularProgress'
-
+pod 'MBProgressHUD', '~> 1.0.0'
 end

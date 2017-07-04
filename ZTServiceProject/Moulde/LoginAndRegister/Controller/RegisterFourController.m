@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"个人信息" titleColor:[UIColor whiteColor]];
 
 
     _sectionOneArr = @[@"昵称", @"性别", @"生日"];

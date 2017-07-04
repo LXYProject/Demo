@@ -30,7 +30,7 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <IQKeyboardManager.h>
 #import "XLPhotoBrowser.h"
-
+#import <MBProgressHUD/MBProgressHUD.h>
 
 //类别
 #import "RegularTool.h"

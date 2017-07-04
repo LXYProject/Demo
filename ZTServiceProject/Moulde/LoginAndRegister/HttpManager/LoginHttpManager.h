@@ -59,7 +59,7 @@ typedef enum : NSUInteger {
 + (void)requestPhoneNum:(NSString *)phoneNum
               machineId:(NSString *)machineId
             machineName:(NSString *)machineName
-             clientType:(NSString *)clientType
+                  token:(NSString *)token
             newPassWord:(NSString *)newPassWord
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure;
