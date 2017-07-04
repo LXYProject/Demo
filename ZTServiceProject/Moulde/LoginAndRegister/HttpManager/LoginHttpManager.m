@@ -114,8 +114,10 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_phoneNumLogin paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        NSLog(@"response%@", response);
+        
+        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+        success(model);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="btn1" destination="CB5-at-ynI" id="OYI-a6-Sh1"/>
                 <outlet property="btn2" destination="qnR-fW-ted" id="QNN-j0-Tbw"/>
+                <outlet property="codeLabel" destination="ZrZ-ap-A7g" id="S7e-5i-buB"/>
                 <outlet property="forgetBtn" destination="dgt-q0-9pC" id="mjs-iC-530"/>
                 <outlet property="label1" destination="Roe-31-BgI" id="pzy-tO-hCl"/>
                 <outlet property="label2" destination="dRa-Vf-rFB" id="yX9-F7-HBe"/>
@@ -107,6 +108,17 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取验证码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrZ-ap-A7g">
+                            <rect key="frame" x="280" y="9.5" width="80" height="25"/>
+                            <color key="backgroundColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="MJR-2I-Sc4"/>
+                                <constraint firstAttribute="width" constant="80" id="gYG-ko-CYE"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.30588235289999999" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Roe-31-BgI">
                             <rect key="frame" x="15" y="11" width="29" height="21"/>
                             <constraints>
@@ -121,7 +133,9 @@
                     <constraints>
                         <constraint firstItem="t1c-bc-GnQ" firstAttribute="centerY" secondItem="Roe-31-BgI" secondAttribute="centerY" id="2eN-bd-XJ2"/>
                         <constraint firstItem="t1c-bc-GnQ" firstAttribute="leading" secondItem="Roe-31-BgI" secondAttribute="trailing" constant="10" id="PQy-fq-oci"/>
+                        <constraint firstItem="ZrZ-ap-A7g" firstAttribute="centerY" secondItem="A9i-l3-Qq9" secondAttribute="centerY" id="Ung-Ov-cq5"/>
                         <constraint firstItem="Roe-31-BgI" firstAttribute="centerY" secondItem="A9i-l3-Qq9" secondAttribute="centerY" id="Vw4-BR-nvv"/>
+                        <constraint firstAttribute="trailing" secondItem="ZrZ-ap-A7g" secondAttribute="trailing" constant="15" id="hC6-5c-0bU"/>
                         <constraint firstItem="Roe-31-BgI" firstAttribute="leading" secondItem="A9i-l3-Qq9" secondAttribute="leading" constant="15" id="iAH-45-wel"/>
                         <constraint firstAttribute="trailing" secondItem="t1c-bc-GnQ" secondAttribute="trailing" constant="15" id="mWc-V4-6zl"/>
                         <constraint firstAttribute="height" constant="44" id="xUV-DZ-tGf"/>

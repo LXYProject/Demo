@@ -83,6 +83,10 @@
     [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) code:self.phoneNumberField.text success:^(id response) {
         NSLog(@"注册验证码核对==%@", response);
         
+        NSString *userID = [response objectForKey:@"userId"];
+        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"userId"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
     } failure:^(NSError *error, NSString *message) {
         
     }];

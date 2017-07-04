@@ -45,9 +45,11 @@
     NSLog(@"deviceModel==%@", deviceModel);
 
     [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:@"deviceUUID"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceUUID"];
     NSLog(@"deviceID==%@", _deviceUUID);
     [[NSUserDefaults standardUserDefaults] setObject:deviceModel forKey:@"deviceModel"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceModel"];
     NSLog(@"deviceM==%@", _deviceModel);
 
@@ -73,6 +75,7 @@
 
         NSString *phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
         [[NSUserDefaults standardUserDefaults] setObject:phoneNumStatus forKey:@"phoneNumStatus"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     } failure:^(NSError *error, NSString *message) {
         [_hud hideAnimated:YES];
 
