@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
+@property (nonatomic,assign)NSInteger selectIndex;
 
 @end
 
@@ -36,7 +37,8 @@
     self.loginBtn.layer.masksToBounds = YES;
     self.loginBtn.layer.cornerRadius = self.loginBtn.bounds.size.width * 0.01;
     self.loginBtn.layer.borderColor = [UIColor clearColor].CGColor;
-    [self setSelectIndex:0];
+//    [self setSelectIndex:0];
+    [self btnClick:self.btn1];
 }
 - (void)rightBarClick
 {
@@ -84,18 +86,6 @@
 - (IBAction)forgetBtnClick {
 }
 
-- (void)setSelectIndex:(NSInteger)selectIndex {
-    _selectIndex = selectIndex;
-
-    if (selectIndex == 0) {
-        [self btnClick:self.btn1];
-        
-    }
-    else {
-        [self btnClick:self.btn2];
-
-    }
-}
 - (IBAction)btnClick:(UIButton *)sender {
     
     _selectedBtn.selected  = NO;
@@ -107,6 +97,7 @@
     
     //根据点击不同的btn赋值不同的数据
     if (sender == self.btn1) {
+        _selectIndex = 0;
         self.label1.text = @"账号";
         self.label2.text = @"密码";
         self.textField1.placeholder = @"请输入您的账号";
@@ -116,6 +107,7 @@
         self.btn1.backgroundColor = UIColorFromRGB(0xffffff);
 
     }else{
+        _selectIndex = 1;
         self.label1.text = @"手机号";
         self.label2.text = @"验证码";
         self.textField1.placeholder = @"请输入您的手机号";
