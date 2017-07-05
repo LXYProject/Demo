@@ -9,7 +9,9 @@
 #import "LoginViewController.h"
 #import "LoginHttpManager.h"
 
-@interface LoginViewController ()
+#define TokenKey @"token"
+@interface LoginViewController ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
 @property (weak, nonatomic) IBOutlet UIView *lineView;
@@ -19,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 @property (weak, nonatomic) IBOutlet UITextField *textField2;
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *inputBtn;
 
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetBtn;
@@ -32,6 +35,7 @@
     NSInteger countdownInt;
     NSTimer *newTimer;
     UIButton *_selectedBtn;
+    NSString *_phoneNumStatus;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,28 +43,40 @@
     [self titleViewWithTitle:@"登录" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"注册" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     
-    self.codeLabel.layer.masksToBounds = YES;
-    self.codeLabel.layer.cornerRadius = self.codeLabel.bounds.size.width * 0.01;
-    self.codeLabel.layer.borderColor = [UIColor clearColor].CGColor;
-
-    self.loginBtn.layer.masksToBounds = YES;
-    self.loginBtn.layer.cornerRadius = self.loginBtn.bounds.size.width * 0.01;
-    self.loginBtn.layer.borderColor = [UIColor clearColor].CGColor;
+    //圆角
+    [self roundedCorners];
+    
 //    [self setSelectIndex:0];
     [self btnClick:self.btn1];
+    
+    self.textField1.keyboardType = UIKeyboardTypeNumberPad;
+    self.textField2.keyboardType = UIKeyboardTypeNumberPad;
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeBtnPressed)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     self.codeLabel.userInteractionEnabled = YES;
     self.codeLabel.multipleTouchEnabled = YES;
     [self.codeLabel addGestureRecognizer:tapGestureRecognizer];
+    
 }
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
     [PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
 }
+//圆角
+- (void)roundedCorners
+{
+    self.codeLabel.layer.masksToBounds = YES;
+    self.codeLabel.layer.cornerRadius = self.codeLabel.bounds.size.width * 0.01;
+    self.codeLabel.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    self.loginBtn.layer.masksToBounds = YES;
+    self.loginBtn.layer.cornerRadius = self.loginBtn.bounds.size.width * 0.01;
+    self.loginBtn.layer.borderColor = [UIColor clearColor].CGColor;
+    
 
+}
 //手机号密码登录
 - (void)passwordLogin
 {
@@ -68,62 +84,89 @@
     
     // GetValueForKey(@"phoneNumber")
    [LoginHttpManager requestPhoneNum:self.textField1.text passWord:self.textField2.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) clientType:@"" success:^(id response) {
+       NSLog(@"手机号密码登录==%@", response);
        
-       NSLog(@"response==%@", response);
+       NSString *loginToken = [response objectForKey:@"token"];
+       [[NSUserDefaults standardUserDefaults] setObject:loginToken forKey:@"loginToken"];
+       [[NSUserDefaults standardUserDefaults] synchronize];
+       
        
    } failure:^(NSError *error, NSString *message) {
        
    }];
 }
 
-//用户登录获取验证码
-- (void)codeLogin
+// 发送验证码
+- (void)sendCode
 {
     [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel)  success:^(id response) {
+        NSLog(@"验证码登录==%@",response);
+        _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
         
     } failure:^(NSError *error, NSString *message) {
         
     }];
 }
 
+// 登陆验证码核对
+- (void)loginCodeCheck
+{
+    [LoginHttpManager requestPhoneNum:self.textField1.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) code:self.textField2.text clientType:@"" success:^(id response) {
+        NSLog(@"登陆验证码核对==%@",response);
+        
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+
+}
 - (IBAction)loginBtnClick {
     
     if (_selectIndex==0) {
-       
+       //密码登录
         if (self.textField1.text.length>0 && self.textField2.text.length>0) {
     
             if ([RegularTool isValidateMobile:self.textField1.text]){
                 
-                [self passwordLogin];
+                //密码登录
+//                [self passwordLogin];
                 
-//                if ([GetValueForKey(@"userId") length] > 0) {
-//                    
-//                    [self.navigationController popViewControllerAnimated:YES];
+//                if ([GetValueForKey(@"loginToken") length] > 0) {
+                
+                    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
 //                }
                 }else{
-                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
             }
         }else{
           [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入手机号和密码" preferredStyle:UIAlertControllerStyleAlert controller:self];
         }
 
     }else{
+        //验证码登录
         if (self.textField1.text.length>0 && self.textField2.text.length>0) {
             if ([RegularTool isValidateMobile:self.textField1.text]){
                 
+                //验证码核对
+//                [self loginCodeCheck];
                 
+//                if ([_phoneNumStatus integerValue] ==0) {
                 
+                    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+//                }
             }else{
-                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
             }
         }else{
             [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入手机号和验证码" preferredStyle:UIAlertControllerStyleAlert controller:self];
         }
-        
     }
 //    [self passwordLogin];
 }
+- (void)delayMethod
+{
+    [self.navigationController popViewControllerAnimated:YES];
 
+}
 - (IBAction)forgetBtnClick {
 }
 
@@ -145,6 +188,7 @@
         self.textField2.placeholder = @"请输入您的密码";
         self.forgetBtn.hidden = NO;
         self.codeLabel.hidden = YES;
+        self.inputBtn.hidden = NO;
         self.btn2.backgroundColor = UIColorFromRGB(0xE8E8E8);
         self.btn1.backgroundColor = UIColorFromRGB(0xffffff);
 
@@ -156,6 +200,7 @@
         self.textField2.placeholder = @"请输入您的验证码";
         self.forgetBtn.hidden = YES;
         self.codeLabel.hidden = NO;
+        self.inputBtn.hidden = YES;
         self.btn1.backgroundColor = UIColorFromRGB(0xE8E8E8);
         self.btn2.backgroundColor = UIColorFromRGB(0xffffff);
     }
@@ -163,19 +208,24 @@
 }
 #pragma mark - event response
 - (void)codeBtnPressed{
-    //每秒钟刷新一次倒计时显示
-    countdownInt = 60;
-    newTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshCountdown) userInfo:nil repeats:YES];
-    //下面是初始化60s的设置 显示倒计时的最好用UILabel，如果用UIButton的时候文字切换的时候会有闪烁和相应时间长的问题；如果在下面不写初始化60s，而是再refreshCountdown里面写的话，单击完后也会有1s的相应才能切换到60s
-    self.codeLabel.userInteractionEnabled = NO;
-    self.codeLabel.text = @"获取验证码";
-    self.codeLabel.font = [UIFont systemFontOfSize:12];
-    //    self.codeLabel.textColor = [UIColor blueColor];
-    self.codeLabel.backgroundColor = [UIColor colorWithRed:227/255.0f green:227/255.0f blue:227/255.0f alpha:1] ;
     
-    // 请求发送验证码
-    
-//        [self codeLogin];
+    if (self.textField1.text.length>0) {
+        //每秒钟刷新一次倒计时显示
+        countdownInt = 60;
+        newTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshCountdown) userInfo:nil repeats:YES];
+        //下面是初始化60s的设置 显示倒计时的最好用UILabel，如果用UIButton的时候文字切换的时候会有闪烁和相应时间长的问题；如果在下面不写初始化60s，而是再refreshCountdown里面写的话，单击完后也会有1s的相应才能切换到60s
+        self.codeLabel.userInteractionEnabled = NO;
+        self.codeLabel.text = @"";
+        self.codeLabel.font = [UIFont systemFontOfSize:12];
+        //    self.codeLabel.textColor = [UIColor blueColor];
+        self.codeLabel.backgroundColor = [UIColor colorWithRed:227/255.0f green:227/255.0f blue:227/255.0f alpha:1] ;
+        
+        // 发送验证码
+        //        [self sendCode];
+
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式不正确" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
 }
 #pragma mark- private methods
 //验证码倒计时
@@ -200,6 +250,23 @@
         self.codeLabel.font = [UIFont systemFontOfSize:12];
         self.codeLabel.backgroundColor = [UIColor colorWithRed:227/255.0f green:227/255.0f blue:227/255.0f alpha:1] ;
     }
+}
+
+- (IBAction)rightBtn:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if(sender.selected) {// 按下去了就是明文
+        NSString *tempPwdStr = self.textField2.text;
+        self.textField2.text = @"";// 这句代码可以防止切换的时候光标偏移
+        self.textField2.secureTextEntry = NO;
+        self.textField2.text = tempPwdStr;
+    }else{// 暗文
+        NSString *tempPwdStr = self.textField2.text;
+        self.textField2.text = @"";
+        self.textField2.secureTextEntry = YES;
+        self.textField2.text = tempPwdStr;
+    }
+    
 }
 
 @end

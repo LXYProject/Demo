@@ -74,7 +74,7 @@
 
     }else if (indexPath.row ==1){
         ServiceBodyCell *cell = (ServiceBodyCell *)[self creatCell:tableView indenty:@"ServiceBodyCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else {
@@ -99,6 +99,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_selectIndexNum==0) {
+        [PushManager pushViewControllerWithName:@"OrderDetailsController" animated:YES block:nil];
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==1) {
         return 94;

@@ -23,8 +23,8 @@
     NSInteger _inter;
     NSString *_deviceUUID;
     NSString *_deviceModel;
+    NSString *_phoneNumStatus;
     UIButton *_button;
-    BOOL disableloginBtn;
     MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
@@ -57,12 +57,26 @@
     [self.phoneNumberField addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 
 }
+-(void)reformatAsPhoneNumber:(UITextField *)textField {
+    
+    if (textField.text.length>0){
+        self.sendBtn.backgroundColor = UIColorFromRGB(0xe64e51);
+        self.sendBtn.userInteractionEnabled = YES;
+    }
+    else{
+        self.sendBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
+        self.sendBtn.userInteractionEnabled = NO;
+    }
+    
+}
 
 // 注册发送验证码
 - (void)sendCode{
    
-//    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
-//    [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
+    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
+    NSLog(@"注册手机号%@", self.phoneNumberField.text);
+    [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //_hud.mode = MBProgressHUDModeAnnularDeterminate;
@@ -72,10 +86,8 @@
         NSLog(@"response==%@", response);
 
         [_hud hideAnimated:YES];
-
-        NSString *phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
-        [[NSUserDefaults standardUserDefaults] setObject:phoneNumStatus forKey:@"phoneNumStatus"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
+        
     } failure:^(NSError *error, NSString *message) {
         [_hud hideAnimated:YES];
 
@@ -91,15 +103,10 @@
 //        
 //        if ([RegularTool isValidateMobile:GetValueForKey(@"phoneNumber")]) {
 //            
-//            if (disableloginBtn) {
-//                
-//            }
-//            self.sendBtn.userInteractionEnabled = YES;
-//            [self.sendBtn setBackgroundColor:[UIColor redColor]];
-    
+//            //发送验证码
 //            [self sendCode];
 //            
-//            if ([GetValueForKey(@"phoneNumStatus") integerValue] ==0) {
+//            if ([_phoneNumStatus integerValue] ==0) {
 //                [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
 //
 //            }else{
@@ -128,124 +135,5 @@
 
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-    if (self.phoneNumberField == textField) {
-        NSString *strText = [textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-        NSLog(@"strText==%@", strText);
-        [[NSUserDefaults standardUserDefaults]setObject:strText forKey:@"phoneNumber"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        NSLog(@"hssjsjjs==%@", GetValueForKey(@"phoneNumber")) ;
-        //self.rightBtn.userInteractionEnabled=YES;
-    }
-    
-}
-
--(void)reformatAsPhoneNumber:(UITextField *)textField {
-    /**
-     *  判断正确的光标位置
-     */
-    NSUInteger targetCursorPostion = [textField offsetFromPosition:textField.beginningOfDocument toPosition:textField.selectedTextRange.start];
-    NSString *phoneNumberWithoutSpaces = [self removeNonDigits:textField.text andPreserveCursorPosition:&targetCursorPostion];
-    
-    
-    if([phoneNumberWithoutSpaces length]>11) {
-        /**
-         *  避免超过11位的输入
-         */
-        [textField setText:_previousTextFieldContent];
-        textField.selectedTextRange = _previousSelection;
-        
-        return;
-    }else if ([phoneNumberWithoutSpaces length]==11){
-        self.sendBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-        self.sendBtn.userInteractionEnabled = YES;
-    }
-    else{
-        self.sendBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
-        self.sendBtn.userInteractionEnabled = NO;
-    }
-    
-    
-    NSString *phoneNumberWithSpaces = [self insertSpacesEveryFourDigitsIntoString:phoneNumberWithoutSpaces andPreserveCursorPosition:&targetCursorPostion];
-    
-    textField.text = phoneNumberWithSpaces;
-    UITextPosition *targetPostion = [textField positionFromPosition:textField.beginningOfDocument offset:targetCursorPostion];
-    [textField setSelectedTextRange:[textField textRangeFromPosition:targetPostion toPosition:targetPostion]];
-    
-}
-
-/**
- *  除去非数字字符，确定光标正确位置
- *
- *  @param string         当前的string
- *  @param cursorPosition 光标位置
- *
- *  @return 处理过后的string
- */
-- (NSString *)removeNonDigits:(NSString *)string andPreserveCursorPosition:(NSUInteger *)cursorPosition {
-    NSUInteger originalCursorPosition =*cursorPosition;
-    NSMutableString *digitsOnlyString = [NSMutableString new];
-    
-    for (NSUInteger i=0; i<string.length; i++) {
-        unichar characterToAdd = [string characterAtIndex:i];
-        
-        if(isdigit(characterToAdd)) {
-            NSString *stringToAdd = [NSString stringWithCharacters:&characterToAdd length:1];
-            [digitsOnlyString appendString:stringToAdd];
-        }
-        else {
-            if(i<originalCursorPosition) {
-                (*cursorPosition)--;
-            }
-        }
-    }
-    return digitsOnlyString;
-}
-
-/**
- *  将空格插入我们现在的string 中，并确定我们光标的正确位置，防止在空格中
- *
- *  @param string         当前的string
- *  @param cursorPosition 光标位置
- *
- *  @return 处理后有空格的string
- */
-- (NSString *)insertSpacesEveryFourDigitsIntoString:(NSString *)string andPreserveCursorPosition:(NSUInteger *)cursorPosition{
-    NSMutableString *stringWithAddedSpaces = [NSMutableString new];
-    NSUInteger cursorPositionInSpacelessString = *cursorPosition;
-    
-    for (NSUInteger i=0; i<string.length; i++) {
-        if(i>0)
-        {
-            if(i==3 || i==7) {
-                [stringWithAddedSpaces appendString:@" "];
-                
-                if(i<cursorPositionInSpacelessString) {
-                    (*cursorPosition)++;
-                }
-            }
-        }
-        
-        unichar characterToAdd = [string characterAtIndex:i];
-        NSString *stringToAdd = [NSString stringWithCharacters:&characterToAdd length:1];
-        [stringWithAddedSpaces appendString:stringToAdd];
-    }
-    return stringWithAddedSpaces;
-}
-#pragma mark - UITextFieldDelegate
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    _previousSelection = textField.selectedTextRange;
-    _previousTextFieldContent = textField.text;
-    
-    if(range.location==0) {
-        if(string.integerValue >1)
-        {
-            return NO;
-        }
-    }
-    
-    return YES;
-}
 
 @end

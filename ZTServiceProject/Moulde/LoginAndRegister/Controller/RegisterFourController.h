@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface RegisterFourController : BaseViewController
-
+@property (nonatomic, assign) NSInteger experience;
 @end

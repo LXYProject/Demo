@@ -12,6 +12,7 @@
 #import "SolicitingHeadCell.h"
 #import "DoorServiceCell.h"
 #import "AddPhotosCell.h"
+#import "DataPickerViewDemo.h"
 
 @interface DoorServiceController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,7 +23,8 @@
 {
     NSArray *_titleArray;
     NSArray *_contentArray;
-    
+    NSString *_data;
+    NSString *_hour;
 }
 
 - (void)viewDidLoad {
@@ -36,6 +38,7 @@
     [self titleViewWithTitle:@"上门服务" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"提交" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
+    
 }
 
 - (void)rightBarClick
@@ -149,6 +152,9 @@
     cell.rightContent.textColor = TEXT_COLOR;
     cell.title.text = @"预约时间:";
     cell.rightContent.text = @"3月2日  14:12";
+    cell.rightContent.text = _data;
+    cell.rightContent.text = [NSString stringWithFormat:@"%@  %@", _data,_hour];
+
     if (indexPath.section==3) {
         [cell.content removeFromSuperview];
     }
@@ -185,7 +191,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section==3) {
-        
+        [[DataPickerViewDemo sharedPikerView]show];
+        [DataPickerViewDemo sharedPikerView].pikerSelected = ^(NSString *dateStr, NSString *timeStr) {
+            NSLog(@"date:%@,time:%@",dateStr,timeStr);
+            _data = dateStr;
+            _hour = timeStr;
+            [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+        };
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

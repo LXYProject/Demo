@@ -116,8 +116,11 @@
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_phoneNumLogin paramter:paramter success:^(id response) {
         NSLog(@"response%@", response);
         
-        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
-        success(model);
+        success(response);
+//        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+//        success(model);
+        
+        
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -164,8 +167,11 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_updatePassWord paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        
+        success(response);
+        
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
+//        success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

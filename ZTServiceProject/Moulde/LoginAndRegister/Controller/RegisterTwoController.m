@@ -25,6 +25,7 @@
     NSInteger countdownInt;
     NSTimer *newTimer;
     BOOL request;
+    NSString *_status;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,6 +42,7 @@
     if (request==NO) {
         [self codeBtnPressed];
     }
+
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeBtnPressed)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -83,8 +85,10 @@
     [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) code:self.phoneNumberField.text success:^(id response) {
         NSLog(@"注册验证码核对==%@", response);
         
-        NSString *userID = [response objectForKey:@"userId"];
-        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"userId"];
+        _status = [response objectForKey:@"status"];
+        
+        NSString *userID = [response objectForKey:@"token"];
+        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"token"];
         [[NSUserDefaults standardUserDefaults]synchronize];
         
     } failure:^(NSError *error, NSString *message) {
@@ -106,9 +110,6 @@
     self.codeLabel.backgroundColor = [UIColor colorWithRed:227/255.0f green:227/255.0f blue:227/255.0f alpha:1] ;
     
     // 请求发送验证码
-    if (request==YES) {
-        [self sendCode];
-    }
 }
 #pragma mark- private methods
 //验证码倒计时
@@ -140,7 +141,12 @@
     
 //    [self checkCode];
     
-//    [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
+//    if ([_status integerValue]==1) {
+//       [AlertViewController alertControllerWithTitle:@"提示" message:@"验证码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//    }else{
+//       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
+//    }
+   
     [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
 
 }

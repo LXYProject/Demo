@@ -8,7 +8,9 @@
 
 #import "RegisterThreeController.h"
 #import "LoginHttpManager.h"
+#import "RegisterFourController.h"
 
+#define TokenKey @"token"
 @interface RegisterThreeController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -33,18 +35,46 @@
 // 修改密码，设置密码
 - (void)modifyPassword
 {
-    [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) token:@"" newPassWord:self.phoneNumberField.text success:^(id response) {
-        
-        
+    [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) token:GetValueForKey(@"TokenKey") newPassWord:self.phoneNumberField.text success:^(id response) {
+        NSLog(@"修改密码%@", response);
     } failure:^(NSError *error, NSString *message) {
+    }];
+}
+
+- (IBAction)sendBtnClick {
+    
+//    if (self.phoneNumberField.text.length>0 && self.passwordField.text.length>0) {
+//        
+//        [self modifyPassword];
+//        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
+//
+//    }else if (![self.phoneNumberField.text isEqualToString:self.passwordField.text]){
+//        [AlertViewController alertControllerWithTitle:@"提示" message:@"两次输入密码不一致" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//    }
+//    else{
+//        [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入密码和确认密码" preferredStyle:UIAlertControllerStyleAlert controller:self];
+//  
+//    }
+    
+
+    
+//    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:nil];
+    
+    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
         
+        viewController.experience = 0;
+
     }];
 
 }
-- (IBAction)sendBtnClick {
-    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:nil];
+- (void)delayMethod
+{
+    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+        
+        viewController.experience = 0;
+        
+    }];
 }
-
 - (IBAction)rightBtn:(UIButton *)sender {
     sender.selected = !sender.selected;
 
@@ -53,11 +83,25 @@
         self.phoneNumberField.text = @"";// 这句代码可以防止切换的时候光标偏移
         self.phoneNumberField.secureTextEntry = NO;
         self.phoneNumberField.text = tempPwdStr;
+        
+        NSString *tempAgin = self.passwordField.text;
+        self.passwordField.text = @"";// 这句代码可以防止切换的时候光标偏移
+        self.passwordField.secureTextEntry = NO;
+        self.passwordField.text = tempAgin;
+
+        
     }else{// 暗文
         NSString *tempPwdStr = self.phoneNumberField.text;
         self.phoneNumberField.text = @"";
         self.phoneNumberField.secureTextEntry = YES;
         self.phoneNumberField.text = tempPwdStr;
+        
+        NSString *tempAgin = self.passwordField.text;
+        self.passwordField.text = @"";
+        self.passwordField.secureTextEntry = YES;
+        self.passwordField.text = tempAgin;
+        
+        
     }
 
 }
