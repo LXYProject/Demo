@@ -88,8 +88,9 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_loginCheck paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        success(response);
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
+//        success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

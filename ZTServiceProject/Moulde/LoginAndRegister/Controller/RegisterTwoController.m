@@ -70,14 +70,15 @@
 // 注册发送验证码
 - (void)sendCode{
     
-    [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:GetValueForKey(@"phoneNumber") machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) success:^(id response) {
-        NSLog(@"注册发送验证码==%@", response);
-        
-    } failure:^(NSError *error, NSString *message) {
-        //[_hud hideAnimated:YES];
-        
-    }];
-    
+    [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:GetValueForKey(@"phoneNumber")
+                                     machineId:GetValueForKey(DeviceUUIDKey)
+                                   machineName:GetValueForKey(DeviceModel)
+                                       success:^(id response) {
+                                           NSLog(@"注册发送验证码==%@", response);
+                                           
+                                       } failure:^(NSError *error, NSString *message) {
+                                           //[_hud hideAnimated:YES];
+                                       }];
 }
 
 #pragma mark - event response
