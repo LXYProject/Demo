@@ -114,7 +114,6 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_phoneNumLogin paramter:paramter success:^(id response) {
-        NSLog(@"response%@", response);
         
         success(response);
 //        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];

@@ -87,6 +87,9 @@
 		7B205E6D1F00EDFE00E46B74 /* UIViewController+ACMediaExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B205E641F00EDFE00E46B74 /* UIViewController+ACMediaExt.m */; };
 		7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */; };
 		7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F941EEFEF05003B4E1B /* LoginDataModel.m */; };
+		7B25089E1F0DE78000001961 /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B25089D1F0DE78000001961 /* BDImagePicker.m */; };
+		7B2508A21F0E1CB400001961 /* SaleOrderDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2508A01F0E1CB400001961 /* SaleOrderDetailsController.m */; };
+		7B2508A31F0E1CB400001961 /* SaleOrderDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2508A11F0E1CB400001961 /* SaleOrderDetailsController.xib */; };
 		7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */; };
 		7B2C4DE01EE6DD3800745071 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DDF1EE6DD3800745071 /* UIImage+Size.m */; };
 		7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C4DE21EE6DD5A00745071 /* UIViewExt.m */; };
@@ -559,6 +562,11 @@
 		7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHttpManager.m; sourceTree = "<group>"; };
 		7B249F931EEFEF05003B4E1B /* LoginDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDataModel.h; sourceTree = "<group>"; };
 		7B249F941EEFEF05003B4E1B /* LoginDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataModel.m; sourceTree = "<group>"; };
+		7B25089C1F0DE78000001961 /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
+		7B25089D1F0DE78000001961 /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
+		7B25089F1F0E1CB400001961 /* SaleOrderDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaleOrderDetailsController.h; sourceTree = "<group>"; };
+		7B2508A01F0E1CB400001961 /* SaleOrderDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaleOrderDetailsController.m; sourceTree = "<group>"; };
+		7B2508A11F0E1CB400001961 /* SaleOrderDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaleOrderDetailsController.xib; sourceTree = "<group>"; };
 		7B2C4DDB1EE6DD1B00745071 /* EJVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerticalButton.h; sourceTree = "<group>"; };
 		7B2C4DDC1EE6DD1B00745071 /* EJVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerticalButton.m; sourceTree = "<group>"; };
 		7B2C4DDE1EE6DD3800745071 /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
@@ -1342,6 +1350,15 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
+		7B25089B1F0DE78000001961 /* BDImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7B25089C1F0DE78000001961 /* BDImagePicker.h */,
+				7B25089D1F0DE78000001961 /* BDImagePicker.m */,
+			);
+			path = BDImagePicker;
+			sourceTree = "<group>";
+		};
 		7B2CE8DE1EFB691800C13A7D /* FigureServiceImg */ = {
 			isa = PBXGroup;
 			children = (
@@ -1627,6 +1644,9 @@
 				7B6FB3071F0CC572009F5F49 /* OrderDetailsController.h */,
 				7B6FB3081F0CC572009F5F49 /* OrderDetailsController.m */,
 				7B6FB3091F0CC572009F5F49 /* OrderDetailsController.xib */,
+				7B25089F1F0E1CB400001961 /* SaleOrderDetailsController.h */,
+				7B2508A01F0E1CB400001961 /* SaleOrderDetailsController.m */,
+				7B2508A11F0E1CB400001961 /* SaleOrderDetailsController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2158,6 +2178,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7B25089B1F0DE78000001961 /* BDImagePicker */,
 				7B6FB2C41F0CB793009F5F49 /* PickerView */,
 				7B4D97291F09EEA200731969 /* Regular */,
 				7B69295B1F064061000108F3 /* Btn */,
@@ -2702,6 +2723,7 @@
 				7BFFBF171EF68026001202EE /* PraiseTextCell.xib in Resources */,
 				7B8BDB371EFFBD2300F58957 /* SecondHanditemCell.xib in Resources */,
 				7B5C924D1EF8CC1400C545A8 /* SecondBtnItemCell.xib in Resources */,
+				7B2508A31F0E1CB400001961 /* SaleOrderDetailsController.xib in Resources */,
 				7BFFBF221EF6833D001202EE /* ComplaintsCell.xib in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
 				7B5C92521EF8EBF200C545A8 /* SecondUserCell.xib in Resources */,
@@ -2822,6 +2844,7 @@
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
+				7B2508A21F0E1CB400001961 /* SaleOrderDetailsController.m in Sources */,
 				7B8907AB1F08DAB600B3EDFF /* ServiceOrderController.m in Sources */,
 				7B6C26C01EE3C3140090BE5C /* MineViewController.m in Sources */,
 				7B966ADD1EFFB29500326C88 /* XLPhotoBrowser.m in Sources */,
@@ -2884,6 +2907,7 @@
 				7BBB102A1F0502CF00BCCF4B /* RegisterThreeController.m in Sources */,
 				7B2CE92E1EFBC5D100C13A7D /* EYTagView.m in Sources */,
 				7B205E6B1F00EDFE00E46B74 /* ACShowMediaTypeView.m in Sources */,
+				7B25089E1F0DE78000001961 /* BDImagePicker.m in Sources */,
 				7B5C92191EF8B5E200C545A8 /* CityItem.m in Sources */,
 				7BA02B9E1F04D012004F8AB9 /* HomeViewController.m in Sources */,
 				7BAFBC161EF7B21C00AFB6C7 /* SecondHandViewController.m in Sources */,

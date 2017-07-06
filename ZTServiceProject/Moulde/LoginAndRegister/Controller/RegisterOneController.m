@@ -70,57 +70,48 @@
     
 }
 
-// 注册发送验证码
-- (void)sendCode{
-   
-    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
-    NSLog(@"注册手机号%@", self.phoneNumberField.text);
-    [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //_hud.mode = MBProgressHUDModeAnnularDeterminate;
-    _hud.label.text = @"正在加载";
-    
-    [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:GetValueForKey(@"phoneNumber") machineId:_deviceUUID machineName:_deviceModel success:^(id response) {
-        NSLog(@"response==%@", response);
-
-        [_hud hideAnimated:YES];
-        _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
-        
-    } failure:^(NSError *error, NSString *message) {
-        [_hud hideAnimated:YES];
-
-    }];
-
-}
-
-
 - (IBAction)sendBtnClick {
     
-    
-//    if (_button.selected) {
-//        
-//        if ([RegularTool isValidateMobile:GetValueForKey(@"phoneNumber")]) {
-//            
-//            //发送验证码
-//            [self sendCode];
-//            
-//            if ([_phoneNumStatus integerValue] ==0) {
-//                [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
-//
-//            }else{
-//                [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号已注册" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//            }
-//        }else{
-//            [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//        }
-//
-//    }else{
-//        [AlertViewController alertControllerWithTitle:@"提示" message:@"请先阅读并同意用户协议" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//    }
-
-    [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+    if (_button.selected) {
+        
+        if ([RegularTool isValidateMobile:self.phoneNumberField.text]) {
+            
+            
+            NSLog(@"注册手机号%@", self.phoneNumberField.text);
+            [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            //_hud.mode = MBProgressHUDModeAnnularDeterminate;
+            _hud.label.text = @"正在加载";
+            
+            // 用户注册获取验证码
+            [LoginHttpManager requestLoginRegisterCode:RegisterCode
+                                              phoneNum:self.phoneNumberField.text
+                                             machineId:_deviceUUID
+                                           machineName:_deviceModel
+                                               success:^(id response) {
+                                                   
+                                                   [_hud hideAnimated:YES];
+                                                   NSLog(@"response==%@", response);_phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
+                                                   if ([_phoneNumStatus integerValue] ==0) {
+                                                       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                                   }else if([_phoneNumStatus integerValue] ==1){
+                                                       
+                                                       [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号已注册" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                   }else{
+                                                       [AlertViewController alertControllerWithTitle:@"提示" message:@"注册失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                   }
+                                               } failure:^(NSError *error, NSString *message) {
+                                                   [_hud hideAnimated:YES];
+                                               }];
+        }else{
+            [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+        }
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请先阅读并同意用户协议" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
+//    [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
 
 }
 

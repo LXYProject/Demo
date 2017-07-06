@@ -103,6 +103,8 @@
 {
     if (_selectIndexNum==0) {
         [PushManager pushViewControllerWithName:@"OrderDetailsController" animated:YES block:nil];
+    }else{
+        [PushManager pushViewControllerWithName:@"SaleOrderDetailsController" animated:YES block:nil];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 

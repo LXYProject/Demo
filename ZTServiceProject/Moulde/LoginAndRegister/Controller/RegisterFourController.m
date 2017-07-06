@@ -10,6 +10,8 @@
 #import "RegisterHeadCell.h"
 #import "MineViewController.h"
 #import "BaseTabbarController.h"
+#import "BDImagePicker.h"
+#import "LoginHttpManager.h"
 
 #define btnY 420
 @interface RegisterFourController ()
@@ -19,10 +21,12 @@
 
 @implementation RegisterFourController
 {
+    RegisterHeadCell *_heardCell;
     NSArray *_sectionOneArr;
     NSArray *_sectionTwoArr;
     NSArray *_sectionThreeArr;
 
+    UIImage *_headImage;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,9 +50,19 @@
     _sectionTwoArr = @[@"个性签名", @"家乡"];
     _sectionThreeArr = @[@"联系方式", @"我的地址"];
     
+    
     [self createUI];
 }
 
+//修改头像
+- (void)modifyPicture
+{
+    [LoginHttpManager requestImage:@"" success:^(id response) {
+        
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+}
 - (void)createUI
 {
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -132,6 +146,15 @@
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     RegisterHeadCell *cell = (RegisterHeadCell *)[self creatCell:tableView indenty:@"RegisterHeadCell"];
+    if (_headImage) {
+        cell.headIcon.layer.masksToBounds = YES;
+        cell.headIcon.layer.cornerRadius = cell.headIcon.bounds.size.width * 0.5;
+        cell.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+        cell.headIcon.image = _headImage;
+        
+    }else{
+        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
+    }
     return cell;
 }
 
@@ -146,10 +169,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==1) {
+    if (indexPath.section==0) {
+        [BDImagePicker showImagePickerFromViewController:self allowsEditing:YES finishAction:^(UIImage *image) {
+            NSLog(@"image==%@", image);
+            
+            if (image) {
+                
+                _headImage = image;
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+                //_headImage.image = image;
+                //_selectPhoto = image;
+            }
+        }];
+ 
+    }else if (indexPath.section==1) {
         if (indexPath.row==0) {
            [PushManager pushViewControllerWithName:@"ChangeNickNameController" animated:YES block:nil];
         }
+    }else{
+        return;
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

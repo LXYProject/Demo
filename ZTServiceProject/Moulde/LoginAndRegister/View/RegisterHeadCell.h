@@ -10,4 +10,7 @@
 
 @interface RegisterHeadCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *headIcon;
+
+
 @end

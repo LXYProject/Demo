@@ -7,7 +7,12 @@
 //
 
 #import "RegisterHeadCell.h"
+#import "LoginDataModel.h"  
 
+@interface RegisterHeadCell ()
+
+
+@end
 @implementation RegisterHeadCell
 
 - (void)awakeFromNib {
@@ -20,5 +25,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

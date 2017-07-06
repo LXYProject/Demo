@@ -21,6 +21,7 @@
 @implementation RegisterThreeController
 {
     NSInteger _inter;
+    NSString *_successStatus;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,41 +31,61 @@
     self.sureBtn.layer.masksToBounds = YES;
     self.sureBtn.layer.cornerRadius = self.sureBtn.bounds.size.width * 0.01;
     self.sureBtn.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    [self.phoneNumberField addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
+    [self.passwordField addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
+
 }
 
-// 修改密码，设置密码
-- (void)modifyPassword
-{
-    [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) token:GetValueForKey(@"TokenKey") newPassWord:self.phoneNumberField.text success:^(id response) {
-        NSLog(@"修改密码%@", response);
-    } failure:^(NSError *error, NSString *message) {
-    }];
+-(void)reformatAsPhoneNumber:(UITextField *)textField {
+    
+    if (self.phoneNumberField.text.length>0 && self.passwordField.text.length>0){
+        self.sureBtn.backgroundColor = UIColorFromRGB(0xe64e51);
+        self.sureBtn.userInteractionEnabled = YES;
+    }
+    else{
+        self.sureBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
+        self.sureBtn.userInteractionEnabled = NO;
+    }
+    
 }
 
 - (IBAction)sendBtnClick {
     
-//    if (self.phoneNumberField.text.length>0 && self.passwordField.text.length>0) {
-//        
-//        [self modifyPassword];
-//        [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
-//
-//    }else if (![self.phoneNumberField.text isEqualToString:self.passwordField.text]){
-//        [AlertViewController alertControllerWithTitle:@"提示" message:@"两次输入密码不一致" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//    }
-//    else{
-//        [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入密码和确认密码" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//  
-//    }
-    
+    if (self.phoneNumberField.text.length>0 && self.passwordField.text.length>0) {
 
-    
-//    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:nil];
-    
-    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+        if ([self.phoneNumberField.text isEqualToString:self.passwordField.text]){
         
-        viewController.experience = 0;
+            // 修改密码
+            [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
+                                    machineId:GetValueForKey(DeviceUUIDKey)
+                                  machineName:GetValueForKey(DeviceModel)
+                                        token:GetValueForKey(TokenKey)
+                                  newPassWord:self.phoneNumberField.text
+                                      success:^(id response) {
+                                          NSLog(@"修改密码%@", response);
+                                          
+                                          _successStatus = [response objectForKey:@"status"];
+                                          if ([_successStatus integerValue] ==0) {
+                                              [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                          }else{
+                                              [AlertViewController alertControllerWithTitle:@"提示" message:@"修改失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                          }
+                                      } failure:^(NSError *error, NSString *message) {
+                                      }];
+        }else{
+            [AlertViewController alertControllerWithTitle:@"提示" message:@"两次输入密码不一致" preferredStyle:UIAlertControllerStyleAlert controller:self];
+        }
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请输入密码和确认密码" preferredStyle:UIAlertControllerStyleAlert controller:self];
 
-    }];
+    }
+    
+//    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+//        
+//        viewController.experience = 0;
+//
+//    }];
 
 }
 - (void)delayMethod

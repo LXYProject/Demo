@@ -8,6 +8,7 @@
 
 #import "RegisterTwoController.h"
 #import "LoginHttpManager.h"
+#import "LoginDataModel.h"  
 
 @interface RegisterTwoController ()<UITextViewDelegate>
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (weak, nonatomic) IBOutlet UILabel *codeLabel;
 
+@property (nonatomic, strong) NSArray *dataSource;
 @end
 
 @implementation RegisterTwoController
@@ -69,7 +71,7 @@
 - (void)sendCode{
     
     [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:GetValueForKey(@"phoneNumber") machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) success:^(id response) {
-        NSLog(@"response==%@", response);
+        NSLog(@"注册发送验证码==%@", response);
         
     } failure:^(NSError *error, NSString *message) {
         //[_hud hideAnimated:YES];
@@ -78,25 +80,6 @@
     
 }
 
-// 注册验证码核对
-- (void)checkCode
-{
-    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
-    [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey) machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel) code:self.phoneNumberField.text success:^(id response) {
-        NSLog(@"注册验证码核对==%@", response);
-        
-        _status = [response objectForKey:@"status"];
-        
-        NSString *userID = [response objectForKey:@"token"];
-        [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"token"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-    } failure:^(NSError *error, NSString *message) {
-        
-    }];
-}
-
-
 #pragma mark - event response
 - (void)codeBtnPressed{
     //每秒钟刷新一次倒计时显示
@@ -104,12 +87,13 @@
     newTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshCountdown) userInfo:nil repeats:YES];
     //下面是初始化60s的设置 显示倒计时的最好用UILabel，如果用UIButton的时候文字切换的时候会有闪烁和相应时间长的问题；如果在下面不写初始化60s，而是再refreshCountdown里面写的话，单击完后也会有1s的相应才能切换到60s
     self.codeLabel.userInteractionEnabled = NO;
-    self.codeLabel.text = @"获取验证码";
+    self.codeLabel.text = @"重新获取(60)";
     self.codeLabel.font = [UIFont systemFontOfSize:12];
 //    self.codeLabel.textColor = [UIColor blueColor];
     self.codeLabel.backgroundColor = [UIColor colorWithRed:227/255.0f green:227/255.0f blue:227/255.0f alpha:1] ;
     
-    // 请求发送验证码
+    //发送验证码
+    [self sendCode];
 }
 #pragma mark- private methods
 //验证码倒计时
@@ -139,15 +123,34 @@
 
 - (IBAction)sendBtnClick {
     
-//    [self checkCode];
-    
-//    if ([_status integerValue]==1) {
-//       [AlertViewController alertControllerWithTitle:@"提示" message:@"验证码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
-//    }else{
-//       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:3.0f];
-//    }
-   
-    [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
+    // 注册验证码核对
+    NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
+    [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
+                            machineId:GetValueForKey(DeviceUUIDKey)
+                          machineName:GetValueForKey(DeviceModel)
+                                 code:self.phoneNumberField.text
+                              success:^(id response) {
+                                  NSLog(@"注册验证码核对==%@", response);
+                                  _status = [response objectForKey:@"status"];
+                                  
+                                  NSString *userID = [response objectForKey:@"token"];
+                                  [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"token"];
+                                  [[NSUserDefaults standardUserDefaults]synchronize];
+                                  
+                                  LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+                                  if ([_status integerValue]==1) {
+                                      
+                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"验证码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                  }else if ([_status integerValue]==0){
+                                      
+                                      [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                  }else{
+                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"发生错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                  }
+                              } failure:^(NSError *error, NSString *message) {
+    }];
+
+//    [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
 
 }
 

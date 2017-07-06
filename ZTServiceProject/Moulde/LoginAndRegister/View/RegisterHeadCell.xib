@@ -43,6 +43,9 @@
                     <constraint firstAttribute="trailingMargin" secondItem="D0B-VZ-xA9" secondAttribute="trailing" id="wz1-oV-90N"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headIcon" destination="K9l-MU-xrE" id="7To-MR-9xr"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

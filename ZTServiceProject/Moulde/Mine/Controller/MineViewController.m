@@ -11,8 +11,9 @@
 #import "HeadOtherCell.h"
 #import "MineBtnCell.h"
 #import "GroupNumberCell.h"
+#import "RegisterFourController.h"
 
-
+#define TokenKey @"token"
 @interface MineViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -26,6 +27,7 @@
     NSArray *_sectionOneImg;
     NSArray *_sectionTwoImg;
    
+    NSString *_token;
     BOOL login;
 }
 - (void)viewDidLoad {
@@ -43,7 +45,9 @@
     _sectionOneImg = @[@"message_tabbar_default",@"message_tabbar_selected", @"my_tabbar_default"];
     _sectionTwoImg= @[@"message_tabbar_default",@"message_tabbar_selected", @"message_tabbar_selected"];
     
+    _token = GetValueForKey(TokenKey);
     login = NO;
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -185,13 +189,21 @@
 {
     if (login) {
         if (indexPath.section==0) {
-            [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:nil];
+            
+            [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+                
+                viewController.experience = 1;
+            }];
         }else if (indexPath.section==4){
             [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
         }
     }else{
         if (indexPath.section==3) {
-            [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
+            [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+                
+                viewController.experience = 1;
+            }];
+
         }
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
