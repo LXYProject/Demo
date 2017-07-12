@@ -12,6 +12,8 @@
 #import "HelpOrderModel.h"
 #import "MyNeighborModel.h"
 #import "NeighborCircleModel.h"
+#import "MyDoorServiceModel.h"
+#import "MyPraiseModel.h"
 
 @implementation MineHttpManager
 
@@ -33,7 +35,6 @@
     }
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-//        NSLog(@"用户订单service==%@", response);
         
         if (customerOrders==BuyOrder || customerOrders==SaleOrder) {
             NSArray *modelArray = [BuyOrderModel mj_objectArrayWithKeyValuesArray:response[@"orders"]];
@@ -53,11 +54,9 @@
 + (void)requestTopicId:(NSString *)topicId
                success:(HttpRequestSuccess)success
                failure:(HttpRequestFailure)failure{
-    NSDictionary *paramter = @{@"topicId":topicId?topicId:@"",
-                               };
+    NSDictionary *paramter = @{@"topicId":topicId?topicId:@""};
 
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_topicHis paramter:paramter success:^(id response) {
-        NSLog(@"发帖纪录==%@", response);
 
         NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
         success(modelArray);
@@ -82,12 +81,7 @@
     }
 
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        NSLog(@"查看所有与我有关的房屋,小区==%@", response);
-        
             success(response);
-//            NSArray *modelArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response];
-//            success(modelArray);
-        
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -99,8 +93,7 @@
                         success:(HttpRequestSuccess)success
                         failure:(HttpRequestFailure)failure{
     
-    NSDictionary *paramter = @{@"houseId":houseId?houseId:@"",
-                               };
+    NSDictionary *paramter = @{@"houseId":houseId?houseId:@""};
     NSString *url = nil;
     if (addToCancelHouse == addBindHouse) {
         url = A_addBindHouse;
@@ -110,13 +103,7 @@
         url = A_unHouse;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        
         success(response);
-        NSLog(@"新增，添加，取消房屋关注==%@", response);
-        
-        //        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        //        success(modelArray);
-        
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -129,8 +116,7 @@
                           success:(HttpRequestSuccess)success
                           failure:(HttpRequestFailure)failure{
     
-    NSDictionary *paramter = @{@"communityId":communityId?communityId:@"",
-                               };
+    NSDictionary *paramter = @{@"communityId":communityId?communityId:@""};
     NSString *url = nil;
     if (addToCancelVillage == AddVillage) {
         url = A_addConcernVillage;
@@ -138,12 +124,40 @@
         url = A_unConcernVillage;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        
         success(response);
-        NSLog(@"与我有关的小区==%@", response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+// 查看上门服务，公共报事，表扬，投诉信息
++ (void)requestTypeInformation:(TypeInformation)typeInformation
+                        status:(NSString *)status
+                       success:(HttpRequestSuccess)success
+                       failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"status":status?status:@""};
+
+    NSString *url = nil;
+    if (typeInformation == DoorService) {
+        url = A_lookvisitService;
+    }else if(typeInformation == PublicThings){
+        url = A_publicAffairList;
+    }else if (typeInformation == Praises){
+        url = A_praiseList;
+    }else{
+        url = A_complainList;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        NSLog(@"查看上门服务，公共报事，表扬，投诉信息==%@", response);
         
-        //        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        //        success(modelArray);
+        if (typeInformation==DoorService || typeInformation==PublicThings) {
+            NSArray *modelArray = [MyDoorServiceModel mj_objectArrayWithKeyValuesArray:response];
+            success(modelArray);
+        }else{
+            NSArray *modelArray = [MyPraiseModel mj_objectArrayWithKeyValuesArray:response];
+            success(modelArray);
+        }
         
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

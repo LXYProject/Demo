@@ -8,6 +8,8 @@
 
 #import "CommentInfoCell.h"
 #import "CommentUserModel.h"
+#import "NeighborCircleModel.h"
+
 @interface CommentInfoCell()
 @property (weak, nonatomic) IBOutlet UILabel *commentLable;
 
@@ -43,5 +45,4 @@
     [attr appendAttributedString:attr4];
     _commentLable.attributedText = attr;
 }
-
 @end

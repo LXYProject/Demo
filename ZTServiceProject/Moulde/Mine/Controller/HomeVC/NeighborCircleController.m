@@ -10,6 +10,7 @@
 #import "NeighborCircleCell.h"
 #import "MineHttpManager.h"
 #import "NeighborCircleModel.h"
+#import "NeighborDetailController.h"
 
 @interface NeighborCircleController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -83,9 +84,10 @@
                 }
             }];
             [self.topicHisDataSource addObject:mothArr];
+
+            
         }];
-        
-        NSLog(@"%@",self.topicHisDataSource);
+//        NSLog(@"%@",self.topicHisDataSource);
         
         
         //                                if (self.currentPage==1){
@@ -186,6 +188,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [PushManager pushViewControllerWithName:@"NeighborDetailController" animated:YES block:^(NeighborDetailController* viewController) {
+        viewController.model = self.topicHisDataSource[indexPath.section];
+    }];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

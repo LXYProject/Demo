@@ -47,7 +47,7 @@
 {
     _serviceModel =  serviceModel;
     
-    for (NSDictionary *dic in serviceModel.normalImageList) {
+    for (NSDictionary *dic in serviceModel.smallImageList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
         self.url = imageUrl;
     }

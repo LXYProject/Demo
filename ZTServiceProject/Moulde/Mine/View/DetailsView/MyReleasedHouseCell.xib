@@ -31,8 +31,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIh-50-Zw9">
-                        <rect key="frame" x="108" y="32" width="49.5" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题描述" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIh-50-Zw9">
+                        <rect key="frame" x="108" y="32" width="197" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="MXS-RL-uMa"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -74,6 +77,7 @@
                     <constraint firstItem="KdO-Lh-X4m" firstAttribute="bottom" secondItem="kc9-ZZ-Mcu" secondAttribute="bottom" id="acb-aV-vlP"/>
                     <constraint firstItem="kc9-ZZ-Mcu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="gvi-uS-WVB"/>
                     <constraint firstItem="kc9-ZZ-Mcu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="iHK-e4-ljQ"/>
+                    <constraint firstAttribute="trailing" secondItem="RIh-50-Zw9" secondAttribute="trailing" constant="15" id="mAg-dM-7vL"/>
                     <constraint firstItem="KdO-Lh-X4m" firstAttribute="leading" secondItem="kc9-ZZ-Mcu" secondAttribute="trailing" constant="10" id="oZT-MC-V3Y"/>
                     <constraint firstItem="bU5-uL-q2R" firstAttribute="top" secondItem="kc9-ZZ-Mcu" secondAttribute="top" id="u1B-Mk-qhv"/>
                     <constraint firstAttribute="trailing" secondItem="47t-NN-aCN" secondAttribute="trailing" constant="15" id="zKJ-kH-JOp"/>

@@ -68,6 +68,10 @@
 		7B0C72191F15D5BB00CE8AEC /* MyComplaintController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C72171F15D5BB00CE8AEC /* MyComplaintController.xib */; };
 		7B0C721D1F15E1BC00CE8AEC /* SpareDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C721B1F15E1BC00CE8AEC /* SpareDetailViewController.m */; };
 		7B0C721E1F15E1BC00CE8AEC /* SpareDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C721C1F15E1BC00CE8AEC /* SpareDetailViewController.xib */; };
+		7B0C72211F160A5300CE8AEC /* MyDoorServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72201F160A5300CE8AEC /* MyDoorServiceModel.m */; };
+		7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72231F16149100CE8AEC /* MyPraiseModel.m */; };
+		7B0C72281F162A3E00CE8AEC /* NeighborDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */; };
+		7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */; };
 		7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661F81EF2861C00644A7B /* BabyDescriptionCell.m */; };
 		7B1662001EF2861C00644A7B /* BabyDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1661F91EF2861C00644A7B /* BabyDescriptionCell.xib */; };
 		7B1662011EF2861C00644A7B /* BtnItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661FB1EF2861C00644A7B /* BtnItemCell.m */; };
@@ -604,6 +608,13 @@
 		7B0C721A1F15E1BC00CE8AEC /* SpareDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpareDetailViewController.h; sourceTree = "<group>"; };
 		7B0C721B1F15E1BC00CE8AEC /* SpareDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpareDetailViewController.m; sourceTree = "<group>"; };
 		7B0C721C1F15E1BC00CE8AEC /* SpareDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpareDetailViewController.xib; sourceTree = "<group>"; };
+		7B0C721F1F160A5300CE8AEC /* MyDoorServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDoorServiceModel.h; sourceTree = "<group>"; };
+		7B0C72201F160A5300CE8AEC /* MyDoorServiceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDoorServiceModel.m; sourceTree = "<group>"; };
+		7B0C72221F16149100CE8AEC /* MyPraiseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPraiseModel.h; sourceTree = "<group>"; };
+		7B0C72231F16149100CE8AEC /* MyPraiseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPraiseModel.m; sourceTree = "<group>"; };
+		7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborDetailCell.h; sourceTree = "<group>"; };
+		7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighborDetailCell.m; sourceTree = "<group>"; };
+		7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeighborDetailCell.xib; sourceTree = "<group>"; };
 		7B1661F71EF2861C00644A7B /* BabyDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyDescriptionCell.h; sourceTree = "<group>"; };
 		7B1661F81EF2861C00644A7B /* BabyDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyDescriptionCell.m; sourceTree = "<group>"; };
 		7B1661F91EF2861C00644A7B /* BabyDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BabyDescriptionCell.xib; sourceTree = "<group>"; };
@@ -1378,6 +1389,9 @@
 		7B0C71E21F15B81400CE8AEC /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */,
+				7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */,
+				7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */,
 				7B0C71E31F15B84100CE8AEC /* MySpareCell.h */,
 				7B0C71E41F15B84100CE8AEC /* MySpareCell.m */,
 				7B0C71E51F15B84100CE8AEC /* MySpareCell.xib */,
@@ -1926,6 +1940,10 @@
 				7B0A7FC21F147ADD0056F1FF /* MyHouseModel.m */,
 				7B0A7FBE1F14654A0056F1FF /* MyNeighborModel.h */,
 				7B0A7FBF1F14654A0056F1FF /* MyNeighborModel.m */,
+				7B0C721F1F160A5300CE8AEC /* MyDoorServiceModel.h */,
+				7B0C72201F160A5300CE8AEC /* MyDoorServiceModel.m */,
+				7B0C72221F16149100CE8AEC /* MyPraiseModel.h */,
+				7B0C72231F16149100CE8AEC /* MyPraiseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2836,6 +2854,7 @@
 				7B5C92331EF8B8EC00C545A8 /* 否@3x.png in Resources */,
 				7B966BD51EFFB5D400326C88 /* UIBarButtonItemGrid@2x.png in Resources */,
 				7B5C92341EF8B8EC00C545A8 /* 是@3x.png in Resources */,
+				7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */,
 				7B966BC71EFFB5D400326C88 /* ImageSelectedSmallOn@3x.png in Resources */,
 				7BA02BA31F04D012004F8AB9 /* LookingForViewController.xib in Resources */,
 				7BA1678A1EE66DA8000ECCE6 /* TenementViewController.xib in Resources */,
@@ -3139,6 +3158,7 @@
 				7B16620A1EF2862300644A7B /* ImageCell.m in Sources */,
 				7B69295E1F064061000108F3 /* TwoLabelBtn.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
+				7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */,
 				7BA02BBC1F04ED82004F8AB9 /* PostMessageController.m in Sources */,
 				7B3238C81EE7AD8E00403495 /* NearByCell.m in Sources */,
 				7B0C720E1F15D40100CE8AEC /* PraiseComplaintCell.m in Sources */,
@@ -3146,6 +3166,7 @@
 				7B6FB3341F0CC8CF009F5F49 /* ServiceHeadCell.m in Sources */,
 				7BA02BA91F04D704004F8AB9 /* DetailsCell.m in Sources */,
 				7BF7D7751EE857D000DB1486 /* NearByTitleModel.m in Sources */,
+				7B0C72281F162A3E00CE8AEC /* NeighborDetailCell.m in Sources */,
 				7BFFBF211EF6833D001202EE /* ComplaintsCell.m in Sources */,
 				7B5C925A1EF8FE5800C545A8 /* SecondAddressCell.m in Sources */,
 				7B5C921F1EF8B5E200C545A8 /* PinyinFormatter.m in Sources */,
@@ -3211,6 +3232,7 @@
 				7B2D3C601F0F591000409DD7 /* HelpOrderViewController.m in Sources */,
 				7B966BDA1EFFB5D400326C88 /* MWCaptionView.m in Sources */,
 				7B205DF31F00B18A00E46B74 /* AddPhotosCell.m in Sources */,
+				7B0C72211F160A5300CE8AEC /* MyDoorServiceModel.m in Sources */,
 				7B5C92161EF8B5E200C545A8 /* ButtonGroupView.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
 				7B5C921B1EF8B5E200C545A8 /* ChineseInclude.m in Sources */,

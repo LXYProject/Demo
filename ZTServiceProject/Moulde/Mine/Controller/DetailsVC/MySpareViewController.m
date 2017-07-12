@@ -8,9 +8,15 @@
 
 #import "MySpareViewController.h"
 #import "MySpareCell.h"
+#import "HomeHttpManager.h"
+#import "SpareDetailViewController.h"
 
 @interface MySpareViewController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//我发布的二手物品 的数据相关的
+@property (nonatomic,strong)NSMutableArray *dataSource;//绑定的房屋
+@property (nonatomic,assign)NSInteger currentPage;
 
 @end
 
@@ -22,11 +28,54 @@
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我发布的二手物品" titleColor:[UIColor whiteColor]];
 
+    self.currentPage = 1;
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestSecondhandGoods];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestSecondhandGoods];
+    }];
+    [self.tableView beginHeaderRefreshing];
+
 }
 
+// 我发布的二手物品
+- (void)requestSecondhandGoods{
+        [HomeHttpManager requestQueryType:0
+                             secondInfoId:@""
+                                 keywords:@""
+                                  classId:@""
+                                    resId:@""
+                                   cityId:@""
+                               districtId:@""
+                                 minPrice:@""
+                                 maxPrice:@""
+                                 newOrOld:@""
+                                 delivery:@"1"
+                                     sort:@"0"
+                                  pageNum:self.currentPage
+                                  success:^(NSArray* response) {
+                                      
+                                      [self.tableView endRefreshing];
+                                      if (self.currentPage==1){
+                                          [self.dataSource removeAllObjects];
+                                      }
+                                      [self.dataSource addObjectsFromArray:response];
+                                      if (response.count<10) {
+                                          [self.tableView endRefreshingWithNoMoreData];
+                                      }
+                                      [self.tableView reloadData];
+
+                                  } failure:^(NSError *error, NSString *message) {
+                                      [self.tableView endRefreshing];
+                                  }];
+
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.dataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -43,6 +92,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     MySpareCell *cell = (MySpareCell *)[self creatCell:tableView indenty:@"MySpareCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = self.dataSource[indexPath.section];
     return cell;
 }
 
@@ -58,7 +108,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [PushManager pushViewControllerWithName:@"SpareDetailViewController" animated:YES block:nil];
+    [PushManager pushViewControllerWithName:@"SpareDetailViewController" animated:YES block:^(SpareDetailViewController* viewController) {
+        viewController.model = self.dataSource[indexPath.section];
+    }];
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -88,4 +141,10 @@
     return 1;
 }
 
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 @end

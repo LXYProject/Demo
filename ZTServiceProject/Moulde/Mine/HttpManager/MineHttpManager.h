@@ -35,6 +35,14 @@ typedef enum : NSUInteger {
     CancelVillage    //取消小区关注
 } AddToCancelVillage;
 
+// 查看上门服务，公共报事，表扬，投诉信息
+typedef enum : NSUInteger {
+    DoorService,    //查看上门服务信息
+    PublicThings,   //查看公共报事信息
+    Praises,         //查看我帮助的订单
+    Complaints      //查看我求助的订单
+} TypeInformation;
+
 @interface MineHttpManager : NSObject
 
 // 发帖记录
@@ -67,6 +75,14 @@ typedef enum : NSUInteger {
                       communityId:(NSString *)communityId
                           success:(HttpRequestSuccess)success
                           failure:(HttpRequestFailure)failure;
+
+
+// 查看上门服务，公共报事，表扬，投诉信息
++ (void)requestTypeInformation:(TypeInformation)typeInformation
+                        status:(NSString *)status
+                       success:(HttpRequestSuccess)success
+                       failure:(HttpRequestFailure)failure;
+
 
 @end
 

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyDoorServiceModel;
+
 @interface MyDoorServiceCell : UITableViewCell
+
+@property (nonatomic,strong)MyDoorServiceModel *model;
+
 
 @end

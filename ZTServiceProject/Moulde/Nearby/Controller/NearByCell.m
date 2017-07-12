@@ -37,7 +37,7 @@
     
     //self.itemDataSourceArray[value][@"vcName"]
 
-    for (NSDictionary *dic in model.normalImageList) {
+    for (NSDictionary *dic in model.smallImageList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
 //        NSLog(@"imageUrl==%@", imageUrl);
         self.url = imageUrl;

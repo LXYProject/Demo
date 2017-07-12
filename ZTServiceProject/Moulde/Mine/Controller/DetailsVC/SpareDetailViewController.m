@@ -82,24 +82,24 @@
     
     if (indexPath.row == 0) {
         SecondBannerCell *cell = (SecondBannerCell *)[self creatCell:tableView indenty:@"SecondBannerCell"];
-       // cell.secondModelArray = self.model.secondHandNormalImageList;
-        cell.secondModelArray = imageNames;
+        cell.secondModelArray = self.model.secondHandNormalImageList;
+//        cell.secondModelArray = imageNames;
         return cell;
     }else if (indexPath.row==1){
         SecondDetailsCell *cell = (SecondDetailsCell *)[self creatCell:tableView indenty:@"SecondDetailsCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //cell.model = self.model;
+        cell.model = self.model;
         return cell;
     }else if (indexPath.row==2){
         SecondUserCell *cell = (SecondUserCell *)[self creatCell:tableView indenty:@"SecondUserCell"];
-        //cell.model = self.model;
+        cell.model = self.model;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         
         SecondAddressCell *cell = (SecondAddressCell *)[self creatCell:tableView indenty:@"SecondAddressCell"];
-        //cell.model = self.model;
+        cell.model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -168,7 +168,7 @@
             return 270;
         }else if (indexPath.row==1){
             return [tableView fd_heightForCellWithIdentifier:@"SecondDetailsCell" configuration:^(SecondDetailsCell* cell) {
-                //cell.model = self.model;
+                cell.model = self.model;
             }];
         }
         else{

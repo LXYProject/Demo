@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class SecondHandModel;
+
 @interface MySpareCell : UITableViewCell
+
+@property (nonatomic,strong)SecondHandModel *model;
+
 
 @end

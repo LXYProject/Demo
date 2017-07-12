@@ -191,9 +191,21 @@
 #define A_complainList        @"?service=propertyService&function=complainList"
 // 表扬
 #define A_ @""
+
+// 查看上门服务信息
+#define A_lookvisitService      @"?service=propertyService&function=lookvisitService"
+// 查看报事信息
+#define A_publicAffairList      @"?service=propertyService&function=publicAffairList"
+// 查看表扬信息
+#define A_praiseList            @"?service=propertyService&function=praiseList"
+// 查看投诉信息
+#define A_complainList          @"?service=propertyService&function=complainList"
+
+
 //============================二手物品===========================================
 // 查询
 #define A_query                 @"?service=secondHand&function=query"
+
 
 
 //============================帖子服务===========================================

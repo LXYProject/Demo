@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class NeighborCircleModel;
 @interface NeighborDetailController : BaseViewController
+
+@property (nonatomic,strong)NeighborCircleModel *model;
 
 @end

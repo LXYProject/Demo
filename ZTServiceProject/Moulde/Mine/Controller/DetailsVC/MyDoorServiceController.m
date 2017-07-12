@@ -8,9 +8,15 @@
 
 #import "MyDoorServiceController.h"
 #import "MyDoorServiceCell.h"
+#import "MineHttpManager.h"
 
 @interface MyDoorServiceController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//我请求的上门服务 的数据相关的
+@property (nonatomic,strong)NSMutableArray *dataSource;//绑定的房屋
+@property (nonatomic,assign)NSInteger currentPage;
+
 
 @end
 
@@ -21,11 +27,42 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我请求的上门服务" titleColor:[UIColor whiteColor]];
+    
+    self.currentPage = 1;
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestDoorService];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestDoorService];
+    }];
+    [self.tableView beginHeaderRefreshing];
+
 }
 
+//我请求的上门服务
+- (void)requestDoorService{
+    [MineHttpManager requestTypeInformation:DoorService
+                                     status:@""
+                                    success:^(NSArray* response) {
+                                        [self.tableView endRefreshing];
+                                        
+                                        if (self.currentPage==1){
+                                            [self.dataSource removeAllObjects];
+                                        }
+                                        [self.dataSource addObjectsFromArray:response];
+                                        if (response.count<10) {
+                                            [self.tableView endRefreshingWithNoMoreData];
+                                        }
+                                        [self.tableView reloadData];
+                                    } failure:^(NSError *error, NSString *message) {
+                                        [self.tableView endRefreshing];
+                                    }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.dataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -42,6 +79,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     MyDoorServiceCell *cell = (MyDoorServiceCell *)[self creatCell:tableView indenty:@"MyDoorServiceCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = self.dataSource[indexPath.section];
     return cell;
 }
 
@@ -80,6 +118,13 @@
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 1;
+}
+
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
 }
 
 @end

@@ -8,9 +8,14 @@
 
 #import "MyServiceController.h"
 #import "MyReleasedHouseCell.h"
+#import "NearByHttpManager.h"
 
 @interface MyServiceController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//我发布的服务 的数据相关的
+@property (nonatomic,strong)NSMutableArray *dataSource;//绑定的房屋
+@property (nonatomic,assign)NSInteger currentPage;
 
 @end
 
@@ -20,13 +25,49 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"我的服务" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"我发布的服务" titleColor:[UIColor whiteColor]];
+    
+    self.currentPage = 1;
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestPublishedService];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestPublishedService];
+    }];
+    [self.tableView beginHeaderRefreshing];
 
 }
 
+// 我发布的服务
+- (void)requestPublishedService{
+    [NearByHttpManager requestDataWithNearType:LookingService
+                                         query:0
+                                       keyWord:@""
+                                          city:@""
+                                      district:@""
+                                    categoryId:@""
+                                          sort:@""
+                                          page:self.currentPage
+                                       success:^(NSArray * response) {
+                                           [self.tableView endRefreshing];
+                                           if (self.currentPage==1){
+                                               [self.dataSource removeAllObjects];
+                                           }
+                                           [self.dataSource addObjectsFromArray:response];
+                                           if (response.count<10) {
+                                               [self.tableView endRefreshingWithNoMoreData];
+                                           }
+                                           [self.tableView reloadData];
+                                       } failure:^(NSError *error, NSString *message) {
+                                           [self.tableView endRefreshing];
+                                       }];
+
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.dataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -43,6 +84,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     MyReleasedHouseCell *cell = (MyReleasedHouseCell *)[self creatCell:tableView indenty:@"MyReleasedHouseCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.serviceModel = self.dataSource[indexPath.section];
     return cell;
 }
 
@@ -83,5 +125,10 @@
     return 1;
 }
 
-
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 @end

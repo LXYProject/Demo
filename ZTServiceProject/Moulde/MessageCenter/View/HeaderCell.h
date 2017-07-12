@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class MessageModel;
+@class NeighborCircleModel;
 @interface HeaderCell : UITableViewCell
 @property (nonatomic,strong)MessageModel* model;
+@property (nonatomic,strong)NeighborCircleModel* neighborCircleModel;
+
 
 @property (nonatomic,copy)NSString *topicId;
 

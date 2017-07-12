@@ -7,19 +7,18 @@
 //
 
 #import "NeighborDetailController.h"
-#import "HeaderCell.h"
-#import "CommentPhotoCell.h"
-#import "CommentBottomCell.h"
-#import "CommentInfoCell.h"
+#import "MessageCell.h"
+#import "NearByItemModel.h"
+#import "MesssgeHttpManager.h"
 #import "MessageModel.h"
-
+#import "CommentPhotoCell.h"
+#import "NeighborDetailCell.h"
+#import "HeaderCell.h"
+#import "CommentInfoCell.h"
 
 @interface NeighborDetailController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-//加载帖子数据相关
-@property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
 
@@ -28,24 +27,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"帖子详情" titleColor:[UIColor whiteColor]];
 
+    [self.tableView registerNib:[UINib nibWithNibName:@"HeaderCell" bundle:nil] forCellReuseIdentifier:@"HeaderCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NeighborDetailCell" bundle:nil] forCellReuseIdentifier:@"NeighborDetailCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
-        cell.model = self.dataSource[indexPath.section];
-        if (self.dataSource.count==10) {
-            //_topicId = cell.model.topicId;
-        }
+        cell.neighborCircleModel = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         return cell;
     }
@@ -55,24 +54,25 @@
         return cell;
     }
     else  if (indexPath.row ==2){
-        CommentBottomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentBottomCell" forIndexPath:indexPath];
-        cell.model = self.dataSource[indexPath.section];
+        NeighborDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NeighborDetailCell" forIndexPath:indexPath];
+        cell.model = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //OK
-        @weakify(self);
-        cell.commentSuccessBlock = ^(MessageModel * obj) {
-            @strongify(self);
-            [self.dataSource replaceObjectAtIndex:indexPath.section withObject:obj];
-            NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
-            [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
-        };
+//        @weakify(self);
+//        cell.commentSuccessBlock = ^(MessageModel * obj) {
+//            @strongify(self);
+//            [self.dataSource replaceObjectAtIndex:indexPath.section withObject:obj];
+//            NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
+//            [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
+//        };
         return cell;
     }
     else {
         CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
         //NSArray *commentList = [self.dataSource[indexPath.section] commentList];
         //cell.model = commentList[indexPath.row - 3];
+        //cell.model = self.model;
         return cell;
     }
     return nil;
@@ -81,26 +81,26 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
         return  [tableView fd_heightForCellWithIdentifier:@"HeaderCell" cacheByIndexPath:indexPath configuration:^(HeaderCell* cell) {
-            cell.model = self.dataSource[indexPath.section];
+            //cell.model = self.dataSource[indexPath.section];
         }];
     }
     else if (indexPath.row ==1){
-        NSArray *smallImgs = [self.dataSource[indexPath.section] topicSmallImageList];
-        if (smallImgs.count>0) {
-            NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
-            return count *100+(count-1)*15;
-        }
+//        NSArray *smallImgs = [self.dataSource[indexPath.section] topicSmallImageList];
+//        if (smallImgs.count>0) {
+//            NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
+//            return count *100+(count-1)*15;
+//        }
         return 0;
     }
     else if (indexPath.row ==2){
-        return  [tableView fd_heightForCellWithIdentifier:@"CommentBottomCell" cacheByIndexPath:indexPath configuration:^(CommentBottomCell* cell) {
-            cell.model = self.dataSource[indexPath.section];
+        return  [tableView fd_heightForCellWithIdentifier:@"NeighborDetailCell" cacheByIndexPath:indexPath configuration:^(NeighborDetailCell* cell) {
+//            cell.model = self.dataSource[indexPath.section];
         }];
     }
     else{
         return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
-            NSArray *commentList = [self.dataSource[indexPath.section] commentList];
-            cell.model = commentList[indexPath.row - 3];
+//            NSArray *commentList = [self.dataSource[indexPath.section] commentList];
+//            cell.model = commentList[indexPath.row - 3];
         }];
     }
     return 0;
@@ -120,18 +120,6 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:indenty owner:nil options:nil] lastObject];
     }
     return cell;
-}
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.selectTopicId = [self.dataSource[indexPath.row] topicId];
-//}
-
-- (NSMutableArray *)dataSource {
-    if (!_dataSource) {
-        _dataSource = [NSMutableArray arrayWithCapacity:1];
-    }
-    return _dataSource;
 }
 
 

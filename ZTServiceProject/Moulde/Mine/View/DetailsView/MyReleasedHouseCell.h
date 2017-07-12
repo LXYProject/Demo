@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class RentHouseModel;
+@class ServiceModel;
+@class NearByItemModel;
 @interface MyReleasedHouseCell : UITableViewCell
+
+@property (nonatomic,strong)RentHouseModel *model;
+@property (nonatomic,strong)ServiceModel *serviceModel;
+@property (nonatomic,strong)NearByItemModel *nearByItemModel;
 
 @end

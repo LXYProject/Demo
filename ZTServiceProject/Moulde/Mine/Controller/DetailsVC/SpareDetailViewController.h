@@ -8,9 +8,11 @@
 
 #import "BaseViewController.h"
 
+@class SecondHandModel;
+
 @interface SpareDetailViewController : BaseViewController
 
-//@property (nonatomic,strong)SecondHandModel *model;
+@property (nonatomic,strong)SecondHandModel *model;
 
 
 @end

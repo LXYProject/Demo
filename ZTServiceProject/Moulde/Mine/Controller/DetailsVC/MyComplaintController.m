@@ -8,9 +8,14 @@
 
 #import "MyComplaintController.h"
 #import "PraiseComplaintCell.h"
+#import "MineHttpManager.h"
 
 @interface MyComplaintController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//查看投诉信息 的数据相关的
+@property (nonatomic,strong)NSMutableArray *dataSource;//绑定的房屋
+@property (nonatomic,assign)NSInteger currentPage;
 
 @end
 
@@ -21,12 +26,44 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"投诉" titleColor:[UIColor whiteColor]];
+    
+    self.currentPage = 1;
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestComplaintsList];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestComplaintsList];
+    }];
+    [self.tableView beginHeaderRefreshing];
 
+
+}
+
+// 查看投诉信息
+- (void)requestComplaintsList{
+    [MineHttpManager requestTypeInformation:Complaints
+                                     status:@""
+                                    success:^(NSArray* response) {
+                                        
+                                        [self.tableView endRefreshing];
+                                        if (self.currentPage==1){
+                                            [self.dataSource removeAllObjects];
+                                        }
+                                        [self.dataSource addObjectsFromArray:response];
+                                        if (response.count<10) {
+                                            [self.tableView endRefreshingWithNoMoreData];
+                                        }
+                                        [self.tableView reloadData];
+                                    } failure:^(NSError *error, NSString *message) {
+                                        [self.tableView endRefreshing];
+                                    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.dataSource.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -43,6 +80,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     PraiseComplaintCell *cell = (PraiseComplaintCell *)[self creatCell:tableView indenty:@"PraiseComplaintCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = self.dataSource[indexPath.section];
     return cell;
 }
 
@@ -83,4 +121,10 @@
     return 1;
 }
 
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 @end

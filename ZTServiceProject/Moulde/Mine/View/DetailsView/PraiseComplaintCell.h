@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyPraiseModel;
+
 @interface PraiseComplaintCell : UITableViewCell
+
+@property (nonatomic,strong)MyPraiseModel *model;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "HeaderCell.h"
 #import "MessageModel.h"
+#import "NeighborCircleModel.h"
 
 @interface HeaderCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headerIcon;
@@ -45,4 +46,20 @@
     }
 }
 
+- (void)setNeighborCircleModel:(NeighborCircleModel *)neighborCircleModel{
+    
+    _neighborCircleModel = neighborCircleModel;
+    if (neighborCircleModel) {
+        _headerIcon.layer.masksToBounds = YES;
+        _headerIcon.layer.cornerRadius = _headerIcon.bounds.size.width * 0.5;
+        _headerIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+//        [_headerIcon sd_setImageWithURL:[NSURL URLWithString:neighborCircleModel.ownerImageUrl?neighborCircleModel.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+        _name.text = neighborCircleModel.ownerName;
+        _time.text = neighborCircleModel.createTime;
+        _message.text = neighborCircleModel.topicTitle;
+        
+        _topicId = neighborCircleModel.topicId;
+    }
+
+}
 @end

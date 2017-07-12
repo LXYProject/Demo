@@ -12,6 +12,7 @@
 #import "RentHouseModel.h"
 @implementation HomeHttpManager
 
+//首页物业轮播图
 + (void)requestBanner:(BannerType)bannerType
                  city:(NSString *)city
                zoneId:(NSString *)zoneId
@@ -37,6 +38,7 @@
     }];
 }
 
+//二手物品查询
 + (void)requestQueryType:(NSInteger)queryType
             secondInfoId:(NSString *)secondInfoId
                 keywords:(NSString *)keywords
@@ -85,6 +87,7 @@
 
 }
 
+//租房查询
 + (void)requestQueryType:(NSInteger)queryType
                 keywords:(NSString *)keywords
                   cityId:(NSString *)cityId
