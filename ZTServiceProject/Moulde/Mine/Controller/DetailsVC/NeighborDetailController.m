@@ -44,7 +44,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
-        cell.neighborCircleModel = self.model;
+        //cell.neighborCircleModel = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         return cell;
     }
@@ -55,7 +55,7 @@
     }
     else  if (indexPath.row ==2){
         NeighborDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NeighborDetailCell" forIndexPath:indexPath];
-        cell.model = self.model;
+//        cell.model = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //OK
