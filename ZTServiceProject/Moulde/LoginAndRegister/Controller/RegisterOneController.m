@@ -44,16 +44,17 @@
     NSString *deviceModel = [[UIDevice currentDevice] model];
     NSLog(@"deviceModel==%@", deviceModel);
 
-    [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:@"deviceUUID"];
+    [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:DeviceUUIDKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceUUID"];
+    _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceUUIDKey];
     NSLog(@"deviceID==%@", _deviceUUID);
-    [[NSUserDefaults standardUserDefaults] setObject:deviceModel forKey:@"deviceModel"];
+    [[NSUserDefaults standardUserDefaults] setObject:deviceModel forKey:DeviceModelKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
-    _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceModel"];
+    _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceModelKey];
     NSLog(@"deviceM==%@", _deviceModel);
 
     
+    self.sendBtn.enabled = NO;
     [self.phoneNumberField addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 
 }
@@ -61,17 +62,18 @@
     
     if (textField.text.length>0){
         self.sendBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-        self.sendBtn.userInteractionEnabled = YES;
+        self.sendBtn.enabled = YES;
     }
     else{
         self.sendBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
-        self.sendBtn.userInteractionEnabled = NO;
+        self.sendBtn.enabled = NO;
     }
     
 }
 
 - (IBAction)sendBtnClick {
-    
+//    [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+//    return;
     if (_button.selected) {
         
         if ([RegularTool isValidateMobile:self.phoneNumberField.text]) {
@@ -94,8 +96,12 @@
                                                    
                                                    [_hud hideAnimated:YES];
                                                    NSLog(@"response==%@", response);_phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
+                                                   
+                                                   // 成功
                                                    if ([_phoneNumStatus integerValue] ==0) {
-                                                       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                                       //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                                       [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+
                                                    }else if([_phoneNumStatus integerValue] ==1){
                                                        
                                                        [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号已注册" preferredStyle:UIAlertControllerStyleAlert controller:self];
@@ -111,7 +117,7 @@
     }else{
         [AlertViewController alertControllerWithTitle:@"提示" message:@"请先阅读并同意用户协议" preferredStyle:UIAlertControllerStyleAlert controller:self];
     }
-//    [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+    
 
 }
 

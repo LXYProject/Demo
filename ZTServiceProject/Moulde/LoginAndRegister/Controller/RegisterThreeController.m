@@ -10,7 +10,6 @@
 #import "LoginHttpManager.h"
 #import "RegisterFourController.h"
 
-#define TokenKey @"token"
 @interface RegisterThreeController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -51,7 +50,7 @@
 }
 
 - (IBAction)sendBtnClick {
-    
+
     if (self.phoneNumberField.text.length>0 && self.passwordField.text.length>0) {
 
         if ([self.phoneNumberField.text isEqualToString:self.passwordField.text]){
@@ -59,15 +58,23 @@
             // 修改密码
             [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
                                     machineId:GetValueForKey(DeviceUUIDKey)
-                                  machineName:GetValueForKey(DeviceModel)
+                                  machineName:GetValueForKey(DeviceModelKey)
                                         token:GetValueForKey(TokenKey)
                                   newPassWord:self.phoneNumberField.text
                                       success:^(id response) {
                                           NSLog(@"修改密码%@", response);
                                           
                                           _successStatus = [response objectForKey:@"status"];
+                                          
+                                          // 成功
                                           if ([_successStatus integerValue] ==0) {
-                                              [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                              
+                                             // [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                              [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+                                                  
+                                                  viewController.experience = 0;
+                                              }];
+
                                           }else{
                                               [AlertViewController alertControllerWithTitle:@"提示" message:@"修改失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                           }
@@ -81,11 +88,7 @@
 
     }
     
-//    [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
-//        
-//        viewController.experience = 0;
-//
-//    }];
+
 
 }
 - (void)delayMethod

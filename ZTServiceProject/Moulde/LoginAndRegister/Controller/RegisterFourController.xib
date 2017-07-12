@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterFourController">
             <connections>
-                <outlet property="tableView" destination="Oax-d2-5Z4" id="8FO-3F-sC5"/>
+                <outlet property="tableView" destination="Oax-d2-5Z4" id="nif-Ew-fGB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,8 +24,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="Re4-Sf-vzw"/>
-                        <outlet property="delegate" destination="-1" id="dMT-Z5-7FC"/>
+                        <outlet property="dataSource" destination="-1" id="f6M-GL-oEh"/>
+                        <outlet property="delegate" destination="-1" id="XIn-ey-VT8"/>
                     </connections>
                 </tableView>
             </subviews>

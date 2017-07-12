@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class BuyOrderModel;
+@class HelpOrderModel;
 @interface OrderBodyCell : UITableViewCell
+
+@property (nonatomic,strong)BuyOrderModel *model;
+@property (nonatomic,strong)HelpOrderModel *helpOrderModel;
 
 @end

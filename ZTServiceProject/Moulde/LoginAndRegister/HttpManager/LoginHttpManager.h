@@ -70,7 +70,7 @@ typedef enum : NSUInteger {
              failure:(HttpRequestFailure)failure;
 
 //修改头像
-+ (void)requestImage:(NSString *)image
++ (void)requestImage:(UIImage *)image
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure;
 

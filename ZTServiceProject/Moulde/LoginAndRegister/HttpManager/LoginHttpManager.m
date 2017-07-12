@@ -12,7 +12,7 @@
 @implementation LoginHttpManager
 
 //用户注册登录获取验证码
-+ (void)requestLoginRegisterCode:(LoginRegisterCode)LoginRegisterCode
++ (void)requestLoginRegisterCode:(LoginRegisterCode)loginRegisterCode
                phoneNum:(NSString *)phoneNum
               machineId:(NSString *)machineId
             machineName:(NSString *)machineName
@@ -25,7 +25,7 @@
                                };
     
     NSString *url = nil;
-    if (LoginRegisterCode == LoginCode) {
+    if (loginRegisterCode == LoginCode) {
         url = A_loginUrl;
     }
     else {
@@ -196,21 +196,29 @@
 }
 
 //修改头像
-+ (void)requestImage:(NSString *)image
++ (void)requestImage:(UIImage *)image
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure{
     
-    NSDictionary *paramter = @{@"image":image?image:@"",
-                               };
+    NSData *data = UIImagePNGRepresentation(image);
+    if (data) {
+        UIImageJPEGRepresentation(image, 0.5);
+    }
+    NSDictionary *parameter = @{};
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updateHeadImage paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+//    @"image/jpeg",
+//    @"image/png",
+    [[HttpAPIManager sharedHttpAPIManager]uploadDataWithUrl:A_updateHeadImage fileData:data type:@"jpg" name:@"file" mimeType:@"image/jpeg" paramter:parameter progressBlock:^(CGFloat progress) {
+    } success:^(id response) {
+        NSLog(@"%@", response);
+        success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
 
 }
+
+
 
 
 //上传个人图片

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class BuyOrderModel;
+@class HelpOrderModel;
 @interface ServiceHeadCell : UITableViewCell
+
+@property (nonatomic,strong)BuyOrderModel *model;
+@property (nonatomic,strong)HelpOrderModel *helpOrderModel;
+
 
 @end

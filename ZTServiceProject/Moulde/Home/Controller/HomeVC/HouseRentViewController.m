@@ -27,7 +27,11 @@
     // Do any additional setup after loading the view from its nib.
     
     [self titleViewWithTitle:@"房屋租赁" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    [self rightItemWithNormalName:@""
+                            title:@"搜索"
+                       titleColor:[UIColor whiteColor]
+                         selector:@selector(rightBarClick)
+                           target:self];
     
     self.currentPage = 1;
     
@@ -52,24 +56,37 @@
 //请求租房查询
 - (void)requestRentHouseData
 {
-    [HomeHttpManager requestQueryType:2 keywords:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" houseType:@"" direction:@"" minArea:@"" maxArea:@"" heatingMode:@"" floor:@"" hasElevator:@"" houseFitment:@"" basicFacilities:@"" extendedFacilities:@"" sort:@"0" pageNum:self.currentPage success:^(NSArray *response) {
-        
-//        self.rentHouseDataSource = response;
-//        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
-        
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.rentHouseDataSource removeAllObjects];
-        }
-        [self.rentHouseDataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-    }];
-    
+    [HomeHttpManager requestQueryType:2
+                             keywords:@""
+                               cityId:@""
+                           districtId:@""
+                             minPrice:@""
+                             maxPrice:@""
+                            houseType:@""
+                            direction:@""
+                              minArea:@""
+                              maxArea:@""
+                          heatingMode:@""
+                                floor:@""
+                          hasElevator:@""
+                         houseFitment:@""
+                      basicFacilities:@""
+                   extendedFacilities:@""
+                                 sort:@"0"
+                              pageNum:self.currentPage
+                              success:^(NSArray *response) {
+                                  [self.tableView endRefreshing];
+                                  if (self.currentPage==1){
+                                      [self.rentHouseDataSource removeAllObjects];
+                                  }
+                                  [self.rentHouseDataSource addObjectsFromArray:response];
+                                  if (response.count<10) {
+                                      [self.tableView endRefreshingWithNoMoreData];
+                                  }
+                                  [self.tableView reloadData];
+                              } failure:^(NSError *error, NSString *message) {
+                                  [self.tableView endRefreshing];
+                              }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

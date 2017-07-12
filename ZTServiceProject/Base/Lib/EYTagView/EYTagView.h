@@ -65,7 +65,7 @@ typedef enum{
 @property (nonatomic) CGSize tagPaddingSize;//top & left
 @property (nonatomic) CGSize textPaddingSize;
 
-
+@property (nonatomic, strong) NSMutableArray *tagButtons;
 @property (nonatomic, strong) UIFont* fontTag;
 @property (nonatomic, strong) UIFont* fontInput;
 

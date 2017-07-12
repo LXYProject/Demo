@@ -27,13 +27,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _titleArray = @[@"投诉人:",@"联系电话:"];
-    _contentArray = @[@"输入您的姓名", @"输入您的电话"];
+    _titleArray = @[@"投诉人:",
+                    @"联系电话:"];
+    _contentArray = @[@"输入您的姓名",
+                      @"输入您的电话"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
 
-    [self titleViewWithTitle:@"投诉" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"提交" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
-
+    [self titleViewWithTitle:@"投诉"
+                  titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@""
+                            title:@"提交"
+                       titleColor:[UIColor whiteColor]
+                         selector:@selector(rightBarClick)
+                           target:self];
 }
 
 - (void)rightBarClick

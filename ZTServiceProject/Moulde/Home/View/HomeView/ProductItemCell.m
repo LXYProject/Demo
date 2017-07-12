@@ -12,7 +12,7 @@
 #import "SecondHandModel.h"
 #import "RentHouseModel.h"
 #import "ServiceModel.h"    
-
+#import "MessagePhotoModel.h"
 @interface ProductItemCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImage;
 @property (weak, nonatomic) IBOutlet UILabel *headTitle;
@@ -61,15 +61,13 @@
 
 }
 
-
+#warning message
 // 二手物品Model
 - (void)setSecondModel:(SecondHandModel *)secondModel{
     _secondModel = secondModel;
     
-    for (NSDictionary *dic in secondModel.secondHandNormalImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-//        NSLog(@"imageUrl==%@", imageUrl);
-        self.url = imageUrl;
+    for (MessagePhotoModel *model in secondModel.secondHandSmallImageList) {
+        self.url = model.url;
     }
     
     [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];

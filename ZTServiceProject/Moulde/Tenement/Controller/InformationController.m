@@ -20,7 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:@"物业电话" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"物业电话"
+                  titleColor:[UIColor whiteColor]];
 //    self.navigationBarBackGroudColor = [UIColor clearColor];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];

@@ -59,6 +59,12 @@
                     <constraint firstItem="THf-ud-rkL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rGW-83-LYO"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="orderStatus" destination="OCn-1y-7do" id="Dbz-Ow-19E"/>
+                <outlet property="orderTime" destination="3bI-Hm-vZb" id="E2W-NU-CxT"/>
+                <outlet property="userIcon" destination="THf-ud-rkL" id="OGg-Pz-gP4"/>
+                <outlet property="userName" destination="NFd-X6-u8s" id="tcE-Qv-OIv"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

@@ -9,7 +9,6 @@
 #import "RegisterFourController.h"
 #import "RegisterHeadCell.h"
 #import "MineViewController.h"
-#import "BaseTabbarController.h"
 #import "BDImagePicker.h"
 #import "LoginHttpManager.h"
 
@@ -21,7 +20,6 @@
 
 @implementation RegisterFourController
 {
-    RegisterHeadCell *_heardCell;
     NSArray *_sectionOneArr;
     NSArray *_sectionTwoArr;
     NSArray *_sectionThreeArr;
@@ -49,20 +47,10 @@
     _sectionOneArr = @[@"昵称", @"性别", @"生日"];
     _sectionTwoArr = @[@"个性签名", @"家乡"];
     _sectionThreeArr = @[@"联系方式", @"我的地址"];
-    
-    
+    [self.tableView reloadData];
     [self createUI];
 }
 
-//修改头像
-- (void)modifyPicture
-{
-    [LoginHttpManager requestImage:@"" success:^(id response) {
-        
-    } failure:^(NSError *error, NSString *message) {
-        
-    }];
-}
 - (void)createUI
 {
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -88,7 +76,6 @@
 
     }else{
         NSLog(@"退出登录");
-
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -100,7 +87,7 @@
 {
     if (section==0) {
         return 1;
-    }else if (section==1){
+    }else if(section==1){
         return 3;
     }else{
         return 2;
@@ -111,34 +98,51 @@
     
     if (indexPath.section == 0) {
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
+    }else if(indexPath.section==1){
+        return [self sectionOneWithTableView:tableView indexPath:indexPath];
+    }else if(indexPath.section==2){
+        return [self sectionTwoWithTableView:tableView indexPath:indexPath];
     }else{
-        static NSString *ID = @"cell";
-        // 根据标识去缓存池找cell
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        // 不写这句直接崩掉，找不到循环引用的cell
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-        }
-        if (indexPath.section==1) {
-            cell.textLabel.text = _sectionOneArr[indexPath.row];
-        }else if (indexPath.section==2){
-            cell.textLabel.text = _sectionTwoArr[indexPath.row];
-        }else{
-            cell.textLabel.text = _sectionThreeArr[indexPath.row];
-        }
-        if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.textLabel.font = [UIFont systemFontOfSize:13];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-        }else{
-            cell.textLabel.font = [UIFont systemFontOfSize:14];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-        }
-        cell.detailTextLabel.text = @"hhh";
-        cell.textLabel.textColor = TEXT_COLOR;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
-
+        return [self sectionThreeWithTableView:tableView indexPath:indexPath];
     }
+//    }else{
+//        static NSString *ID = @"cell";
+//        // 根据标识去缓存池找cell
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//        // 不写这句直接崩掉，找不到循环引用的cell
+//        if (cell == nil) {
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+//        }
+//        if (indexPath.section==1) {
+//            cell.textLabel.text = _sectionOneArr[indexPath.row];
+//            if (indexPath.row==0) {
+////                cell.detailTextLabel.text = GetValueForKey(NickNameKey);
+//            }else if (indexPath.row==1){
+////                cell.detailTextLabel.text = GetValueForKey(GenderKey);
+//            }else{
+//                return nil;
+//            }
+//        }else if (indexPath.section==2){
+//            cell.textLabel.text = _sectionTwoArr[indexPath.row];
+//        }else{
+//            cell.textLabel.text = _sectionThreeArr[indexPath.row];
+//            if (indexPath.row==0) {
+////                cell.detailTextLabel.text = GetValueForKey(PhoneNumberKey);
+//            }
+//        }
+//        if (IS_IPHONE_4 || IS_IPHONE_5) {
+//            cell.textLabel.font = [UIFont systemFontOfSize:13];
+//            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
+//        }else{
+//            cell.textLabel.font = [UIFont systemFontOfSize:14];
+//            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+//        }
+//        cell.detailTextLabel.text = @"hhh";
+//        cell.textLabel.textColor = TEXT_COLOR;
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        return cell;
+//
+//    }
 
 }
 
@@ -146,16 +150,78 @@
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     RegisterHeadCell *cell = (RegisterHeadCell *)[self creatCell:tableView indenty:@"RegisterHeadCell"];
+    cell.headIcon.layer.masksToBounds = YES;
+    cell.headIcon.layer.cornerRadius = cell.headIcon.bounds.size.width * 0.5;
+    cell.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+
     if (_headImage) {
-        cell.headIcon.layer.masksToBounds = YES;
-        cell.headIcon.layer.cornerRadius = cell.headIcon.bounds.size.width * 0.5;
-        cell.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
         cell.headIcon.image = _headImage;
-        
     }else{
-        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
+//        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
+        [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:GetValueForKey(HeadImageKey)?GetValueForKey(HeadImageKey):@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
     }
     return cell;
+}
+
+//第1组
+- (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *ID = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.textLabel.text = _sectionOneArr[indexPath.row];
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+
+}
+
+//第2组
+- (UITableViewCell *)sectionTwoWithTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+    static NSString *ID = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.textLabel.text = _sectionTwoArr[indexPath.row];
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+
+}
+
+//第3组
+- (UITableViewCell *)sectionThreeWithTableView:(UITableView *)tableView
+                                   indexPath:(NSIndexPath *)indexPath {
+    static NSString *ID = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.textLabel.text = _sectionThreeArr[indexPath.row];
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+    
 }
 
 //公共创建cell的方法
@@ -174,12 +240,23 @@
             NSLog(@"image==%@", image);
             
             if (image) {
-                
-                _headImage = image;
-                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-                //_headImage.image = image;
                 //_selectPhoto = image;
+
+                _headImage = image;
+                
+                //修改头像
+                [LoginHttpManager requestImage:_headImage
+                                       success:^(id response) {
+                                           NSLog(@"修改头像%@", response);
+                                           
+                                           
+                                       } failure:^(NSError *error, NSString *message) {
+                                           
+                                           
+                                       }];
+
+                
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }];
  

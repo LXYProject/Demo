@@ -88,15 +88,22 @@
     self.edgesForExtendedLayout = UIRectEdgeTop;
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self leftItemWithNormalName:@"address_One" title:@"定位中..." titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
-    [self rightBarButtomItemWithNormalName:@"notice" highName:@"notice" selector:@selector(rightBarClick) target:self];
+    [self leftItemWithNormalName:@"address_One"
+                           title:@"定位中..."
+                      titleColor:[UIColor whiteColor]
+                        selector:@selector(leftBarClick)
+                          target:self];
+    [self rightBarButtomItemWithNormalName:@"notice"
+                                  highName:@"notice"
+                                  selector:@selector(rightBarClick)
+                                    target:self];
     imageNames = @[
                    @"timg.jpeg",
                    @"timg.jpeg",
                    @"timg.jpeg",
                     ];
     
-//    [self startLocation];
+    [self startLocation];
     [self requestBanner];
 }
 
@@ -120,68 +127,113 @@
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Home_Banner city:@"510100" zoneId:@"" success:^(NSArray * response) {
-        @strongify(self);
-        self.imageURLArray = response;
-        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } failure:^(NSError *error, NSString *message) {
-        
-    }];
+    [HomeHttpManager requestBanner:Home_Banner
+                              city:@"510100"
+                            zoneId:@""
+                           success:^(NSArray * response) {
+                               @strongify(self);
+                               self.imageURLArray = response;
+                               [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                           } failure:^(NSError *error, NSString *message) {
+                           }];
 }
 // 去帮忙
 - (void)requestData
 {
-    [NearByHttpManager requestDataWithNearType:ToHelp query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.dataSource removeAllObjects];
-        }
-        [self.dataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-    }];
-
+    [NearByHttpManager requestDataWithNearType:ToHelp
+                                         query:2 keyWord:_keywords
+                                          city:_city
+                                      district:_district
+                                    categoryId:@""
+                                          sort:@""
+                                          page:self.currentPage
+                                       success:^(NSArray * response) {
+                                           [self.tableView endRefreshing];
+                                           if (self.currentPage==1){
+                                               [self.dataSource removeAllObjects];
+                                           }
+                                           [self.dataSource addObjectsFromArray:response];
+                                           if (response.count<10) {
+                                               [self.tableView endRefreshingWithNoMoreData];
+                                           }
+                                           [self.tableView reloadData];
+                                       } failure:^(NSError *error, NSString *message) {
+                                           [self.tableView endRefreshing];
+                                       }];
 }
 // 找服务
 - (void)requestServiceData
 {
-    [NearByHttpManager requestDataWithNearType:LookingService query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.dataSource removeAllObjects];
-        }
-        [self.dataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-    }];
-    
+    [NearByHttpManager requestDataWithNearType:LookingService
+                                         query:2 keyWord:_keywords
+                                          city:_city
+                                      district:_district
+                                    categoryId:@""
+                                          sort:@""
+                                          page:self.currentPage
+                                       success:^(NSArray * response) {
+                                           [self.tableView endRefreshing];
+                                           if (self.currentPage==1){
+                                               [self.dataSource removeAllObjects];
+                                           }
+                                           [self.dataSource addObjectsFromArray:response];
+                                           if (response.count<10) {
+                                               [self.tableView endRefreshingWithNoMoreData];
+                                           }
+                                           [self.tableView reloadData];
+                                       } failure:^(NSError *error, NSString *message) {
+                                           [self.tableView endRefreshing];
+                                       }];
 }
 
 //请求collectView的数据
 - (void)requestDataSecondCellData {
-    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
-        self.secondCellDataSource = response;
-         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } failure:^(NSError *error, NSString *message) {
-    }];
+    [HomeHttpManager requestQueryType:2
+                         secondInfoId:@""
+                             keywords:@""
+                              classId:@""
+                                resId:@""
+                               cityId:@""
+                           districtId:@""
+                             minPrice:@""
+                             maxPrice:@""
+                             newOrOld:@""
+                             delivery:@"1"
+                                 sort:@"0"
+                              pageNum:self.secondCellCurrentPage
+                              success:^(id response) {
+                                  self.secondCellDataSource = response;
+                                  [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+                              } failure:^(NSError *error, NSString *message) {
+                              }];
 }
 
 //请求租房查询
 - (void)requestRentHouseData
 {
-    [HomeHttpManager requestQueryType:2 keywords:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" houseType:@"" direction:@"" minArea:@"" maxArea:@"" heatingMode:@"" floor:@"" hasElevator:@"" houseFitment:@"" basicFacilities:@"" extendedFacilities:@"" sort:@"0" pageNum:self.currentPage success:^(id response) {
-        self.rentHouseDataSource = response;
-         [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } failure:^(NSError *error, NSString *message) {
-    }];
+    [HomeHttpManager requestQueryType:2
+                             keywords:@""
+                               cityId:@""
+                           districtId:@""
+                             minPrice:@""
+                             maxPrice:@""
+                            houseType:@""
+                            direction:@""
+                              minArea:@""
+                              maxArea:@""
+                          heatingMode:@""
+                                floor:@""
+                          hasElevator:@""
+                         houseFitment:@""
+                      basicFacilities:@""
+                   extendedFacilities:@""
+                                 sort:@"0"
+                              pageNum:self.currentPage
+                              success:^(id response) {
+                                  self.rentHouseDataSource = response;
+                                  [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
+                              } failure:^(NSError *error, NSString *message) {
+                              }];
     
 }
 
@@ -471,7 +523,11 @@
 
 - (NSArray *)notificationNewsArray {
     if(!_notificationNewsArray){
-        _notificationNewsArray = @[@"今天天机打了肯德基埃里克森",@"啊实打实大会",@"实打实大所",@"撒大声地",@"奥术大师多"];
+        _notificationNewsArray = @[@"今天天机打了肯德基埃里克森",
+                                   @"啊实打实大会",
+                                   @"实打实大所",
+                                   @"撒大声地",
+                                   @"奥术大师多"];
     }
     return _notificationNewsArray;
  }
@@ -590,9 +646,21 @@
     CityListViewController *cityListView = [[CityListViewController alloc]init];
     cityListView.delegate = self;
     //热门城市列表
-    cityListView.arrayHotCity = [NSMutableArray arrayWithObjects:@"广州",@"北京",@"天津",@"厦门",@"重庆",@"福州",@"泉州",@"济南",@"深圳",@"长沙",@"无锡", nil];
+    cityListView.arrayHotCity = [NSMutableArray arrayWithObjects:@"广州",
+                                                                 @"北京",
+                                                                 @"天津",
+                                                                 @"厦门",
+                                                                 @"重庆",
+                                                                 @"福州",
+                                                                 @"泉州",
+                                                                 @"济南",
+                                                                 @"深圳",
+                                                                 @"长沙",
+                                                                 @"无锡", nil];
     //历史选择城市列表
-    cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",@"厦门",@"泉州", nil];
+    cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",
+                                                                        @"厦门",
+                                                                        @"泉州", nil];
     //定位城市列表
     cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:_LocatingCity, nil];
 

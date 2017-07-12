@@ -18,5 +18,6 @@ typedef void(^AppToolBlock)(NSString *string);
 // 声明方法，在方法中封装block
 - (void)sendBlock:(AppToolBlock)block;
 
-
+//section圆角cell
++ (void)cellRadio:(UITableView *)tableView cell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;
 @end

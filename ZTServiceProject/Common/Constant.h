@@ -3,18 +3,25 @@
 //  weishi
 //
 //  Created by hongtao dong on 15/6/16.
-//  Copyright (c) 2015年 信帧. All rights reserved.
+//  Copyright (c) 2017年 ZT. All rights reserved.
 //
 
 #ifndef weishi_Constant_h
 #define weishi_Constant_h
 
-
+//注册验证码核对 属性保存
 #define PhoneNumberKey @"phoneNumber"
 #define DeviceUUIDKey  @"deviceUUID"
-#define DeviceModel    @"deviceModel"
+#define DeviceModelKey    @"deviceModel"
+#define TokenKey       @"token"
 
-
+#define GenderKey @"gender"
+#define HeadImageKey @"headImage"
+#define HuanxinUserNameKey @"huanxinUserName"
+#define HuanxinUserpasswordKey @"huanxinUserpassword"
+#define IsIdentificationKey @"isIdentification"
+#define NickNameKey @"nickName"
+#define UserIdKey @"userId"
 
 #define BALANCE @"balance"
 
@@ -135,15 +142,15 @@
 
 //============================房屋服务===========================================
 // 停止出租
-#define A_stopRent     @"?service=house&function=stopRent"
+#define A_stopRent        @"?service=house&function=stopRent"
 // 收藏租房信息
-#define A_keepRent     @"?service=house&function=keepRent"
+#define A_keepRent        @"?service=house&function=keepRent"
 // 租房查询
-#define A_queryRent                 @"?service=house&function=queryRent"
+#define A_queryRent       @"?service=house&function=queryRent"
 // 出租
-#define A_rent         @"?service=house&function=rent"
+#define A_rent            @"?service=house&function=rent"
 // 租赁标签字典
-#define A_rentTagDic   @"?service=house&function=rentTagDic"
+#define A_rentTagDic      @"?service=house&function=rentTagDic"
 // 基本信息字典
 #define A_basicInfoDic    @"?service=house&function=basicInfoDic"
 // 小区信息
@@ -182,7 +189,8 @@
 #define A_complain            @"?service=propertyService&function=complain"
 // 查看投诉信息
 #define A_complainList        @"?service=propertyService&function=complainList"
-// 
+// 表扬
+#define A_ @""
 //============================二手物品===========================================
 // 查询
 #define A_query                 @"?service=secondHand&function=query"
@@ -206,12 +214,38 @@
 
 
 
+//============================订单接口===========================================
+// 订单处理
+#define A_orderDeal             @"?service=orderService&function=orderDeal"
+// 原因列表
+#define A_reasonList            @"?service=orderService&function=reasonList"
+// 订单应答
+#define A_orderService          @"?service=orderService&function=order"
+// 订单完成后删除我的订单
+#define A_deleteMyorder         @"?service=orderService&function=deleteMyorder"
 
 
 
+//============================求助订单服务===========================================
+// 求助类订单处理
+#define A_appealOrderDeal       @"?service=appealOrderService&function=appealOrderDeal"
+// 求助订单应答
+#define A_order                 @"?service=appealOrderService&function=order"
 
 
+//============================用户订单service===========================================
+// 查看我出售的服务订单
+#define A_lookSaleOrderForm     @"?service=userOrderForm&function=lookSaleOrderForm"
+// 查看我购买的服务订单
+#define A_lookBuyOrderForm      @"?service=userOrderForm&function=lookBuyOrderForm"
+// 查看我帮助的订单
+#define A_lookHelpOrderForm     @"?service=userOrderForm&function=lookHelpOrderForm"
+// 查看我求助的订单
+#define A_lookMyAppealOrderForm @"?service=userOrderForm&function=lookMyAppealOrderForm"
 
 
+//============================用户消息接口===========================================
+//获取系统消息
+#define A_getUnreadMessage      @"?service=userMessageService&function=getUnreadMessage"
 
 #endif

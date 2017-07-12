@@ -55,6 +55,7 @@
 // 求助订单
 - (IBAction)turnToOrderBtn {
     NSLog(@"求助订单");
+    [PushManager pushViewControllerWithName:@"HelpOrderViewController" animated:YES block:nil];
 
 }
 

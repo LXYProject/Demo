@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,30 +19,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物品名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V98-c3-fE9">
-                        <rect key="frame" x="23" y="11" width="71.5" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="2Jw-S7-0P6"/>
-                        </constraints>
+                        <rect key="frame" x="15" y="13" width="71.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="八成新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iDU-PT-h5v">
-                        <rect key="frame" x="94.5" y="11" width="174.5" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="QLX-ca-oYI"/>
-                        </constraints>
+                        <rect key="frame" x="86.5" y="14.5" width="37" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="V98-c3-fE9" firstAttribute="centerY" secondItem="vBo-Bg-fd2" secondAttribute="centerY" id="P6u-1W-3Ui"/>
-                    <constraint firstItem="iDU-PT-h5v" firstAttribute="leading" secondItem="V98-c3-fE9" secondAttribute="trailing" id="U8M-oB-z6T"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="iDU-PT-h5v" secondAttribute="trailing" constant="10" id="f0W-db-rgG"/>
-                    <constraint firstItem="iDU-PT-h5v" firstAttribute="centerY" secondItem="V98-c3-fE9" secondAttribute="centerY" id="oga-ON-AGi"/>
-                    <constraint firstItem="V98-c3-fE9" firstAttribute="leading" secondItem="vBo-Bg-fd2" secondAttribute="leadingMargin" constant="15" id="qpZ-h0-c43"/>
+                    <constraint firstItem="iDU-PT-h5v" firstAttribute="leading" secondItem="V98-c3-fE9" secondAttribute="trailing" id="9fG-Gd-6Gn"/>
+                    <constraint firstItem="iDU-PT-h5v" firstAttribute="centerY" secondItem="vBo-Bg-fd2" secondAttribute="centerY" id="DZH-0z-PJ6"/>
+                    <constraint firstItem="V98-c3-fE9" firstAttribute="centerY" secondItem="vBo-Bg-fd2" secondAttribute="centerY" id="FNb-Us-ivh"/>
+                    <constraint firstItem="V98-c3-fE9" firstAttribute="leading" secondItem="vBo-Bg-fd2" secondAttribute="leading" constant="15" id="y5J-nt-Zsg"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -10,7 +10,6 @@
 #import "LoginHttpManager.h"
 #import "LoginDataModel.h"  
 
-#define TokenKey @"token"
 @interface LoginViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
@@ -42,7 +41,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.loginBtn.enabled = NO;
     [self titleViewWithTitle:@"登录" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"注册" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     
@@ -57,7 +56,7 @@
     
     [self.textField1 addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
     [self.textField2 addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
-    
+    [self.loginBtn addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(codeBtnPressed)];
     tapGestureRecognizer.numberOfTapsRequired = 1;
     self.codeLabel.userInteractionEnabled = YES;
@@ -71,17 +70,30 @@
     [PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"enabled"]) {
+        if ([[change valueForKey:@"new"] boolValue]==YES) {
+            self.loginBtn.backgroundColor = UIColorFromRGB(0xe64e51);
+        }
+        else {
+            self.loginBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
+        }
+    }
+}
+
 -(void)reformatAsPhoneNumber:(UITextField *)textField {
     
     if (self.textField1.text.length>0 && self.textField2.text.length>0){
-        self.loginBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-        self.loginBtn.userInteractionEnabled = YES;
+        
+        self.loginBtn.enabled = YES;
     }
     else{
-        self.loginBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
-        self.loginBtn.userInteractionEnabled = NO;
+        
+        self.loginBtn.enabled = NO;
     }
 }
+
+
 
 //圆角
 - (void)roundedCorners
@@ -99,7 +111,7 @@
 // 发送验证码
 - (void)sendCode
 {
-    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModel)  success:^(id response) {
+    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModelKey)  success:^(id response) {
         NSLog(@"发送验证码==%@",response);
         _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
         
@@ -118,8 +130,8 @@
             [LoginHttpManager requestPhoneNum:self.textField1.text
                                      passWord:self.textField2.text
                                     machineId:GetValueForKey(DeviceUUIDKey)
-                                  machineName:GetValueForKey(DeviceModel)
-                                   clientType:@""
+                                  machineName:GetValueForKey(DeviceModelKey)
+                                   clientType:@"0"
                                       success:^(id response) {
                                           NSLog(@"手机号密码登录==%@", response);//status
                                           _passwordLoginStatus = [response objectForKey:@"status"];
@@ -127,10 +139,10 @@
                                           NSLog(@"_loginDataSource==%@", _loginDataSource);
                                           if ([_passwordLoginStatus integerValue]==0) {
                                               
-                                              [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                              // 成功
+                                              //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                              [self.navigationController popViewControllerAnimated:YES];
                                               
-                                              }else if([_passwordLoginStatus integerValue]==1){
-                                                  [AlertViewController alertControllerWithTitle:@"提示" message:@"密码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                               }else{
                                                   [AlertViewController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                             }
@@ -144,14 +156,20 @@
         NSLog(@"验证码核对");
         [LoginHttpManager requestPhoneNum:self.textField1.text
                                 machineId:GetValueForKey(DeviceUUIDKey)
-                              machineName:GetValueForKey(DeviceModel)
+                              machineName:GetValueForKey(DeviceModelKey)
                                      code:self.textField2.text
-                               clientType:@""
+                               clientType:@"0"
                                   success:^(id response) {
-                                      
                                       NSLog(@"登陆验证码核对==%@",response);
                                       
-                                      
+                                      NSString *checkCodeStatus = [response objectForKey:@"status"];
+                                      if ([checkCodeStatus integerValue]==0) {
+                                          //成功
+                                          [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+
+                                      }else{
+                                          [AlertViewController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                      }
                                   } failure:^(NSError *error, NSString *message) {
                                   }];
     }
@@ -186,9 +204,10 @@
         self.inputBtn.hidden = NO;
         self.btn2.backgroundColor = UIColorFromRGB(0xE8E8E8);
         self.btn1.backgroundColor = UIColorFromRGB(0xffffff);
+        self.textField2.secureTextEntry = YES;
         
-        self.textField1.text = nil;
-        self.textField2.text = nil;
+        self.textField1.text = @"";
+        self.textField2.text = @"";
 
     }else{
         _selectIndex = 1;
@@ -201,10 +220,15 @@
         self.inputBtn.hidden = YES;
         self.btn1.backgroundColor = UIColorFromRGB(0xE8E8E8);
         self.btn2.backgroundColor = UIColorFromRGB(0xffffff);
-        
-        self.textField1.text = nil;
-        self.textField2.text = nil;
-
+        self.textField1.text = @"";
+        self.textField2.text = @"";
+        self.textField2.secureTextEntry = NO;
+    }
+    if (self.textField1.text.length>0&&self.textField2.text.length>0) {
+        self.loginBtn.enabled = YES;
+    }
+    else {
+        self.loginBtn.enabled = NO;
     }
 
 }
@@ -268,7 +292,10 @@
         self.textField2.secureTextEntry = YES;
         self.textField2.text = tempPwdStr;
     }
-    
+}
+
+- (void)dealloc {
+    [self.loginBtn removeObserver:self forKeyPath:@"enabled"];
 }
 
 @end

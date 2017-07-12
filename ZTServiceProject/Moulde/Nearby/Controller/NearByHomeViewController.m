@@ -57,7 +57,10 @@
 
     
 //    [self leftItemWithNormalName:@"noticeYellow" title:@"北京" titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
-    [self rightBarButtomItemWithNormalName:@"selech_icon" highName:@"selech_icon" selector:@selector(rightBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"selech_icon"
+                                  highName:@"selech_icon"
+                                  selector:@selector(rightBarClick)
+                                    target:self];
 
     UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"去帮忙",@"找服务"]];
     segment.width = 200;

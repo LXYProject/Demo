@@ -56,7 +56,7 @@
 
 @property (nonatomic, strong) UIScrollView* svContainer;
 
-@property (nonatomic, strong) NSMutableArray *tagButtons;//array of alll tag button
+//@property (nonatomic, strong) NSMutableArray *tagButtons;//array of alll tag button
 @property (nonatomic, strong) NSMutableArray *tagStrings;//check whether tag is duplicated
 @property (nonatomic, strong) NSMutableArray *tagStringsSelected;
 

@@ -34,7 +34,7 @@
                    @"timg.jpeg",
                    ];
     
-    [self titleViewWithTitle:@"手游" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"二手物品详情" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self.tableView registerNib:[UINib nibWithNibName:@"SecondDetailsCell" bundle:nil] forCellReuseIdentifier:@"SecondDetailsCell"];

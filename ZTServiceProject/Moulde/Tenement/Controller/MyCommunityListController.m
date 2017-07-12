@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:@"我的小区" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"我的小区"
+                  titleColor:[UIColor whiteColor]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

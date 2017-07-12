@@ -29,9 +29,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    _titleArray = @[@"租金", @"户型", @"朝向"];
-    _contentArray = @[@"请填写租金", @"请选择户型", @""];
-    _rightArray = @[@"", @"选择", @"南"];
+    _titleArray = @[@"租金",
+                    @"户型",
+                    @"朝向"];
+    _contentArray = @[@"请填写租金",
+                      @"请选择户型", @""];
+    _rightArray = @[@"",
+                    @"选择",
+                    @"南"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
     
     [self titleViewWithTitle:@"求租" titleColor:[UIColor whiteColor]];

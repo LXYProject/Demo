@@ -38,9 +38,15 @@
     
 
     
-    _titleArray = @[@"宝贝标题", @"分类", @"现价"];
-    _contentArray = @[@"请选择新旧程度", @"请选择价格范围", @"请选择新旧程度"];
-    _switchArray = @[@"", @"支持快递", @"原价"];
+    _titleArray = @[@"宝贝标题",
+                    @"分类",
+                    @"现价"];
+    _contentArray = @[@"请选择新旧程度",
+                      @"请选择价格范围",
+                      @"请选择新旧程度"];
+    _switchArray = @[@"",
+                     @"支持快递",
+                     @"原价"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
 
     [self titleViewWithTitle:@"发布宝贝" titleColor:[UIColor whiteColor]];

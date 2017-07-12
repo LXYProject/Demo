@@ -49,36 +49,52 @@
 }
 // 去帮忙
 - (void)requestData{
-    [NearByHttpManager requestDataWithNearType:ToHelp query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.dataSource removeAllObjects];
-        }
-        [self.dataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-    }];
+    [NearByHttpManager requestDataWithNearType:ToHelp
+                                         query:2
+                                       keyWord:_keywords
+                                          city:_city
+                                      district:_district
+                                    categoryId:@""
+                                          sort:@""
+                                          page:self.currentPage
+                                       success:^(NSArray * response) {
+                                           [self.tableView endRefreshing];
+                                           if (self.currentPage==1){
+                                               [self.dataSource removeAllObjects];
+                                           }
+                                           [self.dataSource addObjectsFromArray:response];
+                                           if (response.count<10) {
+                                               [self.tableView endRefreshingWithNoMoreData];
+                                           }
+                                           [self.tableView reloadData];
+                                       } failure:^(NSError *error, NSString *message) {
+                                           [self.tableView endRefreshing];
+                                       }];
 }
 // 找服务
 - (void)requestServiceData
 {
-    [NearByHttpManager requestDataWithNearType:LookingService query:2 keyWord:_keywords city:_city district:_district categoryId:@"" sort:@"" page:self.currentPage success:^(NSArray * response) {
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.dataSource removeAllObjects];
-        }
-        [self.dataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-    }];
+    [NearByHttpManager requestDataWithNearType:LookingService
+                                         query:2
+                                       keyWord:_keywords
+                                          city:_city
+                                      district:_district
+                                    categoryId:@""
+                                          sort:@""
+                                          page:self.currentPage
+                                       success:^(NSArray * response) {
+                                           [self.tableView endRefreshing];
+                                           if (self.currentPage==1){
+                                               [self.dataSource removeAllObjects];
+                                           }
+                                           [self.dataSource addObjectsFromArray:response];
+                                           if (response.count<10) {
+                                               [self.tableView endRefreshingWithNoMoreData];
+                                           }
+                                           [self.tableView reloadData];
+                                       } failure:^(NSError *error, NSString *message) {
+                                           [self.tableView endRefreshing];
+                                       }];
 
 }
 - (void)setCategoryId:(NSString *)categoryId {
@@ -179,5 +195,12 @@
     return _dataSource;
 }
 
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+    [UIView animateWithDuration:1 animations:^{
+        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+    }];
+}
 
 @end

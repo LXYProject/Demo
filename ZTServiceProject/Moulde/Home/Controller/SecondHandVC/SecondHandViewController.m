@@ -59,11 +59,24 @@
 }
 //请求collectView的数据
 - (void)requestDataSecondCellData {
-    [HomeHttpManager requestQueryType:2 secondInfoId:@"" keywords:@"" classId:@"" resId:@"" cityId:@"" districtId:@"" minPrice:@"" maxPrice:@"" newOrOld:@"" delivery:@"1" sort:@"0" pageNum:self.secondCellCurrentPage success:^(id response) {
-        self.secondCellDataSource = response;
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-    }];
+    [HomeHttpManager requestQueryType:2
+                         secondInfoId:@""
+                             keywords:@""
+                              classId:@""
+                                resId:@""
+                               cityId:@""
+                           districtId:@""
+                             minPrice:@""
+                             maxPrice:@""
+                             newOrOld:@""
+                             delivery:@"1"
+                                 sort:@"0"
+                              pageNum:self.secondCellCurrentPage
+                              success:^(id response) {
+                                  self.secondCellDataSource = response;
+                                  [self.tableView reloadData];
+                              } failure:^(NSError *error, NSString *message) {
+                              }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

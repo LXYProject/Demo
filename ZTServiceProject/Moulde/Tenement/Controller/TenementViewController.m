@@ -96,13 +96,15 @@
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
-    [HomeHttpManager requestBanner:Tenement_Banner city:@"510100" zoneId:@"510029841228" success:^(NSArray * response) {
-        @strongify(self);
-        self.imageURLArray = response;
-        [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
-    } failure:^(NSError *error, NSString *message) {
-        
-    }];
+    [HomeHttpManager requestBanner:Tenement_Banner
+                              city:@"510100"
+                            zoneId:@"510029841228"
+                           success:^(NSArray * response) {
+                               @strongify(self);
+                               self.imageURLArray = response;
+                               [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+                           } failure:^(NSError *error, NSString *message) {
+                           }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -203,7 +205,10 @@
 
 - (void)creareAlert
 {
-    MKPAlertView *alertView = [[MKPAlertView alloc]initWithTitle:@"呼叫保安" message:@"" sureBtn:@"确认呼叫" cancleBtn:@"取消呼叫"];
+    MKPAlertView *alertView = [[MKPAlertView alloc]initWithTitle:@"呼叫保安"
+                                                         message:@""
+                                                         sureBtn:@"确认呼叫"
+                                                       cancleBtn:@"取消呼叫"];
     alertView.resultIndex = ^(NSInteger index)
     {
         // 回调 -- 处理

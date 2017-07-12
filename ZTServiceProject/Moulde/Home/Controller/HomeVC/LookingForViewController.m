@@ -31,10 +31,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _titleArray = @[@"物品名称：",@"品牌型号："];
-    _contentArray = @[@"请输入物品的名称", @"请输入品牌的型号"];
-    _titleOneArray = @[@"新旧程度：",@"价格范围："];
-    _contentOneArray = @[@"八成新", @"1000-2000"];
+    _titleArray = @[@"物品名称：",
+                    @"品牌型号："];
+    _contentArray = @[@"请输入物品的名称",
+                      @"请输入品牌的型号"];
+    _titleOneArray = @[@"新旧程度：",
+                       @"价格范围："];
+    _contentOneArray = @[@"八成新",
+                         @"1000-2000"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
     
     [self titleViewWithTitle:@"求购" titleColor:[UIColor whiteColor]];

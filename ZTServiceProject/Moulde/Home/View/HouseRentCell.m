@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *time;
 @property (weak, nonatomic) IBOutlet EYTagView *tagView;
 
+@property (nonatomic, strong) NSMutableArray *tagsSouses;
+@property (nonatomic, copy) NSString *basicFacilities;
+
 @property (nonatomic, copy) NSString *url;
 
 @end
@@ -54,12 +57,28 @@
                         @"中介勿扰",
                         ]];
     
+    [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = obj;
+        if (idx==0) {
+            
+            [btn setBackgroundColor:UIColorFromRGB(0xe64e51)];
+        }
+        else if (idx == 1) {
+            btn.backgroundColor = [UIColor colorWithRed:253.0/255 green:106.0/255 blue:214.0/255 alpha:1];
+        }
+        else if (idx ==2){
+            btn.backgroundColor = [UIColor yellowColor];
+        }
+        else {
+            btn.backgroundColor = [UIColor grayColor];
+        }
+    }];
     [self.contentView addSubview:self.tagView];
 
 }
 
 -(void)heightDidChangedTagView:(EYTagView *)tagView{
-    NSLog(@"heightDidChangedTagView");
+//    NSLog(@"heightDidChangedTagView");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -84,6 +103,9 @@
 //    _placeLabel.text = rentHouseModel.address;
     _priceLabel.text = [NSString stringWithFormat:@"￥%.0f/月",[rentHouseModel.rentPrice doubleValue]];
     _time.text = rentHouseModel.publishTime;
+    
+    
+    _basicFacilities = rentHouseModel.basicFacilities;
     
 }
 

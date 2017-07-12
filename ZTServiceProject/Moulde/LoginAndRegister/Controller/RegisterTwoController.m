@@ -52,17 +52,18 @@
     self.codeLabel.multipleTouchEnabled = YES;
     [self.codeLabel addGestureRecognizer:tapGestureRecognizer];
     
+    self.sendBtn.enabled = NO;
     [self.phoneNumberField addTarget:self action:@selector(reformatPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 }
 -(void)reformatPhoneNumber:(UITextField *)textField {
     
     if (textField.text.length>0){
         self.sendBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-        self.sendBtn.userInteractionEnabled = YES;
+        self.sendBtn.enabled = YES;
     }
     else{
         self.sendBtn.backgroundColor = UIColorFromRGB(0xb2b2b2);
-        self.sendBtn.userInteractionEnabled = NO;
+        self.sendBtn.enabled = NO;
     }
     
 }
@@ -70,9 +71,10 @@
 // 注册发送验证码
 - (void)sendCode{
     
-    [LoginHttpManager requestLoginRegisterCode:RegisterCode phoneNum:GetValueForKey(@"phoneNumber")
+    [LoginHttpManager requestLoginRegisterCode:RegisterCode
+                                      phoneNum:GetValueForKey(@"phoneNumber")
                                      machineId:GetValueForKey(DeviceUUIDKey)
-                                   machineName:GetValueForKey(DeviceModel)
+                                   machineName:GetValueForKey(DeviceModelKey)
                                        success:^(id response) {
                                            NSLog(@"注册发送验证码==%@", response);
                                            
@@ -123,35 +125,53 @@
 
 
 - (IBAction)sendBtnClick {
+//    [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
+//    return;
     
     // 注册验证码核对
     NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
     [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
                             machineId:GetValueForKey(DeviceUUIDKey)
-                          machineName:GetValueForKey(DeviceModel)
+                          machineName:GetValueForKey(DeviceModelKey)
                                  code:self.phoneNumberField.text
                               success:^(id response) {
                                   NSLog(@"注册验证码核对==%@", response);
                                   _status = [response objectForKey:@"status"];
                                   
-                                  NSString *userID = [response objectForKey:@"token"];
-                                  [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"token"];
+                                  NSString *token = [response objectForKey:TokenKey];
+                                  NSString *gender = [response objectForKey:GenderKey];
+                                  NSString *headImageUrl = [response objectForKey:HeadImageKey];
+                                  NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
+                                  NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
+                                  NSString *isIdentification = [response objectForKey:IsIdentificationKey];
+                                  NSString *nickName = [response objectForKey:NickNameKey];
+                                  NSString *userId = [response objectForKey:UserIdKey];
+
+                                  [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
+                                  DefaultSaveKeyValue(gender, GenderKey);
+                                  DefaultSaveKeyValue(headImageUrl, HeadImageKey);
+                                  DefaultSaveKeyValue(huanxinUserName, HuanxinUserNameKey);
+                                  DefaultSaveKeyValue(huanxinUserpassword, HuanxinUserpasswordKey);
+                                  DefaultSaveKeyValue(isIdentification, IsIdentificationKey);
+                                  DefaultSaveKeyValue(nickName, NickNameKey);
+                                  DefaultSaveKeyValue(userId, UserIdKey);
                                   [[NSUserDefaults standardUserDefaults]synchronize];
                                   
-                                  LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
-                                  if ([_status integerValue]==1) {
-                                      
-                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"验证码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                  }else if ([_status integerValue]==0){
+                                  //LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+                                  
+                                  // 成功
+                                  if ([_status integerValue]==0) {
                                       
                                       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+
+                                  }else if ([_status integerValue]==1){
+                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"验证码输入错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                   }else{
-                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"发生错误" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"注册失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                   }
                               } failure:^(NSError *error, NSString *message) {
     }];
 
-//    [PushManager pushViewControllerWithName:@"RegisterThreeController" animated:YES block:nil];
 
 }
 

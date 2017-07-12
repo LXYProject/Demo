@@ -39,7 +39,10 @@
     self.currentPage = 1;
 
     
-    [self rightBarButtomItemWithNormalName:@"add_btn" highName:@"add_btn" selector:@selector(rightBarClick) target:self];
+    [self rightBarButtomItemWithNormalName:@"add_btn"
+                                  highName:@"add_btn"
+                                  selector:@selector(rightBarClick)
+                                    target:self];
     [self.tableView registerNib:[UINib nibWithNibName:@"HeaderCell" bundle:nil] forCellReuseIdentifier:@"HeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
@@ -82,30 +85,37 @@
 //请求帖子
 - (void)requestMessageData {
     @weakify(self);
-    [MesssgeHttpManager requestFilter:@"" topicId:_topicId pos:@"" page:self.currentPage success:^(NSArray *response) {
-        @strongify(self);
-        [self.tableView endRefreshing];
-        if (self.currentPage==1){
-            [self.dataSource removeAllObjects];
-        }
-        [self.dataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
-        [self.tableView reloadData];
-    } failure:^(NSError *error, NSString *message) {
-        [self.tableView endRefreshing];
-
-    }];
+    [MesssgeHttpManager requestFilter:@""
+                              topicId:_topicId
+                                  pos:@""
+                                 page:self.currentPage
+                              success:^(NSArray *response) {
+                                  @strongify(self);
+                                  [self.tableView endRefreshing];
+                                  if (self.currentPage==1){
+                                      [self.dataSource removeAllObjects];
+                                  }
+                                  [self.dataSource addObjectsFromArray:response];
+                                  if (response.count<10) {
+                                      [self.tableView endRefreshingWithNoMoreData];
+                                  }
+                                  [self.tableView reloadData];
+                              } failure:^(NSError *error, NSString *message) {
+                                  [self.tableView endRefreshing];
+                              }];
 }
 
 //回复
 - (void)requestReplyData {
-    [MesssgeHttpManager requestTopicId:self.selectTopicId comment:@"" commentType:_commentType targetUserId:@"" success:^(id response) {
-        
-    } failure:^(NSError *error, NSString *message) {
-        
-    }];
+    [MesssgeHttpManager requestTopicId:self.selectTopicId
+                               comment:@""
+                           commentType:_commentType
+                          targetUserId:@""
+                               success:^(id response) {
+                                   
+                               } failure:^(NSError *error, NSString *message) {
+                                   
+                               }];
 }
 - (void)setTopicId:(NSString *)topicId
 {

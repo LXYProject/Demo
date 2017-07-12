@@ -7,6 +7,8 @@
 //
 
 #import "OrderBodyCell.h"
+#import "BuyOrderModel.h"
+#import "HelpOrderModel.h"
 
 @interface OrderBodyCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headIcon;
@@ -25,6 +27,31 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setModel:(BuyOrderModel *)model {
+    _model =  model;
+    
+    _headIcon.layer.masksToBounds = YES;
+    _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
+    _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    
+    _name.text = model.userName;
+    _time.text = model.appointmentTime;
+}
+
+- (void)setHelpOrderModel:(HelpOrderModel *)helpOrderModel
+{
+    _helpOrderModel = helpOrderModel;
+    
+    _headIcon.layer.masksToBounds = YES;
+    _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
+    _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    _name.text = helpOrderModel.serviceUserName;
+    _time.text = helpOrderModel.serviceTime;
 }
 
 // 电话
