@@ -38,7 +38,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-
+    
     self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
@@ -49,58 +49,57 @@
         [self requestTopicHis];
     }];
     [self.tableView beginHeaderRefreshing];
-
+    
 }
 
 // 发帖记录
 - (void)requestTopicHis{
     
-    [MineHttpManager requestTopicId:@""
-                            success:^(NSArray* response) {
-//                            
-                                [self.tableView endRefreshing];
-                                
-                                self.listArray = (NSMutableArray *)response;
-                                
-                                NSMutableArray  *yearArray = [NSMutableArray arrayWithCapacity:1];
-                                //取出年份 tableView的section 以年份+月份为分组条件   day为每组内容
-                                [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                    NSDictionary *dict = obj;
-                                    if (![yearArray containsObject:[self yearAndMonth:[self dateformatter:dict[@"createTime"]]]]) {
-                                        [yearArray addObject:[self yearAndMonth:[self dateformatter:dict[@"createTime"]]]];
-                                    }
-                                }];
-                                //这里将数组进行排序，防止服务器数据有问题
-                                NSArray *result = [yearArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                                    return [obj2 compare:obj1]; //降序
-                                }];
-                                [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                    NSString *year = obj;
-                                    NSMutableArray *mothArr = [NSMutableArray arrayWithCapacity:1];
-                                    [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                        NSDictionary *dict = obj;
-                                        if ([year isEqualToString:[self yearAndMonth:[self dateformatter:dict[@"createTime"]]]]) {
-                                            [mothArr addObject:dict];
-                                        }
-                                    }];
-                                    [self.topicHisDataSource addObject:mothArr];
-                                }];
-                                
-                                NSLog(@"%@",self.topicHisDataSource);
-                                
-
-//                                if (self.currentPage==1){
-//                                    [self.topicHisDataSource removeAllObjects];
-//                                }
-//                                [self.topicHisDataSource addObjectsFromArray:response];
-                                if (response.count<10) {
-                                    [self.tableView endRefreshingWithNoMoreData];
-                                }
-                                [self.tableView reloadData];
-
-                            } failure:^(NSError *error, NSString *message) {
-                                [self.tableView endRefreshing];
-                            }];
+    [MineHttpManager requestTopicId:@"" success:^(NSArray* response) {
+        //
+        [self.tableView endRefreshing];
+        
+        self.listArray = (NSMutableArray *)response;
+        
+        NSMutableArray  *yearArray = [NSMutableArray arrayWithCapacity:1];
+        //取出年份 tableView的section 以年份+月份为分组条件   day为每组内容
+        [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NeighborCircleModel *model = obj;
+            if (![yearArray containsObject:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+                [yearArray addObject:[self yearAndMonth:[self dateformatter:model.createTime]]];
+            }
+        }];
+        //这里将数组进行排序，防止服务器数据有问题
+        NSArray *result = [yearArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            return [obj2 compare:obj1]; //降序
+        }];
+        [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *year = obj;
+            NSMutableArray *mothArr = [NSMutableArray arrayWithCapacity:1];
+            [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NeighborCircleModel *model = obj;
+                if ([year isEqualToString:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+                    [mothArr addObject:model];
+                }
+            }];
+            [self.topicHisDataSource addObject:mothArr];
+        }];
+        
+        NSLog(@"%@",self.topicHisDataSource);
+        
+        
+        //                                if (self.currentPage==1){
+        //                                    [self.topicHisDataSource removeAllObjects];
+        //                                }
+        //                                [self.topicHisDataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+    }];
 }
 
 - (NSString *)yearAndMonth:(NSDate *)formaterDate{
@@ -109,11 +108,6 @@
     return [formatter stringFromDate:formaterDate];
 }
 
-- (NSString *)day:(NSDate *)formaterDate{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"dd日"];
-    return [formatter stringFromDate:formaterDate];
-}
 
 - (NSDate *)dateformatter :(NSString *)str {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init ];
@@ -129,18 +123,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 2;
+    //    return 2;
     return self.topicHisDataSource.count;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (section==0) {
-//        return 3;
-//    }else{
-//        return 1;
-//    }
-    return 1;
+    return self.topicHisDataSource.count>0?[self.topicHisDataSource[section] count]:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,10 +140,10 @@
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
-
+    
     NeighborCircleCell *cell = (NeighborCircleCell *)[self creatCell:tableView indenty:@"NeighborCircleCell"];
-    cell.model = self.topicHisDataSource[indexPath.section];
-     return cell;
+    cell.model = self.topicHisDataSource[indexPath.section][indexPath.row];
+    return cell;
     
 }
 
@@ -172,17 +161,18 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
     UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 200, 30)];
     
-    if (section ==0){
-        lable.attributedText = [self attrText:@"07月2017年"];
-//        lable.attributedText = [self attrText:self.topicHisDataSource[section]];
-
-    }
-    else if (section ==1){
-        lable.attributedText = [self attrText:@"06月2017年"];
-    }
-    else{
-        lable.attributedText = nil;
-    }
+//    if (section ==0){
+//        lable.attributedText = [self attrText:@"07月2017年"];
+        NeighborCircleModel *model = self.topicHisDataSource[section][0];
+        lable.attributedText = [self attrText:[self newYearAndMonth:[self dateformatter:model.createTime]]];
+    
+//    }
+//    else if (section ==1){
+//        lable.attributedText = [self attrText:@"06月2017年"];
+//    }
+//    else{
+//        lable.attributedText = nil;
+//    }
     
     
     [view addSubview:lable];
@@ -227,7 +217,7 @@
     [attr appendAttributedString:attr5];
     [attr appendAttributedString:attr3];
     [attr appendAttributedString:attr4];
-
+    
     return attr;
 }
 

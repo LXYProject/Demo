@@ -51,8 +51,8 @@
     _year = [model.createTime substringToIndex:4];
     NSString *mouthsTime = [model.createTime substringToIndex:7];
     _months = [mouthsTime substringFromIndex:5];
-    NSString *dayTime = [model.createTime substringToIndex:10];
-    _day.text = [NSString stringWithFormat:@"%@日", [dayTime substringFromIndex:8]];
+    
+    _day.text = [self day:[self dateformatter:model.createTime]];
     _address.text = model.address;
     
     _title.text = model.topicTitle;
@@ -63,4 +63,18 @@
 
 
 }
+
+- (NSDate *)dateformatter :(NSString *)str {
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init ];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *formaterDate = [dateFormatter dateFromString:str];
+    return formaterDate;
+}
+
+- (NSString *)day:(NSDate *)formaterDate{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd日"];
+    return [formatter stringFromDate:formaterDate];
+}
+
 @end
