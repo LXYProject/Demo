@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchPeopleController">
+            <connections>
+                <outlet property="searchBar" destination="g1A-Ar-XbF" id="fLv-k1-Yis"/>
+                <outlet property="searchBtn" destination="UYB-4c-mes" id="EoN-1B-fq6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wuY-jI-Ge2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g1A-Ar-XbF">
+                            <rect key="frame" x="15" y="9.5" width="270" height="30"/>
+                            <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ZH0-8v-006"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYB-4c-mes">
+                            <rect key="frame" x="285" y="9.5" width="75" height="30"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="60d-d5-8eQ"/>
+                                <constraint firstAttribute="width" constant="75" id="zMs-Lj-urG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="搜索"/>
+                            <connections>
+                                <action selector="searchBtnClick" destination="-1" eventType="touchUpInside" id="xfe-aU-CXd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="UYB-4c-mes" secondAttribute="trailing" constant="15" id="9Eb-ox-yCb"/>
+                        <constraint firstItem="UYB-4c-mes" firstAttribute="centerY" secondItem="wuY-jI-Ge2" secondAttribute="centerY" id="VWa-TT-2gv"/>
+                        <constraint firstItem="UYB-4c-mes" firstAttribute="leading" secondItem="g1A-Ar-XbF" secondAttribute="trailing" id="d5h-vw-MbB"/>
+                        <constraint firstItem="g1A-Ar-XbF" firstAttribute="centerY" secondItem="wuY-jI-Ge2" secondAttribute="centerY" id="gKZ-cJ-7M9"/>
+                        <constraint firstAttribute="height" constant="49" id="hW7-PT-j4Z"/>
+                        <constraint firstItem="g1A-Ar-XbF" firstAttribute="leading" secondItem="wuY-jI-Ge2" secondAttribute="leading" constant="15" id="u6P-iu-Fvx"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="wuY-jI-Ge2" secondAttribute="trailing" id="bOJ-sn-si2"/>
+                <constraint firstItem="wuY-jI-Ge2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g40-je-2Mc"/>
+                <constraint firstItem="wuY-jI-Ge2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rNu-Jp-zeq"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

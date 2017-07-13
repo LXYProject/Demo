@@ -27,6 +27,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"我的房屋" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@""
+                            title:@"添加房屋"
+                       titleColor:[UIColor whiteColor]
+                         selector:@selector(rightBarClick)
+                           target:self];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -42,15 +47,22 @@
     }];
     [self.tableView beginHeaderRefreshing];
 }
+
+- (void)rightBarClick{
+    NSLog(@"添加房屋");
+    [PushManager pushViewControllerWithName:@"AddHousingController" animated:YES block:nil];
+}
+
 // 查看所有与我有关的房屋
 - (void)requestLookAllHouseWithMe{
     [MineHttpManager requesHouseAddVillage:House
                                    success:^(NSDictionary* response) {
-                                       
-                                       NSArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
-                                       NSArray *attentionHousesArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"attentionHouses"]];
-                                       
                                        [self.tableView endRefreshing];
+
+                                       
+                                       NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+                                       NSMutableArray *attentionHousesArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"attentionHouses"]];
+                                       
                                        if (self.currentPage==1){
                                            [self.bindHousesDataSource removeAllObjects];
                                            [self.attentionHousesDataSource removeAllObjects];

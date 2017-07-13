@@ -35,7 +35,7 @@
     self.hotArry = @[@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",@"男鞋",@"电动车",];
 }
 
-//坚挺输入框文字变化
+//监听输入框文字变化
 - (void)textChnage:(NSNotification *)noti {
     UITextField *textField = [noti object];
     textField.text =[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet ]];

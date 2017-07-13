@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6S-5n-2Ba">
-                        <rect key="frame" x="108" y="9" width="29" height="17"/>
+                        <rect key="frame" x="108" y="9" width="125" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -74,6 +74,7 @@
                     <constraint firstItem="x6N-lN-W59" firstAttribute="leading" secondItem="G6S-5n-2Ba" secondAttribute="leading" id="TFC-EJ-pP3"/>
                     <constraint firstAttribute="trailing" secondItem="jTe-o3-KrU" secondAttribute="trailing" constant="15" id="a3h-Rq-fQZ"/>
                     <constraint firstItem="x6N-lN-W59" firstAttribute="top" secondItem="G6S-5n-2Ba" secondAttribute="bottom" constant="5" id="agW-pd-GiF"/>
+                    <constraint firstItem="jTe-o3-KrU" firstAttribute="leading" secondItem="G6S-5n-2Ba" secondAttribute="trailing" id="hpM-9l-bWU"/>
                     <constraint firstItem="2UE-EM-cHc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="iWi-ys-Y0N"/>
                     <constraint firstItem="hXq-n0-5DZ" firstAttribute="top" secondItem="x6N-lN-W59" secondAttribute="bottom" constant="5" id="j0n-kO-0XO"/>
                     <constraint firstItem="G6S-5n-2Ba" firstAttribute="top" secondItem="2UE-EM-cHc" secondAttribute="top" id="wfA-sq-6NW"/>

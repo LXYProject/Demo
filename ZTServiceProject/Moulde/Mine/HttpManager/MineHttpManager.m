@@ -14,6 +14,7 @@
 #import "NeighborCircleModel.h"
 #import "MyDoorServiceModel.h"
 #import "MyPraiseModel.h"
+#import "VillagesModel.h"
 
 @implementation MineHttpManager
 
@@ -158,6 +159,59 @@
             NSArray *modelArray = [MyPraiseModel mj_objectArrayWithKeyValuesArray:response];
             success(modelArray);
         }
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+// 关键字搜索小区
++ (void)requestKeywords:(NSString *)keywords
+                   city:(NSString *)city
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"keywords":keywords?keywords:@"",
+                               @"city":city?city:@""
+                               };
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchVillagesByKeyWords paramter:paramter success:^(id response) {
+        
+        NSArray *modelArray = [VillagesModel mj_objectArrayWithKeyValuesArray:response[@"zoneList"]];
+        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
+// 小区id搜索楼
++ (void)requestZoneId:(NSString *)zoneId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchBuildingByVillage paramter:paramter success:^(id response) {
+        
+        //        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
+        //        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+// 根据楼查询房屋表
++ (void)requestZoneId:(NSString *)zoneId
+           buildingId:(NSString *)buildingId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@"",
+                               @"buildingId":buildingId?buildingId:@""
+                               };
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchHouses paramter:paramter success:^(id response) {
+        
+        //        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
+        //        success(modelArray);
         
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

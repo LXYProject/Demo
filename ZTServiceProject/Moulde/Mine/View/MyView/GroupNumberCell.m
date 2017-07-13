@@ -67,6 +67,7 @@
 - (void)btnClick:(UIButton *)btn
 {
     NSLog(@"%ld", (long)btn.tag);
+    [PushManager pushViewControllerWithName:@"ChatFriendsController" animated:YES block:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

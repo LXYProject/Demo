@@ -72,6 +72,19 @@
 		7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72231F16149100CE8AEC /* MyPraiseModel.m */; };
 		7B0C72281F162A3E00CE8AEC /* NeighborDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */; };
 		7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */; };
+		7B14F8891F175DD700821281 /* VillagePeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8871F175DD700821281 /* VillagePeopleController.m */; };
+		7B14F88A1F175DD700821281 /* VillagePeopleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F8881F175DD700821281 /* VillagePeopleController.xib */; };
+		7B14F88E1F175E9C00821281 /* ActivePeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F88C1F175E9C00821281 /* ActivePeopleController.m */; };
+		7B14F88F1F175E9C00821281 /* ActivePeopleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F88D1F175E9C00821281 /* ActivePeopleController.xib */; };
+		7B14F8931F175F3B00821281 /* SearchPeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8911F175F3B00821281 /* SearchPeopleController.m */; };
+		7B14F8941F175F3B00821281 /* SearchPeopleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F8921F175F3B00821281 /* SearchPeopleController.xib */; };
+		7B14F8981F17609E00821281 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8961F17609E00821281 /* ChatCell.m */; };
+		7B14F8991F17609E00821281 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F8971F17609E00821281 /* ChatCell.xib */; };
+		7B14F89D1F17611F00821281 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F89B1F17611F00821281 /* FriendsCell.m */; };
+		7B14F89E1F17611F00821281 /* FriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F89C1F17611F00821281 /* FriendsCell.xib */; };
+		7B14F8A71F17694100821281 /* PeopleDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8A51F17694100821281 /* PeopleDetailsCell.m */; };
+		7B14F8A81F17694100821281 /* PeopleDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F8A61F17694100821281 /* PeopleDetailsCell.xib */; };
+		7B14F8AB1F177B5E00821281 /* VillagesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8AA1F177B5E00821281 /* VillagesModel.m */; };
 		7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661F81EF2861C00644A7B /* BabyDescriptionCell.m */; };
 		7B1662001EF2861C00644A7B /* BabyDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1661F91EF2861C00644A7B /* BabyDescriptionCell.xib */; };
 		7B1662011EF2861C00644A7B /* BtnItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1661FB1EF2861C00644A7B /* BtnItemCell.m */; };
@@ -96,6 +109,10 @@
 		7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662231EF2862900644A7B /* secondHandCell.xib */; };
 		7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1662251EF2862900644A7B /* SectionHeaderCell.m */; };
 		7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662261EF2862900644A7B /* SectionHeaderCell.xib */; };
+		7B1E48C81F17181B00AECF41 /* AddHousingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48C61F17181B00AECF41 /* AddHousingController.m */; };
+		7B1E48C91F17181B00AECF41 /* AddHousingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48C71F17181B00AECF41 /* AddHousingController.xib */; };
+		7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */; };
+		7B1E48CE1F173F7800AECF41 /* ChatFriendsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48CC1F173F7800AECF41 /* ChatFriendsController.xib */; };
 		7B205DF31F00B18A00E46B74 /* AddPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */; };
 		7B205DF41F00B18A00E46B74 /* AddPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */; };
 		7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF71F00E6C900E46B74 /* home_eswp_fzxm@2x.png */; };
@@ -157,7 +174,6 @@
 		7B2D3C6B1F0F609E00409DD7 /* ForHelpDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D3C691F0F609E00409DD7 /* ForHelpDetailsViewController.xib */; };
 		7B2D3C7E1F0F6C6800409DD7 /* HouseBodyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D3C7C1F0F6C6800409DD7 /* HouseBodyCell.m */; };
 		7B2D3C7F1F0F6C6800409DD7 /* HouseBodyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D3C7D1F0F6C6800409DD7 /* HouseBodyCell.xib */; };
-		7B2D3C831F0F735300409DD7 /* GroupShadowTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D3C821F0F735300409DD7 /* GroupShadowTableView.m */; };
 		7B2D3CD01F0F893800409DD7 /* CommunityBodyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D3CCE1F0F893800409DD7 /* CommunityBodyCell.m */; };
 		7B2D3CD11F0F893800409DD7 /* CommunityBodyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2D3CCF1F0F893800409DD7 /* CommunityBodyCell.xib */; };
 		7B2D3CDA1F0F914300409DD7 /* NeighborCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D3CD81F0F914300409DD7 /* NeighborCircleCell.m */; };
@@ -279,6 +295,7 @@
 		7B8BDB371EFFBD2300F58957 /* SecondHanditemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BDB351EFFBD2300F58957 /* SecondHanditemCell.xib */; };
 		7B8BDB3B1EFFBDAB00F58957 /* SecondHandSearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BDB391EFFBDAB00F58957 /* SecondHandSearchHeaderView.m */; };
 		7B8BDB3C1EFFBDAB00F58957 /* SecondHandSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BDB3A1EFFBDAB00F58957 /* SecondHandSearchHeaderView.xib */; };
+		7B8C29121F174D6300F24E18 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8C29111F174D6300F24E18 /* FTPopOverMenu.m */; };
 		7B8F0D131EE3BE1F00ED16E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D121EE3BE1F00ED16E3 /* main.m */; };
 		7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D151EE3BE1F00ED16E3 /* AppDelegate.m */; };
 		7B8F0D191EE3BE1F00ED16E3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8F0D181EE3BE1F00ED16E3 /* ViewController.m */; };
@@ -615,6 +632,26 @@
 		7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborDetailCell.h; sourceTree = "<group>"; };
 		7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighborDetailCell.m; sourceTree = "<group>"; };
 		7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeighborDetailCell.xib; sourceTree = "<group>"; };
+		7B14F8861F175DD700821281 /* VillagePeopleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillagePeopleController.h; sourceTree = "<group>"; };
+		7B14F8871F175DD700821281 /* VillagePeopleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillagePeopleController.m; sourceTree = "<group>"; };
+		7B14F8881F175DD700821281 /* VillagePeopleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VillagePeopleController.xib; sourceTree = "<group>"; };
+		7B14F88B1F175E9C00821281 /* ActivePeopleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivePeopleController.h; sourceTree = "<group>"; };
+		7B14F88C1F175E9C00821281 /* ActivePeopleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivePeopleController.m; sourceTree = "<group>"; };
+		7B14F88D1F175E9C00821281 /* ActivePeopleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivePeopleController.xib; sourceTree = "<group>"; };
+		7B14F8901F175F3B00821281 /* SearchPeopleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPeopleController.h; sourceTree = "<group>"; };
+		7B14F8911F175F3B00821281 /* SearchPeopleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPeopleController.m; sourceTree = "<group>"; };
+		7B14F8921F175F3B00821281 /* SearchPeopleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchPeopleController.xib; sourceTree = "<group>"; };
+		7B14F8951F17609E00821281 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		7B14F8961F17609E00821281 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		7B14F8971F17609E00821281 /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		7B14F89A1F17611F00821281 /* FriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
+		7B14F89B1F17611F00821281 /* FriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
+		7B14F89C1F17611F00821281 /* FriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsCell.xib; sourceTree = "<group>"; };
+		7B14F8A41F17694100821281 /* PeopleDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleDetailsCell.h; sourceTree = "<group>"; };
+		7B14F8A51F17694100821281 /* PeopleDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleDetailsCell.m; sourceTree = "<group>"; };
+		7B14F8A61F17694100821281 /* PeopleDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeopleDetailsCell.xib; sourceTree = "<group>"; };
+		7B14F8A91F177B5E00821281 /* VillagesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillagesModel.h; sourceTree = "<group>"; };
+		7B14F8AA1F177B5E00821281 /* VillagesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillagesModel.m; sourceTree = "<group>"; };
 		7B1661F71EF2861C00644A7B /* BabyDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyDescriptionCell.h; sourceTree = "<group>"; };
 		7B1661F81EF2861C00644A7B /* BabyDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BabyDescriptionCell.m; sourceTree = "<group>"; };
 		7B1661F91EF2861C00644A7B /* BabyDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BabyDescriptionCell.xib; sourceTree = "<group>"; };
@@ -651,6 +688,12 @@
 		7B1662241EF2862900644A7B /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
 		7B1662251EF2862900644A7B /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
 		7B1662261EF2862900644A7B /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
+		7B1E48C51F17181B00AECF41 /* AddHousingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHousingController.h; sourceTree = "<group>"; };
+		7B1E48C61F17181B00AECF41 /* AddHousingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHousingController.m; sourceTree = "<group>"; };
+		7B1E48C71F17181B00AECF41 /* AddHousingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddHousingController.xib; sourceTree = "<group>"; };
+		7B1E48CA1F173F7800AECF41 /* ChatFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFriendsController.h; sourceTree = "<group>"; };
+		7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFriendsController.m; sourceTree = "<group>"; };
+		7B1E48CC1F173F7800AECF41 /* ChatFriendsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatFriendsController.xib; sourceTree = "<group>"; };
 		7B205DF01F00B18A00E46B74 /* AddPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotosCell.h; sourceTree = "<group>"; };
 		7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotosCell.m; sourceTree = "<group>"; };
 		7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhotosCell.xib; sourceTree = "<group>"; };
@@ -735,8 +778,6 @@
 		7B2D3C7B1F0F6C6800409DD7 /* HouseBodyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseBodyCell.h; sourceTree = "<group>"; };
 		7B2D3C7C1F0F6C6800409DD7 /* HouseBodyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseBodyCell.m; sourceTree = "<group>"; };
 		7B2D3C7D1F0F6C6800409DD7 /* HouseBodyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseBodyCell.xib; sourceTree = "<group>"; };
-		7B2D3C811F0F735300409DD7 /* GroupShadowTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupShadowTableView.h; sourceTree = "<group>"; };
-		7B2D3C821F0F735300409DD7 /* GroupShadowTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupShadowTableView.m; sourceTree = "<group>"; };
 		7B2D3CCD1F0F893800409DD7 /* CommunityBodyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityBodyCell.h; sourceTree = "<group>"; };
 		7B2D3CCE1F0F893800409DD7 /* CommunityBodyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityBodyCell.m; sourceTree = "<group>"; };
 		7B2D3CCF1F0F893800409DD7 /* CommunityBodyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityBodyCell.xib; sourceTree = "<group>"; };
@@ -921,6 +962,8 @@
 		7B8BDB381EFFBDAB00F58957 /* SecondHandSearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandSearchHeaderView.h; sourceTree = "<group>"; };
 		7B8BDB391EFFBDAB00F58957 /* SecondHandSearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandSearchHeaderView.m; sourceTree = "<group>"; };
 		7B8BDB3A1EFFBDAB00F58957 /* SecondHandSearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandSearchHeaderView.xib; sourceTree = "<group>"; };
+		7B8C29101F174D6300F24E18 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
+		7B8C29111F174D6300F24E18 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 		7B8F0D0E1EE3BE1F00ED16E3 /* ZTServiceProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZTServiceProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8F0D121EE3BE1F00ED16E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7B8F0D141EE3BE1F00ED16E3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1321,6 +1364,21 @@
 		7B0C71AE1F15B6DF00CE8AEC /* DetailsVC */ = {
 			isa = PBXGroup;
 			children = (
+				7B14F8861F175DD700821281 /* VillagePeopleController.h */,
+				7B14F8871F175DD700821281 /* VillagePeopleController.m */,
+				7B14F8881F175DD700821281 /* VillagePeopleController.xib */,
+				7B14F88B1F175E9C00821281 /* ActivePeopleController.h */,
+				7B14F88C1F175E9C00821281 /* ActivePeopleController.m */,
+				7B14F88D1F175E9C00821281 /* ActivePeopleController.xib */,
+				7B14F8901F175F3B00821281 /* SearchPeopleController.h */,
+				7B14F8911F175F3B00821281 /* SearchPeopleController.m */,
+				7B14F8921F175F3B00821281 /* SearchPeopleController.xib */,
+				7B1E48C51F17181B00AECF41 /* AddHousingController.h */,
+				7B1E48C61F17181B00AECF41 /* AddHousingController.m */,
+				7B1E48C71F17181B00AECF41 /* AddHousingController.xib */,
+				7B0C71B21F15B6DF00CE8AEC /* NeighborDetailController.h */,
+				7B0C71B31F15B6DF00CE8AEC /* NeighborDetailController.m */,
+				7B0C71B41F15B6DF00CE8AEC /* NeighborDetailController.xib */,
 				7B0C71AF1F15B6DF00CE8AEC /* MySpareViewController.h */,
 				7B0C71B01F15B6DF00CE8AEC /* MySpareViewController.m */,
 				7B0C71B11F15B6DF00CE8AEC /* MySpareViewController.xib */,
@@ -1348,9 +1406,6 @@
 				7B0C72151F15D5BB00CE8AEC /* MyComplaintController.h */,
 				7B0C72161F15D5BB00CE8AEC /* MyComplaintController.m */,
 				7B0C72171F15D5BB00CE8AEC /* MyComplaintController.xib */,
-				7B0C71B21F15B6DF00CE8AEC /* NeighborDetailController.h */,
-				7B0C71B31F15B6DF00CE8AEC /* NeighborDetailController.m */,
-				7B0C71B41F15B6DF00CE8AEC /* NeighborDetailController.xib */,
 			);
 			path = DetailsVC;
 			sourceTree = "<group>";
@@ -1361,9 +1416,9 @@
 				7B0C71BA1F15B78900CE8AEC /* MineViewController.h */,
 				7B0C71BB1F15B78900CE8AEC /* MineViewController.m */,
 				7B0C71BC1F15B78900CE8AEC /* MineViewController.xib */,
-				7B0C71BD1F15B78900CE8AEC /* MyHouseViewController.h */,
-				7B0C71BE1F15B78900CE8AEC /* MyHouseViewController.m */,
-				7B0C71BF1F15B78900CE8AEC /* MyHouseViewController.xib */,
+				7B1E48CA1F173F7800AECF41 /* ChatFriendsController.h */,
+				7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */,
+				7B1E48CC1F173F7800AECF41 /* ChatFriendsController.xib */,
 				7B0C71C31F15B78900CE8AEC /* MyNewsViewController.h */,
 				7B0C71C41F15B78900CE8AEC /* MyNewsViewController.m */,
 				7B0C71C51F15B78900CE8AEC /* MyNewsViewController.xib */,
@@ -1373,6 +1428,9 @@
 				7B0C71C61F15B78900CE8AEC /* MyReleaseViewController.h */,
 				7B0C71C71F15B78900CE8AEC /* MyReleaseViewController.m */,
 				7B0C71C81F15B78900CE8AEC /* MyReleaseViewController.xib */,
+				7B0C71BD1F15B78900CE8AEC /* MyHouseViewController.h */,
+				7B0C71BE1F15B78900CE8AEC /* MyHouseViewController.m */,
+				7B0C71BF1F15B78900CE8AEC /* MyHouseViewController.xib */,
 				7B0C71C01F15B78900CE8AEC /* MyNeighborController.h */,
 				7B0C71C11F15B78900CE8AEC /* MyNeighborController.m */,
 				7B0C71C21F15B78900CE8AEC /* MyNeighborController.xib */,
@@ -1658,15 +1716,6 @@
 			path = EYTagView;
 			sourceTree = "<group>";
 		};
-		7B2D3C801F0F735300409DD7 /* GroupShadowTableView */ = {
-			isa = PBXGroup;
-			children = (
-				7B2D3C811F0F735300409DD7 /* GroupShadowTableView.h */,
-				7B2D3C821F0F735300409DD7 /* GroupShadowTableView.m */,
-			);
-			path = GroupShadowTableView;
-			sourceTree = "<group>";
-		};
 		7B33B7A71EF37E2D005FBBBB /* SolicitingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1944,6 +1993,8 @@
 				7B0C72201F160A5300CE8AEC /* MyDoorServiceModel.m */,
 				7B0C72221F16149100CE8AEC /* MyPraiseModel.h */,
 				7B0C72231F16149100CE8AEC /* MyPraiseModel.m */,
+				7B14F8A91F177B5E00821281 /* VillagesModel.h */,
+				7B14F8AA1F177B5E00821281 /* VillagesModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2149,6 +2200,15 @@
 		7B6FB30C1F0CC8CF009F5F49 /* MyView */ = {
 			isa = PBXGroup;
 			children = (
+				7B14F8951F17609E00821281 /* ChatCell.h */,
+				7B14F8961F17609E00821281 /* ChatCell.m */,
+				7B14F8971F17609E00821281 /* ChatCell.xib */,
+				7B14F89A1F17611F00821281 /* FriendsCell.h */,
+				7B14F89B1F17611F00821281 /* FriendsCell.m */,
+				7B14F89C1F17611F00821281 /* FriendsCell.xib */,
+				7B14F8A41F17694100821281 /* PeopleDetailsCell.h */,
+				7B14F8A51F17694100821281 /* PeopleDetailsCell.m */,
+				7B14F8A61F17694100821281 /* PeopleDetailsCell.xib */,
 				7B6FB30D1F0CC8CF009F5F49 /* GroupNumberCell.h */,
 				7B6FB30E1F0CC8CF009F5F49 /* GroupNumberCell.m */,
 				7B6FB30F1F0CC8CF009F5F49 /* GroupNumberCell.xib */,
@@ -2200,6 +2260,15 @@
 				7B6FB3461F0CD67D009F5F49 /* OrderSelectCell.xib */,
 			);
 			path = OrderView;
+			sourceTree = "<group>";
+		};
+		7B8C290F1F174D6300F24E18 /* FTPopOverMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7B8C29101F174D6300F24E18 /* FTPopOverMenu.h */,
+				7B8C29111F174D6300F24E18 /* FTPopOverMenu.m */,
+			);
+			path = FTPopOverMenu;
 			sourceTree = "<group>";
 		};
 		7B8F0D051EE3BE1F00ED16E3 = {
@@ -2478,7 +2547,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				7B2D3C801F0F735300409DD7 /* GroupShadowTableView */,
+				7B8C290F1F174D6300F24E18 /* FTPopOverMenu */,
 				7B25089B1F0DE78000001961 /* BDImagePicker */,
 				7B6FB2C41F0CB793009F5F49 /* PickerView */,
 				7B4D97291F09EEA200731969 /* Regular */,
@@ -2833,6 +2902,7 @@
 				7B3CFE691EF77A74009AC748 /* SolicitBtnItemOneCell.xib in Resources */,
 				7B966BD71EFFB5D400326C88 /* VideoOverlay.png in Resources */,
 				7B2D3C661F0F5AD700409DD7 /* HelpDetailsViewController.xib in Resources */,
+				7B14F8941F175F3B00821281 /* SearchPeopleController.xib in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
 				7B8F2A731F039A7D00D5D1DF /* notice@2x.png in Resources */,
 				7B205E281F00E6C900E46B74 /* tabbar_wd_selected@2x.png in Resources */,
@@ -2842,6 +2912,7 @@
 				7B966BB91EFFB5D400326C88 /* ImageError.png in Resources */,
 				7BBB101C1F04FF7900BCCF4B /* RegisterOneController.xib in Resources */,
 				7B966BCD1EFFB5D400326C88 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
+				7B14F88A1F175DD700821281 /* VillagePeopleController.xib in Resources */,
 				7B5C92301EF8B8EC00C545A8 /* cancel@3x.png in Resources */,
 				7B0C721E1F15E1BC00CE8AEC /* SpareDetailViewController.xib in Resources */,
 				7B4633F91F01FFDD0023E7F2 /* popular_dynamic_img@2x.png in Resources */,
@@ -2849,12 +2920,14 @@
 				7B16622A1EF2862900644A7B /* ItemBtnCell.xib in Resources */,
 				7BA02B9D1F04D012004F8AB9 /* BannerJumpController.xib in Resources */,
 				7B5C922E1EF8B8EC00C545A8 /* bg@3x.png in Resources */,
+				7B14F89E1F17611F00821281 /* FriendsCell.xib in Resources */,
 				7B966BC11EFFB5D400326C88 /* ImageSelectedOn@3x.png in Resources */,
 				7B2D3C6B1F0F609E00409DD7 /* ForHelpDetailsViewController.xib in Resources */,
 				7B5C92331EF8B8EC00C545A8 /* 否@3x.png in Resources */,
 				7B966BD51EFFB5D400326C88 /* UIBarButtonItemGrid@2x.png in Resources */,
 				7B5C92341EF8B8EC00C545A8 /* 是@3x.png in Resources */,
 				7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */,
+				7B14F8A81F17694100821281 /* PeopleDetailsCell.xib in Resources */,
 				7B966BC71EFFB5D400326C88 /* ImageSelectedSmallOn@3x.png in Resources */,
 				7BA02BA31F04D012004F8AB9 /* LookingForViewController.xib in Resources */,
 				7BA1678A1EE66DA8000ECCE6 /* TenementViewController.xib in Resources */,
@@ -2889,6 +2962,7 @@
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
 				7B8F2A6C1F039A6F00D5D1DF /* address@2x.png in Resources */,
 				7B966BC91EFFB5D400326C88 /* PlayButtonOverlayLarge@2x.png in Resources */,
+				7B1E48C91F17181B00AECF41 /* AddHousingController.xib in Resources */,
 				7BF4B22F1EE3D6470058185F /* scan_40px@3x.png in Resources */,
 				7B966BBC1EFFB5D400326C88 /* ImageSelectedOff.png in Resources */,
 				7B966BBF1EFFB5D400326C88 /* ImageSelectedOn.png in Resources */,
@@ -2970,6 +3044,7 @@
 				7B5C922F1EF8B8EC00C545A8 /* cancel@2x.png in Resources */,
 				7BF4B21A1EE3D45A0058185F /* order_tabbar_selected@3x.png in Resources */,
 				7B205E1B1F00E6C900E46B74 /* home_eswp_wyxn@2x.png in Resources */,
+				7B14F88F1F175E9C00821281 /* ActivePeopleController.xib in Resources */,
 				7B6FB32D1F0CC8CF009F5F49 /* MineBtnCell.xib in Resources */,
 				7B50F89B1EFA1A8400352F00 /* SearchOneHeadCell.xib in Resources */,
 				7B1662021EF2861C00644A7B /* BtnItemCell.xib in Resources */,
@@ -2999,6 +3074,7 @@
 				7B205E651F00EDFE00E46B74 /* ACMediaFrame.bundle in Resources */,
 				7B33B7AC1EF38499005FBBBB /* SolicitingHeadCell.xib in Resources */,
 				7B0C71B81F15B6DF00CE8AEC /* NeighborDetailController.xib in Resources */,
+				7B1E48CE1F173F7800AECF41 /* ChatFriendsController.xib in Resources */,
 				7BFFBF0C1EF6785D001202EE /* PublicThingsController.xib in Resources */,
 				7B0C71D91F15B78900CE8AEC /* MyNewsViewController.xib in Resources */,
 				7B5C92181EF8B5E200C545A8 /* citydict.plist in Resources */,
@@ -3056,6 +3132,7 @@
 				7B5C92521EF8EBF200C545A8 /* SecondUserCell.xib in Resources */,
 				7BAFBC1C1EF7B25D00AFB6C7 /* ReleaseViewController.xib in Resources */,
 				7B8F2A501F0386D000D5D1DF /* CommentsHeadCell.xib in Resources */,
+				7B14F8991F17609E00821281 /* ChatCell.xib in Resources */,
 				7B4633F51F01FFDD0023E7F2 /* life_pay_cost@2x.png in Resources */,
 				7B6FB32B1F0CC8CF009F5F49 /* HeadOtherCell.xib in Resources */,
 				7BF7D7691EE8543200DB1486 /* NearByViewController.xib in Resources */,
@@ -3157,6 +3234,7 @@
 				7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */,
 				7B16620A1EF2862300644A7B /* ImageCell.m in Sources */,
 				7B69295E1F064061000108F3 /* TwoLabelBtn.m in Sources */,
+				7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */,
 				7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */,
 				7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */,
 				7BA02BBC1F04ED82004F8AB9 /* PostMessageController.m in Sources */,
@@ -3176,6 +3254,7 @@
 				7B5C92171EF8B5E200C545A8 /* CityButton.m in Sources */,
 				299E2CD21EE7E5090045A884 /* NearByHomeViewController.m in Sources */,
 				7B2D3C6A1F0F609E00409DD7 /* ForHelpDetailsViewController.m in Sources */,
+				7B14F88E1F175E9C00821281 /* ActivePeopleController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
 				7B2D3CD01F0F893800409DD7 /* CommunityBodyCell.m in Sources */,
@@ -3194,17 +3273,20 @@
 				7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */,
 				7B2D3CDA1F0F914300409DD7 /* NeighborCircleCell.m in Sources */,
 				7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */,
+				7B14F8931F175F3B00821281 /* SearchPeopleController.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
 				7B0C71DA1F15B78900CE8AEC /* MyReleaseViewController.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7B6FB3281F0CC8CF009F5F49 /* HeadBackCell.m in Sources */,
 				7B0C71FA1F15C83A00CE8AEC /* MyPostedHelpController.m in Sources */,
 				7BA167891EE66DA8000ECCE6 /* TenementViewController.m in Sources */,
+				7B1E48C81F17181B00AECF41 /* AddHousingController.m in Sources */,
 				7B1662271EF2862900644A7B /* BannerHeaderCell.m in Sources */,
 				7B5C92471EF8C5E200C545A8 /* SecondDetailsCell.m in Sources */,
 				7B0A7FC61F14A7CA0056F1FF /* NeighborCircleModel.m in Sources */,
 				7BBB10141F04F29200BCCF4B /* PlaceholderTextView.m in Sources */,
 				7B6FB3391F0CC923009F5F49 /* OrderHeadCell.m in Sources */,
+				7B14F8891F175DD700821281 /* VillagePeopleController.m in Sources */,
 				7B8F2A4F1F0386D000D5D1DF /* CommentsHeadCell.m in Sources */,
 				7B6929451F0600F2000108F3 /* RegisterFourController.m in Sources */,
 				7B46340B1F02295A0023E7F2 /* ItemMoreViewController.m in Sources */,
@@ -3213,6 +3295,7 @@
 				7B5C921C1EF8B5E200C545A8 /* ChineseToPinyinResource.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7B0C71F51F15C1F600CE8AEC /* MyServiceController.m in Sources */,
+				7B14F8981F17609E00821281 /* ChatCell.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
 				7B0C72131F15D4F800CE8AEC /* MyPraiseController.m in Sources */,
 				7B0C71D61F15B78900CE8AEC /* MyNeighborController.m in Sources */,
@@ -3225,6 +3308,7 @@
 				7B68F5041F13896200516929 /* HelpOrderModel.m in Sources */,
 				7B8BDB361EFFBD2300F58957 /* SecondHanditemCell.m in Sources */,
 				7BA02B9C1F04D012004F8AB9 /* BannerJumpController.m in Sources */,
+				7B14F8A71F17694100821281 /* PeopleDetailsCell.m in Sources */,
 				7BFFBEF51EF65C8A001202EE /* AnnounceViewController.m in Sources */,
 				7B966AD41EFFB29500326C88 /* FSActionSheetCell.m in Sources */,
 				7B3CCA7B1EFCAB2C00E21BAC /* MesssgeHttpManager.m in Sources */,
@@ -3244,6 +3328,7 @@
 				7B966BDD1EFFB5D400326C88 /* MWPhoto.m in Sources */,
 				7BFFBF0B1EF6785D001202EE /* PublicThingsController.m in Sources */,
 				7B966A621EFF8B7000326C88 /* HeaderCell.m in Sources */,
+				7B14F89D1F17611F00821281 /* FriendsCell.m in Sources */,
 				7B205E6A1F00EDFE00E46B74 /* ACSelectMediaView.m in Sources */,
 				7BF4B2361EE3D9190058185F /* PushManager.m in Sources */,
 				7B1662331EF2862900644A7B /* secondHandCell.m in Sources */,
@@ -3288,7 +3373,6 @@
 				7B4D972F1F09EF4200731969 /* AlertViewController.m in Sources */,
 				7BA02BA21F04D012004F8AB9 /* LookingForViewController.m in Sources */,
 				7B0C71D81F15B78900CE8AEC /* MyNewsViewController.m in Sources */,
-				7B2D3C831F0F735300409DD7 /* GroupShadowTableView.m in Sources */,
 				7BFFBF001EF664C6001202EE /* DoorServiceController.m in Sources */,
 				7BA783151EFA58ED00BB8591 /* MyCommunityListController.m in Sources */,
 				7B5C92421EF8C1F200C545A8 /* SecondBannerCell.m in Sources */,
@@ -3312,6 +3396,7 @@
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */,
 				7BFFBF061EF66C52001202EE /* DoorServiceCell.m in Sources */,
+				7B14F8AB1F177B5E00821281 /* VillagesModel.m in Sources */,
 				7B966A5A1EFF766100326C88 /* MessagePhotoCell.m in Sources */,
 				7B1662011EF2861C00644A7B /* BtnItemCell.m in Sources */,
 				7B2C4DDD1EE6DD1B00745071 /* EJVerticalButton.m in Sources */,
@@ -3349,6 +3434,7 @@
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
 				7B50F89A1EFA1A8400352F00 /* SearchOneHeadCell.m in Sources */,
 				7B966AD11EFFB29500326C88 /* UIImage+XLExtension.m in Sources */,
+				7B8C29121F174D6300F24E18 /* FTPopOverMenu.m in Sources */,
 				7B6FB3321F0CC8CF009F5F49 /* ServiceBodyCell.m in Sources */,
 				7B966A5E1EFF77A600326C88 /* MessagePhotoModel.m in Sources */,
 				7B0C71D21F15B78900CE8AEC /* MineViewController.m in Sources */,

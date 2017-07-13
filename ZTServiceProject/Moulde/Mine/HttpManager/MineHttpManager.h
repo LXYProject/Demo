@@ -83,6 +83,22 @@ typedef enum : NSUInteger {
                        success:(HttpRequestSuccess)success
                        failure:(HttpRequestFailure)failure;
 
+// 关键字搜索小区
++ (void)requestKeywords:(NSString *)keywords
+                   city:(NSString *)city
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure;
+
+// 小区id搜索楼
++ (void)requestZoneId:(NSString *)zoneId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
+
+// 根据楼查询房屋表
++ (void)requestZoneId:(NSString *)zoneId
+           buildingId:(NSString *)buildingId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
 
 @end
 

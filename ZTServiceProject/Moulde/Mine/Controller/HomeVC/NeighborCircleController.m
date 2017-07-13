@@ -40,15 +40,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.currentPage = 1;
+//    self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
+//        self.currentPage = 1;
         [self requestTopicHis];
     }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-        [self requestTopicHis];
-    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//        [self requestTopicHis];
+//    }];
     [self.tableView beginHeaderRefreshing];
     
 }
@@ -94,9 +94,9 @@
         //                                    [self.topicHisDataSource removeAllObjects];
         //                                }
         //                                [self.topicHisDataSource addObjectsFromArray:response];
-        if (response.count<10) {
-            [self.tableView endRefreshingWithNoMoreData];
-        }
+//        if (response.count<10) {
+//            [self.tableView endRefreshingWithNoMoreData];
+//        }
         [self.tableView reloadData];
         
     } failure:^(NSError *error, NSString *message) {
