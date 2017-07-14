@@ -10,6 +10,7 @@
 #import "StaticlCell.h"
 #import "PraiseTextCell.h"
 #import "AddPhotosCell.h"
+#import "TenementHttpManager.h"
 
 @interface PraiseViewController ()
 
@@ -47,6 +48,13 @@
     NSLog(@"rightBarClick");
 }
 
+// 表扬
+- (void)requestPraiseList{
+    [TenementHttpManager requestPraiseOrComplaint:praise zoneId:@"" affairTitle:@"" affairDiscribe:@"" affairCategory:@"" userAddress:@"" userRealName:@"" userPhoneNum:@"" images:[UIImage imageNamed:@""] success:^(id response) {
+        
+    } failure:^(NSError *error, NSString *message) {
+    }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;

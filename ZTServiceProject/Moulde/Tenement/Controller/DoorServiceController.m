@@ -13,6 +13,7 @@
 #import "DoorServiceCell.h"
 #import "AddPhotosCell.h"
 #import "DataPickerViewDemo.h"
+#import "TenementHttpManager.h"
 
 @interface DoorServiceController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -45,7 +46,6 @@
                          selector:@selector(rightBarClick)
                            target:self];
 
-    
 }
 
 - (void)rightBarClick
@@ -53,6 +53,14 @@
     NSLog(@"rightBarClick");
 }
 
+// 发送上门服务信息
+- (void)requestLookvisitService{
+    [TenementHttpManager requestZoneId:@"" serviceTitle:@"" serviceDiscribe:@"" serviceCategory:@"" serviceTime:@"" userAddress:@"" userRealName:@"" userPhoneNum:@"" houseId:@"" houseName:@"" images:[UIImage imageNamed:@""] success:^(id response) {
+        
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;

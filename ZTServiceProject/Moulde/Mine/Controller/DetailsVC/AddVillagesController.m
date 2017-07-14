@@ -1,66 +1,46 @@
 //
-//  AddHousingController.m
+//  AddVillagesController.m
 //  ZTServiceProject
 //
-//  Created by ZT on 2017/7/13.
+//  Created by ZT on 2017/7/14.
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "AddHousingController.h"
+#import "AddVillagesController.h"
 #import "MineHttpManager.h"
 #import "VillagesModel.h"
-#import "BuildingListController.h"
 
-@interface AddHousingController ()<UITextFieldDelegate>
+@interface AddVillagesController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *searchBar;
+@property (weak, nonatomic) IBOutlet UIButton *searchBtn;
 
 //搜索到的数据
 @property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
 
-@implementation AddHousingController
-{
-    UIView *_headView;
-    UITextField *_searchBar;
-    UIButton *_searchBtn;
-}
+@implementation AddVillagesController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"添加房屋" titleColor:[UIColor whiteColor]];
-    [self createUIsearchBar];
+    [self titleViewWithTitle:@"添加小区" titleColor:[UIColor whiteColor]];
+
+    self.searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
+    self.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.searchBar.backgroundColor = UIColorFromRGB(0xE8E8E8);
+    self.searchBtn.layer.masksToBounds = YES;
+    self.searchBtn.layer.cornerRadius = _searchBtn.bounds.size.width * 0.01;
+    self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.searchBtn.backgroundColor = UIColorFromRGB(0xe64e51);
     
+    [self.searchBar addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
+
+
     self.tableView.hidden = YES;
-}
-- (void)createUIsearchBar{
-    
-    _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 69, SCREEN_WIDTH, 49)];
-    _headView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_headView];
-    
-    _searchBar = [[UITextField alloc] initWithFrame:CGRectMake(15, 9, SCREEN_WIDTH-30-75, 32)];
-    _searchBar.delegate = self;
-    _searchBar.layer.masksToBounds = YES;
-    _searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
-    _searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
-    _searchBar.backgroundColor = UIColorFromRGB(0xE8E8E8);
-    [_headView addSubview:_searchBar];
-    
-    _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _searchBtn.layer.masksToBounds = YES;
-    _searchBtn.layer.cornerRadius = _searchBtn.bounds.size.width * 0.01;
-    _searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    _searchBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-    [_searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-    [_searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _searchBtn.frame = CGRectMake(SCREEN_WIDTH-15-75, 9, 75, 32);
-    [_searchBtn addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [_headView addSubview:_searchBtn];
-    
-    [_searchBar addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
-    
+
 }
 
 -(void)reformatAsPhoneNumber:(UITextField *)textField {
@@ -76,15 +56,16 @@
         self.tableView.backgroundColor = [UIColor whiteColor];
     }
 }
-
-- (void)searchBtnClick{
+- (IBAction)searchBtnClick {
     
     [self searchCommunity];
     
     if (self.dataSource.count>0) {
         self.tableView.hidden = NO;
     }
+
 }
+
 // 关键字搜索小区
 - (void)searchCommunity{
     [MineHttpManager requestKeywords:_searchBar.text
@@ -122,20 +103,49 @@
     }
     cell.textLabel.text = [self.dataSource[indexPath.row] zoneAddress];;
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-        @weakify(self);
-        [PushManager pushViewControllerWithName:@"BuildingListController" animated:YES block:^(BuildingListController* viewController) {
-            @strongify(self);
-            viewController.zoneId = [self.dataSource[indexPath.row] zoneId];
-        }];
-    
+    //选择行，添加小区关注
+    [MineHttpManager requestAddToCancelVillage:AddVillage
+                                   communityId:[self.dataSource[indexPath.row] zoneId]
+                                       success:^(id response) {
+                                           
+                                           //操作失败的原因
+                                           NSString *information = [response objectForKey:@"information"];
+                                           //状态码
+                                           NSString *status = [response objectForKey:@"status"];
+                                           
+                                           if ([status integerValue]==0) {
+                                               
+                                               [self createAlertView];
+                                               
+                                           }else{
+                                               [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                           }
+
+                                           
+                                       } failure:^(NSError *error, NSString *message) {
+                                           
+                                       }];
 }
+
+- (void)createAlertView{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"添加成功" preferredStyle:(UIAlertControllerStyleAlert)];
+    // 创建按钮
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        //[self.navigationController popViewControllerAnimated:YES];
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }

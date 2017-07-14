@@ -109,6 +109,15 @@
 		7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662231EF2862900644A7B /* secondHandCell.xib */; };
 		7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1662251EF2862900644A7B /* SectionHeaderCell.m */; };
 		7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1662261EF2862900644A7B /* SectionHeaderCell.xib */; };
+		7B16D27A1F1857980070F88A /* BuildingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D2781F1857980070F88A /* BuildingListController.m */; };
+		7B16D27B1F1857980070F88A /* BuildingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B16D2791F1857980070F88A /* BuildingListController.xib */; };
+		7B16D27E1F185AAD0070F88A /* BuildingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D27D1F185AAD0070F88A /* BuildingListModel.m */; };
+		7B16D2821F185CD60070F88A /* HouseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D2801F185CD60070F88A /* HouseListController.m */; };
+		7B16D2831F185CD60070F88A /* HouseListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B16D2811F185CD60070F88A /* HouseListController.xib */; };
+		7B16D2861F185EA20070F88A /* HouseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D2851F185EA20070F88A /* HouseListModel.m */; };
+		7B16D28A1F1891320070F88A /* AddVillagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D2881F1891320070F88A /* AddVillagesController.m */; };
+		7B16D28B1F1891320070F88A /* AddVillagesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B16D2891F1891320070F88A /* AddVillagesController.xib */; };
+		7B16D28E1F18C5EC0070F88A /* TenementHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */; };
 		7B1E48C81F17181B00AECF41 /* AddHousingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48C61F17181B00AECF41 /* AddHousingController.m */; };
 		7B1E48C91F17181B00AECF41 /* AddHousingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48C71F17181B00AECF41 /* AddHousingController.xib */; };
 		7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */; };
@@ -688,6 +697,21 @@
 		7B1662241EF2862900644A7B /* SectionHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderCell.h; sourceTree = "<group>"; };
 		7B1662251EF2862900644A7B /* SectionHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderCell.m; sourceTree = "<group>"; };
 		7B1662261EF2862900644A7B /* SectionHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderCell.xib; sourceTree = "<group>"; };
+		7B16D2771F1857980070F88A /* BuildingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingListController.h; sourceTree = "<group>"; };
+		7B16D2781F1857980070F88A /* BuildingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingListController.m; sourceTree = "<group>"; };
+		7B16D2791F1857980070F88A /* BuildingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuildingListController.xib; sourceTree = "<group>"; };
+		7B16D27C1F185AAD0070F88A /* BuildingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuildingListModel.h; sourceTree = "<group>"; };
+		7B16D27D1F185AAD0070F88A /* BuildingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingListModel.m; sourceTree = "<group>"; };
+		7B16D27F1F185CD60070F88A /* HouseListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseListController.h; sourceTree = "<group>"; };
+		7B16D2801F185CD60070F88A /* HouseListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseListController.m; sourceTree = "<group>"; };
+		7B16D2811F185CD60070F88A /* HouseListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HouseListController.xib; sourceTree = "<group>"; };
+		7B16D2841F185EA20070F88A /* HouseListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HouseListModel.h; sourceTree = "<group>"; };
+		7B16D2851F185EA20070F88A /* HouseListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HouseListModel.m; sourceTree = "<group>"; };
+		7B16D2871F1891320070F88A /* AddVillagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVillagesController.h; sourceTree = "<group>"; };
+		7B16D2881F1891320070F88A /* AddVillagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVillagesController.m; sourceTree = "<group>"; };
+		7B16D2891F1891320070F88A /* AddVillagesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddVillagesController.xib; sourceTree = "<group>"; };
+		7B16D28C1F18C5EC0070F88A /* TenementHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenementHttpManager.h; sourceTree = "<group>"; };
+		7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenementHttpManager.m; sourceTree = "<group>"; };
 		7B1E48C51F17181B00AECF41 /* AddHousingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHousingController.h; sourceTree = "<group>"; };
 		7B1E48C61F17181B00AECF41 /* AddHousingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHousingController.m; sourceTree = "<group>"; };
 		7B1E48C71F17181B00AECF41 /* AddHousingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddHousingController.xib; sourceTree = "<group>"; };
@@ -1348,6 +1372,8 @@
 		299E2CE61EE8068B0045A884 /* HttpManager */ = {
 			isa = PBXGroup;
 			children = (
+				7B16D28C1F18C5EC0070F88A /* TenementHttpManager.h */,
+				7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */,
 			);
 			path = HttpManager;
 			sourceTree = "<group>";
@@ -1376,6 +1402,15 @@
 				7B1E48C51F17181B00AECF41 /* AddHousingController.h */,
 				7B1E48C61F17181B00AECF41 /* AddHousingController.m */,
 				7B1E48C71F17181B00AECF41 /* AddHousingController.xib */,
+				7B16D2871F1891320070F88A /* AddVillagesController.h */,
+				7B16D2881F1891320070F88A /* AddVillagesController.m */,
+				7B16D2891F1891320070F88A /* AddVillagesController.xib */,
+				7B16D2771F1857980070F88A /* BuildingListController.h */,
+				7B16D2781F1857980070F88A /* BuildingListController.m */,
+				7B16D2791F1857980070F88A /* BuildingListController.xib */,
+				7B16D27F1F185CD60070F88A /* HouseListController.h */,
+				7B16D2801F185CD60070F88A /* HouseListController.m */,
+				7B16D2811F185CD60070F88A /* HouseListController.xib */,
 				7B0C71B21F15B6DF00CE8AEC /* NeighborDetailController.h */,
 				7B0C71B31F15B6DF00CE8AEC /* NeighborDetailController.m */,
 				7B0C71B41F15B6DF00CE8AEC /* NeighborDetailController.xib */,
@@ -1995,6 +2030,10 @@
 				7B0C72231F16149100CE8AEC /* MyPraiseModel.m */,
 				7B14F8A91F177B5E00821281 /* VillagesModel.h */,
 				7B14F8AA1F177B5E00821281 /* VillagesModel.m */,
+				7B16D27C1F185AAD0070F88A /* BuildingListModel.h */,
+				7B16D27D1F185AAD0070F88A /* BuildingListModel.m */,
+				7B16D2841F185EA20070F88A /* HouseListModel.h */,
+				7B16D2851F185EA20070F88A /* HouseListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2955,6 +2994,7 @@
 				7BA02BBD1F04ED82004F8AB9 /* PostMessageController.xib in Resources */,
 				7B1662361EF2862900644A7B /* SectionHeaderCell.xib in Resources */,
 				7BA02BC21F04EEBE004F8AB9 /* PostContentCell.xib in Resources */,
+				7B16D2831F185CD60070F88A /* HouseListController.xib in Resources */,
 				7BFFBF071EF66C52001202EE /* DoorServiceCell.xib in Resources */,
 				7B205E2A1F00E6C900E46B74 /* tabbar_wy__selected@2x.png in Resources */,
 				7B8F2A591F038B9D00D5D1DF /* comments@2x.png in Resources */,
@@ -3098,10 +3138,12 @@
 				7B0C71F11F15BD0500CE8AEC /* MyReleasedHouseCell.xib in Resources */,
 				7B6FB3291F0CC8CF009F5F49 /* HeadBackCell.xib in Resources */,
 				7B6929501F061EBA000108F3 /* ChangeNickNameController.xib in Resources */,
+				7B16D28B1F1891320070F88A /* AddVillagesController.xib in Resources */,
 				7B1662321EF2862900644A7B /* ProductItemCell.xib in Resources */,
 				7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */,
 				7B0C71E11F15B78900CE8AEC /* SettingViewController.xib in Resources */,
 				7B0C71EC1F15BC4800CE8AEC /* MyReleasedHouseController.xib in Resources */,
+				7B16D27B1F1857980070F88A /* BuildingListController.xib in Resources */,
 				7B0C72051F15CC5600CE8AEC /* MyDoorServiceCell.xib in Resources */,
 				7B2D3C611F0F591000409DD7 /* HelpOrderViewController.xib in Resources */,
 				7BF4B2111EE3D45A0058185F /* message_tabbar_selected@2x.png in Resources */,
@@ -3226,6 +3268,7 @@
 				7B16622F1EF2862900644A7B /* ProductCollecttionCell.m in Sources */,
 				7B2AEA9F1F0F2DB20008D9AC /* ServiceOrderController.m in Sources */,
 				7B966BDF1EFFB5D400326C88 /* MWTapDetectingImageView.m in Sources */,
+				7B16D2861F185EA20070F88A /* HouseListModel.m in Sources */,
 				7B966AD31EFFB29500326C88 /* FSActionSheet.m in Sources */,
 				7BA02BA01F04D012004F8AB9 /* HouseRentViewController.m in Sources */,
 				7B69294A1F0603B8000108F3 /* RegisterHeadCell.m in Sources */,
@@ -3256,6 +3299,7 @@
 				7B2D3C6A1F0F609E00409DD7 /* ForHelpDetailsViewController.m in Sources */,
 				7B14F88E1F175E9C00821281 /* ActivePeopleController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
+				7B16D27A1F1857980070F88A /* BuildingListController.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
 				7B2D3CD01F0F893800409DD7 /* CommunityBodyCell.m in Sources */,
 				7B0C71B51F15B6DF00CE8AEC /* MySpareViewController.m in Sources */,
@@ -3276,6 +3320,7 @@
 				7B14F8931F175F3B00821281 /* SearchPeopleController.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
 				7B0C71DA1F15B78900CE8AEC /* MyReleaseViewController.m in Sources */,
+				7B16D27E1F185AAD0070F88A /* BuildingListModel.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7B6FB3281F0CC8CF009F5F49 /* HeadBackCell.m in Sources */,
 				7B0C71FA1F15C83A00CE8AEC /* MyPostedHelpController.m in Sources */,
@@ -3301,6 +3346,7 @@
 				7B0C71D61F15B78900CE8AEC /* MyNeighborController.m in Sources */,
 				7B0C71FF1F15CBD800CE8AEC /* MyDoorServiceController.m in Sources */,
 				7B966ADE1EFFB29500326C88 /* XLProgressView.m in Sources */,
+				7B16D2821F185CD60070F88A /* HouseListController.m in Sources */,
 				7B50F8901EFA19E700352F00 /* SearchViewController.m in Sources */,
 				7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
@@ -3340,6 +3386,7 @@
 				7B16622D1EF2862900644A7B /* NearByServiceCell.m in Sources */,
 				7B966ADF1EFFB29500326C88 /* XLZoomingScrollView.m in Sources */,
 				7BBB10131F04F29200BCCF4B /* NSString+Valid.m in Sources */,
+				7B16D28A1F1891320070F88A /* AddVillagesController.m in Sources */,
 				7BBB102A1F0502CF00BCCF4B /* RegisterThreeController.m in Sources */,
 				7B2CE92E1EFBC5D100C13A7D /* EYTagView.m in Sources */,
 				7B205E6B1F00EDFE00E46B74 /* ACShowMediaTypeView.m in Sources */,
@@ -3378,6 +3425,7 @@
 				7B5C92421EF8C1F200C545A8 /* SecondBannerCell.m in Sources */,
 				7BFFBF1B1EF682A9001202EE /* ComplaintsController.m in Sources */,
 				7B4D972C1F09EEA200731969 /* RegularTool.m in Sources */,
+				7B16D28E1F18C5EC0070F88A /* TenementHttpManager.m in Sources */,
 				7B966A671EFF8B8900326C88 /* CommentPhotoCell.m in Sources */,
 				7B6FB3261F0CC8CF009F5F49 /* GroupNumberCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,

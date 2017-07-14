@@ -15,6 +15,8 @@
 #import "MyDoorServiceModel.h"
 #import "MyPraiseModel.h"
 #import "VillagesModel.h"
+#import "BuildingListModel.h"
+#import "HouseListModel.h"
 
 @implementation MineHttpManager
 
@@ -191,8 +193,8 @@
     NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchBuildingByVillage paramter:paramter success:^(id response) {
         
-        //        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
-        //        success(modelArray);
+        NSArray *modelArray = [BuildingListModel mj_objectArrayWithKeyValuesArray:response[@"buildingList"]];
+        success(modelArray);
         
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
@@ -210,8 +212,8 @@
                                };
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchHouses paramter:paramter success:^(id response) {
         
-        //        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
-        //        success(modelArray);
+        NSArray *modelArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"houseList"]];
+        success(modelArray);
         
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

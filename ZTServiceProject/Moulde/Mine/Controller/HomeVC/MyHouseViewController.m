@@ -88,15 +88,6 @@
                                          
                                      }];
 }
-// 添加房屋关注
-- (void)requestaddLikeHouse{
-    [MineHttpManager requestAddToCancelHouse:addLikeHouse
-                                     houseId:@""
-                                     success:^(id response) {
-                                         
-                                     } failure:^(NSError *error, NSString *message) {
-                                     }];
-}
 
 // 取消绑定，取消关注
 - (void)requestunHouse{

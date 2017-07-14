@@ -19,7 +19,8 @@
 @implementation ChatFriendsController
 {
     NSInteger queryType;
-    NSInteger selectedSegmentIndex;
+    UISegmentedControl *_segment;
+    NSInteger currentIndex;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,21 +29,30 @@
                                   highName:@"add_btn"
                                   selector:@selector(rightBarClick:)
                                     target:self];
-    UISegmentedControl *segment = [[UISegmentedControl alloc] initWithItems:@[@"会话",@"好友"]];
-    segment.width = 150;
+    _segment = [[UISegmentedControl alloc] initWithItems:@[@"会话",@"好友"]];
+    _segment.width = 150;
     
-    segment.layer.cornerRadius = 15.0f;
-    segment.layer.borderWidth = 1;
-    segment.layer.borderColor = [UIColor whiteColor].CGColor;
-    segment.layer.masksToBounds = YES;
-    segment.tintColor = [UIColor whiteColor];
-    segment.selectedSegmentIndex = 0;
-    [segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.titleView = segment;
+    _segment.layer.cornerRadius = 15.0f;
+    _segment.layer.borderWidth = 1;
+    _segment.layer.borderColor = [UIColor whiteColor].CGColor;
+    _segment.layer.masksToBounds = YES;
+    _segment.tintColor = [UIColor whiteColor];
+    _segment.selectedSegmentIndex = 0;
+    [_segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.titleView = _segment;
     
     queryType = 0;
+    
+    [self.tableView reloadData];
 
 }
+-(void)segmentClick:(UISegmentedControl *)segment{
+    
+    currentIndex = _segment. selectedSegmentIndex;
+    NSLog(@"_segment==%ld", currentIndex);
+    
+}
+
 // 弹出自定义视图
 - (void)rightBarClick:(id)sender{
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
@@ -71,15 +81,6 @@
                            NSLog(@"user canceled. do nothing.");
                        }];
 }
--(void)segmentClick:(UISegmentedControl *)segment{
-    NSLog(@"segment.selectedSegmentIndex==%ld", segment.selectedSegmentIndex);
-    
-    if (segment.selectedSegmentIndex==0) {
-        queryType=0;
-    }else{
-        queryType=1;
-    }
-}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -98,9 +99,8 @@
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
-    if (queryType==0) {
+    if (_segment.selectedSegmentIndex==0) {
         ChatCell *cell = (ChatCell *)[self creatCell:tableView indenty:@"ChatCell"];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         FriendsCell *cell = (FriendsCell *)[self creatCell:tableView indenty:@"FriendsCell"];

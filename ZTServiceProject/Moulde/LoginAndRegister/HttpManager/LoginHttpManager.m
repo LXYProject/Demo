@@ -204,7 +204,10 @@
     if (data) {
         UIImageJPEGRepresentation(image, 0.5);
     }
-    NSDictionary *parameter = @{};
+    
+    //NSString *encodedImageStr = [data base64EncodedStringWithOptions:0];
+    
+    NSDictionary *parameter = @{@"image":image?image:@""};
     
 //    @"image/jpeg",
 //    @"image/png",

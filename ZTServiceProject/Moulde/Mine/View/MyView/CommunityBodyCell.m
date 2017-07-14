@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *details;
 
+@property (nonatomic, copy) NSString *communityId;
+
+
 @end
 @implementation CommunityBodyCell
 
@@ -33,40 +36,6 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)completionBtnClick {
-    
-    switch (self.type) {
-        case completion_Type: {//补全物业信息
-            NSLog(@"补全物业信息");
-            
-            break;
-        }
-        case CancelAttention_Type: {//取消关注
-            NSLog(@"取消关注");
-
-            
-            
-            break;
-        }
-        default:
-            break;
-    }
-
-}
-
-// 取消小区关注
-- (void)requestCancelVillage{
-    
-    [MineHttpManager requestAddToCancelVillage:CancelVillage
-                                   communityId:@""
-                                       success:^(id response) {
-                                           
-                                       } failure:^(NSError *error, NSString *message) {
-                                           
-                                       }];
-    
-    
-}
 
 - (void)setModel:(MyNeighborModel *)model{
     
@@ -77,4 +46,32 @@
     _details.text = model.zoneAddress;
 
 }
+
+- (IBAction)completionBtnClick {
+    
+    switch (self.type) {
+        case completion_Type: {//补全物业信息
+            NSLog(@"补全物业信息");
+            
+            break;
+        }
+        case CancelAttention_Type: {//取消关注
+            NSLog(@"取消关注");
+            
+            // 取消小区关注
+            [MineHttpManager requestAddToCancelVillage:CancelVillage
+                                           communityId:_communityId
+                                               success:^(id response) {
+                                                   
+                                               } failure:^(NSError *error, NSString *message) {
+                                                   
+                                               }];
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
 @end

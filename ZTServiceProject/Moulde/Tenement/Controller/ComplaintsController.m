@@ -10,6 +10,7 @@
 #import "StaticlCell.h"
 #import "AddPhotosCell.h"
 #import "ComplaintsCell.h"
+#import "TenementHttpManager.h"
 
 @interface ComplaintsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -45,6 +46,14 @@
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
+}
+
+// 投诉
+- (void)requestPraiseList{
+    [TenementHttpManager requestPraiseOrComplaint:complaints zoneId:@"" affairTitle:@"" affairDiscribe:@"" affairCategory:@"" userAddress:@"" userRealName:@"" userPhoneNum:@"" images:[UIImage imageNamed:@""] success:^(id response) {
+        
+    } failure:^(NSError *error, NSString *message) {
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -30,6 +30,11 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我的小区" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@""
+                            title:@"添加关注小区"
+                       titleColor:[UIColor whiteColor]
+                         selector:@selector(rightBarClick)
+                           target:self];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -47,6 +52,9 @@
 
 }
 
+- (void)rightBarClick{
+    [PushManager pushViewControllerWithName:@"AddVillagesController" animated:YES block:nil];
+}
 // 查看所有与我有关的小区
 - (void)requestLookAllVillageWithMe{
     

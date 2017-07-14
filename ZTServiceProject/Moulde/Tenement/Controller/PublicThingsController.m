@@ -11,6 +11,7 @@
 #import "DoorServiceCell.h"
 #import "AddPhotosCell.h"
 #import "StaticlCell.h" 
+#import "TenementHttpManager.h"
 
 @interface PublicThingsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -47,6 +48,13 @@
     NSLog(@"rightBarClick");
 }
 
+// 公共报事
+- (void)requestPublicAffairList{
+    [TenementHttpManager requestZoneId:@"" affairTitle:@"" affairDiscribe:@"" affairCategory:@"" userAddress:@"" userRealName:@"" userPhoneNum:@"" images:[UIImage imageNamed:@""] success:^(id response) {
+    } failure:^(NSError *error, NSString *message) {
+    }];
+
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;

@@ -509,7 +509,7 @@
                                    ,@"vcName":@"TenementViewController"},
                                  @{@"title":@"我的房屋"
                                    ,@"icon":@"my_house"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"MyHouseViewController"},
                                  @{@"title":@"物业"
                                    ,@"icon":@"management_fee"
                                    ,@"vcName":@"TenementViewController"},

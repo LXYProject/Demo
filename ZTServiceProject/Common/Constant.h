@@ -185,12 +185,16 @@
 #define A_bulletinList        @"?service=propertyService&function=bulletinList"
 // 便民服务
 #define A_convenience         @"?service=propertyService&function=convenience"
-// 投诉
-#define A_complain            @"?service=propertyService&function=complain"
-// 查看投诉信息
-#define A_complainList        @"?service=propertyService&function=complainList"
+
+// 发送上门服务信息
+#define A_visitService          @"?service=propertyService&function=visitService"
+// 公共报事
+#define A_publicAffair          @"?service=propertyService&function=publicAffair"
 // 表扬
-#define A_ @""
+#define A_praise                @"?service=propertyService&function=praise"
+// 投诉
+#define A_complain              @"?service=propertyService&function=complain"
+
 
 // 查看上门服务信息
 #define A_lookvisitService      @"?service=propertyService&function=lookvisitService"
