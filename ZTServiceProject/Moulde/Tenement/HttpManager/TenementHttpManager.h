@@ -8,13 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-// 查看所有与我有关的房屋,小区
+// 查看服务, 报事类型列表, 公告列表, 便民服务, 小区全景
+typedef enum : NSUInteger {
+    ServiceList,       //服务类型列表
+    ListThings,        //报事类型列表
+    VillagePanorama,   //查看小区全景
+    AnnouncementList,  //公告列表
+    ConvenienceService //便民服务
+} ListOrPanorama;
+
+
 typedef enum : NSUInteger {
     praise,        //表扬
     complaints     //投诉
 } PraiseOrComplaint;
 
 @interface TenementHttpManager : NSObject
+
+// 查看小区全景, 服务, 报事类型列表
++ (void)requestListOrPanorama:(ListOrPanorama)ListOrPanorama
+                       zoneId:(NSString *)zoneId
+                      success:(HttpRequestSuccess)success
+                      failure:(HttpRequestFailure)failure;
+
 
 // 发送上门服务信息
 + (void)requestZoneId:(NSString *)zoneId
@@ -56,4 +72,6 @@ typedef enum : NSUInteger {
                           images:(UIImage *)images
                          success:(HttpRequestSuccess)success
                          failure:(HttpRequestFailure)failure;
+
+
 @end

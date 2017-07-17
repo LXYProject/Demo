@@ -123,8 +123,48 @@
     HouseBodyCell *cell = (HouseBodyCell *)[self creatCell:tableView indenty:@"HouseBodyCell"];
     if (indexPath.section==0) {
         cell.model = self.bindHousesDataSource[indexPath.row];
+        cell.btnClickBlock = ^(UIButton *sender) {
+            // 取消绑定，取消关注
+            [MineHttpManager requestAddToCancelHouse:unHouse
+                                             houseId:[self.bindHousesDataSource[indexPath.row] buildingId]
+                                             success:^(id response) {
+                                                 
+                                                 //操作失败的原因
+                                                 NSString *information = [response objectForKey:@"information"];
+                                                 //状态码
+                                                 NSString *status = [response objectForKey:@"status"];
+                                                 
+                                                 if ([status integerValue]==0) {
+                                                     [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                 }else{
+                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                 }
+                                                 
+                                             } failure:^(NSError *error, NSString *message) {
+                                             }];
+        };
     }else{
         cell.model = self.attentionHousesDataSource[indexPath.row];
+        cell.btnClickBlock = ^(UIButton *sender) {
+            // 取消绑定，取消关注
+            [MineHttpManager requestAddToCancelHouse:unHouse
+                                             houseId:[self.attentionHousesDataSource[indexPath.row] buildingId]
+                                             success:^(id response) {
+                                                 
+                                                 //操作失败的原因
+                                                 NSString *information = [response objectForKey:@"information"];
+                                                 //状态码
+                                                 NSString *status = [response objectForKey:@"status"];
+                                                 
+                                                 if ([status integerValue]==0) {
+                                                     [AlertViewController alertControllerWithTitle:@"提示" message:@"取消关注成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                 }else{
+                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                 }
+                                                 
+                                             } failure:^(NSError *error, NSString *message) {
+                                             }];
+        };
     }
     return cell;
     

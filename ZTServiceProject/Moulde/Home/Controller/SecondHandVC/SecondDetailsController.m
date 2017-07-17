@@ -15,6 +15,7 @@
 #import "CommentsHeadCell.h"
 #import "CommentContentCell.h"
 #import "SecondHandModel.h"
+
 @interface SecondDetailsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

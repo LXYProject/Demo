@@ -15,7 +15,7 @@
 #import "NeighborDetailCell.h"
 #import "HeaderCell.h"
 #import "CommentInfoCell.h"
-
+#import "NeighborCircleModel.h"
 @interface NeighborDetailController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -44,18 +44,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
-        //cell.neighborCircleModel = self.model;
+        cell.neighborCircleModel = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         return cell;
     }
     else if (indexPath.row == 1) {
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
-        //[cell smallImgs:[self.dataSource[indexPath.section] topicSmallImageList] normalImgs:[self.dataSource[indexPath.section] topicNormalImageList]];
+        [cell smallImgs:self.model.topicSmallImageList normalImgs:self.model.topicNormalImageList];
         return cell;
     }
     else  if (indexPath.row ==2){
         NeighborDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NeighborDetailCell" forIndexPath:indexPath];
-//        cell.model = self.model;
+        cell.model = self.model;
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         //OK
@@ -70,9 +70,9 @@
     }
     else {
         CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
-        //NSArray *commentList = [self.dataSource[indexPath.section] commentList];
-        //cell.model = commentList[indexPath.row - 3];
-        //cell.model = self.model;
+        NSArray *commentList = self.model.commentList;
+        cell.model = commentList[indexPath.row - 3];
+//        cell.model = self.model.commentList;
         return cell;
     }
     return nil;
@@ -81,15 +81,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
         return  [tableView fd_heightForCellWithIdentifier:@"HeaderCell" cacheByIndexPath:indexPath configuration:^(HeaderCell* cell) {
-            //cell.model = self.dataSource[indexPath.section];
+            cell.neighborCircleModel = self.model;
         }];
     }
     else if (indexPath.row ==1){
-//        NSArray *smallImgs = [self.dataSource[indexPath.section] topicSmallImageList];
-//        if (smallImgs.count>0) {
-//            NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
-//            return count *100+(count-1)*15;
-//        }
+        NSArray *smallImgs = self.model.topicSmallImageList;
+        if (smallImgs.count>0) {
+            NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
+            return count *100+(count-1)*15;
+        }
         return 0;
     }
     else if (indexPath.row ==2){
@@ -99,8 +99,8 @@
     }
     else{
         return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
-//            NSArray *commentList = [self.dataSource[indexPath.section] commentList];
-//            cell.model = commentList[indexPath.row - 3];
+            NSArray *commentList = self.model.commentList;
+            cell.model = commentList[indexPath.row - 3];
         }];
     }
     return 0;

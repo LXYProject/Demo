@@ -9,5 +9,10 @@
 #import "NeighborCircleModel.h"
 
 @implementation NeighborCircleModel
-
++(NSDictionary *)mj_objectClassInArray {
+    return @{@"topicNormalImageList":@"MessagePhotoModel",
+             @"topicSmallImageList":@"MessagePhotoModel",
+             @"commentList":@"CommentUserModel",
+             @"likeList":@"CommentUserModel"};
+}
 @end

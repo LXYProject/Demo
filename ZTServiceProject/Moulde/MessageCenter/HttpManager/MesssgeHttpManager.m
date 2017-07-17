@@ -52,7 +52,7 @@
         url = A_deleteTopic;
     }
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:url paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
         NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:response];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {
@@ -103,7 +103,7 @@
     
 }
 //发布
-+ (void)requestcontent:(NSString *)content
++ (void)requestContent:(NSString *)content
                 photos:(NSString *)photos
                 cityId:(NSString *)cityId
             districtId:(NSString *)districtId

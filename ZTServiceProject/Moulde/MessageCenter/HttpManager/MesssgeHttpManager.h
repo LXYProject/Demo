@@ -46,7 +46,7 @@ typedef enum : NSUInteger {
                       failure:(HttpRequestFailure)failure;
 
 //发布
-+ (void)requestcontent:(NSString *)content
++ (void)requestContent:(NSString *)content
                 photos:(NSString *)photos
                 cityId:(NSString *)cityId
             districtId:(NSString *)districtId

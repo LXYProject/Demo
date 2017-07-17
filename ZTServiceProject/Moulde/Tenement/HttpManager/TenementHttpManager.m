@@ -10,6 +10,32 @@
 
 @implementation TenementHttpManager
 
+// 查看服务, 报事类型列表, 公告列表, 便民服务, 小区全景
++ (void)requestListOrPanorama:(ListOrPanorama)ListOrPanorama
+                       zoneId:(NSString *)zoneId
+                      success:(HttpRequestSuccess)success
+                      failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
+    
+    NSString *url = nil;
+    if (ListOrPanorama == ServiceList) {
+        url = A_serviceList;
+    }else if (ListOrPanorama==ListThings){
+        url = A_affairCategoryList;
+    }else if (ListOrPanorama==VillagePanorama){
+        url = A_lookVillagePanorama;
+    }else if (ListOrPanorama==AnnouncementList){
+        url = A_bulletinList;
+    }else{
+        url = A_convenience;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
 // 发送上门服务信息
 + (void)requestZoneId:(NSString *)zoneId
          serviceTitle:(NSString *)serviceTitle

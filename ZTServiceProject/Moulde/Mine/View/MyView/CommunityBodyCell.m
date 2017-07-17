@@ -49,28 +49,32 @@
 
 - (IBAction)completionBtnClick {
     
-    switch (self.type) {
-        case completion_Type: {//补全物业信息
-            NSLog(@"补全物业信息");
-            
-            break;
-        }
-        case CancelAttention_Type: {//取消关注
-            NSLog(@"取消关注");
-            
-            // 取消小区关注
-            [MineHttpManager requestAddToCancelVillage:CancelVillage
-                                           communityId:_communityId
-                                               success:^(id response) {
-                                                   
-                                               } failure:^(NSError *error, NSString *message) {
-                                                   
-                                               }];
-            break;
-        }
-        default:
-            break;
+    if (self.btnClickBlock) {
+        self.btnClickBlock(nil);
     }
+    
+//    switch (self.type) {
+//        case completion_Type: {//补全物业信息
+//            NSLog(@"补全物业信息");
+//            
+//            break;
+//        }
+//        case CancelAttention_Type: {//取消关注
+//            NSLog(@"取消关注");
+//            
+//            // 取消小区关注
+//            [MineHttpManager requestAddToCancelVillage:CancelVillage
+//                                           communityId:_communityId
+//                                               success:^(id response) {
+//                                                   
+//                                               } failure:^(NSError *error, NSString *message) {
+//                                                   
+//                                               }];
+//            break;
+//        }
+//        default:
+//            break;
+//    }
     
 }
 

@@ -50,10 +50,18 @@
 
 // 表扬
 - (void)requestPraiseList{
-    [TenementHttpManager requestPraiseOrComplaint:praise zoneId:@"" affairTitle:@"" affairDiscribe:@"" affairCategory:@"" userAddress:@"" userRealName:@"" userPhoneNum:@"" images:[UIImage imageNamed:@""] success:^(id response) {
-        
-    } failure:^(NSError *error, NSString *message) {
-    }];
+    [TenementHttpManager requestPraiseOrComplaint:praise
+                                           zoneId:@""
+                                      affairTitle:@""
+                                   affairDiscribe:@""
+                                   affairCategory:@""
+                                      userAddress:@""
+                                     userRealName:@""
+                                     userPhoneNum:@""
+                                           images:[UIImage imageNamed:@""] success:^(id response) {
+                                           } failure:^(NSError *error, NSString *message) {
+                                           
+                                           }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

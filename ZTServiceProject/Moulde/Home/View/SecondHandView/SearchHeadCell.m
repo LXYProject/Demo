@@ -7,22 +7,22 @@
 //
 
 #import "SearchHeadCell.h"
-#import "SearchViewController.h"    
 
-@interface SearchHeadCell ()<UISearchBarDelegate>
+@interface SearchHeadCell ()
 
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (weak, nonatomic) IBOutlet UIButton *searchBtn;
 
 @end
 @implementation SearchHeadCell
-{
-    BOOL jump;
-}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    jump = YES;
+    
+    self.searchBtn.layer.masksToBounds = YES;
+    self.searchBtn.layer.cornerRadius = self.searchBtn.bounds.size.width * 0.01;
+    self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,33 +31,9 @@
     // Configure the view for the selected state
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    [self.contentView endEditing:YES];
+
+- (IBAction)searchBtnClick {
     [PushManager pushViewControllerWithName:@"SearchViewController" animated:YES block:nil];
-}
 
-
-////searchBar 响应键盘
-//- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-//    
-//    NSLog(@"跳转");
-//    //    if (_historyArray.count != 0) {
-//    //        //        _historyViewController.historyRecords = _historyArray;
-//    //        //        [self showTheHistoryRecords];
-//    //        [self.searchBar becomeFirstResponder];
-//    //    }
-//    [self showTheHistoryRecords];
-//    [self.searchBar becomeFirstResponder];
-//
-//    if (jump) {
-//       
-//        jump = NO;
-//    }
-//}
-
-#pragma  mark- history records
-- (void)showTheHistoryRecords
-{
-    
 }
 @end

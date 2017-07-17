@@ -118,6 +118,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         SearchHeadCell *cell = (SearchHeadCell *)[self creatCell:tableView indenty:@"SearchHeadCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else {

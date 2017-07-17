@@ -28,6 +28,8 @@
 @property (nonatomic, strong)NSMutableArray *imageNames;
 
 @property (nonatomic, strong) DQTextFild *BYsearchTextFd;
+@property (nonatomic, strong) UIButton *searchBtn;
+
 
 @end
 
@@ -54,28 +56,21 @@
 
 - (void)createNav
 {
-    self.BYsearchTextFd = [[DQTextFild alloc]initWithFrame:CGRectMake(50, 33,self.view.frame.size.width-100,31)];
-    self.BYsearchTextFd.placeholder = @"请输入关键词";
-    [self.BYsearchTextFd setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
-    self.BYsearchTextFd.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    UILabel * placeholderLabel = [self.BYsearchTextFd valueForKey:@"_placeholderLabel"];
-    placeholderLabel.textAlignment = NSTextAlignmentCenter;
-    self.BYsearchTextFd.backgroundColor = [UIColor clearColor];
-    self.BYsearchTextFd.background = [UIImage imageNamed:@"搜索-背景"];
-    self.BYsearchTextFd.delegate = self;
-    self.BYsearchTextFd.keyboardType = UIKeyboardTypeWebSearch;
-    UIImageView *img = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cancel"]];
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    img.frame = CGRectMake(10, 0,20,20);
-    btn.frame = CGRectMake(10, 0,20,20);
-    self.BYsearchTextFd.rightView = btn;
-    self.BYsearchTextFd.rightViewMode = UITextFieldViewModeAlways;
-    self.BYsearchTextFd.font = [UIFont fontWithName:@"Arial" size:14];
-    self.navigationItem.titleView = self.BYsearchTextFd;
+    self.searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.searchBtn.frame = CGRectMake(50, 33,self.view.frame.size.width-100,31);
+    self.searchBtn.backgroundColor = RGB(210, 70, 76);
+    self.searchBtn.layer.masksToBounds = YES;
+    self.searchBtn.layer.cornerRadius = self.searchBtn.bounds.size.width * 0.05;
+    self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    [self.searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.searchBtn addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.titleView = self.searchBtn;
 }
 
+- (void)searchBtnClick
+{
+    [PushManager pushViewControllerWithName:@"MyCommunityListController" animated:YES block:nil];
+}
 - (void)btnClick
 {
 //    [PushManager pushViewControllerWithName:@"" animated:YES block:nil];

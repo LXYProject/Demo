@@ -7,9 +7,17 @@
 //
 
 #import "MyCommunityListController.h"
+#import "MineHttpManager.h"
+#import "MyNeighborModel.h"
 
 @interface MyCommunityListController ()<UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+//查看所有与我有关的小区 的数据相关的
+@property (nonatomic,strong)NSMutableArray *myZonesDataSource;//绑定的小区
+@property (nonatomic,assign)NSInteger currentPage;
+
 
 @end
 
@@ -20,7 +28,45 @@
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"我的小区"
                   titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
+    
+    self.currentPage = 1;
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentPage = 1;
+        [self requestLookAllVillageWithMe];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        self.currentPage++;
+        [self requestLookAllVillageWithMe];
+    }];
+    [self.tableView beginHeaderRefreshing];
+
 }
+
+// 查看所有与我有关的小区
+- (void)requestLookAllVillageWithMe{
+    
+    [MineHttpManager requesHouseAddVillage:Village
+                                   success:^(NSDictionary *response) {
+                                       
+                                       NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
+                                       
+                                       [self.tableView endRefreshing];
+                                       if (self.currentPage==1){
+                                           [self.myZonesDataSource removeAllObjects];
+                                       }
+                                       [self.myZonesDataSource addObjectsFromArray:myZonesArray];
+                                       if (response.count<10) {
+                                           [self.tableView endRefreshingWithNoMoreData];
+                                       }
+                                       [self.tableView reloadData];
+                                       
+                                   } failure:^(NSError *error, NSString *message) {
+                                       [self.tableView endRefreshing];
+                                   }];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -28,7 +74,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.myZonesDataSource.count;
 }
 
 
@@ -41,15 +87,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = @"我的小区";
-    
-  
-//    if ([self.delegate respondsToSelector:@selector(passTrendValues:)]) {
-//        [self.delegate passTrendValues:cell.textLabel.text];
-//
-//    }
-    // 代理执行方法必须写在pop之前
-    
+    cell.textLabel.text = [self.myZonesDataSource[indexPath.row] zoneName];
     return cell;
 
 }
@@ -57,12 +95,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.delegate respondsToSelector:@selector(passTrendValues:)]) {
-        [self.delegate passTrendValues:@"我的小区"];
+        [self.delegate passTrendValues:self.myZonesDataSource[indexPath.row]];
         
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (NSArray *)myZonesDataSource {
+    if (!_myZonesDataSource) {
+        _myZonesDataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _myZonesDataSource;
+}
 
 
 @end

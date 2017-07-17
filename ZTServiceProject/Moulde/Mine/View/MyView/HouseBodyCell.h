@@ -13,5 +13,6 @@
 
 @property (nonatomic,strong)MyHouseModel *model;
 
+@property (nonatomic,copy)BtnClickBlock btnClickBlock;
 
 @end

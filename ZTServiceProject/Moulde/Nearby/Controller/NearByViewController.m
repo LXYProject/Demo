@@ -195,12 +195,12 @@
     return _dataSource;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
-    [UIView animateWithDuration:1 animations:^{
-        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
-    }];
-}
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+//    [UIView animateWithDuration:1 animations:^{
+//        cell.layer.transform = CATransform3DMakeScale(1, 1, 1);
+//    }];
+//}
 
 @end

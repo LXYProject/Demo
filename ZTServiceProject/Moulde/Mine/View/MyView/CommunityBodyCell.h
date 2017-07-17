@@ -23,5 +23,7 @@ typedef enum {
 
 @property (nonatomic,assign)BtnType type;
 
+@property (nonatomic,copy)BtnClickBlock btnClickBlock;
+
 
 @end

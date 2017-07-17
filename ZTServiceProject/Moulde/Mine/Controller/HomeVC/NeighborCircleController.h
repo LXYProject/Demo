@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+@class NeighborCircleModel;
 @interface NeighborCircleController : BaseViewController
 
 @end

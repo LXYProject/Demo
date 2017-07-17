@@ -194,8 +194,6 @@
 #define A_praise                @"?service=propertyService&function=praise"
 // 投诉
 #define A_complain              @"?service=propertyService&function=complain"
-
-
 // 查看上门服务信息
 #define A_lookvisitService      @"?service=propertyService&function=lookvisitService"
 // 查看报事信息
@@ -205,10 +203,44 @@
 // 查看投诉信息
 #define A_complainList          @"?service=propertyService&function=complainList"
 
+// 查看待缴费账单
+#define A_billList              @"?service=propertyService&function=billList"
+// 缴纳物业费
+#define A_pay                   @"?service=propertyService&function=pay"
+// 查询缴费记录
+#define A_paymentList           @"?service=propertyService&function=paymentList"
+// 查看小区全景
+#define A_lookVillagePanorama   @"?service=propertyService&function=lookVillagePanorama"
+// 上报小区全景
+#define A_sendVillagePanorama   @"?service=propertyService&function=sendVillagePanorama"
+// 小区设施类型列表
+#define A_villageFeatureTypeList @"?service=propertyService&function=villageFeatureTypeList" 
+// 获取物业费缴纳参数
+#define A_getCostParam          @"?service=propertyService&function=getCostParam"
+// 缴纳物业费成功后回执
+#define A_costSuccess           @"?service=propertyService&function=costSuccess"
+
+
 
 //============================二手物品===========================================
+// 停止发布
+#define A_stopPublish           @"?service=secondHand&function=stopPublish"
+// 删除回复
+#define A_seconddeleteReply     @"?service=secondHand&function=deleteReply"
+// 对评论点赞
+#define A_commentThumbsUp       @"?service=secondHand&function=commentThumbsUp"
+// 收藏
+#define A_keep                  @"?service=secondHand&function=keep"
+// 评论
+#define A_secondreply           @"?service=secondHand&function=reply"
+// 对评论回复
+#define A_replyComment          @"?service=secondHand&function=replyComment"
 // 查询
 #define A_query                 @"?service=secondHand&function=query"
+// 发布
+#define A_publish               @"?service=secondHand&function=publ ish"
+// 分类
+#define A_catalog               @"?service=secondHand&function=catalog"
 
 
 

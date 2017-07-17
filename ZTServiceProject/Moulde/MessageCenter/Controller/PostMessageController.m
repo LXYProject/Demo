@@ -9,6 +9,7 @@
 #import "PostMessageController.h"
 #import "PostContentCell.h"
 #import "AddPhotosCell.h"
+#import "MesssgeHttpManager.h"
 
 //#define btnY 542
 //#define labelY 530
@@ -35,7 +36,20 @@
 
 - (void)rightBarClick
 {
-    NSLog(@"rightBarClick");
+    NSLog(@"发布");
+    [MesssgeHttpManager requestContent:@""
+                                photos:@""
+                                cityId:@""
+                            districtId:@""
+                               address:@""
+                                 resId:@""
+                               resName:@""
+                               success:^(id response) {
+                                   
+                               } failure:^(NSError *error, NSString *message) {
+                                   
+                               }];
+
 }
 
 - (void)createUI
@@ -58,6 +72,7 @@
     }
     [self.tableView addSubview:label];
 }
+
 
 - (void)styleBtnClick:(UIButton *)button{
     button.selected = !button.selected;

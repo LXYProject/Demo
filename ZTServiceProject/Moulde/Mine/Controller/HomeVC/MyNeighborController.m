@@ -10,6 +10,7 @@
 #import "CommunityBodyCell.h"
 #import "MineHttpManager.h"
 #import "MyNeighborModel.h"
+#import "VillagesModel.h"
 
 @interface MyNeighborController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -123,6 +124,34 @@
         cell.type = CancelAttention_Type;
         [cell.completionBtn setTitle:@"取消关注" forState:UIControlStateNormal];
     }
+    cell.btnClickBlock = ^(UIButton *sender) {
+        if (cell.type==completion_Type) {
+            NSLog(@"补全物业信息");
+        }else{
+            NSLog(@"取消关注");
+            // 取消小区关注
+            [MineHttpManager requestAddToCancelVillage:CancelVillage
+                                           communityId:[self.myZonesDataSource[indexPath.row] zoneId]
+                                               success:^(id response) {
+                                                   
+                                                   //操作失败的原因
+                                                   NSString *information = [response objectForKey:@"information"];
+                                                   //状态码
+                                                   NSString *status = [response objectForKey:@"status"];
+                                                   
+                                                   if ([status integerValue]==0) {
+                                                       [AlertViewController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                       [self.tableView reloadData];
+                                                   }else{
+                                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                   }
+                                               } failure:^(NSError *error, NSString *message) {
+
+                                               }];
+
+        }
+        
+    };
     return cell;
     
 }

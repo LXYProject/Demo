@@ -40,15 +40,15 @@
     _segment.selectedSegmentIndex = 0;
     [_segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = _segment;
-    
+    self.tableView.tableFooterView = [[UIView alloc]init];
     queryType = 0;
     
-    [self.tableView reloadData];
 
 }
 -(void)segmentClick:(UISegmentedControl *)segment{
     
     currentIndex = _segment. selectedSegmentIndex;
+    [self.tableView reloadData];
     NSLog(@"_segment==%ld", currentIndex);
     
 }

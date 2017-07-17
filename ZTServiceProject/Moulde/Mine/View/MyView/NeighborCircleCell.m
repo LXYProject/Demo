@@ -8,7 +8,7 @@
 
 #import "NeighborCircleCell.h"
 #import "NeighborCircleModel.h"
-
+#import "MessagePhotoModel.h"
 @interface NeighborCircleCell ()
 @property (weak, nonatomic) IBOutlet UILabel *day;
 @property (weak, nonatomic) IBOutlet UILabel *address;
@@ -39,9 +39,9 @@
 - (void)setModel:(NeighborCircleModel *)model{
     _model = model;
     
-    for (NSDictionary *dic in model.topicSmallImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-        self.url = imageUrl;
+    for  (MessagePhotoModel*dic in model.topicSmallImageList) {
+        
+        self.url = dic.url;
     }
 
     [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
@@ -61,7 +61,7 @@
     _commentsCount.text = model.commentCount;
 
 
-
+    
 }
 
 - (NSDate *)dateformatter :(NSString *)str {

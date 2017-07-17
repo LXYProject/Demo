@@ -27,6 +27,8 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"添加小区" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
 
     self.searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
     self.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;

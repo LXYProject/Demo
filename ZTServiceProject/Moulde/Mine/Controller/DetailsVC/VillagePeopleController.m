@@ -20,6 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"同小区的人" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
 
 }
 

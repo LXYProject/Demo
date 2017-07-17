@@ -33,16 +33,48 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+//        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+//    self.listArray = (NSMutableArray *)modelArray;
+//    
+//    NSMutableArray  *yearArray = [NSMutableArray arrayWithCapacity:1];
+//    //取出年份 tableView的section 以年份+月份为分组条件   day为每组内容
+//    [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NeighborCircleModel *model = obj;
+//        if (![yearArray containsObject:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+//            [yearArray addObject:[self yearAndMonth:[self dateformatter:model.createTime]]];
+//        }
+//    }];
+//    //这里将数组进行排序，防止服务器数据有问题
+//    NSArray *result = [yearArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//        return [obj2 compare:obj1]; //降序
+//    }];
+//    [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        NSString *year = obj;
+//        NSMutableArray *mothArr = [NSMutableArray arrayWithCapacity:1];
+//        [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            NeighborCircleModel *model = obj;
+//            if ([year isEqualToString:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+//                [mothArr addObject:model];
+//            }
+//        }];
+//        [self.topicHisDataSource addObject:mothArr];
+//        
+//        
+//    }];
+
+//        [self.topicHisDataSource addObjectsFromArray:self.listArray];
+//        [self.tableView reloadData];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我的邻里圈" titleColor:[UIColor whiteColor]];
-    
+    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.0001)];
+//    self.tableView.tableFooterView = [[UIView alloc]init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
 //    self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
-//        self.currentPage = 1;
+        self.currentPage = 1;
         [self requestTopicHis];
     }];
 //    [self.tableView setFooterRefreshBlock:^{
@@ -52,6 +84,223 @@
     [self.tableView beginHeaderRefreshing];
     
 }
+
+
+
+- (NSDictionary *)messageDataarray {
+    return @{
+             
+             @"topicList": @[
+                     @{
+                         @"topicNormalImageList": @[@{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                        },
+                                                    
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                        },
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                        },@{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                        },@{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                        }],
+                         @"topicSmallImageList": @[@{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                       },
+                                                   
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                       },
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                       },@{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                       },@{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                       }],
+                         @"topicId": @"t20170622163932",
+                         @"topicTitle": @"我想要租房子\n我能接受的租金价格为:1577元至8968元/月\n我想要的户型为:3室0厅0卫\n我想要我的房子门口朝向:无所谓了\n我想合租\n我可以接受的房屋来源为：房东\n另外我想说的是：一诺孙女\n标签要求：有天然气, 三人以下合租, 生活便利",
+                         @"createTime": @"2017-06-22 16:39:32",
+                         @"topicStatus": @1,
+                         @"likeList": @[],
+                         @"zoneId": @"1",
+                         @"ownerId": @"005600",
+                         @"commentList": @[@{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"王珊",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"阿斯兰的加拉空间的",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               },
+                                           @{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"王珊",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"卢达克里斯就断开连接",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               },
+                                           @{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"王珊",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"阿来得及啊快来升级的垃圾死了的空间阿拉斯加的脸孔甲氨蝶呤数据库拉斯建档立卡时间到了就拉上看到家里卡建档立卡数据来看",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               },
+                                           @{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"爱迪生珊",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"阿萨德安达市多",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               },
+                                           @{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"阿萨德",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"奥术大师多卡拉斯科多了；奥凯电缆；卡速度快；卡萨丁；拉开的；卡萨丁；卡；历史地看；拉克丝多了；卡；两点开始；了",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               },
+                                           @{
+                                               @"commentType":@"",
+                                               @"userId":@"",
+                                               @"userName":@"LXY",
+                                               @"userImageUrl":@"",
+                                               @"targetUserId":@"",
+                                               @"targetUserName":@"sda 阿萨德",
+                                               @"targetUserImageUrl":@"",
+                                               @"comment":@"按时打卡机安徽省电话卡进度款哈空间的黄金卡回答还是看见好看手机壳",
+                                               @"commentTime":@"2010-04-09 20:23:21"
+                                               }
+                                           ],
+                         @"ownerName": @"其实我很帅",
+                         @"ownerImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                         @"zoneName": @"1",
+                         @"commentCount": @0,
+                         @"delTime": @"",
+                         @"y": @0,
+                         @"x": @0,
+                         @"address": @""
+                         },@{
+                         @"topicNormalImageList": @[@{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                        },
+                                                    
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                        },
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                        }],
+                         @"topicSmallImageList": @[@{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                       },
+                                                   
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                       },
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                       }],
+                         @"topicId": @"t20170622163932",
+                         @"topicTitle": @"我想要租房子\n我能接受的租金价格为:1577元至8968元/月\n我想要的户型为:3室0厅0卫\n我想要我的房子门口朝向:无所谓了\n我想合租\n我可以接受的房屋来源为：房东\n另外我想说的是：一诺孙女\n标签要求：有天然气, 三人以下合租, 生活便利",
+                         @"createTime": @"2017-06-22 16:39:32",
+                         @"topicStatus": @1,
+                         @"likeList": @[@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            }],
+                         @"zoneId": @"1",
+                         @"ownerId": @"005600",
+                         @"commentList": @[],
+                         @"ownerName": @"其实我很帅",
+                         @"ownerImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                         @"zoneName": @"1",
+                         @"commentCount": @0,
+                         @"delTime": @"",
+                         @"y": @0,
+                         @"x": @0,
+                         @"address": @""
+                         },@{
+                         @"topicNormalImageList": @[@{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                        },
+                                                    
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                        },
+                                                    @{
+                                                        @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                        }],
+                         @"topicSmallImageList": @[@{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
+                                                       },
+                                                   
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
+                                                       },
+                                                   @{
+                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
+                                                       }],
+                         @"topicId": @"t20170622163932",
+                         @"topicTitle": @"我想要租房子\n我能接受的租金价格为:1577元至8968元/月\n我想要的户型为:3室0厅0卫\n我想要我的房子门口朝向:无所谓了\n我想合租\n我可以接受的房屋来源为：房东\n另外我想说的是：一诺孙女\n标签要求：有天然气, 三人以下合租, 生活便利",
+                         @"createTime": @"2017-06-22 16:39:32",
+                         @"topicStatus": @1,
+                         @"likeList": @[],
+                         @"zoneId": @"1",
+                         @"ownerId": @"005600",
+                         @"commentList": @[],
+                         @"ownerName": @"其实我很帅",
+                         @"ownerImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                         @"zoneName": @"1",
+                         @"commentCount": @0,
+                         @"delTime": @"",
+                         @"y": @0,
+                         @"x": @0,
+                         @"address": @""
+                         }                          ]
+             
+             };
+}
+
 
 // 发帖记录
 - (void)requestTopicHis{
@@ -125,7 +374,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //    return 2;
+//        return 2;
     return self.topicHisDataSource.count;
     
 }
@@ -190,7 +439,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     [PushManager pushViewControllerWithName:@"NeighborDetailController" animated:YES block:^(NeighborDetailController* viewController) {
-        viewController.model = self.topicHisDataSource[indexPath.section];
+        viewController.model = self.topicHisDataSource[indexPath.section][indexPath.row];
     }];
 
 }

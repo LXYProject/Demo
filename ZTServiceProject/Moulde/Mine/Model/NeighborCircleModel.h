@@ -122,4 +122,5 @@
 @property (nonatomic,copy)NSString *x;
 @property (nonatomic,copy)NSString *address;
 
+
 @end

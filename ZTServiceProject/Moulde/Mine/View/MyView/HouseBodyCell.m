@@ -67,24 +67,28 @@
 
 - (IBAction)removeBinding {
     
-    // 取消绑定，取消关注
-    [MineHttpManager requestAddToCancelHouse:unHouse
-                                     houseId:_houseId
-                                     success:^(id response) {
-                                         
-                                         //操作失败的原因
-                                         NSString *information = [response objectForKey:@"information"];
-                                         //状态码
-                                         NSString *status = [response objectForKey:@"status"];
-                                         
-                                         if ([status integerValue]==0) {
-                                             [AlertViewController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:UIAlertControllerStyleAlert controller:myHoseVC];
-                                         }else{
-                                             [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:myHoseVC];
-                                         }
-                                         
-                                     } failure:^(NSError *error, NSString *message) {
-                                     }];
+    if (self.btnClickBlock) {
+        self.btnClickBlock(nil);
+    }
+
+//    // 取消绑定，取消关注
+//    [MineHttpManager requestAddToCancelHouse:unHouse
+//                                     houseId:_houseId
+//                                     success:^(id response) {
+//                                         
+//                                         //操作失败的原因
+//                                         NSString *information = [response objectForKey:@"information"];
+//                                         //状态码
+//                                         NSString *status = [response objectForKey:@"status"];
+//                                         
+//                                         if ([status integerValue]==0) {
+//                                             [AlertViewController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:UIAlertControllerStyleAlert controller:myHoseVC];
+//                                         }else{
+//                                             [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:myHoseVC];
+//                                         }
+//                                         
+//                                     } failure:^(NSError *error, NSString *message) {
+//                                     }];
 }
 
 @end

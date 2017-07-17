@@ -54,10 +54,10 @@
         self.currentPage = 1;
         [self requestMessageData];
     }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-        [self requestMessageData];
-    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//        [self requestMessageData];
+//    }];
     [self.tableView beginHeaderRefreshing];
    
     

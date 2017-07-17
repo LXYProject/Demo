@@ -86,6 +86,17 @@
 
 - (IBAction)thumbUp:(UIButton *)sender {
     sender.selected = !sender.selected;
+    @weakify(self);
+    [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_topicId success:^(id response) {
+        @strongify(self);
+        //这个代码放在网络请求的成功回调里面
+        if (self.commentSuccessBlock) {
+            self.commentSuccessBlock(response);
+        }
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+
     if (sender.tag==1) {
         NSLog(@"11111");
         if (sender.selected) {

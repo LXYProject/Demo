@@ -7,8 +7,10 @@
 //
 
 #import "ItemMoreViewController.h"
+#import "FiltrateView.h"
 
-@interface ItemMoreViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
+
+@interface ItemMoreViewController ()<UIPickerViewDelegate, UIPickerViewDataSource, FiltrateViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
 @property (weak, nonatomic) IBOutlet UIButton *btn3;
@@ -30,45 +32,71 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:self.itemTitle titleColor:[UIColor whiteColor]];
     
     //    self.pickView.transform =CGAffineTransformMakeTranslation(0, 200);
-    [self.view addSubview:self.pickerView];
-    self.pickerView.hidden = YES;
-    self.pickerView.transform = CGAffineTransformMakeScale(0, 0);
-    
-    //东城区、西城区、朝阳区、丰台区、石景山区、海淀区、顺义区、通州区、大兴区、房山区、门头沟区、昌平区、平谷区、密云区、怀柔区、延庆区
+//    [self.view addSubview:self.pickerView];
+//    self.pickerView.hidden = YES;
+//    self.pickerView.transform = CGAffineTransformMakeScale(0, 0);
+//    
+//    //东城区、西城区、朝阳区、丰台区、石景山区、海淀区、顺义区、通州区、大兴区、房山区、门头沟区、昌平区、平谷区、密云区、怀柔区、延庆区
     self.areaList = [[NSArray alloc]initWithObjects:@"东城区",@"西城区",@"朝阳区",@"丰台区",@"石景山区",@"海淀区", @"顺义区", @"通州区", @"大兴区", @"房山区", @"门头沟区", @"昌平区", @"平谷区", @"密云区", @"怀柔区", @"延庆区", nil];
     self.typeList = [[NSArray alloc]initWithObjects:@"a",@"b",@"c",@"d",@"e",@"f", @"g", @"h", nil];
     self.sortingList = [[NSArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5", nil];
     
 
+    NSArray *titleArr = @[@"区域",@"类型",@"排序"];
+    NSArray *firstDataArr = self.areaList;
+    NSArray *secondDataArr = @[@"郑州",@"上海",@"北京",@"中牟"];
+    NSArray *thirdDataArr = @[@"100",@"200",@"300",];
+    NSArray *dataArr = @[firstDataArr,secondDataArr,thirdDataArr];
+    
+    
+    FiltrateView *filtreteView = [[FiltrateView alloc]initWithCount:3 withTitleArr:titleArr withDataArr:dataArr];
+    filtreteView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 44);
+    filtreteView.delegate = self;
+    [self.view addSubview:filtreteView];
+
     
 }
-- (IBAction)btnClick:(UIButton *)sender {
-    if (sender.selected) {
-        sender.selected = NO;
-        [self dismissPickView];
-        return;
+
+//返回所点击内容
+- (void)completionArr:(NSArray *)dataArr
+{
+    for (NSString *str in dataArr) {
+        NSLog(@"%@",str);
     }
-    _button.selected = NO;
-    sender.selected = YES;
-    _button = sender;
-    //根据点击不同的btn赋值不同的数据源
-    if (sender == self.btn1) {
-        self.dataSource = self.areaList;
-        _textAliment = 0;
-    }else if (sender==self.btn2){
-        _textAliment = 1;
-        self.dataSource = self.typeList;
-    }else{
-        _textAliment = 2;
-        self.dataSource = self.sortingList;
-    }
-    [self.pickerView reloadAllComponents];
-    //刷新
-    [self showPickView];
 }
+
+
+
+
+
+//- (IBAction)btnClick:(UIButton *)sender {
+//    if (sender.selected) {
+//        sender.selected = NO;
+//        [self dismissPickView];
+//        return;
+//    }
+//    _button.selected = NO;
+//    sender.selected = YES;
+//    _button = sender;
+//    //根据点击不同的btn赋值不同的数据源
+//    if (sender == self.btn1) {
+//        self.dataSource = self.areaList;
+//        _textAliment = 0;
+//    }else if (sender==self.btn2){
+//        _textAliment = 1;
+//        self.dataSource = self.typeList;
+//    }else{
+//        _textAliment = 2;
+//        self.dataSource = self.sortingList;
+//    }
+//    [self.pickerView reloadAllComponents];
+//    //刷新
+//    [self showPickView];
+//}
 - (void)showPickView {
     if (_isShowing) {
         return;

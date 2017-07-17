@@ -29,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textChnage:) name:UITextFieldTextDidChangeNotification object:self.searchBar];
     [self.collectionView registerNib:[UINib nibWithNibName:@"SecondHandSearchHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SecondHandSearchHeaderView"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"SecondHanditemCell" bundle:nil] forCellWithReuseIdentifier:@"SecondHanditemCell"];

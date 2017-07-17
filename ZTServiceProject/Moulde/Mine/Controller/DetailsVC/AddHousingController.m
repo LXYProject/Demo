@@ -30,6 +30,8 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"添加房屋" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
     [self createUIsearchBar];
     
     self.tableView.hidden = YES;

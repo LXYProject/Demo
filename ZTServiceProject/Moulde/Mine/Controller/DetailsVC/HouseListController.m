@@ -25,6 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"房屋列表" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
 
     [self searchHouse];
 }

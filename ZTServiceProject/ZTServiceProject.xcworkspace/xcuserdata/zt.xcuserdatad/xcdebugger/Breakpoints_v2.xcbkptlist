@@ -43,5 +43,69 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
+            timestampString = "521729596.85604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-commentRequestWithText:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NeighborDetailCell commentRequestWithText:]"
+                  moduleName = "ZTServiceProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zt/Desktop/ZT/ZTServiceProject/Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
+                  timestampString = "521978894.829074"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__45-[NeighborDetailCell commentRequestWithText:]_block_invoke"
+                  moduleName = "ZTServiceProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zt/Desktop/ZT/ZTServiceProject/Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
+                  timestampString = "521978894.830818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moulde/Tenement/Controller/TenementViewController.m"
+            timestampString = "521978805.924426"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-passTrendValues:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
