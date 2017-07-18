@@ -99,21 +99,41 @@ static PushManager *_pushManager = nil;
 
 
 
+//#pragma mark - 根据VC的类进行跳转
+//+ (void)popViewControllerWithName:(NSString *)vCClass
+//                         animated:(BOOL)isAnimated
+//                            block:(PushBlock)block
+//{
+//    UIViewController *pushVC = [[NSClassFromString(vCClass) alloc] init];
+//    NSArray *vcArray = [PushManager currentNavigationController].viewControllers;
+//    for(UIViewController *currentVc in vcArray)
+//    {
+//        if([currentVc isKindOfClass:NSClassFromString(vCClass)])
+//        {
+//            if (block) {
+//                block(pushVC);
+//            }
+//            [[PushManager currentNavigationController] popToViewController:currentVc animated:isAnimated];
+//            return;
+//        }
+//    }
+//    NSAssert(true == true, @"当前的VC不存在Push的数组里面");
+//}
+
 #pragma mark - 根据VC的类进行跳转
 + (void)popViewControllerWithName:(NSString *)vCClass
                          animated:(BOOL)isAnimated
                             block:(PushBlock)block
 {
-    UIViewController *pushVC = [[NSClassFromString(vCClass) alloc] init];
-    NSArray *vcArray = [PushManager currentNavigationController].viewControllers;
-    for(UIViewController *currentVc in vcArray)
+    NSArray *vcArray = [PushManager currentViewController].rt_navigationController.rt_viewControllers;
+    for(BaseViewController *currentVc in vcArray)
     {
         if([currentVc isKindOfClass:NSClassFromString(vCClass)])
         {
             if (block) {
-                block(pushVC);
+                block(currentVc);
             }
-            [[PushManager currentNavigationController] popToViewController:currentVc animated:isAnimated];
+            [(BaseNavigationController *)[PushManager currentNavigationController] popToViewController:currentVc animated:isAnimated];
             return;
         }
     }

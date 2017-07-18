@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="141.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="美丽女人节，绽放你的魅力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvQ-sB-hcq">
@@ -82,6 +82,12 @@
                     <constraint firstItem="eio-Vq-G2L" firstAttribute="trailing" secondItem="uvQ-sB-hcq" secondAttribute="trailing" id="xkg-9C-HIv"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="bulletinCategory" destination="geF-jM-rc2" id="ALJ-7d-4a6"/>
+                <outlet property="bulletinSubtitle" destination="eio-Vq-G2L" id="AkT-z6-UXM"/>
+                <outlet property="time" destination="3NG-vQ-Zfz" id="9X7-Nb-Pug"/>
+                <outlet property="title" destination="uvQ-sB-hcq" id="Rxj-BV-c3X"/>
+            </connections>
             <point key="canvasLocation" x="-12" y="-124"/>
         </tableViewCell>
     </objects>

@@ -9,6 +9,7 @@
 #import "MyCommunityListController.h"
 #import "MineHttpManager.h"
 #import "MyNeighborModel.h"
+#import "TenementViewController.h"
 
 @interface MyCommunityListController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -94,11 +95,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(passTrendValues:)]) {
-        [self.delegate passTrendValues:self.myZonesDataSource[indexPath.row]];
-        
-    }
-    [self.navigationController popViewControllerAnimated:YES];
+ 
+    [PushManager popViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
+        viewController.btnTitle = [self.myZonesDataSource[indexPath.row] zoneName];
+        viewController.zoneId = [self.myZonesDataSource[indexPath.row] zoneId];
+    }];
+
 }
 
 - (NSArray *)myZonesDataSource {

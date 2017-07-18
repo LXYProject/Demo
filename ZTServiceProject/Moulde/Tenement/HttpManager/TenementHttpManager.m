@@ -7,6 +7,7 @@
 //
 
 #import "TenementHttpManager.h"
+#import "AnnounceModel.h"
 
 @implementation TenementHttpManager
 
@@ -30,7 +31,19 @@
         url = A_convenience;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        success(response);
+        //success(response);
+        if (ListOrPanorama==ServiceList) {
+            
+        }else if (ListOrPanorama==ListThings){
+            
+        }else if (ListOrPanorama==VillagePanorama){
+            
+        }else if (ListOrPanorama==AnnouncementList){
+            NSArray *modelArray = [AnnounceModel mj_objectArrayWithKeyValuesArray:response[@"bulletinList"]];
+            success(modelArray);
+        }else{
+            
+        }
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

@@ -118,6 +118,7 @@
 		7B16D28A1F1891320070F88A /* AddVillagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D2881F1891320070F88A /* AddVillagesController.m */; };
 		7B16D28B1F1891320070F88A /* AddVillagesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B16D2891F1891320070F88A /* AddVillagesController.xib */; };
 		7B16D28E1F18C5EC0070F88A /* TenementHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */; };
+		7B1D8DF01F1DAF0B00D79F46 /* AnnounceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D8DEF1F1DAF0B00D79F46 /* AnnounceModel.m */; };
 		7B1E48C81F17181B00AECF41 /* AddHousingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48C61F17181B00AECF41 /* AddHousingController.m */; };
 		7B1E48C91F17181B00AECF41 /* AddHousingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48C71F17181B00AECF41 /* AddHousingController.xib */; };
 		7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */; };
@@ -721,6 +722,8 @@
 		7B16D2891F1891320070F88A /* AddVillagesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddVillagesController.xib; sourceTree = "<group>"; };
 		7B16D28C1F18C5EC0070F88A /* TenementHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TenementHttpManager.h; sourceTree = "<group>"; };
 		7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TenementHttpManager.m; sourceTree = "<group>"; };
+		7B1D8DEE1F1DAF0B00D79F46 /* AnnounceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceModel.h; sourceTree = "<group>"; };
+		7B1D8DEF1F1DAF0B00D79F46 /* AnnounceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceModel.m; sourceTree = "<group>"; };
 		7B1E48C51F17181B00AECF41 /* AddHousingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHousingController.h; sourceTree = "<group>"; };
 		7B1E48C61F17181B00AECF41 /* AddHousingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHousingController.m; sourceTree = "<group>"; };
 		7B1E48C71F17181B00AECF41 /* AddHousingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddHousingController.xib; sourceTree = "<group>"; };
@@ -2180,6 +2183,8 @@
 		7B6C26AC1EE3C2AB0090BE5C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7B1D8DEE1F1DAF0B00D79F46 /* AnnounceModel.h */,
+				7B1D8DEF1F1DAF0B00D79F46 /* AnnounceModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3310,6 +3315,7 @@
 				7B1662311EF2862900644A7B /* ProductItemCell.m in Sources */,
 				7B966BDB1EFFB5D400326C88 /* MWGridCell.m in Sources */,
 				7B0C71D41F15B78900CE8AEC /* MyHouseViewController.m in Sources */,
+				7B1D8DF01F1DAF0B00D79F46 /* AnnounceModel.m in Sources */,
 				7BFFBF161EF68026001202EE /* PraiseTextCell.m in Sources */,
 				7B16622F1EF2862900644A7B /* ProductCollecttionCell.m in Sources */,
 				7B2AEA9F1F0F2DB20008D9AC /* ServiceOrderController.m in Sources */,

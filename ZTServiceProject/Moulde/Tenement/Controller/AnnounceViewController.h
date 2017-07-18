@@ -10,4 +10,7 @@
 
 @interface AnnounceViewController : BaseViewController
 
+@property (nonatomic, copy)NSString* zoneId;
+
+
 @end

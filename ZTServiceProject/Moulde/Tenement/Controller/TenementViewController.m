@@ -7,8 +7,6 @@
 //
 
 #import "TenementViewController.h"
-#import "MacroDefinition.h"
-#import "ItemBtnCell.h"
 #import "ItemBtnCell.h"
 #import "HomeHttpManager.h"
 #import "TenemnetHeaderCell.h"
@@ -17,8 +15,9 @@
 #import "DQTextFild.h"
 #import "MyCommunityListController.h"
 #import "MKPAlertView.h"
+#import "AnnounceViewController.m"
 
-@interface TenementViewController ()<UITextFieldDelegate, MyCommunityListControllerDelegate>
+@interface TenementViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong)NSArray *dataSourceArray;
@@ -30,14 +29,12 @@
 @property (nonatomic, strong) DQTextFild *BYsearchTextFd;
 @property (nonatomic, strong) UIButton *searchBtn;
 
-
 @end
 
 @implementation TenementViewController
 {
 //    NSArray *imageNames;
     NSInteger _times;
-    MyCommunityListController *_myVC;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,13 +44,18 @@
 //                   @"timg.jpeg",
 //                   ];
     _imageUrlArr = [[NSMutableArray alloc] init];
-    [self createNav];
-
-    _myVC.delegate = self;
     
     [self requestBanner];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self createNav];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.searchBtn removeFromSuperview];
+}
 - (void)createNav
 {
     self.searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -62,7 +64,11 @@
     self.searchBtn.layer.masksToBounds = YES;
     self.searchBtn.layer.cornerRadius = self.searchBtn.bounds.size.width * 0.05;
     self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    [self.searchBtn setTitle:_btnTitle forState:UIControlStateNormal];
+    NSLog(@"_btnTitle:::%@",_btnTitle);
+    NSLog(@"zoneId:::%@",_zoneId);
     [self.searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.searchBtn.titleLabel.font = [UIFont systemFontOfSize: 12];
     [self.searchBtn addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = self.searchBtn;
 }
@@ -71,23 +77,6 @@
 {
     [PushManager pushViewControllerWithName:@"MyCommunityListController" animated:YES block:nil];
 }
-- (void)btnClick
-{
-//    [PushManager pushViewControllerWithName:@"" animated:YES block:nil];
-    MyCommunityListController *myVC = [[MyCommunityListController alloc] init];
-    [self.navigationController pushViewController:myVC animated:YES];
-//    [self presentViewController:myVC animated:YES completion:nil];
-}
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    NSLog(@"textFieldDidBeginEditing");
-}
-
-#pragma mark 实现传值协议方法
--(void)passTrendValues:(NSString *)values{
-    NSLog(@"values:::%@",values);
-}
-
 //请求广告图
 - (void)requestBanner {
     @weakify(self);
@@ -144,13 +133,17 @@
             @strongify(self);
 
             if ([self.dataSourceArray[indexPath.section][value][@"vcName"] isEqualToString:@"MKPAlertView"]) {
-                
                 // 弹出框
                 [self creareAlert];
             }else{
                 
+                if ([self.dataSourceArray[indexPath.section][value][@"vcName"] isEqualToString:@"AnnounceViewController"]){
+            
+                    //[PushManager pushViewControllerWithName:@"AnnounceViewController" animated:YES block:nil];
+                }else{
                 // push控制器
                 [PushManager pushViewControllerWithName:self.dataSourceArray[indexPath.section][value][@"vcName"] animated:YES block:nil];
+                }
             }
         };
         cell.titleAndImageDictArray = self.dataSourceArray[indexPath.section];
@@ -233,7 +226,7 @@
                                  
                                  @{@"title":@"小区主页",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"},
+                                   @"vcName":@"InformationController"},
                                  ],
                              @[
                                  @{@"title":@"上门服务",
@@ -259,19 +252,19 @@
                                  
                                  @{@"title":@"保安团队",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"},
+                                   @"vcName":@"InformationController"},
                                  
                                  @{@"title":@"设施设备",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"}
+                                   @"vcName":@"InformationController"}
                                  ],
                              @[
                                  @{@"title":@"物业费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"},
+                                   @"vcName":@"InformationController"},
                                  @{@"title":@"生活缴费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"AnnounceViewController"}
+                                   @"vcName":@"InformationController"}
                                  ],
                              ];
     }

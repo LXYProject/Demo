@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class AnnounceModel;
 @interface AnnounceCell : UITableViewCell
+
+@property (strong, nonatomic) AnnounceModel *model;
 
 @end

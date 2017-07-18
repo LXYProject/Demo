@@ -8,9 +8,14 @@
 
 #import "AnnounceViewController.h"
 #import "AnnounceCell.h"    
+#import "TenementHttpManager.h"
 
 @interface AnnounceViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+// 小区公告的数据
+@property (nonatomic,strong)NSMutableArray *announceDataSource;
+
 
 @end
 
@@ -26,11 +31,26 @@
                        titleColor:[UIColor whiteColor]
                          selector:@selector(rightBarClick)
                            target:self];
+    
+    [self requestBulletinList];
 }
 
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
+}
+
+// 请求小区公告
+- (void)requestBulletinList{
+    [TenementHttpManager requestListOrPanorama:AnnouncementList
+                                        zoneId:@"510018177815"
+                                       success:^(id response) {
+                                           
+                                           [self.announceDataSource addObject:response];
+                                           
+                                       } failure:^(NSError *error, NSString *message) {
+                                           
+                                       }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -65,4 +85,10 @@
     return 5;
 }
 
+- (NSArray *)announceDataSource {
+    if (!_announceDataSource) {
+        _announceDataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _announceDataSource;
+}
 @end
