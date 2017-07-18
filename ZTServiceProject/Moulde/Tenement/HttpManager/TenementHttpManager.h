@@ -12,9 +12,9 @@
 typedef enum : NSUInteger {
     ServiceList,       //服务类型列表
     ListThings,        //报事类型列表
-    VillagePanorama,   //查看小区全景
     AnnouncementList,  //公告列表
-    ConvenienceService //便民服务
+    ConvenienceService,//便民服务
+    VillagePanorama    //查看小区全景
 } ListOrPanorama;
 
 

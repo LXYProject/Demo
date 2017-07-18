@@ -8,6 +8,8 @@
 
 #import "TenementHttpManager.h"
 #import "AnnounceModel.h"
+#import "ServiceModel.h"
+#import "ConvenServiceModel.h"
 
 @implementation TenementHttpManager
 
@@ -23,23 +25,26 @@
         url = A_serviceList;
     }else if (ListOrPanorama==ListThings){
         url = A_affairCategoryList;
-    }else if (ListOrPanorama==VillagePanorama){
-        url = A_lookVillagePanorama;
     }else if (ListOrPanorama==AnnouncementList){
         url = A_bulletinList;
-    }else{
+    }else if (ListOrPanorama==ConvenienceService){
         url = A_convenience;
+    }else{
+        url = A_lookVillagePanorama;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
         //success(response);
         if (ListOrPanorama==ServiceList) {
-            
+            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceCategoryList"]];
+            success(modelArray);
         }else if (ListOrPanorama==ListThings){
-            
-        }else if (ListOrPanorama==VillagePanorama){
-            
+            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"affairCategoryList"]];
+            success(modelArray);
         }else if (ListOrPanorama==AnnouncementList){
             NSArray *modelArray = [AnnounceModel mj_objectArrayWithKeyValuesArray:response[@"bulletinList"]];
+            success(modelArray);
+        }else if (ListOrPanorama==ConvenienceService){
+            NSArray *modelArray = [ConvenServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceList"]];
             success(modelArray);
         }else{
             

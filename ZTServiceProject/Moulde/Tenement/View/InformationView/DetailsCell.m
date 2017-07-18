@@ -7,6 +7,7 @@
 //
 
 #import "DetailsCell.h"
+#import "ConvenServiceModel.h"
 
 @interface DetailsCell ()
 @property (weak, nonatomic) IBOutlet UILabel *villagersName;
@@ -27,6 +28,15 @@
 
     // Configure the view for the selected state
 }
+
+- (void)setModel:(ConvenServiceModel *)model{
+    _model = model;
+    
+    _villagersName.text = model.serviceCategory;
+    _phoneNumber.text = model.servicePhoneNum;
+    _address.text = model.serviceAddress;
+}
+
 - (IBAction)callBtnClick {
 }
 

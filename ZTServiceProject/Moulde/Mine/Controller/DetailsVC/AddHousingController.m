@@ -122,7 +122,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [self.dataSource[indexPath.row] zoneName];;
+    cell.textLabel.text = [self.dataSource[indexPath.row] zoneName];
     return cell;
 
 }
