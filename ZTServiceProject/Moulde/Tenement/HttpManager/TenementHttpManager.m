@@ -158,9 +158,9 @@
     
     NSString *url = nil;
     if (praiseOrComplaint == praise) {
-        url = A_praiseList;
+        url = A_praise;
     }else{
-        url = A_complainList;
+        url = A_complain;
     }
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
         success(response);

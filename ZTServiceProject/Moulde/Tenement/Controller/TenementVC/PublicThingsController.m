@@ -23,7 +23,10 @@
 {
     NSArray *_titleArray;
     NSArray *_contentArray;
-    
+    NSString *_affairDiscribe;
+    NSString *_userRealName;
+    NSString *_userPhoneNum;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,26 +49,32 @@
 
 - (void)rightBarClick
 {
-    NSLog(@"rightBarClick");
-}
-
-// 公共报事
-- (void)requestPublicAffairList{
+    NSLog(@"提交");
+    // 公共报事
     [TenementHttpManager requestZoneId:self.zoneId
                            affairTitle:@""
-                        affairDiscribe:@""
-                        affairCategory:@""
-                           userAddress:@""
-                          userRealName:@""
-                          userPhoneNum:@""
+                        affairDiscribe:_affairDiscribe
+                        affairCategory:@"1"
+                           userAddress:@"北京市 海淀区 财智大厦 c305室"
+                          userRealName:_userRealName
+                          userPhoneNum:_userPhoneNum
                                 images:[UIImage imageNamed:@""]
                                success:^(id response) {
-                               
+                                   
+                                   //操作失败的原因
+                                   NSString *information = [response objectForKey:@"information"];
+                                   //状态码
+                                   NSString *status = [response objectForKey:@"status"];
+                                   
+                                   if ([status integerValue]==0) {
+                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                   }else{
+                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                   }
                                } failure:^(NSError *error, NSString *message) {
-                               
                                }];
-
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;
@@ -146,6 +155,10 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     DoorServiceCell *cell = (DoorServiceCell *)[self creatCell:tableView indenty:@"DoorServiceCell"];
+    cell.textViewBlock = ^(id obj) {
+        NSLog(@"obj==%@", obj);
+        _affairDiscribe = obj;
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -195,6 +208,17 @@
     }else{
         cell.title.font = [UIFont systemFontOfSize:14];
         [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    }
+    if (indexPath.row==0) {
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userRealName = obj;
+        };
+    }else{
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userPhoneNum = obj;
+        };
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

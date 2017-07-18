@@ -21,12 +21,16 @@
 {
     NSArray *_titleArray;
     NSArray *_contentArray;
-    StaticlCell *_staticCell;
+    NSString *_affairTitle;
+    NSString *_userRealName;
+    NSString *_userPhoneNum;
+    NSString *_affairDiscribe;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"投诉"
                   titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@""
@@ -39,36 +43,39 @@
                     @"联系电话:"];
     _contentArray = @[@"输入您的姓名",
                       @"输入您的电话"];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
-
-    [self requestPraiseList];
 
 }
 
 - (void)rightBarClick
 {
     NSLog(@"提交");
-}
+    // 投诉
+    [TenementHttpManager requestPraiseOrComplaint:complaints
+                                           zoneId:self.zoneId
+                                      affairTitle:_affairTitle
+                                   affairDiscribe:_affairDiscribe
+                                   affairCategory:@"1"
+                                      userAddress:@"北京市 海淀区 财智大厦 c305室"
+                                     userRealName:_userRealName
+                                     userPhoneNum:_userPhoneNum
+                                           images:[UIImage imageNamed:@""]
+                                          success:^(id response) {
 
-// 投诉
-- (void)requestPraiseList{
-    
-    NSLog(@"===%@", _staticCell.content.text);
+                                              //操作失败的原因
+                                              NSString *information = [response objectForKey:@"information"];
+                                              //状态码
+                                              NSString *status = [response objectForKey:@"status"];
+                                              
+                                              if ([status integerValue]==0) {
+                                                    [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                  
+                                              }else{
+                                                  [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                              }
 
-//    [TenementHttpManager requestPraiseOrComplaint:complaints
-//                                           zoneId:self.zoneId
-//                                      affairTitle:_staticCell.content.text
-//                                   affairDiscribe:@""
-//                                   affairCategory:@""
-//                                      userAddress:@""
-//                                     userRealName:@""
-//                                     userPhoneNum:@""
-//                                           images:[UIImage imageNamed:@""]
-//                                          success:^(id response) {
-//                                          
-//                                          } failure:^(NSError *error, NSString *message) {
-//                                          
-//                                          }];
+                                          } failure:^(NSError *error, NSString *message) {
+
+                                          }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -113,10 +120,19 @@
             cell.title.font = [UIFont systemFontOfSize:14];
             [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
         }
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj) ;
+            _affairTitle = obj;
+        };
+
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         ComplaintsCell *cell = (ComplaintsCell *)[self creatCell:tableView indenty:@"ComplaintsCell"];
+        cell.textViewBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _affairDiscribe = obj;
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -136,6 +152,8 @@
 - (UITableViewCell *)sectionTwoTableView:(UITableView *)tableView
                                indexPath:(NSIndexPath *)indexPath {
     
+    
+    
     StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
     cell.title.textColor = TEXT_COLOR;
     cell.title.text = _titleArray[indexPath.row];
@@ -147,12 +165,18 @@
         cell.title.font = [UIFont systemFontOfSize:14];
         [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     }
+    if (indexPath.row==0) {
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userRealName = obj;
+        };
+    }else{
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userPhoneNum = obj;
+        };
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.textFieldBlock = ^(id obj) {
-        NSLog(@"obj==%@", obj) ;
-    };
-    
     return cell;
     
 }

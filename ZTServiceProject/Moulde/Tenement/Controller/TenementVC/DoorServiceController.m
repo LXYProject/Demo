@@ -27,6 +27,11 @@
     NSArray *_contentArray;
     NSString *_data;
     NSString *_hour;
+    
+    NSString *_serviceDiscribe;
+    NSString *_userRealName;
+    NSString *_userPhoneNum;
+
 }
 
 - (void)viewDidLoad {
@@ -51,19 +56,16 @@
 
 - (void)rightBarClick
 {
-    NSLog(@"rightBarClick");
-}
-
-// 发送上门服务信息
-- (void)requestLookvisitService{
-    [TenementHttpManager requestZoneId:@""
+    NSLog(@"提交");
+    // 发送上门服务信息
+    [TenementHttpManager requestZoneId:self.zoneId
                           serviceTitle:@""
-                       serviceDiscribe:@""
+                       serviceDiscribe:_serviceDiscribe
                        serviceCategory:@""
                            serviceTime:@""
                            userAddress:@""
-                          userRealName:@""
-                          userPhoneNum:@""
+                          userRealName:_userRealName
+                          userPhoneNum:_userPhoneNum
                                houseId:@""
                              houseName:@""
                                 images:[UIImage imageNamed:@""]
@@ -71,8 +73,13 @@
                                    
                                    
                                } failure:^(NSError *error, NSString *message) {
-                               
+                                   
                                }];
+
+}
+
+// 发送上门服务信息
+- (void)requestLookvisitService{
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -142,6 +149,17 @@
         cell.title.font = [UIFont systemFontOfSize:14];
         [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     }
+    if (indexPath.row==0) {
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userRealName = obj;
+        };
+    }else{
+        cell.textFieldBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _userPhoneNum = obj;
+        };
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -189,6 +207,10 @@
 //        return cell;
     }else{
         DoorServiceCell *cell = (DoorServiceCell *)[self creatCell:tableView indenty:@"DoorServiceCell"];
+        cell.textViewBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _serviceDiscribe = obj;
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }

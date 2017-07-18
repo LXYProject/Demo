@@ -9,7 +9,8 @@
 #import "ComplaintsCell.h"
 #import "HClTextView.h"
 
-@interface ComplaintsCell ()
+@interface ComplaintsCell ()<HClTextViewDelegate>
+
 @property (strong, nonatomic) HClTextView *textView;
 @property (copy, nonatomic) NSString *myInPutText;
 
@@ -26,6 +27,7 @@
         }
     }];
     self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    self.textView.delegate = self;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.textView setLeftTitleText:@"投诉内容:"];
     [self.textView setPlaceholder:@"描述一下（少于300字）" contentText:_myInPutText maxTextCount:300];
@@ -38,6 +40,14 @@
 
     // Configure the view for the selected state
 }
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (self.textViewBlock) {
+        self.textViewBlock(textView.text);
+    }
+
+}
+
 - (HClTextView *)textView {
     if (!_textView) {
         _textView = [[NSBundle mainBundle] loadNibNamed:@"HClTextView" owner:self options:nil].lastObject;

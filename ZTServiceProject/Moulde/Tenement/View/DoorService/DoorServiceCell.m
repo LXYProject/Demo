@@ -9,7 +9,7 @@
 #import "DoorServiceCell.h"
 #import "HClTextView.h"
 
-@interface DoorServiceCell ()
+@interface DoorServiceCell ()<HClTextViewDelegate>
 
 @property (strong, nonatomic) HClTextView *textView;
 @property (copy, nonatomic) NSString *myInPutText;
@@ -27,6 +27,7 @@
         }
     }];
     self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    self.textView.delegate = self;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.textView setLeftTitleText:@"描述："];
     [self.textView setPlaceholder:@"描述你下您的服务（少于300字）" contentText:_myInPutText maxTextCount:300];
@@ -37,6 +38,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (self.textViewBlock) {
+        self.textViewBlock(textView.text);
+    }
 }
 
 - (HClTextView *)textView {
