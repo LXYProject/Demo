@@ -211,13 +211,13 @@
     
     UIImage *originImage = image;
     
-    NSData *data = UIImageJPEGRepresentation(originImage, 0.1);
+    NSData *data = UIImageJPEGRepresentation(originImage, 0.5);
     
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
 
     
-    NSDictionary *paramter = @{@"images":@{@"type":@"png",@"base64":encodedImageStr?encodedImageStr:@""}};
+    NSDictionary *paramter = @{@"images":[Tools dictTransformToJson:@{@"type":@"jpg",@"base64":encodedImageStr?encodedImageStr:@""}]};
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updateHeadImage paramter:paramter success:^(id response) {
         NSLog(@"%@", response);
@@ -259,6 +259,8 @@
 //    }];
 
 }
+
+
 
 
 

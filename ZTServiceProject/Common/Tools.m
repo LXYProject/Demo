@@ -120,4 +120,14 @@
         
     }
 }
+
++ (NSString *)dictTransformToJson:(NSDictionary *)dict {
+    if (!dict) {
+        return nil;
+    }
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
 @end

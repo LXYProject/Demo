@@ -20,4 +20,6 @@ typedef void(^AppToolBlock)(NSString *string);
 
 //section圆角cell
 + (void)cellRadio:(UITableView *)tableView cell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;
+
++ (NSString *)dictTransformToJson:(NSDictionary *)dict;
 @end
