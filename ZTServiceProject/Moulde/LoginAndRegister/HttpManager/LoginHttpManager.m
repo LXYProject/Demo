@@ -200,12 +200,25 @@
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure{
     
+    //UIImageJPEGRepresentation(originImage, 0.5);
+    //UIImagePNGRepresentation(originImage);
+//    UIImage *originImage = image;
+//    NSData *data = UIImagePNGRepresentation(originImage);
+//
+//    if (data) {
+//        UIImageJPEGRepresentation(image, 0.5);
+//    }
+    
     UIImage *originImage = image;
-    NSData *data = UIImageJPEGRepresentation(originImage, 0.5);
+    
+    NSData *data = UIImageJPEGRepresentation(originImage, 0.1);
+    
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
-    NSDictionary *paramter = @{@"image":@{@"type":@"png",@"base64":encodedImageStr?encodedImageStr:@""}};
 
+    
+    NSDictionary *paramter = @{@"images":@{@"type":@"png",@"base64":encodedImageStr?encodedImageStr:@""}};
+    
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updateHeadImage paramter:paramter success:^(id response) {
         NSLog(@"%@", response);
         success(response);
