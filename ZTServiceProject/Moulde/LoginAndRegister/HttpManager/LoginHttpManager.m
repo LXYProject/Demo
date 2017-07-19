@@ -200,24 +200,50 @@
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure{
     
-    NSData *data = UIImagePNGRepresentation(image);
-    if (data) {
-        UIImageJPEGRepresentation(image, 0.5);
-    }
+    UIImage *originImage = image;
+    NSData *data = UIImageJPEGRepresentation(originImage, 0.5);
+    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
-    //NSString *encodedImageStr = [data base64EncodedStringWithOptions:0];
-    
-    NSDictionary *parameter = @{@"image":image?image:@""};
-    
-//    @"image/jpeg",
-//    @"image/png",
-    [[HttpAPIManager sharedHttpAPIManager]uploadDataWithUrl:A_updateHeadImage fileData:data type:@"jpg" name:@"file" mimeType:@"image/jpeg" paramter:parameter progressBlock:^(CGFloat progress) {
-    } success:^(id response) {
+    NSDictionary *paramter = @{@"image":@{@"type":@"png",@"base64":encodedImageStr?encodedImageStr:@""}};
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updateHeadImage paramter:paramter success:^(id response) {
         NSLog(@"%@", response);
         success(response);
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
+//        success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
+    
+
+    
+    //    "image": {
+    //        "type":"1545454sdasd",
+    //        "base64":"1545454sdasd"}
+    //
+    //}
+    //@{“image”:@{@“”：@“”，@“”：@“”}}
+    //"image":@{@"type":@"添加参数",@"base64":@"添加参数"}
+    //    NSDictionary *dd = @{@"image":@{@"type":@"", @"base64":@""}};
+    //    NSLog(@"dd%@", dd);
+//======================================================
+    //    NSData *data = UIImagePNGRepresentation(image);
+    //    if (data) {
+    //        UIImageJPEGRepresentation(image, 0.5);
+    //    }
+    //
+    //    NSString *encodedImageStr = [data base64EncodedStringWithOptions:0];
+//    @"image/jpeg",
+//    @"image/png",
+//    NSURL *url=[NSURL URLWithString:A_updateHeadImage];
+    
+//    [[HttpAPIManager sharedHttpAPIManager]uploadDataWithUrl:A_updateHeadImage fileData:encodedImageStr type:@"jpg" name:@"image" mimeType:@"image/jpeg" paramter:parameter progressBlock:^(CGFloat progress) {
+//    } success:^(id response) {
+//        NSLog(@"%@", response);
+//        success(response);
+//    } failure:^(NSError *error, NSString *message) {
+//        failure(error,message);
+//    }];
 
 }
 

@@ -83,16 +83,16 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
                   failure:(HttpRequestFailure)failure {
     
     NSString *newUrl = [self dealWithURL:url];
-//    id newParamter = [self dealWithParamter:paramter];
+    id newParamter = [self dealWithParamter:paramter];
 
-    [YYRequest uploadFileWithUrl:url fileData:data type:type name:name mimeType:mimeType paramter:paramter progress:^(int64_t bytesRead, int64_t totalBytes) {
+    [YYRequest uploadFileWithUrl:url fileData:data type:type name:name mimeType:mimeType paramter:newParamter progress:^(int64_t bytesRead, int64_t totalBytes) {
         progressBlock((CGFloat)bytesRead/totalBytes);
     } success:^(YYNetWorkSuccess *successful) {
-        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,paramter,successful.responseObject);
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
 
         success(successful.responseObject);
     } failure:^(YYNetWorkFailure *failured) {
-        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,paramter,failured.error);
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
         failure(failured.error,nil);
     }];
     
@@ -169,7 +169,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 - (id)dealWithParamter:(NSDictionary *)paramter{
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
     //    [newParamter setValuesForKeysWithDictionary:paramter];
-    [newParamter setValue:@"1" forKey:@"token"];
+    [newParamter setValue:@"IMwMF9OpWmvOCzOofFSwAA==" forKey:@"token"];
 //    [newParamter setValue:@"20170607093552" forKey:@"userId"];
     [newParamter setValue:@"1362111422120170322120834" forKey:@"userId"];
 

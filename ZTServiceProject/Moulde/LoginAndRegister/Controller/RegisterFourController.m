@@ -247,15 +247,11 @@
                 //修改头像
                 [LoginHttpManager requestImage:_headImage
                                        success:^(id response) {
-                                           NSLog(@"修改头像%@", response);
                                            
-                                           
-                                       } failure:^(NSError *error, NSString *message) {
-                                           
-                                           
-                                       }];
-
-                
+                    
+                } failure:^(NSError *error, NSString *message) {
+                    
+                }];
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }];

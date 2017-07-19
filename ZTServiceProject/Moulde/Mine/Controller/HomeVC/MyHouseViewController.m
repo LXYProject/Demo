@@ -157,7 +157,8 @@
                                                  NSString *status = [response objectForKey:@"status"];
                                                  
                                                  if ([status integerValue]==0) {
-                                                     [AlertViewController alertControllerWithTitle:@"提示" message:@"取消关注成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                     [self.tableView reloadData];
+                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                  }else{
                                                      [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                  }
