@@ -61,8 +61,8 @@
 //                         {	"type":"png", "image":"image_content_base64_ bytes" },
 //                         .........
 //                         ]}，
-    NSDictionary *dic = @{@"images":@[@{@"type":@"", @"image":@""}]};
-    NSLog(@"dic==%@", dic);
+//    NSDictionary *dic = @{@"images":@[@{@"type":@"", @"image":@""}]};
+//    NSLog(@"dic==%@", dic);
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

@@ -19,6 +19,11 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[BaseTabbarController alloc]init];
+    
+    // 高德key
+    [AMapServices sharedServices].apiKey = @"c2120ff832ed742a16ce51083710061e";
+
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

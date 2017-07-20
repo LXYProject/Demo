@@ -40,15 +40,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.currentPage = 1;
+//    self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
-            [self requestLookAllVillageWithMe];
+//        self.currentPage = 1;
+        [self requestLookAllVillageWithMe];
     }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-            [self requestLookAllVillageWithMe];
-    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//            [self requestLookAllVillageWithMe];
+//    }];
     [self.tableView beginHeaderRefreshing];
 
 }
@@ -66,15 +66,15 @@
                                        NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
 
                                        [self.tableView endRefreshing];
-                                       if (self.currentPage==1){
+//                                       if (self.currentPage==1){
                                            [self.myZonesDataSource removeAllObjects];
                                            [self.attentionZonesDataSource removeAllObjects];
-                                       }
+//                                       }
                                        [self.myZonesDataSource addObjectsFromArray:myZonesArray];
                                        [self.attentionZonesDataSource addObjectsFromArray:attentionZonesArray];
-                                       if (response.count<10) {
-                                           [self.tableView endRefreshingWithNoMoreData];
-                                       }
+//                                       if (response.count<10) {
+//                                           [self.tableView endRefreshingWithNoMoreData];
+//                                       }
                                        [self.tableView reloadData];
                                        
                                    } failure:^(NSError *error, NSString *message) {
@@ -140,7 +140,10 @@
                                                    NSString *status = [response objectForKey:@"status"];
                                                    
                                                    if ([status integerValue]==0) {
-                                                       [AlertViewController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                       [self requestLookAllVillageWithMe];
+                                                       [self.tableView reloadData];
+
+                                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                        [self.tableView reloadData];
                                                    }else{
                                                        [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];

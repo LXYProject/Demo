@@ -26,6 +26,8 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我发布的服务" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
     
     self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{

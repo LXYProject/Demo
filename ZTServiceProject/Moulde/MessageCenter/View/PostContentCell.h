@@ -10,4 +10,7 @@
 
 @interface PostContentCell : UITableViewCell
 
+@property (nonatomic,copy)Id_Block textViewBlock;
+
+
 @end

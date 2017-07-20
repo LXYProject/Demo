@@ -14,6 +14,13 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AMap3DMap (5.2.1):
+    - AMapFoundation (~> 1.3)
+  - AMapFoundation (1.4.0)
+  - AMapLocation (2.4.0):
+    - AMapFoundation (~> 1.4)
+  - AMapSearch (5.2.1):
+    - AMapFoundation (~> 1.2)
   - DACircularProgress (2.3.1)
   - GTMBase64 (1.0.0)
   - IQKeyboardManager (3.3.7)
@@ -34,6 +41,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AMap3DMap
+  - AMapLocation
+  - AMapSearch
   - DACircularProgress
   - GTMBase64 (~> 1.0.0)
   - IQKeyboardManager (~> 3.3.7)
@@ -49,6 +59,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMap3DMap: 5a98d7c08d23a7f07853e7ee2fa7650057b75896
+  AMapFoundation: 458974f46a39df8407fd818ab83d2630d494c726
+  AMapLocation: 47b62b5381a66e4d0c2931b70ffde72682427896
+  AMapSearch: 4979b98adf56ed4dabe735435ed78d759ba0c21f
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   GTMBase64: 0da7372e95f5171f3f652db38cde6716f8eb5e24
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
@@ -62,6 +76,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: d78bbda03acd334f3aecd6e5099e2a094fabd7e3
+PODFILE CHECKSUM: bbcb1664d84e0b745c521ed1c78a5492ccc4daad
 
 COCOAPODS: 1.2.1

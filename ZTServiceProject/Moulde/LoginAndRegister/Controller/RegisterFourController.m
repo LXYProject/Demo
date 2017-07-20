@@ -252,6 +252,7 @@
                 } failure:^(NSError *error, NSString *message) {
                     
                 }];
+        
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }];

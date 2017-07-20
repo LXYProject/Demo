@@ -23,7 +23,9 @@
 @end
 
 @implementation PostMessageController
-
+{
+    NSString *_affairDiscribe;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -37,7 +39,7 @@
 - (void)rightBarClick
 {
     NSLog(@"发布");
-    [MesssgeHttpManager requestContent:@""
+    [MesssgeHttpManager requestContent:_affairDiscribe
                                 photos:@""
                                 cityId:@""
                             districtId:@""
@@ -105,6 +107,10 @@
                                     indexPath:(NSIndexPath *)indexPath {
         PostContentCell *cell = (PostContentCell *)[self creatCell:tableView indenty:@"PostContentCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textViewBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _affairDiscribe = obj;
+        };
         return cell;
 }
 

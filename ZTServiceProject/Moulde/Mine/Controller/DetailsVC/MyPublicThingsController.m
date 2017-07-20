@@ -26,16 +26,18 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"公共报事" titleColor:[UIColor whiteColor]];
+    self.tableView.tableFooterView = [[UIView alloc]init];
+
     
-    self.currentPage = 1;
+//    self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
+//        self.currentPage = 1;
         [self reuqestPublicThings];
     }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-        [self reuqestPublicThings];
-    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//        [self reuqestPublicThings];
+//    }];
     [self.tableView beginHeaderRefreshing];
 
 }
@@ -48,13 +50,13 @@
                                     success:^(NSArray* response) {
                                         [self.tableView endRefreshing];
                                         
-                                        if (self.currentPage==1){
+//                                        if (self.currentPage==1){
                                             [self.dataSource removeAllObjects];
-                                        }
+//                                        }
                                         [self.dataSource addObjectsFromArray:response];
-                                        if (response.count<10) {
-                                            [self.tableView endRefreshingWithNoMoreData];
-                                        }
+//                                        if (response.count<10) {
+//                                            [self.tableView endRefreshingWithNoMoreData];
+//                                        }
                                         [self.tableView reloadData];
                                     } failure:^(NSError *error, NSString *message) {
                                         [self.tableView endRefreshing];

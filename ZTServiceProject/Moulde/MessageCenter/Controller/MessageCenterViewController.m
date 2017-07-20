@@ -51,13 +51,13 @@
 //    [self.tableView reloadData];
     
     [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
+//        self.currentPage = 1;
         [self requestMessageData];
     }];
-//    [self.tableView setFooterRefreshBlock:^{
+    [self.tableView setFooterRefreshBlock:^{
 //        self.currentPage++;
-//        [self requestMessageData];
-//    }];
+        [self requestMessageData];
+    }];
     [self.tableView beginHeaderRefreshing];
    
     
@@ -136,8 +136,8 @@
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
         cell.model = self.dataSource[indexPath.section];
-        if (self.dataSource.count==10) {
-            _topicId = cell.model.topicId;
+        if (self.dataSource.count) {
+                _topicId = cell.model.topicId;
         }
         cell.fd_isTemplateLayoutCell = YES;
         return cell;

@@ -21,6 +21,7 @@
 #import "InformationController.h"
 #import "PraiseViewController.h"
 #import "ComplaintsController.h"
+#import "VillagePanoramaController.h"
 
 @interface TenementViewController ()<UITextFieldDelegate>
 
@@ -176,6 +177,11 @@
                     [PushManager pushViewControllerWithName:@"ComplaintsController" animated:YES block:^(ComplaintsController* viewController) {
                         viewController.zoneId = self.zoneId;
                     }];
+                }else if ([self.dataSourceArray[indexPath.section][value][@"vcName"] isEqualToString:@"VillagePanoramaController"]){
+                    
+                    [PushManager pushViewControllerWithName:@"VillagePanoramaController" animated:YES block:^(VillagePanoramaController* viewController) {
+                        viewController.zoneId = self.zoneId;
+                    }];
                 }
                 else{
                 // push控制器
@@ -255,7 +261,7 @@
                                  
                                  @{@"title":@"小区全景",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"NearByViewController"},
+                                   @"vcName":@"VillagePanoramaController"},
                                  
                                  @{@"title":@"便民信息",
                                    @"icon":@"my_tabbar_selected",

@@ -10,6 +10,7 @@
 #import "AnnounceModel.h"
 #import "ServiceModel.h"
 #import "ConvenServiceModel.h"
+#import "VillagePanoramaModel.h"
 
 @implementation TenementHttpManager
 
@@ -47,7 +48,8 @@
             NSArray *modelArray = [ConvenServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceList"]];
             success(modelArray);
         }else{
-            
+            NSArray *modelArray = [VillagePanoramaModel mj_objectArrayWithKeyValuesArray:response[@"featureList"]];
+            success(modelArray);
         }
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

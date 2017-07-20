@@ -36,15 +36,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.currentPage = 1;
+//    self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
+//        self.currentPage = 1;
         [self requestLookAllHouseWithMe];
     }];
-    [self.tableView setFooterRefreshBlock:^{
-        self.currentPage++;
-        [self requestLookAllHouseWithMe];
-    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        self.currentPage++;
+//        [self requestLookAllHouseWithMe];
+//    }];
     [self.tableView beginHeaderRefreshing];
 }
 
@@ -63,15 +63,15 @@
                                        NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
                                        NSMutableArray *attentionHousesArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"attentionHouses"]];
                                        
-                                       if (self.currentPage==1){
+//                                       if (self.currentPage==1){
                                            [self.bindHousesDataSource removeAllObjects];
                                            [self.attentionHousesDataSource removeAllObjects];
-                                       }
+//                                       }
                                        [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
                                        [self.attentionHousesDataSource addObjectsFromArray:attentionHousesArray];
-                                       if (response.count<10) {
-                                           [self.tableView endRefreshingWithNoMoreData];
-                                       }
+//                                       if (response.count<10) {
+//                                           [self.tableView endRefreshingWithNoMoreData];
+//                                       }
                                        [self.tableView reloadData];
 
                                    } failure:^(NSError *error, NSString *message) {
@@ -135,6 +135,10 @@
                                                  NSString *status = [response objectForKey:@"status"];
                                                  
                                                  if ([status integerValue]==0) {
+                                                     
+                                                     [self requestLookAllHouseWithMe];
+                                                     [self.tableView reloadData];
+                                                     
                                                      [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                  }else{
                                                      [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
@@ -157,8 +161,11 @@
                                                  NSString *status = [response objectForKey:@"status"];
                                                  
                                                  if ([status integerValue]==0) {
-                                                     [self.tableView reloadData];
-                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                                     
+                                                     [self createAlertView];
+//                                                     [self requestLookAllHouseWithMe];
+//                                                     [self.tableView reloadData];
+//                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                  }else{
                                                      [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                  }
@@ -169,6 +176,21 @@
     }
     return cell;
     
+}
+
+- (void)createAlertView{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:(UIAlertControllerStyleAlert)];
+    // 创建按钮
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+        //[self.navigationController popToRootViewControllerAnimated:YES];
+        [self requestLookAllHouseWithMe];
+        [self.tableView beginHeaderRefreshing];
+        [self.tableView reloadData];
+    }];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 //公共创建cell的方法
