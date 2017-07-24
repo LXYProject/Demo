@@ -7,7 +7,6 @@
 //
 
 #import "VillagePanoramaController.h"
-#import "VillageSlidingController.h"
 #import "TenementHttpManager.h"
 #import "VillagePanoramaModel.h"
 
@@ -16,8 +15,11 @@
 @property (weak, nonatomic) IBOutlet UIView *navBgView;
 
 @property (nonatomic, strong) MAMapView *mapView;
-@property(nonatomic,strong)CLLocationManager* locationManager;
+@property (nonatomic, strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) MAPointAnnotation *pointAnnotaiton;
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+
 
 
 //查看查看小区全景 的数据相关的
@@ -32,6 +34,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    NSMutableArray *pointArray = [NSMutableArray arrayWithCapacity:1];
+//    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+//    pointAnnotation.coordinate = CLLocationCoordinate2DMake(featureX, featureY);
+//    pointAnnotation.title = @"方恒国际";
+//    pointAnnotation.subtitle = @"阜通东大街6号";
+//    self.mapView addAnnotations:<#(NSArray *)#>
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"小区全景"
                   titleColor:[UIColor whiteColor]];
@@ -72,6 +80,10 @@
     [self.locationManager startUpdatingLocation];
 }
 - (void)createNavBtn{
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.dataSource.count*120, 49)];
+    [self.view addSubview:self.scrollView];
+    
     for (int i=0; i<self.dataSource.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(120*i, 9, 120, 30);
@@ -82,7 +94,7 @@
         btn.tag = i+1;
         _featureX = [self.dataSource[i] featureX];
         _featureY = [self.dataSource[i] featureY];
-        [self.navBgView addSubview:btn];
+        [self.scrollView addSubview:btn];
         NSLog(@"=====%@", [self.dataSource[i] featureCategory]);
     }
 }

@@ -55,8 +55,10 @@
 
 // 查看所有与我有关的房屋
 - (void)requestLookAllHouseWithMe{
+    @weakify(self);
     [MineHttpManager requesHouseAddVillage:House
                                    success:^(NSDictionary* response) {
+                                       @strongify(self);
                                        [self.tableView endRefreshing];
 
                                        
@@ -90,11 +92,25 @@
 }
 
 // 取消绑定，取消关注
-- (void)requestunHouse{
+- (void)requestunHouse:(NSString *)houseId{
+    @weakify(self);
     [MineHttpManager requestAddToCancelHouse:unHouse
-                                     houseId:@""
+                                     houseId:houseId
                                      success:^(id response) {
+                                         @strongify(self);
+                                         //操作失败的原因
+                                         NSString *information = [response objectForKey:@"information"];
+                                         //状态码
+                                         NSString *status = [response objectForKey:@"status"];
                                          
+                                         if ([status integerValue]==0) {
+                                             
+                                             [self requestLookAllHouseWithMe];
+                                             [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                         }else{
+                                             [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                         }
+ 
                                      } failure:^(NSError *error, NSString *message) {
                                      }];
 }
@@ -125,53 +141,15 @@
         cell.model = self.bindHousesDataSource[indexPath.row];
         cell.btnClickBlock = ^(UIButton *sender) {
             // 取消绑定，取消关注
-            [MineHttpManager requestAddToCancelHouse:unHouse
-                                             houseId:[self.bindHousesDataSource[indexPath.row] buildingId]
-                                             success:^(id response) {
-                                                 
-                                                 //操作失败的原因
-                                                 NSString *information = [response objectForKey:@"information"];
-                                                 //状态码
-                                                 NSString *status = [response objectForKey:@"status"];
-                                                 
-                                                 if ([status integerValue]==0) {
-                                                     
-                                                     [self requestLookAllHouseWithMe];
-                                                     [self.tableView reloadData];
-                                                     
-                                                     [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                 }else{
-                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                 }
-                                                 
-                                             } failure:^(NSError *error, NSString *message) {
-                                             }];
+            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] buildingId]];
         };
     }else{
         cell.model = self.attentionHousesDataSource[indexPath.row];
+        @weakify(self);
         cell.btnClickBlock = ^(UIButton *sender) {
+            @strongify(self);
             // 取消绑定，取消关注
-            [MineHttpManager requestAddToCancelHouse:unHouse
-                                             houseId:[self.attentionHousesDataSource[indexPath.row] buildingId]
-                                             success:^(id response) {
-                                                 
-                                                 //操作失败的原因
-                                                 NSString *information = [response objectForKey:@"information"];
-                                                 //状态码
-                                                 NSString *status = [response objectForKey:@"status"];
-                                                 
-                                                 if ([status integerValue]==0) {
-                                                     
-                                                     [self createAlertView];
-//                                                     [self requestLookAllHouseWithMe];
-//                                                     [self.tableView reloadData];
-//                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                 }else{
-                                                     [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                 }
-                                                 
-                                             } failure:^(NSError *error, NSString *message) {
-                                             }];
+            [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] buildingId]];
         };
     }
     return cell;
@@ -183,10 +161,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"取消成功" preferredStyle:(UIAlertControllerStyleAlert)];
     // 创建按钮
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"OK" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
-        //[self.navigationController popToRootViewControllerAnimated:YES];
-        [self requestLookAllHouseWithMe];
-        [self.tableView beginHeaderRefreshing];
-        [self.tableView reloadData];
+    
     }];
     [alertController addAction:cancelAction];
     

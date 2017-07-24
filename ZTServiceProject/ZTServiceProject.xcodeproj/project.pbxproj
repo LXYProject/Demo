@@ -72,6 +72,8 @@
 		7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72231F16149100CE8AEC /* MyPraiseModel.m */; };
 		7B0C72281F162A3E00CE8AEC /* NeighborDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */; };
 		7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */; };
+		7B1235FD1F2197C70098D152 /* LocationChoiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1235FB1F2197C70098D152 /* LocationChoiceController.m */; };
+		7B1235FE1F2197C70098D152 /* LocationChoiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1235FC1F2197C70098D152 /* LocationChoiceController.xib */; };
 		7B14F8891F175DD700821281 /* VillagePeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8871F175DD700821281 /* VillagePeopleController.m */; };
 		7B14F88A1F175DD700821281 /* VillagePeopleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B14F8881F175DD700821281 /* VillagePeopleController.xib */; };
 		7B14F88E1F175E9C00821281 /* ActivePeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F88C1F175E9C00821281 /* ActivePeopleController.m */; };
@@ -258,7 +260,6 @@
 		7B52C6B51F2057450078EE32 /* VillagePanoramaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52C6B31F2057450078EE32 /* VillagePanoramaController.m */; };
 		7B52C6B61F2057450078EE32 /* VillagePanoramaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B52C6B41F2057450078EE32 /* VillagePanoramaController.xib */; };
 		7B52C6B91F205B320078EE32 /* VillagePanoramaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52C6B81F205B320078EE32 /* VillagePanoramaModel.m */; };
-		7B52C6BC1F2062D70078EE32 /* VillageSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B52C6BB1F2062D70078EE32 /* VillageSlidingController.m */; };
 		7B52C6BF1F208CF10078EE32 /* home_icon_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B52C6BD1F208CF10078EE32 /* home_icon_location@2x.png */; };
 		7B52C6C01F208CF10078EE32 /* home_icon_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B52C6BE1F208CF10078EE32 /* home_icon_location@3x.png */; };
 		7B5C92161EF8B5E200C545A8 /* ButtonGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C91FC1EF8B5E200C545A8 /* ButtonGroupView.m */; };
@@ -667,6 +668,9 @@
 		7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborDetailCell.h; sourceTree = "<group>"; };
 		7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighborDetailCell.m; sourceTree = "<group>"; };
 		7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeighborDetailCell.xib; sourceTree = "<group>"; };
+		7B1235FA1F2197C70098D152 /* LocationChoiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationChoiceController.h; sourceTree = "<group>"; };
+		7B1235FB1F2197C70098D152 /* LocationChoiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationChoiceController.m; sourceTree = "<group>"; };
+		7B1235FC1F2197C70098D152 /* LocationChoiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationChoiceController.xib; sourceTree = "<group>"; };
 		7B14F8861F175DD700821281 /* VillagePeopleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillagePeopleController.h; sourceTree = "<group>"; };
 		7B14F8871F175DD700821281 /* VillagePeopleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillagePeopleController.m; sourceTree = "<group>"; };
 		7B14F8881F175DD700821281 /* VillagePeopleController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VillagePeopleController.xib; sourceTree = "<group>"; };
@@ -939,8 +943,6 @@
 		7B52C6B41F2057450078EE32 /* VillagePanoramaController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VillagePanoramaController.xib; sourceTree = "<group>"; };
 		7B52C6B71F205B320078EE32 /* VillagePanoramaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillagePanoramaModel.h; sourceTree = "<group>"; };
 		7B52C6B81F205B320078EE32 /* VillagePanoramaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillagePanoramaModel.m; sourceTree = "<group>"; };
-		7B52C6BA1F2062D70078EE32 /* VillageSlidingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VillageSlidingController.h; sourceTree = "<group>"; };
-		7B52C6BB1F2062D70078EE32 /* VillageSlidingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VillageSlidingController.m; sourceTree = "<group>"; };
 		7B52C6BD1F208CF10078EE32 /* home_icon_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_icon_location@2x.png"; sourceTree = "<group>"; };
 		7B52C6BE1F208CF10078EE32 /* home_icon_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_icon_location@3x.png"; sourceTree = "<group>"; };
 		7B5C91FB1EF8B5E200C545A8 /* ButtonGroupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonGroupView.h; sourceTree = "<group>"; };
@@ -1695,8 +1697,6 @@
 				7B52C6B21F2057450078EE32 /* VillagePanoramaController.h */,
 				7B52C6B31F2057450078EE32 /* VillagePanoramaController.m */,
 				7B52C6B41F2057450078EE32 /* VillagePanoramaController.xib */,
-				7B52C6BA1F2062D70078EE32 /* VillageSlidingController.h */,
-				7B52C6BB1F2062D70078EE32 /* VillageSlidingController.m */,
 				7B1D8DF61F1DDCF200D79F46 /* AnnounceViewController.h */,
 				7B1D8DF71F1DDCF200D79F46 /* AnnounceViewController.m */,
 				7B1D8DF81F1DDCF200D79F46 /* AnnounceViewController.xib */,
@@ -2122,6 +2122,9 @@
 				7BA02BB91F04ED82004F8AB9 /* PostMessageController.h */,
 				7BA02BBA1F04ED82004F8AB9 /* PostMessageController.m */,
 				7BA02BBB1F04ED82004F8AB9 /* PostMessageController.xib */,
+				7B1235FA1F2197C70098D152 /* LocationChoiceController.h */,
+				7B1235FB1F2197C70098D152 /* LocationChoiceController.m */,
+				7B1235FC1F2197C70098D152 /* LocationChoiceController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3108,6 +3111,7 @@
 				7B966BD91EFFB5D400326C88 /* VideoOverlay@3x.png in Resources */,
 				7B5C92391EF8BE5B00C545A8 /* SecondDetailsController.xib in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
+				7B1235FE1F2197C70098D152 /* LocationChoiceController.xib in Resources */,
 				7B205E1C1F00E6C900E46B74 /* home_eswp_yssc@2x.png in Resources */,
 				7B8F2A751F039A7D00D5D1DF /* selech_icon@2x.png in Resources */,
 				7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */,
@@ -3472,7 +3476,6 @@
 				7B1E48C81F17181B00AECF41 /* AddHousingController.m in Sources */,
 				7B1662271EF2862900644A7B /* BannerHeaderCell.m in Sources */,
 				7B5C92471EF8C5E200C545A8 /* SecondDetailsCell.m in Sources */,
-				7B52C6BC1F2062D70078EE32 /* VillageSlidingController.m in Sources */,
 				7B0A7FC61F14A7CA0056F1FF /* NeighborCircleModel.m in Sources */,
 				7BBB10141F04F29200BCCF4B /* PlaceholderTextView.m in Sources */,
 				7B6FB3391F0CC923009F5F49 /* OrderHeadCell.m in Sources */,
@@ -3629,6 +3632,7 @@
 				7B5C92381EF8BE5B00C545A8 /* SecondDetailsController.m in Sources */,
 				7B0C71F01F15BD0500CE8AEC /* MyReleasedHouseCell.m in Sources */,
 				7B68F4FE1F135B9E00516929 /* MineHttpManager.m in Sources */,
+				7B1235FD1F2197C70098D152 /* LocationChoiceController.m in Sources */,
 				7B1D8E101F1DDCF200D79F46 /* ComplaintsController.m in Sources */,
 				7B16622B1EF2862900644A7B /* NearByHeaderCell.m in Sources */,
 				7B50F89A1EFA1A8400352F00 /* SearchOneHeadCell.m in Sources */,
