@@ -26,8 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *comments;
 @property (weak, nonatomic) IBOutlet UILabel *shareNumber;
 
-@property (nonatomic, copy) NSString *topicId;
-@property (nonatomic,assign)NSInteger commentType;
+@property (nonatomic, copy) NSString* topicId;
+@property (nonatomic,assign)NSString* commentType;
 
 
 @end
@@ -43,12 +43,12 @@
     self.commentTextField.enablesReturnKeyAutomatically = YES;
     self.commentTextField.returnKeyType = UIReturnKeySend;//变为搜索按钮
     
-    if (ReplyComment==YES) {
-        _commentType = 0;//话题评论
-    }else{
-        _commentType = 1;//回复评论
-    }
-
+//    if (ReplyComment==YES) {
+//        _commentType = 0;//话题评论
+//    }else{
+//        _commentType = 1;//回复评论
+//    }
+//
 
 }
 

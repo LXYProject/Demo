@@ -15,5 +15,15 @@
 @property (nonatomic,copy)NSString *featureCategory;
 @property (nonatomic,copy)NSString *featureId;
 
+@property (nonatomic,assign)NSInteger selectIndex;
+
+@property (nonatomic, copy)NSString* navTitle;
+@property (nonatomic, copy)NSString* zoneName;
+@property (nonatomic, assign)NSInteger pushId;
+
+@property (nonatomic, copy)NSString* x;
+@property (nonatomic, copy)NSString* y;
+
+
 
 @end

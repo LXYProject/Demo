@@ -9,6 +9,8 @@
 #import "VillagePanoramaController.h"
 #import "TenementHttpManager.h"
 #import "VillagePanoramaModel.h"
+#import "TOPageTitleView.h"
+#import "ReportViewController.h"
 
 @interface VillagePanoramaController ()<CLLocationManagerDelegate,MAMultiPointOverlayRendererDelegate, MAMapViewDelegate>
 
@@ -19,11 +21,17 @@
 @property (nonatomic, strong) MAPointAnnotation *pointAnnotaiton;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-
-
+@property (nonatomic, strong) UIButton *navBtn;
+@property (nonatomic, strong) UILabel *redLine;
 
 //查看查看小区全景 的数据相关的
 @property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic,strong)NSMutableArray *featureCategoryArr;
+@property (nonatomic, copy) NSString *navStr;
+
+@property (nonatomic,strong) TOPageTitleView *titleView;
+@property (nonatomic,strong) NSMutableArray<TOPageItem *> *titles;
+
 
 @end
 
@@ -31,6 +39,8 @@
 {
     NSString *_featureX;
     NSString *_featureY;
+    UIButton *_selectedBtn;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,29 +51,20 @@
 //    pointAnnotation.subtitle = @"阜通东大街6号";
 //    self.mapView addAnnotations:<#(NSArray *)#>
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:@"小区全景"
-                  titleColor:[UIColor whiteColor]];
+    if (_pushId==0) {
+        [self titleViewWithTitle:[NSString stringWithFormat:@"%@全景", self.zoneName] titleColor:[UIColor whiteColor]];
+    }else{
+        [self titleViewWithTitle:[NSString stringWithFormat:@"%@全景", self.navTitle] titleColor:[UIColor whiteColor]];
+    }
     [self rightItemWithNormalName:@""
                             title:@"上报设施"
                        titleColor:[UIColor whiteColor]
                          selector:@selector(rightBarClick)
                            target:self];
+    
 
-    
-    
-//    self.mapView.userTrackingMode = MAUserTrackingModeFollow; // 追踪用户位置.
-//    self.mapView.showsScale= YES;  //设置成NO表示不显示比例尺；YES表示显示比例尺
-//    self.mapView.scaleOrigin= CGPointMake(_mapView.scaleOrigin.x, 22);  //设置比例尺位置
-//    self.mapView.scaleSize();
-//    [self.mapView setZoomLevel:13 animated:YES];
-//    MACoordinateSpan span = MACoordinateSpanMake(0.004913, 0.013695);
-//    MACoordinateRegion region = MACoordinateRegionMake(_mapView.centerCoordinate, span);
-//    _mapView.region = region;
-    
     [self initMapView];
     
-    [self configLocationManager];
-
     [self requestLookVillagePanorama];
     
     [self reverseGeocoder];
@@ -71,54 +72,48 @@
 }
 
 - (void)rightBarClick{
-    [PushManager pushViewControllerWithName:@"ReportViewController" animated:YES block:nil];
+    [PushManager pushViewControllerWithName:@"ReportViewController" animated:YES block:^(ReportViewController* viewController) {
+        viewController.x = self.x;
+        viewController.y = self.y;
+    }];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.locationManager startUpdatingLocation];
 }
-- (void)createNavBtn{
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.dataSource.count*120, 49)];
-    [self.view addSubview:self.scrollView];
-    
+
+// 小区全景
+- (void)requestLookVillagePanorama{
+    [TenementHttpManager requestListOrPanorama:VillagePanorama
+                                        zoneId:self.zoneId
+                                       success:^(id response) {
+                                           
+                                           [self.dataSource addObjectsFromArray:response];
+                                           NSLog(@"self.dataSource==%@", self.dataSource);
+                                           
+                                           // 创建 WSFSlideTitlesView
+                                           [self createTitlesView];
+                                           
+                                           
+                                       } failure:^(NSError *error, NSString *message) {
+                                           
+                                       }];
+}
+
+- (void)createTitlesView{
+    [self.featureCategoryArr addObject:[TOPageItem itemWithTitle:@"全部"]];
     for (int i=0; i<self.dataSource.count; i++) {
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(120*i, 9, 120, 30);
-        [btn setTitle:[self.dataSource[i] featureCategory] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        btn.titleLabel.font = [UIFont systemFontOfSize: 14];
-        [btn addTarget:self action:@selector(navBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        btn.tag = i+1;
-        _featureX = [self.dataSource[i] featureX];
-        _featureY = [self.dataSource[i] featureY];
-        [self.scrollView addSubview:btn];
-        NSLog(@"=====%@", [self.dataSource[i] featureCategory]);
+        [self.featureCategoryArr addObject:[TOPageItem itemWithTitle:[self.dataSource[i] featureCategory]]];
     }
+    self.titleView.titles = self.titles;
+    self.titleView.frame = CGRectMake(0, 0, self.view.frame.size.width, 49);
+    self.titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    [self.view addSubview:self.titleView];
 }
 
-#pragma mark - Action Handle
+//将GPS转成高德坐标
+//        CLLocationCoordinate2D amapcoord = AMapCoordinateConvert(CLLocationCoordinate2DMake(39.989612,116.480972), AMapCoordinateType);
 
-- (void)configLocationManager
-{
-    self.locationManager = [[CLLocationManager alloc] init];
-    
-    [self.locationManager setDelegate:self];
-    
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-    
-//    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-    
-    //两个授权设置选项
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
-
-    
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;//最高精度
-    self.locationManager.distanceFilter = 1000.0f;//移动位置最小信息的距离
-}
 
 #pragma mark - Initialization
 
@@ -132,7 +127,7 @@
 
 //        self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
         self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, SCREEN_HEIGHT-119)];
-        self.mapView.showsUserLocation = YES;//这句就是开启定位
+//        self.mapView.showsUserLocation = YES;//这句就是开启定位
 
         [self.mapView setDelegate:self];
         
@@ -140,28 +135,6 @@
     }
 }
 
-- (void)navBtnClick:(UIButton *)sender{
-    NSLog(@"%ld", sender.tag);
-    if (sender.selected) {
-        //将GPS转成高德坐标
-//        CLLocationCoordinate2D amapcoord = AMapCoordinateConvert(CLLocationCoordinate2DMake(39.989612,116.480972), AMapCoordinateType);
-    }
-}
-// 小区全景
-- (void)requestLookVillagePanorama{
-    [TenementHttpManager requestListOrPanorama:VillagePanorama
-                                        zoneId:self.zoneId
-                                       success:^(id response) {
-                                       
-                                           [self.dataSource addObjectsFromArray:response];
-                                           NSLog(@"self.dataSource==%@", self.dataSource);
-                                           
-                                           [self createNavBtn];
-
-                                       } failure:^(NSError *error, NSString *message) {
-                                       
-                                       }];
-}
 /**
  地理反编码
  */
@@ -170,9 +143,9 @@
     CLGeocoder *geocoder=[[CLGeocoder alloc]init];
     
     //经度
-    NSString *longitude = @"103.88842301";
+    NSString *longitude = self.x;
     //纬度
-    NSString *latitude = @"30.80872819";
+    NSString *latitude = self.y;
     
     
     //创建位置
@@ -255,6 +228,28 @@
         _dataSource = [NSMutableArray arrayWithCapacity:1];
     }
     return _dataSource;
+}
+
+- (NSArray *)featureCategoryArr{
+    if (!_featureCategoryArr) {
+        _featureCategoryArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _featureCategoryArr;
+}
+
+#pragma mark - Getter
+- (TOPageTitleView *)titleView{
+    if (!_titleView) {
+        _titleView = [[TOPageTitleView alloc] init];
+        _titleView.miniGap = 10;
+    }
+    return _titleView;
+}
+- (NSMutableArray<TOPageItem *> *)titles{
+    if (!_titles) {
+        _titles = [NSMutableArray arrayWithArray:self.featureCategoryArr];
+    }
+    return _titles;
 }
 
 @end

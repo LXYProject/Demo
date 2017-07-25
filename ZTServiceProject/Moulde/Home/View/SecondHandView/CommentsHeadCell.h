@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class SecondHandModel;
+
 @interface CommentsHeadCell : UITableViewCell
+
+@property (nonatomic,strong)SecondHandModel *model;
+
 
 @end

@@ -28,6 +28,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+    [self titleViewWithTitle:@"求租" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
     _titleArray = @[@"租金",
                     @"户型",
@@ -37,10 +40,7 @@
     _rightArray = @[@"",
                     @"选择",
                     @"南"];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
     
-    [self titleViewWithTitle:@"求租" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
 
     [self.tableView reloadData];

@@ -26,13 +26,21 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self titleViewWithTitle:@"位置选择" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"确定" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
     [self.view addSubview:self.mapView];
     self.tableView.tableFooterView = [[UIView alloc]init];
+    
 //    self.currentSelectPoint.latitude = 39.968309;
 //    self.currentSelectPoint.longitude = 116.431795;
     
 }
 
+- (void)rightBarClick
+{
+    NSLog(@"确定");
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 }
@@ -156,6 +164,9 @@
         _mapView.zoomLevel = 13.1;
         _mapView.showsUserLocation = YES;
         _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        
+        _mapView.showsScale = NO;
+        _mapView.showsCompass = NO;
     }
     return _mapView;
 }

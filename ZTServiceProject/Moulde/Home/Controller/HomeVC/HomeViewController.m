@@ -506,16 +506,16 @@
                                    ,@"vcName":@"SolicitingViewController"},
                                  @{@"title":@"我的小区"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"MyCommunityController"},
                                  @{@"title":@"我的房屋"
                                    ,@"icon":@"my_house"
                                    ,@"vcName":@"MyHouseViewController"},
                                  @{@"title":@"物业"
                                    ,@"icon":@"management_fee"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"PayCostController"},
                                  @{@"title":@"生活缴费"
                                    ,@"icon":@"life_pay_cost"
-                                   ,@"vcName":@"TenementViewController"},
+                                   ,@"vcName":@"LifePayCostController"},
                                  ];
     }
     return _itemDataSourceArray;

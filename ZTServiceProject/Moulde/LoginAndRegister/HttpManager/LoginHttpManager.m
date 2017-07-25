@@ -211,7 +211,8 @@
     
     UIImage *originImage = image;
     
-    NSData *data = UIImageJPEGRepresentation(originImage, 0.5);
+//    NSData *data = UIImageJPEGRepresentation(originImage, 0.1);
+    NSData *data = UIImagePNGRepresentation(originImage);
     
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
@@ -224,11 +225,10 @@
     str = @"{\"type\":\"png\",\"base64\":\"%@\"}";
 
     
-    NSString *ab = [NSString stringWithFormat:str, s];
+    NSString *ab = [NSString stringWithFormat:str, encodedImageStr];
     
     NSLog(@"ab=%@", ab);
     
-    NSString *a = @"""";
     
 //    NSDictionary *paramter = @{@"image":@{@"type":@"png", @"base64":encodedImageStr?encodedImageStr:@""}};
     

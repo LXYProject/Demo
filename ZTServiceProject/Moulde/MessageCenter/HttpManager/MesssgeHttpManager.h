@@ -33,7 +33,7 @@ typedef enum : NSUInteger {
 //回复
 + (void)requestTopicId:(NSString *)topicId
                comment:(NSString *)comment
-           commentType:(NSInteger )commentType
+           commentType:(NSString *)commentType
           targetUserId:(NSString *)targetUserId
                success:(HttpRequestSuccess)success
                failure:(HttpRequestFailure)failure;

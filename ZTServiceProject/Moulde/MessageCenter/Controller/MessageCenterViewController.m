@@ -23,8 +23,6 @@
 @property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic,assign)NSInteger currentPage;
 
-@property (nonatomic,copy)NSString *replyContent;
-
 @property (nonatomic,copy)NSString *selectTopicId;
 
 
@@ -52,6 +50,7 @@
     
     [self.tableView setHeaderRefreshBlock:^{
 //        self.currentPage = 1;
+        self.topicId = @"";
         [self requestMessageData];
     }];
     [self.tableView setFooterRefreshBlock:^{
@@ -60,21 +59,8 @@
     }];
     [self.tableView beginHeaderRefreshing];
    
-    
-    
-    
-//    if (ReplyComment==YES) {
-//        _commentType = 0;//话题评论
-//        [self requestReplyData];
-//    }else{
-//        _commentType = 1;//回复评论
-//        [self requestReplyData];
-//    }
-    
-
-    
-//    [self requestMessageData];
 }
+
 - (void)rightBarClick
 {
     NSLog(@"rightBarClick");
@@ -86,15 +72,16 @@
 - (void)requestMessageData {
     @weakify(self);
     [MesssgeHttpManager requestFilter:@""
-                              topicId:_topicId
+                              topicId:self.topicId
                                   pos:@""
                                  page:self.currentPage
                               success:^(NSArray *response) {
                                   @strongify(self);
                                   [self.tableView endRefreshing];
-                                  if (self.currentPage==1){
-                                      [self.dataSource removeAllObjects];
-                                  }
+//                                  if (self.currentPage==1){
+//                                      [self.dataSource removeAllObjects];
+//                                  }
+                                  [self.dataSource removeAllObjects];
                                   [self.dataSource addObjectsFromArray:response];
                                   if (response.count<10) {
                                       [self.tableView endRefreshingWithNoMoreData];
@@ -117,12 +104,12 @@
                                    
                                }];
 }
-- (void)setTopicId:(NSString *)topicId
-{
-    _topicId = topicId;
-    [self requestMessageData];
-
-}
+//- (void)setTopicId:(NSString *)topicId
+//{
+//    _topicId = topicId;
+//    [self requestMessageData];
+//
+//}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
 }
@@ -136,8 +123,9 @@
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
         cell.model = self.dataSource[indexPath.section];
+        
         if (self.dataSource.count) {
-                _topicId = cell.model.topicId;
+            _topicId = cell.model.topicId;
         }
         cell.fd_isTemplateLayoutCell = YES;
         return cell;

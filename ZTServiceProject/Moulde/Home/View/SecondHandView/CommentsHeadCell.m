@@ -7,6 +7,7 @@
 //
 
 #import "CommentsHeadCell.h"
+#import "SecondHandModel.h"
 
 @interface CommentsHeadCell ()
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
@@ -25,4 +26,11 @@
     // Configure the view for the selected state
 }
 
+- (void)setModel:(SecondHandModel *)model{
+    
+    _model = model;
+    
+    _commentsCount.text = [NSString stringWithFormat:@"评论(%@)", model.commentCount];
+    
+}
 @end

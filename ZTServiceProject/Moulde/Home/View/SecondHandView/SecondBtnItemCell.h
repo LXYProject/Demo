@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface SecondBtnItemCell : UITableViewCell
 
 @property (nonatomic,assign)CGFloat cellHeight;
+
 
 
 @end

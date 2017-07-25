@@ -15,6 +15,8 @@
 #import "CommentsHeadCell.h"
 #import "CommentContentCell.h"
 #import "SecondHandModel.h"
+#import "CommentInfoCell.h"
+
 
 @interface SecondDetailsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -39,6 +41,9 @@
     [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self.tableView registerNib:[UINib nibWithNibName:@"SecondDetailsCell" bundle:nil] forCellReuseIdentifier:@"SecondDetailsCell"];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
+
 }
 
 - (void)rightBarClick
@@ -57,7 +62,7 @@
     }else if (section==1){
         return 1;
     }else{
-        return 2;
+        return 3;
     }
 }
 
@@ -120,11 +125,19 @@
 
     if (indexPath.row==0) {
         CommentsHeadCell *cell = (CommentsHeadCell *)[self creatCell:tableView indenty:@"CommentsHeadCell"];
+        cell.model = self.model;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if(indexPath.row==1){
+        CommentContentCell *cell = (CommentContentCell *)[self creatCell:tableView indenty:@"CommentContentCell"];
+        cell.model = self.model;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
-        CommentContentCell *cell = (CommentContentCell *)[self creatCell:tableView indenty:@"CommentContentCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
+//        NSArray *commentList = self.model.commentList;
+//        cell.model = commentList[indexPath.row];
+
         return cell;
     }
 }
@@ -180,8 +193,16 @@
     else{
         if (indexPath.row==0) {
             return 44;
+        }else if(indexPath.row==1){
+            return 65;
         }else{
-            return 150;
+//            return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
+//                NSArray *commentList = self.model.commentList;
+////                cell.model = commentList[indexPath.row];
+//                cell.model = self.model.commentList;
+//            }];
+            return 0;
+
         }
     }
 }

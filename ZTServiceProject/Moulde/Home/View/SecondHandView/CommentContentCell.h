@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class SecondHandModel;
+@class CommentUserModel;
+
 @interface CommentContentCell : UITableViewCell
+
+@property (strong, nonatomic) SecondHandModel *model;
+@property (nonatomic, strong) CommentUserModel *userModel;
+
 
 @end

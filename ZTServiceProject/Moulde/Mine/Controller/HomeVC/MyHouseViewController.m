@@ -19,6 +19,10 @@
 @property (nonatomic,strong)NSMutableArray *bindHousesDataSource;//绑定的房屋
 @property (nonatomic,strong)NSMutableArray *attentionHousesDataSource;//关注的房屋
 @property (nonatomic,assign)NSInteger currentPage;
+
+@property (nonatomic,strong)NSMutableArray *btnStatusArr;
+
+
 @end
 
 @implementation MyHouseViewController
@@ -46,6 +50,13 @@
 //        [self requestLookAllHouseWithMe];
 //    }];
     [self.tableView beginHeaderRefreshing];
+    
+    for (int i=0; i<self.bindHousesDataSource.count; i++) {
+        [self.btnStatusArr addObject:[NSString stringWithFormat:@"%@",i==0?@"1":@"0"]];
+    }
+    for (int i=0; i<self.attentionHousesDataSource.count; i++) {
+        [self.btnStatusArr addObject:[NSString stringWithFormat:@"%@",i==0?@"1":@"0"]];
+    }
 }
 
 - (void)rightBarClick{
@@ -106,6 +117,8 @@
                                          if ([status integerValue]==0) {
                                              
                                              [self requestLookAllHouseWithMe];
+                                             [self.tableView reloadData];
+
                                              [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                          }else{
                                              [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
@@ -140,6 +153,7 @@
     if (indexPath.section==0) {
         cell.model = self.bindHousesDataSource[indexPath.row];
         cell.btnClickBlock = ^(UIButton *sender) {
+            NSLog(@"sender==%@", sender);
             // 取消绑定，取消关注
             [self requestunHouse:[self.bindHousesDataSource[indexPath.row] buildingId]];
         };
@@ -147,6 +161,8 @@
         cell.model = self.attentionHousesDataSource[indexPath.row];
         @weakify(self);
         cell.btnClickBlock = ^(UIButton *sender) {
+            NSLog(@"sender==%@", sender);
+
             @strongify(self);
             // 取消绑定，取消关注
             [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] buildingId]];
@@ -242,4 +258,10 @@
     return _attentionHousesDataSource;
 }
 
+- (NSMutableArray *)btnStatusArr{
+    if (!_btnStatusArr) {
+        _btnStatusArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _btnStatusArr;
+}
 @end

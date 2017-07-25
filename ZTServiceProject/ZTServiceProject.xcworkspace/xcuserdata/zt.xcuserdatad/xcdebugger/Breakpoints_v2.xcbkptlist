@@ -46,49 +46,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
-            timestampString = "521729596.85604"
+            filePath = "HttpManager/HttpAPIManager.m"
+            timestampString = "522583533.974706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-commentRequestWithText:"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "-getWithUrl:paramter:success:failure:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[NeighborDetailCell commentRequestWithText:]"
-                  moduleName = "ZTServiceProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zt/Desktop/ZT/ZTServiceProject/Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
-                  timestampString = "522508527.489863"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[NeighborDetailCell commentRequestWithText:]_block_invoke"
-                  moduleName = "ZTServiceProject"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zt/Desktop/ZT/ZTServiceProject/Moulde/Mine/View/DetailsView/NeighborDetailCell.m"
-                  timestampString = "522508527.491231"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "120"
-                  endingLineNumber = "120"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

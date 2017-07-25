@@ -10,4 +10,8 @@
 
 @interface ReportViewController : BaseViewController
 
+@property (nonatomic, copy)NSString* x;
+@property (nonatomic, copy)NSString* y;
+
+
 @end

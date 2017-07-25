@@ -1,18 +1,17 @@
 //
-//  MyCommunityListController.m
+//  MyCommunityController.m
 //  ZTServiceProject
 //
-//  Created by ZT on 2017/6/21.
+//  Created by ZT on 2017/7/25.
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "MyCommunityListController.h"
+#import "MyCommunityController.h"
 #import "MineHttpManager.h"
 #import "MyNeighborModel.h"
-#import "TenementViewController.h"
+#import "VillagePanoramaController.h"   
 
-@interface MyCommunityListController ()<UITableViewDelegate, UITableViewDataSource>
-
+@interface MyCommunityController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
 
 //查看所有与我有关的小区 的数据相关的
@@ -21,16 +20,15 @@
 
 @end
 
-@implementation MyCommunityListController
+@implementation MyCommunityController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"我的小区" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"选择小区" titleColor:[UIColor whiteColor]];
     self.tableView.tableFooterView = [[UIView alloc]init];
 
-    
     [self.tableView setHeaderRefreshBlock:^{
         [self requestLookAllVillageWithMe];
     }];
@@ -44,10 +42,10 @@
     [MineHttpManager requesHouseAddVillage:Village
                                    success:^(NSDictionary *response) {
                                        [self.tableView endRefreshing];
-
+                                       
                                        NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
                                        
-                                           [self.myZonesDataSource removeAllObjects];
+                                       [self.myZonesDataSource removeAllObjects];
                                        [self.myZonesDataSource addObjectsFromArray:myZonesArray];
                                        [self.tableView reloadData];
                                        
@@ -78,20 +76,21 @@
     }
     cell.textLabel.text = [self.myZonesDataSource[indexPath.row] zoneName];
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-    [PushManager popViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
-        viewController.btnTitle = [self.myZonesDataSource[indexPath.row] zoneName];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [PushManager pushViewControllerWithName:@"VillagePanoramaController" animated:YES block:^(VillagePanoramaController* viewController) {
+        NSLog(@"zoneId==%@", [self.myZonesDataSource[indexPath.row] zoneId]);
+        viewController.navTitle = [self.myZonesDataSource[indexPath.row] zoneName];
         viewController.zoneId = [self.myZonesDataSource[indexPath.row] zoneId];
         viewController.x = [self.myZonesDataSource[indexPath.row] zoneX];
         viewController.y = [self.myZonesDataSource[indexPath.row] zoneY];
-
+        viewController.pushId = 1;
     }];
-
+    
 }
 
 - (NSArray *)myZonesDataSource {
@@ -100,6 +99,5 @@
     }
     return _myZonesDataSource;
 }
-
 
 @end

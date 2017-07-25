@@ -12,7 +12,7 @@
 
 @property (nonatomic,copy)NSString *topicId;
 
-@property (nonatomic,assign)NSInteger commentType;
+@property (nonatomic,assign)NSString* commentType;
 
 @property (nonatomic,copy)NSString *targetUserId;
 

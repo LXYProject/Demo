@@ -44,6 +44,8 @@
     
     _searchBar = [[UITextField alloc] initWithFrame:CGRectMake(15, 9, SCREEN_WIDTH-30-75, 32)];
     _searchBar.delegate = self;
+    _searchBar.placeholder = @"  输入小区名进行搜索";
+    [_searchBar setValue:[UIFont boldSystemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     _searchBar.layer.masksToBounds = YES;
     _searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
     _searchBar.layer.borderColor = [UIColor whiteColor].CGColor;

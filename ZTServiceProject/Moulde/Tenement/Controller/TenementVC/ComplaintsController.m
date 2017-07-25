@@ -31,8 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"投诉"
-                  titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"投诉" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@""
                             title:@"提交"
                        titleColor:[UIColor whiteColor]

@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy)NSString* btnTitle;
 @property (nonatomic, copy)NSString* zoneId;
-
+@property (nonatomic, copy)NSString* x;
+@property (nonatomic, copy)NSString* y;
 
 @end

@@ -48,6 +48,27 @@
 //"y": 0,
 //"x": 0,
 //"address": ""
+
+//"createTime": "2017-07-06 09:35:00",
+//"ownerImageUrl": "http://192.168.1.96:8080/ZtscApp/file/headImage/1833082163320170322110130-20170719175920.png",
+//"ownerName": "许许阳阳",
+//"zoneName": "1",
+//"commentCount": 9,
+//"delTime": "",
+//"ownerId": "1833082163320170322110130",
+//"commentList": [
+//                {
+//                    "commentType": 1,
+//                    "targetUserId": "1833082163320170322110130",
+//                    "userId": "1833082163320170322110130",
+//                    "commentId": "tr20170707141538",
+//                    "userImageUrl": "http://192.168.1.96:8080/ZtscApp/file/headImage/1833082163320170322110130-20170719175920.png",
+//                    "targetUserName": "许许阳阳",
+//                    "targetUserImageUrl": "http://192.168.1.96:8080/ZtscApp/file/headImage/1833082163320170322110130-20170719175920.png",
+//                    "commentTime": "2017-07-07 14:15:38",
+//                    "comment": "是啊",
+//                    "userName": "许许阳阳"
+//                },
 //============================================================
 //
 //## 我的邻里圈-我发表的帖子 ##
@@ -258,6 +279,9 @@
 @property (nonatomic,copy)NSString *y;
 @property (nonatomic,copy)NSString *address;
 @property (nonatomic ,assign) BOOL  isSupper;
+
+@property (nonatomic,copy)NSString *commentType;
+@property (nonatomic,copy)NSString *targetUserId;
 
 
 @end

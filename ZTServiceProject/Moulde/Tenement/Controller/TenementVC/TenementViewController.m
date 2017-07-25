@@ -181,6 +181,10 @@
                     
                     [PushManager pushViewControllerWithName:@"VillagePanoramaController" animated:YES block:^(VillagePanoramaController* viewController) {
                         viewController.zoneId = self.zoneId;
+                        viewController.zoneName = self.btnTitle;
+                        viewController.x = self.x;
+                        viewController.y = self.y;
+                        viewController.pushId = 0;
                     }];
                 }
                 else{
@@ -269,7 +273,7 @@
                                  
                                  @{@"title":@"小区主页",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"InformationController"},
+                                   @"vcName":@"HomePageController"},
                                  ],
                              @[
                                  @{@"title":@"上门服务",
@@ -304,10 +308,10 @@
                              @[
                                  @{@"title":@"物业费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"InformationController"},
+                                   @"vcName":@"PayCostController"},
                                  @{@"title":@"生活缴费",
                                    @"icon":@"my_tabbar_selected",
-                                   @"vcName":@"InformationController"}
+                                   @"vcName":@"LifePayCostController"}
                                  ],
                              ];
     }

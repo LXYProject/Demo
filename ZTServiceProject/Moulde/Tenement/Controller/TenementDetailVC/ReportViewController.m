@@ -22,39 +22,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"小区上报设施" titleColor:[UIColor whiteColor]];
-    
-    [self configLocationManager];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+    [self titleViewWithTitle:@"小区设施上报" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@""
+                            title:@"上报"
+                       titleColor:[UIColor whiteColor]
+                         selector:@selector(rightBarClick)
+                           target:self];
+    self.tableView.bounces = NO;
     
     [self reverseGeocoder];
 
 }
+
+- (void)rightBarClick{
+    NSLog(@"上报");
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.locationManager startUpdatingLocation];
-}
-#pragma mark - Action Handle
-
-- (void)configLocationManager
-{
-    self.locationManager = [[CLLocationManager alloc] init];
-    
-    [self.locationManager setDelegate:self];
-    
-    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
-    
-    //    [self.locationManager setAllowsBackgroundLocationUpdates:YES];
-    
-    //两个授权设置选项
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
-    
-    
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;//最高精度
-    self.locationManager.distanceFilter = 1000.0f;//移动位置最小信息的距离
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -106,22 +92,24 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
         // 不写这句直接崩掉，找不到循环引用的cell
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
         }
         cell.textLabel.text = @"设施类型";
-        cell.detailTextLabel.text = @"选择";
+        cell.detailTextLabel.text = @"设置";
         cell.textLabel.textColor = TEXT_COLOR;
         if (IS_IPHONE_4 || IS_IPHONE_5) {
             cell.textLabel.font = [UIFont systemFontOfSize:13];
             cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
         }else{
             cell.textLabel.font = [UIFont systemFontOfSize:14];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
 
         }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }else{
         ReportCell *cell = (ReportCell *)[self creatCell:tableView indenty:@"ReportCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }
@@ -135,7 +123,15 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==1) {
+        if (indexPath.row==0) {
+            [PushManager pushViewControllerWithName:@"FacilitiesTypeController" animated:YES block:nil];
+        }
+    }
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section==0) {
@@ -179,9 +175,9 @@
     CLGeocoder *geocoder=[[CLGeocoder alloc]init];
     
     //经度
-    NSString *longitude = @"103.88842301";
+    NSString *longitude = self.x;
     //纬度
-    NSString *latitude = @"30.80872819";
+    NSString *latitude = self.y;
     
     
     //创建位置

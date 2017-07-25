@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class MessageModel;
-
 //block传值
 
 @interface CommentBottomCell : UITableViewCell
+
 @property (nonatomic,strong)MessageModel* model;
+
 //@property (nonatomic,copy)Int_Block btnClickBlock;
 //@property (nonatomic,assign)NSInteger selectIndex;
 
@@ -22,5 +23,6 @@
 
 //这个block专门给而外界调用的
 @property (nonatomic,copy)Id_Block commentSuccessBlock;
+
 
 @end
