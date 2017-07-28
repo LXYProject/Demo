@@ -25,10 +25,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20万元以上" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-7t-rkR">
-                        <rect key="frame" x="35" y="0.0" width="91" height="43"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="91" id="yY6-Pe-6BJ"/>
-                        </constraints>
+                        <rect key="frame" x="35" y="11.5" width="236" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -37,10 +34,10 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wl4-UJ-pQ8" secondAttribute="bottom" constant="15" id="6J9-Up-wFO"/>
                     <constraint firstItem="wl4-UJ-pQ8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="6dW-yM-a5Y"/>
-                    <constraint firstItem="8aG-7t-rkR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="Ew6-n1-XUM"/>
-                    <constraint firstAttribute="bottom" secondItem="8aG-7t-rkR" secondAttribute="bottom" id="PaE-Qf-Van"/>
+                    <constraint firstItem="8aG-7t-rkR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="81G-bx-Ehz"/>
+                    <constraint firstItem="8aG-7t-rkR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="35" id="Bh4-dz-wPf"/>
+                    <constraint firstItem="wl4-UJ-pQ8" firstAttribute="leading" secondItem="8aG-7t-rkR" secondAttribute="trailing" constant="15" id="WCj-cn-4Oh"/>
                     <constraint firstAttribute="trailing" secondItem="wl4-UJ-pQ8" secondAttribute="trailing" constant="18" id="hAx-JB-URv"/>
-                    <constraint firstItem="8aG-7t-rkR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zpp-1G-LxW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

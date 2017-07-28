@@ -40,9 +40,10 @@
 
 // 查看所有与我有关的小区
 - (void)requestLookAllVillageWithMe{
-    
+    @weakify(self);
     [MineHttpManager requesHouseAddVillage:Village
                                    success:^(NSDictionary *response) {
+                                       @strongify(self);
                                        [self.tableView endRefreshing];
 
                                        NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
@@ -84,7 +85,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
  
+    @weakify(self);
     [PushManager popViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
+        @strongify(self);
         viewController.btnTitle = [self.myZonesDataSource[indexPath.row] zoneName];
         viewController.zoneId = [self.myZonesDataSource[indexPath.row] zoneId];
         viewController.x = [self.myZonesDataSource[indexPath.row] zoneX];

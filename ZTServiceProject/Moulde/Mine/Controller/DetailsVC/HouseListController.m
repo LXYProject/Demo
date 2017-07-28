@@ -33,10 +33,11 @@
 
 // 根据楼查询房屋表
 - (void)searchHouse{
+    @weakify(self);
     [MineHttpManager requestZoneId:self.zoneId
                         buildingId:self.buildingId
                            success:^(NSArray* response) {
-
+                               @strongify(self);
                                [self.dataSource addObjectsFromArray:response];
                                [self.tableView reloadData];
                                
@@ -68,12 +69,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     // 选择行，添加房屋关注
+    @weakify(self);
     [MineHttpManager requestAddToCancelHouse:addLikeHouse
                                      houseId:[self.dataSource[indexPath.row] houseId]
                                      success:^(id response) {
-                                         
+                                         @strongify(self);
                                          //操作失败的原因
                                          NSString *information = [response objectForKey:@"information"];
                                          //状态码

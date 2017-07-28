@@ -33,9 +33,10 @@
 
 // 小区id搜索楼
 - (void)searchStoriedBuilding{
+    @weakify(self);
     [MineHttpManager requestZoneId:self.zoneId
                            success:^(NSArray* response) {
-                               
+                               @strongify(self);
                                [self.dataSource addObjectsFromArray:response];
                                [self.tableView reloadData];
 

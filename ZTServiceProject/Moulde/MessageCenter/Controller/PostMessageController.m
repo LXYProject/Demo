@@ -38,7 +38,7 @@
 
 - (void)rightBarClick
 {
-    NSLog(@"发布");
+    NSLog(@"发布帖子");
     [MesssgeHttpManager requestContent:_affairDiscribe
                                 photos:@""
                                 cityId:@""
@@ -47,7 +47,6 @@
                                  resId:@""
                                resName:@""
                                success:^(id response) {
-                                   
                                } failure:^(NSError *error, NSString *message) {
                                    
                                }];

@@ -45,10 +45,11 @@
 
 // 查看投诉信息
 - (void)requestComplaintsList{
+    @weakify(self);
     [MineHttpManager requestTypeInformation:Complaints
                                      status:@""
                                     success:^(NSArray* response) {
-                                        
+                                        @strongify(self);
                                         [self.tableView endRefreshing];
 //                                        if (self.currentPage==1){
                                             [self.dataSource removeAllObjects];

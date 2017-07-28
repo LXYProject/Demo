@@ -25,10 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self titleViewWithTitle:@"物业电话"
-                  titleColor:[UIColor whiteColor]];
+//    [self titleViewWithTitle:@"物业电话" titleColor:[UIColor whiteColor]];
 //    self.navigationBarBackGroudColor = [UIColor clearColor];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
+    self.navigationItem.title = nil;
+    self.navigationBarBackGroudColor = [UIColor clearColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
     
     [self.tableView setHeaderRefreshBlock:^{
@@ -44,9 +47,11 @@
 
 // 便民服务
 - (void)requestConvenience{
+    @weakify(self);
     [TenementHttpManager requestListOrPanorama:ConvenienceService
                                         zoneId:self.zoneId
                                        success:^(id response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            
                                            [self.dataSource removeAllObjects];
@@ -111,7 +116,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0) {
         if (indexPath.row==0) {
-            return 105;
+//            return 105;
+            return 169;
         }else{
             return 109;
         }

@@ -59,6 +59,7 @@
 }
 //请求collectView的数据
 - (void)requestDataSecondCellData {
+    @weakify(self);
     [HomeHttpManager requestQueryType:2
                          secondInfoId:@""
                              keywords:@""
@@ -73,6 +74,7 @@
                                  sort:@"0"
                               pageNum:self.secondCellCurrentPage
                               success:^(id response) {
+                                  @strongify(self);
                                   self.secondCellDataSource = response;
                                   [self.tableView reloadData];
                               } failure:^(NSError *error, NSString *message) {
@@ -126,10 +128,16 @@
         @weakify(self);
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
-            [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:^(ItemMoreViewController* viewController) {
-                
-                viewController.itemTitle = self.itemDataSourceArray[value][@"title"];
-            }];
+            
+            
+            if ([self.itemDataSourceArray[value][@"vcName"] isEqualToString:@"MoreClassificationController"]){
+                [PushManager pushViewControllerWithName:@"MoreClassificationController" animated:YES block:nil];
+            }else{
+                [PushManager pushViewControllerWithName:self.itemDataSourceArray[value][@"vcName"] animated:YES block:^(ItemMoreViewController* viewController) {
+                    
+                    viewController.itemTitle = self.itemDataSourceArray[value][@"title"];
+                }];
+            }
         };
         cell.titleAndImageDictArray = self.itemDataSourceArray;
         return cell;
@@ -256,7 +264,7 @@
                                    ,@"vcName":@"ItemMoreViewController"},
                                  @{@"title":@"更多"
                                    ,@"icon":@"order_tabbar_selected"
-                                   ,@"vcName":@"ItemMoreViewController"},
+                                   ,@"vcName":@"MoreClassificationController"},
 
                                  ];
     }

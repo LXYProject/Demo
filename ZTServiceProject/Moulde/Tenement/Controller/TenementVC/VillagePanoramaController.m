@@ -84,10 +84,11 @@
 
 // 小区全景
 - (void)requestLookVillagePanorama{
+    @weakify(self);
     [TenementHttpManager requestListOrPanorama:VillagePanorama
                                         zoneId:self.zoneId
                                        success:^(id response) {
-                                           
+                                           @strongify(self);
                                            [self.dataSource addObjectsFromArray:response];
                                            NSLog(@"self.dataSource==%@", self.dataSource);
                                            

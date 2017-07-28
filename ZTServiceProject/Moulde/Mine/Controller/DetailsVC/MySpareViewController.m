@@ -45,6 +45,7 @@
 
 // 我发布的二手物品
 - (void)requestSecondhandGoods{
+    @weakify(self);
         [HomeHttpManager requestQueryType:0
                              secondInfoId:@""
                                  keywords:@""
@@ -59,7 +60,7 @@
                                      sort:@"0"
                                   pageNum:self.currentPage
                                   success:^(NSArray* response) {
-                                      
+                                      @strongify(self);
                                       [self.tableView endRefreshing];
                                       if (self.currentPage==1){
                                           [self.dataSource removeAllObjects];
@@ -110,7 +111,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    @weakify(self);
     [PushManager pushViewControllerWithName:@"SpareDetailViewController" animated:YES block:^(SpareDetailViewController* viewController) {
+        @strongify(self);
         viewController.model = self.dataSource[indexPath.section];
     }];
 

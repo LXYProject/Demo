@@ -53,8 +53,12 @@
     }
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
-        NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        if (interface==Thumb_Up) {
+            success(response);
+        }else{
+            NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:response];
+            success(modelArray);
+        }
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

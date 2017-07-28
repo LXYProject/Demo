@@ -49,9 +49,11 @@
 
 // 请求小区公告
 - (void)requestBulletinList{
+    @weakify(self);
     [TenementHttpManager requestListOrPanorama:AnnouncementList
                                         zoneId:self.zoneId
                                        success:^(id response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            
                                            [self.announceDataSource removeAllObjects];

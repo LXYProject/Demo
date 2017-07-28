@@ -45,6 +45,7 @@
 
 // 我发布的出租屋
 - (void)reuqestReleaseHouse{
+    @weakify(self);
     [HomeHttpManager requestQueryType:0
                              keywords:@""
                                cityId:@""
@@ -64,6 +65,7 @@
                                  sort:@"0"
                               pageNum:self.currentPage
                               success:^(NSArray *response) {
+                                  @strongify(self);
                                   [self.tableView endRefreshing];
                                   if (self.currentPage==1){
                                       [self.dataSource removeAllObjects];

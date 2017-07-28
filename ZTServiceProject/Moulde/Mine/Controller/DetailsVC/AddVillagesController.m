@@ -70,10 +70,11 @@
 
 // 关键字搜索小区
 - (void)searchCommunity{
+    @weakify(self);
     [MineHttpManager requestKeywords:_searchBar.text
                                 city:@"510100"
                              success:^(NSArray* response) {
-                                 
+                                 @strongify(self);
                                  [self.dataSource removeAllObjects];
                                  
                                  [self.dataSource addObjectsFromArray:response];
@@ -113,11 +114,12 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //选择行，添加小区关注
+    @weakify(self);
     [MineHttpManager requestAddToCancelVillage:AddVillage
                                    communityId:[self.dataSource[indexPath.row] zoneId]
                                        success:^(id response) {
-                                           
                                            //操作失败的原因
+                                           @strongify(self);
                                            NSString *information = [response objectForKey:@"information"];
                                            //状态码
                                            NSString *status = [response objectForKey:@"status"];

@@ -45,11 +45,12 @@
 //我请求的公共报事
 - (void)reuqestPublicThings
 {
+    @weakify(self);
     [MineHttpManager requestTypeInformation:PublicThings
                                      status:@""
                                     success:^(NSArray* response) {
+                                        @strongify(self);
                                         [self.tableView endRefreshing];
-                                        
 //                                        if (self.currentPage==1){
                                             [self.dataSource removeAllObjects];
 //                                        }

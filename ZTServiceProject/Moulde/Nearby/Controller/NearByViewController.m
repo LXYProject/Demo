@@ -49,6 +49,7 @@
 }
 // 去帮忙
 - (void)requestData{
+    @weakify(self);
     [NearByHttpManager requestDataWithNearType:ToHelp
                                          query:2
                                        keyWord:_keywords
@@ -58,6 +59,7 @@
                                           sort:@""
                                           page:self.currentPage
                                        success:^(NSArray * response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
@@ -74,6 +76,7 @@
 // 找服务
 - (void)requestServiceData
 {
+    @weakify(self);
     [NearByHttpManager requestDataWithNearType:LookingService
                                          query:2
                                        keyWord:_keywords
@@ -83,6 +86,7 @@
                                           sort:@""
                                           page:self.currentPage
                                        success:^(NSArray * response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];

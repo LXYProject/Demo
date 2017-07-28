@@ -91,10 +91,11 @@
 }
 // 关键字搜索小区
 - (void)searchCommunity{
+    @weakify(self);
     [MineHttpManager requestKeywords:_searchBar.text
                                 city:@"510100"
                              success:^(NSArray* response) {
-                                 
+                                 @strongify(self);
                                  [self.dataSource removeAllObjects];
                                  
                                  [self.dataSource addObjectsFromArray:response];

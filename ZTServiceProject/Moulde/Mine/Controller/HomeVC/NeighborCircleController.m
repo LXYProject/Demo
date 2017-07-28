@@ -304,9 +304,9 @@
 
 // 发帖记录
 - (void)requestTopicHis{
-    
+    @weakify(self);
     [MineHttpManager requestTopicId:@"" success:^(NSArray* response) {
-        //
+        @strongify(self);
         [self.tableView endRefreshing];
         
         self.listArray = (NSMutableArray *)response;
@@ -336,16 +336,6 @@
 
             
         }];
-//        NSLog(@"%@",self.topicHisDataSource);
-        
-        
-        //                                if (self.currentPage==1){
-        //                                    [self.topicHisDataSource removeAllObjects];
-        //                                }
-        //                                [self.topicHisDataSource addObjectsFromArray:response];
-//        if (response.count<10) {
-//            [self.tableView endRefreshingWithNoMoreData];
-//        }
         [self.tableView reloadData];
         
     } failure:^(NSError *error, NSString *message) {

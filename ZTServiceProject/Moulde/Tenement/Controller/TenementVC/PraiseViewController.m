@@ -50,6 +50,7 @@
 {
     NSLog(@"提交");
     // 投诉
+    @weakify(self);
     [TenementHttpManager requestPraiseOrComplaint:praise
                                            zoneId:self.zoneId
                                       affairTitle:_affairTitle
@@ -60,7 +61,7 @@
                                      userPhoneNum:_userPhoneNum
                                            images:[UIImage imageNamed:@""]
                                           success:^(id response) {
-                                              
+                                              @strongify(self);
                                               //操作失败的原因
                                               NSString *information = [response objectForKey:@"information"];
                                               //状态码

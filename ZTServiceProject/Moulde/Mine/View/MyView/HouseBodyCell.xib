@@ -44,7 +44,7 @@
                             <color key="titleColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
-                            <action selector="removeBinding" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pv4-m1-P9o"/>
+                            <action selector="removeBinding" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lih-ra-7jX"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出租中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsK-h7-XaW">
@@ -68,6 +68,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btn" destination="6tw-cW-lww" id="5cU-eR-ZSF"/>
                 <outlet property="details" destination="hg6-be-hlp" id="usS-bw-TNh"/>
                 <outlet property="headIcon" destination="9ZK-K7-06k" id="P6U-6y-ohf"/>
                 <outlet property="leaseState" destination="KsK-h7-XaW" id="GZK-BG-kUL"/>

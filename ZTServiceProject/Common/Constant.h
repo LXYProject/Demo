@@ -238,7 +238,7 @@
 // 查询
 #define A_query                 @"?service=secondHand&function=query"
 // 发布
-#define A_publish               @"?service=secondHand&function=publ ish"
+#define A_publish               @"?service=secondHand&function=publish"
 // 分类
 #define A_catalog               @"?service=secondHand&function=catalog"
 

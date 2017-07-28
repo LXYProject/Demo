@@ -56,6 +56,7 @@
 //请求租房查询
 - (void)requestRentHouseData
 {
+    @weakify(self);
     [HomeHttpManager requestQueryType:2
                              keywords:@""
                                cityId:@""
@@ -75,6 +76,7 @@
                                  sort:@"0"
                               pageNum:self.currentPage
                               success:^(NSArray *response) {
+                                  @strongify(self);
                                   [self.tableView endRefreshing];
                                   if (self.currentPage==1){
                                       [self.rentHouseDataSource removeAllObjects];

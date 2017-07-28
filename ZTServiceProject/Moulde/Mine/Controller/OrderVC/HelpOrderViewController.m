@@ -83,10 +83,10 @@
 
 //查看我帮助的订单
 - (void)requestHelpOrder{
-    
+    @weakify(self);
     [MineHttpManager requestLoginCustomerOrders:HelpOrder
                                         success:^(NSArray *response) {
-                                            
+                                            @strongify(self);
                                             [self.tableView endRefreshing];
                                             
                                             self.dataSource = (NSMutableArray *)response;
@@ -107,10 +107,10 @@
 }
 //查看我求助的订单
 - (void)requestMyAppealOrder{
+    @weakify(self);
     [MineHttpManager requestLoginCustomerOrders:MyAppealOrder
                                         success:^(NSArray *response) {
-                                            
-                                            
+                                            @strongify(self);
                                             [self.tableView endRefreshing];
                                             
                                             self.dataSource = (NSMutableArray *)response;

@@ -42,9 +42,11 @@
 
 // 报事类型列表
 - (void)requestAffairCategoryList{
+    @weakify(self);
     [TenementHttpManager requestListOrPanorama:ListThings
                                         zoneId:self.zoneId
                                        success:^(id response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            
                                            [self.dataSource removeAllObjects];
@@ -85,6 +87,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [PushManager popViewControllerWithName:@"PublicThingsController" animated:YES block:^(PublicThingsController* viewController) {
         //viewController.publicType = [self.dataSource[indexPath.row] serviceCategory];
     }];

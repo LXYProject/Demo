@@ -83,10 +83,10 @@
 
 //查看我购买的服务订单
 - (void)requestBuyOrder{
-    
+    @weakify(self);
     [MineHttpManager requestLoginCustomerOrders:BuyOrder
                                         success:^(NSArray *response) {
-                                            
+                                            @strongify(self);
                                             [self.tableView endRefreshing];
                                             
                                             self.dataSource = (NSMutableArray *)response;
@@ -107,9 +107,10 @@
 }
 //查看我出售的服务订单
 - (void)requestSaleOrder{
+    @weakify(self);
     [MineHttpManager requestLoginCustomerOrders:SaleOrder
                                         success:^(NSArray *response) {
-                                            
+                                            @strongify(self);
                                             [self.tableView endRefreshing];
                                             
                                             self.dataSource = (NSMutableArray *)response;

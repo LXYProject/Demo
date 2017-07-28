@@ -70,8 +70,10 @@
 {
     FiltrateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.titleLab.text = _tableViewDataArr[indexPath.row];
+    cell.titleLab.textAlignment = NSTextAlignmentCenter;
     cell.isSelected = NO;
     UILabel *lab = _titleLabArr[_selectedView];
+
     if ([cell.titleLab.text isEqualToString:lab.text]) {
         cell.isSelected = YES;
     }
@@ -89,6 +91,7 @@
     
     UILabel *lab = _titleLabArr[_selectedView];
     lab.text = cell.titleLab.text;
+
     
     for (int i = 0; i<3; i++) {
         UILabel *title = _titleLabArr[i];

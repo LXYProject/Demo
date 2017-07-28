@@ -140,6 +140,7 @@
 // 去帮忙
 - (void)requestData
 {
+    @weakify(self);
     [NearByHttpManager requestDataWithNearType:ToHelp
                                          query:2 keyWord:_keywords
                                           city:_city
@@ -148,6 +149,7 @@
                                           sort:@""
                                           page:self.currentPage
                                        success:^(NSArray * response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
@@ -164,6 +166,7 @@
 // 找服务
 - (void)requestServiceData
 {
+    @weakify(self);
     [NearByHttpManager requestDataWithNearType:LookingService
                                          query:2 keyWord:_keywords
                                           city:_city
@@ -172,6 +175,7 @@
                                           sort:@""
                                           page:self.currentPage
                                        success:^(NSArray * response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
@@ -188,6 +192,7 @@
 
 //请求collectView的数据
 - (void)requestDataSecondCellData {
+    @weakify(self);
     [HomeHttpManager requestQueryType:2
                          secondInfoId:@""
                              keywords:@""
@@ -202,6 +207,7 @@
                                  sort:@"0"
                               pageNum:self.secondCellCurrentPage
                               success:^(id response) {
+                                  @strongify(self);
                                   self.secondCellDataSource = response;
                                   [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
                               } failure:^(NSError *error, NSString *message) {
@@ -211,6 +217,7 @@
 //请求租房查询
 - (void)requestRentHouseData
 {
+    @weakify(self);
     [HomeHttpManager requestQueryType:2
                              keywords:@""
                                cityId:@""
@@ -230,6 +237,7 @@
                                  sort:@"0"
                               pageNum:self.currentPage
                               success:^(id response) {
+                                  @strongify(self);
                                   self.rentHouseDataSource = response;
                                   [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:5] withRowAnimation:UITableViewRowAnimationAutomatic];
                               } failure:^(NSError *error, NSString *message) {
@@ -605,9 +613,9 @@
     
     //根据经纬度反向地理编译出地址信息
     CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
-    
+    @weakify(self);
     [geoCoder reverseGeocodeLocation:currLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        
+        @strongify(self);
         for (CLPlacemark * placemark in placemarks) {
             
             NSDictionary *address = [placemark addressDictionary];

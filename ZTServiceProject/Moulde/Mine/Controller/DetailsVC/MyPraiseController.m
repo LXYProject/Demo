@@ -45,10 +45,11 @@
 
 // 查看表扬信息
 - (void)requestPraisesList{
+    @weakify(self);
     [MineHttpManager requestTypeInformation:Praises
                                      status:@""
                                     success:^(NSArray* response) {
-                                        
+                                        @strongify(self);
                                         [self.tableView endRefreshing];
 //                                        if (self.currentPage==1){
                                             [self.dataSource removeAllObjects];

@@ -10,6 +10,8 @@
 #import "AdvertisementModel.h"
 #import "SecondHandModel.h" 
 #import "RentHouseModel.h"
+#import "ItemsModel.h"
+
 @implementation HomeHttpManager
 
 //首页物业轮播图
@@ -136,6 +138,64 @@
     [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_queryRent paramter:paramter success:^(id response) {
         NSArray *modelArray = [RentHouseModel mj_objectArrayWithKeyValuesArray:response[@"houseRentList"]];
         success(modelArray);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+//二手物品发布
++ (void)requestTitle:(NSString *)title
+             content:(NSString *)content
+            pictures:(NSString *)pictures
+              cityId:(NSString *)cityId
+          districtId:(NSString *)districtId
+             address:(NSString *)address
+               resId:(NSString *)resId
+             resName:(NSString *)resName
+                   x:(NSString *)x
+                   y:(NSString *)y
+            oriPrice:(NSString *)oriPrice
+            secPrice:(NSString *)secPrice
+            delivery:(NSString *)delivery
+             classId:(NSString *)classId
+            newOrOld:(NSString *)newOrOld
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"title":title?title:@"",
+                               @"content":content?content:@"",
+                               @"pictures":pictures?pictures:@"",
+                               @"cityId":cityId?cityId:@"",
+                               @"districtId":districtId?districtId:@"",
+                               @"address":address?address:@"",
+                               @"resId":resId?resId:@"",
+                               @"resName":resName?resName:@"",
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
+                               @"oriPrice":oriPrice?oriPrice:@"",
+                               @"secPrice":secPrice?secPrice:@"",
+                               @"delivery":delivery?delivery:@"",
+                               @"classId":classId?classId:@"",
+                               @"newOrOld":newOrOld?newOrOld:@"",
+                               };
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_publish paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+//二手物品分类
++(void)requestItemsId:(NSString *)ItemsId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"id":ItemsId?ItemsId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_catalog paramter:paramter success:^(id response) {
+//        NSArray *modelArray = [ItemsModel mj_objectArrayWithKeyValuesArray:response[@"childList"]];
+        success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

@@ -20,13 +20,21 @@
 @property (nonatomic,strong)NSMutableArray *attentionHousesDataSource;//关注的房屋
 @property (nonatomic,assign)NSInteger currentPage;
 
-@property (nonatomic,strong)NSMutableArray *btnStatusArr;
+@property (strong, nonatomic) NSMutableArray *buttonArrayOne;//cell上按钮状态
+@property (strong, nonatomic) NSMutableArray *buttonArrayTwo;//cell上按钮状态
+
+
 
 
 @end
 
 @implementation MyHouseViewController
+{
+    NSArray *_sectionOneArr;
+    NSArray *_sectionTwoArr;
+    NSString *_houseID;
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -51,12 +59,9 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
     
-    for (int i=0; i<self.bindHousesDataSource.count; i++) {
-        [self.btnStatusArr addObject:[NSString stringWithFormat:@"%@",i==0?@"1":@"0"]];
-    }
-    for (int i=0; i<self.attentionHousesDataSource.count; i++) {
-        [self.btnStatusArr addObject:[NSString stringWithFormat:@"%@",i==0?@"1":@"0"]];
-    }
+
+
+
 }
 
 - (void)rightBarClick{
@@ -71,7 +76,6 @@
                                    success:^(NSDictionary* response) {
                                        @strongify(self);
                                        [self.tableView endRefreshing];
-
                                        
                                        NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
                                        NSMutableArray *attentionHousesArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"attentionHouses"]];
@@ -119,7 +123,7 @@
                                              [self requestLookAllHouseWithMe];
                                              [self.tableView reloadData];
 
-                                             [AlertViewController alertControllerWithTitle:@"提示" message:@"取消绑定成功" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                             [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                          }else{
                                              [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
                                          }
@@ -152,20 +156,20 @@
     HouseBodyCell *cell = (HouseBodyCell *)[self creatCell:tableView indenty:@"HouseBodyCell"];
     if (indexPath.section==0) {
         cell.model = self.bindHousesDataSource[indexPath.row];
+
+        @weakify(self);
         cell.btnClickBlock = ^(UIButton *sender) {
-            NSLog(@"sender==%@", sender);
             // 取消绑定，取消关注
-            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] buildingId]];
+            @strongify(self);
+            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
         };
     }else{
         cell.model = self.attentionHousesDataSource[indexPath.row];
         @weakify(self);
         cell.btnClickBlock = ^(UIButton *sender) {
-            NSLog(@"sender==%@", sender);
-
             @strongify(self);
             // 取消绑定，取消关注
-            [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] buildingId]];
+            [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] houseId]];
         };
     }
     return cell;
@@ -258,10 +262,4 @@
     return _attentionHousesDataSource;
 }
 
-- (NSMutableArray *)btnStatusArr{
-    if (!_btnStatusArr) {
-        _btnStatusArr = [NSMutableArray arrayWithCapacity:1];
-    }
-    return _btnStatusArr;
-}
 @end

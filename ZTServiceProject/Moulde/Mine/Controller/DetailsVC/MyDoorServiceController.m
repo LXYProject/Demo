@@ -45,9 +45,11 @@
 
 //我请求的上门服务
 - (void)requestDoorService{
+    @weakify(self);
     [MineHttpManager requestTypeInformation:DoorService
                                      status:@""
                                     success:^(NSArray* response) {
+                                        @strongify(self);
                                         [self.tableView endRefreshing];
                                         
 //                                        if (self.currentPage==1){

@@ -42,9 +42,11 @@
 
 // 服务类型列表
 - (void)requestServiceList{
+    @weakify(self);
     [TenementHttpManager requestListOrPanorama:ServiceList
                                         zoneId:self.zoneId
                                        success:^(id response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            
                                            [self.dataSource removeAllObjects];
@@ -84,7 +86,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    @weakify(self);
     [PushManager popViewControllerWithName:@"DoorServiceController" animated:YES block:^(DoorServiceController* viewController) {
+        @strongify(self);
         viewController.serviceType = [self.dataSource[indexPath.row] serviceCategory];
     }];
 }

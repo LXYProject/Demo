@@ -21,10 +21,19 @@
 @property (nonatomic,strong)NSMutableArray *attentionZonesDataSource;//关注的小区
 @property (nonatomic,assign)NSInteger currentPage;
 
+@property (strong, nonatomic) NSMutableArray *buttonArrayOne;//cell上按钮状态
+@property (strong, nonatomic) NSMutableArray *buttonArrayTwo;//cell上按钮状态
+
 
 @end
 
 @implementation MyNeighborController
+{
+    NSArray *_sectionOneArr;
+    NSArray *_sectionTwoArr;
+    NSString *_communityId;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,14 +67,14 @@
 }
 // 查看所有与我有关的小区
 - (void)requestLookAllVillageWithMe{
-    
+    @weakify(self);
     [MineHttpManager requesHouseAddVillage:Village
                                    success:^(NSDictionary *response) {
-                                       
+                                       @strongify(self);
+                                       [self.tableView endRefreshing];
+
                                        NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
                                        NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
-
-                                       [self.tableView endRefreshing];
 //                                       if (self.currentPage==1){
                                            [self.myZonesDataSource removeAllObjects];
                                            [self.attentionZonesDataSource removeAllObjects];
@@ -93,6 +102,31 @@
                                        }];
 }
 
+// 取消小区关注
+- (void)requestCancelVillage:(NSString *)communityId{
+    // 取消小区关注
+    @weakify(self);
+    [MineHttpManager requestAddToCancelVillage:CancelVillage
+                                   communityId:communityId
+                                       success:^(id response) {
+                                           @strongify(self);
+                                           //操作失败的原因
+                                           NSString *information = [response objectForKey:@"information"];
+                                           //状态码
+                                           NSString *status = [response objectForKey:@"status"];
+                                           
+                                           if ([status integerValue]==0) {
+                                               [self requestLookAllVillageWithMe];
+                                               [self.tableView reloadData];
+                                               
+                                               [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                           }else{
+                                               [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                           }
+                                       } failure:^(NSError *error, NSString *message) {
+                                           
+                                       }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -124,34 +158,14 @@
         cell.type = CancelAttention_Type;
         [cell.completionBtn setTitle:@"取消关注" forState:UIControlStateNormal];
     }
+    @weakify(self);
     cell.btnClickBlock = ^(UIButton *sender) {
+        @strongify(self);
         if (cell.type==completion_Type) {
             NSLog(@"补全物业信息");
         }else{
             NSLog(@"取消关注");
-            // 取消小区关注
-            [MineHttpManager requestAddToCancelVillage:CancelVillage
-                                           communityId:[self.myZonesDataSource[indexPath.row] zoneId]
-                                               success:^(id response) {
-                                                   
-                                                   //操作失败的原因
-                                                   NSString *information = [response objectForKey:@"information"];
-                                                   //状态码
-                                                   NSString *status = [response objectForKey:@"status"];
-                                                   
-                                                   if ([status integerValue]==0) {
-                                                       [self requestLookAllVillageWithMe];
-                                                       [self.tableView reloadData];
-
-                                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                       [self.tableView reloadData];
-                                                   }else{
-                                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                   }
-                                               } failure:^(NSError *error, NSString *message) {
-
-                                               }];
-
+            [self requestCancelVillage:[self.myZonesDataSource[indexPath.row] zoneId]];
         }
         
     };

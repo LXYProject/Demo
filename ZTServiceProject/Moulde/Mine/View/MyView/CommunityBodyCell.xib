@@ -47,7 +47,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <state key="normal" title="补全物业信息"/>
                         <connections>
-                            <action selector="completionBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e1a-Xb-ceM"/>
+                            <action selector="completionBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FBI-aq-6wl"/>
                         </connections>
                     </button>
                 </subviews>

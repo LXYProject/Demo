@@ -1,0 +1,35 @@
+//
+//  PartnerConfig.h
+//  YuenAlipayDemo
+//
+//  Created by peikua on 15/8/17.
+//  Copyright (c) 2015年 Ruan. All rights reserved.
+//
+
+#ifndef YuenAlipayDemo_PartnerConfig_h
+#define YuenAlipayDemo_PartnerConfig_h
+
+
+#define APPID          @"2017062607568206"
+
+//====================合作身份者id，以2088开头的16位纯数字//2017062607568206
+//#define PartnerID      @"2088511933544308"
+#define PartnerID      @"2088721196961024"
+
+//收款支付宝账号
+//#define SellerID       @"yingtehua8@sina.com"
+#define SellerID       @"m15210982030@163.com"
+
+//=====================商户私钥，自助生成
+//#define PartnerPrivKey @"MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAL0M8jaJCm9bMb7PjgI0wR9+mpzWTcNTwTyYBEXmrJg3MjRVluUezDjQhQBSrgaMTeM40cz+1Nt/f1OlS/vB9PzGSF+MDty6zS0NQEEvVjUUge7PsOtbPDIEmuPppKIj4wETfavaZt7j4/kVuABDC2P1DpPRP686dJsNTkSO5qrNAgMBAAECgYApxEVy9P3gMkagQFzAcgVEvwTLp7EQeV2U1IUFKHxzOKaX11z6C77UwoTP2HRoL/E5RSFc5+QBBn8L7NYHrgdAu4L5Kl048saM53QyXJviQs7lgxDSBbo+EHDY9OJJsVRalpqKSirgBZmce/M4/tNhDxUfV5yXvxOC43JEr92UIQJBAPXbahDDMN+D0MqG1y0zPyU5bJwopXsSLIxpqp4vRmHokMxlber5HGMgSSnVQ9x9j974G1RSamqV34xwnqPzIlUCQQDE2ZPgtKd9Te19kGpmmCs64iqlkUVabAuKI8wMyx4hGZx6/EpeufFiTpF3F3YDN37JOenBefLL9UIkrOrjXI6ZAkBmpX75FKV5DG3FwNph0r2QaxM/d3DvmzziOtOzS4WVJyYdUFO+ANerQzWIs7OrgPjqXKf8YpRvf7dfyT1SshYpAkAhj0qDw6jOVwvHHWjWZtjv6AEHSxX8zXDGM0YlZDeVww0Hdp2jOqYpcWWhXRGUiNCHs+TjREwdc4m8QPKmom/5AkAYGRw6TLB/XWfEvlGLMHMmbZWMXDBdBmlIN+JK2oRjIoTryG35KlXzAHWcAq2xVhvCd6gJjz9arUmqewOLBMWn"
+
+#define PartnerPrivKey @"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCpQi6V0YtQ05cryG31dDEBDJ8xyHgZaMwOmjVO2CbVtvRCM9bHlRsjOFhD/AGglvoged5g1rgUWARtVpDA2ZRuUOiBf72R3vBmGyZ6wKFzh8VOO3hH3Wj8tTul8ES8UUgFV/mafg+lHy0XfOaZMdtcWwwZ4ldI93SLXjNt4y5wvZ8rlrMyCLsse/fi2yQIsEzR8px43mnp5i4VcxGWDiUkrpXSRvWLpTe2FgbGF9qciY2b3kod+1nmzA4nQumLYiawcpyKWubiyHquXo/hN46WunCMStD/jJtiEvKb/JGf8iogijkjaZ5tQuy3H5vNc2UcBNo+iEbPJqfgdFVXAmgPAgMBAAECggEAKVXNVK9A67NQ1tNy7x+6G/x+IEVJ90Kdmu9UF3Y4PbcZfdV1HXavkvFetPOlXheg7C92/IVTnTxFkII0hbRdSHef4IhWvnoIkZcN1aqXg0RkDg/99ub+jcCg2YyM7MSY5x0uCunAXl33wCWzlzQS00I0+VlKYbp1DtgpjSuPGt7+GlTt1WnO0N28z4rf6TPBBCXc5IZw9smaPCA0vDK8NU62OEF45ZSQs1GXZ4vp3XExPCzbMJZjvFze3RXHVaGmoO8gc7JWTy5yR7YquCcU976zkZWDO8XKfiFn43mpW4mbDktfi6ebD0UAXH9EUkWKAMYNkrKrC04VAXSZcXuxWQKBgQDj5p0eOinkX2Z403PpS1UPyI660PHpQy6xWpSQu0xNhjuJfYKOGKofFPoADEL/NIVya5Sr/X+h7hd5pZUN4FAXgYCKk3zhlCN5ThL67IJl64J5pqK9oMmGtNH/5qglr3hGfxHg249hFPxXzvasv78JM2JBVvxUGXVa4SN04OmBCwKBgQC+IJoOnul42gf0J7Rl6LE1Q8IC61p58heVt+9dQllrnrj8Yna+9PsXesPJSXIMohvlXAxmIyUqHaTmwOnArZkVv3r3GHXMFbTNEemfH6QzxankTmwpS3SnLR6O+zwxH1/Chc7Q/pfNC8Ewc0Y9Uw+jWnh+LknoqlFwENY2dxIfjQKBgBtraqnxW4rzg3O0FTUTcDeG7M1DSGfFQn/qIwfK0SJerRkctbF8/DLjJjUNRJ5J5mhe0zNiO5HzAHYNWwKhY2GAnkON/S9y0FXO8++mtwWmMTuLtfbUuopvhPih+scV9oWc0jzYjcajbLzv1LPyGfz0ZrTvz0obCgiWH9r3GIEDAoGAWF3WvIznfp/3qmb51ZO9KUCA39J7jsoSZCfFPNclsHtpBwTMpBxAx7zrWpakR3Lg/E04BhC3qUd16TooasFEsXL5t/bKaTx9eAKnTqnqK5XnTJGWe+ryIPE7jsD+TOaEH2kJouFxtH+OHvK05rPARPA7qInjGBxxFWD97vqQldECgYEAupv3deRgk0swULcNtL1W6/GIjfGe9yQIoSc1JJ9aYJbQ7neR+Hq1ZBZdHb3o6XmmPhYgRBzbzc3BTHhzzE4ZRx+4ci1zHY67o7CZaLtpybeanhbqL8OsxRQvzVQ3Eh66HW126kZhdSbXrvxdWG85XMPrHbz23Scz4jl8DgV/uvc="
+
+
+//====================支付宝公钥
+#define AlipayPubKey   @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB"
+
+//====================安全校验码（MD5）密钥，以数字和字母组成的32位字符
+#define MD5_KEY        @"1g81z5tgu3o2yst4mqm6n838dxe5cw1a"
+
+#endif

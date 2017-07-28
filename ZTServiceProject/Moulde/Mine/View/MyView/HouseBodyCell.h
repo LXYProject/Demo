@@ -10,6 +10,7 @@
 
 @class MyHouseModel;
 @interface HouseBodyCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @property (nonatomic,strong)MyHouseModel *model;
 

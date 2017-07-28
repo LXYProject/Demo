@@ -62,4 +62,31 @@ typedef enum : NSUInteger {
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure;
 
+//二手物品发布
++ (void)requestTitle:(NSString *)title
+             content:(NSString *)content
+            pictures:(NSString *)pictures
+              cityId:(NSString *)cityId
+          districtId:(NSString *)districtId
+             address:(NSString *)address
+               resId:(NSString *)resId
+             resName:(NSString *)resName
+                   x:(NSString *)x
+                   y:(NSString *)y
+            oriPrice:(NSString *)oriPrice
+            secPrice:(NSString *)secPrice
+            delivery:(NSString *)delivery
+             classId:(NSString *)classId
+            newOrOld:(NSString *)newOrOld
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure;
+
+
+//二手物品分类
++(void)requestItemsId:(NSString *)ItemsId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
+
+
+
 @end

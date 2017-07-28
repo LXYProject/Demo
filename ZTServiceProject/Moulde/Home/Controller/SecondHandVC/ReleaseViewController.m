@@ -11,6 +11,7 @@
 #import "SolicitingHeadCell.h"
 #import "BabyDescriptionCell.h"
 #import "SwitchCell.h"
+#import "HomeHttpManager.h"
 
 //#define btnY 440
 //#define labelY 428
@@ -42,7 +43,7 @@
                     @"分类",
                     @"现价"];
     _contentArray = @[@"请选择新旧程度",
-                      @"请选择价格范围",
+                      @"",
                       @"请选择新旧程度"];
     _switchArray = @[@"",
                      @"支持快递",
@@ -55,8 +56,30 @@
 }
 - (void)rightBarClick
 {
-    
+    NSLog(@"二手物品发布");
+    [HomeHttpManager requestTitle:@""
+                          content:@""
+                         pictures:@""
+                           cityId:@""
+                       districtId:@""
+                          address:@""
+                            resId:@""
+                          resName:@""
+                                x:@""
+                                y:@""
+                         oriPrice:@""
+                         secPrice:@""
+                         delivery:@""
+                          classId:@""
+                         newOrOld:@""
+                          success:^(id response) {
+                              
+                          } failure:^(NSError *error, NSString *message) {
+                              
+                          }];
+
 }
+
 - (void)createUI
 {
     UIButton *chooseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -151,7 +174,8 @@
     cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
     cell.content.placeholder = _contentArray[indexPath.row];
     if (indexPath.row==1) {
-        cell.rightContent.text = @"选择";
+        cell.rightContent.text = @"其他";
+        cell.content.hidden = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
         [cell.rightContent removeFromSuperview];
@@ -256,10 +280,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section==1) {
+        if (indexPath.row==1) {
+            [PushManager pushViewControllerWithName:@"ReleaseClassifiedController" animated:YES block:nil];
+        }
+    }
     if (indexPath.section==2) {
         [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:nil];
     }
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section==0) {

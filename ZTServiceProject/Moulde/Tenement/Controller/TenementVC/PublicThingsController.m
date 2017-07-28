@@ -51,6 +51,7 @@
 {
     NSLog(@"提交");
     // 公共报事
+    @weakify(self);
     [TenementHttpManager requestZoneId:self.zoneId
                            affairTitle:@""
                         affairDiscribe:_affairDiscribe
@@ -60,7 +61,7 @@
                           userPhoneNum:_userPhoneNum
                                 images:[UIImage imageNamed:@""]
                                success:^(id response) {
-                                   
+                                   @strongify(self);
                                    //操作失败的原因
                                    NSString *information = [response objectForKey:@"information"];
                                    //状态码
@@ -237,7 +238,9 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section==0) {
+        @weakify(self);
         [PushManager pushViewControllerWithName:@"PublicTypeController" animated:YES block:^(PublicTypeController* viewController) {
+            @strongify(self);
             viewController.zoneId = self.zoneId;
         }];
     }

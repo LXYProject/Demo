@@ -44,6 +44,7 @@
 
 // 我发布的服务
 - (void)requestPublishedService{
+    @weakify(self);
     [NearByHttpManager requestDataWithNearType:LookingService
                                          query:0
                                        keyWord:@""
@@ -53,6 +54,7 @@
                                           sort:@""
                                           page:self.currentPage
                                        success:^(NSArray * response) {
+                                           @strongify(self);
                                            [self.tableView endRefreshing];
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
