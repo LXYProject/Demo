@@ -10,6 +10,7 @@
 #import "PostContentCell.h"
 #import "AddPhotosCell.h"
 #import "MesssgeHttpManager.h"
+#import "LocationChoiceController.h"
 
 //#define btnY 542
 //#define labelY 530
@@ -19,13 +20,19 @@
 #define btnX 15
 @interface PostMessageController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @end
 
 @implementation PostMessageController
 {
     NSString *_affairDiscribe;
 }
+
+- (void)setLocationInfo:(NSString *)locationInfo{
+    _locationInfo = locationInfo;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -131,9 +138,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     // 不写这句直接崩掉，找不到循环引用的cell
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.textLabel.text = @"位置选择";
+    if (self.locationInfo.length>0) {
+        cell.textLabel.text = self.locationInfo;
+    }else{
+        cell.textLabel.text = @"请选择位置信息";
+    }
     cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
@@ -141,6 +152,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:12];
     }
     cell.textLabel.textColor = TEXT_COLOR;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 
 }
@@ -159,7 +171,9 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==2) {
-        [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:nil];
+        [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:^(LocationChoiceController* viewController) {
+            viewController.currentController = 0;
+        }];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

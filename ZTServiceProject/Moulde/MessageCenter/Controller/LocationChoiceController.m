@@ -7,6 +7,8 @@
 //
 
 #import "LocationChoiceController.h"
+#import "PostMessageController.h"
+#import "ReleaseViewController.h"
 
 @interface LocationChoiceController ()<CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -150,8 +152,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section==0) {
-        
+    AMapPOI *poi = (AMapPOI *)self.dataSource[indexPath.row];
+
+    if (self.currentController==0) {
+        [PushManager popViewControllerWithName:@"PostMessageController" animated:YES block:^(PostMessageController* viewController) {
+            viewController.locationInfo = poi.name;
+        }];
+    }else{
+        [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {
+            viewController.locationInfo = poi.name;
+        }];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

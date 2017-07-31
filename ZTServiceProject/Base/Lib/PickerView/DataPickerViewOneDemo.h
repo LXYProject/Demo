@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^DatePickerSelected)(NSString *dateStr,NSString *timeStr);
+typedef void(^DatePickerSelected)(NSString *dateStr);
 
-@interface DataPickerViewDemo : UIView
+@interface DataPickerViewOneDemo : UIView
+
 @property (nonatomic,copy)DatePickerSelected pikerSelected;
-+(DataPickerViewDemo* )sharedPikerView;
+
++(DataPickerViewOneDemo* )sharedPikerView;
 - (void)show;
 - (void)dismiss;
 @end

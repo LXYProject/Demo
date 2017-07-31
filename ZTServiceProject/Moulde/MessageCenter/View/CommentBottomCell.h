@@ -25,4 +25,7 @@
 @property (nonatomic,copy)Id_Block commentSuccessBlock;
 
 
+@property (nonatomic,copy)Void_Block beginEditing;
+
+
 @end

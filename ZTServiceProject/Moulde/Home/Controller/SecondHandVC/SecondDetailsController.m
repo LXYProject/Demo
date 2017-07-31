@@ -136,7 +136,7 @@
     }else{
         CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
 //        NSArray *commentList = self.model.commentList;
-//        cell.model = commentList[indexPath.row];
+//        cell.model = commentList[indexPath.row-2];
 
         return cell;
     }
@@ -198,8 +198,7 @@
         }else{
 //            return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
 //                NSArray *commentList = self.model.commentList;
-////                cell.model = commentList[indexPath.row];
-//                cell.model = self.model.commentList;
+//                cell.model = commentList[indexPath.row-2];
 //            }];
             return 0;
 

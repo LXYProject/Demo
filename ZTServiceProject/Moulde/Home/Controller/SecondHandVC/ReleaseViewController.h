@@ -10,4 +10,7 @@
 
 @interface ReleaseViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *otherClass;
+@property (nonatomic, copy) NSString *locationInfo;
+
 @end

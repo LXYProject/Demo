@@ -12,6 +12,8 @@
 #import "BabyDescriptionCell.h"
 #import "SwitchCell.h"
 #import "HomeHttpManager.h"
+#import "DataPickerViewOneDemo.h"
+#import "LocationChoiceController.h"
 
 //#define btnY 440
 //#define labelY 428
@@ -23,6 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, copy)NSString* oldAndNew;
+
 @end
 
 @implementation ReleaseViewController
@@ -33,11 +37,18 @@
 
 }
 
+- (void)setOtherClass:(NSString *)otherClass{
+    _otherClass = otherClass;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+- (void)setLocationInfo:(NSString *)locationInfo{
+    _locationInfo = locationInfo;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-
     
     _titleArray = @[@"宝贝标题",
                     @"分类",
@@ -174,7 +185,11 @@
     cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
     cell.content.placeholder = _contentArray[indexPath.row];
     if (indexPath.row==1) {
-        cell.rightContent.text = @"其他";
+        if (self.otherClass.length>0) {
+            cell.rightContent.text = self.otherClass;
+        }else{
+            cell.rightContent.text = @"其他";
+        }
         cell.content.hidden = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
@@ -208,7 +223,11 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = @"请选择位置信息";
+    if (self.locationInfo.length>0) {
+        cell.textLabel.text = self.locationInfo;
+    }else{
+        cell.textLabel.text = @"请选择位置信息";
+    }
     cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
@@ -216,6 +235,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:12];
     }
     cell.textLabel.textColor = [UIColor grayColor];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
     
 }
@@ -225,21 +245,28 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row==0) {
-        SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-        cell.title.text = @"新旧:";
-        cell.content.placeholder = @"请选择价格范围";
-        cell.rightContent.text = @"九成新";
-        if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.title.font = [UIFont systemFontOfSize:13];
-            cell.rightContent.font = [UIFont systemFontOfSize:13];
-            [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-        }else{
-            cell.title.font = [UIFont systemFontOfSize:14];
-            cell.rightContent.font = [UIFont systemFontOfSize:14];
-            [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+        static NSString *ID = @"cell";
+        // 根据标识去缓存池找cell
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        // 不写这句直接崩掉，找不到循环引用的cell
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
         }
-        cell.title.textColor = TEXT_COLOR;
-        cell.rightContent.textColor = TEXT_COLOR;
+        cell.textLabel.text = @"新旧:";
+        if (self.oldAndNew.length>0) {
+            cell.detailTextLabel.text = self.oldAndNew;
+        }else{
+            cell.detailTextLabel.text = @"新旧程度";
+        }
+        if (IS_IPHONE_4 || IS_IPHONE_5) {
+            cell.textLabel.font = [UIFont systemFontOfSize:13];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+        }else{
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        }
+        cell.textLabel.textColor = TEXT_COLOR;
+        cell.detailTextLabel.textColor = TEXT_COLOR;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }else{
@@ -285,9 +312,23 @@
         if (indexPath.row==1) {
             [PushManager pushViewControllerWithName:@"ReleaseClassifiedController" animated:YES block:nil];
         }
-    }
-    if (indexPath.section==2) {
-        [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:nil];
+    }else if (indexPath.section==2){
+        [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:^(LocationChoiceController* viewController) {
+            viewController.currentController = 1;
+        }];
+
+    }else if (indexPath.section==3){
+        if (indexPath.row==0) {
+            [[DataPickerViewOneDemo sharedPikerView]show];
+            [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
+                NSLog(@"date:%@",dateStr);
+                self.oldAndNew = dateStr;
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+            };
+ 
+        }
+    }else{
+        
     }
 }
 

@@ -10,4 +10,7 @@
 
 @interface PostMessageController : BaseViewController
 
+@property (nonatomic, copy) NSString *locationInfo;
+
+
 @end

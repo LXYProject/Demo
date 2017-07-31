@@ -62,6 +62,7 @@
     [super viewWillDisappear:animated];
     [self.searchBtn removeFromSuperview];
 }
+
 - (void)createNav
 {
     self.searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];

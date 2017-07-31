@@ -30,19 +30,24 @@
 
 -(void)setModel:(CommentUserModel *)model {
     _model = model;
-    NSString *str1 = model.userName;
-    NSString *str2 = model.targetUserName;
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]init];
-    NSAttributedString *attr1 = [[NSAttributedString alloc]initWithString:str1 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];
-    NSAttributedString *attr2 = [[NSAttributedString alloc]initWithString:@"回复" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0x4e4e4e)}];
-    NSAttributedString *attr3 = [[NSAttributedString alloc]initWithString:str2 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];
-    NSAttributedString *attr4 = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@":%@",model.comment] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0x4e4e4e)}];
-    [attr appendAttributedString:attr1];
-    if (model.targetUserName.length>0) {
-        [attr appendAttributedString:attr2];
-        [attr appendAttributedString:attr3];
+    if (model) {    
+        NSString *str1 = model.userName;
+        NSString *str2 = model.targetUserName;
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]init];
+        NSAttributedString *attr1 = [[NSAttributedString alloc]initWithString:str1 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];
+        [attr appendAttributedString:attr1];
+        if (![model.userId isEqualToString:model.targetUserId]) {
+            NSAttributedString *attr2 = [[NSAttributedString alloc]initWithString:@"回复" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0x4e4e4e)}];
+            NSAttributedString *attr3 = [[NSAttributedString alloc]initWithString:str2 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];
+            if (model.targetUserName.length>0) {
+                [attr appendAttributedString:attr2];
+                [attr appendAttributedString:attr3];
+            }
+        }
+        NSAttributedString *attr4 = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@":%@",model.comment] attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0x4e4e4e)}];
+        [attr appendAttributedString:attr4];
+        _commentLable.attributedText = attr;
     }
-    [attr appendAttributedString:attr4];
-    _commentLable.attributedText = attr;
 }
+
 @end

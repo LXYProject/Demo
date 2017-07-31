@@ -6,28 +6,27 @@
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "DataPickerViewDemo.h"
+#import "DataPickerViewOneDemo.h"
 #define EndTime @"2018-12-01"
-static DataPickerViewDemo *pikerView = nil;
-@interface DataPickerViewDemo ()<UIPickerViewDelegate,UIPickerViewDataSource>
+static DataPickerViewOneDemo *pikerView = nil;
+@interface DataPickerViewOneDemo ()<UIPickerViewDelegate,UIPickerViewDataSource>
 @property (nonatomic,strong)UIView *headerView;
 @property (nonatomic,strong)UIView *bottomView;
 @property (nonatomic,strong)UIPickerView *pickView;
-@property (nonatomic,strong)NSMutableArray *dateDataSource;
-@property (nonatomic,strong)NSMutableArray *timeDateSource;
+@property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic,strong)UIView *backView;
 @end
 
-@implementation DataPickerViewDemo {
+@implementation DataPickerViewOneDemo {
     NSInteger _currentSelectedRow;
     NSInteger _currentSelectComponent;
 }
 
-+(DataPickerViewDemo* )sharedPikerView {
++(DataPickerViewOneDemo* )sharedPikerView {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (!pikerView) {
-            pikerView = [[DataPickerViewDemo alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+            pikerView = [[DataPickerViewOneDemo alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         }
     });
     return pikerView;
@@ -48,29 +47,10 @@ static DataPickerViewDemo *pikerView = nil;
 }
 
 - (void)creatDataSource {
-    [self.dateDataSource removeAllObjects];
-    [self.timeDateSource removeAllObjects];
-    //结束时间
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-    [dateformatter setDateFormat:@"YYYY-MM-dd"];
     
-    NSDate *endDate = [dateformatter dateFromString:EndTime];
-    //开始时间
-    long long nowTime = [[NSDate date] timeIntervalSince1970],
-    endTime = [endDate timeIntervalSince1970],//结束时间
-    dayTime = 24*60*60,
-    time = nowTime - nowTime%dayTime;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YY-MM-dd"];
-    
-    while (time < endTime) {
-        NSString *showOldDate = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time]];
-        [self.dateDataSource addObject:showOldDate];
-        time += dayTime;
-    }
-    for (int i=1;i<=24;i++) {
-        [self.timeDateSource addObject:[NSString stringWithFormat:@"%02d:00",i]];
-    }
+    NSArray *dataArr = @[@"全新",@"九成新",@"八成新"];
+
+    self.dataSource = (NSMutableArray *)dataArr;
 }
 
 
@@ -98,14 +78,12 @@ static DataPickerViewDemo *pikerView = nil;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component ==0) {
+    
         return self.dateDataSource.count;
-    }
-    return self.timeDateSource.count;
 }
 
 // 返回选中的行
@@ -137,12 +115,7 @@ static DataPickerViewDemo *pikerView = nil;
     else {
         myView.textColor = [UIColor darkGrayColor];
     }
-    if (component==0){
-        myView.text = self.dateDataSource[row];
-    }
-    else {
-        myView.text = self.timeDateSource[row];
-    }
+    myView.text = self.dataSource[row];
     return myView;
 }
 
@@ -203,25 +176,18 @@ static DataPickerViewDemo *pikerView = nil;
 {
     [self dismiss];
     NSInteger oneComRow =[self.pickView selectedRowInComponent:0];
-    NSInteger twoComRow =[self.pickView selectedRowInComponent:1];
     if (self.pikerSelected) {
-        self.pikerSelected(self.dateDataSource[oneComRow], self.timeDateSource[twoComRow]);
+        self.pikerSelected(self.dateDataSource[oneComRow]);
     }
     
 }
 - (NSMutableArray *)dateDataSource {
-    if (!_dateDataSource) {
-        _dateDataSource = [NSMutableArray arrayWithCapacity:1];
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
     }
-    return _dateDataSource;
+    return _dataSource;
 }
 
-- (NSMutableArray *)timeDateSource {
-    if (!_timeDateSource) {
-        _timeDateSource = [NSMutableArray arrayWithCapacity:1];
-    }
-    return _timeDateSource;
-}
 
 - (UIView *)backView {
     if (!_backView) {

@@ -10,9 +10,8 @@
 #import "SearchOneHeadCell.h"
 #import "SecondHandSearchHeaderView.h"
 #import "SecondHanditemCell.h"
-#define RGB(r,g,b) RGBA(r,g,b,1.0f)
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
-#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+//#define RGB(r,g,b) RGBA(r,g,b,1.0f)
+//#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define HistoryKey @"HistoryKey"
 #define HistoryMaxCount 20
 

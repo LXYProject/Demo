@@ -332,6 +332,9 @@
 		7B5C925B1EF8FE5800C545A8 /* SecondAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C92591EF8FE5800C545A8 /* SecondAddressCell.xib */; };
 		7B5C925F1EF90D9F00C545A8 /* DQTextFild.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C925E1EF90D9F00C545A8 /* DQTextFild.m */; };
 		7B5C92611EF90F8A00C545A8 /* 搜索-背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C92601EF90F8A00C545A8 /* 搜索-背景@2x.png */; };
+		7B685B101F2EFB17006542CB /* CollectionHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B685B0E1F2EFB17006542CB /* CollectionHeadCell.m */; };
+		7B685B111F2EFB17006542CB /* CollectionHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B685B0F1F2EFB17006542CB /* CollectionHeadCell.xib */; };
+		7B685B141F2F194F006542CB /* DataPickerViewOneDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B685B131F2F194F006542CB /* DataPickerViewOneDemo.m */; };
 		7B68F4FE1F135B9E00516929 /* MineHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B68F4FD1F135B9E00516929 /* MineHttpManager.m */; };
 		7B68F5011F13780800516929 /* BuyOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B68F5001F13780800516929 /* BuyOrderModel.m */; };
 		7B68F5041F13896200516929 /* HelpOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B68F5031F13896200516929 /* HelpOrderModel.m */; };
@@ -1170,6 +1173,11 @@
 		7B5C925D1EF90D9F00C545A8 /* DQTextFild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQTextFild.h; sourceTree = "<group>"; };
 		7B5C925E1EF90D9F00C545A8 /* DQTextFild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQTextFild.m; sourceTree = "<group>"; };
 		7B5C92601EF90F8A00C545A8 /* 搜索-背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索-背景@2x.png"; sourceTree = "<group>"; };
+		7B685B0D1F2EFB17006542CB /* CollectionHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionHeadCell.h; sourceTree = "<group>"; };
+		7B685B0E1F2EFB17006542CB /* CollectionHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionHeadCell.m; sourceTree = "<group>"; };
+		7B685B0F1F2EFB17006542CB /* CollectionHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionHeadCell.xib; sourceTree = "<group>"; };
+		7B685B121F2F194F006542CB /* DataPickerViewOneDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPickerViewOneDemo.h; sourceTree = "<group>"; };
+		7B685B131F2F194F006542CB /* DataPickerViewOneDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPickerViewOneDemo.m; sourceTree = "<group>"; };
 		7B68F4FC1F135B9E00516929 /* MineHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineHttpManager.h; sourceTree = "<group>"; };
 		7B68F4FD1F135B9E00516929 /* MineHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineHttpManager.m; sourceTree = "<group>"; };
 		7B68F4FF1F13780800516929 /* BuyOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyOrderModel.h; sourceTree = "<group>"; };
@@ -1831,6 +1839,9 @@
 				7B8BDB381EFFBDAB00F58957 /* SecondHandSearchHeaderView.h */,
 				7B8BDB391EFFBDAB00F58957 /* SecondHandSearchHeaderView.m */,
 				7B8BDB3A1EFFBDAB00F58957 /* SecondHandSearchHeaderView.xib */,
+				7B685B0D1F2EFB17006542CB /* CollectionHeadCell.h */,
+				7B685B0E1F2EFB17006542CB /* CollectionHeadCell.m */,
+				7B685B0F1F2EFB17006542CB /* CollectionHeadCell.xib */,
 			);
 			path = SecondHandView;
 			sourceTree = "<group>";
@@ -2723,6 +2734,8 @@
 			children = (
 				7B6FB2C51F0CB793009F5F49 /* DataPickerViewDemo.h */,
 				7B6FB2C61F0CB793009F5F49 /* DataPickerViewDemo.m */,
+				7B685B121F2F194F006542CB /* DataPickerViewOneDemo.h */,
+				7B685B131F2F194F006542CB /* DataPickerViewOneDemo.m */,
 			);
 			path = PickerView;
 			sourceTree = "<group>";
@@ -3630,6 +3643,7 @@
 				7B205E1F1F00E6C900E46B74 /* tabbar_llq_normal@3x.png in Resources */,
 				7B5C92321EF8B8EC00C545A8 /* Pic_blank_328px@3x.png in Resources */,
 				7BAFBC211EF7BAF700AFB6C7 /* SwitchCell.xib in Resources */,
+				7B685B111F2EFB17006542CB /* CollectionHeadCell.xib in Resources */,
 				7BBB102B1F0502CF00BCCF4B /* RegisterThreeController.xib in Resources */,
 				7B966BCF1EFFB5D400326C88 /* UIBarButtonItemArrowLeft@2x.png in Resources */,
 				7B205E2E1F00E6C900E46B74 /* tabbar_zb_normal@2x.png in Resources */,
@@ -3986,6 +4000,7 @@
 				7B4D972C1F09EEA200731969 /* RegularTool.m in Sources */,
 				7B16D28E1F18C5EC0070F88A /* TenementHttpManager.m in Sources */,
 				7B966A671EFF8B8900326C88 /* CommentPhotoCell.m in Sources */,
+				7B685B141F2F194F006542CB /* DataPickerViewOneDemo.m in Sources */,
 				7B6FB3261F0CC8CF009F5F49 /* GroupNumberCell.m in Sources */,
 				299E2CAB1EE7CD5D0045A884 /* NJKWebViewProgressView.m in Sources */,
 				7B1D8E211F1DDD5700D79F46 /* ServiceTypeController.m in Sources */,
@@ -4019,6 +4034,7 @@
 				7B5C92511EF8EBF200C545A8 /* SecondUserCell.m in Sources */,
 				7B8F2A541F03889B00D5D1DF /* CommentContentCell.m in Sources */,
 				7BBB10201F05003F00BCCF4B /* LoginViewController.m in Sources */,
+				7B685B101F2EFB17006542CB /* CollectionHeadCell.m in Sources */,
 				7B52C6B91F205B320078EE32 /* VillagePanoramaModel.m in Sources */,
 				7B966BE11EFFB5D400326C88 /* MWZoomingScrollView.m in Sources */,
 				7B6FB33E1F0CCF14009F5F49 /* OrderBodyCell.m in Sources */,

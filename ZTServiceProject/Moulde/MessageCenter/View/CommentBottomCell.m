@@ -55,34 +55,20 @@
 - (void)setModel:(MessageModel *)model {
     _model = model;
     if (_model) {
+//        _btn1.selected = model.isSupper;
         _address.text = _model.address.length>0?_model.address:@"未知位置";
         _thumbUpNumber.text = [NSString stringWithFormat:@"%lu", (unsigned long)model.likeList.count];
         _comments.text = model.commentCount;
-        
-        _topicId = model.topicId;
-
         NSMutableString *likeStr = [[NSMutableString alloc]initWithCapacity:1];
         [_model.likeList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CommentUserModel *userModel = obj;
             [likeStr appendString:[NSString stringWithFormat:@"%@ ",userModel.userName]];
 
-            if (idx == 11) {
+            if (idx == 15) {
                 *stop = YES;
             }
         }];
         
-        
-        [_model.commentList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            CommentUserModel *userModel = obj;
-            _commentType = userModel.commentType;
-            _targetUserId = userModel.targetUserId;
-
-            [self requestStr1:_commentType str2:_targetUserId];
-//            if (idx == 11) {
-//                *stop = YES;
-//            }
-        }];
-
         
         NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]init];
         NSAttributedString *attr1 = [[NSAttributedString alloc]initWithString:likeStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];
@@ -100,36 +86,29 @@
 }
 
 - (IBAction)thumbUp:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_topicId success:^(id response) {
-//        //状态码
-//        NSString *status = [response objectForKey:@"status"];
-//        
-//        if ([status integerValue]==0) {
-//            [sender setBackgroundImage:[UIImage imageNamed:@"warn_press_40px"] forState:UIControlStateSelected];
-//        }else{
-//            [sender setBackgroundImage:[UIImage imageNamed:@"thumb_up"] forState:UIControlStateNormal];
-//        }
-
-        //这个代码放在网络请求的成功回调里面
-        if (self.commentSuccessBlock) {
-            self.commentSuccessBlock(response);
-
+    [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_model.topicId success:^(id response) {
+        //状态码
+        NSString *status = [response objectForKey:@"status"];
+        if ([status integerValue]==0) {
+            //这个代码放在网络请求的成功回调里面
+            if (self.commentSuccessBlock) {
+                self.commentSuccessBlock(response);
+                
+            }
         }
+        
     } failure:^(NSError *error, NSString *message) {
         
     }];
-
-    if (sender.tag==1) {
-        NSLog(@"11111");
-        if (sender.selected) {
-        }
-        else {
-
-        }
-    }
 }
 
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (self.beginEditing) {
+        self.beginEditing();
+    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSString *context = [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -152,10 +131,8 @@
     NSLog(@"评论的内容==%@", text);
     NSLog(@"评论的commentType==%@", _commentType);
     NSLog(@"评论的targetUserId==%@", _targetUserId);
-
-
     @weakify(self);
-    [MesssgeHttpManager requestTopicId:_topicId comment:text commentType:_commentType targetUserId:_targetUserId success:^(id response) {
+    [MesssgeHttpManager requestTopicId:_model.topicId comment:text commentType:@"0" targetUserId:_model.ownerId success:^(id response) {
         @strongify(self);
         //网络请求的成功回调里面
         if (self.commentSuccessBlock) {

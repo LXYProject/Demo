@@ -10,7 +10,5 @@
 
 @class CommentUserModel;
 @interface CommentInfoCell : UITableViewCell
-
 @property (nonatomic,strong)CommentUserModel *model;
-
 @end

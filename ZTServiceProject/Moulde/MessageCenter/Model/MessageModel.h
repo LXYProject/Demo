@@ -271,6 +271,7 @@
 @property (nonatomic,copy)NSString *zoneId;
 @property (nonatomic,strong)NSArray *commentList;
 @property (nonatomic,copy)NSString *ownerName;
+@property (nonatomic,copy)NSString *ownerId;
 @property (nonatomic,copy)NSString *ownerImageUrl;
 @property (nonatomic,copy)NSString *zoneName;
 @property (nonatomic,copy)NSString *commentCount;
@@ -279,9 +280,6 @@
 @property (nonatomic,copy)NSString *y;
 @property (nonatomic,copy)NSString *address;
 @property (nonatomic ,assign) BOOL  isSupper;
-
-@property (nonatomic,copy)NSString *commentType;
-@property (nonatomic,copy)NSString *targetUserId;
 
 
 @end

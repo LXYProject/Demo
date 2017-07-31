@@ -10,4 +10,5 @@
 
 @interface LocationChoiceController : BaseViewController
 
+@property (nonatomic, assign) NSInteger currentController;
 @end
