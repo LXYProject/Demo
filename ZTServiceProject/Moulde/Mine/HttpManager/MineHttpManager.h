@@ -100,5 +100,11 @@ typedef enum : NSUInteger {
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
 
+
+// 根据小区查看附近的人
++ (void)requestPeopleZoneId:(NSString *)zoneId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
+
 @end
 

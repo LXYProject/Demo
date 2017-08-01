@@ -17,6 +17,7 @@
 #import "VillagesModel.h"
 #import "BuildingListModel.h"
 #import "HouseListModel.h"
+#import "CommunityPeopleModel.h"
 
 @implementation MineHttpManager
 
@@ -213,6 +214,24 @@
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchHouses paramter:paramter success:^(id response) {
         
         NSArray *modelArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"houseList"]];
+        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+// 根据小区查看附近的人
++ (void)requestPeopleZoneId:(NSString *)zoneId
+                    success:(HttpRequestSuccess)success
+                    failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_lookPepoleByVillage paramter:paramter success:^(id response) {
+        
+        NSArray *modelArray = [CommunityPeopleModel mj_objectArrayWithKeyValuesArray:response[@"userList"]];
         success(modelArray);
         
     } failure:^(NSError *error, NSString *message) {

@@ -8,9 +8,15 @@
 
 #import "VillagePeopleController.h"
 #import "PeopleDetailsCell.h"
+#import "MineHttpManager.h"
+#import "PersonalDataController.h"
 
 @interface VillagePeopleController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet BaseTableView *tableView;
+
+// 小区查看附近的人 的数据相关的
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
@@ -23,14 +29,35 @@
     self.tableView.tableFooterView = [[UIView alloc]init];
 
 
+    [self.tableView setHeaderRefreshBlock:^{
+        [self requestLookPepoleByVillage];
+    }];
+    [self.tableView beginHeaderRefreshing];
+
 }
 
+// 根据小区查看附近的人
+- (void)requestLookPepoleByVillage{
+    @weakify(self);
+    [MineHttpManager requestPeopleZoneId:@"510018177815"
+                                 success:^(NSArray* response) {
+                                 @strongify(self);
+                                     [self.tableView endRefreshing];
+                                     
+                                     [self.dataSource removeAllObjects];
+                                     [self.dataSource addObjectsFromArray:response];
+                                     [self.tableView reloadData];
+                                     
+                                 } failure:^(NSError *error, NSString *message) {
+                                     [self.tableView endRefreshing];
+                                 }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,6 +70,7 @@
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     PeopleDetailsCell *cell = (PeopleDetailsCell *)[self creatCell:tableView indenty:@"PeopleDetailsCell"];
+    cell.model = self.dataSource[indexPath.row];
     return cell;
 }
 //公共创建cell的方法
@@ -54,9 +82,24 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [PushManager pushViewControllerWithName:@"PersonalDataController" animated:YES block:^(PersonalDataController* viewController) {
+        viewController.model = self.dataSource[indexPath.row];
+    }];
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 67;
 }
 
+- (NSArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 
 @end

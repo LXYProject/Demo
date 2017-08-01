@@ -150,5 +150,9 @@
     }
     return resultStr;
 }
+- (IBAction)chooseBtn {
+    [PushManager pushViewControllerWithName:@"ChooseToPayController" animated:YES block:nil];
+    
+}
 
 @end

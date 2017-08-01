@@ -116,6 +116,17 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (_segment.selectedSegmentIndex==0) {
+        
+    }else{
+        [PushManager pushViewControllerWithName:@"PersonalDataController" animated:YES block:nil];
+    }
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 67;
 }

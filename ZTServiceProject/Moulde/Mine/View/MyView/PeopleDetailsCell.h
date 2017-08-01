@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class CommunityPeopleModel;
 @interface PeopleDetailsCell : UITableViewCell
+
+@property (nonatomic, strong) CommunityPeopleModel  *model;
 
 @end

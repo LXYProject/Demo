@@ -169,6 +169,22 @@
 		7B1E48C91F17181B00AECF41 /* AddHousingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48C71F17181B00AECF41 /* AddHousingController.xib */; };
 		7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */; };
 		7B1E48CE1F173F7800AECF41 /* ChatFriendsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1E48CC1F173F7800AECF41 /* ChatFriendsController.xib */; };
+		7B1F113A1F301AD800963AAC /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F11381F301AD800963AAC /* PersonalDataController.m */; };
+		7B1F113B1F301AD800963AAC /* PersonalDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11391F301AD800963AAC /* PersonalDataController.xib */; };
+		7B1F113F1F301B6100963AAC /* PersonalDataHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F113D1F301B6100963AAC /* PersonalDataHeadCell.m */; };
+		7B1F11401F301B6100963AAC /* PersonalDataHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F113E1F301B6100963AAC /* PersonalDataHeadCell.xib */; };
+		7B1F11491F30208000963AAC /* NumberOfPostsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F11471F30208000963AAC /* NumberOfPostsCell.m */; };
+		7B1F114A1F30208000963AAC /* NumberOfPostsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11481F30208000963AAC /* NumberOfPostsCell.xib */; };
+		7B1F114E1F30303600963AAC /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F114C1F30303600963AAC /* PostCollectionViewCell.m */; };
+		7B1F114F1F30303600963AAC /* PostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F114D1F30303600963AAC /* PostCollectionViewCell.xib */; };
+		7B1F11581F30319700963AAC /* PostImageCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F11561F30319700963AAC /* PostImageCollectionCell.m */; };
+		7B1F11591F30319700963AAC /* PostImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11571F30319700963AAC /* PostImageCollectionCell.xib */; };
+		7B1F115C1F30500400963AAC /* CommunityPeopleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F115B1F30500400963AAC /* CommunityPeopleModel.m */; };
+		7B1F11601F305CA300963AAC /* ChooseToPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1F115E1F305CA300963AAC /* ChooseToPayController.m */; };
+		7B1F11611F305CA300963AAC /* ChooseToPayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F115F1F305CA300963AAC /* ChooseToPayController.xib */; };
+		7B1F11651F307C8C00963AAC /* WeChatIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11621F307C8B00963AAC /* WeChatIcon.png */; };
+		7B1F11661F307C8C00963AAC /* WeChatIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11631F307C8B00963AAC /* WeChatIcon@2x.png */; };
+		7B1F11671F307C8C00963AAC /* WeChatIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1F11641F307C8B00963AAC /* WeChatIcon@3x.png */; };
 		7B205DF31F00B18A00E46B74 /* AddPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */; };
 		7B205DF41F00B18A00E46B74 /* AddPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */; };
 		7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B205DF71F00E6C900E46B74 /* home_eswp_fzxm@2x.png */; };
@@ -936,6 +952,29 @@
 		7B1E48CA1F173F7800AECF41 /* ChatFriendsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFriendsController.h; sourceTree = "<group>"; };
 		7B1E48CB1F173F7800AECF41 /* ChatFriendsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFriendsController.m; sourceTree = "<group>"; };
 		7B1E48CC1F173F7800AECF41 /* ChatFriendsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatFriendsController.xib; sourceTree = "<group>"; };
+		7B1F11371F301AD800963AAC /* PersonalDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataController.h; sourceTree = "<group>"; };
+		7B1F11381F301AD800963AAC /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
+		7B1F11391F301AD800963AAC /* PersonalDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalDataController.xib; sourceTree = "<group>"; };
+		7B1F113C1F301B6100963AAC /* PersonalDataHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataHeadCell.h; sourceTree = "<group>"; };
+		7B1F113D1F301B6100963AAC /* PersonalDataHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataHeadCell.m; sourceTree = "<group>"; };
+		7B1F113E1F301B6100963AAC /* PersonalDataHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalDataHeadCell.xib; sourceTree = "<group>"; };
+		7B1F11461F30208000963AAC /* NumberOfPostsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberOfPostsCell.h; sourceTree = "<group>"; };
+		7B1F11471F30208000963AAC /* NumberOfPostsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberOfPostsCell.m; sourceTree = "<group>"; };
+		7B1F11481F30208000963AAC /* NumberOfPostsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberOfPostsCell.xib; sourceTree = "<group>"; };
+		7B1F114B1F30303600963AAC /* PostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCollectionViewCell.h; sourceTree = "<group>"; };
+		7B1F114C1F30303600963AAC /* PostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionViewCell.m; sourceTree = "<group>"; };
+		7B1F114D1F30303600963AAC /* PostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionViewCell.xib; sourceTree = "<group>"; };
+		7B1F11551F30319700963AAC /* PostImageCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostImageCollectionCell.h; sourceTree = "<group>"; };
+		7B1F11561F30319700963AAC /* PostImageCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostImageCollectionCell.m; sourceTree = "<group>"; };
+		7B1F11571F30319700963AAC /* PostImageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostImageCollectionCell.xib; sourceTree = "<group>"; };
+		7B1F115A1F30500400963AAC /* CommunityPeopleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityPeopleModel.h; sourceTree = "<group>"; };
+		7B1F115B1F30500400963AAC /* CommunityPeopleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityPeopleModel.m; sourceTree = "<group>"; };
+		7B1F115D1F305CA300963AAC /* ChooseToPayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseToPayController.h; sourceTree = "<group>"; };
+		7B1F115E1F305CA300963AAC /* ChooseToPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseToPayController.m; sourceTree = "<group>"; };
+		7B1F115F1F305CA300963AAC /* ChooseToPayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseToPayController.xib; sourceTree = "<group>"; };
+		7B1F11621F307C8B00963AAC /* WeChatIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeChatIcon.png; sourceTree = "<group>"; };
+		7B1F11631F307C8B00963AAC /* WeChatIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeChatIcon@2x.png"; sourceTree = "<group>"; };
+		7B1F11641F307C8B00963AAC /* WeChatIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WeChatIcon@3x.png"; sourceTree = "<group>"; };
 		7B205DF01F00B18A00E46B74 /* AddPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotosCell.h; sourceTree = "<group>"; };
 		7B205DF11F00B18A00E46B74 /* AddPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotosCell.m; sourceTree = "<group>"; };
 		7B205DF21F00B18A00E46B74 /* AddPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPhotosCell.xib; sourceTree = "<group>"; };
@@ -1664,6 +1703,9 @@
 				7B14F8861F175DD700821281 /* VillagePeopleController.h */,
 				7B14F8871F175DD700821281 /* VillagePeopleController.m */,
 				7B14F8881F175DD700821281 /* VillagePeopleController.xib */,
+				7B1F11371F301AD800963AAC /* PersonalDataController.h */,
+				7B1F11381F301AD800963AAC /* PersonalDataController.m */,
+				7B1F11391F301AD800963AAC /* PersonalDataController.xib */,
 				7B14F88B1F175E9C00821281 /* ActivePeopleController.h */,
 				7B14F88C1F175E9C00821281 /* ActivePeopleController.m */,
 				7B14F88D1F175E9C00821281 /* ActivePeopleController.xib */,
@@ -1753,6 +1795,18 @@
 		7B0C71E21F15B81400CE8AEC /* DetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				7B1F113C1F301B6100963AAC /* PersonalDataHeadCell.h */,
+				7B1F113D1F301B6100963AAC /* PersonalDataHeadCell.m */,
+				7B1F113E1F301B6100963AAC /* PersonalDataHeadCell.xib */,
+				7B1F11461F30208000963AAC /* NumberOfPostsCell.h */,
+				7B1F11471F30208000963AAC /* NumberOfPostsCell.m */,
+				7B1F11481F30208000963AAC /* NumberOfPostsCell.xib */,
+				7B1F114B1F30303600963AAC /* PostCollectionViewCell.h */,
+				7B1F114C1F30303600963AAC /* PostCollectionViewCell.m */,
+				7B1F114D1F30303600963AAC /* PostCollectionViewCell.xib */,
+				7B1F11551F30319700963AAC /* PostImageCollectionCell.h */,
+				7B1F11561F30319700963AAC /* PostImageCollectionCell.m */,
+				7B1F11571F30319700963AAC /* PostImageCollectionCell.xib */,
 				7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */,
 				7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */,
 				7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */,
@@ -2071,6 +2125,9 @@
 				7B45E7C01F27326B00380F61 /* PaymentHistoryController.h */,
 				7B45E7C11F27326B00380F61 /* PaymentHistoryController.m */,
 				7B45E7C21F27326B00380F61 /* PaymentHistoryController.xib */,
+				7B1F115D1F305CA300963AAC /* ChooseToPayController.h */,
+				7B1F115E1F305CA300963AAC /* ChooseToPayController.m */,
+				7B1F115F1F305CA300963AAC /* ChooseToPayController.xib */,
 			);
 			path = TenementVC;
 			sourceTree = "<group>";
@@ -2320,6 +2377,9 @@
 		7B5C92241EF8B8EC00C545A8 /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				7B1F11621F307C8B00963AAC /* WeChatIcon.png */,
+				7B1F11631F307C8B00963AAC /* WeChatIcon@2x.png */,
+				7B1F11641F307C8B00963AAC /* WeChatIcon@3x.png */,
 				7B52C6BD1F208CF10078EE32 /* home_icon_location@2x.png */,
 				7B52C6BE1F208CF10078EE32 /* home_icon_location@3x.png */,
 				7B243A241F1C67D8003A237F /* menu_ok.png */,
@@ -2546,6 +2606,8 @@
 				7B16D27D1F185AAD0070F88A /* BuildingListModel.m */,
 				7B16D2841F185EA20070F88A /* HouseListModel.h */,
 				7B16D2851F185EA20070F88A /* HouseListModel.m */,
+				7B1F115A1F30500400963AAC /* CommunityPeopleModel.h */,
+				7B1F115B1F30500400963AAC /* CommunityPeopleModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3444,12 +3506,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B2AEA9E1F0F2DB20008D9AC /* SaleOrderDetailsController.xib in Resources */,
+				7B1F114A1F30208000963AAC /* NumberOfPostsCell.xib in Resources */,
 				7B0C71E71F15B84100CE8AEC /* MySpareCell.xib in Resources */,
 				7BFFBEFC1EF65E28001202EE /* AnnounceCell.xib in Resources */,
 				7B6FB3481F0CD67D009F5F49 /* OrderSelectCell.xib in Resources */,
 				7B33B7A11EF37657005FBBBB /* StaticlCell.xib in Resources */,
 				7B4633FA1F01FFDD0023E7F2 /* rent_house_img@2x.png in Resources */,
 				7B1D8E111F1DDCF200D79F46 /* ComplaintsController.xib in Resources */,
+				7B1F113B1F301AD800963AAC /* PersonalDataController.xib in Resources */,
 				7B4633F61F01FFDD0023E7F2 /* management_fee@2x.png in Resources */,
 				7B1662341EF2862900644A7B /* secondHandCell.xib in Resources */,
 				7B205E191F00E6C900E46B74 /* home_eswp_smcp@2x.png in Resources */,
@@ -3459,6 +3523,7 @@
 				7B2AEA9C1F0F2DB20008D9AC /* OrderDetailsController.xib in Resources */,
 				7B8F2A6E1F039A7600D5D1DF /* collection@2x.png in Resources */,
 				7B966BC01EFFB5D400326C88 /* ImageSelectedOn@2x.png in Resources */,
+				7B1F11611F305CA300963AAC /* ChooseToPayController.xib in Resources */,
 				7B966A681EFF8B8900326C88 /* CommentPhotoCell.xib in Resources */,
 				7B243A2A1F1C67D8003A237F /* menu_ok.png in Resources */,
 				7B4634011F02009B0023E7F2 /* house_lease@2x.png in Resources */,
@@ -3510,6 +3575,7 @@
 				7B1D8E171F1DDCF200D79F46 /* MyCommunityListController.xib in Resources */,
 				7B966BD91EFFB5D400326C88 /* VideoOverlay@3x.png in Resources */,
 				7B5C92391EF8BE5B00C545A8 /* SecondDetailsController.xib in Resources */,
+				7B1F11651F307C8C00963AAC /* WeChatIcon.png in Resources */,
 				299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */,
 				7B1235FE1F2197C70098D152 /* LocationChoiceController.xib in Resources */,
 				7B205E1C1F00E6C900E46B74 /* home_eswp_yssc@2x.png in Resources */,
@@ -3570,6 +3636,7 @@
 				7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */,
 				7B205E2C1F00E6C900E46B74 /* tabbar_wy_normal@2x.png in Resources */,
 				7BA02BAA1F04D704004F8AB9 /* DetailsCell.xib in Resources */,
+				7B1F114F1F30303600963AAC /* PostCollectionViewCell.xib in Resources */,
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
 				7BFE48461EE937BA0006FF3B /* MessageCell.xib in Resources */,
 				7B16622C1EF2862900644A7B /* NearByHeaderCell.xib in Resources */,
@@ -3629,6 +3696,7 @@
 				7B1662021EF2861C00644A7B /* BtnItemCell.xib in Resources */,
 				7B1D8E151F1DDCF200D79F46 /* InformationController.xib in Resources */,
 				7B8F2A551F03889B00D5D1DF /* CommentContentCell.xib in Resources */,
+				7B1F11591F30319700963AAC /* PostImageCollectionCell.xib in Resources */,
 				7BF4B22E1EE3D6470058185F /* scan_40px@2x.png in Resources */,
 				7BF4B2141EE3D45A0058185F /* my_tabbar_default@3x.png in Resources */,
 				7B966A631EFF8B7000326C88 /* HeaderCell.xib in Resources */,
@@ -3685,6 +3753,7 @@
 				7B243A371F1C67F4003A237F /* FiltrateCell.xib in Resources */,
 				7B16D28B1F1891320070F88A /* AddVillagesController.xib in Resources */,
 				7B1662321EF2862900644A7B /* ProductItemCell.xib in Resources */,
+				7B1F11671F307C8C00963AAC /* WeChatIcon@3x.png in Resources */,
 				7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */,
 				7B0C71E11F15B78900CE8AEC /* SettingViewController.xib in Resources */,
 				7B0C71EC1F15BC4800CE8AEC /* MyReleasedHouseController.xib in Resources */,
@@ -3713,12 +3782,14 @@
 				7B966BBA1EFFB5D400326C88 /* ImageError@2x.png in Resources */,
 				7B16620D1EF2862300644A7B /* SearchHeadCell.xib in Resources */,
 				7B243A2E1F1C67D8003A237F /* menu_xl@2x.png in Resources */,
+				7B1F11401F301B6100963AAC /* PersonalDataHeadCell.xib in Resources */,
 				7B243A2F1F1C67D8003A237F /* menu_xl@3x.png in Resources */,
 				7BFFBF171EF68026001202EE /* PraiseTextCell.xib in Resources */,
 				7B8BDB371EFFBD2300F58957 /* SecondHanditemCell.xib in Resources */,
 				7B0C71DB1F15B78900CE8AEC /* MyReleaseViewController.xib in Resources */,
 				7B8B10931F26E0FC00F09678 /* FacilitiesTypeController.xib in Resources */,
 				7B5C924D1EF8CC1400C545A8 /* SecondBtnItemCell.xib in Resources */,
+				7B1F11661F307C8C00963AAC /* WeChatIcon@2x.png in Resources */,
 				7BFFBF221EF6833D001202EE /* ComplaintsCell.xib in Resources */,
 				7B99DA9F1F20BAA9005F2995 /* ReportCell.xib in Resources */,
 				7BF4B22C1EE3D6470058185F /* nav_more_btn@2x.png in Resources */,
@@ -3815,6 +3886,7 @@
 				7BFFBEFB1EF65E28001202EE /* AnnounceCell.m in Sources */,
 				7B1D8E121F1DDCF200D79F46 /* DoorServiceController.m in Sources */,
 				7B1662311EF2862900644A7B /* ProductItemCell.m in Sources */,
+				7B1F113A1F301AD800963AAC /* PersonalDataController.m in Sources */,
 				7B966BDB1EFFB5D400326C88 /* MWGridCell.m in Sources */,
 				7B2D06491F2B122D00E88DC1 /* MoreClassificationController.m in Sources */,
 				7B0C71D41F15B78900CE8AEC /* MyHouseViewController.m in Sources */,
@@ -3861,6 +3933,7 @@
 				7B14F88E1F175E9C00821281 /* ActivePeopleController.m in Sources */,
 				299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */,
 				7B16D27A1F1857980070F88A /* BuildingListController.m in Sources */,
+				7B1F11601F305CA300963AAC /* ChooseToPayController.m in Sources */,
 				7B1662351EF2862900644A7B /* SectionHeaderCell.m in Sources */,
 				7B2D3CD01F0F893800409DD7 /* CommunityBodyCell.m in Sources */,
 				7B0C71B51F15B6DF00CE8AEC /* MySpareViewController.m in Sources */,
@@ -3883,6 +3956,7 @@
 				7B8B10921F26E0FC00F09678 /* FacilitiesTypeController.m in Sources */,
 				7B0C71DA1F15B78900CE8AEC /* MyReleaseViewController.m in Sources */,
 				7B16D27E1F185AAD0070F88A /* BuildingListModel.m in Sources */,
+				7B1F114E1F30303600963AAC /* PostCollectionViewCell.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7B6FB3281F0CC8CF009F5F49 /* HeadBackCell.m in Sources */,
 				7B0C71FA1F15C83A00CE8AEC /* MyPostedHelpController.m in Sources */,
@@ -3904,6 +3978,7 @@
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7B0C71F51F15C1F600CE8AEC /* MyServiceController.m in Sources */,
 				7B14F8981F17609E00821281 /* ChatCell.m in Sources */,
+				7B1F115C1F30500400963AAC /* CommunityPeopleModel.m in Sources */,
 				7B1D8E141F1DDCF200D79F46 /* InformationController.m in Sources */,
 				7B8B10A11F26E99100F09678 /* LifePayCostController.m in Sources */,
 				7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */,
@@ -4021,6 +4096,7 @@
 				7B6FB2C71F0CB793009F5F49 /* DataPickerViewDemo.m in Sources */,
 				7B2C4DE31EE6DD5A00745071 /* UIViewExt.m in Sources */,
 				7B33B7AB1EF38499005FBBBB /* SolicitingHeadCell.m in Sources */,
+				7B1F11581F30319700963AAC /* PostImageCollectionCell.m in Sources */,
 				7BFFBF061EF66C52001202EE /* DoorServiceCell.m in Sources */,
 				7B14F8AB1F177B5E00821281 /* VillagesModel.m in Sources */,
 				7B8B108D1F26D54000F09678 /* MyCommunityController.m in Sources */,
@@ -4035,6 +4111,7 @@
 				7B8F2A541F03889B00D5D1DF /* CommentContentCell.m in Sources */,
 				7BBB10201F05003F00BCCF4B /* LoginViewController.m in Sources */,
 				7B685B101F2EFB17006542CB /* CollectionHeadCell.m in Sources */,
+				7B1F11491F30208000963AAC /* NumberOfPostsCell.m in Sources */,
 				7B52C6B91F205B320078EE32 /* VillagePanoramaModel.m in Sources */,
 				7B966BE11EFFB5D400326C88 /* MWZoomingScrollView.m in Sources */,
 				7B6FB33E1F0CCF14009F5F49 /* OrderBodyCell.m in Sources */,
@@ -4052,6 +4129,7 @@
 				7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */,
 				7B6FB32C1F0CC8CF009F5F49 /* MineBtnCell.m in Sources */,
 				7B1C40F61F29E96200866558 /* APAuthV2Info.m in Sources */,
+				7B1F113F1F301B6100963AAC /* PersonalDataHeadCell.m in Sources */,
 				7B5C92201EF8B5E200C545A8 /* PinYinForObjc.m in Sources */,
 				7B0C721D1F15E1BC00CE8AEC /* SpareDetailViewController.m in Sources */,
 				7B68F5011F13780800516929 /* BuyOrderModel.m in Sources */,
