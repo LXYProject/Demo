@@ -11,10 +11,16 @@
 #import "MineViewController.h"
 #import "BDImagePicker.h"
 #import "LoginHttpManager.h"
+#import "YJSelectionView.h"
+#import "UICustomDatePicker.h"
 
 #define btnY 420
 @interface RegisterFourController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, copy) NSString* ageStr;
+@property (nonatomic, copy) NSString* birthdayStr;
 
 @end
 
@@ -25,6 +31,13 @@
     NSArray *_sectionThreeArr;
 
     UIImage *_headImage;
+    NSArray *_genderArr;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +60,7 @@
     _sectionOneArr = @[@"昵称", @"性别", @"生日"];
     _sectionTwoArr = @[@"个性签名", @"家乡"];
     _sectionThreeArr = @[@"联系方式", @"我的地址"];
+    _genderArr = @[@"男", @"女"];
     [self.tableView reloadData];
     [self createUI];
 }
@@ -172,12 +186,23 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
+    if (indexPath.row==0) {
+        cell.detailTextLabel.text = self.nickNameStr;
+    }else if (indexPath.row==1){
+        cell.detailTextLabel.text = self.ageStr;
+    }else{
+        cell.detailTextLabel.text = self.birthdayStr;
+    }
     cell.textLabel.textColor = TEXT_COLOR;
+    cell.detailTextLabel.textColor = UIColorFromRGB(0xb2b2b2);
     cell.textLabel.text = _sectionOneArr[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
     }else{
         cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -192,12 +217,20 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
+    if (indexPath.row==0) {
+        cell.detailTextLabel.text = self.signatureStr;
+    }else{
+        cell.detailTextLabel.text = @"";
+    }
     cell.textLabel.textColor = TEXT_COLOR;
+    cell.detailTextLabel.textColor = UIColorFromRGB(0xb2b2b2);
     cell.textLabel.text = _sectionTwoArr[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
     }else{
         cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -234,32 +267,59 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{  [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     if (indexPath.section==0) {
         [BDImagePicker showImagePickerFromViewController:self allowsEditing:YES finishAction:^(UIImage *image) {
             NSLog(@"image==%@", image);
-            
             if (image) {
                 //_selectPhoto = image;
-
                 _headImage = image;
-                
                 //修改头像
                 [LoginHttpManager requestImage:_headImage
                                        success:^(id response) {
-                                           
-                    
                 } failure:^(NSError *error, NSString *message) {
-                    
                 }];
-        
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }];
- 
     }else if (indexPath.section==1) {
         if (indexPath.row==0) {
            [PushManager pushViewControllerWithName:@"ChangeNickNameController" animated:YES block:nil];
+        }else if (indexPath.row==1){
+            // 选择性别
+            [YJSelectionView showWithTitle:@"性别" options:@[@"男", @"女"] singleSelection:YES delegate:self completionHandler:^(NSInteger index, NSArray *array) {
+                NSLog(@"index==%ld", index);
+                if (index==0) {
+                    self.ageStr = @"男";
+                }else if(index==1){
+                    self.ageStr = @"女";
+                }else{
+                    self.ageStr = @"";
+                }
+                for (id obj in array) {
+                    NSLog(@"obj==%@", obj);
+                }
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+            }];
+        }else{
+            // 弹出时间选择器
+            [UICustomDatePicker showCustomDatePickerAtView:self.view choosedDateBlock:^(NSDate *date) {
+                NSLog(@"current Date:%@",date);
+                //用于格式化NSDate对象
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                //设置格式：zzz表示时区
+                [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+                //NSDate转NSString
+                self.birthdayStr = [dateFormatter stringFromDate:date];
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+            } cancelBlock:^{
+                
+            }];
+        }
+    }else if (indexPath.section==2){
+        if (indexPath.row==0) {
+            [PushManager pushViewControllerWithName:@"ChangeSignatureController" animated:YES block:nil];
         }
     }else{
         return;
@@ -276,27 +336,40 @@
     }
 
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section==0) {
-        return 0.f;
-    }else{
-        return 5.f;
-    }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-    view.backgroundColor = RGB(247, 247, 247);
-    return view;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *footView = [[UIView alloc] init];
-    footView.backgroundColor = [UIColor clearColor];
-    return footView;
-}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+    return 5;
 }
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    if (section==0) {
+//        return 0.f;
+//    }else{
+//        return 5.f;
+//    }
+//}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+//    view.backgroundColor = RGB(247, 247, 247);
+//    return view;
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    UIView *footView = [[UIView alloc] init];
+//    footView.backgroundColor = [UIColor clearColor];
+//    return footView;
+//}
+//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 1;
+//}
+
+
 
 @end

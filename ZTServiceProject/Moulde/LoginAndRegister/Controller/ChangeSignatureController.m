@@ -6,42 +6,46 @@
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "ChangeNickNameController.h"
+#import "ChangeSignatureController.h"
 #import "RegisterFourController.h"
 
-@interface ChangeNickNameController ()<UITextFieldDelegate>
+
+@interface ChangeSignatureController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (nonatomic, copy) NSString *nickNameStr;
+
+@property (nonatomic, copy) NSString *signatureStr;
+
 @end
 
-@implementation ChangeNickNameController
+@implementation ChangeSignatureController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self titleViewWithTitle:@"更改昵称" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"保存" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    [self titleViewWithTitle:@"修改个性签名" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"确定" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
     self.textField.delegate = self;
     self.textField.returnKeyType = UIReturnKeyDone;
+
 
 }
 
 - (void)rightBarClick
 {
-    NSLog(@"保存");
+    NSLog(@"确定");
     @weakify(self);
     [PushManager popViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
         @strongify(self);
-        viewController.nickNameStr = self.nickNameStr;
+        viewController.signatureStr = self.signatureStr;
     }];
-}
 
+}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSLog(@"%@", textField.text);
-    self.nickNameStr = textField.text;
+    self.signatureStr = textField.text;
 }
 
 
@@ -49,4 +53,5 @@
     
     [self.textField resignFirstResponder];
     return NO;
-}@end
+}
+@end

@@ -9,5 +9,10 @@
 #import "BaseViewController.h"
 
 @interface RegisterFourController : BaseViewController
+
 @property (nonatomic, assign) NSInteger experience;
+@property (nonatomic, copy) NSString *nickNameStr;
+@property (nonatomic, copy) NSString *signatureStr;
+
+
 @end

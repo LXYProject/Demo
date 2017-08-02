@@ -44,12 +44,11 @@
     self.areaList = [[NSArray alloc]initWithObjects:@"东城区",@"西城区",@"朝阳区",@"丰台区",@"石景山区",@"海淀区", @"顺义区", @"通州区", @"大兴区", @"房山区", @"门头沟区", @"昌平区", @"平谷区", @"密云区", @"怀柔区", @"延庆区", nil];
     self.typeList = [[NSArray alloc]initWithObjects:@"a",@"b",@"c",@"d",@"e",@"f", @"g", @"h", nil];
     self.sortingList = [[NSArray alloc]initWithObjects:@"1",@"2",@"3",@"4",@"5", nil];
-    
+    NSArray *firstDataArr = self.areaList;
 
     NSArray *titleArr = @[@"区域",@"类型",@"排序"];
-    NSArray *firstDataArr = self.areaList;
     NSArray *secondDataArr = @[@"郑州",@"上海",@"北京",@"中牟"];
-    NSArray *thirdDataArr = @[@"100",@"200",@"300",];
+    NSArray *thirdDataArr = @[@"默认排序",@"最新发布",@"价格最低", @"价格最高", @"离我最近"];
     NSArray *dataArr = @[firstDataArr,secondDataArr,thirdDataArr];
     
     

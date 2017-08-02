@@ -10,6 +10,8 @@
 #import "PeopleDetailsCell.h"
 #import "MineHttpManager.h"
 #import "PersonalDataController.h"
+#import "CommunityPeopleModel.h"
+
 
 @interface VillagePeopleController ()
 
@@ -33,7 +35,7 @@
         [self requestLookPepoleByVillage];
     }];
     [self.tableView beginHeaderRefreshing];
-
+    
 }
 
 // 根据小区查看附近的人
@@ -87,6 +89,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [PushManager pushViewControllerWithName:@"PersonalDataController" animated:YES block:^(PersonalDataController* viewController) {
         viewController.model = self.dataSource[indexPath.row];
+        viewController.titleStr = [self.dataSource[indexPath.row] userName];
     }];
     
 }

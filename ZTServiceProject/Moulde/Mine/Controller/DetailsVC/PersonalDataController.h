@@ -15,4 +15,7 @@
 
 @property (nonatomic,strong)CommunityPeopleModel *model;
 
+@property (nonatomic, copy) NSString *titleStr;
+
+
 @end

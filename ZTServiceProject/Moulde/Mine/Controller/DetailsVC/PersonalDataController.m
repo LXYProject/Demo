@@ -10,6 +10,7 @@
 #import "PersonalDataHeadCell.h"
 #import "NumberOfPostsCell.h"
 #import "PostCollectionViewCell.h"
+#import "ChatViewController.h"
 
 @interface PersonalDataController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -159,6 +160,9 @@
 }
 - (IBAction)dialogueBtn {
     NSLog(@"对话");
+    [PushManager pushViewControllerWithName:@"ChatViewController" animated:YES block:^(ChatViewController* viewController) {
+        viewController.titleStr = self.titleStr;
+    }];
 }
 
 @end
