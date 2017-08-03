@@ -262,6 +262,34 @@
 
 
 
+//============================服务接口===========================================
+// 发布服务
+#define A_releaseService        @"?service=serviceService&function=releaseService"
+// 发布求助
+#define A_releaseAppeal         @"?service=serviceService&function=releaseAppeal"
+// 搜索发布的服务
+#define A_searchService         @"?service=serviceService&function=searchService"
+// 搜索发布的求助
+#define A_searchAppeal          @"?service=serviceService&function=searchAppeal"
+// 修改发布的服务状态
+#define A_cancelReleaseService  @"?service=serviceService&function=cancelReleaseService"
+// 修改求助状态
+#define A_cancelReleaseAppeal   @"?service=serviceService&function=cancelReleaseAppeal"
+// 接受服务订单或拒绝
+#define A_dealServiceOrderForm  @"?service=serviceService&function=dealServiceOrderForm"
+// 接受求助订单或拒绝
+#define A_dealAppealOrderForm   @"?service=serviceService&function=dealAppealOrderForm"
+// 购买服务
+#define A_buyServiceOrderForm   @"?service=serviceService&function=buyServiceOrderForm"
+// 购买求助
+#define A_buyAppealOrderForm    @"?service=serviceService&function=buyAppealOrderForm"
+// 对方接单前撤销购买服务
+#define A_buyServiceCancelOrderAgo  @"?service=serviceService&function=buyServiceCancelOrderAgo"
+// 对方接单前撤销下单的求助
+#define A_appealCancelOrderAgo  @"?service=serviceService&function=appealCancelOrderAgo"
+
+
+
 //============================订单接口===========================================
 // 订单处理
 #define A_orderDeal             @"?service=orderService&function=orderDeal"

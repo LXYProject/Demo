@@ -37,17 +37,16 @@
                                @"page":@(pageNum),
                                @"pageCount":@(10),
                                };
-        if (nearType == ToHelp) {
-        
+    
+    if (nearType == ToHelp) {
+    
         [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_HelpUrl paramter:paramter success:^(id response) {
             NSArray *modelArray = [NearByItemModel mj_objectArrayWithKeyValuesArray:response];
             success(modelArray);
         } failure:^(NSError *error, NSString *message) {
             failure(error,message);
         }];
-
-    }
-    else {
+    }else {
         [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_FindUrl paramter:paramter success:^(id response) {
             NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response];
             success(modelArray);
@@ -72,4 +71,252 @@
     }];
 }
 
+
+//发布服务
++ (void)rqeuestTitle:(NSString *)title
+             content:(NSString *)content
+             address:(NSString *)address
+              online:(NSString *)online
+               price:(NSString *)price
+                unit:(NSString *)unit
+          categoryId:(NSString *)categoryId
+        categoryName:(NSString *)categoryName
+                area:(NSString *)area
+              cityId:(NSString *)cityId
+                   x:(NSString *)x
+                   y:(NSString *)y
+               resId:(NSString *)resId
+             resName:(NSString *)resName
+              images:(NSString *)images
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure{
+   
+    NSDictionary *paramter = @{@"title":title?title:@"",
+                               @"content":content?content:@"",
+                               @"address":address?address:@"",
+                               @"online":online?online:@"",
+                               @"price":price?price:@"",
+                               @"unit":unit?unit:@"",
+                               @"categoryId":categoryId?categoryId:@"",
+                               @"categoryName":categoryName?categoryName:@"",
+                               @"area":area?area:@"",
+                               @"cityId":cityId?cityId:@"",
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
+                               @"resId":resId?resId:@"",
+                               @"resName":resName?resName:@"",
+                               @"images":images?images:@"",
+                               };
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_releaseService paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+//发布求助
++ (void)rqeuestTitle:(NSString *)title
+             content:(NSString *)content
+             address:(NSString *)address
+               price:(NSString *)price
+          categoryId:(NSString *)categoryId
+        categoryName:(NSString *)categoryName
+           validDate:(NSString *)validDate
+              cityId:(NSString *)cityId
+          districtId:(NSString *)districtId
+                   x:(NSString *)x
+                   y:(NSString *)y
+               resId:(NSString *)resId
+             resName:(NSString *)resName
+              images:(NSString *)images
+             success:(HttpRequestSuccess)success
+             failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"title":title?title:@"",
+                               @"content":content?content:@"",
+                               @"address":address?address:@"",
+                               @"price":price?price:@"",
+                               @"categoryId":categoryId?categoryId:@"",
+                               @"categoryName":categoryName?categoryName:@"",
+                               @"validDate":validDate?validDate:@"",
+                               @"cityId":cityId?cityId:@"",
+                               @"districtId":districtId?districtId:@"",
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
+                               @"resId":resId?resId:@"",
+                               @"resName":resName?resName:@"",
+                               @"images":images?images:@"",
+                               };
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_releaseAppeal paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+//购买服务
++ (void)rqeuestPhoneNum:(NSString *)phoneNum
+          serviceUserId:(NSString *)serviceUserId
+              serviceId:(NSString *)serviceId
+           serviceTitle:(NSString *)serviceTitle
+         serviceContent:(NSString *)serviceContent
+                  count:(NSString *)count
+                  total:(NSString *)total
+        appointmentTime:(NSString *)appointmentTime
+           servicePrice:(NSString *)servicePrice
+             serviceImg:(NSString *)serviceImg
+            serviceUnit:(NSString *)serviceUnit
+                 remark:(NSString *)remark
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"phoneNum":phoneNum?phoneNum:@"",
+                               @"serviceUserId":serviceUserId?serviceUserId:@"",
+                               @"serviceId":serviceId?serviceId:@"",
+                               @"serviceTitle":serviceTitle?serviceTitle:@"",
+                               @"serviceContent":serviceContent?serviceContent:@"",
+                               @"count":count?count:@"",
+                               @"total":total?total:@"",
+                               @"appointmentTime":appointmentTime?appointmentTime:@"",
+                               @"servicePrice":servicePrice?servicePrice:@"",
+                               @"serviceImg":serviceImg?serviceImg:@"",
+                               @"serviceUnit":serviceUnit?serviceUnit:@"",
+                               @"remark":remark?remark:@"",
+                               };
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_buyServiceOrderForm paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+//购买求助
++ (void)rqeuestPhoneNum:(NSString *)phoneNum
+          userHuanxinId:(NSString *)userHuanxinId
+               appealId:(NSString *)appealId
+            appealTitle:(NSString *)appealTitle
+          appealContent:(NSString *)appealContent
+            appealPrice:(NSString *)appealPrice
+           appealUserId:(NSString *)appealUserId
+        appointmentTime:(NSString *)appointmentTime
+              appealImg:(NSString *)appealImg
+                 remark:(NSString *)remark
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"phoneNum":phoneNum?phoneNum:@"",
+                               @"userHuanxinId":userHuanxinId?userHuanxinId:@"",
+                               @"appealId":appealId?appealId:@"",
+                               @"appealTitle":appealTitle?appealTitle:@"",
+                               @"appealContent":appealContent?appealContent:@"",
+                               @"appealPrice":appealPrice?appealPrice:@"",
+                               @"appointmentTime":appointmentTime?appointmentTime:@"",
+                               @"appointmentTime":appointmentTime?appointmentTime:@"",
+                               @"appealImg":appealImg?appealImg:@"",
+                               @"remark":remark?remark:@"",
+                               };
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_buyAppealOrderForm paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+//对方接单前撤销购买服务, 求助
++ (void)requestServiceOrAppealCancel:(ServiceOrAppealCancel)serviceOrAppealCancel
+                             orderId:(NSString *)orderId
+                             success:(HttpRequestSuccess)success
+                             failure:(HttpRequestFailure)failure{
+    
+    
+    NSDictionary *paramter = @{@"orderId":orderId?orderId:@"",
+                               };
+    
+    NSString *url = nil;
+    
+    if (serviceOrAppealCancel==BuyServiceCancel) {
+        url = A_buyServiceCancelOrderAgo;
+    }else{
+        url = A_appealCancelOrderAgo;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+//修改发布的服务状态
++ (void)rqeuestServiceId:(NSString *)serviceId
+                  status:(NSString *)status
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"serviceId":serviceId?serviceId:@"",
+                               @"status":status?status:@""
+                               };
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_cancelReleaseService paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+    
+}
+
+
+//修改求助状态
++ (void)rqeuestAppealId:(NSString *)appealId
+                 status:(NSString *)status
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"appealId":appealId?appealId:@"",
+                               @"status":status?status:@""
+                               };
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_cancelReleaseAppeal paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+//接受服务, 求助订单或拒绝
++ (void)requestDealServiceOrAppeal:(DealServiceOrAppeal)dealServiceOrAppeal
+                           orderId:(NSString *)orderId
+                        dealResult:(NSString *)dealResult
+                           success:(HttpRequestSuccess)success
+                           failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"orderId":orderId?orderId:@"",
+                               @"dealResult":dealResult?dealResult:@""
+                               };
+    
+    NSString *url = nil;
+    
+    if (dealServiceOrAppeal==DealServiceOrder) {
+        url = A_dealServiceOrderForm;
+    }else{
+        url = A_dealAppealOrderForm;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
 @end

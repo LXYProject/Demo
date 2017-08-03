@@ -265,11 +265,15 @@
 
     if (indexPath.section==0) {
         
+    }else if (indexPath.section==1){
+        
     }else if (indexPath.section==2){
-        [PushManager pushViewControllerWithName:@"ServiceTypeController" animated:YES block:^(ServiceTypeController* viewController) {
-            viewController.zoneId = self.zoneId;
-        }];
-    }else{
+        if (indexPath.row==0) {
+            [PushManager pushViewControllerWithName:@"ServiceTypeController" animated:YES block:^(ServiceTypeController* viewController) {
+                viewController.zoneId = self.zoneId;
+            }];
+        }
+    }else if (indexPath.section==3){
         [[DataPickerViewDemo sharedPikerView]show];
         [DataPickerViewDemo sharedPikerView].pikerSelected = ^(NSString *dateStr, NSString *timeStr) {
             NSLog(@"date:%@,time:%@",dateStr,timeStr);
@@ -277,7 +281,8 @@
             _hour = timeStr;
             [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
         };
-
+    }else{
+        
     }
 
 }
@@ -301,35 +306,35 @@
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 0.0001;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.0001;
+}
 
-//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 5;
-//}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section==0) {
-        return 0.f;
-    }else{
-        return 5.f;
-    }
-}
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-    view.backgroundColor = RGB(247, 247, 247);
-    return view;
-}
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *footView = [[UIView alloc] init];
-    footView.backgroundColor = [UIColor clearColor];
-    return footView;
-}
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
+    return 5;
 }
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    if (section==0) {
+//        return 0.f;
+//    }else{
+//        return 5.f;
+//    }
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+//    view.backgroundColor = RGB(247, 247, 247);
+//    return view;
+//}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    UIView *footView = [[UIView alloc] init];
+//    footView.backgroundColor = [UIColor clearColor];
+//    return footView;
+//}
+//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 1;
+//}
 
 @end

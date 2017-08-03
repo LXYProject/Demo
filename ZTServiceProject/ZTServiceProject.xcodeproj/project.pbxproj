@@ -237,6 +237,8 @@
 		7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F8B1EEFEB8A003B4E1B /* LoginHttpManager.m */; };
 		7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B249F941EEFEF05003B4E1B /* LoginDataModel.m */; };
 		7B25089E1F0DE78000001961 /* BDImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B25089D1F0DE78000001961 /* BDImagePicker.m */; };
+		7B286DDB1F32B9E8005CA94F /* NeighborTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B286DD91F32B9E8005CA94F /* NeighborTextCell.m */; };
+		7B286DDC1F32B9E8005CA94F /* NeighborTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B286DDA1F32B9E8005CA94F /* NeighborTextCell.xib */; };
 		7B2AEA9B1F0F2DB20008D9AC /* OrderDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AEA931F0F2DB20008D9AC /* OrderDetailsController.m */; };
 		7B2AEA9C1F0F2DB20008D9AC /* OrderDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AEA941F0F2DB20008D9AC /* OrderDetailsController.xib */; };
 		7B2AEA9D1F0F2DB20008D9AC /* SaleOrderDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AEA961F0F2DB20008D9AC /* SaleOrderDetailsController.m */; };
@@ -543,6 +545,9 @@
 		7BA167781EE64B55000ECCE6 /* noticeYellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167761EE64B55000ECCE6 /* noticeYellow@2x.png */; };
 		7BA167791EE64B55000ECCE6 /* noticeYellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167771EE64B55000ECCE6 /* noticeYellow@3x.png */; };
 		7BA167D01EE6A575000ECCE6 /* Oval 3 Copy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */; };
+		7BA5A32D1F331C7E00CBA875 /* singleSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA5A32C1F331C7E00CBA875 /* singleSelectTableViewCell.m */; };
+		7BA5A3301F3321CF00CBA875 /* selected_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA5A32E1F3321CF00CBA875 /* selected_btn@2x.png */; };
+		7BA5A3311F3321CF00CBA875 /* unSelect_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA5A32F1F3321CF00CBA875 /* unSelect_btn@2x.png */; };
 		7BAFBC161EF7B21C00AFB6C7 /* SecondHandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */; };
 		7BAFBC171EF7B21C00AFB6C7 /* SecondHandViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */; };
 		7BAFBC1B1EF7B25D00AFB6C7 /* ReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAFBC191EF7B25D00AFB6C7 /* ReleaseViewController.m */; };
@@ -1053,6 +1058,9 @@
 		7B249F941EEFEF05003B4E1B /* LoginDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataModel.m; sourceTree = "<group>"; };
 		7B25089C1F0DE78000001961 /* BDImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDImagePicker.h; sourceTree = "<group>"; };
 		7B25089D1F0DE78000001961 /* BDImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDImagePicker.m; sourceTree = "<group>"; };
+		7B286DD81F32B9E8005CA94F /* NeighborTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborTextCell.h; sourceTree = "<group>"; };
+		7B286DD91F32B9E8005CA94F /* NeighborTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighborTextCell.m; sourceTree = "<group>"; };
+		7B286DDA1F32B9E8005CA94F /* NeighborTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeighborTextCell.xib; sourceTree = "<group>"; };
 		7B2AEA921F0F2DB20008D9AC /* OrderDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsController.h; sourceTree = "<group>"; };
 		7B2AEA931F0F2DB20008D9AC /* OrderDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsController.m; sourceTree = "<group>"; };
 		7B2AEA941F0F2DB20008D9AC /* OrderDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailsController.xib; sourceTree = "<group>"; };
@@ -1511,6 +1519,10 @@
 		7BA167761EE64B55000ECCE6 /* noticeYellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeYellow@2x.png"; sourceTree = "<group>"; };
 		7BA167771EE64B55000ECCE6 /* noticeYellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noticeYellow@3x.png"; sourceTree = "<group>"; };
 		7BA167CF1EE6A575000ECCE6 /* Oval 3 Copy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Oval 3 Copy@3x.png"; sourceTree = "<group>"; };
+		7BA5A32B1F331C7E00CBA875 /* singleSelectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singleSelectTableViewCell.h; sourceTree = "<group>"; };
+		7BA5A32C1F331C7E00CBA875 /* singleSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = singleSelectTableViewCell.m; sourceTree = "<group>"; };
+		7BA5A32E1F3321CF00CBA875 /* selected_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "selected_btn@2x.png"; sourceTree = "<group>"; };
+		7BA5A32F1F3321CF00CBA875 /* unSelect_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unSelect_btn@2x.png"; sourceTree = "<group>"; };
 		7BAFBC131EF7B21C00AFB6C7 /* SecondHandViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondHandViewController.h; sourceTree = "<group>"; };
 		7BAFBC141EF7B21C00AFB6C7 /* SecondHandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondHandViewController.m; sourceTree = "<group>"; };
 		7BAFBC151EF7B21C00AFB6C7 /* SecondHandViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondHandViewController.xib; sourceTree = "<group>"; };
@@ -2419,6 +2431,8 @@
 		7B5C92241EF8B8EC00C545A8 /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				7BA5A32E1F3321CF00CBA875 /* selected_btn@2x.png */,
+				7BA5A32F1F3321CF00CBA875 /* unSelect_btn@2x.png */,
 				7B3862771F317F4E0094A350 /* dx_checkbox_gray_on.png */,
 				7B3862781F317F4E0094A350 /* dx_checkbox_off.png */,
 				7B3862791F317F4E0094A350 /* dx_checkbox_red_on.jpg */,
@@ -2766,6 +2780,8 @@
 				7B99DA9B1F20BAA9005F2995 /* ReportCell.h */,
 				7B99DA9C1F20BAA9005F2995 /* ReportCell.m */,
 				7B99DA9D1F20BAA9005F2995 /* ReportCell.xib */,
+				7BA5A32B1F331C7E00CBA875 /* singleSelectTableViewCell.h */,
+				7BA5A32C1F331C7E00CBA875 /* singleSelectTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2890,6 +2906,9 @@
 				7B2D3CD71F0F914300409DD7 /* NeighborCircleCell.h */,
 				7B2D3CD81F0F914300409DD7 /* NeighborCircleCell.m */,
 				7B2D3CD91F0F914300409DD7 /* NeighborCircleCell.xib */,
+				7B286DD81F32B9E8005CA94F /* NeighborTextCell.h */,
+				7B286DD91F32B9E8005CA94F /* NeighborTextCell.m */,
+				7B286DDA1F32B9E8005CA94F /* NeighborTextCell.xib */,
 			);
 			path = MyView;
 			sourceTree = "<group>";
@@ -3597,6 +3616,7 @@
 				7B966BD11EFFB5D400326C88 /* UIBarButtonItemArrowRight.png in Resources */,
 				7B4633F41F01FFDD0023E7F2 /* Item_recom_img@2x.png in Resources */,
 				7B1662281EF2862900644A7B /* BannerHeaderCell.xib in Resources */,
+				7B286DDC1F32B9E8005CA94F /* NeighborTextCell.xib in Resources */,
 				7B966BB91EFFB5D400326C88 /* ImageError.png in Resources */,
 				7BBB101C1F04FF7900BCCF4B /* RegisterOneController.xib in Resources */,
 				7B966BCD1EFFB5D400326C88 /* PlayButtonOverlayLargeTap@3x.png in Resources */,
@@ -3772,6 +3792,7 @@
 				7B685B111F2EFB17006542CB /* CollectionHeadCell.xib in Resources */,
 				7BBB102B1F0502CF00BCCF4B /* RegisterThreeController.xib in Resources */,
 				7B966BCF1EFFB5D400326C88 /* UIBarButtonItemArrowLeft@2x.png in Resources */,
+				7BA5A3301F3321CF00CBA875 /* selected_btn@2x.png in Resources */,
 				7B205E2E1F00E6C900E46B74 /* tabbar_zb_normal@2x.png in Resources */,
 				7B8F2A621F0395DE00D5D1DF /* drop_down@2x.png in Resources */,
 				7BF4B2311EE3D6470058185F /* warn_40px@3x.png in Resources */,
@@ -3812,6 +3833,7 @@
 				7B38627C1F317F4E0094A350 /* dx_checkbox_red_on.jpg in Resources */,
 				7B16D28B1F1891320070F88A /* AddVillagesController.xib in Resources */,
 				7B1662321EF2862900644A7B /* ProductItemCell.xib in Resources */,
+				7BA5A3311F3321CF00CBA875 /* unSelect_btn@2x.png in Resources */,
 				7B1F11671F307C8C00963AAC /* WeChatIcon@3x.png in Resources */,
 				7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */,
 				7B0C71E11F15B78900CE8AEC /* SettingViewController.xib in Resources */,
@@ -4007,6 +4029,7 @@
 				7B16620C1EF2862300644A7B /* SearchHeadCell.m in Sources */,
 				7B205E661F00EDFE00E46B74 /* ACMediaFrameConst.m in Sources */,
 				7B5C921E1EF8B5E200C545A8 /* NSString+PinYin4Cocoa.m in Sources */,
+				7B286DDB1F32B9E8005CA94F /* NeighborTextCell.m in Sources */,
 				7B0C71EB1F15BC4800CE8AEC /* MyReleasedHouseController.m in Sources */,
 				7B46E2A91EF103C700CA415D /* SecondHandModel.m in Sources */,
 				7B1661FF1EF2861C00644A7B /* BabyDescriptionCell.m in Sources */,
@@ -4097,6 +4120,7 @@
 				7B966ADF1EFFB29500326C88 /* XLZoomingScrollView.m in Sources */,
 				7BBB10131F04F29200BCCF4B /* NSString+Valid.m in Sources */,
 				7B16D28A1F1891320070F88A /* AddVillagesController.m in Sources */,
+				7BA5A32D1F331C7E00CBA875 /* singleSelectTableViewCell.m in Sources */,
 				7BBB102A1F0502CF00BCCF4B /* RegisterThreeController.m in Sources */,
 				7B3862951F31B6F60094A350 /* ChangeSignatureController.m in Sources */,
 				7B2CE92E1EFBC5D100C13A7D /* EYTagView.m in Sources */,

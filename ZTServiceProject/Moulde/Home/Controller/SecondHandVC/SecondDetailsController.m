@@ -16,7 +16,7 @@
 #import "CommentContentCell.h"
 #import "SecondHandModel.h"
 #import "CommentInfoCell.h"
-
+#import "HomeHttpManager.h"
 
 @interface SecondDetailsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -206,4 +206,21 @@
     }
 }
 
+//收藏
+- (IBAction)collectionBtnClick {
+    [HomeHttpManager requestSecondHandId:@""
+                                 success:^(id response) {
+                                 
+                                 } failure:^(NSError *error, NSString *message) {
+                                 
+                                 }];
+}
+
+//评论
+- (IBAction)commentsBtn {
+}
+
+//我想要
+- (IBAction)wantToBtnClick {
+}
 @end

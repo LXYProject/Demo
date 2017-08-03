@@ -239,4 +239,78 @@
     }];
 
 }
+
+// 添加, 取消好友关注
++ (void)requestAddToCancelFriend:(AddToCancelFriend)AddToCancelFriend
+                    FriendUserId:(NSString *)friendUserId
+                         success:(HttpRequestSuccess)success
+                         failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"friendUserId":friendUserId?friendUserId:@""};
+    NSString *url = nil;
+    if (AddToCancelFriend == AddFriend) {
+        url = A_addFriend;
+    }else{
+        url = A_deleteFriend;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+    
+}
+
+// 查看我的好友列表
++ (void)requestFriendsListSuccess:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{};
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_myFriends paramter:paramter success:^(id response) {
+        
+//        NSArray *modelArray = [CommunityPeopleModel mj_objectArrayWithKeyValuesArray:response[@"userList"]];
+//        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
+// 查找最近登录的人
++ (void)requestDays:(NSString *)days
+             gender:(NSString *)gender
+            success:(HttpRequestSuccess)success
+            failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"days":days?days:@"",
+                               @"gender":gender?gender:@""};
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_lookRecentLoginUser paramter:paramter success:^(id response) {
+        
+        //        NSArray *modelArray = [CommunityPeopleModel mj_objectArrayWithKeyValuesArray:response[@"userList"]];
+        //        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
+// 查看用户详细信息
++ (void)requestTargetUserId:(NSString *)targetUserId
+                    success:(HttpRequestSuccess)success
+                    failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"targetUserId":targetUserId?targetUserId:@""};
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_lookUserAll paramter:paramter success:^(id response) {
+        
+        //        NSArray *modelArray = [CommunityPeopleModel mj_objectArrayWithKeyValuesArray:response[@"userList"]];
+        //        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
 @end

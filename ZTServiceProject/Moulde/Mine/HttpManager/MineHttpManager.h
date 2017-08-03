@@ -43,6 +43,13 @@ typedef enum : NSUInteger {
     Complaints      //查看我求助的订单
 } TypeInformation;
 
+
+// 好友接口
+typedef enum : NSUInteger {
+    AddFriend,      //添加好友关注
+    CancelFriend    //取消好友关注
+} AddToCancelFriend;
+
 @interface MineHttpManager : NSObject
 
 // 发帖记录
@@ -106,5 +113,28 @@ typedef enum : NSUInteger {
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
 
+
+// 添加, 取消好友关注
++ (void)requestAddToCancelFriend:(AddToCancelFriend)AddToCancelFriend
+                    FriendUserId:(NSString *)friendUserId
+                         success:(HttpRequestSuccess)success
+                         failure:(HttpRequestFailure)failure;
+
+// 查看我的好友列表
++ (void)requestFriendsListSuccess:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure;
+
+
+// 查找最近登录的人
++ (void)requestDays:(NSString *)days
+             gender:(NSString *)gender
+            success:(HttpRequestSuccess)success
+            failure:(HttpRequestFailure)failure;
+
+
+// 查看用户详细信息
++ (void)requestTargetUserId:(NSString *)targetUserId
+                    success:(HttpRequestSuccess)success
+                    failure:(HttpRequestFailure)failure;
 @end
 

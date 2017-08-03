@@ -23,22 +23,7 @@ typedef enum : NSUInteger {
               failure:(HttpRequestFailure)failure;
 
 
-//二手物品查询
-+ (void)requestQueryType:(NSInteger)queryType
-            secondInfoId:(NSString *)secondInfoId
-                keywords:(NSString *)keywords
-                 classId:(NSString *)classId
-                   resId:(NSString *)resId
-                  cityId:(NSString *)cityId
-              districtId:(NSString *)districtId
-                minPrice:(NSString *)minPrice
-                maxPrice:(NSString *)maxPrice
-                newOrOld:(NSString *)newOrOld
-                delivery:(NSString *)delivery
-                    sort:(NSString *)sort
-                 pageNum:(NSInteger)pageNum
-                 success:(HttpRequestSuccess)success
-                 failure:(HttpRequestFailure)failure;
+//=============================房屋服务=============================
 
 //租房查询
 + (void)requestQueryType:(NSInteger)queryType
@@ -61,6 +46,60 @@ typedef enum : NSUInteger {
                  pageNum:(NSInteger)pageNum
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure;
+
+
+
+//停止出租
++(void)requestHouseRentId:(NSString *)houseRentId
+                  houseId:(NSString *)houseId
+               rentStatus:(NSString *)rentStatus
+                  success:(HttpRequestSuccess)success
+                  failure:(HttpRequestFailure)failure;
+
+
+
+//收藏租房信息
++(void)requestHouseRentId:(NSString *)houseRentId
+                  success:(HttpRequestSuccess)success
+                  failure:(HttpRequestFailure)failure;
+
+
+
+//小区信息
++(void)requestVillageId:(NSString *)villageId
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure;
+
+
+//房屋信息
++(void)requestHouseId:(NSString *)houseId
+              success:(HttpRequestSuccess)success
+              failure:(HttpRequestFailure)failure;
+
+
+
+
+
+//=============================二手物品=============================
+
+//二手物品查询
++ (void)requestQueryType:(NSInteger)queryType
+            secondInfoId:(NSString *)secondInfoId
+                keywords:(NSString *)keywords
+                 classId:(NSString *)classId
+                   resId:(NSString *)resId
+                  cityId:(NSString *)cityId
+              districtId:(NSString *)districtId
+                minPrice:(NSString *)minPrice
+                maxPrice:(NSString *)maxPrice
+                newOrOld:(NSString *)newOrOld
+                delivery:(NSString *)delivery
+                    sort:(NSString *)sort
+                 pageNum:(NSInteger)pageNum
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
+
+
 
 //二手物品发布
 + (void)requestTitle:(NSString *)title
@@ -88,5 +127,46 @@ typedef enum : NSUInteger {
               failure:(HttpRequestFailure)failure;
 
 
+//停止发布
++(void)requestSecondHandId:(NSString *)secondHandId
+                    status:(NSString *)status
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
 
+//删除回复
++(void)requestSecondHandId:(NSString *)secondHandId
+                 commentId:(NSString *)commentId
+              subCommentId:(NSString *)subCommentId
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
+
+
+//对评论点赞
++(void)requestSecondHandId:(NSString *)secondHandId
+                 commentId:(NSString *)commentId
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
+
+
+//收藏
++(void)requestSecondHandId:(NSString *)secondHandId
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
+
+
+//评论
++(void)requestSecondHandId:(NSString *)secondHandId
+                   comment:(NSString *)comment
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
+
+
+//对评论回复
++(void)requestSecondHandId:(NSString *)secondHandId
+                 commentId:(NSString *)commentId
+                   comment:(NSString *)comment
+               commentType:(NSString *)commentType
+              subCommentId:(NSString *)subCommentId
+                   success:(HttpRequestSuccess)success
+                   failure:(HttpRequestFailure)failure;
 @end

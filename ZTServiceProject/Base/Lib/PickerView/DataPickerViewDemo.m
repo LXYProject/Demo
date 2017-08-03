@@ -119,13 +119,13 @@ static DataPickerViewDemo *pikerView = nil;
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
     //设置分割线的颜色
-    for(UIView *singleLine in pickerView.subviews)
-    {
-        if (singleLine.frame.size.height < 1)
-        {
-            singleLine.backgroundColor = [UIColor clearColor];
-        }
-    }
+//    for(UIView *singleLine in pickerView.subviews)
+//    {
+//        if (singleLine.frame.size.height < 1)
+//        {
+//            singleLine.backgroundColor = [UIColor clearColor];
+//        }
+//    }
     // 这里用label来展示要显示的文字, 然后可以用label的textAlignment来设置文字的对齐模式
     UILabel *myView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0.0, [UIScreen mainScreen].bounds.size.width-20, 35)];
     myView.font = [UIFont systemFontOfSize:16];
