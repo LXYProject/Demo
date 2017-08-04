@@ -72,6 +72,25 @@
 		7B0C72241F16149100CE8AEC /* MyPraiseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72231F16149100CE8AEC /* MyPraiseModel.m */; };
 		7B0C72281F162A3E00CE8AEC /* NeighborDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */; };
 		7B0C72291F162A3E00CE8AEC /* NeighborDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */; };
+		7B11F11C1F3409E8001EADC1 /* PublishServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F11A1F3409E8001EADC1 /* PublishServiceController.m */; };
+		7B11F11D1F3409E8001EADC1 /* PublishServiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F11B1F3409E8001EADC1 /* PublishServiceController.xib */; };
+		7B11F1211F341084001EADC1 /* PublishServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F11F1F341084001EADC1 /* PublishServiceCell.m */; };
+		7B11F1221F341084001EADC1 /* PublishServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1201F341084001EADC1 /* PublishServiceCell.xib */; };
+		7B11F1261F3412AF001EADC1 /* ReleaseHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F1241F3412AF001EADC1 /* ReleaseHelpController.m */; };
+		7B11F1271F3412AF001EADC1 /* ReleaseHelpController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1251F3412AF001EADC1 /* ReleaseHelpController.xib */; };
+		7B11F12D1F34215C001EADC1 /* TLMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F12A1F34215C001EADC1 /* TLMenuButton.m */; };
+		7B11F12E1F34215C001EADC1 /* TLMenuButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F12C1F34215C001EADC1 /* TLMenuButtonView.m */; };
+		7B11F1301F3422D0001EADC1 /* dropbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F12F1F3422D0001EADC1 /* dropbox@2x.png */; };
+		7B11F1321F3422D7001EADC1 /* gallery@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1311F3422D7001EADC1 /* gallery@2x.png */; };
+		7B11F1341F3422DE001EADC1 /* main_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1331F3422DE001EADC1 /* main_button@2x.png */; };
+		7B11F1381F3454C2001EADC1 /* ServiceDescriptionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F1361F3454C2001EADC1 /* ServiceDescriptionController.m */; };
+		7B11F1391F3454C2001EADC1 /* ServiceDescriptionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1371F3454C2001EADC1 /* ServiceDescriptionController.xib */; };
+		7B11F13D1F345549001EADC1 /* ServiceUnitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F13B1F345549001EADC1 /* ServiceUnitController.m */; };
+		7B11F13E1F345549001EADC1 /* ServiceUnitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F13C1F345549001EADC1 /* ServiceUnitController.xib */; };
+		7B11F1421F3455D6001EADC1 /* SelectServiceTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F1401F3455D5001EADC1 /* SelectServiceTypeController.m */; };
+		7B11F1431F3455D6001EADC1 /* SelectServiceTypeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1411F3455D5001EADC1 /* SelectServiceTypeController.xib */; };
+		7B11F1471F345ED0001EADC1 /* SelectHelpTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11F1451F345ED0001EADC1 /* SelectHelpTypeController.m */; };
+		7B11F1481F345ED0001EADC1 /* SelectHelpTypeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B11F1461F345ED0001EADC1 /* SelectHelpTypeController.xib */; };
 		7B1235FD1F2197C70098D152 /* LocationChoiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1235FB1F2197C70098D152 /* LocationChoiceController.m */; };
 		7B1235FE1F2197C70098D152 /* LocationChoiceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1235FC1F2197C70098D152 /* LocationChoiceController.xib */; };
 		7B14F8891F175DD700821281 /* VillagePeopleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B14F8871F175DD700821281 /* VillagePeopleController.m */; };
@@ -747,6 +766,34 @@
 		7B0C72251F162A3E00CE8AEC /* NeighborDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeighborDetailCell.h; sourceTree = "<group>"; };
 		7B0C72261F162A3E00CE8AEC /* NeighborDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeighborDetailCell.m; sourceTree = "<group>"; };
 		7B0C72271F162A3E00CE8AEC /* NeighborDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeighborDetailCell.xib; sourceTree = "<group>"; };
+		7B11F1191F3409E8001EADC1 /* PublishServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishServiceController.h; sourceTree = "<group>"; };
+		7B11F11A1F3409E8001EADC1 /* PublishServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishServiceController.m; sourceTree = "<group>"; };
+		7B11F11B1F3409E8001EADC1 /* PublishServiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishServiceController.xib; sourceTree = "<group>"; };
+		7B11F11E1F341084001EADC1 /* PublishServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishServiceCell.h; sourceTree = "<group>"; };
+		7B11F11F1F341084001EADC1 /* PublishServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishServiceCell.m; sourceTree = "<group>"; };
+		7B11F1201F341084001EADC1 /* PublishServiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishServiceCell.xib; sourceTree = "<group>"; };
+		7B11F1231F3412AF001EADC1 /* ReleaseHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReleaseHelpController.h; sourceTree = "<group>"; };
+		7B11F1241F3412AF001EADC1 /* ReleaseHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReleaseHelpController.m; sourceTree = "<group>"; };
+		7B11F1251F3412AF001EADC1 /* ReleaseHelpController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseHelpController.xib; sourceTree = "<group>"; };
+		7B11F1291F34215C001EADC1 /* TLMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuButton.h; sourceTree = "<group>"; };
+		7B11F12A1F34215C001EADC1 /* TLMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuButton.m; sourceTree = "<group>"; };
+		7B11F12B1F34215C001EADC1 /* TLMenuButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLMenuButtonView.h; sourceTree = "<group>"; };
+		7B11F12C1F34215C001EADC1 /* TLMenuButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLMenuButtonView.m; sourceTree = "<group>"; };
+		7B11F12F1F3422D0001EADC1 /* dropbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dropbox@2x.png"; sourceTree = "<group>"; };
+		7B11F1311F3422D7001EADC1 /* gallery@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gallery@2x.png"; sourceTree = "<group>"; };
+		7B11F1331F3422DE001EADC1 /* main_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_button@2x.png"; sourceTree = "<group>"; };
+		7B11F1351F3454C2001EADC1 /* ServiceDescriptionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDescriptionController.h; sourceTree = "<group>"; };
+		7B11F1361F3454C2001EADC1 /* ServiceDescriptionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDescriptionController.m; sourceTree = "<group>"; };
+		7B11F1371F3454C2001EADC1 /* ServiceDescriptionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDescriptionController.xib; sourceTree = "<group>"; };
+		7B11F13A1F345549001EADC1 /* ServiceUnitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceUnitController.h; sourceTree = "<group>"; };
+		7B11F13B1F345549001EADC1 /* ServiceUnitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceUnitController.m; sourceTree = "<group>"; };
+		7B11F13C1F345549001EADC1 /* ServiceUnitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceUnitController.xib; sourceTree = "<group>"; };
+		7B11F13F1F3455D5001EADC1 /* SelectServiceTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectServiceTypeController.h; sourceTree = "<group>"; };
+		7B11F1401F3455D5001EADC1 /* SelectServiceTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectServiceTypeController.m; sourceTree = "<group>"; };
+		7B11F1411F3455D5001EADC1 /* SelectServiceTypeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectServiceTypeController.xib; sourceTree = "<group>"; };
+		7B11F1441F345ED0001EADC1 /* SelectHelpTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectHelpTypeController.h; sourceTree = "<group>"; };
+		7B11F1451F345ED0001EADC1 /* SelectHelpTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectHelpTypeController.m; sourceTree = "<group>"; };
+		7B11F1461F345ED0001EADC1 /* SelectHelpTypeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectHelpTypeController.xib; sourceTree = "<group>"; };
 		7B1235FA1F2197C70098D152 /* LocationChoiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationChoiceController.h; sourceTree = "<group>"; };
 		7B1235FB1F2197C70098D152 /* LocationChoiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationChoiceController.m; sourceTree = "<group>"; };
 		7B1235FC1F2197C70098D152 /* LocationChoiceController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationChoiceController.xib; sourceTree = "<group>"; };
@@ -1869,6 +1916,17 @@
 			path = DetailsView;
 			sourceTree = "<group>";
 		};
+		7B11F1281F34215C001EADC1 /* TLMemuButton */ = {
+			isa = PBXGroup;
+			children = (
+				7B11F1291F34215C001EADC1 /* TLMenuButton.h */,
+				7B11F12A1F34215C001EADC1 /* TLMenuButton.m */,
+				7B11F12B1F34215C001EADC1 /* TLMenuButtonView.h */,
+				7B11F12C1F34215C001EADC1 /* TLMenuButtonView.m */,
+			);
+			path = TLMemuButton;
+			sourceTree = "<group>";
+		};
 		7B1661F31EF2861C00644A7B /* LookingForView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2431,6 +2489,9 @@
 		7B5C92241EF8B8EC00C545A8 /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				7B11F1331F3422DE001EADC1 /* main_button@2x.png */,
+				7B11F1311F3422D7001EADC1 /* gallery@2x.png */,
+				7B11F12F1F3422D0001EADC1 /* dropbox@2x.png */,
 				7BA5A32E1F3321CF00CBA875 /* selected_btn@2x.png */,
 				7BA5A32F1F3321CF00CBA875 /* unSelect_btn@2x.png */,
 				7B3862771F317F4E0094A350 /* dx_checkbox_gray_on.png */,
@@ -2472,6 +2533,7 @@
 		7B69295B1F064061000108F3 /* Btn */ = {
 			isa = PBXGroup;
 			children = (
+				7B11F1281F34215C001EADC1 /* TLMemuButton */,
 				7B69295C1F064061000108F3 /* TwoLabelBtn.h */,
 				7B69295D1F064061000108F3 /* TwoLabelBtn.m */,
 			);
@@ -2700,6 +2762,24 @@
 				7BF7D7681EE8543200DB1486 /* NearByViewController.xib */,
 				299E2CD01EE7E5090045A884 /* NearByHomeViewController.h */,
 				299E2CD11EE7E5090045A884 /* NearByHomeViewController.m */,
+				7B11F1191F3409E8001EADC1 /* PublishServiceController.h */,
+				7B11F11A1F3409E8001EADC1 /* PublishServiceController.m */,
+				7B11F11B1F3409E8001EADC1 /* PublishServiceController.xib */,
+				7B11F1231F3412AF001EADC1 /* ReleaseHelpController.h */,
+				7B11F1241F3412AF001EADC1 /* ReleaseHelpController.m */,
+				7B11F1251F3412AF001EADC1 /* ReleaseHelpController.xib */,
+				7B11F1351F3454C2001EADC1 /* ServiceDescriptionController.h */,
+				7B11F1361F3454C2001EADC1 /* ServiceDescriptionController.m */,
+				7B11F1371F3454C2001EADC1 /* ServiceDescriptionController.xib */,
+				7B11F13A1F345549001EADC1 /* ServiceUnitController.h */,
+				7B11F13B1F345549001EADC1 /* ServiceUnitController.m */,
+				7B11F13C1F345549001EADC1 /* ServiceUnitController.xib */,
+				7B11F13F1F3455D5001EADC1 /* SelectServiceTypeController.h */,
+				7B11F1401F3455D5001EADC1 /* SelectServiceTypeController.m */,
+				7B11F1411F3455D5001EADC1 /* SelectServiceTypeController.xib */,
+				7B11F1441F345ED0001EADC1 /* SelectHelpTypeController.h */,
+				7B11F1451F345ED0001EADC1 /* SelectHelpTypeController.m */,
+				7B11F1461F345ED0001EADC1 /* SelectHelpTypeController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2726,6 +2806,9 @@
 				299E2CDC1EE7FDBE0045A884 /* NearByItemsCell.h */,
 				299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */,
 				299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */,
+				7B11F11E1F341084001EADC1 /* PublishServiceCell.h */,
+				7B11F11F1F341084001EADC1 /* PublishServiceCell.m */,
+				7B11F1201F341084001EADC1 /* PublishServiceCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3590,15 +3673,18 @@
 				7B205E191F00E6C900E46B74 /* home_eswp_smcp@2x.png in Resources */,
 				7BF4B2101EE3D45A0058185F /* message_tabbar_default@3x.png in Resources */,
 				7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */,
+				7B11F1341F3422DE001EADC1 /* main_button@2x.png in Resources */,
 				7B3862841F31A6570094A350 /* UICustomDatePicker.xib in Resources */,
 				7B45E7C41F27326B00380F61 /* PaymentHistoryController.xib in Resources */,
 				7B2AEA9C1F0F2DB20008D9AC /* OrderDetailsController.xib in Resources */,
+				7B11F1321F3422D7001EADC1 /* gallery@2x.png in Resources */,
 				7B8F2A6E1F039A7600D5D1DF /* collection@2x.png in Resources */,
 				7B966BC01EFFB5D400326C88 /* ImageSelectedOn@2x.png in Resources */,
 				7B1F11611F305CA300963AAC /* ChooseToPayController.xib in Resources */,
 				7B966A681EFF8B8900326C88 /* CommentPhotoCell.xib in Resources */,
 				7B243A2A1F1C67D8003A237F /* menu_ok.png in Resources */,
 				7B4634011F02009B0023E7F2 /* house_lease@2x.png in Resources */,
+				7B11F11D1F3409E8001EADC1 /* PublishServiceController.xib in Resources */,
 				7B8F0D211EE3BE1F00ED16E3 /* LaunchScreen.storyboard in Resources */,
 				7B966AD71EFFB29500326C88 /* FSActionSheet_cancel@2x.png in Resources */,
 				7B6FB3351F0CC8CF009F5F49 /* ServiceHeadCell.xib in Resources */,
@@ -3609,6 +3695,7 @@
 				7B2D3C661F0F5AD700409DD7 /* HelpDetailsViewController.xib in Resources */,
 				7B38627A1F317F4E0094A350 /* dx_checkbox_gray_on.png in Resources */,
 				7B8B109D1F26E91200F09678 /* PayCostController.xib in Resources */,
+				7B11F1391F3454C2001EADC1 /* ServiceDescriptionController.xib in Resources */,
 				7B14F8941F175F3B00821281 /* SearchPeopleController.xib in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
 				7B8F2A731F039A7D00D5D1DF /* notice@2x.png in Resources */,
@@ -3673,7 +3760,9 @@
 				7BFFBF071EF66C52001202EE /* DoorServiceCell.xib in Resources */,
 				7B205E2A1F00E6C900E46B74 /* tabbar_wy__selected@2x.png in Resources */,
 				7B8F2A591F038B9D00D5D1DF /* comments@2x.png in Resources */,
+				7B11F13E1F345549001EADC1 /* ServiceUnitController.xib in Resources */,
 				7BF4B2321EE3D6470058185F /* warn_press_40px@2x.png in Resources */,
+				7B11F1481F345ED0001EADC1 /* SelectHelpTypeController.xib in Resources */,
 				7B8F0D1C1EE3BE1F00ED16E3 /* Main.storyboard in Resources */,
 				7B1D8E271F1DE8F600D79F46 /* PublicTypeController.xib in Resources */,
 				7B8F2A6C1F039A6F00D5D1DF /* address@2x.png in Resources */,
@@ -3698,6 +3787,7 @@
 				7B3862961F31B6F60094A350 /* ChangeSignatureController.xib in Resources */,
 				7B205E171F00E6C900E46B74 /* home_eswp_mrbj@2x.png in Resources */,
 				7BF4B2191EE3D45A0058185F /* order_tabbar_selected@2x.png in Resources */,
+				7B11F1301F3422D0001EADC1 /* dropbox@2x.png in Resources */,
 				7B6FB3431F0CD153009F5F49 /* phone@2x.png in Resources */,
 				7B6FB3271F0CC8CF009F5F49 /* GroupNumberCell.xib in Resources */,
 				7B205E2F1F00E6C900E46B74 /* tabbar_zb_normal@3x.png in Resources */,
@@ -3753,6 +3843,7 @@
 				7B966BCA1EFFB5D400326C88 /* PlayButtonOverlayLarge@3x.png in Resources */,
 				7BBB10151F04F29200BCCF4B /* reimbursement_delete@2x.png in Resources */,
 				7B52C6BF1F208CF10078EE32 /* home_icon_location@2x.png in Resources */,
+				7B11F1431F3455D6001EADC1 /* SelectServiceTypeController.xib in Resources */,
 				7B966A751EFFA08800326C88 /* CommentInfoCell.xib in Resources */,
 				7B966BD41EFFB5D400326C88 /* UIBarButtonItemGrid.png in Resources */,
 				7B6FB33A1F0CC923009F5F49 /* OrderHeadCell.xib in Resources */,
@@ -3764,6 +3855,7 @@
 				7B8BDB3C1EFFBDAB00F58957 /* SecondHandSearchHeaderView.xib in Resources */,
 				7B5C922F1EF8B8EC00C545A8 /* cancel@2x.png in Resources */,
 				7BF4B21A1EE3D45A0058185F /* order_tabbar_selected@3x.png in Resources */,
+				7B11F1221F341084001EADC1 /* PublishServiceCell.xib in Resources */,
 				7B205E1B1F00E6C900E46B74 /* home_eswp_wyxn@2x.png in Resources */,
 				7B14F88F1F175E9C00821281 /* ActivePeopleController.xib in Resources */,
 				7B38627B1F317F4E0094A350 /* dx_checkbox_off.png in Resources */,
@@ -3886,6 +3978,7 @@
 				7B6FB3311F0CC8CF009F5F49 /* BtnSelectCell.xib in Resources */,
 				7BF4B22B1EE3D6470058185F /* nav_back_btn@3x.png in Resources */,
 				7BFBDE5E1EF589AB00F2D354 /* StaticOneCell.xib in Resources */,
+				7B11F1271F3412AF001EADC1 /* ReleaseHelpController.xib in Resources */,
 				7B16620B1EF2862300644A7B /* ImageCell.xib in Resources */,
 				7B0C72141F15D4F800CE8AEC /* MyPraiseController.xib in Resources */,
 				7B966A5B1EFF766100326C88 /* MessagePhotoCell.xib in Resources */,
@@ -4037,6 +4130,7 @@
 				7B46E2A61EF0D59E00CA415D /* ServiceModel.m in Sources */,
 				7B14F8931F175F3B00821281 /* SearchPeopleController.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
+				7B11F1421F3455D6001EADC1 /* SelectServiceTypeController.m in Sources */,
 				7B8B10921F26E0FC00F09678 /* FacilitiesTypeController.m in Sources */,
 				7B0C71DA1F15B78900CE8AEC /* MyReleaseViewController.m in Sources */,
 				7B16D27E1F185AAD0070F88A /* BuildingListModel.m in Sources */,
@@ -4090,6 +4184,7 @@
 				7B8B109C1F26E91200F09678 /* PayCostController.m in Sources */,
 				7B966BDA1EFFB5D400326C88 /* MWCaptionView.m in Sources */,
 				7B205DF31F00B18A00E46B74 /* AddPhotosCell.m in Sources */,
+				7B11F11C1F3409E8001EADC1 /* PublishServiceController.m in Sources */,
 				7B0C72211F160A5300CE8AEC /* MyDoorServiceModel.m in Sources */,
 				7B5C92161EF8B5E200C545A8 /* ButtonGroupView.m in Sources */,
 				299E2CAA1EE7CD5D0045A884 /* NJKWebViewProgress.m in Sources */,
@@ -4103,6 +4198,7 @@
 				7B966BDD1EFFB5D400326C88 /* MWPhoto.m in Sources */,
 				7B1D8E1C1F1DDCF200D79F46 /* TenementViewController.m in Sources */,
 				7B966A621EFF8B7000326C88 /* HeaderCell.m in Sources */,
+				7B11F13D1F345549001EADC1 /* ServiceUnitController.m in Sources */,
 				7B14F89D1F17611F00821281 /* FriendsCell.m in Sources */,
 				7B205E6A1F00EDFE00E46B74 /* ACSelectMediaView.m in Sources */,
 				7B1D8E0E1F1DDCF200D79F46 /* AnnounceViewController.m in Sources */,
@@ -4128,6 +4224,7 @@
 				7B25089E1F0DE78000001961 /* BDImagePicker.m in Sources */,
 				7B0C71DE1F15B78900CE8AEC /* PropertyViewController.m in Sources */,
 				7B5C92191EF8B5E200C545A8 /* CityItem.m in Sources */,
+				7B11F12D1F34215C001EADC1 /* TLMenuButton.m in Sources */,
 				7B1C41B71F29EDCF00866558 /* openssl_wrapper.m in Sources */,
 				7BA02B9E1F04D012004F8AB9 /* HomeViewController.m in Sources */,
 				7B99DA9E1F20BAA9005F2995 /* ReportCell.m in Sources */,
@@ -4140,6 +4237,7 @@
 				7B2AEA9B1F0F2DB20008D9AC /* OrderDetailsController.m in Sources */,
 				7B1662291EF2862900644A7B /* ItemBtnCell.m in Sources */,
 				7B1C40F31F29E89700866558 /* Order.m in Sources */,
+				7B11F1261F3412AF001EADC1 /* ReleaseHelpController.m in Sources */,
 				7B1D8E1A1F1DDCF200D79F46 /* PublicThingsController.m in Sources */,
 				7B966BDC1EFFB5D400326C88 /* MWGridViewController.m in Sources */,
 				7B0A7FC31F147ADD0056F1FF /* MyHouseModel.m in Sources */,
@@ -4151,10 +4249,12 @@
 				7B69294F1F061EBA000108F3 /* ChangeNickNameController.m in Sources */,
 				7B5C92561EF8F97100C545A8 /* Model.m in Sources */,
 				7B6FB32E1F0CC8CF009F5F49 /* ServiceOrderCell.m in Sources */,
+				7B11F1381F3454C2001EADC1 /* ServiceDescriptionController.m in Sources */,
 				7B966A6C1EFF8BA900326C88 /* CommentBottomCell.m in Sources */,
 				7B205E6C1F00EDFE00E46B74 /* UIView+ACMediaExt.m in Sources */,
 				299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */,
 				7B249F8C1EEFEB8A003B4E1B /* LoginHttpManager.m in Sources */,
+				7B11F1471F345ED0001EADC1 /* SelectHelpTypeController.m in Sources */,
 				7B8F0D161EE3BE1F00ED16E3 /* AppDelegate.m in Sources */,
 				7B4D972F1F09EF4200731969 /* AlertViewController.m in Sources */,
 				7BA02BA21F04D012004F8AB9 /* LookingForViewController.m in Sources */,
@@ -4171,10 +4271,12 @@
 				7BFBDE5D1EF589AB00F2D354 /* StaticOneCell.m in Sources */,
 				7B5C921A1EF8B5E200C545A8 /* CityListViewController.m in Sources */,
 				7B2D064E1F2B17AB00E88DC1 /* ReleaseClassifiedController.m in Sources */,
+				7B11F12E1F34215C001EADC1 /* TLMenuButtonView.m in Sources */,
 				7B1D8E161F1DDCF200D79F46 /* MyCommunityListController.m in Sources */,
 				7B8F2A801F039F1E00D5D1DF /* DialheadCell.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
+				7B11F1211F341084001EADC1 /* PublishServiceCell.m in Sources */,
 				7B0C72041F15CC5600CE8AEC /* MyDoorServiceCell.m in Sources */,
 				7B966A701EFF902D00326C88 /* CommentUserModel.m in Sources */,
 				7B1C41B81F29EDCF00866558 /* RSADataSigner.m in Sources */,

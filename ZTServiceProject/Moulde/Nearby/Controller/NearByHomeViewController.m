@@ -10,6 +10,8 @@
 #import "NearByHttpManager.h"
 #import "NearByTitleModel.h"
 #import "NearByViewController.h"
+#import "TLMenuButtonView.h"
+
 @interface NearByHomeViewController ()<GLViewPagerViewControllerDataSource,GLViewPagerViewControllerDelegate>
 @property (nonatomic,strong)NSMutableArray *vcDataArray;
 @property (nonatomic,strong)NSMutableArray *viewControllers;
@@ -19,12 +21,21 @@
 @property (nonatomic,copy)NSString *city;
 @property (nonatomic,copy)NSString *district;
 
+@property (nonatomic, strong) TLMenuButtonView *tlMenuView ;
+
 @end
 
 @implementation NearByHomeViewController
 {
     NSInteger queryType;
-//    NSMutableArray *response;
+    BOOL _ISShowMenuButton;
+ 
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    [_tlMenuView dismiss];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,20 +50,20 @@
     self.indicatorColor = [UIColor colorWithRed:255.0/255.0 green:205.0 / 255.0 blue:0.0 alpha:1.0];
     
     
-    UIButton * button =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 45)];
+    UIButton *MenuBtn =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 45)];
     //文字
-    [button setTitle:@"北京" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    [MenuBtn setTitle:@"北京" forState:UIControlStateNormal];
+    [MenuBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    MenuBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     //图片
-    [button setImage:[UIImage imageNamed:@"drop_down"] forState:UIControlStateNormal];
+    [MenuBtn setImage:[UIImage imageNamed:@"drop_down"] forState:UIControlStateNormal];
     
     /////////////修改///////////////////
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    button.imageEdgeInsets = UIEdgeInsetsMake(0,50, 0, 0); //上左下右
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    UIBarButtonItem *leftItemBtn = [[UIBarButtonItem alloc] initWithCustomView:button];
-    [button addTarget:self action:@selector(leftBarClick) forControlEvents:UIControlEventTouchUpInside];
+    MenuBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    MenuBtn.imageEdgeInsets = UIEdgeInsetsMake(0,50, 0, 0); //上左下右
+    MenuBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    UIBarButtonItem *leftItemBtn = [[UIBarButtonItem alloc] initWithCustomView:MenuBtn];
+    [MenuBtn addTarget:self action:@selector(leftBarClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = leftItemBtn;
 
     
@@ -92,7 +103,7 @@
 //        [self reloadData];
 //    });
 
-    
+    [self createMenuBtn];
 }
 - (void)leftBarClick
 {
@@ -111,6 +122,57 @@
         queryType=0;
     }
     [self requestTitleArrayData];
+}
+
+- (void)createMenuBtn{
+    _ISShowMenuButton = NO;
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-70, SCREEN_HEIGHT-180, 55, 55)];
+    button.layer.cornerRadius = 27.5;
+    button.backgroundColor = [UIColor greenColor];
+    [button addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
+    [button setImage:[UIImage imageNamed:@"main_button"] forState:UIControlStateNormal];
+    [self.view addSubview:button];
+    
+    TLMenuButtonView *tlMenuView =[TLMenuButtonView standardMenuView];
+    tlMenuView.centerPoint = button.center;
+    @weakify(self);
+    tlMenuView.clickAddButton = ^(NSInteger tag, UIColor *color){
+        @strongify(self);
+        NSLog(@"rag==%ld", (long)tag);
+        if (tag==1) {
+            [PushManager pushViewControllerWithName:@"PublishServiceController" animated:YES block:nil];
+        }else{
+            [PushManager pushViewControllerWithName:@"ReleaseHelpController" animated:YES block:nil];
+        }
+        _ISShowMenuButton = YES;
+        [self clickAddButton:button];
+    };
+    _tlMenuView = tlMenuView;
+
+}
+
+- (void)clickAddButton:(UIButton *)sender{
+//    UIView *maskView =  [[UIView alloc] init];
+//    maskView.frame = self.view.bounds;
+//    maskView.alpha = 0.6;
+    if (!_ISShowMenuButton) {
+        [UIView animateWithDuration:0.2 animations:^{
+            CGAffineTransform rotate = CGAffineTransformMakeRotation( M_PI / 4 );
+            [sender setTransform:rotate];
+        }];
+//        [self.view addSubview:maskView];
+
+        [_tlMenuView showItems];
+    }else{
+        [UIView animateWithDuration:0.2 animations:^{
+            CGAffineTransform rotate = CGAffineTransformMakeRotation( 0 );
+            [sender setTransform:rotate];
+        }];
+        [_tlMenuView dismiss];
+//        [maskView removeFromSuperview];
+    }
+    _ISShowMenuButton = !_ISShowMenuButton;
 }
 
 // 请求周边上面的滚动title

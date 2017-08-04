@@ -167,6 +167,17 @@
 
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    //    @weakify(self);
+    //    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
+    //        @strongify(self);
+    //        viewController.categrayId = [self.dataSource[indexPath.row] categoryId];
+    //    }];
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_isFindService) {
         return 140;
@@ -180,15 +191,6 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
-}
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    @weakify(self);
-//    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
-//        @strongify(self);
-//        viewController.categrayId = [self.dataSource[indexPath.row] categoryId];
-//    }];
 }
 
 

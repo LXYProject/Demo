@@ -168,7 +168,7 @@
             [self.tableView reloadData];
         }
         else{
-            //选中一个之后，再次点击，是未选中状态，图片仍然设置为选中的图片，记录下tag，刷新tableView，这个else 也可以注释不用，tag只记录选中的就可以
+            //选中一个之后，再次点 击，是未选中状态，图片仍然设置为选中的图片，记录下tag，刷新tableView，这个else 也可以注释不用，tag只记录选中的就可以
             [weakCell.selectBtn setImage:[UIImage imageNamed:@"selected_btn"] forState:UIControlStateNormal];
             self.btnTag = btnTag;
             [self.tableView reloadData];

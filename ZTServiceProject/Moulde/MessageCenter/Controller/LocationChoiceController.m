@@ -9,6 +9,7 @@
 #import "LocationChoiceController.h"
 #import "PostMessageController.h"
 #import "ReleaseViewController.h"
+#import "PublishServiceController.h"
 
 @interface LocationChoiceController ()<CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -158,10 +159,15 @@
         [PushManager popViewControllerWithName:@"PostMessageController" animated:YES block:^(PostMessageController* viewController) {
             viewController.locationInfo = poi.name;
         }];
-    }else{
+    }else if (self.currentController==1){
         [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {
             viewController.locationInfo = poi.name;
         }];
+    }else{
+        [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(id viewController) {
+            //viewController.locationInfo = poi.name;
+        }];
+
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

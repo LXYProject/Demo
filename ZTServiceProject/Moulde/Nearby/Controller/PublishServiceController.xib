@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PublishServiceController">
+            <connections>
+                <outlet property="tableView" destination="CEl-oW-Xlt" id="oha-4Q-Ba9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CEl-oW-Xlt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Efo-HC-ZgI"/>
+                        <outlet property="delegate" destination="-1" id="9Ti-JI-8aT"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65J-Tz-8aI">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <color key="backgroundColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Osp-7g-8dW"/>
+                    </constraints>
+                    <state key="normal" title="发布"/>
+                    <connections>
+                        <action selector="releaseBtnClick" destination="-1" eventType="touchUpInside" id="JV7-n2-g0Y"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="65J-Tz-8aI" secondAttribute="trailing" id="FwV-rp-CoO"/>
+                <constraint firstItem="CEl-oW-Xlt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GFd-F4-Fru"/>
+                <constraint firstAttribute="bottom" secondItem="65J-Tz-8aI" secondAttribute="bottom" id="MiJ-Tp-aa2"/>
+                <constraint firstItem="CEl-oW-Xlt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YJw-AT-Paj"/>
+                <constraint firstAttribute="trailing" secondItem="CEl-oW-Xlt" secondAttribute="trailing" id="dSg-sv-IGU"/>
+                <constraint firstAttribute="bottom" secondItem="CEl-oW-Xlt" secondAttribute="bottom" id="ix6-ao-93k"/>
+                <constraint firstItem="65J-Tz-8aI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vie-3z-39w"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
