@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondDetailsController">
             <connections>
+                <outlet property="bottomView" destination="4Gr-Pp-AG9" id="SSi-zf-Gfw"/>
                 <outlet property="tableView" destination="Zrm-io-6Mq" id="PzU-qA-SsD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -56,6 +56,13 @@
     }else{
         [self titleViewWithTitle:[NSString stringWithFormat:@"%@全景", self.navTitle] titleColor:[UIColor whiteColor]];
     }
+    if (self.zoneName.length==0 && self.navTitle.length==0) {
+        [self titleViewWithTitle:@"岷阳小区全景" titleColor:[UIColor whiteColor]];
+    }
+    if (self.x.length==0) {
+        self.x = @"103.888554";
+        self.y = @"30.807603";
+    }
     [self rightItemWithNormalName:@""
                             title:@"上报设施"
                        titleColor:[UIColor whiteColor]

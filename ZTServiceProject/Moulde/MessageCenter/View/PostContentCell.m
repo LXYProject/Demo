@@ -9,6 +9,7 @@
 #import "PostContentCell.h"
 #import "HClTextView.h"
 
+
 @interface PostContentCell ()<HClTextViewDelegate>
 
 @property (strong, nonatomic) HClTextView *textView;

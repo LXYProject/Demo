@@ -18,8 +18,14 @@
 #import "CommentInfoCell.h"
 #import "HomeHttpManager.h"
 
-@interface SecondDetailsController ()
+@interface SecondDetailsController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property (nonatomic,strong)UIView *keyBoardToolsView;
+@property (nonatomic,strong)UITextField *commentTextField;
+@property (nonatomic,strong)UIButton *senderBtn;
+
 
 @end
 
@@ -27,9 +33,25 @@
 {
     NSArray *imageNames;
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self titleViewWithTitle:@"二手物品详情" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
     
     imageNames = @[
                    @"timg.jpeg",
@@ -37,12 +59,28 @@
                    @"timg.jpeg",
                    ];
     
-    [self titleViewWithTitle:@"二手物品详情" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"搜索" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
     [self.tableView registerNib:[UINib nibWithNibName:@"SecondDetailsCell" bundle:nil] forCellReuseIdentifier:@"SecondDetailsCell"];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
+    
+    [self.view addSubview:self.keyBoardToolsView];
+
+    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide)];
+    tableViewGesture.numberOfTapsRequired = 1;
+    tableViewGesture.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:tableViewGesture];
+    
+    
+    //注册键盘出现NSNotification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    
+    //注册键盘隐藏NSNotification
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
 
 }
 
@@ -50,6 +88,66 @@
 {
     NSLog(@"rightBarClick");
 }
+
+- (void)commentTableViewTouchInSide{
+    [self.view endEditing:YES] ;
+}
+
+//- (void)viewDidLayoutSubviews {
+//    [super viewDidLayoutSubviews];
+//    if (![self.view.subviews containsObject:self.keyBoardToolsView]) {
+//        [self.view addSubview:self.keyBoardToolsView];
+//    }
+//}
+
+- (void)keyboardWillShow:(NSNotification *)noti {
+    // 获取通知的信息字典
+    NSDictionary *userInfo = [noti userInfo];
+    
+    // 获取键盘弹出后的rect
+    NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardRect.size.height, 0.0);
+    self.tableView.scrollEnabled = YES;
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
+    //    CGRect aRect = self.view.frame;
+    //    aRect.size.height -= keyboardRect.size.height;
+    //    if (!CGRectContainsPoint(aRect, activeField.superview.superview.frame.origin) ) {
+    //        CGPoint scrollPoint = CGPointMake(0.0, activeField.superview.superview.frame.origin.y-aRect.size.height+44);
+    //        [displayTable setContentOffset:scrollPoint animated:YES];
+    //    }
+    // 获取键盘弹出动画时间
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.keyBoardToolsView.transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height-39);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)noti {
+    // 获取通知信息字典
+    NSDictionary* userInfo = [noti userInfo];
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
+    // 获取键盘隐藏动画时间
+    NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSTimeInterval animationDuration;
+    [animationDurationValue getValue:&animationDuration];
+    [UIView animateWithDuration:animationDuration animations:^{
+        self.keyBoardToolsView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -135,8 +233,8 @@
         return cell;
     }else{
         CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
-//        NSArray *commentList = self.model.commentList;
-//        cell.model = commentList[indexPath.row-2];
+        NSArray *commentList = self.model.commentList;
+        cell.secondModel = commentList[indexPath.row-2];
 
         return cell;
     }
@@ -196,10 +294,10 @@
         }else if(indexPath.row==1){
             return 65;
         }else{
-//            return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
-//                NSArray *commentList = self.model.commentList;
-//                cell.model = commentList[indexPath.row-2];
-//            }];
+            return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
+                NSArray *commentList = self.model.commentList;
+                cell.secondModel = commentList[indexPath.row-2];
+            }];
             return 0;
 
         }
@@ -218,9 +316,63 @@
 
 //评论
 - (IBAction)commentsBtn {
+    
+    self.keyBoardToolsView.hidden = NO;
+    self.commentTextField.placeholder = @"评论";
+    [self.commentTextField becomeFirstResponder];
 }
 
 //我想要
 - (IBAction)wantToBtnClick {
+}
+
+- (UIView *)keyBoardToolsView {
+    if (!_keyBoardToolsView) {
+        _keyBoardToolsView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height, ScreenWidth, 44)];
+        _keyBoardToolsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+//        _keyBoardToolsView.layer.borderWidth = 0.5;
+//        _keyBoardToolsView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+        [_keyBoardToolsView addSubview:self.commentTextField];
+        [_keyBoardToolsView addSubview:self.senderBtn];
+        _keyBoardToolsView.hidden = YES;
+    }
+    return _keyBoardToolsView;
+}
+
+- (UITextField *)commentTextField {
+    if (!_commentTextField) {
+        _commentTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth-80, 30)];
+        _commentTextField.borderStyle = UITextBorderStyleRoundedRect;
+        //_commentTextField.backgroundColor = [UIColor darkGrayColor];
+        _commentTextField.font = [UIFont systemFontOfSize:14];
+    }
+    return _commentTextField;
+}
+
+
+- (UIButton *)senderBtn {
+    if(!_senderBtn) {
+        _senderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _senderBtn.layer.masksToBounds = YES;
+        _senderBtn.layer.cornerRadius = 3;
+        _senderBtn.frame = CGRectMake(ScreenWidth - 60, 7, 50, 30);
+        [_senderBtn setTitle:@"留言" forState:UIControlStateNormal];
+        [_senderBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _senderBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        _senderBtn.backgroundColor = UIColorFromRGB(0xE64E51);
+        [_senderBtn addTarget:self action:@selector(sendBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _senderBtn;
+}
+
+
+- (void)sendBtnClick {
+    [self.commentTextField endEditing:YES];
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    if ([self.commentTextField.text stringByTrimmingCharactersInSet:set].length>0) {
+        NSLog(@"没有空格");
+        //[self requestReplyData:_currentCommentModel text:self.commentTextField.text];
+    }
+    
 }
 @end

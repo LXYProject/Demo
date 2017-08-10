@@ -30,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self titleViewWithTitle:@"求购" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
     
     _titleArray = @[@"物品名称：",
                     @"品牌型号："];
@@ -40,10 +43,6 @@
     _contentOneArray = @[@"八成新",
                          @"1000-2000"];
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    
-    [self titleViewWithTitle:@"求购" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
-
 
 }
 
@@ -137,6 +136,9 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

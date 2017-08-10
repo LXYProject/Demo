@@ -23,22 +23,37 @@
 
 @property (nonatomic, strong) TLMenuButtonView *tlMenuView ;
 
+@property(nonatomic,strong)UIButton *btn;
+@property(nonatomic,assign)NSInteger a;
+
 @end
 
 @implementation NearByHomeViewController
 {
     NSInteger queryType;
     BOOL _ISShowMenuButton;
+    UIView *_maskView;
  
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
-    
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(0);
+    [[self.view viewWithTag:1000] setTransform:rotate];
+    [_maskView removeFromSuperview];
     [_tlMenuView dismiss];
+    _ISShowMenuButton = NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _maskView =  [[UIView alloc] init];
+    _maskView.frame = self.view.bounds;
+    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide)];
+    tableViewGesture.numberOfTapsRequired = 1;
+    tableViewGesture.cancelsTouchesInView = NO;
+    [_maskView addGestureRecognizer:tableViewGesture];
+    
+    
     self.dataSource = self;
     self.delegate = self;
     self.fixTabWidth = NO;
@@ -103,6 +118,7 @@
 //        [self reloadData];
 //    });
 
+//    [self switchButton];
     [self createMenuBtn];
 }
 - (void)leftBarClick
@@ -114,6 +130,13 @@
     NSLog(@"rightBarClick");
 }
 
+- (void)commentTableViewTouchInSide{
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(0);
+    [[self.view viewWithTag:1000] setTransform:rotate];
+    [_maskView removeFromSuperview];
+    [_tlMenuView dismiss];
+    _ISShowMenuButton = NO;
+}
 -(void)segmentClick:(UISegmentedControl *)segment{
     
     if (segment.selectedSegmentIndex==0) {
@@ -124,6 +147,37 @@
     [self requestTitleArrayData];
 }
 
+// 切换列表按钮
+- (void)switchButton{
+    self.btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.btn.frame = CGRectMake(SCREEN_WIDTH-80, 60, 50, 50);
+    //[self.btn setTitle:@"触摸" forState:UIControlStateNormal];
+    [self.btn setBackgroundImage:[UIImage imageNamed:@"否"] forState:UIControlStateNormal];
+    [self.btn setBackgroundImage:[UIImage imageNamed:@"是"] forState:UIControlStateSelected];
+    [self.btn addTarget:self action:@selector(dragMoving:withEvent: )forControlEvents: UIControlEventTouchDragInside];
+    [self.btn addTarget:self action:@selector(doClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.a=0;
+    [self.view addSubview:self.btn];
+}
+
+-(void)doClick:(UIButton*)sender
+{
+    sender.selected = !sender.selected;
+    if (self.a==0)
+    {
+        NSLog(@"1111");
+    }
+    self.a=0;
+}
+
+- (void) dragMoving: (UIButton *) c withEvent:ev
+{
+    self.a=1;
+    c.center = [[[ev allTouches] anyObject] locationInView:self.view];
+    NSLog(@"%f,,,%f",c.center.x,c.center.y);
+}
+
+// 菜单按钮
 - (void)createMenuBtn{
     _ISShowMenuButton = NO;
     
@@ -132,6 +186,7 @@
     button.backgroundColor = [UIColor greenColor];
     [button addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"main_button"] forState:UIControlStateNormal];
+    button.tag = 1000;
     [self.view addSubview:button];
     
     TLMenuButtonView *tlMenuView =[TLMenuButtonView standardMenuView];
@@ -153,24 +208,25 @@
 }
 
 - (void)clickAddButton:(UIButton *)sender{
-//    UIView *maskView =  [[UIView alloc] init];
-//    maskView.frame = self.view.bounds;
-//    maskView.alpha = 0.6;
+    _maskView.backgroundColor = [UIColor clearColor];
+    
+    [self.view insertSubview:_maskView belowSubview:[self.view viewWithTag:1000]];
     if (!_ISShowMenuButton) {
         [UIView animateWithDuration:0.2 animations:^{
+            _maskView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
             CGAffineTransform rotate = CGAffineTransformMakeRotation( M_PI / 4 );
             [sender setTransform:rotate];
         }];
-//        [self.view addSubview:maskView];
-
         [_tlMenuView showItems];
     }else{
+        
         [UIView animateWithDuration:0.2 animations:^{
             CGAffineTransform rotate = CGAffineTransformMakeRotation( 0 );
             [sender setTransform:rotate];
+        } completion:^(BOOL finished) {
+            [_maskView removeFromSuperview];
+            [_tlMenuView dismiss];
         }];
-        [_tlMenuView dismiss];
-//        [maskView removeFromSuperview];
     }
     _ISShowMenuButton = !_ISShowMenuButton;
 }

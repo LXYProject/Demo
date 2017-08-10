@@ -11,6 +11,7 @@
 #import "AddPhotosCell.h"
 #import "MesssgeHttpManager.h"
 #import "LocationChoiceController.h"
+#import "PlaceTextView.h"
 
 //#define btnY 542
 //#define labelY 530
@@ -18,8 +19,15 @@
 #define btnY 275
 #define labelY 263
 #define btnX 15
-@interface PostMessageController ()
+
+#undef  RGBCOLOR
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
+@interface PostMessageController ()<UITextViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) PlaceTextView * textView;
+
 @end
 
 @implementation PostMessageController
@@ -46,18 +54,39 @@
 - (void)rightBarClick
 {
     NSLog(@"发布帖子");
-    [MesssgeHttpManager requestContent:_affairDiscribe
+    @weakify(self);
+    [MesssgeHttpManager requestContent:self.textView.text
                                 photos:@""
                                 cityId:@""
                             districtId:@""
-                               address:@""
+                               address:self.locationInfo
                                  resId:@""
                                resName:@""
+                                     x:@""
+                                     y:@""
                                success:^(id response) {
+                                   @strongify(self);
+                                   //操作失败的原因
+                                   NSString *information = [response objectForKey:@"information"];
+                                   //状态码
+                                   NSString *status = [response objectForKey:@"status"];
+                                   
+                                   if ([status integerValue]==0) {
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                           if (buttonindex == HHAlertButtonOk) {
+                                               NSLog(@"ok");
+                                           }
+                                           else
+                                           {
+                                               NSLog(@"cancel");
+                                           }
+                                       }];
+                                   }else{
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                   }
                                } failure:^(NSError *error, NSString *message) {
                                    
                                }];
-
 }
 
 - (void)createUI
@@ -86,6 +115,48 @@
     button.selected = !button.selected;
 }
 
+#pragma mark - UITextViewDelegate
+
+-(PlaceTextView *)textView{
+    
+    if (!_textView) {
+        _textView = [[PlaceTextView alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 100)];
+        _textView.backgroundColor = [UIColor whiteColor];
+        _textView.delegate = self;
+        _textView.font = [UIFont systemFontOfSize:14.f];
+        _textView.textColor = [UIColor blackColor];
+        _textView.textAlignment = NSTextAlignmentLeft;
+        _textView.editable = YES;
+        _textView.layer.cornerRadius = 4.0f;
+        _textView.placeholderColor = RGBCOLOR(0x89, 0x89, 0x89);
+        _textView.placeholder = @"分享新鲜事";
+    }
+    
+    return _textView;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if ([@"\n" isEqualToString:text] == YES)
+    {
+        [textView resignFirstResponder];
+        
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (void)sendFeedBack{
+    
+    NSLog(@"=======%@",self.textView.text);
+    
+}
+
+#pragma mark - UITableViewDelegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
@@ -111,13 +182,24 @@
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
-        PostContentCell *cell = (PostContentCell *)[self creatCell:tableView indenty:@"PostContentCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textViewBlock = ^(id obj) {
-            NSLog(@"obj==%@", obj);
-            _affairDiscribe = obj;
-        };
-        return cell;
+    
+    static NSString *ID = @"cell";
+    // 根据标识去缓存池找cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    // 不写这句直接崩掉，找不到循环引用的cell
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    [cell.contentView addSubview:self.textView];
+    return cell;
+
+//    PostContentCell *cell = (PostContentCell *)[self creatCell:tableView indenty:@"PostContentCell"];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.textViewBlock = ^(id obj) {
+//        NSLog(@"obj==%@", obj);
+//        _affairDiscribe = obj;
+//    };
+//    return cell;
 }
 
 //第1组
@@ -125,6 +207,9 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     

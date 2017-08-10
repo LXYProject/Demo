@@ -114,11 +114,11 @@
                address:(NSString *)address
                  resId:(NSString *)resId
                resName:(NSString *)resName
+                     x:(NSString *)x
+                     y:(NSString *)y
                success:(HttpRequestSuccess)success
                failure:(HttpRequestFailure)failure{
     
-    CGFloat x = 0.0;
-    CGFloat y = 0.0;
     NSDictionary *paramter = @{@"content":content?content:@"",
                                @"photos":photos?photos:@"",
                                @"cityId":cityId?cityId:@"",
@@ -126,13 +126,12 @@
                                @"address":address?address:@"",
                                @"resId":resId?resId:@"",
                                @"resName":resName?resName:@"",
-                               @"x":@(x),
-                               @"y":@(y),
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
                                };
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_newTopic paramter:paramter success:^(id response) {
-        NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_newTopic paramter:paramter success:^(id response) {
+        success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

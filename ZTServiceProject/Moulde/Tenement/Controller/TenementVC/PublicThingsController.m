@@ -13,6 +13,7 @@
 #import "StaticlCell.h" 
 #import "TenementHttpManager.h"
 #import "PublicTypeController.h"
+#import "LocationChoiceController.h"
 
 @interface PublicThingsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -22,29 +23,34 @@
 @implementation PublicThingsController
 {
     NSArray *_titleArray;
-    NSArray *_contentArray;
-    NSString *_affairDiscribe;
-    NSString *_userRealName;
-    NSString *_userPhoneNum;
+    NSArray *_describeArray;
+    NSString *_affairDiscribe;//报事内容
+    NSString *_userRealName;  //上报人的真实姓名
+    NSString *_userPhoneNum;  //上报人的现用手机号
 
 }
+
+- (void)setLocationInfo:(NSString *)locationInfo{
+    _locationInfo = locationInfo;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    _titleArray = @[@"联系人:",
-                    @"联系电话:"];
-    _contentArray = @[@"输入您的姓名",
-                      @"输入您的电话"];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
-
-    [self titleViewWithTitle:@"公共报事"
-                  titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"公共报事" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@""
                             title:@"提交"
                        titleColor:[UIColor whiteColor]
                          selector:@selector(rightBarClick)
                            target:self];
+
+    _titleArray = @[@"联系人:",
+                    @"联系电话:"];
+    _describeArray = @[@"输入您的姓名",
+                      @"输入您的电话"];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+
 }
 
 - (void)rightBarClick
@@ -53,12 +59,14 @@
     // 公共报事
     @weakify(self);
     [TenementHttpManager requestZoneId:self.zoneId
-                           affairTitle:@""
+                           affairTitle:@"公共报事"
                         affairDiscribe:_affairDiscribe
                         affairCategory:@"1"
-                           userAddress:@"北京市 海淀区 财智大厦 c305室"
+                           userAddress:self.locationInfo
                           userRealName:_userRealName
                           userPhoneNum:_userPhoneNum
+                                     x:@"2017-05-18"
+                                     y:@"2017-05-18"
                                 images:[UIImage imageNamed:@""]
                                success:^(id response) {
                                    @strongify(self);
@@ -68,9 +76,17 @@
                                    NSString *status = [response objectForKey:@"status"];
                                    
                                    if ([status integerValue]==0) {
-                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                           if (buttonindex == HHAlertButtonOk) {
+                                               NSLog(@"ok");
+                                           }
+                                           else
+                                           {
+                                               NSLog(@"cancel");
+                                           }
+                                       }];
                                    }else{
-                                       [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
                                    }
                                } failure:^(NSError *error, NSString *message) {
                                }];
@@ -131,24 +147,6 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 
-//    SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-//    cell.title.textColor = TEXT_COLOR;
-//    cell.rightContent.textColor = TEXT_COLOR;
-//    cell.title.text = @"选择类型:";
-//    cell.content.placeholder = @"请选择价格范围";
-//    cell.rightContent.text = @"选择";
-//    if (IS_IPHONE_4 || IS_IPHONE_5) {
-//        cell.title.font = [UIFont systemFontOfSize:13];
-//        cell.rightContent.font = [UIFont systemFontOfSize:11];
-//        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-//    }else{
-//        cell.title.font = [UIFont systemFontOfSize:14];
-//        cell.rightContent.font = [UIFont systemFontOfSize:12];
-//        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-//    }
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//    return cell;
-
 }
 
 //第1组
@@ -169,6 +167,9 @@
                                indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -183,14 +184,19 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = @"位置选择";
+    if (self.locationInfo.length>0) {
+        cell.textLabel.text = self.locationInfo;
+    }else{
+        cell.textLabel.text = @"位置选择";
+    }
     cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.textLabel.font = [UIFont systemFontOfSize:11];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
     }else{
-        cell.textLabel.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
     }
-    cell.textLabel.textColor = [UIColor grayColor];
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
     
 }
@@ -202,14 +208,7 @@
     StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
     cell.title.textColor = TEXT_COLOR;
     cell.title.text = _titleArray[indexPath.row];
-    cell.content.placeholder = _contentArray[indexPath.row];
-    if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.title.font = [UIFont systemFontOfSize:13];
-        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-    }else{
-        cell.title.font = [UIFont systemFontOfSize:14];
-        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-    }
+    cell.content.placeholder = _describeArray[indexPath.row];
     if (indexPath.row==0) {
         cell.textFieldBlock = ^(id obj) {
             NSLog(@"obj==%@", obj);
@@ -220,6 +219,13 @@
             NSLog(@"obj==%@", obj);
             _userPhoneNum = obj;
         };
+    }
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.title.font = [UIFont systemFontOfSize:13];
+        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+    }else{
+        cell.title.font = [UIFont systemFontOfSize:14];
+        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -243,6 +249,12 @@
             @strongify(self);
             viewController.zoneId = self.zoneId;
         }];
+    }else if (indexPath.section==3){
+        [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:^(LocationChoiceController* viewController) {
+            viewController.currentController = 3;
+        }];
+    }else{
+        return;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

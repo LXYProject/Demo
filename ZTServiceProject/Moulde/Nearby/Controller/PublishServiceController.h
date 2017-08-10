@@ -10,4 +10,11 @@
 
 @interface PublishServiceController : BaseViewController
 
+@property (nonatomic, copy) NSString *unitStr;
+@property (nonatomic, copy) NSString *serviceTypeStr;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *serviceScopeStr;
+@property (nonatomic, copy) NSString *locationInfo;
+
 @end

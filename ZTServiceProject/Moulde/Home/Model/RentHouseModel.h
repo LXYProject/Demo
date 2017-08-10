@@ -92,7 +92,7 @@
 
 
 @property (nonatomic,copy)NSString *address;
-@property (nonatomic,copy)NSString *basicFacilities;
+@property (nonatomic,copy)NSArray *basicFacilities;
 @property (nonatomic,copy)NSString *buildingId;
 @property (nonatomic,strong)NSArray *buildingName;
 @property (nonatomic,copy)NSString *cityId;

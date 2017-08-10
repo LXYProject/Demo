@@ -13,15 +13,16 @@
 #import "LoginHttpManager.h"
 #import "YJSelectionView.h"
 #import "UICustomDatePicker.h"
+#import "CityListViewController.h"
 
 #define btnY 420
-@interface RegisterFourController ()
+@interface RegisterFourController ()<CityListViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, copy) NSString* ageStr;
 @property (nonatomic, copy) NSString* birthdayStr;
-
+@property (nonatomic, copy) NSString* hometownStr;
 @end
 
 @implementation RegisterFourController
@@ -36,8 +37,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadData];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,7 +58,7 @@
 
     }
     _sectionOneArr = @[@"昵称", @"性别", @"生日"];
-    _sectionTwoArr = @[@"个性签名", @"家乡"];
+    _sectionTwoArr = @[@"个性签名", @"故乡"];
     _sectionThreeArr = @[@"联系方式", @"我的地址"];
     _genderArr = @[@"男", @"女"];
     [self.tableView reloadData];
@@ -220,10 +220,9 @@
     if (indexPath.row==0) {
         cell.detailTextLabel.text = self.signatureStr;
     }else{
-        cell.detailTextLabel.text = @"";
+        cell.detailTextLabel.text = self.hometownStr;
     }
     cell.textLabel.textColor = TEXT_COLOR;
-    cell.detailTextLabel.textColor = UIColorFromRGB(0xb2b2b2);
     cell.textLabel.text = _sectionTwoArr[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
@@ -249,8 +248,10 @@
     cell.textLabel.text = _sectionThreeArr[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
     }else{
         cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -320,11 +321,12 @@
     }else if (indexPath.section==2){
         if (indexPath.row==0) {
             [PushManager pushViewControllerWithName:@"ChangeSignatureController" animated:YES block:nil];
+        }else{
+            [self hometown];
         }
     }else{
         return;
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -345,6 +347,40 @@
     return 5;
 }
 
+- (void)hometown
+{
+    NSLog(@"leftBarClick");
+    CityListViewController *cityListView = [[CityListViewController alloc]init];
+    cityListView.delegate = self;
+    //热门城市列表
+    cityListView.arrayHotCity = [NSMutableArray arrayWithObjects:@"广州",
+                                 @"北京",
+                                 @"天津",
+                                 @"厦门",
+                                 @"重庆",
+                                 @"福州",
+                                 @"泉州",
+                                 @"济南",
+                                 @"深圳",
+                                 @"长沙",
+                                 @"无锡", nil];
+    //历史选择城市列表
+    cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",
+                                        @"厦门",
+                                        @"泉州", nil];
+    //定位城市列表
+    NSString *locationCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"locationCity"];
+    cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:locationCity, nil];
+    
+    
+    [self presentViewController:cityListView animated:YES completion:nil];
+    
+}
+
+- (void)didClickedWithCityName:(NSString*)cityName
+{
+    self.hometownStr = cityName;
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 //{

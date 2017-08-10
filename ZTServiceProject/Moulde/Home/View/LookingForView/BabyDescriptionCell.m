@@ -28,7 +28,7 @@
     }];
     self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.textView setPlaceholder:@"描述你下你的房屋（少于300字）" contentText:_myInPutText maxTextCount:300];
+    [self.textView setPlaceholder:@"请简单描述你想求购的东西（少于300字）" contentText:_myInPutText maxTextCount:300];
     [self.contentView addSubview:self.textView];
 }
 

@@ -77,15 +77,7 @@
 @property (nonatomic,copy)NSString *commentCount;
 
 @property (nonatomic,strong)NSArray *commentList;
-@property (nonatomic,copy)NSString *comment;
-@property (nonatomic,copy)NSString *commentId;
-@property (nonatomic,copy)NSString *commentTime;
-@property (nonatomic,copy)NSString *isLiked;
-@property (nonatomic,copy)NSString *likeCount;
 @property (nonatomic,strong)NSArray *subCommentList;
-@property (nonatomic,copy)NSString *userId;
-@property (nonatomic,copy)NSString *userImageUrl;
-@property (nonatomic,copy)NSString *userName;
 
 
 @property (nonatomic,copy)NSString *createTime;
@@ -105,7 +97,6 @@
 
 @property (nonatomic,strong)NSArray *secondHandNormalImageList;
 @property (nonatomic,strong)NSArray *secondHandSmallImageList;
-//@property (nonatomic,copy)NSString *url;
 
 @property (nonatomic,copy)NSString *secondHandTitle;
 @property (nonatomic,copy)NSString *y;

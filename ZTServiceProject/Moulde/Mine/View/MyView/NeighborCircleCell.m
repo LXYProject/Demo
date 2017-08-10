@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *photosCount;
 @property (weak, nonatomic) IBOutlet UILabel *ThumbCount;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgH;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgW;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textLeft;
 
 
 
@@ -43,11 +46,23 @@
         
         self.url = dic.url;
     }
-
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
-    
+    if (model.topicSmallImageList.count==0) {
+        self.imgH.constant = 10;
+        self.imgW.constant = 0;
+        _textLeft.constant = 0;
+        _headIcon.hidden = YES;
+        _photosCount.hidden = YES;
+    }
+    else {
+        self.imgH.constant = 74;
+        self.imgW.constant = 88;
+        _textLeft.constant = 15;
+        
+        _headIcon.hidden = NO;
+        _photosCount.hidden = NO;
+        [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    }
     _createTime = model.createTime;
-    
     _year = [model.createTime substringToIndex:4];
     NSString *mouthsTime = [model.createTime substringToIndex:7];
     _months = [mouthsTime substringFromIndex:5];

@@ -13,7 +13,6 @@ static DataPickerViewOneDemo *pikerView = nil;
 @property (nonatomic,strong)UIView *headerView;
 @property (nonatomic,strong)UIView *bottomView;
 @property (nonatomic,strong)UIPickerView *pickView;
-@property (nonatomic,strong)NSMutableArray *dataSource;
 @property (nonatomic,strong)UIView *backView;
 @end
 
@@ -41,16 +40,16 @@ static DataPickerViewOneDemo *pikerView = nil;
         [self.backView addSubview:self.headerView];
         [self.backView addSubview:self.pickView];
         [self.backView addSubview:self.bottomView];
-        [self creatDataSource];
     }
     return self;
 }
 
-- (void)creatDataSource {
-    
-    NSArray *dataArr = @[@"全新",@"九成新",@"八成新"];
-
-    self.dataSource = (NSMutableArray *)dataArr;
+- (void)setDataSource:(NSArray *)dataSource {
+    _dataSource = dataSource;
+    if (dataSource.count==0) {
+        return;
+    }
+    [self.pickView reloadAllComponents];
 }
 
 
@@ -83,7 +82,7 @@ static DataPickerViewOneDemo *pikerView = nil;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
-        return self.dateDataSource.count;
+    return _dataSource.count;
 }
 
 // 返回选中的行
@@ -115,19 +114,19 @@ static DataPickerViewOneDemo *pikerView = nil;
     else {
         myView.textColor = [UIColor darkGrayColor];
     }
-    myView.text = self.dataSource[row];
+    myView.text =_dataSource[row];
     return myView;
 }
 
 
 - (UIView *)headerView {
-
+    
     if (!_headerView) {
         _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.backView.frame.size.width, 49)];
         UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _headerView.frame.size.width, 49)];
         lable.textAlignment = NSTextAlignmentCenter;
         lable.font = [UIFont systemFontOfSize:14];
-        lable.text = @"选择服务时间";
+        lable.text = @"选择";
         lable.textColor = [UIColor darkGrayColor];
         [_headerView addSubview:lable];
         _headerView.backgroundColor = [UIColor whiteColor];
@@ -155,7 +154,7 @@ static DataPickerViewOneDemo *pikerView = nil;
         cancelBtn.frame = CGRectMake(0, 0, _bottomView.frame.size.width/2, 49);
         [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
         [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//        cancelBtn.backgroundColor = [UIColor cyanColor];
+        //        cancelBtn.backgroundColor = [UIColor cyanColor];
         [cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:cancelBtn];
         UIButton *determineBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -177,17 +176,10 @@ static DataPickerViewOneDemo *pikerView = nil;
     [self dismiss];
     NSInteger oneComRow =[self.pickView selectedRowInComponent:0];
     if (self.pikerSelected) {
-        self.pikerSelected(self.dateDataSource[oneComRow]);
+        self.pikerSelected(_dataSource[oneComRow]);
     }
     
 }
-- (NSMutableArray *)dateDataSource {
-    if (!_dataSource) {
-        _dataSource = [NSMutableArray arrayWithCapacity:1];
-    }
-    return _dataSource;
-}
-
 
 - (UIView *)backView {
     if (!_backView) {

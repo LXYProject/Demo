@@ -29,7 +29,7 @@
     self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
     self.textView.delegate = self;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.textView setLeftTitleText:@"投诉内容:"];
+    [self.textView setLeftTitleText:@"投诉:"];
     [self.textView setPlaceholder:@"描述一下（少于300字）" contentText:_myInPutText maxTextCount:300];
     [self.contentView addSubview:self.textView];
 

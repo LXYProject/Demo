@@ -10,8 +10,8 @@
 #import "RegisterFourController.h"
 
 @interface ChangeNickNameController ()<UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (nonatomic, copy) NSString *nickNameStr;
 @end
 
 @implementation ChangeNickNameController
@@ -31,17 +31,12 @@
 - (void)rightBarClick
 {
     NSLog(@"保存");
+    NSLog(@"textField==%@", self.textField.text);
     @weakify(self);
     [PushManager popViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
         @strongify(self);
-        viewController.nickNameStr = self.nickNameStr;
+        viewController.nickNameStr = self.textField.text;
     }];
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"%@", textField.text);
-    self.nickNameStr = textField.text;
 }
 
 
@@ -49,4 +44,6 @@
     
     [self.textField resignFirstResponder];
     return NO;
-}@end
+}
+
+@end

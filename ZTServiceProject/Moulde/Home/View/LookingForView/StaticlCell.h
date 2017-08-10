@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UITextField *content;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentLeading;
 
 @property (nonatomic,copy)Id_Block textFieldBlock;
 

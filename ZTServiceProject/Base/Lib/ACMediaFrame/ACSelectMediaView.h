@@ -27,6 +27,8 @@ typedef void(^ACSelectMediaBackBlock)(NSArray<ACMediaModel *> *list);
 
 - (void)showSelectMediaView;
 
+- (void)layoutCollection: (NSArray *)images;
+
 /**
  视图一开始默认高度
  */

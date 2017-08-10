@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class CommentUserModel;
+@class SecondCommentModel;
+
 @interface CommentInfoCell : UITableViewCell
 @property (nonatomic,strong)CommentUserModel *model;
+@property (nonatomic,strong)SecondCommentModel *secondModel;
+
 @end

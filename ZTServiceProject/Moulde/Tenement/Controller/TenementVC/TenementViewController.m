@@ -52,6 +52,7 @@
     _imageUrlArr = [[NSMutableArray alloc] init];
     
     [self requestBanner];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -71,13 +72,20 @@
     self.searchBtn.layer.masksToBounds = YES;
     self.searchBtn.layer.cornerRadius = self.searchBtn.bounds.size.width * 0.05;
     self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    [self.searchBtn setTitle:_btnTitle forState:UIControlStateNormal];
+    if (_btnTitle.length==0) {
+        [self.searchBtn setTitle:@"岷阳小区" forState:UIControlStateNormal];
+        self.zoneId = @"510018177815";
+    }else{
+        [self.searchBtn setTitle:_btnTitle forState:UIControlStateNormal];
+    }
+    //[self.searchBtn setTitle:_btnTitle forState:UIControlStateNormal];
     NSLog(@"_btnTitle:::%@",_btnTitle);
     NSLog(@"zoneId:::%@",_zoneId);
     [self.searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.searchBtn.titleLabel.font = [UIFont systemFontOfSize: 12];
     [self.searchBtn addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = self.searchBtn;
+    
 }
 
 - (void)searchBtnClick
@@ -261,15 +269,15 @@
                                @{@"imgUrl":@""}],
                              @[
                                  @{@"title":@"小区公告",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_xqgg",
                                    @"vcName":@"AnnounceViewController"},
                                  
                                  @{@"title":@"小区全景",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_xqqj",
                                    @"vcName":@"VillagePanoramaController"},
                                  
                                  @{@"title":@"便民信息",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_bmxx",
                                    @"vcName":@"InformationController"},
                                  
                                  @{@"title":@"小区主页",
@@ -278,24 +286,24 @@
                                  ],
                              @[
                                  @{@"title":@"上门服务",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_smfw",
                                    @"vcName":@"DoorServiceController"},
                                  
                                  @{@"title":@"公共报事",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_ggbs",
                                    @"vcName":@"PublicThingsController"},
                                  
                                  @{@"title":@"表扬",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_by",
                                    @"vcName":@"PraiseViewController"},
                                  
                                  @{@"title":@"投诉",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_ts",
                                    @"vcName":@"ComplaintsController"},
                                  ],
                              @[
                                  @{@"title":@"呼叫保安",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_hjba",
                                    @"vcName":@"MKPAlertView"},
                                  
                                  @{@"title":@"保安团队",
@@ -308,10 +316,10 @@
                                  ],
                              @[
                                  @{@"title":@"物业费",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_wyf",
                                    @"vcName":@"PayCostController"},
                                  @{@"title":@"生活缴费",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_shjf",
                                    @"vcName":@"LifePayCostController"}
                                  ],
                              ];

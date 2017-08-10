@@ -22,7 +22,7 @@
 
 - (void)setUrl:(NSString *)url {
     if (url) {
-        [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[[UIImage alloc]init]];
+        [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     }
 }
 @end

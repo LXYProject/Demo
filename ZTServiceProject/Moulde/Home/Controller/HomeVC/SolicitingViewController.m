@@ -10,7 +10,7 @@
 #import "SolicitingHeadCell.h"
 #import "SolicitBtnItemCell.h"
 #import "SolicitBtnItemOneCell.h"
-#import "BtnItemCell.h"
+#import "SolicitItemCell.h"
 #import "AddPhotosCell.h"
 #import "BabyDescriptionCell.h"
 
@@ -32,11 +32,10 @@
     [self titleViewWithTitle:@"求租" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
-    _titleArray = @[@"租金",
-                    @"户型",
-                    @"朝向"];
-    _contentArray = @[@"请填写租金",
-                      @"请选择户型", @""];
+    _titleArray = @[@"租金:",
+                    @"户型:",
+                    @"朝向:"];
+    _contentArray = @[@"请选择户型", @"请选择朝向"];
     _rightArray = @[@"",
                     @"选择",
                     @"南"];
@@ -88,33 +87,58 @@
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
-    SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-    if (indexPath.row==0) {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    static NSString *ID = @"cell";
+    // 根据标识去缓存池找cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    // 不写这句直接崩掉，找不到循环引用的cell
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    else {
+    cell.textLabel.text = _titleArray[indexPath.row];
+    cell.textLabel.textColor = TEXT_COLOR;
+    if (indexPath.row==0) {
+        
+    }else{
+        cell.detailTextLabel.text = _contentArray[indexPath.row-1];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    if (indexPath.row==2) {
-        [cell.content removeFromSuperview];
-    }
-    cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
-    cell.content.placeholder = _contentArray[indexPath.row];
-    cell.rightContent.text = _rightArray[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.title.font = [UIFont systemFontOfSize:13];
-        cell.rightContent.font = [UIFont systemFontOfSize:13];
-        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
     }else{
-        cell.title.font = [UIFont systemFontOfSize:14];
-        cell.rightContent.font = [UIFont systemFontOfSize:14];
-        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
-    cell.title.textColor = TEXT_COLOR;
-    cell.rightContent.textColor = TEXT_COLOR;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-    
+
+//    SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
+//    if (indexPath.row==0) {
+//        cell.accessoryType = UITableViewCellAccessoryNone;
+//    }
+//    else {
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    }
+//    if (indexPath.row==2) {
+//        [cell.content removeFromSuperview];
+//    }
+//    cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
+//    cell.content.placeholder = _contentArray[indexPath.row];
+//    cell.rightContent.text = _rightArray[indexPath.row];
+//    if (IS_IPHONE_4 || IS_IPHONE_5) {
+//        cell.title.font = [UIFont systemFontOfSize:13];
+//        cell.rightContent.font = [UIFont systemFontOfSize:13];
+//        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
+//    }else{
+//        cell.title.font = [UIFont systemFontOfSize:14];
+//        cell.rightContent.font = [UIFont systemFontOfSize:14];
+//        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+//    }
+//    cell.title.textColor = TEXT_COLOR;
+//    cell.rightContent.textColor = TEXT_COLOR;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    return cell;
+
 }
 
 //第1组
@@ -136,7 +160,7 @@
 - (UITableViewCell *)sectionTwoWithTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
     
-    BtnItemCell *cell = (BtnItemCell *)[self creatCell:tableView indenty:@"BtnItemCell"];
+    SolicitItemCell *cell = (SolicitItemCell *)[self creatCell:tableView indenty:@"SolicitItemCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -146,6 +170,9 @@
                                indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -168,6 +195,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section==0) {
@@ -198,7 +230,7 @@
         return 44;
     }
     else if (indexPath.section ==2) {
-        return 85;
+        return 110;
     }
     else {
         return 100;

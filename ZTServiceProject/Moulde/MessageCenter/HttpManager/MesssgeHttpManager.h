@@ -53,6 +53,8 @@ typedef enum : NSUInteger {
                address:(NSString *)address
                  resId:(NSString *)resId
                resName:(NSString *)resName
+                     x:(NSString *)x
+                     y:(NSString *)y
                success:(HttpRequestSuccess)success
                failure:(HttpRequestFailure)failure;
 

@@ -15,11 +15,14 @@
 #import "MacroDefinition.h"
 #import "UIViewExt.h"
 #import "EJVerticalButton.h"
-#import "UIImage+Size.h"
 #import "HttpAPIManager.h"
 #import "BaseTableView.h"
 #import "BaseViewController.h"
 #import "Constant.h" 
+#import "RegularTool.h"
+#import "AlertViewController.h"
+#import "HHAlertView.h"
+
 //第三方
 #import <MJRefresh.h>
 #import <MJExtension.h>
@@ -37,8 +40,8 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 
 //类别
-#import "RegularTool.h"
-#import "AlertViewController.h"
+#import "UIImage+Size.h"
+
 
 
 

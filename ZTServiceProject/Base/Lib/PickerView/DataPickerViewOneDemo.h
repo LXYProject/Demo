@@ -13,8 +13,10 @@ typedef void(^DatePickerSelected)(NSString *dateStr);
 @interface DataPickerViewOneDemo : UIView
 
 @property (nonatomic,copy)DatePickerSelected pikerSelected;
+@property (nonatomic,strong)NSArray *dataSource;
 
 +(DataPickerViewOneDemo* )sharedPikerView;
 - (void)show;
 - (void)dismiss;
+
 @end

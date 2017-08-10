@@ -11,7 +11,7 @@
 
 @interface AddPhotosCell()
 @property (weak, nonatomic) IBOutlet UIView *placeholdView;
-@property (nonatomic,strong)ACSelectMediaView *mediaView;
+
 @property (nonatomic,strong)NSArray *dataSource;
 @end
 
@@ -26,11 +26,15 @@
         }
     }];
     [self.contentView addSubview:self.mediaView];
-    
 }
 - (IBAction)btnClick:(id)sender {
     [self.mediaView showSelectMediaView];
 }
+
+- (void)setImagesArray:(NSArray *)imagesArray {
+    [self.mediaView layoutCollection:imagesArray];
+}
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -46,8 +50,8 @@
 
 - (ACSelectMediaView *)mediaView {
     if (!_mediaView) {
-        _mediaView = [[ACSelectMediaView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height)];
-        _mediaView.maxCount = 3;
+        _mediaView = [[ACSelectMediaView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentView.frame.size.height)];
+        _mediaView.maxCount = 9;
         
         [_mediaView observeViewHeight:^(CGFloat value) {
         self.contentView.height = value;
@@ -55,6 +59,7 @@
         //4、随时获取已经选择的媒体文件
         __weak ACSelectMediaView *weakMediaView = _mediaView;
         [_mediaView observeSelectedMediaArray:^(NSArray<ACMediaModel *> *list) {
+            
             for (ACMediaModel *model in list) {
                 NSLog(@"%@",model);
             
@@ -68,7 +73,11 @@
                 weakMediaView.hidden = YES;
                 self.placeholdView.hidden = NO;
             }
+            if (self.finishedBlock) {
+                self.finishedBlock(list);
+            }
         }];
+        
         _mediaView.hidden = YES;
     }
     return _mediaView;

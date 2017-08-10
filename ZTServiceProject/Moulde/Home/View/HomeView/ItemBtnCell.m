@@ -9,7 +9,7 @@
 
 #import "ItemBtnCell.h"
 #define ItemsNumber 10
-#define BtnTag  10000000
+//#define BtnTag  10000000
 #define ScreenW ([UIScreen mainScreen].bounds.size.width)
 #define BtnTag  100
 

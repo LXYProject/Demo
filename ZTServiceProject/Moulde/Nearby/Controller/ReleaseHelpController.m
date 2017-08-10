@@ -9,17 +9,43 @@
 #import "ReleaseHelpController.h"
 #import "AddPhotosCell.h"
 #import "NearByHttpManager.h"
+#import "DataPickerViewOneDemo.h"
+#import "StaticlCell.h"
+#import "ReleaseHelpCell.h"
+#import "LocationChoiceController.h"
 
-#define LabelY 405
+#define LabelY 515
 @interface ReleaseHelpController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic,assign) CGFloat addPhotoHeight;
+@property (nonatomic, strong) NSMutableArray *timeDataSource;
+@property (nonatomic, strong) NSArray *timeDataArr;
+@property (nonatomic, copy) NSString *timeStr;
 @end
 
 @implementation ReleaseHelpController
 {
     NSArray *_sectionOneArr;
+    UITextField *_textField;
+    UILabel *_detailLabel;
+    
+    NSString *_helpTitle;
+    NSString *_bounty;
+    NSString *_validDate;
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+   // [self.tableView reloadData];
+
+}
+
+- (void)setLocationInfo:(NSString *)locationInfo{
+    _locationInfo = locationInfo;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -28,6 +54,27 @@
     _sectionOneArr = @[@"我要", @"描述", @"赏金", @"我在", @"求助类型", @"有效期至"];
     
     [self createLabel];
+    [self weekTime];
+}
+
+- (void)weekTime{
+    
+    NSDate *date = [NSDate date];//当前时间
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *formatDate = [formatter stringFromDate:date];
+    [self.timeDataSource addObject:formatDate];
+    for (int i=1; i<5; i++) {
+        NSDate *nextDay = [NSDate dateWithTimeInterval:i*24*60*60 sinceDate:date];//后一天
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+        NSString *DateTime = [formatter stringFromDate:nextDay];
+        NSLog(@"%@============年-月-日  时：分：秒=====================",DateTime);
+        [self.timeDataSource addObject:DateTime];
+    }
+    NSLog(@"timeDataSource==%@", self.timeDataSource);
+    self.timeDataArr = self.timeDataSource;
+ 
 }
 
 - (void)createLabel{
@@ -46,13 +93,13 @@
 - (IBAction)releaseBtnClick {
     
     // 发布
-    [NearByHttpManager rqeuestTitle:@""
+    [NearByHttpManager rqeuestTitle:_helpTitle
                             content:@""
-                            address:@""
-                              price:@""
-                         categoryId:@""
-                       categoryName:@""
-                          validDate:@""
+                            address:self.locationInfo
+                              price:_bounty
+                         categoryId:self.categoryId
+                       categoryName:self.serviceTypeStr
+                          validDate:_validDate
                              cityId:@""
                          districtId:@""
                                   x:@""
@@ -96,6 +143,9 @@
                                     indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     return cell;
     
 }
@@ -104,58 +154,56 @@
 - (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
     
-    static NSString *ID = @"cell";
-    // 根据标识去缓存池找cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    // 不写这句直接崩掉，找不到循环引用的cell
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    UITextField *textField = [[UITextField alloc] init];
-    textField.frame = CGRectMake(80, 13, 220, 30);
-    [cell.contentView addSubview:textField];
-    UILabel *detailLabel = [[UILabel alloc] init];
-    detailLabel.frame = CGRectMake(80, 0, 220, 50);
-    [cell.contentView addSubview:detailLabel];
-    cell.textLabel.text = _sectionOneArr[indexPath.row];
-    if (indexPath.row==0) {
-        textField.placeholder = @"我需要别人帮我做什么";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }else if (indexPath.row==1){
-        textField.hidden = YES;
-        detailLabel.text = @"说一下具体的求助信息，清楚明确的";
-    }else if (indexPath.row==2){
-        textField.placeholder = @"我愿意支付的报酬（单位元）";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }else if (indexPath.row==3){
-        textField.hidden = YES;
-        detailLabel.text = @"选择服务地点";
-    }else if (indexPath.row==4){
-        textField.hidden = YES;
-        detailLabel.text = @"请选择";
-        detailLabel.frame = CGRectMake(SCREEN_WIDTH-80, 0, 100, 50);
-    }else{
-        textField.hidden = YES;
-        detailLabel.text = @"为求助选择一个截止时间";
-        detailLabel.frame = CGRectMake(SCREEN_WIDTH-180, 0, 150, 50);
-    }
     if (indexPath.row==0 || indexPath.row==2) {
-        
+        StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
+        if (indexPath.row==0) {
+            cell.title.text = @"我要";
+            cell.content.placeholder = @"我需要别人帮我做什么";
+            cell.textFieldBlock = ^(id obj) {
+                NSLog(@"obj==%@", obj);
+                _helpTitle = obj;
+            };
+        }else{
+            cell.title.text = @"赏金";
+            cell.content.placeholder = @"我愿意支付的报酬（元）";
+            cell.textFieldBlock = ^(id obj) {
+                NSLog(@"obj==%@", obj);
+                _bounty = obj;
+            };
+        }
+        cell.contentLeading.constant = 50;
+        return cell;
     }else{
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        ReleaseHelpCell *cell = (ReleaseHelpCell *)[self creatCell:tableView indenty:@"ReleaseHelpCell"];
+        if (indexPath.row==1) {
+            cell.title.text = @"描述";
+            cell.describe.text = @"说一下具体的求助信息，清楚明确的";
+        }else if (indexPath.row==3){
+            cell.title.text = @"我在";
+            if (self.locationInfo.length>0) {
+                cell.describe.text = self.locationInfo;
+            }else{
+                cell.describe.text = @"选择服务地点";
+            }
+        }else if (indexPath.row==4){
+            cell.title.text = @"求助类型";
+            if (self.serviceTypeStr.length>0) {
+                cell.describe.text = self.serviceTypeStr;
+            }else{
+                cell.describe.text = @"请选择";
+            }
+            cell.describe.textAlignment = NSTextAlignmentRight;
+        }else{
+            cell.title.text = @"有效期至";
+            if (self.timeStr.length>0) {
+                cell.describe.text = self.timeStr;
+            }else{
+                cell.describe.text = @"为求助选择一个截止时间";
+            }
+            cell.describe.textAlignment = NSTextAlignmentRight;
+        }
+        return cell;
     }
-    if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.textLabel.font = [UIFont systemFontOfSize:13];
-        detailLabel.font = [UIFont systemFontOfSize:11];
-        [textField setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-    }else{
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        detailLabel.font = [UIFont systemFontOfSize:12];
-        [textField setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-    }
-    cell.textLabel.textColor = TEXT_COLOR;
-    detailLabel.textColor = UIColorFromRGB(0xb2b2b2);
-    return cell;
 }
 
 //公共创建cell的方法
@@ -177,18 +225,28 @@
         }else if (indexPath.row==2){
             
         }else if (indexPath.row==3){
+            [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:^(LocationChoiceController* viewController) {
+                viewController.currentController = 4;
+            }];
             
         }else if (indexPath.row==4){
             [PushManager pushViewControllerWithName:@"SelectHelpTypeController" animated:YES block:nil];
         }else{
-            
+            [[DataPickerViewOneDemo sharedPikerView]show];
+            [[DataPickerViewOneDemo sharedPikerView] setDataSource:self.timeDataArr];
+            [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
+                NSLog(@"date:%@",dateStr);
+                self.timeStr = dateStr;
+               [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+            };
         }
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0) {
-        return 100;
+        return 210;
     }else{
         return 50;
     }
@@ -201,5 +259,12 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
+}
+
+- (NSMutableArray *)timeDataSource{
+    if (!_timeDataSource) {
+        _timeDataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _timeDataSource;
 }
 @end

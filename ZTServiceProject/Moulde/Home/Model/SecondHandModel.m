@@ -11,6 +11,7 @@
 @implementation SecondHandModel
 +(NSDictionary *)mj_objectClassInArray {
     return @{@"secondHandNormalImageList":@"MessagePhotoModel",
+             @"commentList":@"SecondCommentModel",
              @"secondHandSmallImageList":@"MessagePhotoModel"};
 }
 @end

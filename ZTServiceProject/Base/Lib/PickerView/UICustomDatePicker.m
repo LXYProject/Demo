@@ -9,6 +9,7 @@
 #import "UICustomDatePicker.h"
 
 @interface UICustomDatePicker()
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIView        *bottomView;
@@ -55,6 +56,13 @@
                                                           attribute:NSLayoutAttributeRight
                                                          multiplier:1.0
                                                            constant:0.0]];
+    picker.backView.transform = CGAffineTransformMakeTranslation(0, 260);
+    [UIView animateWithDuration:0.3 animations:^{
+        picker.backView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+    
     if (date) {
         picker.dateBlock = date;
     }
@@ -74,11 +82,20 @@
     [super awakeFromNib];
 }
 
+
+
 - (IBAction)dismissBtnAction:(id)sender {
     if (self.cancelBlock) {
         self.cancelBlock();
     }
-    [self removeFromSuperview];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backView.transform = CGAffineTransformIdentity;
+        self.backView.transform = CGAffineTransformMakeTranslation(0, 260);
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+        
+    }];
 }
 - (IBAction)confirmBtnAction:(id)sender {
     if (self.dateBlock) {

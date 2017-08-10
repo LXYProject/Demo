@@ -34,17 +34,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
     [self.tableView registerNib:[UINib nibWithNibName:@"SecondMessageCell" bundle:nil] forCellReuseIdentifier:@"SecondMessageCell"];
     self.secondCellCurrentPage = 1;
 
-    [self titleViewWithTitle:@"二手物品" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     [self requestDataSecondCellData];
     
 //    NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
 //    self.secondCellDataSource = modelArray;
 //    [self.tableView reloadData];
-    
     
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
@@ -165,17 +165,20 @@
     if (indexPath.row==0) {
         SecondMessageCell *cell = (SecondMessageCell *)[self creatCell:tableView indenty:@"SecondMessageCell"];
         cell.model = self.secondCellDataSource[indexPath.section -3];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else if (indexPath.row ==1){
-          SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
+        SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
         [cell smallImgs:model.secondHandSmallImageList normalImgs:model.secondHandNormalImageList];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else {
         SecondAddressCell *cell = (SecondAddressCell *)[self creatCell:tableView indenty:@"SecondAddressCell"];
         cell.model = self.secondCellDataSource[indexPath.section -3];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 

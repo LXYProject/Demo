@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy)NSString* zoneId;
 @property (nonatomic, copy)NSString *publicType;
+@property (nonatomic, copy) NSString *locationInfo;
 
 @end

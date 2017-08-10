@@ -9,6 +9,7 @@
 #import "SelectHelpTypeController.h"
 #import "NearByHttpManager.h"
 #import "NearByTitleModel.h"
+#import "ReleaseHelpController.h"
 
 @interface SelectHelpTypeController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -20,6 +21,7 @@
 @implementation SelectHelpTypeController
 {
     NSInteger queryType;
+    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +36,8 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
 }
 
 // 请求周边上面的滚动title
@@ -43,11 +47,15 @@
                                 success:^(NSArray * response) {
                                     @strongify(self);
                                     [self.tableView endRefreshing];
+                                    [_hud hideAnimated:YES];
+                                    
                                     [self.tagTitles removeAllObjects];
                                     [self.tagTitles addObjectsFromArray:response];
                                     [self.tableView reloadData];
                                 } failure:^(NSError *error, NSString *message) {
                                     [self.tableView endRefreshing];
+                                    _hud.label.text = message;
+                                    [_hud hideAnimated:YES];
                                 }];
 }
 
@@ -75,8 +83,14 @@
     
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [PushManager popViewControllerWithName:@"ReleaseHelpController" animated:YES block:^(ReleaseHelpController* viewController) {
+        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] categoryName];
+        viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
+
+    }];
     
 }
 

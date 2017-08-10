@@ -18,29 +18,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物品名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdf-wF-rwP">
-                        <rect key="frame" x="15" y="13" width="71.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="物品名称：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdf-wF-rwP">
+                        <rect key="frame" x="20" y="0.0" width="71.5" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入物品的名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MnU-6a-lIe">
-                        <rect key="frame" x="86.5" y="13.5" width="218.5" height="15"/>
+                        <rect key="frame" x="94.5" y="5" width="205.5" height="33.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="MnU-6a-lIe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Z0e-Ig-Es0"/>
-                    <constraint firstAttribute="trailing" secondItem="MnU-6a-lIe" secondAttribute="trailing" constant="15" id="ZjV-JC-ny2"/>
-                    <constraint firstItem="Xdf-wF-rwP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="j9R-aX-j0C"/>
-                    <constraint firstItem="MnU-6a-lIe" firstAttribute="leading" secondItem="Xdf-wF-rwP" secondAttribute="trailing" id="pCB-wK-IlP"/>
-                    <constraint firstItem="Xdf-wF-rwP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="umg-1D-qzG"/>
+                    <constraint firstItem="MnU-6a-lIe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="11S-C0-K0w"/>
+                    <constraint firstAttribute="trailing" secondItem="MnU-6a-lIe" secondAttribute="trailing" constant="20" id="7wd-bb-YM0"/>
+                    <constraint firstItem="Xdf-wF-rwP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CRO-IK-SiE"/>
+                    <constraint firstAttribute="bottom" secondItem="Xdf-wF-rwP" secondAttribute="bottom" id="Eq8-bO-T1a"/>
+                    <constraint firstItem="MnU-6a-lIe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="RZQ-Gp-ZHx"/>
+                    <constraint firstItem="Xdf-wF-rwP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UPC-DW-Ldp"/>
+                    <constraint firstItem="MnU-6a-lIe" firstAttribute="leading" secondItem="Xdf-wF-rwP" secondAttribute="trailing" constant="3" id="eK5-1c-lgb"/>
+                    <constraint firstItem="Xdf-wF-rwP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gUg-sh-RhU"/>
+                    <constraint firstAttribute="bottom" secondItem="MnU-6a-lIe" secondAttribute="bottom" constant="5" id="koM-uR-kWu"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="content" destination="MnU-6a-lIe" id="TQ8-cK-tXJ"/>
+                <outlet property="contentLeading" destination="eK5-1c-lgb" id="IhN-bK-v0U"/>
                 <outlet property="title" destination="Xdf-wF-rwP" id="vd1-3x-sJa"/>
             </connections>
         </tableViewCell>

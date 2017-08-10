@@ -33,6 +33,8 @@
     UIButton *_selectedBtn;
     //0  代表我的购买 1、我的出售
     NSInteger _selectIndexNum;
+    MBProgressHUD *_hud;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -75,6 +77,9 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
+    
 //    [self requestData];
     //测试的用的
 //    [self.tableView reloadData];
@@ -88,7 +93,8 @@
                                         success:^(NSArray *response) {
                                             @strongify(self);
                                             [self.tableView endRefreshing];
-                                            
+                                            [_hud hideAnimated:YES];
+
                                             self.dataSource = (NSMutableArray *)response;
 
                                             
@@ -103,6 +109,8 @@
                                             
                                         } failure:^(NSError *error, NSString *message) {
                                             [self.tableView endRefreshing];
+                                            _hud.label.text = message;
+                                            [_hud hideAnimated:YES];
                                         }];
 }
 //查看我出售的服务订单
@@ -112,6 +120,7 @@
                                         success:^(NSArray *response) {
                                             @strongify(self);
                                             [self.tableView endRefreshing];
+                                            [_hud hideAnimated:YES];
                                             
                                             self.dataSource = (NSMutableArray *)response;
 
@@ -127,6 +136,8 @@
                                             
                                         } failure:^(NSError *error, NSString *message) {
                                             [self.tableView endRefreshing];
+                                            _hud.label.text = message;
+                                            [_hud hideAnimated:YES];
                                         }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

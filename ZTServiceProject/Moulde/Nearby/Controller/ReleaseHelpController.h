@@ -10,4 +10,9 @@
 
 @interface ReleaseHelpController : BaseViewController
 
+@property (nonatomic, copy) NSString *serviceTypeStr;
+@property (nonatomic, copy) NSString *categoryId;
+@property (nonatomic, copy) NSString *locationInfo;
+
+
 @end

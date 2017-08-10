@@ -20,7 +20,9 @@
 @end
 
 @implementation PublicTypeController
-
+{
+    MBProgressHUD *_hud;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -38,6 +40,8 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
 }
 
 // 报事类型列表
@@ -48,6 +52,7 @@
                                        success:^(id response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
+                                           [_hud hideAnimated:YES];
                                            
                                            [self.dataSource removeAllObjects];
                                            
@@ -56,6 +61,8 @@
                                            
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
+                                           _hud.label.text = message;
+                                           [_hud hideAnimated:YES];
                                        }];
     
 }

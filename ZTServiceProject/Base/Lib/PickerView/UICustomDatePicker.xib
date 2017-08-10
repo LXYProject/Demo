@@ -109,6 +109,7 @@
                 <constraint firstAttribute="trailing" secondItem="MKi-NG-NnW" secondAttribute="trailing" id="zaF-Pe-cYd"/>
             </constraints>
             <connections>
+                <outlet property="backView" destination="MKi-NG-NnW" id="k1l-SJ-W66"/>
                 <outlet property="bottomView" destination="OJ4-H0-w1l" id="dk7-dc-GZq"/>
                 <outlet property="datePicker" destination="GeT-yT-NzL" id="N5q-2q-iQI"/>
             </connections>

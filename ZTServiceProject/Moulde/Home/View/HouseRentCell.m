@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) NSMutableArray *tagsSouses;
 @property (nonatomic, copy) NSString *basicFacilities;
+@property (nonatomic, copy) NSString *extendedFacilities;
+@property (nonatomic, copy) NSString *rentLimit;
 
 @property (nonatomic, copy) NSString *url;
 
@@ -56,6 +58,10 @@
                         @"随时看房",
                         @"中介勿扰",
                         ]];
+    
+    
+    //[_tagView addTags:_tagsSouses];
+    
     
     [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = obj;
@@ -105,8 +111,34 @@
     _time.text = rentHouseModel.publishTime;
     
     
-    _basicFacilities = rentHouseModel.basicFacilities;
+//    for (NSString *basicFacilitiesStr in rentHouseModel.basicFacilities) {
+//        _basicFacilities = basicFacilitiesStr;
+//        NSLog(@"_basicFacilities==%@", _basicFacilities);
+//    }
+    for (NSString *extendedFacilitiesStr in rentHouseModel.extendedFacilities) {
+        _extendedFacilities = extendedFacilitiesStr;
+    }
+    for (NSString *rentLimitStr in rentHouseModel.rentLimit) {
+        _rentLimit = rentLimitStr;
+    }
     
+    if (_basicFacilities.length>0) {
+        [_tagsSouses addObject:_basicFacilities];
+    }
+    if (_extendedFacilities.length>0) {
+        [_tagsSouses addObject:_extendedFacilities];
+    }
+    if (_rentLimit.length>0) {
+        [_tagsSouses addObject:_rentLimit];
+    }
+    
+    NSLog(@"rentHouseModel.basicFacilities==%@", rentHouseModel.basicFacilities);
 }
 
+- (NSMutableArray *)tagsSouses{
+    if (!_tagsSouses) {
+        _tagsSouses = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _tagsSouses;
+}
 @end

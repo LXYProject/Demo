@@ -35,7 +35,6 @@
                             <constraint firstAttribute="trailing" secondItem="kqN-R8-Ctz" secondAttribute="trailing" id="O9d-dW-Uxd"/>
                             <constraint firstAttribute="bottom" secondItem="kqN-R8-Ctz" secondAttribute="bottom" id="Yzh-KS-W7n"/>
                             <constraint firstItem="kqN-R8-Ctz" firstAttribute="top" secondItem="koM-JL-Not" secondAttribute="top" id="Zqq-4b-KL5"/>
-                            <constraint firstAttribute="height" constant="100" id="f98-aC-lbd"/>
                             <constraint firstAttribute="width" constant="167" id="otD-NS-F6N"/>
                         </constraints>
                     </view>

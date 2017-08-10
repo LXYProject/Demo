@@ -11,6 +11,7 @@
 #import "MineHttpManager.h"
 #import "NeighborCircleModel.h"
 #import "NeighborDetailController.h"
+#import "NearByItemModel.h"
 
 @interface NeighborCircleController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,9 +31,11 @@
 {
     NeighborCircleCell *neighborCircleCell;
     NeighborCircleModel *neighborCircleModel;
+    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NeighborCircleCell" bundle:nil] forCellReuseIdentifier:@"NeighborCircleCell"];
 //        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
 //    self.listArray = (NSMutableArray *)modelArray;
 //    
@@ -59,7 +62,6 @@
 //        }];
 //        [self.topicHisDataSource addObject:mothArr];
 //        
-//        
 //    }];
 
 //        [self.topicHisDataSource addObjectsFromArray:self.listArray];
@@ -82,6 +84,10 @@
 //        [self requestTopicHis];
 //    }];
     [self.tableView beginHeaderRefreshing];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
+
     
 }
 
@@ -106,20 +112,7 @@
                                                         },@{
                                                         @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
                                                         }],
-                         @"topicSmallImageList": @[@{
-                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191484&di=825a258a6ea411fa06b271bc5fe8e22b&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fwallpaper%2F1210%2F23%2Fc1%2F14589948_1350977796661.jpg"
-                                                       },
-                                                   
-                                                   @{
-                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=0e38b9e0a509fb1c3332de6df992e08e&imgtype=0&src=http%3A%2F%2Fpic28.nipic.com%2F20130408%2F668573_161129668175_2.jpg"
-                                                       },
-                                                   @{
-                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
-                                                       },@{
-                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
-                                                       },@{
-                                                       @"url":@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498377191483&di=02b02a29c17f73a2c2d9c4102c9a881f&imgtype=0&src=http%3A%2F%2Ftupian.enterdesk.com%2F2012%2F0619%2Fxin%2F02%2F07.jpg"
-                                                       }],
+                         @"topicSmallImageList": @[],
                          @"topicId": @"t20170622163932",
                          @"topicTitle": @"我想要租房子\n我能接受的租金价格为:1577元至8968元/月\n我想要的户型为:3室0厅0卫\n我想要我的房子门口朝向:无所谓了\n我想合租\n我可以接受的房屋来源为：房东\n另外我想说的是：一诺孙女\n标签要求：有天然气, 三人以下合租, 生活便利",
                          @"createTime": @"2017-06-22 16:39:32",
@@ -308,6 +301,7 @@
     [MineHttpManager requestTopicId:@"" success:^(NSArray* response) {
         @strongify(self);
         [self.tableView endRefreshing];
+        [_hud hideAnimated:YES];
         
         self.listArray = (NSMutableArray *)response;
         
@@ -340,6 +334,8 @@
         
     } failure:^(NSError *error, NSString *message) {
         [self.tableView endRefreshing];
+        _hud.label.text = message;
+        [_hud hideAnimated:YES];
     }];
 }
 
@@ -435,7 +431,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 94;
+    NeighborCircleModel *model = self.topicHisDataSource[indexPath.section][indexPath.row];
+    return model.topicSmallImageList.count==0?60:94;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

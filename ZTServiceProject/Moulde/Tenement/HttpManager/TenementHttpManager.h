@@ -45,18 +45,22 @@ typedef enum : NSUInteger {
          userPhoneNum:(NSString *)userPhoneNum
               houseId:(NSString *)houseId
             houseName:(NSString *)houseName
+                    x:(NSString *)x
+                    y:(NSString *)y
                images:(UIImage *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
 
 // 公共报事
 + (void)requestZoneId:(NSString *)zoneId
-         affairTitle:(NSString *)affairTitle
-      affairDiscribe:(NSString *)affairDiscribe
-      affairCategory:(NSString *)affairCategory
+          affairTitle:(NSString *)affairTitle
+       affairDiscribe:(NSString *)affairDiscribe
+       affairCategory:(NSString *)affairCategory
           userAddress:(NSString *)userAddress
-          userRealName:(NSString *)userRealName
+         userRealName:(NSString *)userRealName
          userPhoneNum:(NSString *)userPhoneNum
+                    x:(NSString *)x
+                    y:(NSString *)y
                images:(UIImage *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;

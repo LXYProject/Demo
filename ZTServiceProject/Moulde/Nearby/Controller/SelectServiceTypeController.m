@@ -9,6 +9,7 @@
 #import "SelectServiceTypeController.h"
 #import "NearByHttpManager.h"
 #import "NearByTitleModel.h"    
+#import "PublishServiceController.h"
 
 @interface SelectServiceTypeController ()
 
@@ -21,6 +22,7 @@
 @implementation SelectServiceTypeController
 {
     NSInteger queryType;
+    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +36,9 @@
         [self requestTitleArrayData];
     }];
     [self.tableView beginHeaderRefreshing];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
 }
 
 // 请求周边上面的滚动title
@@ -43,11 +48,15 @@
                                 success:^(NSArray * response) {
                                     @strongify(self);
                                     [self.tableView endRefreshing];
+                                    [_hud hideAnimated:YES];
+                                    
                                     [self.tagTitles removeAllObjects];
                                     [self.tagTitles addObjectsFromArray:response];
                                     [self.tableView reloadData];
                                 } failure:^(NSError *error, NSString *message) {
                                     [self.tableView endRefreshing];
+                                    _hud.label.text = message;
+                                    [_hud hideAnimated:YES];
                                 }];
 }
 
@@ -77,6 +86,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(PublishServiceController* viewController) {
+        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] categoryName];
+        viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
+
+    }];
     
 }
 

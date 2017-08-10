@@ -52,6 +52,7 @@
     NSArray *noticeNews;
     NSInteger _times;
     NSString *_LocatingCity;
+    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -81,7 +82,8 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
     
     [self changeNavBarAlpha:0];
     self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
@@ -109,11 +111,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //开始定位
+    //[self.locationManager startUpdatingLocation];
 
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    //停止定位
+    //[self.locationManager stopUpdatingLocation];
     
 }
 
@@ -142,7 +148,8 @@
 {
     @weakify(self);
     [NearByHttpManager requestDataWithNearType:ToHelp
-                                         query:2 keyWord:_keywords
+                                         query:2
+                                       keyWord:_keywords
                                           city:_city
                                       district:_district
                                     categoryId:@""
@@ -151,6 +158,8 @@
                                        success:^(NSArray * response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
+                                           [_hud hideAnimated:YES];
+                                           
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
                                            }
@@ -161,6 +170,8 @@
                                            [self.tableView reloadData];
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
+                                           _hud.label.text = message;
+                                           [_hud hideAnimated:YES];
                                        }];
 }
 // 找服务
@@ -168,7 +179,8 @@
 {
     @weakify(self);
     [NearByHttpManager requestDataWithNearType:LookingService
-                                         query:2 keyWord:_keywords
+                                         query:2
+                                       keyWord:_keywords
                                           city:_city
                                       district:_district
                                     categoryId:@""
@@ -177,6 +189,8 @@
                                        success:^(NSArray * response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
+                                           [_hud hideAnimated:YES];
+
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
                                            }
@@ -187,6 +201,8 @@
                                            [self.tableView reloadData];
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
+                                           _hud.label.text = message;
+                                           [_hud hideAnimated:YES];
                                        }];
 }
 
@@ -621,6 +637,9 @@
             NSDictionary *address = [placemark addressDictionary];
             
             _LocatingCity = [address objectForKey:@"City"];
+            [[NSUserDefaults standardUserDefaults] setObject:_LocatingCity forKey:@"locationCity"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             [self leftItemWithNormalName:@"address_One" title:_LocatingCity titleColor:[UIColor whiteColor] selector:@selector(leftBarClick) target:self];
             
             //  Country(国家)  State(省)  City（市）

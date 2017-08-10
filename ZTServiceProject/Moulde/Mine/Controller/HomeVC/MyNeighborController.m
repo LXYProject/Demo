@@ -32,7 +32,7 @@
     NSArray *_sectionOneArr;
     NSArray *_sectionTwoArr;
     NSString *_communityId;
-    
+    MBProgressHUD *_hud;
 }
 
 - (void)viewDidLoad {
@@ -59,7 +59,11 @@
 //            [self requestLookAllVillageWithMe];
 //    }];
     [self.tableView beginHeaderRefreshing];
-
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //_hud.mode = MBProgressHUDModeDeterminate;
+    _hud.label.text = @"正在加载";
+    
 }
 
 - (void)rightBarClick{
@@ -72,6 +76,7 @@
                                    success:^(NSDictionary *response) {
                                        @strongify(self);
                                        [self.tableView endRefreshing];
+                                       [_hud hideAnimated:YES];
 
                                        NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
                                        NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
@@ -88,6 +93,9 @@
                                        
                                    } failure:^(NSError *error, NSString *message) {
                                        [self.tableView endRefreshing];
+                                       _hud.label.text = message;
+                                       [_hud hideAnimated:YES];
+
                                    }];
 }
 // 添加小区关注

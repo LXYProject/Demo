@@ -10,6 +10,8 @@
 #import "PostMessageController.h"
 #import "ReleaseViewController.h"
 #import "PublishServiceController.h"
+#import "PublicThingsController.h"
+#import "ReleaseHelpController.h"
 
 @interface LocationChoiceController ()<CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -156,18 +158,25 @@
     AMapPOI *poi = (AMapPOI *)self.dataSource[indexPath.row];
 
     if (self.currentController==0) {
-        [PushManager popViewControllerWithName:@"PostMessageController" animated:YES block:^(PostMessageController* viewController) {
+        [PushManager popViewControllerWithName:@"PostMessageController" animated:YES block:^(PostMessageController* viewController) {//发布帖子
             viewController.locationInfo = poi.name;
         }];
     }else if (self.currentController==1){
-        [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {
+        [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {//二手物品发布
+            viewController.locationInfo = poi.name;
+        }];
+    }else if (self.currentController==2){
+        [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(PublishServiceController* viewController) {//发布服务
+            viewController.locationInfo = poi.name;
+        }];
+    }else if (self.currentController==3){
+        [PushManager popViewControllerWithName:@"PublicThingsController" animated:YES block:^(PublicThingsController* viewController) {//公共报事
             viewController.locationInfo = poi.name;
         }];
     }else{
-        [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(id viewController) {
-            //viewController.locationInfo = poi.name;
+        [PushManager popViewControllerWithName:@"ReleaseHelpController" animated:YES block:^(ReleaseHelpController* viewController) {//发布求助
+            viewController.locationInfo = poi.name;
         }];
-
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -11,9 +11,8 @@
 
 
 @interface ChangeSignatureController ()<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *textField;
 
-@property (nonatomic, copy) NSString *signatureStr;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end
 
@@ -38,16 +37,10 @@
     @weakify(self);
     [PushManager popViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
         @strongify(self);
-        viewController.signatureStr = self.signatureStr;
+        viewController.signatureStr = self.textField.text;
     }];
 
 }
-
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"%@", textField.text);
-    self.signatureStr = textField.text;
-}
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     

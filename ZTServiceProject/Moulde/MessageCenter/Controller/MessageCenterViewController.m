@@ -34,6 +34,7 @@
 @implementation MessageCenterViewController
 {
     BOOL ReplyComment;
+    MBProgressHUD *_hud;
     CommentUserModel *_currentCommentModel;
 }
 
@@ -88,7 +89,9 @@
         [self requestMessageData:self.currentTopicId];
     }];
     [self.tableView beginHeaderRefreshing];
-   
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
 }
 
 - (void)commentTableViewTouchInSide{
@@ -388,6 +391,8 @@
                               success:^(NSArray *response) {
                                   @strongify(self);
                                   [self.tableView endRefreshing];
+                                  [_hud hideAnimated:YES];
+                                  
                                   if (topicid.length==0){
                                       [self.dataSource removeAllObjects];
                                   }
@@ -398,6 +403,8 @@
                                   [self.tableView reloadData];
                               } failure:^(NSError *error, NSString *message) {
                                   [self.tableView endRefreshing];
+                                  _hud.label.text = message;
+                                  [_hud hideAnimated:YES];
                               }];
 }
 
@@ -551,7 +558,8 @@
 - (UITextField *)commentTextField {
     if (!_commentTextField) {
         _commentTextField = [[UITextField alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth-80, 30)];
-        _commentTextField.backgroundColor = [UIColor darkGrayColor];
+        _commentTextField.borderStyle = UITextBorderStyleRoundedRect;
+        //_commentTextField.backgroundColor = [UIColor darkGrayColor];
         _commentTextField.font = [UIFont systemFontOfSize:14];
     }
     return _commentTextField;

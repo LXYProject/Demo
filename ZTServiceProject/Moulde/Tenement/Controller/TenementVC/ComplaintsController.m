@@ -20,11 +20,11 @@
 @implementation ComplaintsController
 {
     NSArray *_titleArray;
-    NSArray *_contentArray;
-    NSString *_affairTitle;
-    NSString *_userRealName;
-    NSString *_userPhoneNum;
-    NSString *_affairDiscribe;
+    NSArray *_describeArray;
+    NSString *_affairTitle;   //报事标题
+    NSString *_affairDiscribe;//报事内容
+    NSString *_userRealName;  //上报人的真实姓名
+    NSString *_userPhoneNum;  //上报人的现用手机号
 }
 
 - (void)viewDidLoad {
@@ -40,7 +40,7 @@
 
     _titleArray = @[@"投诉人:",
                     @"联系电话:"];
-    _contentArray = @[@"输入您的姓名",
+    _describeArray = @[@"输入您的姓名",
                       @"输入您的电话"];
 
 }
@@ -67,13 +67,18 @@
                                               NSString *status = [response objectForKey:@"status"];
                                               
                                               if ([status integerValue]==0) {
-                                                    [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                                  
+                                                  [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                                      if (buttonindex == HHAlertButtonOk) {
+                                                          NSLog(@"ok");
+                                                      }
+                                                      else
+                                                      {
+                                                          NSLog(@"cancel");
+                                                      }
+                                                  }];
                                               }else{
-                                                  [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
-                                              }
-
-                                          } failure:^(NSError *error, NSString *message) {
+                                                  [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                              }                                          } failure:^(NSError *error, NSString *message) {
 
                                           }];
 }
@@ -143,6 +148,9 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
@@ -157,7 +165,7 @@
     StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
     cell.title.textColor = TEXT_COLOR;
     cell.title.text = _titleArray[indexPath.row];
-    cell.content.placeholder = _contentArray[indexPath.row];
+    cell.content.placeholder = _describeArray[indexPath.row];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.title.font = [UIFont systemFontOfSize:13];
         [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];

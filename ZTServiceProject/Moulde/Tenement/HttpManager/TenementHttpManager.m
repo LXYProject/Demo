@@ -11,6 +11,7 @@
 #import "ServiceModel.h"
 #import "ConvenServiceModel.h"
 #import "VillagePanoramaModel.h"
+#import "DoorServiceModel.h"
 
 @implementation TenementHttpManager
 
@@ -35,10 +36,10 @@
     }else{
         url = A_lookVillagePanorama;
     }
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:url paramter:paramter success:^(id response) {
         //success(response);
         if (ListOrPanorama==ServiceList) {
-            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceCategoryList"]];
+            NSArray *modelArray = [DoorServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceCategoryList"]];
             success(modelArray);
         }else if (ListOrPanorama==ListThings){
             NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"affairCategoryList"]];
@@ -69,12 +70,14 @@
          userPhoneNum:(NSString *)userPhoneNum
               houseId:(NSString *)houseId
             houseName:(NSString *)houseName
+                    x:(NSString *)x
+                    y:(NSString *)y
                images:(UIImage *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure{
     
-    CGFloat x = 0.0;
-    CGFloat y = 0.0;
+//    CGFloat x = 0.0;
+//    CGFloat y = 0.0;
 
     NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@"",
                                @"serviceTitle":serviceTitle?serviceTitle:@"",
@@ -86,14 +89,12 @@
                                @"userPhoneNum":userPhoneNum?userPhoneNum:@"",
                                @"houseId":houseId?houseId:@"",
                                @"houseName":houseName?houseName:@"",
-                               @"x":@(x),
-                               @"y":@(y),
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
                                @"images":images?images:@""
                                };
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_lookvisitService paramter:paramter success:^(id response) {
-        
-//        NSArray *modelArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"houseList"]];
-//        success(modelArray);
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_lookvisitService paramter:paramter success:^(id response) {
+        success(response);
         
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
@@ -108,11 +109,13 @@
           userAddress:(NSString *)userAddress
          userRealName:(NSString *)userRealName
          userPhoneNum:(NSString *)userPhoneNum
+                    x:(NSString *)x
+                    y:(NSString *)y
                images:(UIImage *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure{
-    CGFloat x = 0.0;
-    CGFloat y = 0.0;
+//    CGFloat x = 0.0;
+//    CGFloat y = 0.0;
     
     NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@"",
                                @"affairTitle":affairTitle?affairTitle:@"",
@@ -121,15 +124,12 @@
                                @"userAddress":userAddress?userAddress:@"",
                                @"userRealName":userRealName?userRealName:@"",
                                @"userPhoneNum":userPhoneNum?userPhoneNum:@"",
-                               @"x":@(x),
-                               @"y":@(y),
+                               @"x":x?x:@"",
+                               @"y":y?y:@"",
                                @"images":images?images:@""
                                };
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_publicAffairList paramter:paramter success:^(id response) {
-        
-        //        NSArray *modelArray = [HouseListModel mj_objectArrayWithKeyValuesArray:response[@"houseList"]];
-        //        success(modelArray);
-        
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_publicAffairList paramter:paramter success:^(id response) {
+        success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -166,7 +166,7 @@
     }else{
         url = A_complain;
     }
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:url paramter:paramter success:^(id response) {
         success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

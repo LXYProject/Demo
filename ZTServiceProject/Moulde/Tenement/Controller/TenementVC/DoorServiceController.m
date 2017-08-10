@@ -18,59 +18,86 @@
 
 @interface DoorServiceController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, copy) NSString* makeTimeStr;
 @end
 
 @implementation DoorServiceController
 {
     NSArray *_titleArray;
-    NSArray *_contentArray;
+    NSArray *_describeArray;
     NSString *_data;
     NSString *_hour;
     
-    NSString *_serviceDiscribe;
-    NSString *_userRealName;
-    NSString *_userPhoneNum;
+    NSString *_serviceDiscribe;//报事内容
+    NSString *_userRealName;   //上报人的真实姓名
+    NSString *_userPhoneNum;   //上报人的现用手机号
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    _titleArray = @[@"联系人:",
-                    @"联系电话:"];
-    _contentArray = @[@"输入您的姓名",
-                      @"输入您的电话"];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
-
-    [self titleViewWithTitle:@"上门服务"
-                  titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"上门服务" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@""
                             title:@"提交"
                        titleColor:[UIColor whiteColor]
                          selector:@selector(rightBarClick)
                            target:self];
-
+    
+    _titleArray = @[@"联系人:",
+                    @"联系电话:"];
+    _describeArray = @[@"输入您的姓名",
+                      @"输入您的电话"];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+    
+//    _userRealName = @"王先生";
+//    _userPhoneNum = @"15201087720";
+//
 }
 
 - (void)rightBarClick
 {
     NSLog(@"提交");
     // 发送上门服务信息
+    @weakify(self);
     [TenementHttpManager requestZoneId:self.zoneId
-                          serviceTitle:@""
+                          serviceTitle:@"发送上门服务信息"
                        serviceDiscribe:_serviceDiscribe
-                       serviceCategory:@""
-                           serviceTime:@""
-                           userAddress:@""
+                       serviceCategory:self.serviceType
+                           serviceTime:self.makeTimeStr
+                           userAddress:@"北京市 海淀区 财智大厦 c305室"
                           userRealName:_userRealName
                           userPhoneNum:_userPhoneNum
-                               houseId:@""
-                             houseName:@""
+                               houseId:@"510002004020"
+                             houseName:@"1单元 1层 1室"
+                                     x:@"2017-05-18"
+                                     y:@"2017-05-18"
                                 images:[UIImage imageNamed:@""]
                                success:^(id response) {
+                                   @strongify(self);
+                                   //操作失败的原因
+                                   NSString *information = [response objectForKey:@"information"];
+                                   //状态码
+                                   NSString *status = [response objectForKey:@"status"];
                                    
+                                   if ([status integerValue]==0) {
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                           if (buttonindex == HHAlertButtonOk) {
+                                               NSLog(@"ok");
+                                           }
+                                           else
+                                           {
+                                               NSLog(@"cancel");
+                                           }
+                                       }];
+                                   }else{
+                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                   }
                                } failure:^(NSError *error, NSString *message) {
                                    
                                }];
@@ -140,14 +167,7 @@
     StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
     cell.title.textColor = TEXT_COLOR;
     cell.title.text = _titleArray[indexPath.row];
-    cell.content.placeholder = _contentArray[indexPath.row];
-    if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.title.font = [UIFont systemFontOfSize:13];
-        [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-    }else{
-        cell.title.font = [UIFont systemFontOfSize:14];
-        [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-    }
+    cell.content.placeholder = _describeArray[indexPath.row];
     if (indexPath.row==0) {
         cell.textFieldBlock = ^(id obj) {
             NSLog(@"obj==%@", obj);
@@ -159,7 +179,13 @@
             _userPhoneNum = obj;
         };
     }
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.title.font = [UIFont systemFontOfSize:13];
+    }else{
+        cell.title.font = [UIFont systemFontOfSize:14];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.content setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     return cell;
 }
 
@@ -176,34 +202,23 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
         }
-        cell.textLabel.text = @"选择类型";
-        cell.detailTextLabel.text = @"请选择类型";
+        cell.textLabel.text = @"选择类型:";
+        if (self.serviceType.length>0) {
+            cell.detailTextLabel.text = self.serviceType;
+        }else{
+            cell.detailTextLabel.text = @"请选择类型";
+        }
         if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.textLabel.font = [UIFont systemFontOfSize:11];
+            cell.textLabel.font = [UIFont systemFontOfSize:13];
             cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
         }else{
-            cell.textLabel.font = [UIFont systemFontOfSize:12];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
             cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
         }
         cell.textLabel.textColor = TEXT_COLOR;
+        cell.detailTextLabel.textColor = TEXT_COLOR;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
-
-//        SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-//        cell.title.textColor = TEXT_COLOR;
-//        cell.rightContent.textColor = TEXT_COLOR;
-//        cell.title.text = @"选择类型:";
-//        cell.rightContent.text = @"选择";
-//        [cell.content removeFromSuperview];
-//        if (IS_IPHONE_4 || IS_IPHONE_5) {
-//            cell.title.font = [UIFont systemFontOfSize:13];
-//            cell.rightContent.font = [UIFont systemFontOfSize:11];
-//        }else{
-//            cell.title.font = [UIFont systemFontOfSize:14];
-//            cell.rightContent.font = [UIFont systemFontOfSize:12];
-//        }
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        return cell;
     }else{
         DoorServiceCell *cell = (DoorServiceCell *)[self creatCell:tableView indenty:@"DoorServiceCell"];
         cell.textViewBlock = ^(id obj) {
@@ -218,24 +233,31 @@
 //第3组
 - (UITableViewCell *)sectionThirdTableView:(UITableView *)tableView
                                  indexPath:(NSIndexPath *)indexPath {
-    SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-    cell.title.textColor = TEXT_COLOR;
-    cell.rightContent.textColor = TEXT_COLOR;
-    cell.title.text = @"预约时间:";
-    cell.rightContent.text = @"3月2日  14:12";
-    cell.rightContent.text = _data;
-    cell.rightContent.text = [NSString stringWithFormat:@"%@  %@", _data,_hour];
-
-    if (indexPath.section==3) {
-        [cell.content removeFromSuperview];
+    
+    
+    static NSString *ID = @"cell";
+    // 根据标识去缓存池找cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    // 不写这句直接崩掉，找不到循环引用的cell
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
+    cell.textLabel.text = @"预约时间:";
+    if (_data.length>0) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  %@", _data,_hour];
+        self.makeTimeStr = cell.detailTextLabel.text;
+    }else{
+        cell.detailTextLabel.text = @"预约时间";
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
-        cell.title.font = [UIFont systemFontOfSize:13];
-        cell.rightContent.font = [UIFont systemFontOfSize:11];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
     }else{
-        cell.title.font = [UIFont systemFontOfSize:14];
-        cell.rightContent.font = [UIFont systemFontOfSize:12];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.detailTextLabel.textColor = TEXT_COLOR;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 
@@ -247,6 +269,9 @@
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     return cell;
 }
 

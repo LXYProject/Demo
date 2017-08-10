@@ -82,7 +82,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 //    id newParamter = [self dealWithParamter:paramter];
     
     [YYRequest requestGETtWithURLString:newUrl paramater:paramter success:^(YYNetWorkSuccess *successful) {
-        //        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
+        //NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,paramter,successful.responseObject);
         if ([successful.responseObject[@"code"] integerValue]==200) {
             success(successful.responseObject[@"result"]);
         }

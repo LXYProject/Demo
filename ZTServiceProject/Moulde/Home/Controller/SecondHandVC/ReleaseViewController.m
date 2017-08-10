@@ -34,7 +34,7 @@
     NSArray *_titleArray;
     NSArray *_contentArray;
     NSArray *_switchArray;
-
+    UISwitch *_mySwitch;
 }
 
 - (void)setOtherClass:(NSString *)otherClass{
@@ -49,20 +49,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self titleViewWithTitle:@"发布宝贝" titleColor:[UIColor whiteColor]];
+    [self rightItemWithNormalName:@"" title:@"发布须知" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    self.tableView.backgroundColor = RGB(247, 247, 247);
+
     _titleArray = @[@"宝贝标题",
                     @"分类",
                     @"现价"];
     _contentArray = @[@"请选择新旧程度",
                       @"",
                       @"请选择新旧程度"];
-    _switchArray = @[@"",
-                     @"支持快递",
-                     @"原价"];
-    self.tableView.backgroundColor = RGB(247, 247, 247);
+    _switchArray = @[@"新旧:",
+                     @"支持快递:",
+                     @"原价（元）:"];
 
-    [self titleViewWithTitle:@"发布宝贝" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"发布须知" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+
     [self createUI];
 }
 - (void)rightBarClick
@@ -166,6 +167,9 @@
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    cell.finishedBlock = ^(NSArray *images) {
+        NSLog(@"images==%@", images);
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 
@@ -244,57 +248,58 @@
 - (UITableViewCell *)sectionThirdrdTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
     
+    static NSString *ID = @"cell";
+    // 根据标识去缓存池找cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    // 不写这句直接崩掉，找不到循环引用的cell
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
     if (indexPath.row==0) {
-        static NSString *ID = @"cell";
-        // 根据标识去缓存池找cell
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        // 不写这句直接崩掉，找不到循环引用的cell
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-        }
-        cell.textLabel.text = @"新旧:";
         if (self.oldAndNew.length>0) {
             cell.detailTextLabel.text = self.oldAndNew;
         }else{
             cell.detailTextLabel.text = @"新旧程度";
         }
-        if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.textLabel.font = [UIFont systemFontOfSize:13];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
-        }else{
-            cell.textLabel.font = [UIFont systemFontOfSize:14];
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
-        }
-        cell.textLabel.textColor = TEXT_COLOR;
-        cell.detailTextLabel.textColor = TEXT_COLOR;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
+    }else if (indexPath.row==1){
+        UISwitch *switchButton = [[UISwitch alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-85, 7, 20, 10)];
+        switchButton.onTintColor = [UIColor redColor];
+        //switchButton.thumbTintColor=[UIColor redColor];
+        // 控件大小，不能设置frame，只能用缩放比例
+        switchButton.transform= CGAffineTransformMakeScale(0.95,0.85);
+        // 控件开关
+        [switchButton setOn:YES];
+        [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+        [cell.contentView addSubview:switchButton];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else{
-        SwitchCell *cell = (SwitchCell *)[self creatCell:tableView indenty:@"SwitchCell"];
-        cell.titleLabel.text = [NSString stringWithFormat:@"%@:", _switchArray[indexPath.row]];
-        if (indexPath.row==1) {
-            [cell.details removeFromSuperview];
-        }else{
-            cell.details.placeholder = @"请选择新旧程度";
-        }
-        if (IS_IPHONE_4 || IS_IPHONE_5) {
-            cell.titleLabel.font = [UIFont systemFontOfSize:13];
-            [cell.details setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
-        }else{
-            cell.titleLabel.font = [UIFont systemFontOfSize:14];
-            [cell.details setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
-        }
-        cell.titleLabel.textColor = TEXT_COLOR;
-        
-//        CGRect rectInTableView = [self.tableView rectForRowAtIndexPath:indexPath];
-//        CGRect rect = [self.tableView convertRect:rectInTableView toView:[tableView superview]];
-//        _lanelY = rect.origin.y;
-        
-        return cell;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     }
+    if (IS_IPHONE_4 || IS_IPHONE_5) {
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+    }
+    cell.textLabel.text = _switchArray[indexPath.row];
+    cell.textLabel.textColor = TEXT_COLOR;
+    cell.detailTextLabel.textColor = TEXT_COLOR;
+    return cell;
 }
 
+- (void)switchAction:(id)sender
+{
+    UISwitch *switchButton = (UISwitch*)sender;
+    BOOL isButtonOn = [switchButton isOn];
+    if (isButtonOn) {
+        //        showSwitchValue.text = @"是";
+    }else {
+        //        showSwitchValue.text = @"否";
+    }
+}
 
 //公共创建cell的方法
 - (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
@@ -320,12 +325,12 @@
     }else if (indexPath.section==3){
         if (indexPath.row==0) {
             [[DataPickerViewOneDemo sharedPikerView]show];
+            [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"全新", @"九成新", @"八成新"]];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);
                 self.oldAndNew = dateStr;
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
             };
- 
         }
     }else{
         

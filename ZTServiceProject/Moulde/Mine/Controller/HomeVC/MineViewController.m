@@ -45,12 +45,12 @@
     _sectionTwoTitle = @[@"我的房屋",
                          @"我的小区",
                          @"我的物业"];
-    _sectionOneImg = @[@"message_tabbar_selected",
-                       @"message_tabbar_selected",
-                       @"message_tabbar_selected"];
-    _sectionTwoImg= @[@"message_tabbar_selected",
-                      @"message_tabbar_selected",
-                      @"message_tabbar_selected"];
+    _sectionOneImg = @[@"wd_wdxx",
+                       @"wd_wdllq",
+                       @"wd_wdfb"];
+    _sectionTwoImg= @[@"wd_wdfw",
+                      @"wd_wdxq",
+                      @"wd_wdwy"];
     
     _token = GetValueForKey(TokenKey);
     login = YES;
