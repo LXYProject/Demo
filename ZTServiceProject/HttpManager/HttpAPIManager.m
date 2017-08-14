@@ -133,7 +133,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     NSString *newUrl = [self dealWithURL:url];
     id newParamter = [self dealWithParamter:paramter];
 
-    [YYRequest uploadFilesWithUrl:url fileDatas:data type:type name:name mimeType:mimeType paramter:newParamter progress:^(int64_t bytesRead, int64_t totalBytes) {
+    [YYRequest uploadFilesWithUrl:newUrl fileDatas:data type:type name:name mimeType:mimeType paramter:newParamter progress:^(int64_t bytesRead, int64_t totalBytes) {
         progressBlock((CGFloat)bytesRead/totalBytes);
     } success:^(YYNetWorkSuccess *successful) {
         NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
