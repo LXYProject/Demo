@@ -285,7 +285,12 @@
     [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
         for(UIImage *image in self.chooseImgArr) {
             NSData *imageData = UIImageJPEGRepresentation(image, 1);
-            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+            NSString *fileName = nil;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *day = [formatter stringFromDate:[NSDate date]];
+            fileName = [NSString stringWithFormat:@"%@.%@",day,@"png"];
+            [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/png"];
         }
     
 
