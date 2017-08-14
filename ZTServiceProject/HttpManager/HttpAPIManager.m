@@ -140,6 +140,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 
         success(successful.responseObject);
     } failure:^(NSArray *failureful) {
+        NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的错误信息：%@",newUrl,newParamter,failureful);
         failure(failureful);
     }];
 }
