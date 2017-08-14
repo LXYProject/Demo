@@ -232,7 +232,7 @@
             [self.chooseImgArr addObject:model.image];
         }];
         // 多表单上传图片
-        [self upImageArr];
+        [self upImage];
 
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -245,15 +245,13 @@
     for (int i=0; i<self.chooseImgArr.count; i++) {
         
         for (id value in self.chooseImgArr) {
-            
             NSData *imageData = UIImageJPEGRepresentation(value, 0.5);
-            
             [imageDatas addObject:imageData];
         }
     }
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"jpg" name:@"file" mimeType:@"image/jpeg" paramter:nil progressBlock:^(CGFloat progress) {
+    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"png" name:@"file" mimeType:@"image/png" paramter:nil progressBlock:^(CGFloat progress) {
         _hud.progress = progress;
     } success:^(id response) {
         [_hud hideAnimated:YES];
@@ -279,19 +277,20 @@
     
     NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
     [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for (UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
     
-    UIImage *image = _chooseImage;
 
-    NSData *imageData = UIImageJPEGRepresentation(image, 1);
 
-    [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
     
-    NSString*size=@"1000";
-    
-    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
-    
-    
-    [formData appendPartWithFormData:data name:@"size"];
+//    NSString*size=@"1000";
+//    
+//    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    
+//    [formData appendPartWithFormData:data name:@"size"];
     
     } progress:^(NSProgress * _Nonnull uploadProgress) {
     //显示进度
