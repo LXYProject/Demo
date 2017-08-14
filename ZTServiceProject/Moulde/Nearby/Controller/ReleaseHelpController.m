@@ -233,6 +233,7 @@
             [PushManager pushViewControllerWithName:@"SelectHelpTypeController" animated:YES block:nil];
         }else{
             [[DataPickerViewOneDemo sharedPikerView]show];
+            [DataPickerViewOneDemo sharedPikerView].title = @"选择截取时间";
             [[DataPickerViewOneDemo sharedPikerView] setDataSource:self.timeDataArr];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);

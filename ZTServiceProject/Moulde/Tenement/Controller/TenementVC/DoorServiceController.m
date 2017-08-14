@@ -15,10 +15,13 @@
 #import "DataPickerViewDemo.h"
 #import "TenementHttpManager.h"
 #import "ServiceTypeController.h"
+#import "ACMediaModel.h"
 
 @interface DoorServiceController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSString* makeTimeStr;
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
+@property (nonatomic, strong) NSMutableArray *imgDataArr;
 @end
 
 @implementation DoorServiceController
@@ -275,9 +278,21 @@
                                indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.finishedBlock = ^(NSArray *images) {
+        if(images.count==0) {
+            return;
+        }
         NSLog(@"images==%@", images);
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        // 多表单上传图片
+        //[self upImageArr];
+        
     };
     return cell;
 }

@@ -220,6 +220,7 @@
             
         }else{
             [[DataPickerViewOneDemo sharedPikerView]show];
+            [DataPickerViewOneDemo sharedPikerView].title = @"选择房屋朝向";
             [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"无所谓了", @"东", @"西", @"南", @"北", @"东南", @"西南", @"西北", @"东北"]];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);

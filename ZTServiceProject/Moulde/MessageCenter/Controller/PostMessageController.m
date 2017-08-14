@@ -230,9 +230,13 @@
         [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
+            
+            _chooseImage = model.image;
         }];
+        
+        
         // 多表单上传图片
-        [self upImageArr];
+        [self upImage];
 
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -253,7 +257,7 @@
     }
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"jpg" name:@"file" mimeType:@"image/jpeg" paramter:nil progressBlock:^(CGFloat progress) {
+    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"image/png" name:@"file" mimeType:@"file.png" paramter:nil progressBlock:^(CGFloat progress) {
         _hud.progress = progress;
     } success:^(id response) {
         [_hud hideAnimated:YES];
