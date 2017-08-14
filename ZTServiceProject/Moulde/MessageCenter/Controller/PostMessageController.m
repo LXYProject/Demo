@@ -230,7 +230,11 @@
         [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
+            
+            _chooseImage = model.image;
         }];
+        
+        
         // 多表单上传图片
         [self upImage];
 
@@ -245,13 +249,15 @@
     for (int i=0; i<self.chooseImgArr.count; i++) {
         
         for (id value in self.chooseImgArr) {
+            
             NSData *imageData = UIImageJPEGRepresentation(value, 0.5);
+            
             [imageDatas addObject:imageData];
         }
     }
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
-    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"png" name:@"file" mimeType:@"image/png" paramter:nil progressBlock:^(CGFloat progress) {
+    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"image/png" name:@"file" mimeType:@"file.png" paramter:nil progressBlock:^(CGFloat progress) {
         _hud.progress = progress;
     } success:^(id response) {
         [_hud hideAnimated:YES];
@@ -277,12 +283,11 @@
     
     NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
     [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
-        for (UIImage *image in self.chooseImgArr) {
+        for(UIImage *image in self.chooseImgArr) {
             NSData *imageData = UIImageJPEGRepresentation(image, 1);
             [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
         }
     
-
 
     
 //    NSString*size=@"1000";

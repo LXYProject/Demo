@@ -222,6 +222,7 @@
             }];
         }else if (indexPath.row==2){
             [[DataPickerViewOneDemo sharedPikerView]show];
+            [DataPickerViewOneDemo sharedPikerView].title = @"选择新旧程度";
             [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"无所谓", @"全新", @"九成新", @"七成新", @"五成新", @"旧货"]];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);
@@ -230,6 +231,7 @@
             };
         }else{
             [[DataPickerViewOneDemo sharedPikerView]show];
+            [DataPickerViewOneDemo sharedPikerView].title = @"选择价格范围";
             [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"0~100", @"100~200", @"200~300", @"300~400", @"400~500", @"500以上"]];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);
