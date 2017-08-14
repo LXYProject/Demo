@@ -8,6 +8,7 @@
 
 #import "ReleaseClassifiedController.h"
 #import "ReleaseViewController.h"
+#import "LookingForViewController.h"
 #import "HomeHttpManager.h"
 #import "ItemsModel.h"
 
@@ -130,9 +131,16 @@
         [self.rightTableView reloadData];
     }
     else{
-        [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {
-            viewController.otherClass = self.rightDataArr[indexPath.row][@"name"];
-        }];
+        if (self.currentController==0) {
+            [PushManager popViewControllerWithName:@"ReleaseViewController" animated:YES block:^(ReleaseViewController* viewController) {
+                viewController.otherClass = self.rightDataArr[indexPath.row][@"name"];
+            }];
+        }else{
+            [PushManager popViewControllerWithName:@"LookingForViewController" animated:YES block:^(LookingForViewController* viewController) {
+                viewController.brandModels = self.rightDataArr[indexPath.row][@"name"];
+            }];
+
+        }
     }
 }
 

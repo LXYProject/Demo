@@ -12,6 +12,9 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+
+
+
 //成功的网络请求集合
 @interface YYNetWorkSuccess : NSObject
 //状态码
@@ -184,7 +187,7 @@ typedef NS_ENUM(NSInteger, YYNetworkStatus) {
  @param paramter 参数
  @param progress 进度
  @param success 成功回调
- @param failure 失败回调
+ @param failures 失败回调
  @return 返回请求任务
  */
 + (NSArray<NSURLSessionDataTask *> *)uploadFilesWithUrl:(NSString *)url
@@ -195,7 +198,7 @@ typedef NS_ENUM(NSInteger, YYNetworkStatus) {
                                                paramter:(id)paramter
                                                progress:(YYProgress)progress
                                                 success:(YYSuccess)success
-                                                failure:(YYFailure)failure;
+                                                failure:(void(^)(NSArray *failure))failures;
 
 /**
  文件下载

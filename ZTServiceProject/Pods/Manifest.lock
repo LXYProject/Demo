@@ -24,6 +24,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - GTMBase64 (1.0.0)
   - IQKeyboardManager (3.3.7)
+  - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - DACircularProgress
   - GTMBase64 (~> 1.0.0)
   - IQKeyboardManager (~> 3.3.7)
+  - Masonry
   - MBProgressHUD (~> 1.0.0)
   - MJExtension
   - MJRefresh (~> 3.1.12)
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   GTMBase64: 0da7372e95f5171f3f652db38cde6716f8eb5e24
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
@@ -76,6 +79,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: bbcb1664d84e0b745c521ed1c78a5492ccc4daad
+PODFILE CHECKSUM: 48c3ab8fd88d75dfcd9c42b6965a4361758cd14d
 
 COCOAPODS: 1.2.1

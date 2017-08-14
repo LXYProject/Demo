@@ -10,4 +10,6 @@
 
 @interface ReleaseClassifiedController : BaseViewController
 
+@property (nonatomic, assign) NSInteger currentController;
+
 @end

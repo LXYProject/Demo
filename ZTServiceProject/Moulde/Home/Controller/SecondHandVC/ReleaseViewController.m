@@ -14,6 +14,7 @@
 #import "HomeHttpManager.h"
 #import "DataPickerViewOneDemo.h"
 #import "LocationChoiceController.h"
+#import "ReleaseClassifiedController.h"
 
 //#define btnY 440
 //#define labelY 428
@@ -35,6 +36,11 @@
     NSArray *_contentArray;
     NSArray *_switchArray;
     UISwitch *_mySwitch;
+    
+    NSString *_babyTitle;
+    NSString *_price;
+    NSString *_content;
+
 }
 
 - (void)setOtherClass:(NSString *)otherClass{
@@ -53,14 +59,14 @@
     [self rightItemWithNormalName:@"" title:@"发布须知" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     self.tableView.backgroundColor = RGB(247, 247, 247);
 
-    _titleArray = @[@"宝贝标题",
-                    @"分类",
-                    @"现价"];
-    _contentArray = @[@"请选择新旧程度",
+    _titleArray = @[@"宝贝标题 :",
+                    @"分类 :",
+                    @"价格（元）:"];
+    _contentArray = @[@"填写品牌型号更容易被卖家买到",
                       @"",
-                      @"请选择新旧程度"];
-    _switchArray = @[@"新旧:",
-                     @"支持快递:",
+                      @"请输入价格"];
+    _switchArray = @[@"新旧 :",
+                     @"支持快递 :",
                      @"原价（元）:"];
 
 
@@ -69,12 +75,12 @@
 - (void)rightBarClick
 {
     NSLog(@"二手物品发布");
-    [HomeHttpManager requestTitle:@""
-                          content:@""
+    [HomeHttpManager requestTitle:_babyTitle
+                          content:_content
                          pictures:@""
                            cityId:@""
                        districtId:@""
-                          address:@""
+                          address:self.locationInfo
                             resId:@""
                           resName:@""
                                 x:@""
@@ -181,12 +187,16 @@
     
     if (indexPath.row==3) {
         BabyDescriptionCell *cell = (BabyDescriptionCell *)[self creatCell:tableView indenty:@"BabyDescriptionCell"];
+        cell.textViewBlock = ^(id obj) {
+            NSLog(@"obj==%@", obj);
+            _content = obj;
+        };
         cell.selectionStyle = UITableViewCellAccessoryNone;
         return cell;
     }
     
     SolicitingHeadCell *cell = (SolicitingHeadCell *)[self creatCell:tableView indenty:@"SolicitingHeadCell"];
-    cell.title.text = [NSString stringWithFormat:@"%@:", _titleArray[indexPath.row]];
+    cell.title.text = _titleArray[indexPath.row];
     cell.content.placeholder = _contentArray[indexPath.row];
     if (indexPath.row==1) {
         if (self.otherClass.length>0) {
@@ -199,10 +209,21 @@
     }else{
         [cell.rightContent removeFromSuperview];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        if (indexPath.row==0) {
+            cell.textFieldBlock = ^(id obj) {
+                NSLog(@"obj==%@", obj);
+                _babyTitle = obj;
+            };
+        }else{
+            cell.textFieldBlock = ^(id obj) {
+                NSLog(@"obj==%@", obj);
+                _price = obj;
+            };
+        }
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.title.font = [UIFont systemFontOfSize:13];
-        cell.rightContent.font = [UIFont systemFontOfSize:13];
+        cell.rightContent.font = [UIFont systemFontOfSize:11];
         [cell.content setValue:[UIFont systemFontOfSize:11] forKeyPath:@"_placeholderLabel.font"];
     }else{
         cell.title.font = [UIFont systemFontOfSize:14];
@@ -315,7 +336,9 @@
     
     if (indexPath.section==1) {
         if (indexPath.row==1) {
-            [PushManager pushViewControllerWithName:@"ReleaseClassifiedController" animated:YES block:nil];
+            [PushManager pushViewControllerWithName:@"ReleaseClassifiedController" animated:YES block:^(ReleaseClassifiedController* viewController) {
+                viewController.currentController = 0;
+            }];
         }
     }else if (indexPath.section==2){
         [PushManager pushViewControllerWithName:@"LocationChoiceController" animated:YES block:^(LocationChoiceController* viewController) {

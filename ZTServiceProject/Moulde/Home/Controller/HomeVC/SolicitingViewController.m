@@ -12,11 +12,12 @@
 #import "SolicitBtnItemOneCell.h"
 #import "SolicitItemCell.h"
 #import "AddPhotosCell.h"
-#import "BabyDescriptionCell.h"
+#import "SolicitDescriptionCell.h"
+#import "DataPickerViewOneDemo.h"
 
 @interface SolicitingViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, copy) NSString *toward;
 @end
 
 @implementation SolicitingViewController
@@ -24,6 +25,9 @@
     NSArray *_titleArray;
     NSArray *_contentArray;
     NSArray *_rightArray;
+    
+    NSString *_content;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -99,8 +103,15 @@
     cell.textLabel.textColor = TEXT_COLOR;
     if (indexPath.row==0) {
         
+    }else if (indexPath.row==1){
+        cell.detailTextLabel.text = @"请选择户型";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else{
-        cell.detailTextLabel.text = _contentArray[indexPath.row-1];
+        if (self.toward.length>0) {
+            cell.detailTextLabel.text = self.toward;
+        }else{
+            cell.detailTextLabel.text = @"请选择朝向";
+        }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
@@ -181,7 +192,11 @@
 - (UITableViewCell *)sectionFourTableView:(UITableView *)tableView
                                  indexPath:(NSIndexPath *)indexPath {
     
-    BabyDescriptionCell *cell = (BabyDescriptionCell *)[self creatCell:tableView indenty:@"BabyDescriptionCell"];
+    SolicitDescriptionCell *cell = (SolicitDescriptionCell *)[self creatCell:tableView indenty:@"SolicitDescriptionCell"];
+    cell.textViewBlock = ^(id obj) {
+        NSLog(@"obj==%@", obj);
+        _content = obj;
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -198,6 +213,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section==0) {
+        if (indexPath.row==0) {
+            
+        }else if (indexPath.row==1){
+            
+        }else{
+            [[DataPickerViewOneDemo sharedPikerView]show];
+            [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"无所谓了", @"东", @"西", @"南", @"北", @"东南", @"西南", @"西北", @"东北"]];
+            [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
+                NSLog(@"date:%@",dateStr);
+                self.toward = dateStr;
+                [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+            };
+
+        }
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

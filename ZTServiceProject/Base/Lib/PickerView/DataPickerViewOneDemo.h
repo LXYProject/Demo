@@ -11,7 +11,7 @@
 typedef void(^DatePickerSelected)(NSString *dateStr);
 
 @interface DataPickerViewOneDemo : UIView
-
+@property (nonatomic,copy)NSString *title;
 @property (nonatomic,copy)DatePickerSelected pikerSelected;
 @property (nonatomic,strong)NSArray *dataSource;
 

@@ -35,6 +35,7 @@
 #import "XLPhotoBrowser.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <MAMapKit/MAMapKit.h>
+#import "Masonry.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>

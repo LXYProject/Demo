@@ -12,6 +12,8 @@
 #import "MesssgeHttpManager.h"
 #import "LocationChoiceController.h"
 #import "PlaceTextView.h"
+#import "ACMediaModel.h"
+#import "HttpAPIManager.h"
 
 //#define btnY 542
 //#define labelY 530
@@ -27,12 +29,16 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlaceTextView * textView;
-
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
+@property (nonatomic, strong) NSMutableArray *imgDataArr;
 @end
 
 @implementation PostMessageController
 {
     NSString *_affairDiscribe;
+    UIImage *_chooseImage;
+    NSString *_resourceId;
+    MBProgressHUD *_hud;
 }
 
 - (void)setLocationInfo:(NSString *)locationInfo{
@@ -54,39 +60,46 @@
 - (void)rightBarClick
 {
     NSLog(@"发布帖子");
-    @weakify(self);
-    [MesssgeHttpManager requestContent:self.textView.text
-                                photos:@""
-                                cityId:@""
-                            districtId:@""
-                               address:self.locationInfo
-                                 resId:@""
-                               resName:@""
-                                     x:@""
-                                     y:@""
-                               success:^(id response) {
-                                   @strongify(self);
-                                   //操作失败的原因
-                                   NSString *information = [response objectForKey:@"information"];
-                                   //状态码
-                                   NSString *status = [response objectForKey:@"status"];
-                                   
-                                   if ([status integerValue]==0) {
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
-                                           if (buttonindex == HHAlertButtonOk) {
-                                               NSLog(@"ok");
-                                           }
-                                           else
-                                           {
-                                               NSLog(@"cancel");
-                                           }
-                                       }];
-                                   }else{
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
-                                   }
-                               } failure:^(NSError *error, NSString *message) {
-                                   
-                               }];
+    
+    if (self.textView.text.length>0 && _resourceId.length>0) {
+        
+        @weakify(self);
+        [MesssgeHttpManager requestContent:self.textView.text
+                                    photos:_resourceId
+                                    cityId:@""
+                                districtId:@""
+                                   address:self.locationInfo
+                                     resId:@""
+                                   resName:@""
+                                         x:@""
+                                         y:@""
+                                   success:^(id response) {
+                                       @strongify(self);
+                                       //操作失败的原因
+                                       NSString *information = [response objectForKey:@"information"];
+                                       //状态码
+                                       NSString *status = [response objectForKey:@"status"];
+                                       
+                                       if ([status integerValue]==0) {
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                               if (buttonindex == HHAlertButtonOk) {
+                                                   NSLog(@"ok");
+                                               }
+                                               else
+                                               {
+                                                   NSLog(@"cancel");
+                                               }
+                                           }];
+                                       }else{
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                       }
+                                   } failure:^(NSError *error, NSString *message) {
+                                       
+                                   }];
+
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"稍等" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
 }
 
 - (void)createUI
@@ -129,7 +142,7 @@
         _textView.editable = YES;
         _textView.layer.cornerRadius = 4.0f;
         _textView.placeholderColor = RGBCOLOR(0x89, 0x89, 0x89);
-        _textView.placeholder = @"分享新鲜事";
+        _textView.placeholder = @"分享新鲜事...";
     }
     
     return _textView;
@@ -141,7 +154,6 @@
     if ([@"\n" isEqualToString:text] == YES)
     {
         [textView resignFirstResponder];
-        
         
         return NO;
     }
@@ -208,10 +220,99 @@
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
+        if(images.count==0) {
+            return;
+        }
         NSLog(@"images==%@", images);
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        // 多表单上传图片
+        [self upImageArr];
+
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+    
+}
+
+- (void)upImage{
+    NSMutableArray *imageDatas = [NSMutableArray arrayWithCapacity:1];
+    for (int i=0; i<self.chooseImgArr.count; i++) {
+        
+        for (id value in self.chooseImgArr) {
+            
+            NSData *imageData = UIImageJPEGRepresentation(value, 0.5);
+            
+            [imageDatas addObject:imageData];
+        }
+    }
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
+    [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"jpg" name:@"file" mimeType:@"image/jpeg" paramter:nil progressBlock:^(CGFloat progress) {
+        _hud.progress = progress;
+    } success:^(id response) {
+        [_hud hideAnimated:YES];
+        
+        NSDictionary *dictResult = response[@"result"];
+
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSArray *failure) {
+        NSLog(@"failure==%@", failure);
+        [_hud hideAnimated:YES];
+    }];
+}
+// 多表单上传图片
+- (void)upImageArr{
+    
+
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+    
+    UIImage *image = _chooseImage;
+
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+
+    [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+    
+    NSString*size=@"1000";
+    
+    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    [formData appendPartWithFormData:data name:@"size"];
+    
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+    //显示进度
+    
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+    
+    //显示返回对象
+    NSLog(@"-------->%@",responseObject);
+    
+    NSDictionary *dictResult = responseObject[@"result"];
+    NSLog(@"dictResult==%@", dictResult);
+    
+    _resourceId = [dictResult objectForKey:@"resourceId"];
+    NSLog(@"resourceId==%@", _resourceId);
+    
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    
+    //显示错误信息
+    NSLog(@"-------->%@",error);
+    
+    }];
     
 }
 
@@ -293,4 +394,17 @@
     return 1;
 }
 
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
+}
+
+- (NSMutableArray *)imgDataArr{
+    if (!_imgDataArr) {
+        _imgDataArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _imgDataArr;
+}
 @end

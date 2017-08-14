@@ -32,55 +32,14 @@
     [super awakeFromNib];
     // Initialization code
     
-    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[EYTagView class]]) {
-            [obj removeFromSuperview];
-            
-        }
-    }];
+    
 
     
-    _tagView.translatesAutoresizingMaskIntoConstraints=YES;
-    _tagView.delegate=self;
-    
-    _tagView.colorTag=COLORRGB(0xffffff);
-    _tagView.colorTagBg=[UIColor yellowColor];
-    _tagView.colorInput=COLORRGB(0x2ab44e);
-    _tagView.colorInputBg=COLORRGB(0xffffff);
-    _tagView.colorInputPlaceholder=COLORRGB(0x2ab44e);
-    _tagView.backgroundColor=COLORRGB(0xffffff);
-    _tagView.colorInputBoard=COLORRGB(0x2ab44e);
-    _tagView.viewMaxHeight=44;
-    _tagView.type =  EYTagView_Type_Display;
-    
-    [_tagView addTags:@[
-                        @"宽带",
-                        @"随时看房",
-                        @"中介勿扰",
-                        ]];
-    
-    
+        
     //[_tagView addTags:_tagsSouses];
     
     
-    [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIButton *btn = obj;
-        if (idx==0) {
-            
-            [btn setBackgroundColor:UIColorFromRGB(0xe64e51)];
-        }
-        else if (idx == 1) {
-            btn.backgroundColor = [UIColor colorWithRed:253.0/255 green:106.0/255 blue:214.0/255 alpha:1];
-        }
-        else if (idx ==2){
-            btn.backgroundColor = [UIColor yellowColor];
-        }
-        else {
-            btn.backgroundColor = [UIColor grayColor];
-        }
-    }];
-    [self.contentView addSubview:self.tagView];
-
+    
 }
 
 -(void)heightDidChangedTagView:(EYTagView *)tagView{
@@ -96,7 +55,6 @@
 // 租房Model
 - (void)setRentHouseModel:(RentHouseModel *)rentHouseModel{
     _rentHouseModel = rentHouseModel;
-    
     for (NSDictionary *dic in rentHouseModel.housePicList) {
         NSString *imageUrl = [dic objectForKey:@"url"];
         //        NSLog(@"imageUrl==%@", imageUrl);
@@ -109,28 +67,42 @@
 //    _placeLabel.text = rentHouseModel.address;
     _priceLabel.text = [NSString stringWithFormat:@"￥%.0f/月",[rentHouseModel.rentPrice doubleValue]];
     _time.text = rentHouseModel.publishTime;
+
     
+//    _tagView.translatesAutoresizingMaskIntoConstraints=YES;
+    _tagView.delegate=self;
     
-//    for (NSString *basicFacilitiesStr in rentHouseModel.basicFacilities) {
-//        _basicFacilities = basicFacilitiesStr;
-//        NSLog(@"_basicFacilities==%@", _basicFacilities);
-//    }
-    for (NSString *extendedFacilitiesStr in rentHouseModel.extendedFacilities) {
-        _extendedFacilities = extendedFacilitiesStr;
-    }
-    for (NSString *rentLimitStr in rentHouseModel.rentLimit) {
-        _rentLimit = rentLimitStr;
-    }
-    
-    if (_basicFacilities.length>0) {
-        [_tagsSouses addObject:_basicFacilities];
-    }
-    if (_extendedFacilities.length>0) {
-        [_tagsSouses addObject:_extendedFacilities];
-    }
-    if (_rentLimit.length>0) {
-        [_tagsSouses addObject:_rentLimit];
-    }
+    _tagView.colorTag=COLORRGB(0xffffff);
+    _tagView.colorTagBg=[UIColor yellowColor];
+    _tagView.colorInput=COLORRGB(0x2ab44e);
+    _tagView.colorInputBg=COLORRGB(0xffffff);
+    _tagView.colorInputPlaceholder=COLORRGB(0x2ab44e);
+    _tagView.backgroundColor=COLORRGB(0xffffff);
+    _tagView.colorInputBoard=COLORRGB(0x2ab44e);
+//    _tagView.viewMaxHeight=44;
+    _tagView.type =  EYTagView_Type_Display;
+    NSMutableArray *tagArrays = [NSMutableArray arrayWithCapacity:1];
+    [tagArrays addObjectsFromArray:rentHouseModel.basicFacilities];
+    [tagArrays addObjectsFromArray:rentHouseModel.extendedFacilities];
+    [tagArrays addObjectsFromArray:rentHouseModel.rentLimit];
+    [_tagView addTags:tagArrays];
+//    [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        UIButton *btn = obj;
+//        if (idx==0) {
+//            
+//            [btn setBackgroundColor:UIColorFromRGB(0xe64e51)];
+//        }
+//        else if (idx == 1) {
+//            btn.backgroundColor = [UIColor colorWithRed:253.0/255 green:106.0/255 blue:214.0/255 alpha:1];
+//        }
+//        else if (idx ==2){
+//            btn.backgroundColor = [UIColor yellowColor];
+//        }
+//        else {
+//            btn.backgroundColor = [UIColor grayColor];
+//        }
+//    }];
+
     
     NSLog(@"rentHouseModel.basicFacilities==%@", rentHouseModel.basicFacilities);
 }

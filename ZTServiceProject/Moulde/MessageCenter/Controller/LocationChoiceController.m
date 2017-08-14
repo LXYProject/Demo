@@ -13,13 +13,13 @@
 #import "PublicThingsController.h"
 #import "ReleaseHelpController.h"
 
-@interface LocationChoiceController ()<CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate>
+@interface LocationChoiceController ()<CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate,AMapLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) MAMapView *mapView;
 @property (nonatomic, strong) AMapSearchAPI *search;
 @property (nonatomic, assign)CLLocationCoordinate2D currentSelectPoint;
-
+@property (nonatomic,strong)AMapLocationManager *localManager;
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @end
@@ -31,16 +31,26 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     [self titleViewWithTitle:@"位置选择" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"确定" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
 
     [self.view addSubview:self.mapView];
     self.tableView.tableFooterView = [[UIView alloc]init];
     
+    //持续定位
+    self.localManager = [[AMapLocationManager alloc] init];
+    self.localManager.delegate = self;
+    //开启持续定位
+    [self.localManager startUpdatingLocation];
+    
 //    self.currentSelectPoint.latitude = 39.968309;
 //    self.currentSelectPoint.longitude = 116.431795;
     
 }
+
+
 
 - (void)rightBarClick
 {
@@ -55,14 +65,6 @@
     
 }
 
-//- (void)amapLocationManager:(CLLocationManager *)manager didUpdateLocation:(CLLocation *)location {
-//    // 定位结果
-//    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
-//    // 赋值给全局变量
-//    self.location = location;
-//    // 发起周边搜索
-//    [self searchAround];
-//}
 
 
 /** 根据定位坐标进行周边搜索 */
@@ -95,9 +97,15 @@
     [self searchAround];
 }
 
-- (void)mapInitComplete:(MAMapView *)mapView {
-    self.currentSelectPoint = mapView.userLocation.location.coordinate;
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
+{
+    // 定位结果
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    self.currentSelectPoint = location.coordinate;
     [self searchAround];
+    // 停止定位
+    [self.localManager stopUpdatingLocation];
 }
 
 
@@ -113,6 +121,11 @@
     
     self.dataSource = (NSMutableArray *)response.pois;
     [self.tableView reloadData];
+}
+
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error {
+    NSLog(@"请求错误");
+    
 }
 
 

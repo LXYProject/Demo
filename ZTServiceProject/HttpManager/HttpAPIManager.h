@@ -87,7 +87,7 @@ ZX_DECLARE_SINGLETON(HttpAPIManager);
                       paramter:(id)paramter
                  progressBlock:(HttpRequestProgress)progressBlock
                        success:(HttpRequestSuccess)success
-                       failure:(HttpRequestFailure)failure;
+                       failure:(void(^)(NSArray *failure))failure;
 
 
 //下载
@@ -103,5 +103,18 @@ ZX_DECLARE_SINGLETON(HttpAPIManager);
  取消所有网络请求
  */
 - (void)cancelAllRequest;
+
+
+//多图上传
++ (void)postUpLoadDuoTuDataByString:(NSString *)urlString
+                            BODYDic:(NSDictionary *)bodyDic
+                        ImageNumber:(NSInteger)num
+                        ImageData_1:(NSData *)data1
+                        ImageData_2:(NSData *)data2
+                        ImageData_3:(NSData *)data3
+                        ImageData_4:(NSData *)data4
+                        ImageData_5:(NSData *)data5
+                        ImageData_6:(NSData *)data6
+                      WithDataBlock:(void (^)(id data))dataBlock;
 
 @end

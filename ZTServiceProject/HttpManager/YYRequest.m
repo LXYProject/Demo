@@ -242,12 +242,12 @@ static NSMutableArray* requestTasksPool = nil;
                                                paramter:(id)paramter
                                                progress:(YYProgress)progress
                                                 success:(YYSuccess)success
-                                                failure:(YYFailure)failure {
+                                                failure:(void(^)(NSArray *failure))failures {
     __block NSMutableArray *sessions = [NSMutableArray array];
     __block NSMutableArray *responses = [NSMutableArray array];
     __block NSMutableArray *failResponse = [NSMutableArray array];
     //创建一个队列组
-    dispatch_group_t uploadGroup = dispatch_group_create();
+   __block dispatch_group_t uploadGroup = dispatch_group_create();
     for (int i =0;i<datas.count;i++) {
         __block NSURLSessionDataTask *session = nil;
         session = [self uploadFileWithUrl:url fileData:datas[i] type:type name:name mimeType:mimeType paramter:paramter progress:^(int64_t bytesRead, int64_t totalBytes) {
@@ -256,18 +256,19 @@ static NSMutableArray* requestTasksPool = nil;
             }
         } success:^(YYNetWorkSuccess *success) {
             [responses addObject:success.responseObject];
-            dispatch_group_leave(uploadGroup);
+//            dispatch_group_leave(uploadGroup);
             [sessions removeObject:session];
-        } failure:^(YYNetWorkFailure *failure) {
+        } failure:^(YYNetWorkFailure *failureful) {
             NSError *Error = [NSError errorWithDomain:url code:-999 userInfo:@{NSLocalizedDescriptionKey:[NSString stringWithFormat:@"第%d次上传失败",i],@"index":@(i)}];
             [failResponse addObject:Error];
-            dispatch_group_leave(uploadGroup);
+//            dispatch_group_leave(uploadGroup);
             [sessions removeObject:session];
         }];
         [session resume];
         if (session) {
             [sessions addObject:session];
         }
+        
     }
     [[self allTasks] addObjectsFromArray:sessions];
     dispatch_group_notify(uploadGroup, dispatch_get_main_queue(), ^{
@@ -280,8 +281,8 @@ static NSMutableArray* requestTasksPool = nil;
             }
         }
         if (failResponse.count > 0) {
-            if (failure) {
-                failure([failResponse copy]);
+            if (failures) {
+                failures([failResponse copy]);
                 if (sessions.count > 0) {
                     [[self allTasks] removeObjectsInArray:sessions];
                 }

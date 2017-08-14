@@ -9,7 +9,7 @@
 #import "HouseRentViewController.h"
 #import "HouseRentCell.h"
 #import "HomeHttpManager.h"
-
+#import "RentHouseModel.h"
 @interface HouseRentViewController ()
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
 
@@ -26,6 +26,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    RentHouseModel *model = [[RentHouseModel alloc]init];
+    model.basicFacilities = @[@"asd",@"asd",@"asdsad"];
+    model.extendedFacilities = @[@"asd",@"asd",@"asdsad"];
+    model.rentLimit = @[@"asd",@"asd",@"asdsad"];
+    [self.rentHouseDataSource addObject:model];
+    [self.tableView reloadData];
     // Do any additional setup after loading the view from its nib.
     
     [self titleViewWithTitle:@"房屋租赁" titleColor:[UIColor whiteColor]];

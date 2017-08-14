@@ -9,7 +9,7 @@
 #import "BabyDescriptionCell.h"
 #import "HClTextView.h"
 
-@interface BabyDescriptionCell ()
+@interface BabyDescriptionCell ()<UITextViewDelegate>
 
 @property (strong, nonatomic) HClTextView *textView;
 @property (copy, nonatomic) NSString *myInPutText;
@@ -27,8 +27,9 @@
         }
     }];
     self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
+    self.textView.delegate = self;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.textView setPlaceholder:@"请简单描述你想求购的东西（少于300字）" contentText:_myInPutText maxTextCount:300];
+    [self.textView setPlaceholder:@"描述一下宝贝获得渠道,新旧程度，型号/尺码等,可以让宝贝更快卖出~" contentText:_myInPutText maxTextCount:300];
     [self.contentView addSubview:self.textView];
 }
 
@@ -45,4 +46,10 @@
     return _textView;
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (self.textViewBlock) {
+        self.textViewBlock(textView.text);
+    }
+}
 @end

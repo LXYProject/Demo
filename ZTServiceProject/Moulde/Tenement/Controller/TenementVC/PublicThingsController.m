@@ -56,40 +56,46 @@
 - (void)rightBarClick
 {
     NSLog(@"提交");
-    // 公共报事
-    @weakify(self);
-    [TenementHttpManager requestZoneId:self.zoneId
-                           affairTitle:@"公共报事"
-                        affairDiscribe:_affairDiscribe
-                        affairCategory:@"1"
-                           userAddress:self.locationInfo
-                          userRealName:_userRealName
-                          userPhoneNum:_userPhoneNum
-                                     x:@"2017-05-18"
-                                     y:@"2017-05-18"
-                                images:[UIImage imageNamed:@""]
-                               success:^(id response) {
-                                   @strongify(self);
-                                   //操作失败的原因
-                                   NSString *information = [response objectForKey:@"information"];
-                                   //状态码
-                                   NSString *status = [response objectForKey:@"status"];
-                                   
-                                   if ([status integerValue]==0) {
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
-                                           if (buttonindex == HHAlertButtonOk) {
-                                               NSLog(@"ok");
-                                           }
-                                           else
-                                           {
-                                               NSLog(@"cancel");
-                                           }
-                                       }];
-                                   }else{
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
-                                   }
-                               } failure:^(NSError *error, NSString *message) {
-                               }];
+    if (_userRealName.length>0 && _userPhoneNum.length>0 && _affairDiscribe.length>0 && self.locationInfo.length>0) {
+        
+        // 公共报事
+        @weakify(self);
+        [TenementHttpManager requestZoneId:self.zoneId
+                               affairTitle:@"公共报事"
+                            affairDiscribe:_affairDiscribe
+                            affairCategory:@"1"
+                               userAddress:self.locationInfo
+                              userRealName:_userRealName
+                              userPhoneNum:_userPhoneNum
+                                         x:@"2017-05-18"
+                                         y:@"2017-05-18"
+                                    images:[UIImage imageNamed:@""]
+                                   success:^(id response) {
+                                       @strongify(self);
+                                       //操作失败的原因
+                                       NSString *information = [response objectForKey:@"information"];
+                                       //状态码
+                                       NSString *status = [response objectForKey:@"status"];
+                                       
+                                       if ([status integerValue]==0) {
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                               if (buttonindex == HHAlertButtonOk) {
+                                                   NSLog(@"ok");
+                                               }
+                                               else
+                                               {
+                                                   NSLog(@"cancel");
+                                               }
+                                           }];
+                                       }else{
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                       }
+                                   } failure:^(NSError *error, NSString *message) {
+                                   }];
+
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请完善信息" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -134,8 +140,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.textLabel.text = @"选择类型";
-    cell.detailTextLabel.text = @"请选择类型";
+    cell.textLabel.text = @"报事类型";
+    cell.detailTextLabel.text = @"请选择报事类型";
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:11];

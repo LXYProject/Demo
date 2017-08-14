@@ -120,7 +120,7 @@
                     cell.imageView.image = [UIImage imageNamed:_sectionTwoImg[indexPath.row]];
                 }else{
                     cell.textLabel.text = @"设置";
-                    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+                    cell.imageView.image = [UIImage imageNamed:@"wd_sz"];
                 }
                 if (IS_IPHONE_6){
                     cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -147,7 +147,7 @@
                 cell.imageView.image = [UIImage imageNamed:_sectionTwoImg[indexPath.row]];
             }else{
                 cell.textLabel.text = @"设置";
-                cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+                cell.imageView.image = [UIImage imageNamed:@"wd_sz"];
             }
             if (IS_IPHONE_6){
                 cell.textLabel.font = [UIFont systemFontOfSize:14];

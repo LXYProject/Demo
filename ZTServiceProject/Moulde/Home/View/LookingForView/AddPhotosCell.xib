@@ -21,9 +21,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koM-JL-Not">
                         <rect key="frame" x="77" y="0.0" width="167" height="100"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-R8-Ctz">
-                                <rect key="frame" x="0.0" y="0.0" width="167" height="100"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqN-R8-Ctz">
+                                <rect key="frame" x="61" y="25.5" width="45" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="16T-iU-uZk"/>
+                                    <constraint firstAttribute="width" constant="45" id="jkv-BN-HbN"/>
+                                </constraints>
+                                <state key="normal" image="tjzp.png"/>
                                 <connections>
                                     <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f0x-aJ-fsg"/>
                                 </connections>
@@ -31,10 +35,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="leading" secondItem="koM-JL-Not" secondAttribute="leading" id="8aP-CN-bFV"/>
-                            <constraint firstAttribute="trailing" secondItem="kqN-R8-Ctz" secondAttribute="trailing" id="O9d-dW-Uxd"/>
-                            <constraint firstAttribute="bottom" secondItem="kqN-R8-Ctz" secondAttribute="bottom" id="Yzh-KS-W7n"/>
-                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="top" secondItem="koM-JL-Not" secondAttribute="top" id="Zqq-4b-KL5"/>
+                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="centerY" secondItem="koM-JL-Not" secondAttribute="centerY" id="581-BD-gQM"/>
+                            <constraint firstItem="kqN-R8-Ctz" firstAttribute="centerX" secondItem="koM-JL-Not" secondAttribute="centerX" id="lR2-SJ-bQo"/>
                             <constraint firstAttribute="width" constant="167" id="otD-NS-F6N"/>
                         </constraints>
                     </view>
@@ -50,4 +52,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="tjzp.png" width="45" height="49"/>
+    </resources>
 </document>

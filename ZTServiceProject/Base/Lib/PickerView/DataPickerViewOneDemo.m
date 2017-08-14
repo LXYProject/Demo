@@ -19,6 +19,7 @@ static DataPickerViewOneDemo *pikerView = nil;
 @implementation DataPickerViewOneDemo {
     NSInteger _currentSelectedRow;
     NSInteger _currentSelectComponent;
+    UILabel *_titleLable;
 }
 
 +(DataPickerViewOneDemo* )sharedPikerView {
@@ -126,7 +127,8 @@ static DataPickerViewOneDemo *pikerView = nil;
         UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _headerView.frame.size.width, 49)];
         lable.textAlignment = NSTextAlignmentCenter;
         lable.font = [UIFont systemFontOfSize:14];
-        lable.text = @"选择";
+        lable.text = @"请选择";
+        _titleLable = lable;
         lable.textColor = [UIColor darkGrayColor];
         [_headerView addSubview:lable];
         _headerView.backgroundColor = [UIColor whiteColor];
@@ -134,6 +136,10 @@ static DataPickerViewOneDemo *pikerView = nil;
     return _headerView;
 }
 
+- (void)setTitle:(NSString *)title {
+    _title = title;
+    _titleLable.text = title;
+}
 
 - (UIPickerView *)pickView {
     if (!_pickView) {

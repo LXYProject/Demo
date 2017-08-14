@@ -63,44 +63,51 @@
 - (void)rightBarClick
 {
     NSLog(@"提交");
-    // 发送上门服务信息
-    @weakify(self);
-    [TenementHttpManager requestZoneId:self.zoneId
-                          serviceTitle:@"发送上门服务信息"
-                       serviceDiscribe:_serviceDiscribe
-                       serviceCategory:self.serviceType
-                           serviceTime:self.makeTimeStr
-                           userAddress:@"北京市 海淀区 财智大厦 c305室"
-                          userRealName:_userRealName
-                          userPhoneNum:_userPhoneNum
-                               houseId:@"510002004020"
-                             houseName:@"1单元 1层 1室"
-                                     x:@"2017-05-18"
-                                     y:@"2017-05-18"
-                                images:[UIImage imageNamed:@""]
-                               success:^(id response) {
-                                   @strongify(self);
-                                   //操作失败的原因
-                                   NSString *information = [response objectForKey:@"information"];
-                                   //状态码
-                                   NSString *status = [response objectForKey:@"status"];
-                                   
-                                   if ([status integerValue]==0) {
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
-                                           if (buttonindex == HHAlertButtonOk) {
-                                               NSLog(@"ok");
-                                           }
-                                           else
-                                           {
-                                               NSLog(@"cancel");
-                                           }
-                                       }];
-                                   }else{
-                                       [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
-                                   }
-                               } failure:^(NSError *error, NSString *message) {
-                                   
-                               }];
+    
+    if (_userRealName.length>0 && _userPhoneNum.length>0 && _serviceDiscribe.length>0 && self.serviceType>0 && self.makeTimeStr.length>0) {
+        
+        // 发送上门服务信息
+        @weakify(self);
+        [TenementHttpManager requestZoneId:self.zoneId
+                              serviceTitle:@"发送上门服务信息"
+                           serviceDiscribe:_serviceDiscribe
+                           serviceCategory:self.serviceType
+                               serviceTime:self.makeTimeStr
+                               userAddress:@"北京市 海淀区 财智大厦 c305室"
+                              userRealName:_userRealName
+                              userPhoneNum:_userPhoneNum
+                                   houseId:@"510002004020"
+                                 houseName:@"1单元 1层 1室"
+                                         x:@"2017-05-18"
+                                         y:@"2017-05-18"
+                                    images:[UIImage imageNamed:@""]
+                                   success:^(id response) {
+                                       @strongify(self);
+                                       //操作失败的原因
+                                       NSString *information = [response objectForKey:@"information"];
+                                       //状态码
+                                       NSString *status = [response objectForKey:@"status"];
+                                       
+                                       if ([status integerValue]==0) {
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                               if (buttonindex == HHAlertButtonOk) {
+                                                   NSLog(@"ok");
+                                               }
+                                               else
+                                               {
+                                                   NSLog(@"cancel");
+                                               }
+                                           }];
+                                       }else{
+                                           [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                       }
+                                   } failure:^(NSError *error, NSString *message) {
+                                       
+                                   }];
+
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请完善信息" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
 
 }
 
@@ -247,7 +254,7 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  %@", _data,_hour];
         self.makeTimeStr = cell.detailTextLabel.text;
     }else{
-        cell.detailTextLabel.text = @"预约时间";
+        cell.detailTextLabel.text = @"请选择上门时间";
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];

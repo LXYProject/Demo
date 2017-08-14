@@ -10,10 +10,6 @@
 
 @implementation RentHouseModel
 
-+(NSDictionary *)mj_objectClassInArray {
-    return @{@"basicFacilities":@"RentHouseModel",
-             @"extendedFacilities":@"RentHouseModel",
-             @"rentLimit":@"RentHouseModel"};
-}
+
 
 @end

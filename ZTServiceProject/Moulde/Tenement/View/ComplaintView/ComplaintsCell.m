@@ -1,5 +1,5 @@
 //
-//  ComplaintsCell.m
+//  DoorServiceCell.m
 //  ZTServiceProject
 //
 //  Created by ZT on 2017/6/18.
@@ -7,52 +7,88 @@
 //
 
 #import "ComplaintsCell.h"
-#import "HClTextView.h"
+#import "PlaceTextView.h"
 
-@interface ComplaintsCell ()<HClTextViewDelegate>
+#undef  RGBCOLOR
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+@interface ComplaintsCell ()<UITextViewDelegate>
 
-@property (strong, nonatomic) HClTextView *textView;
+@property (nonatomic, strong) PlaceTextView * textView;
+
 @property (copy, nonatomic) NSString *myInPutText;
+
 
 @end
 @implementation ComplaintsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[HClTextView class]]) {
+        if ([obj isKindOfClass:[PlaceTextView class]]) {
             [obj removeFromSuperview];
             
         }
     }];
-    self.textView.frame = CGRectMake(0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height);
-    self.textView.delegate = self;
-    self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self.textView setLeftTitleText:@"投诉:"];
-    [self.textView setPlaceholder:@"描述一下（少于300字）" contentText:_myInPutText maxTextCount:300];
+    
     [self.contentView addSubview:self.textView];
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
+//
 - (void)textViewDidChange:(UITextView *)textView
 {
     if (self.textViewBlock) {
-        self.textViewBlock(textView.text);
+        self.textViewBlock(self.textView.text);
     }
-
 }
 
-- (HClTextView *)textView {
+
+//- (void)textViewDidEndEditing:(UITextView *)textView
+//{
+//    if (self.textViewBlock) {
+//        self.textViewBlock(self.textView.text);
+//    }
+//}
+
+-(PlaceTextView *)textView{
+    
     if (!_textView) {
-        _textView = [[NSBundle mainBundle] loadNibNamed:@"HClTextView" owner:self options:nil].lastObject;
+        _textView = [[PlaceTextView alloc]initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, 100)];
+        _textView.backgroundColor = [UIColor whiteColor];
+        _textView.delegate = self;
+        _textView.font = [UIFont systemFontOfSize:14.f];
+        _textView.textColor = [UIColor blackColor];
+        _textView.textAlignment = NSTextAlignmentLeft;
+        _textView.editable = YES;
+        _textView.layer.cornerRadius = 4.0f;
+        _textView.placeholderColor = RGBCOLOR(0x89, 0x89, 0x89);
+        _textView.placeholder = @"请描述您要投诉的现象";
+        if (IS_IPHONE_4 || IS_IPHONE_5) {
+            _textView.placeHolderLabel.font = [UIFont systemFontOfSize:13];
+        }else{
+            _textView.placeHolderLabel.font = [UIFont systemFontOfSize:14];
+        }
     }
+    
     return _textView;
 }
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    
+    if ([@"\n" isEqualToString:text] == YES)
+    {
+        [textView resignFirstResponder];
+        
+        return NO;
+    }
+    return YES;
+}
+
+
 
 @end

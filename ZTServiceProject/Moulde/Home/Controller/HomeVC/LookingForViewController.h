@@ -10,4 +10,6 @@
 
 @interface LookingForViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *brandModels;
+
 @end

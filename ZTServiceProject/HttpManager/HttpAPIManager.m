@@ -129,7 +129,7 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
                       paramter:(id)paramter
                  progressBlock:(HttpRequestProgress)progressBlock
                        success:(HttpRequestSuccess)success
-                       failure:(HttpRequestFailure)failure {
+                       failure:(void(^)(NSArray *failure))failure {
     NSString *newUrl = [self dealWithURL:url];
     id newParamter = [self dealWithParamter:paramter];
 
@@ -139,10 +139,8 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
         NSLog(@"请求路径：%@ ************* 请求参数：%@  ********   请求返回的值：%@",newUrl,newParamter,successful.responseObject);
 
         success(successful.responseObject);
-    } failure:^(YYNetWorkFailure *failured) {
-        failure(failured.error,nil);
-        NSLog(@"请求路径：%@ ************* 请求参数：%@  ******** 请求错误信息：%@",newUrl,newParamter,failured.error);
-        failure(failured.error,nil);
+    } failure:^(NSArray *failureful) {
+        failure(failureful);
     }];
 }
 
@@ -190,6 +188,9 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 //    return newParamter;
 //}
 - (id)dealWithParamter:(NSDictionary *)paramter{
+    if (!paramter) {
+        return nil;
+    }
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
     //    [newParamter setValuesForKeysWithDictionary:paramter];
     [newParamter setValue:@"IMwMF9OpWmvOCzOofFSwAA==" forKey:@"token"];
@@ -204,6 +205,9 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
 }
 
 - (id)dealWithParamterOne:(NSDictionary *)paramter{
+    if (!paramter) {
+        return nil;
+    }
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
     //    [newParamter setValuesForKeysWithDictionary:paramter];
     //    [newParamter setValue:@"20170607093552" forKey:@"userId"];

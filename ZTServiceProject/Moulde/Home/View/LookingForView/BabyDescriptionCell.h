@@ -10,4 +10,7 @@
 
 @interface BabyDescriptionCell : UITableViewCell
 
+@property (nonatomic,copy)Id_Block textViewBlock;
+
+
 @end

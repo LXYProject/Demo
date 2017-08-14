@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zrm-io-6Mq">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="W2c-KD-KYT"/>
@@ -121,12 +121,13 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="5ZT-d1-aJH" secondAttribute="trailing" id="Hk8-Lg-bsa"/>
                 <constraint firstItem="5ZT-d1-aJH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Kka-Sr-z9S"/>
-                <constraint firstAttribute="bottom" secondItem="Zrm-io-6Mq" secondAttribute="bottom" id="ShZ-8Z-Vjo"/>
                 <constraint firstItem="Zrm-io-6Mq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Z4Q-fv-13C"/>
+                <constraint firstItem="5ZT-d1-aJH" firstAttribute="top" secondItem="Zrm-io-6Mq" secondAttribute="bottom" id="ga1-0s-Tz5"/>
                 <constraint firstItem="Zrm-io-6Mq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k3Q-eI-yem"/>
                 <constraint firstAttribute="bottom" secondItem="5ZT-d1-aJH" secondAttribute="bottom" id="mgI-aQ-imq"/>
                 <constraint firstAttribute="trailing" secondItem="Zrm-io-6Mq" secondAttribute="trailing" id="zKQ-q0-n9p"/>
             </constraints>
+            <point key="canvasLocation" x="-154.5" y="137.5"/>
         </view>
     </objects>
 </document>

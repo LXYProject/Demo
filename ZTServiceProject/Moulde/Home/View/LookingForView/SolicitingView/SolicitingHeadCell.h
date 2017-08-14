@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *content;
 @property (weak, nonatomic) IBOutlet UILabel *rightContent;
 
+@property (nonatomic,copy)Id_Block textFieldBlock;
+
 
 @end

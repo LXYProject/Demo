@@ -77,7 +77,7 @@
 @property (nonatomic,copy)NSString *commentCount;
 
 @property (nonatomic,strong)NSArray *commentList;
-@property (nonatomic,strong)NSArray *subCommentList;
+
 
 
 @property (nonatomic,copy)NSString *createTime;

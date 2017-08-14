@@ -81,6 +81,8 @@
     //[self.searchBtn setTitle:_btnTitle forState:UIControlStateNormal];
     NSLog(@"_btnTitle:::%@",_btnTitle);
     NSLog(@"zoneId:::%@",_zoneId);
+    [self.searchBtn setImage:[UIImage imageNamed:@"wy_xl"] forState:UIControlStateNormal];
+    self.searchBtn.imageEdgeInsets = UIEdgeInsetsMake(0,self.searchBtn.frame.size.width-25, 0, 0); //上左下右
     [self.searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.searchBtn.titleLabel.font = [UIFont systemFontOfSize: 12];
     [self.searchBtn addTarget:self action:@selector(searchBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -281,7 +283,7 @@
                                    @"vcName":@"InformationController"},
                                  
                                  @{@"title":@"小区主页",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_xqzy",
                                    @"vcName":@"HomePageController"},
                                  ],
                              @[
@@ -307,11 +309,11 @@
                                    @"vcName":@"MKPAlertView"},
                                  
                                  @{@"title":@"保安团队",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_batd",
                                    @"vcName":@"InformationController"},
                                  
                                  @{@"title":@"设施设备",
-                                   @"icon":@"my_tabbar_selected",
+                                   @"icon":@"wy_sssb",
                                    @"vcName":@"InformationController"}
                                  ],
                              @[

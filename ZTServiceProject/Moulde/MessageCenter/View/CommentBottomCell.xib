@@ -107,7 +107,7 @@
                                     <constraint firstAttribute="height" constant="15" id="diw-JZ-8v5"/>
                                     <constraint firstAttribute="width" constant="15" id="eMD-AA-4pg"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="address.png"/>
+                                <state key="normal" backgroundImage="reprinted.png"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEh-z0-hBB">
                                 <rect key="frame" x="278" y="16.5" width="32" height="12"/>
@@ -203,6 +203,7 @@
     <resources>
         <image name="address.png" width="10" height="10"/>
         <image name="comments.png" width="10" height="10"/>
+        <image name="reprinted.png" width="10" height="10"/>
         <image name="thumb_up.png" width="10" height="10"/>
     </resources>
 </document>
