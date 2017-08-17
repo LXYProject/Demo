@@ -33,13 +33,6 @@
     // Initialization code
     
     
-
-    
-        
-    //[_tagView addTags:_tagsSouses];
-    
-    
-    
 }
 
 -(void)heightDidChangedTagView:(EYTagView *)tagView{
@@ -81,27 +74,43 @@
     _tagView.colorInputBoard=COLORRGB(0x2ab44e);
 //    _tagView.viewMaxHeight=44;
     _tagView.type =  EYTagView_Type_Display;
+    
+    
     NSMutableArray *tagArrays = [NSMutableArray arrayWithCapacity:1];
+
+    
     [tagArrays addObjectsFromArray:rentHouseModel.basicFacilities];
     [tagArrays addObjectsFromArray:rentHouseModel.extendedFacilities];
     [tagArrays addObjectsFromArray:rentHouseModel.rentLimit];
+    
+    
+    
+//    for (NSString *basicStr in rentHouseModel.basicFacilities) {
+//        [tagArrays addObject:basicStr];
+//    }
+//    for (NSString *extendedStr in rentHouseModel.extendedFacilities) {
+//        [tagArrays addObject:extendedStr];
+//    }
+//    for (NSString *rentLimitStr in rentHouseModel.rentLimit) {
+//        [tagArrays addObject:rentLimitStr];
+//    }
     [_tagView addTags:tagArrays];
-//    [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        UIButton *btn = obj;
-//        if (idx==0) {
-//            
-//            [btn setBackgroundColor:UIColorFromRGB(0xe64e51)];
-//        }
-//        else if (idx == 1) {
-//            btn.backgroundColor = [UIColor colorWithRed:253.0/255 green:106.0/255 blue:214.0/255 alpha:1];
-//        }
-//        else if (idx ==2){
-//            btn.backgroundColor = [UIColor yellowColor];
-//        }
-//        else {
-//            btn.backgroundColor = [UIColor grayColor];
-//        }
-//    }];
+    [_tagView.tagButtons enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = obj;
+        if (idx==0) {
+            
+            [btn setBackgroundColor:UIColorFromRGB(0xe64e51)];
+        }
+        else if (idx == 1) {
+            btn.backgroundColor = [UIColor colorWithRed:253.0/255 green:106.0/255 blue:214.0/255 alpha:1];
+        }
+        else if (idx ==2){
+            btn.backgroundColor = [UIColor yellowColor];
+        }
+        else {
+            btn.backgroundColor = [UIColor grayColor];
+        }
+    }];
 
     
     NSLog(@"rentHouseModel.basicFacilities==%@", rentHouseModel.basicFacilities);

@@ -49,12 +49,12 @@ static TLMenuButtonView *instanceMenuView;
     
    //CGPoint point1 = CGPointMake(center.x - r*cos(M_PI/12), center.y+r*sin(M_PI/12));
     
-    TLMenuButton *menu1 = [TLMenuButton buttonWithTitle:@"" imageTitle:@"gallery" center:center color:[UIColor clearColor]];
+    TLMenuButton *menu1 = [TLMenuButton buttonWithTitle:@"发布服务" imageTitle:@"zbfw_fbfw" center:center color:[UIColor clearColor]];
     menu1.tag = 1;
     [menu1 addTarget:self action:@selector(_addExamApprovel:) forControlEvents:UIControlEventTouchUpInside];
     
    //CGPoint point2 = CGPointMake(center.x - r*cos(M_PI / 8-M_PI*3/48), center.y - r*sin(M_PI / 8-M_PI*3/48));
-    TLMenuButton *menu2 = [TLMenuButton buttonWithTitle:@"" imageTitle:@"dropbox" center:center color:[UIColor clearColor]];
+    TLMenuButton *menu2 = [TLMenuButton buttonWithTitle:@"发布求助" imageTitle:@"zbfw_qhqz" center:center color:[UIColor clearColor]];
      menu2.tag = 2;
     [menu2 addTarget:self action:@selector(_addExamApprovel:) forControlEvents:UIControlEventTouchUpInside];
     

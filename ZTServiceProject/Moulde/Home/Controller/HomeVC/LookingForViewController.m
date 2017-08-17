@@ -14,11 +14,13 @@
 #import "LookingDescriptionCell.h"
 #import "DataPickerViewOneDemo.h"
 #import "ReleaseClassifiedController.h"
+#import "ACMediaModel.h"
 
 @interface LookingForViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSString *oldAndNew;
 @property (nonatomic, copy) NSString *price;
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
 
 @end
 
@@ -31,7 +33,7 @@
     NSArray *_contentOneArray;
     
     NSString *_content;
-
+    NSString *_resourceId;
 }
 
 - (void)setBrandModels:(NSString *)brandModels{
@@ -185,9 +187,61 @@
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 //第3组
@@ -279,6 +333,12 @@
     }
 }
 
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 //    return 0.0001;

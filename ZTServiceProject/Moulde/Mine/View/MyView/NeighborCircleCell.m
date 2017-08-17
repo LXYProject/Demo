@@ -22,8 +22,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textLeft;
 
 
-
 @property (nonatomic, copy) NSString *url;
+@property (nonatomic, strong) NSMutableArray *imgArr;
 
 @end
 @implementation NeighborCircleCell
@@ -31,6 +31,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -45,7 +46,9 @@
     for  (MessagePhotoModel*dic in model.topicSmallImageList) {
         
         self.url = dic.url;
+
     }
+    
     if (model.topicSmallImageList.count==0) {
         self.imgH.constant = 10;
         self.imgW.constant = 0;
@@ -92,4 +95,10 @@
     return [formatter stringFromDate:formaterDate];
 }
 
+- (NSMutableArray *)imgArr{
+    if (!_imgArr) {
+        _imgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _imgArr;
+}
 @end

@@ -38,14 +38,14 @@
 }
 - (void)createUIsearchBar{
     
-    _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 69, SCREEN_WIDTH, 49)];
+    _headView = [[UIView alloc] initWithFrame:CGRectMake(0, 59, SCREEN_WIDTH, 49)];
     _headView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_headView];
     
     _searchBar = [[UITextField alloc] initWithFrame:CGRectMake(15, 9, SCREEN_WIDTH-30-75, 32)];
     _searchBar.delegate = self;
     _searchBar.placeholder = @"  输入小区名进行搜索";
-    [_searchBar setValue:[UIFont boldSystemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    [_searchBar setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
     _searchBar.layer.masksToBounds = YES;
     _searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
     _searchBar.layer.borderColor = [UIColor whiteColor].CGColor;

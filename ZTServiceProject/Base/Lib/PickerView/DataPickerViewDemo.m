@@ -61,7 +61,7 @@ static DataPickerViewDemo *pikerView = nil;
     dayTime = 24*60*60,
     time = nowTime - nowTime%dayTime;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YY-MM-dd"];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
     
     while (time < endTime) {
         NSString *showOldDate = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:time]];
@@ -225,7 +225,7 @@ static DataPickerViewDemo *pikerView = nil;
 
 - (UIView *)backView {
     if (!_backView) {
-        _backView =[[UIView alloc]initWithFrame:CGRectMake(20, 150, self.frame.size.width-40, 197)];
+        _backView =[[UIView alloc]initWithFrame:CGRectMake(20, SCREEN_HEIGHT/2-197/2, self.frame.size.width-40, 197)];
         _backView.backgroundColor = [UIColor lightGrayColor];
         _backView.layer.masksToBounds= YES;
         _backView.layer.cornerRadius = 10;

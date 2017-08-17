@@ -189,7 +189,7 @@ static DataPickerViewOneDemo *pikerView = nil;
 
 - (UIView *)backView {
     if (!_backView) {
-        _backView =[[UIView alloc]initWithFrame:CGRectMake(20, 150, self.frame.size.width-40, 197)];
+        _backView =[[UIView alloc]initWithFrame:CGRectMake(20, SCREEN_HEIGHT/2-197/2, self.frame.size.width-40, 197)];
         _backView.backgroundColor = [UIColor lightGrayColor];
         _backView.layer.masksToBounds= YES;
         _backView.layer.cornerRadius = 10;

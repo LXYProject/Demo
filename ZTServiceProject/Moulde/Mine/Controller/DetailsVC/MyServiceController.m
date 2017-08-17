@@ -77,6 +77,19 @@
                                        }];
 
 }
+
+//修改发布的服务状态
+- (void)requestServiceStatus{
+    [NearByHttpManager rqeuestServiceId:@""
+                                 status:0
+                                success:^(id response) {
+                                
+                                } failure:^(NSError *error, NSString *message) {
+                                
+                                }];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.dataSource.count;

@@ -21,21 +21,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aL3-QE-QDF">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="59" width="375" height="608"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Ju7-FB-HCY"/>
                         <outlet property="delegate" destination="-1" id="1ky-ev-SC0"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wd_tjfw2.png" translatesAutoresizingMaskIntoConstraints="NO" id="8gK-pS-Moc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="V4N-fQ-Xxb"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="aL3-QE-QDF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MRg-l3-3LG"/>
+                <constraint firstAttribute="trailing" secondItem="8gK-pS-Moc" secondAttribute="trailing" id="DdV-F6-wbp"/>
+                <constraint firstItem="8gK-pS-Moc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gna-Ot-CS2"/>
+                <constraint firstItem="aL3-QE-QDF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="MRg-l3-3LG"/>
                 <constraint firstAttribute="trailing" secondItem="aL3-QE-QDF" secondAttribute="trailing" id="WBD-fh-BbF"/>
                 <constraint firstItem="aL3-QE-QDF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="edk-xz-nIv"/>
+                <constraint firstItem="8gK-pS-Moc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="meG-Fb-Dv2"/>
                 <constraint firstAttribute="bottom" secondItem="aL3-QE-QDF" secondAttribute="bottom" id="tuh-ek-SsL"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="wd_tjfw2.png" width="375" height="49"/>
+    </resources>
 </document>

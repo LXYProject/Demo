@@ -52,13 +52,14 @@ typedef enum : NSUInteger {
 + (void)rqeuestTitle:(NSString *)title
              content:(NSString *)content
              address:(NSString *)address
-              online:(NSString *)online
+              online:(int)online
                price:(NSString *)price
                 unit:(NSString *)unit
           categoryId:(NSString *)categoryId
         categoryName:(NSString *)categoryName
                 area:(NSString *)area
               cityId:(NSString *)cityId
+          districtId:(NSString *)districtId
                    x:(NSString *)x
                    y:(NSString *)y
                resId:(NSString *)resId
@@ -129,16 +130,16 @@ typedef enum : NSUInteger {
 
 //修改发布的服务状态
 + (void)rqeuestServiceId:(NSString *)serviceId
-                  status:(NSString *)status
+                  status:(int)status
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure;
 
 
 //修改求助状态 DealServiceOrAppeal
 + (void)rqeuestAppealId:(NSString *)appealId
-                  status:(NSString *)status
-                 success:(HttpRequestSuccess)success
-                 failure:(HttpRequestFailure)failure;
+                 status:(int)status
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure;
 
 
 //接受服务, 求助订单或拒绝

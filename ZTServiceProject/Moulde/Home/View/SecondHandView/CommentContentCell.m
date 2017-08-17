@@ -9,6 +9,7 @@
 #import "CommentContentCell.h"
 #import "SecondHandModel.h"
 #import "CommentUserModel.h"
+#import "HomeHttpManager.h" 
 
 @interface CommentContentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headIcon;
@@ -26,10 +27,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-}
-- (IBAction)ThumbupbtnClick {
-}
-- (IBAction)commentsBtnClick {
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -49,7 +46,7 @@
 }
 
 - (void)setUserModel:(CommentUserModel *)userModel {
-    
+    NSLog(@"commentId==%@", _userModel.commentId);
         _userModel = userModel;
         NSString *str1 = userModel.userName;
         NSString *str2 = userModel.targetUserName;
@@ -67,4 +64,35 @@
         _comments.attributedText = attr;
 
 }
+//- (void)requestReplyData :(CommentUserModel *)commentUserModel text:(NSString *)text{
+
+- (IBAction)ThumbupbtnClick {
+    NSLog(@"secondHandId==%@", _model.secondHandId);
+    NSLog(@"commentId==%@", _userModel.commentId);
+    [HomeHttpManager requestSecondHandId:_model.secondHandId
+                               commentId:_userModel.commentId
+                                      success:^(id response) {
+                                          
+                                          if (self.commentSuccessBlock) {
+                                              self.commentSuccessBlock(response);
+                                          }
+                                          
+//                                     //状态码
+//                                     NSString *status = [response objectForKey:@"status"];
+//                                     if ([status integerValue]==0) {
+//                                         //这个代码放在网络请求的成功回调里面
+//                                         if (self.commentSuccessBlock) {
+//                                             self.commentSuccessBlock(response);
+//                                         }
+//                                     }
+                                 } failure:^(NSError *error, NSString *message) {
+                                     
+                                 }];
+    
+}
+
+
+- (IBAction)commentsBtnClick {
+}
+
 @end

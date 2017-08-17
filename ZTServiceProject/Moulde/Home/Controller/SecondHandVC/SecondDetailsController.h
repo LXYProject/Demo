@@ -10,8 +10,9 @@
 #import "SecondUserCell.h"  
 
 @interface SecondDetailsController : BaseViewController
-@property (nonatomic,strong)SecondHandModel *model;
 
+@property (nonatomic, strong) SecondHandModel *model;
+@property (nonatomic,copy) NSString *secondHandId;
 
 
 @end

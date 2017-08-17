@@ -44,6 +44,7 @@
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.label.text = @"正在加载";
+
 }
 
 // 我发布的求助
@@ -76,6 +77,20 @@
                                            [_hud hideAnimated:YES];
                                        }];
     
+}
+
+//修改求助状态
+- (void)request{
+    //    0--发布中
+    //    1--暂停
+    //    9--删除
+    [NearByHttpManager rqeuestAppealId:@""
+                                status:0
+                               success:^(id response) {
+                               
+                               } failure:^(NSError *error, NSString *message) {
+                               
+                               }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

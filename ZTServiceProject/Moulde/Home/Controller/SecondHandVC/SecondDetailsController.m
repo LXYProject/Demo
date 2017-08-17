@@ -32,6 +32,7 @@
 @implementation SecondDetailsController
 {
     NSArray *imageNames;
+    NSString *_secondHandId;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -82,6 +83,8 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification object:nil];
 
+    // 二手物品Id
+    _secondHandId = self.model.secondHandId;
 }
 
 - (void)rightBarClick
@@ -229,6 +232,22 @@
     }else if(indexPath.row==1){
         CommentContentCell *cell = (CommentContentCell *)[self creatCell:tableView indenty:@"CommentContentCell"];
         cell.model = self.model;
+       // @weakify(self);
+        cell.commentSuccessBlock = ^(id obj) {
+            //@strongify(self);
+            //操作失败的原因
+           // NSString *information = [obj objectForKey:@"information"];
+            //状态码
+            NSString *status = [obj objectForKey:@"status"];
+            
+            if ([status integerValue]==0) {
+                
+                //[AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+            }else{
+                //[AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+            }
+
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
@@ -246,6 +265,12 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:indenty owner:nil options:nil] lastObject];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -306,9 +331,22 @@
 
 //收藏
 - (IBAction)collectionBtnClick {
-    [HomeHttpManager requestSecondHandId:@""
+    @weakify(self);
+    [HomeHttpManager requestSecondHandId:_secondHandId
                                  success:^(id response) {
-                                 
+                                     @strongify(self);
+                                     //操作失败的原因
+                                     NSString *information = [response objectForKey:@"information"];
+                                     //状态码
+                                     NSString *status = [response objectForKey:@"status"];
+                                     
+                                     if ([status integerValue]==0) {
+                                         
+                                         [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                     }else{
+                                         [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                     }
+                                     [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
                                  } failure:^(NSError *error, NSString *message) {
                                  
                                  }];
@@ -320,6 +358,7 @@
     self.keyBoardToolsView.hidden = NO;
     self.commentTextField.placeholder = @"评论";
     [self.commentTextField becomeFirstResponder];
+    
 }
 
 //我想要
@@ -365,14 +404,57 @@
     return _senderBtn;
 }
 
-
+//留言
 - (void)sendBtnClick {
     [self.commentTextField endEditing:YES];
     NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
     if ([self.commentTextField.text stringByTrimmingCharactersInSet:set].length>0) {
         NSLog(@"没有空格");
         //[self requestReplyData:_currentCommentModel text:self.commentTextField.text];
+        [self requestSecondHandId:_secondHandId comment:self.commentTextField.text];
     }
     
 }
+
+
+//点赞
+- (void)requestThumbsUp{
+    [HomeHttpManager requestSecondHandId:@""
+                               commentId:@""
+     
+                                 success:^(id response) {
+                                     
+                                 } failure:^(NSError *error, NSString *message) {
+                                     
+                                 }];
+}
+
+//评论
+- (void)requestSecondHandId:(NSString *)secondHandId comment:(NSString *)comment{
+    @weakify(self);
+    [HomeHttpManager requestSecondHandId:secondHandId
+                                 comment:comment
+     
+                                 success:^(id response) {
+                                     NSLog(@"response==%@", response);
+                                     
+                                     @strongify(self);
+                                     //操作失败的原因
+                                     NSString *information = [response objectForKey:@"information"];
+                                     //状态码
+                                     NSString *status = [response objectForKey:@"status"];
+                                     
+                                     if ([status integerValue]==0) {
+                                         
+                                         [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                     }else{
+                                         [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                                     }
+                                     [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                     
+                                 } failure:^(NSError *error, NSString *message) {
+                                     
+                                 }];
+}
+
 @end

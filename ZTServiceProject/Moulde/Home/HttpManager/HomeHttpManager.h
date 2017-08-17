@@ -48,6 +48,46 @@ typedef enum : NSUInteger {
                  failure:(HttpRequestFailure)failure;
 
 
+//出租
++ (void)requestHouseId:(NSString *)houseId
+           houseNumber:(NSString *)houseNumber
+            buildingId:(NSString *)buildingId
+          buildingName:(NSString *)buildingName
+             villageId:(NSString *)villageId
+           villageName:(NSString *)villageName
+          isMaisonette:(NSString *)isMaisonette
+             houseType:(NSString *)houseType
+           heatingMode:(NSString *)heatingMode
+         elevatorRatio:(NSString *)elevatorRatio
+           hasElevator:(int)hasElevator
+            houseFloor:(int)houseFloor
+              floorAll:(int)floorAll
+              rentArea:(double)rentArea
+             direction:(NSString *)direction
+            isBasement:(int)isBasement
+          houseFitment:(NSString *)houseFitment
+           houseUseful:(NSString *)houseUseful
+             housePics:(NSString *)housePics
+                cityId:(NSString *)cityId
+              cityName:(NSString *)cityName
+            districtId:(NSString *)districtId
+          districtName:(NSString *)districtName
+            provinceId:(NSString *)provinceId
+          provinceName:(double)provinceName
+                     x:(double)x
+                     y:(double)y
+              roadName:(NSString *)roadName
+               address:(NSString *)address
+             rentPrice:(double)rentPrice
+           partOrTotal:(int)partOrTotal
+       basicFacilities:(NSString *)basicFacilities
+    extendedFacilities:(NSString *)extendedFacilities
+             rentLimit:(NSString *)rentLimit
+           description:(NSString *)description
+               success:(HttpRequestSuccess)success
+               failure:(HttpRequestFailure)failure;
+
+
 
 //停止出租
 +(void)requestHouseRentId:(NSString *)houseRentId
@@ -112,11 +152,11 @@ typedef enum : NSUInteger {
              resName:(NSString *)resName
                    x:(NSString *)x
                    y:(NSString *)y
-            oriPrice:(NSString *)oriPrice
-            secPrice:(NSString *)secPrice
-            delivery:(NSString *)delivery
+            oriPrice:(double)oriPrice
+            secPrice:(double)secPrice
+            delivery:(int)delivery
              classId:(NSString *)classId
-            newOrOld:(NSString *)newOrOld
+            newOrOld:(double)newOrOld
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure;
 

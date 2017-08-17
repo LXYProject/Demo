@@ -8,7 +8,7 @@
 
 #import "MKPAlertView.h"
 // AlertW 宽
-#define AlertW 280
+#define AlertW SCREEN_WIDTH-40  //280
 // 各个栏目之间的距离
 #define MKPSpace 10.0
 
@@ -42,7 +42,7 @@
         self.alertView = [[UIView alloc]init];
         self.alertView.backgroundColor = [UIColor whiteColor];
         self.alertView.layer.cornerRadius = 5.0;
-        self.alertView.frame = CGRectMake(0, 0, AlertW, 100);
+        self.alertView.frame = CGRectMake(20, 0, AlertW, 100);
         self.alertView.layer.position = self.center;
         
         if(title)
@@ -72,15 +72,20 @@
         }
         
         self.lineView = [[UIView alloc] init];
-        self.lineView.frame = self.msgLbl?CGRectMake(0, CGRectGetMaxY(self.msgLbl.frame)+2*MKPSpace, AlertW, 1):CGRectMake(0, CGRectGetMaxY(self.titleLbl.frame)+2*MKPSpace, AlertW, 1);
+        //减10
+        //self.lineView.frame = self.msgLbl?CGRectMake(0, CGRectGetMaxY(self.msgLbl.frame)+2*MKPSpace, AlertW, 1):CGRectMake(0, CGRectGetMaxY(self.titleLbl.frame)+2*MKPSpace, AlertW, 1);
+        self.lineView.frame = self.msgLbl?CGRectMake(0, 53.33, AlertW, 1):CGRectMake(0, 53.33, AlertW, 1);
         self.lineView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
+        //self.lineView.backgroundColor = UIColorFromRGB(0xe64451);
         [self.alertView addSubview:self.lineView];
         
         //两个按钮
         if (cancleTitle && sureTitle) {
             
             self.cancleBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-            self.cancleBtn.frame = CGRectMake(0, CGRectGetMaxY(self.lineView.frame), (AlertW-1)/2, 40);
+            //self.cancleBtn.frame = CGRectMake(0, CGRectGetMaxY(self.lineView.frame), (AlertW-1)/2, 40);
+            self.cancleBtn.frame = CGRectMake(0, 53.33, (AlertW-1)/2, 50);
+
             [self.cancleBtn setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateNormal];
             [self.cancleBtn setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateSelected];
             [self.cancleBtn setTitle:cancleTitle forState:UIControlStateNormal];
@@ -107,7 +112,9 @@
         if(sureTitle && cancleTitle){
             
             self.sureBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-            self.sureBtn.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame), CGRectGetMaxY(self.lineView.frame), (AlertW-1)/2+1, 40);
+            //self.sureBtn.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame), CGRectGetMaxY(self.lineView.frame), (AlertW-1)/2+1, 50);
+            self.sureBtn.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame)-1, 53.33, (AlertW-1)/2+1, 50);
+
             // 该背景色
 //            [self.sureBtn setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:192/255.0 blue:203/255.0 alpha:0.2]] forState:UIControlStateNormal];
             [self.sureBtn setBackgroundColor:[UIColor redColor]];

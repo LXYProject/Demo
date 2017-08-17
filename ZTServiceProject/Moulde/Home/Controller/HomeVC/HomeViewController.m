@@ -13,14 +13,16 @@
 #import "SectionHeaderCell.h"
 #import "ProductItemCell.h"
 #import "NearByHeaderCell.h"
-#import "HomeHttpManager.h"
 #import "secondHandCell.h"
 #import "NearByHttpManager.h"
 #import "NearByCell.h"
 #import "SecondHandViewController.h"
-#import "RentHouseModel.h"
+#import "ServiceDetailsController.h"
+#import "HelpDetailsController.h"
 #import "CityListViewController.h"
 #import "CoreLocation/CoreLocation.h"
+#import "RentHouseModel.h"
+#import "HomeHttpManager.h"
 
 #define ScrollDistance  100
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate, CLLocationManagerDelegate, CityListViewDelegate>
@@ -374,10 +376,13 @@
         if (_nearBySelectIndex==1) {
             ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
             cell.serviceModel = self.dataSource[indexPath.row-2];
-            return cell;        }
-        ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
-        cell.model = self.dataSource[indexPath.row-2];
-        return cell;
+            return cell;
+        }else{
+            ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+            cell.model = self.dataSource[indexPath.row-2];
+            return cell;
+        }
+
     }
 }
 
@@ -433,7 +438,22 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    if (indexPath.section==2) {
+        if (_nearBySelectIndex==0) {
+            [PushManager pushViewControllerWithName:@"ServiceDetailsController" animated:YES block:^(ServiceDetailsController* serviceDetailsVC) {
+                serviceDetailsVC.model = self.dataSource[indexPath.row];
+            }];
+
+        }else{
+            [PushManager pushViewControllerWithName:@"HelpDetailsController" animated:YES block:^(HelpDetailsController* helpDetailsVC) {
+                helpDetailsVC.model = self.dataSource[indexPath.row];
+            }];
+        }
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     

@@ -118,7 +118,7 @@
 //        [self reloadData];
 //    });
 
-//    [self switchButton];
+    [self switchButton];
     [self createMenuBtn];
 }
 - (void)leftBarClick
@@ -152,8 +152,8 @@
     self.btn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.btn.frame = CGRectMake(SCREEN_WIDTH-80, 60, 50, 50);
     //[self.btn setTitle:@"触摸" forState:UIControlStateNormal];
-    [self.btn setBackgroundImage:[UIImage imageNamed:@"否"] forState:UIControlStateNormal];
-    [self.btn setBackgroundImage:[UIImage imageNamed:@"是"] forState:UIControlStateSelected];
+    [self.btn setBackgroundImage:[UIImage imageNamed:@"zbfw_qhdt"] forState:UIControlStateNormal];
+    [self.btn setBackgroundImage:[UIImage imageNamed:@"zbfw_qhlb"] forState:UIControlStateSelected];
     [self.btn addTarget:self action:@selector(dragMoving:withEvent: )forControlEvents: UIControlEventTouchDragInside];
     [self.btn addTarget:self action:@selector(doClick:) forControlEvents:UIControlEventTouchUpInside];
     self.a=0;
@@ -181,11 +181,11 @@
 - (void)createMenuBtn{
     _ISShowMenuButton = NO;
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-70, SCREEN_HEIGHT-180, 55, 55)];
-    button.layer.cornerRadius = 27.5;
-    button.backgroundColor = [UIColor greenColor];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-80, SCREEN_HEIGHT-190, 50, 50)];
+//    button.layer.cornerRadius = 27.5;
+//    button.backgroundColor = [UIColor greenColor];
     [button addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"main_button"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"zbfw_yjfb"] forState:UIControlStateNormal];
     button.tag = 1000;
     [self.view addSubview:button];
     

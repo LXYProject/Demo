@@ -19,6 +19,8 @@
 #import "CommentPhotoCell.h"
 #import "SecondAddressCell.h"
 #import "SecondHandModel.h"
+#import "SecondDetailsController.h"
+
 @interface SecondHandViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -47,13 +49,6 @@
 //
     
 //    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardDidHideNotification object:nil];
-    
-    
-    
-    
-    //    NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
-    //    self.secondCellDataSource = modelArray;
-    //    [self.tableView reloadData];
     
     //创建数据源
     NSDictionary *dict = @{
@@ -685,6 +680,7 @@
                                        }
                                    ]
                            };
+    
 //        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
 //        self.secondCellDataSource = modelArray;
 //        [self.tableView reloadData];
@@ -693,13 +689,12 @@
 }
 
 
-
-
-
 - (void)rightBarClick
 {
     [PushManager pushViewControllerWithName:@"ReleaseViewController" animated:YES block:nil];
 }
+
+
 //请求collectView的数据
 - (void)requestDataSecondCellData {
     @weakify(self);
@@ -754,7 +749,7 @@
         return [self sectionTwoTableView:tableView indexPath:indexPath];
     }
     else {
-    return [self sectionThirdrdTableView:tableView indexPath:indexPath];
+        return [self sectionThirdrdTableView:tableView indexPath:indexPath];
     }
 }
 
@@ -826,6 +821,7 @@
     }
 
 }
+
 //公共创建cell的方法
 - (UITableViewCell *)creatCell:(UITableView *)tableView indenty:(NSString *)indenty {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indenty];
@@ -833,6 +829,22 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:indenty owner:nil options:nil] lastObject];
     }
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if (indexPath.section>2) {
+       
+        [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
+            viewController.model = self.secondCellDataSource[indexPath.section];
+
+            //viewController.secondHandId = [self.secondCellDataSource[indexPath.section] secondHandId];
+        }];
+    }
+
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

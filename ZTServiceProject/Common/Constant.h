@@ -232,7 +232,7 @@
 // 收藏
 #define A_keep                  @"?service=secondHand&function=keep"
 // 评论
-#define A_secondreply           @"?service=secondHand&function=reply"
+#define A_secondReply           @"?service=secondHand&function=reply"
 // 对评论回复
 #define A_replyComment          @"?service=secondHand&function=replyComment"
 // 查询

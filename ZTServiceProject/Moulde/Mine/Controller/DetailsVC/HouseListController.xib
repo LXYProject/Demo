@@ -21,21 +21,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pyG-Tc-86Q">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="59" width="375" height="608"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="fEY-ym-q5f"/>
                         <outlet property="delegate" destination="-1" id="PxO-hO-5Ph"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wd_tjfw3.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-oU-ypZ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="PCl-QU-7Cx"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="pyG-Tc-86Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2ue-Xi-HBa"/>
+                <constraint firstItem="pyG-Tc-86Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="59" id="2ue-Xi-HBa"/>
+                <constraint firstAttribute="trailing" secondItem="Tf2-oU-ypZ" secondAttribute="trailing" id="CGq-sp-bi9"/>
                 <constraint firstItem="pyG-Tc-86Q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SDw-a3-hW4"/>
+                <constraint firstItem="Tf2-oU-ypZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dxF-rB-IeN"/>
                 <constraint firstAttribute="trailing" secondItem="pyG-Tc-86Q" secondAttribute="trailing" id="qIY-nb-C7c"/>
+                <constraint firstItem="Tf2-oU-ypZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sJ5-Al-Odj"/>
                 <constraint firstAttribute="bottom" secondItem="pyG-Tc-86Q" secondAttribute="bottom" id="ucK-If-oPP"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="wd_tjfw3.png" width="375" height="49"/>
+    </resources>
 </document>

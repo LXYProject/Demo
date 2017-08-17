@@ -165,19 +165,33 @@
         cell.model = self.attentionZonesDataSource[indexPath.row];
         cell.type = CancelAttention_Type;
         [cell.completionBtn setTitle:@"取消关注" forState:UIControlStateNormal];
-    }
-    @weakify(self);
-    cell.btnClickBlock = ^(UIButton *sender) {
-        @strongify(self);
-        if (cell.type==completion_Type) {
-            NSLog(@"补全物业信息");
-        }else{
-            NSLog(@"取消关注");
-            [self requestCancelVillage:[self.myZonesDataSource[indexPath.row] zoneId]];
-        }
         
-    };
+        @weakify(self);
+        cell.btnClickBlock = ^(UIButton *sender) {
+            @strongify(self);
+            NSLog(@"取消关注");
+            [self requestCancelVillage:[self.attentionZonesDataSource[indexPath.row] zoneId]];
+            NSLog(@"删除zoneId==%@", [self.attentionZonesDataSource[indexPath.row] zoneId]);
+            NSLog(@"row==%ld", (long)indexPath.row);
+        };
+        
+    }
+
     return cell;
+    
+//    @weakify(self);
+//    cell.btnClickBlock = ^(UIButton *sender) {
+//        @strongify(self);
+//        if (cell.type==completion_Type) {
+//            NSLog(@"补全物业信息");
+//        }else{
+//            NSLog(@"取消关注");
+//            [self requestCancelVillage:[self.myZonesDataSource[indexPath.row] zoneId]];
+//            NSLog(@"删除zoneId==%@", [self.myZonesDataSource[indexPath.row] zoneId]);
+//            NSLog(@"row==%ld", (long)indexPath.row);
+//        }
+//        
+//    };
     
 }
 

@@ -15,6 +15,7 @@
 #import "DataPickerViewOneDemo.h"
 #import "LocationChoiceController.h"
 #import "ReleaseClassifiedController.h"
+#import "ACMediaModel.h"
 
 //#define btnY 440
 //#define labelY 428
@@ -28,6 +29,8 @@
 
 @property (nonatomic, copy)NSString* oldAndNew;
 
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
+
 @end
 
 @implementation ReleaseViewController
@@ -40,9 +43,19 @@
     NSString *_babyTitle;
     NSString *_price;
     NSString *_content;
-
+    
+    double oriPrice;
+    double secPrice;
+    NSString *_resourceId;
+    int delivery;    //是否支持快递
+    double newOrOld; //新旧程度
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+}
 - (void)setOtherClass:(NSString *)otherClass{
     _otherClass = otherClass;
     [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -68,34 +81,12 @@
     _switchArray = @[@"新旧 :",
                      @"支持快递 :",
                      @"原价（元）:"];
-
-
+    
     [self createUI];
 }
 - (void)rightBarClick
 {
-    NSLog(@"二手物品发布");
-    [HomeHttpManager requestTitle:_babyTitle
-                          content:_content
-                         pictures:@""
-                           cityId:@""
-                       districtId:@""
-                          address:self.locationInfo
-                            resId:@""
-                          resName:@""
-                                x:@""
-                                y:@""
-                         oriPrice:@""
-                         secPrice:@""
-                         delivery:@""
-                          classId:@""
-                         newOrOld:@""
-                          success:^(id response) {
-                              
-                          } failure:^(NSError *error, NSString *message) {
-                              
-                          }];
-
+    
 }
 
 - (void)createUI
@@ -132,7 +123,56 @@
 
 - (void)submitCLick
 {
-    NSLog(@"submitCLick");
+    NSLog(@"二手物品发布");
+    NSLog(@"newOrOld==%f",newOrOld);
+    NSLog(@"delivery==%d",delivery);
+    if (_babyTitle.length>0 && _content.length>0  && _price.length>0) {
+        @weakify(self);
+        [HomeHttpManager requestTitle:_babyTitle
+                              content:_content
+                             pictures:_resourceId
+                               cityId:@"11000"
+                           districtId:@"110108"
+                              address:self.locationInfo
+                                resId:@"510018177815"
+                              resName:@"岷阳小区"
+                                    x:@"116.32"
+                                    y:@"39.98"
+                             oriPrice:oriPrice
+                             secPrice:secPrice
+                             delivery:delivery
+                              classId:@""
+                             newOrOld:newOrOld
+                              success:^(id response) {
+                                  
+                                  @strongify(self);
+                                  //操作失败的原因
+                                  NSString *information = [response objectForKey:@"information"];
+                                  //状态码
+                                  NSString *status = [response objectForKey:@"status"];
+                                  
+                                  if ([status integerValue]==0) {
+                                      [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                          if (buttonindex == HHAlertButtonOk) {
+                                              NSLog(@"ok");
+                                          }
+                                          else
+                                          {
+                                              NSLog(@"cancel");
+                                          }
+                                      }];
+                                  }else{
+                                      [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                  }
+
+                              } failure:^(NSError *error, NSString *message) {
+                                  
+                              }];
+        
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请完善信息" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
+
 }
 - (void)styleBtnClick:(UIButton *)button{
     button.selected = !button.selected;
@@ -175,10 +215,62 @@
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 
+}
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 //第1组
@@ -214,11 +306,22 @@
                 NSLog(@"obj==%@", obj);
                 _babyTitle = obj;
             };
+            if (_babyTitle.length>0) {
+                cell.content.text = _babyTitle;
+            }else{
+                cell.content.placeholder = @"填写品牌型号更容易被卖家买到";
+            }
         }else{
             cell.textFieldBlock = ^(id obj) {
                 NSLog(@"obj==%@", obj);
                 _price = obj;
+                secPrice =  [_price doubleValue];
             };
+            if (_price.length>0) {
+                cell.content.text = _price;
+            }else{
+                cell.content.placeholder = @"请输入价格";
+            }
         }
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
@@ -253,7 +356,7 @@
     }else{
         cell.textLabel.text = @"请选择位置信息";
     }
-    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+    cell.imageView.image = [UIImage imageNamed:@"dw"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
     }else{
@@ -295,8 +398,8 @@
         [cell.contentView addSubview:switchButton];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else{
+        cell.detailTextLabel.text = @"";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
@@ -316,9 +419,9 @@
     UISwitch *switchButton = (UISwitch*)sender;
     BOOL isButtonOn = [switchButton isOn];
     if (isButtonOn) {
-        //        showSwitchValue.text = @"是";
+        delivery = 0;
     }else {
-        //        showSwitchValue.text = @"否";
+        delivery = 1;
     }
 }
 
@@ -348,10 +451,24 @@
     }else if (indexPath.section==3){
         if (indexPath.row==0) {
             [[DataPickerViewOneDemo sharedPikerView]show];
-            [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"全新", @"九成新", @"八成新"]];
+            [DataPickerViewOneDemo sharedPikerView].title = @"选择新旧程度";
+            [[DataPickerViewOneDemo sharedPikerView] setDataSource:@[@"无所谓", @"全新", @"九成新", @"七成新", @"五成新", @"旧货"]];
             [DataPickerViewOneDemo sharedPikerView].pikerSelected = ^(NSString *dateStr) {
                 NSLog(@"date:%@",dateStr);
                 self.oldAndNew = dateStr;
+                if ([self.oldAndNew isEqualToString:@"无所谓"]) {
+                    newOrOld = 10.0;
+                }else if ([self.oldAndNew isEqualToString:@"全新"]){
+                    newOrOld = 1;
+                }else if ([self.oldAndNew isEqualToString:@"九成新"]){
+                    newOrOld = 0.9;
+                }else if ([self.oldAndNew isEqualToString:@"七成新"]){
+                    newOrOld = 0.7;
+                }else if ([self.oldAndNew isEqualToString:@"五成新"]){
+                    newOrOld = 0.5;
+                }else{
+                    newOrOld = 0.0;
+                }
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
             };
         }
@@ -399,4 +516,10 @@
     }
 }
 
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
+}
 @end

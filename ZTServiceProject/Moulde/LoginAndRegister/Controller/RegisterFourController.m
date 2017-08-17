@@ -33,6 +33,7 @@
 
     UIImage *_headImage;
     NSArray *_genderArr;
+    NSString *_resourceId;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -276,11 +277,44 @@
             if (image) {
                 //_selectPhoto = image;
                 _headImage = image;
+                
+                //上传图片
+                [self upHeadImage];
+                
                 //修改头像
-                [LoginHttpManager requestImage:_headImage
-                                       success:^(id response) {
-                } failure:^(NSError *error, NSString *message) {
-                }];
+                if (_resourceId.length>0) {
+                    
+                    @weakify(self);
+                    [LoginHttpManager requestImage:_resourceId
+                                           success:^(id response) {
+                                               
+                                               @strongify(self);
+                                               //操作失败的原因
+                                               NSString *information = [response objectForKey:@"information"];
+                                               //状态码
+                                               NSString *status = [response objectForKey:@"status"];
+                                               
+                                               if ([status integerValue]==0) {
+                                                   [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                                       if (buttonindex == HHAlertButtonOk) {
+                                                           NSLog(@"ok");
+                                                       }
+                                                       else
+                                                       {
+                                                           NSLog(@"cancel");
+                                                       }
+                                                   }];
+                                               }else{
+                                                   [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                               }
+                                               
+                                           } failure:^(NSError *error, NSString *message) {
+                                           }];
+
+                }else{
+                    [AlertViewController alertControllerWithTitle:@"提示" message:@"稍等" preferredStyle:UIAlertControllerStyleAlert controller:self];
+                }
+                
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
         }];
@@ -327,6 +361,52 @@
     }else{
         return;
     }
+}
+
+//
+- (void)upHeadImage{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+
+    NSData *imageData = UIImageJPEGRepresentation(_headImage, 0.5);
+        
+    [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        
+    NSString*size=@"1000";
+
+    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
+
+
+    [formData appendPartWithFormData:data name:@"size"];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -47,7 +47,7 @@ typedef enum : NSUInteger {
             houseName:(NSString *)houseName
                     x:(NSString *)x
                     y:(NSString *)y
-               images:(UIImage *)images
+               images:(NSString *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
 
@@ -75,7 +75,7 @@ typedef enum : NSUInteger {
                      userAddress:(NSString *)userAddress
                     userRealName:(NSString *)userRealName
                     userPhoneNum:(NSString *)userPhoneNum
-                          images:(UIImage *)images
+                          images:(NSString *)images
                          success:(HttpRequestSuccess)success
                          failure:(HttpRequestFailure)failure;
 

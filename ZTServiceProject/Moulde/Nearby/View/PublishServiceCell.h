@@ -10,4 +10,8 @@
 
 @interface PublishServiceCell : UITableViewCell
 
+@property (nonatomic,copy)Int_Block btnClickBlock;
+@property (nonatomic,assign)NSInteger selectIndex;
+
+
 @end

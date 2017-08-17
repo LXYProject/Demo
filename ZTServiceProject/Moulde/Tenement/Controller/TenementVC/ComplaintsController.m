@@ -11,10 +11,11 @@
 #import "AddPhotosCell.h"
 #import "ComplaintsCell.h"
 #import "TenementHttpManager.h"
+#import "ACMediaModel.h"
 
 @interface ComplaintsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
 @end
 
 @implementation ComplaintsController
@@ -25,6 +26,7 @@
     NSString *_affairDiscribe;//报事内容
     NSString *_userRealName;  //上报人的真实姓名
     NSString *_userPhoneNum;  //上报人的现用手机号
+    NSString *_resourceId;
 }
 
 - (void)viewDidLoad {
@@ -60,7 +62,7 @@
                                           userAddress:@"北京市 海淀区 财智大厦 c305室"
                                          userRealName:_userRealName
                                          userPhoneNum:_userPhoneNum
-                                               images:[UIImage imageNamed:@""]
+                                               images:_resourceId
                                               success:^(id response) {
                                                   @strongify(self);
                                                   //操作失败的原因
@@ -155,9 +157,60 @@
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+    
+}
+
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
     
 }
 
@@ -250,5 +303,10 @@
     return 1;
 }
 
-
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
+}
 @end

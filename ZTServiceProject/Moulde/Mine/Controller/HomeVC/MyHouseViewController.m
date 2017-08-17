@@ -797,22 +797,43 @@
     HouseBodyCell *cell = (HouseBodyCell *)[self creatCell:tableView indenty:@"HouseBodyCell"];
     if (indexPath.section==0) {
         cell.model = self.bindHousesDataSource[indexPath.row];
+        
+        @weakify(self);
+        cell.btnClickBlock = ^(UIButton *sender) {
+            // 取消绑定
+            @strongify(self);
+            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
+            NSLog(@"取消绑定houseId==%@", [self.bindHousesDataSource[indexPath.row] houseId]);
+            NSLog(@"%ld%ld", indexPath.section,indexPath.row);
+        };
     }else{
         cell.model = self.attentionHousesDataSource[indexPath.row];
-    }
-    @weakify(self);
-    cell.btnClickBlock = ^(UIButton *sender) {
-        // 取消绑定，取消关注
-        @strongify(self);
-        if (indexPath.section ==0) {
-            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
-        }
-        else {
-            // 取消绑定，取消关注
+        
+        @weakify(self);
+        cell.btnClickBlock = ^(UIButton *sender) {
+            // 取消关注
+            @strongify(self);
             [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] houseId]];
-        }
-    };
+            NSLog(@"取消关注houseId==%@", [self.bindHousesDataSource[indexPath.row] houseId]);
+            NSLog(@"%ld%ld", indexPath.section,indexPath.row);
+        };
+    }
     return cell;
+    
+    
+//    @weakify(self);
+//    cell.btnClickBlock = ^(UIButton *sender) {
+//        // 取消绑定，取消关注
+//        @strongify(self);
+//        if (indexPath.section ==0) {
+//            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
+//        }
+//        else {
+//            // 取消绑定，取消关注
+//            [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] houseId]];
+//        }
+//    };
+
     
 }
 

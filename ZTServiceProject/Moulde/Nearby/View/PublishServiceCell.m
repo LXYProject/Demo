@@ -9,6 +9,11 @@
 #import "PublishServiceCell.h"
 
 @implementation PublishServiceCell
+{
+    __weak IBOutlet UIButton *btn1;
+    __weak IBOutlet UIButton *btn2;
+    UIButton *_selectedBtn;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -21,4 +26,27 @@
     // Configure the view for the selected state
 }
 
+- (void)setSelectIndex:(NSInteger)selectIndex {
+    _selectIndex = selectIndex;
+    
+    if (selectIndex == 0) {
+        [self btnClick:btn1];
+    }
+    else {
+        [self btnClick:btn2];
+    }
+}
+
+
+- (IBAction)btnClick:(UIButton *)sender {
+    _selectedBtn.selected  = NO;
+    sender.selected = YES;
+    _selectedBtn = sender;
+    
+    NSInteger index = sender==btn1?0:1;
+    if (self.btnClickBlock) {
+        self.btnClickBlock(index);
+    }
+    
+}
 @end

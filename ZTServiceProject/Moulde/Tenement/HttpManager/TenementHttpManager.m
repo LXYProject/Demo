@@ -72,7 +72,7 @@
             houseName:(NSString *)houseName
                     x:(NSString *)x
                     y:(NSString *)y
-               images:(UIImage *)images
+               images:(NSString *)images
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure{
     
@@ -93,7 +93,7 @@
                                @"y":y?y:@"",
                                @"images":images?images:@""
                                };
-    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_lookvisitService paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_visitService paramter:paramter success:^(id response) {
         success(response);
         
     } failure:^(NSError *error, NSString *message) {
@@ -128,7 +128,7 @@
                                @"y":y?y:@"",
                                @"images":images?images:@""
                                };
-    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_publicAffairList paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_publicAffair paramter:paramter success:^(id response) {
         success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
@@ -145,7 +145,7 @@
                      userAddress:(NSString *)userAddress
                     userRealName:(NSString *)userRealName
                     userPhoneNum:(NSString *)userPhoneNum
-                          images:(UIImage *)images
+                          images:(NSString *)images
                          success:(HttpRequestSuccess)success
                          failure:(HttpRequestFailure)failure{
     

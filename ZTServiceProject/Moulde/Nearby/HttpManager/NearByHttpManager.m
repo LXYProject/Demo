@@ -76,13 +76,14 @@
 + (void)rqeuestTitle:(NSString *)title
              content:(NSString *)content
              address:(NSString *)address
-              online:(NSString *)online
+              online:(int)online
                price:(NSString *)price
                 unit:(NSString *)unit
           categoryId:(NSString *)categoryId
         categoryName:(NSString *)categoryName
                 area:(NSString *)area
               cityId:(NSString *)cityId
+          districtId:(NSString *)districtId
                    x:(NSString *)x
                    y:(NSString *)y
                resId:(NSString *)resId
@@ -94,13 +95,14 @@
     NSDictionary *paramter = @{@"title":title?title:@"",
                                @"content":content?content:@"",
                                @"address":address?address:@"",
-                               @"online":online?online:@"",
+                               @"online":@(online),
                                @"price":price?price:@"",
                                @"unit":unit?unit:@"",
                                @"categoryId":categoryId?categoryId:@"",
                                @"categoryName":categoryName?categoryName:@"",
                                @"area":area?area:@"",
                                @"cityId":cityId?cityId:@"",
+                               @"districtId":districtId?districtId:@"",
                                @"x":x?x:@"",
                                @"y":y?y:@"",
                                @"resId":resId?resId:@"",
@@ -261,12 +263,12 @@
 
 //修改发布的服务状态
 + (void)rqeuestServiceId:(NSString *)serviceId
-                  status:(NSString *)status
+                  status:(int)status
                  success:(HttpRequestSuccess)success
                  failure:(HttpRequestFailure)failure{
     
     NSDictionary *paramter = @{@"serviceId":serviceId?serviceId:@"",
-                               @"status":status?status:@""
+                               @"status":@(status)
                                };
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_cancelReleaseService paramter:paramter success:^(id response) {
         success(response);
@@ -279,12 +281,12 @@
 
 //修改求助状态
 + (void)rqeuestAppealId:(NSString *)appealId
-                 status:(NSString *)status
+                 status:(int)status
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure{
     
     NSDictionary *paramter = @{@"appealId":appealId?appealId:@"",
-                               @"status":status?status:@""
+                               @"status":@(status)
                                };
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_cancelReleaseAppeal paramter:paramter success:^(id response) {
         success(response);

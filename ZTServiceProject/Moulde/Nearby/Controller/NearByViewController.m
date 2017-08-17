@@ -12,6 +12,8 @@
 #import "NearByHttpManager.h"
 #import "TenementViewController.h"
 #import "NearByHomeViewController.h"
+#import "ServiceDetailsController.h"
+#import "HelpDetailsController.h"
 
 @interface NearByViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -183,6 +185,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (_isFindService) {
+        [PushManager pushViewControllerWithName:@"ServiceDetailsController" animated:YES block:^(ServiceDetailsController* serviceDetailsVC) {
+            serviceDetailsVC.model = self.dataSource[indexPath.section];
+        }];
+    }else{
+        [PushManager pushViewControllerWithName:@"HelpDetailsController" animated:YES block:^(HelpDetailsController* helpDetailsVC) {
+            helpDetailsVC.model = self.dataSource[indexPath.section];
+        }];
+    }
+
     //    @weakify(self);
     //    [PushManager pushViewControllerWithName:@"TenementViewController" animated:YES block:^(TenementViewController* viewController) {
     //        @strongify(self);

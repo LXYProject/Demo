@@ -20,8 +20,8 @@
 @interface DoorServiceController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSString* makeTimeStr;
+
 @property (nonatomic, strong) NSMutableArray *chooseImgArr;
-@property (nonatomic, strong) NSMutableArray *imgDataArr;
 @end
 
 @implementation DoorServiceController
@@ -34,7 +34,8 @@
     NSString *_serviceDiscribe;//报事内容
     NSString *_userRealName;   //上报人的真实姓名
     NSString *_userPhoneNum;   //上报人的现用手机号
-
+    NSString *_resourceId;
+    NSString *_serviceTime;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -75,15 +76,15 @@
                               serviceTitle:@"发送上门服务信息"
                            serviceDiscribe:_serviceDiscribe
                            serviceCategory:self.serviceType
-                               serviceTime:self.makeTimeStr
+                               serviceTime:_serviceTime
                                userAddress:@"北京市 海淀区 财智大厦 c305室"
                               userRealName:_userRealName
                               userPhoneNum:_userPhoneNum
                                    houseId:@"510002004020"
-                                 houseName:@"1单元 1层 1室"
-                                         x:@"2017-05-18"
-                                         y:@"2017-05-18"
-                                    images:[UIImage imageNamed:@""]
+                                 houseName:@"1单元 1层 2室"
+                                         x:@"116.32"
+                                         y:@"74.57"
+                                    images:_resourceId
                                    success:^(id response) {
                                        @strongify(self);
                                        //操作失败的原因
@@ -160,7 +161,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.textLabel.text = @"选择房屋";
-    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+    cell.imageView.image = [UIImage imageNamed:@"dw"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
     }else{
@@ -254,8 +255,9 @@
     }
     cell.textLabel.text = @"预约时间:";
     if (_data.length>0) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  %@", _data,_hour];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", _data,_hour];
         self.makeTimeStr = cell.detailTextLabel.text;
+        _serviceTime = [NSString stringWithFormat:@"%@:00", self.makeTimeStr];
     }else{
         cell.detailTextLabel.text = @"请选择上门时间";
     }
@@ -279,22 +281,62 @@
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
-        if(images.count==0) {
+        NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
             return;
         }
-        NSLog(@"images==%@", images);
         if (self.chooseImgArr.count>0) {
             [self.chooseImgArr removeAllObjects];
         }
         [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
         }];
-        // 多表单上传图片
-        //[self upImageArr];
         
+        // 上传图片
+        [self upImageArr];
     };
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 //公共创建cell的方法
@@ -359,6 +401,13 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
+}
+
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

@@ -99,6 +99,92 @@
 }
 
 
+//出租
++ (void)requestHouseId:(NSString *)houseId
+           houseNumber:(NSString *)houseNumber
+            buildingId:(NSString *)buildingId
+          buildingName:(NSString *)buildingName
+             villageId:(NSString *)villageId
+           villageName:(NSString *)villageName
+          isMaisonette:(NSString *)isMaisonette
+             houseType:(NSString *)houseType
+           heatingMode:(NSString *)heatingMode
+         elevatorRatio:(NSString *)elevatorRatio
+           hasElevator:(int)hasElevator
+            houseFloor:(int)houseFloor
+              floorAll:(int)floorAll
+              rentArea:(double)rentArea
+             direction:(NSString *)direction
+            isBasement:(int)isBasement
+          houseFitment:(NSString *)houseFitment
+           houseUseful:(NSString *)houseUseful
+             housePics:(NSString *)housePics
+                cityId:(NSString *)cityId
+              cityName:(NSString *)cityName
+            districtId:(NSString *)districtId
+          districtName:(NSString *)districtName
+            provinceId:(NSString *)provinceId
+          provinceName:(double)provinceName
+                     x:(double)x
+                     y:(double)y
+              roadName:(NSString *)roadName
+               address:(NSString *)address
+             rentPrice:(double)rentPrice
+           partOrTotal:(int)partOrTotal
+       basicFacilities:(NSString *)basicFacilities
+    extendedFacilities:(NSString *)extendedFacilities
+             rentLimit:(NSString *)rentLimit
+           description:(NSString *)description
+               success:(HttpRequestSuccess)success
+               failure:(HttpRequestFailure)failure{
+    
+    
+    NSDictionary *paramter = @{@"houseId":houseId?houseId:@"",
+                               @"houseNumber":houseNumber?houseNumber:@"",
+                               @"buildingId":buildingId?buildingId:@"",
+                               @"buildingName":buildingName?buildingName:@"",
+                               @"villageId":villageId?villageId:@"",
+                               @"villageName":villageName?villageName:@"",
+                               @"isMaisonette":isMaisonette?isMaisonette:@"",
+                               @"houseType":houseType?houseType:@"",
+                               @"heatingMode":heatingMode?heatingMode:@"",
+                               @"elevatorRatio":elevatorRatio?elevatorRatio:@"",
+                               @"hasElevator":@(hasElevator),
+                               @"houseFloor":@(houseFloor),
+                               @"floorAll":@(floorAll),
+                               @"rentArea":@(rentArea),
+                               @"direction":direction?direction:@"",
+                               @"isBasement":@(isBasement),
+                               @"houseFitment":houseFitment?houseFitment:@"",
+                               @"houseUseful":houseUseful?houseUseful:@"",
+                               @"housePics":housePics?housePics:@"",
+                               @"cityId":cityId?cityId:@"",
+                               @"cityName":cityName?cityName:@"",
+                               @"districtId":districtId?districtId:@"",
+                               @"districtName":districtName?districtName:@"",
+                               @"provinceId":provinceId?provinceId:@"",
+                               @"provinceName":@(provinceName),
+                               @"x":@(x),
+                               @"y":@(y),
+                               @"roadName":roadName?roadName:@"",
+                               @"address":address?address:@"",
+                               @"rentPrice":@(rentPrice),
+                               @"partOrTotal":@(partOrTotal),
+                               @"basicFacilities":basicFacilities?basicFacilities:@"",
+                               @"extendedFacilities":extendedFacilities?extendedFacilities:@"",
+                               @"rentLimit":rentLimit?rentLimit:@"",
+                               @"description":description?description:@"",
+                               };
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_rent paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
+
 //停止出租
 +(void)requestHouseRentId:(NSString *)houseRentId
                   houseId:(NSString *)houseId
@@ -236,11 +322,11 @@
              resName:(NSString *)resName
                    x:(NSString *)x
                    y:(NSString *)y
-            oriPrice:(NSString *)oriPrice
-            secPrice:(NSString *)secPrice
-            delivery:(NSString *)delivery
+            oriPrice:(double)oriPrice
+            secPrice:(double)secPrice
+            delivery:(int)delivery
              classId:(NSString *)classId
-            newOrOld:(NSString *)newOrOld
+            newOrOld:(double)newOrOld
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure{
     
@@ -254,11 +340,11 @@
                                @"resName":resName?resName:@"",
                                @"x":x?x:@"",
                                @"y":y?y:@"",
-                               @"oriPrice":oriPrice?oriPrice:@"",
-                               @"secPrice":secPrice?secPrice:@"",
-                               @"delivery":delivery?delivery:@"",
+                               @"oriPrice":@(oriPrice),
+                               @"secPrice":@(secPrice),
+                               @"delivery":@(delivery),
                                @"classId":classId?classId:@"",
-                               @"newOrOld":newOrOld?newOrOld:@"",
+                               @"newOrOld":@(newOrOld),
                                };
 
     [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_publish paramter:paramter success:^(id response) {
@@ -365,7 +451,7 @@
                                @"comment":comment?comment:@"",
                                };
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_secondreply paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_secondReply paramter:paramter success:^(id response) {
         success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);

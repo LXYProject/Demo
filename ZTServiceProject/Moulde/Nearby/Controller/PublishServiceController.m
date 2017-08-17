@@ -15,6 +15,7 @@
 #import "LocationChoiceController.h"
 #import "StaticlCell.h"
 #import "ReleaseHelpCell.h"
+#import "AddPhotosCell.h"
 
 #define  placeholderColor   [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9]
 #define LabelY 615
@@ -22,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,assign)CGFloat addPhotoHeight;
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
+@property (nonatomic,assign)NSInteger nearBySelectIndex;
 
 @end
 
@@ -32,13 +35,16 @@
     NSArray *_sectionThreeArr;
     
     NSString *_serviceTitle;
-    NSString *_online;
+    int  online;
     NSString *_price;
+    NSString *_resourceId;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
 
 }
 
@@ -76,28 +82,56 @@
 }
 
 - (IBAction)releaseBtnClick {
-    
-    // 发布
-    [NearByHttpManager rqeuestTitle:_serviceTitle
-                            content:self.content
-                            address:self.locationInfo
-                             online:_online
-                              price:_price
-                               unit:self.unitStr
-                         categoryId:self.categoryId
-                       categoryName:self.serviceTypeStr
-                               area:@""
-                             cityId:@""
-                                  x:@""
-                                  y:@""
-                              resId:@""
-                            resName:@""
-                             images:@""
-                            success:^(id response) {
-                            
-                            } failure:^(NSError *error, NSString *message) {
-                            
-                            }];
+    NSLog(@"online=%d", online);
+
+    if (_serviceTitle.length>0 && self.content.length>0 && _price.length>0 && self.unitStr.length>0 && self.categoryId.length>0 && self.serviceTypeStr>0) {
+       
+        // 发布
+        @weakify(self);
+        [NearByHttpManager rqeuestTitle:_serviceTitle
+                                content:self.content
+                                address:self.locationInfo
+                                 online:online
+                                  price:_price
+                                   unit:self.unitStr
+                             categoryId:self.categoryId
+                           categoryName:self.serviceTypeStr
+                                   area:@"110108"
+                                 cityId:@"11000"
+                             districtId:@"110108"
+                                      x:@"116.32"
+                                      y:@"39.98"
+                                  resId:@"510018177815"
+                                resName:@"岷阳小区"
+                                 images:_resourceId
+                                success:^(id response) {
+                                    
+                                    @strongify(self);
+                                    //操作失败的原因
+                                    NSString *information = [response objectForKey:@"information"];
+                                    //状态码
+                                    NSString *status = [response objectForKey:@"status"];
+                                    
+                                    if ([status integerValue]==0) {
+                                        [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                            if (buttonindex == HHAlertButtonOk) {
+                                                NSLog(@"ok");
+                                            }
+                                            else
+                                            {
+                                                NSLog(@"cancel");
+                                            }
+                                        }];
+                                    }else{
+                                        [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                    }
+                                } failure:^(NSError *error, NSString *message) {
+                                    
+                                }];
+
+    }else{
+        [AlertViewController alertControllerWithTitle:@"提示" message:@"请完善信息" preferredStyle:UIAlertControllerStyleAlert controller:self];
+    }
 }
 
 
@@ -134,14 +168,64 @@
                                     indexPath:(NSIndexPath *)indexPath {
 
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
-    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
-        self.addPhotoHeight = mediaHeight;
-        [self.tableView reloadData];
-    }];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 //第1组
@@ -151,12 +235,16 @@
     if (indexPath.row==0) {
         StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
         cell.title.text = @"我能";
-        cell.content.placeholder = @"为自己的服务起一个响亮的名字";
         cell.contentLeading.constant = 50;
         cell.textFieldBlock = ^(id obj) {
             NSLog(@"obj==%@", obj);
             _serviceTitle = obj;
         };
+        if (_serviceTitle.length>0) {
+            cell.content.text = _serviceTitle;
+        }else{
+            cell.content.placeholder = @"为自己的服务起一个响亮的名字";
+        }
         if (IS_IPHONE_4 || IS_IPHONE_5) {
             cell.title.font = [UIFont systemFontOfSize:13];
         }else{
@@ -167,11 +255,18 @@
         ReleaseHelpCell *cell = (ReleaseHelpCell *)[self creatCell:tableView indenty:@"ReleaseHelpCell"];
         cell.title.text = _sectionOneArr[indexPath.row-1];
         cell.describe.text = _sectionThreeArr[indexPath.row-1];
+    
         if (indexPath.row==2) {
             if (self.locationInfo.length>0) {
                 cell.describe.text = self.locationInfo;
             }else{
                 cell.describe.text = @"请选择地理位置";
+            }
+        }else{
+            if (self.content.length>0) {
+                cell.describe.text = self.content;
+            }else{
+                cell.describe.text = @"用图文详细描述你的服务";
             }
         }
         if (IS_IPHONE_4 || IS_IPHONE_5) {
@@ -188,6 +283,15 @@
                                    indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
         PublishServiceCell *cell = (PublishServiceCell *)[self creatCell:tableView indenty:@"PublishServiceCell"];
+        cell.selectIndex = self.nearBySelectIndex;
+        @weakify(self);
+        cell.btnClickBlock = ^(NSInteger value) {
+            @strongify(self);
+            self.nearBySelectIndex = value;
+            online = (int)value;
+            NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
+            [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if(indexPath.row==1){
@@ -332,6 +436,13 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
+}
+
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
 }
 
 @end

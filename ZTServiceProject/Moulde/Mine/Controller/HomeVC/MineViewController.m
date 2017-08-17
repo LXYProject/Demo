@@ -23,8 +23,10 @@
 {
     NSArray *_sectionOneTitle;
     NSArray *_sectionTwoTitle;
+    NSArray *_sectionThreeTitle;
     NSArray *_sectionOneImg;
     NSArray *_sectionTwoImg;
+    NSArray *_sectionThreeImg;
    
     NSString *_token;
     BOOL login;
@@ -39,19 +41,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.shadowImage = [Tools createImageWithColor:[UIColor clearColor]];
     
-    _sectionOneTitle = @[@"我的消息",
-                         @"我的邻里圈",
-                         @"我的发布"];
-    _sectionTwoTitle = @[@"我的房屋",
-                         @"我的小区",
-                         @"我的物业"];
-    _sectionOneImg = @[@"wd_wdxx",
-                       @"wd_wdllq",
-                       @"wd_wdfb"];
-    _sectionTwoImg= @[@"wd_wdfw",
-                      @"wd_wdxq",
-                      @"wd_wdwy"];
-    
+    _sectionOneTitle = @[@"我的消息", @"我的邻里圈", @"我的发布"];
+    _sectionTwoTitle = @[@"我的房屋", @"我的小区", @"我的物业"];
+    _sectionThreeTitle = @[@"服务订单", @"求助订单"];
+    _sectionOneImg = @[@"wd_wdxx", @"wd_wdllq", @"wd_wdfb"];
+    _sectionTwoImg= @[@"wd_wdfw", @"wd_wdxq", @"wd_wdwy"];
+    _sectionThreeImg = @[@"wd_fwdd", @"wd_qzdd"];
     _token = GetValueForKey(TokenKey);
     login = YES;
     
@@ -68,9 +63,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (login) {
-        if (section==0) {
+        if (section==0 || section==1) {
             return 2;
-        }else if (section==1 || section==4){
+        }else if (section==4){
             return 1;
         }else{
             return 3;
@@ -104,8 +99,25 @@
     }else{
         if (login) {
             if (indexPath.section==1) {
-                MineBtnCell *cell = (MineBtnCell *)[self creatCell:tableView indenty:@"MineBtnCell"];
+//                MineBtnCell *cell = (MineBtnCell *)[self creatCell:tableView indenty:@"MineBtnCell"];
+//                return cell;
+                static NSString *ID = @"cell";
+                // 根据标识去缓存池找cell
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+                // 不写这句直接崩掉，找不到循环引用的cell
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+                }
+                cell.textLabel.text = _sectionThreeTitle[indexPath.row];
+                cell.imageView.image = [UIImage imageNamed:_sectionThreeImg[indexPath.row]];
+                if (IS_IPHONE_4 || IS_IPHONE_5){
+                    cell.textLabel.font = [UIFont systemFontOfSize:13];
+                    
+                }else{
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                }
                 return cell;
+
             }else{
                 static NSString *ID = @"Cell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -122,16 +134,13 @@
                     cell.textLabel.text = @"设置";
                     cell.imageView.image = [UIImage imageNamed:@"wd_sz"];
                 }
-                if (IS_IPHONE_6){
-                    cell.textLabel.font = [UIFont systemFontOfSize:14];
-                }else if (IS_IPHONE_6p){
-                    cell.textLabel.font = [UIFont systemFontOfSize:14];
+                if (IS_IPHONE_4 || IS_IPHONE_5){
+                    cell.textLabel.font = [UIFont systemFontOfSize:13];
+                    
                 }else{
-                    cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+                    cell.textLabel.font = [UIFont systemFontOfSize:14];
                 }
-                
                 return cell;
-
             }
         }else{
             static NSString *ID = @"Cell";
@@ -149,14 +158,12 @@
                 cell.textLabel.text = @"设置";
                 cell.imageView.image = [UIImage imageNamed:@"wd_sz"];
             }
-            if (IS_IPHONE_6){
-                cell.textLabel.font = [UIFont systemFontOfSize:14];
-            }else if (IS_IPHONE_6p){
-                cell.textLabel.font = [UIFont systemFontOfSize:14];
+            if (IS_IPHONE_4 || IS_IPHONE_5){
+                cell.textLabel.font = [UIFont systemFontOfSize:13];
+
             }else{
-                cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+                cell.textLabel.font = [UIFont systemFontOfSize:14];
             }
-            
             return cell;
         }
 
@@ -230,7 +237,11 @@
         }else if (indexPath.section==4){
             [PushManager pushViewControllerWithName:@"SettingViewController" animated:YES block:nil];
         }else{
-            return;
+            if (indexPath.row==0) {
+                [PushManager pushViewControllerWithName:@"ServiceOrderController" animated:YES block:nil];
+            }else{
+                [PushManager pushViewControllerWithName:@"HelpOrderViewController" animated:YES block:nil];
+            }
         }
     }else{
         if (indexPath.section==1) {
@@ -267,9 +278,10 @@
                 return 72;
             }
         }else if (indexPath.section==1){
-            return 72;
+            //return 72;
+            return 50;
         }else{
-            return 44;
+            return 50;
         }
     }else{
         if (indexPath.section==0) {
@@ -279,7 +291,7 @@
                 return 72;
             }
         }else{
-            return 44;
+            return 50;
         }
     }
 }

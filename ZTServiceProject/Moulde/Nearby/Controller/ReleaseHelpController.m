@@ -13,6 +13,7 @@
 #import "StaticlCell.h"
 #import "ReleaseHelpCell.h"
 #import "LocationChoiceController.h"
+#import "AddPhotosCell.h"
 
 #define LabelY 515
 @interface ReleaseHelpController ()
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) NSMutableArray *timeDataSource;
 @property (nonatomic, strong) NSArray *timeDataArr;
 @property (nonatomic, copy) NSString *timeStr;
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
 @end
 
 @implementation ReleaseHelpController
@@ -31,7 +33,7 @@
     
     NSString *_helpTitle;
     NSString *_bounty;
-    NSString *_validDate;
+    NSString *_resourceId;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -93,22 +95,43 @@
 - (IBAction)releaseBtnClick {
     
     // 发布
+    @weakify(self);
     [NearByHttpManager rqeuestTitle:_helpTitle
-                            content:@""
+                            content:self.content    
                             address:self.locationInfo
                               price:_bounty
                          categoryId:self.categoryId
                        categoryName:self.serviceTypeStr
-                          validDate:_validDate
-                             cityId:@""
-                         districtId:@""
-                                  x:@""
-                                  y:@""
-                              resId:@""
-                            resName:@""
-                             images:@""
+                          validDate:self.timeStr
+                             cityId:@"11000"
+                         districtId:@"110108"
+                                  x:@"116.32"
+                                  y:@"39.98"
+                              resId:@"510018177815"
+                            resName:@"岷阳小区"
+                             images:_resourceId
                             success:^(id response) {
                             
+                                @strongify(self);
+                                //操作失败的原因
+                                NSString *information = [response objectForKey:@"information"];
+                                //状态码
+                                NSString *status = [response objectForKey:@"status"];
+                                
+                                if ([status integerValue]==0) {
+                                    [HHAlertView showAlertWithStyle:HHAlertStyleOk inView:self.view Title:@"Success" detail:information cancelButton:nil Okbutton:@"Sure" block:^(HHAlertButton buttonindex) {
+                                        if (buttonindex == HHAlertButtonOk) {
+                                            NSLog(@"ok");
+                                        }
+                                        else
+                                        {
+                                            NSLog(@"cancel");
+                                        }
+                                    }];
+                                }else{
+                                    [HHAlertView showAlertWithStyle:HHAlertStyleError inView:self.view Title:@"Error" detail:information cancelButton:nil Okbutton:@"I konw"];
+                                }
+
                             } failure:^(NSError *error, NSString *message) {
                             
                             }];
@@ -145,8 +168,62 @@
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+
+    
+}
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
     
 }
 
@@ -158,11 +235,15 @@
         StaticlCell *cell = (StaticlCell *)[self creatCell:tableView indenty:@"StaticlCell"];
         if (indexPath.row==0) {
             cell.title.text = @"我要";
-            cell.content.placeholder = @"我需要别人帮我做什么";
             cell.textFieldBlock = ^(id obj) {
                 NSLog(@"obj==%@", obj);
                 _helpTitle = obj;
             };
+            if (_helpTitle.length>0) {
+                cell.content.text = _helpTitle;
+            }else{
+                cell.content.placeholder = @"我需要别人帮我做什么";
+            }
         }else{
             cell.title.text = @"赏金";
             cell.content.placeholder = @"我愿意支付的报酬（元）";
@@ -177,7 +258,11 @@
         ReleaseHelpCell *cell = (ReleaseHelpCell *)[self creatCell:tableView indenty:@"ReleaseHelpCell"];
         if (indexPath.row==1) {
             cell.title.text = @"描述";
-            cell.describe.text = @"说一下具体的求助信息，清楚明确的";
+            if (self.content.length>0) {
+                cell.describe.text = self.content;
+            }else{
+                cell.describe.text = @"说一下具体的求助信息，清楚明确的";
+            }
         }else if (indexPath.row==3){
             cell.title.text = @"我在";
             if (self.locationInfo.length>0) {
@@ -221,7 +306,7 @@
     if (indexPath.section==1) {
         if (indexPath.row==0) {
         }else if (indexPath.row==1){
-            
+            [PushManager pushViewControllerWithName:@"HelpDescriptionController" animated:YES block:nil];
         }else if (indexPath.row==2){
             
         }else if (indexPath.row==3){
@@ -268,4 +353,12 @@
     }
     return _timeDataSource;
 }
+
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
+}
+
 @end

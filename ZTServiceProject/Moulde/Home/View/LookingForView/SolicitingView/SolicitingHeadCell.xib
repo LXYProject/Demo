@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请填写租金" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXE-yI-mpY">
-                        <rect key="frame" x="63" y="13.5" width="208" height="17"/>
+                        <rect key="frame" x="63" y="13.5" width="228" height="17"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -41,7 +41,7 @@
                     <constraint firstItem="asM-Ef-8am" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Fgo-OO-sic"/>
                     <constraint firstItem="fXE-yI-mpY" firstAttribute="leading" secondItem="asM-Ef-8am" secondAttribute="trailing" constant="5" id="GL8-H7-UbN"/>
                     <constraint firstItem="X0l-3e-dIL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Sd3-ta-RNA"/>
-                    <constraint firstItem="X0l-3e-dIL" firstAttribute="leading" secondItem="fXE-yI-mpY" secondAttribute="trailing" constant="20" id="awR-pr-LqB"/>
+                    <constraint firstItem="X0l-3e-dIL" firstAttribute="leading" secondItem="fXE-yI-mpY" secondAttribute="trailing" id="awR-pr-LqB"/>
                     <constraint firstItem="fXE-yI-mpY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="b2E-0O-Y8T"/>
                     <constraint firstItem="asM-Ef-8am" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gAJ-DS-vW0"/>
                     <constraint firstAttribute="trailing" secondItem="X0l-3e-dIL" secondAttribute="trailing" id="uxw-Gh-seJ"/>

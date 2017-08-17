@@ -14,10 +14,11 @@
 #import "TenementHttpManager.h"
 #import "PublicTypeController.h"
 #import "LocationChoiceController.h"
+#import "ACMediaModel.h"
 
 @interface PublicThingsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic, strong) NSMutableArray *chooseImgArr;
 @end
 
 @implementation PublicThingsController
@@ -27,7 +28,7 @@
     NSString *_affairDiscribe;//报事内容
     NSString *_userRealName;  //上报人的真实姓名
     NSString *_userPhoneNum;  //上报人的现用手机号
-
+    NSString *_resourceId;
 }
 
 - (void)setLocationInfo:(NSString *)locationInfo{
@@ -62,13 +63,13 @@
         @weakify(self);
         [TenementHttpManager requestZoneId:self.zoneId
                                affairTitle:@"公共报事"
-                            affairDiscribe:_affairDiscribe
+                            affairDiscribe:@"公共环境"//_affairDiscribe
                             affairCategory:@"1"
                                userAddress:self.locationInfo
                               userRealName:_userRealName
                               userPhoneNum:_userPhoneNum
-                                         x:@"2017-05-18"
-                                         y:@"2017-05-18"
+                                         x:@"116.32"
+                                         y:@"74.57"
                                     images:[UIImage imageNamed:@""]
                                    success:^(id response) {
                                        @strongify(self);
@@ -171,13 +172,65 @@
 //第2组
 - (UITableViewCell *)sectionTwoTableView:(UITableView *)tableView
                                indexPath:(NSIndexPath *)indexPath {
-    
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
+        
+        if (images.count==0) {
+            return;
+        }
+        if (self.chooseImgArr.count>0) {
+            [self.chooseImgArr removeAllObjects];
+        }
+        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            ACMediaModel *model = obj;
+            [self.chooseImgArr addObject:model.image];
+        }];
+        
+        // 上传图片
+        [self upImageArr];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+
+}
+
+// 多表单上传图片
+- (void)upImageArr{
+    
+    
+    AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
+    
+    NSDictionary *paramter = @{};
+    
+    NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
+    [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        for(UIImage *image in self.chooseImgArr) {
+            NSData *imageData = UIImageJPEGRepresentation(image, 1);
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //显示进度
+        
+    }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
+    }];
+    
 }
 
 //第3组
@@ -195,7 +248,7 @@
     }else{
         cell.textLabel.text = @"位置选择";
     }
-    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+    cell.imageView.image = [UIImage imageNamed:@"dw"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:13];
     }else{
@@ -280,6 +333,14 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
+}
+
+
+- (NSMutableArray *)chooseImgArr{
+    if (!_chooseImgArr) {
+        _chooseImgArr = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _chooseImgArr;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

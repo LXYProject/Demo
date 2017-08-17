@@ -79,18 +79,18 @@
 //    [self.dataSource addObjectsFromArray:modelArray];
 //    [self.tableView reloadData];
     
-//    [self.tableView setHeaderRefreshBlock:^{
-//        self.currentTopicId = @"";
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView setFooterRefreshBlock:^{
-//        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
-//            self.currentTopicId = [[self.dataSource lastObject] topicId];
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView beginHeaderRefreshing];
-//    
-//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentTopicId = @"";
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+            self.currentTopicId = [[self.dataSource lastObject] topicId];
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView beginHeaderRefreshing];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.label.text = @"正在加载";
 }
 

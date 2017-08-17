@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MakeAppointmentController">
+            <connections>
+                <outlet property="priceLabel" destination="Gb9-gs-3nb" id="TiI-aQ-euE"/>
+                <outlet property="tableView" destination="Ohr-hL-sf1" id="kGn-WE-cKR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ohr-hL-sf1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="LPr-4W-P1x"/>
+                        <outlet property="delegate" destination="-1" id="Wz6-ki-pNx"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZO-hs-s6W">
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计:  0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb9-gs-3nb">
+                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4Q-8u-6KW">
+                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                            <color key="backgroundColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="确认预约">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="confirmAppointBtnClick" destination="-1" eventType="touchUpInside" id="ibC-Eo-4b6"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="b4Q-8u-6KW" firstAttribute="width" secondItem="Gb9-gs-3nb" secondAttribute="width" id="AJV-Tt-d0c"/>
+                        <constraint firstAttribute="height" constant="50" id="CWR-Oi-4cf"/>
+                        <constraint firstItem="b4Q-8u-6KW" firstAttribute="top" secondItem="Gb9-gs-3nb" secondAttribute="top" id="WnI-JC-ewV"/>
+                        <constraint firstAttribute="trailing" secondItem="b4Q-8u-6KW" secondAttribute="trailing" id="gt5-NJ-fe9"/>
+                        <constraint firstItem="Gb9-gs-3nb" firstAttribute="leading" secondItem="hZO-hs-s6W" secondAttribute="leading" id="htP-C4-NkH"/>
+                        <constraint firstItem="b4Q-8u-6KW" firstAttribute="bottom" secondItem="Gb9-gs-3nb" secondAttribute="bottom" id="lNU-Hx-8Xd"/>
+                        <constraint firstItem="b4Q-8u-6KW" firstAttribute="leading" secondItem="Gb9-gs-3nb" secondAttribute="trailing" id="ntK-yF-uvk"/>
+                        <constraint firstAttribute="bottom" secondItem="b4Q-8u-6KW" secondAttribute="bottom" id="oW8-Ma-i7r"/>
+                        <constraint firstItem="b4Q-8u-6KW" firstAttribute="top" secondItem="hZO-hs-s6W" secondAttribute="top" id="wMu-fF-Ku5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hZO-hs-s6W" secondAttribute="bottom" id="1KY-9Y-W1F"/>
+                <constraint firstAttribute="trailing" secondItem="Ohr-hL-sf1" secondAttribute="trailing" id="2i1-jL-yap"/>
+                <constraint firstItem="hZO-hs-s6W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TPD-bX-zdE"/>
+                <constraint firstAttribute="trailing" secondItem="hZO-hs-s6W" secondAttribute="trailing" id="UhC-34-RKe"/>
+                <constraint firstItem="Ohr-hL-sf1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Uj0-4G-osf"/>
+                <constraint firstAttribute="bottom" secondItem="Ohr-hL-sf1" secondAttribute="bottom" id="VVe-QQ-kQL"/>
+                <constraint firstItem="Ohr-hL-sf1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ydc-PG-XSH"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

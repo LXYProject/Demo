@@ -29,15 +29,16 @@
     [self titleViewWithTitle:@"添加小区" titleColor:[UIColor whiteColor]];
     self.tableView.tableFooterView = [[UIView alloc]init];
 
-
     self.searchBar.layer.cornerRadius = _searchBar.bounds.size.width * 0.01;
     self.searchBar.layer.borderColor = [UIColor whiteColor].CGColor;
     self.searchBar.backgroundColor = UIColorFromRGB(0xE8E8E8);
+    self.searchBar.placeholder = @"  输入小区名进行搜索";
+    [self.searchBar setValue:[UIFont systemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    
     self.searchBtn.layer.masksToBounds = YES;
     self.searchBtn.layer.cornerRadius = _searchBtn.bounds.size.width * 0.01;
     self.searchBtn.layer.borderColor = [UIColor whiteColor].CGColor;
     self.searchBtn.backgroundColor = UIColorFromRGB(0xe64e51);
-    
     [self.searchBar addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 
 

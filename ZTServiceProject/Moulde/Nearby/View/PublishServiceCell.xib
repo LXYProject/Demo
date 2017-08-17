@@ -19,45 +19,63 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkM-gM-Cr4">
-                        <rect key="frame" x="20" y="14.5" width="60" height="70"/>
+                        <rect key="frame" x="30" y="27.5" width="36" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="QEp-Tx-s3R"/>
-                            <constraint firstAttribute="height" constant="70" id="oUy-Nq-mKz"/>
+                            <constraint firstAttribute="width" constant="36" id="QEp-Tx-s3R"/>
+                            <constraint firstAttribute="height" constant="44" id="oUy-Nq-mKz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title="当面服务">
+                        <state key="normal" backgroundImage="zb_fbfw1_normal.png">
                             <color key="titleColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <state key="selected" backgroundImage="zb_fbfe1_selected.png"/>
+                        <connections>
+                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2cx-AI-I1l"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjd-ip-BUq">
-                        <rect key="frame" x="95" y="47" width="130" height="5"/>
+                        <rect key="frame" x="81" y="47" width="158" height="5"/>
                         <color key="backgroundColor" red="0.69803921568627447" green="0.69803921568627447" blue="0.69803921568627447" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="4pj-S4-e0R"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eyy-Lc-M8S">
-                        <rect key="frame" x="240" y="15" width="60" height="70"/>
+                        <rect key="frame" x="254" y="28" width="36" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="OST-jw-Nwa"/>
-                            <constraint firstAttribute="height" constant="70" id="hV4-Q3-sXb"/>
+                            <constraint firstAttribute="width" constant="36" id="OST-jw-Nwa"/>
+                            <constraint firstAttribute="height" constant="44" id="hV4-Q3-sXb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <state key="normal" title="在线服务">
+                        <state key="normal" backgroundImage="zb_fbfw2_normal.png">
                             <color key="titleColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <state key="selected" backgroundImage="zb_fbfe2_selected.png"/>
+                        <connections>
+                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YSm-cA-1C5"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Eyy-Lc-M8S" firstAttribute="leading" secondItem="Bjd-ip-BUq" secondAttribute="trailing" constant="15" id="5M4-oX-itf"/>
                     <constraint firstItem="WkM-gM-Cr4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6MK-NX-JZK"/>
-                    <constraint firstItem="WkM-gM-Cr4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="8M6-FW-ljK"/>
-                    <constraint firstAttribute="trailing" secondItem="Eyy-Lc-M8S" secondAttribute="trailing" constant="20" id="K1f-2b-3uW"/>
+                    <constraint firstItem="WkM-gM-Cr4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="8M6-FW-ljK"/>
+                    <constraint firstAttribute="trailing" secondItem="Eyy-Lc-M8S" secondAttribute="trailing" constant="30" id="K1f-2b-3uW"/>
                     <constraint firstItem="Bjd-ip-BUq" firstAttribute="leading" secondItem="WkM-gM-Cr4" secondAttribute="trailing" constant="15" id="KPc-G2-5S8"/>
                     <constraint firstItem="Bjd-ip-BUq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O9G-5K-1pJ"/>
                     <constraint firstItem="Eyy-Lc-M8S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pJd-QK-bG5"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="btn1" destination="WkM-gM-Cr4" id="1Jd-fi-cr5"/>
+                <outlet property="btn2" destination="Eyy-Lc-M8S" id="7MS-qD-EHQ"/>
+            </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="zb_fbfe1_selected.png" width="36" height="44"/>
+        <image name="zb_fbfe2_selected.png" width="41" height="44"/>
+        <image name="zb_fbfw1_normal.png" width="36" height="44"/>
+        <image name="zb_fbfw2_normal.png" width="41" height="44"/>
+    </resources>
 </document>

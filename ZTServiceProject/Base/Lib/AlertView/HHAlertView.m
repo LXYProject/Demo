@@ -38,11 +38,12 @@ static selectButton STAblock;
 
 @property (nonatomic, strong) UIView *logoView;
 
+@property(nonatomic,strong)UIView *bgView;
+
 @end
 
 
 @implementation HHAlertView
-
 
 
 + (instancetype)shared
@@ -60,6 +61,7 @@ static selectButton STAblock;
 - (instancetype)init
 {
     self = [[HHAlertView alloc] initWithFrame:CGRectMake(([self getMainScreenSize].width-Mralertview_SIZE_WIDTH)/2, ([self getMainScreenSize].height-Mralertview_SIZE_HEIGHT)/2, Mralertview_SIZE_WIDTH, Mralertview_SIZE_HEIGHT)];
+    //self = [[HHAlertView alloc] initWithFrame:CGRectMake(([self getMainScreenSize].width-Mralertview_SIZE_WIDTH)/2, SCREEN_HEIGHT/2-180, Mralertview_SIZE_WIDTH, Mralertview_SIZE_HEIGHT)];
     self.alpha = 0;
     [self setBackgroundColor:[UIColor whiteColor]];
     
@@ -239,6 +241,8 @@ static selectButton STAblock;
         [_delegate didClickButtonAnIndex:HHAlertButtonCancel];
     }
     [HHAlertView Hide];
+    [self closeView];
+
 }
 
 - (void)dismissWithOk
@@ -252,11 +256,23 @@ static selectButton STAblock;
         [_delegate didClickButtonAnIndex:HHAlertButtonOk];
     }
     [HHAlertView Hide];
+    [self closeView];
+
+}
+
+- (void)closeView
+{
+    [self.bgView removeFromSuperview];
+    self.bgView = nil;
+    [self removeFromSuperview];
 }
 
 
 - (void)distory
 {
+    [self.bgView removeFromSuperview];
+    self.bgView = nil;
+    [self removeFromSuperview];
     
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha=0;
@@ -279,6 +295,21 @@ static selectButton STAblock;
 
 - (void)show
 {
+    #pragma mark ====展示view
+    if (self.bgView) {
+        return;
+    }
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    self.bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [self.bgView addGestureRecognizer:tap];
+    self.bgView.userInteractionEnabled = YES;
+    self.bgView.backgroundColor = [UIColor blackColor];
+    self.bgView.alpha = 0.4;
+    [window addSubview:self.bgView];
+    [window addSubview:self];
+
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha=1;
         self.layer.cornerRadius = 10;
@@ -292,10 +323,17 @@ static selectButton STAblock;
     
 }
 
+-(void)tap:(UIGestureRecognizer *)tap
+{
+//    [self.bgView removeFromSuperview];
+//    self.bgView = nil;
+//    [self removeFromSuperview];
+}
 
 + (void)Hide
 {
     [[self shared] distory];
+    
 }
 
 

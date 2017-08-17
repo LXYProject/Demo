@@ -51,7 +51,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-
+    
     [self titleViewWithTitle:@"新帖子" titleColor:[UIColor whiteColor]];
     [self rightItemWithNormalName:@"" title:@"发布" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     [self createUI];
@@ -61,7 +61,7 @@
 {
     NSLog(@"发布帖子");
     
-    if (self.textView.text.length>0 && _resourceId.length>0) {
+    if (self.textView.text.length>0) {
         
         @weakify(self);
         [MesssgeHttpManager requestContent:self.textView.text
@@ -96,7 +96,7 @@
                                    } failure:^(NSError *error, NSString *message) {
                                        
                                    }];
-
+        
     }else{
         [AlertViewController alertControllerWithTitle:@"提示" message:@"稍等" preferredStyle:UIAlertControllerStyleAlert controller:self];
     }
@@ -204,14 +204,14 @@
     }
     [cell.contentView addSubview:self.textView];
     return cell;
-
-//    PostContentCell *cell = (PostContentCell *)[self creatCell:tableView indenty:@"PostContentCell"];
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.textViewBlock = ^(id obj) {
-//        NSLog(@"obj==%@", obj);
-//        _affairDiscribe = obj;
-//    };
-//    return cell;
+    
+    //    PostContentCell *cell = (PostContentCell *)[self creatCell:tableView indenty:@"PostContentCell"];
+    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //    cell.textViewBlock = ^(id obj) {
+    //        NSLog(@"obj==%@", obj);
+    //        _affairDiscribe = obj;
+    //    };
+    //    return cell;
 }
 
 //第1组
@@ -236,8 +236,8 @@
         
         
         // 多表单上传图片
-        [self upImage];
-
+        [self upImageArr];
+        
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -263,7 +263,7 @@
         [_hud hideAnimated:YES];
         
         NSDictionary *dictResult = response[@"result"];
-
+        
         _resourceId = [dictResult objectForKey:@"resourceId"];
         
         NSLog(@"resourceId==%@", _resourceId);
@@ -276,7 +276,7 @@
 // 多表单上传图片
 - (void)upImageArr{
     
-
+    
     AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
     
     NSDictionary *paramter = @{};
@@ -285,42 +285,35 @@
     [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
         for(UIImage *image in self.chooseImgArr) {
             NSData *imageData = UIImageJPEGRepresentation(image, 1);
-            NSString *fileName = nil;
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"yyyyMMddHHmmss";
-            NSString *day = [formatter stringFromDate:[NSDate date]];
-            fileName = [NSString stringWithFormat:@"%@.%@",day,@"png"];
-            [formData appendPartWithFileData:imageData name:@"file" fileName:fileName mimeType:@"image/png"];
+            [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
         }
-    
-
-    
-//    NSString*size=@"1000";
-//    
-//    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
-//    
-//    
-//    [formData appendPartWithFormData:data name:@"size"];
-    
+        
+        //    NSString*size=@"1000";
+        //
+        //    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
+        //
+        //
+        //    [formData appendPartWithFormData:data name:@"size"];
+        
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-    //显示进度
-    
+        //显示进度
+        
     }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-    
-    //显示返回对象
-    NSLog(@"-------->%@",responseObject);
-    
-    NSDictionary *dictResult = responseObject[@"result"];
-    NSLog(@"dictResult==%@", dictResult);
-    
-    _resourceId = [dictResult objectForKey:@"resourceId"];
-    NSLog(@"resourceId==%@", _resourceId);
-    
+        
+        //显示返回对象
+        NSLog(@"-------->%@",responseObject);
+        
+        NSDictionary *dictResult = responseObject[@"result"];
+        NSLog(@"dictResult==%@", dictResult);
+        
+        _resourceId = [dictResult objectForKey:@"resourceId"];
+        NSLog(@"resourceId==%@", _resourceId);
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-    
-    //显示错误信息
-    NSLog(@"-------->%@",error);
-    
+        
+        //显示错误信息
+        NSLog(@"-------->%@",error);
+        
     }];
     
 }
@@ -340,7 +333,7 @@
     }else{
         cell.textLabel.text = @"请选择位置信息";
     }
-    cell.imageView.image = [UIImage imageNamed:@"message_tabbar_selected"];
+    cell.imageView.image = [UIImage imageNamed:@"dw"];
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
     }else{
@@ -349,7 +342,7 @@
     cell.textLabel.textColor = TEXT_COLOR;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
-
+    
 }
 
 
