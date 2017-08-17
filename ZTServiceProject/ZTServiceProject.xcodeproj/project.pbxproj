@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		06B79DB6DA195EC61E73756A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66D9467C18BBC85FA9CA649 /* libPods-ZTServiceProject.a */; };
+		291627F71F4580DA001FBC76 /* CommentTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 291627F51F4580DA001FBC76 /* CommentTextCell.m */; };
+		291627F81F4580DA001FBC76 /* CommentTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291627F61F4580DA001FBC76 /* CommentTextCell.xib */; };
 		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
 		299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */; };
 		299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */; };
@@ -773,6 +775,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		291627F41F4580DA001FBC76 /* CommentTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTextCell.h; sourceTree = "<group>"; };
+		291627F51F4580DA001FBC76 /* CommentTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTextCell.m; sourceTree = "<group>"; };
+		291627F61F4580DA001FBC76 /* CommentTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTextCell.xib; sourceTree = "<group>"; };
 		299E2C9C1EE7C5620045A884 /* YYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRequest.h; sourceTree = "<group>"; };
 		299E2C9D1EE7C5620045A884 /* YYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRequest.m; sourceTree = "<group>"; };
 		299E2C9F1EE7CBCA0045A884 /* AdvertisementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementModel.h; sourceTree = "<group>"; };
@@ -3868,6 +3873,9 @@
 				7B966A691EFF8BA900326C88 /* CommentBottomCell.h */,
 				7B966A6A1EFF8BA900326C88 /* CommentBottomCell.m */,
 				7B966A6B1EFF8BA900326C88 /* CommentBottomCell.xib */,
+				291627F41F4580DA001FBC76 /* CommentTextCell.h */,
+				291627F51F4580DA001FBC76 /* CommentTextCell.m */,
+				291627F61F4580DA001FBC76 /* CommentTextCell.xib */,
 				7B966A571EFF766100326C88 /* MessagePhotoCell.h */,
 				7B966A581EFF766100326C88 /* MessagePhotoCell.m */,
 				7B966A591EFF766100326C88 /* MessagePhotoCell.xib */,
@@ -4101,6 +4109,7 @@
 				7B14F8941F175F3B00821281 /* SearchPeopleController.xib in Resources */,
 				7BF4B21E1EE3D45A0058185F /* worktable_tabbar_selected@3x.png in Resources */,
 				7B8F2A731F039A7D00D5D1DF /* notice@2x.png in Resources */,
+				291627F81F4580DA001FBC76 /* CommentTextCell.xib in Resources */,
 				7B205E281F00E6C900E46B74 /* tabbar_wd_selected@2x.png in Resources */,
 				7B6301141F45767F009F77D2 /* add_disable@3x.png in Resources */,
 				7B28CA591F3D652E0070A5BB /* wd_sz@3x.png in Resources */,
@@ -4822,6 +4831,7 @@
 				7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */,
 				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
 				7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */,
+				291627F71F4580DA001FBC76 /* CommentTextCell.m in Sources */,
 				7B6FB32C1F0CC8CF009F5F49 /* MineBtnCell.m in Sources */,
 				7B1C40F61F29E96200866558 /* APAuthV2Info.m in Sources */,
 				7B1F113F1F301B6100963AAC /* PersonalDataHeadCell.m in Sources */,
