@@ -10,6 +10,7 @@
 
 @class MessageModel;
 @interface CommentPhotoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 /**
  存放小图和大图
  

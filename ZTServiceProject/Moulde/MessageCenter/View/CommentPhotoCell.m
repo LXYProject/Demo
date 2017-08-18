@@ -11,7 +11,7 @@
 #import "MessagePhotoCell.h"
 #import "MessagePhotoModel.h"
 @interface CommentPhotoCell ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (nonatomic,strong)NSMutableArray *imgUrlArray;
 @end
 
