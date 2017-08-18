@@ -73,7 +73,7 @@
     
     _title.text = serviceModel.title;
     _details.text = serviceModel.content;
-    _price.text = [NSString stringWithFormat:@"￥%.0f/月",[serviceModel.price doubleValue]];
+    _price.text = [NSString stringWithFormat:@"￥%.0f/%@",[serviceModel.price doubleValue], serviceModel.unit];
     _leaseState.text = serviceModel.statusDesc;
     
     if ([serviceModel.statusInt intValue] == 0) {

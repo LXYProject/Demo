@@ -22,4 +22,7 @@ typedef void(^AppToolBlock)(NSString *string);
 + (void)cellRadio:(UITableView *)tableView cell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;
 
 + (NSString *)dictTransformToJson:(NSDictionary *)dict;
+
++ (NSString *)convertToJsonData:(NSDictionary *)dict;
+
 @end

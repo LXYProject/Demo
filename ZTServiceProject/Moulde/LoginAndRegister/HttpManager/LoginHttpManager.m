@@ -187,8 +187,7 @@
                                };
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_updateUser paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        success(response);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -342,9 +341,9 @@
     NSDictionary *paramter = @{@"phone":phone?phone:@"",
                                };
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_findUserInfoById paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_findUserInfoByPhone paramter:paramter success:^(id response) {
+//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response[@"userList"]];
+//        success(modelArray);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

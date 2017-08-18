@@ -245,8 +245,8 @@
 
 
 //============================帖子服务===========================================
-// 加载帖子
-#define A_loadTopic            @"?service=topic&function=loadTopic"
+// 加载帖子//?service=topic&function=loadTopic
+#define A_loadTopic            @"?service=topic&function=queryTopic"
 // 发帖记录
 #define A_topicHis             @"?service=topic&function=topicHis"
 // 删除帖子

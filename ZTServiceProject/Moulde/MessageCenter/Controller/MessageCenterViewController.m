@@ -17,6 +17,7 @@
 #import "CommentInfoCell.h"
 #import "CommentUserModel.h"
 #import "CommentTextCell.h"
+
 @interface MessageCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UIView *keyBoardToolsView;
 @property (nonatomic,strong)UIButton *senderBtn;
@@ -77,23 +78,24 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"HeaderCell" bundle:nil] forCellReuseIdentifier:@"HeaderCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
-    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-    [self.dataSource addObjectsFromArray:modelArray];
-    [self.tableView reloadData];
     
-//    [self.tableView setHeaderRefreshBlock:^{
-//        self.currentTopicId = @"";
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView setFooterRefreshBlock:^{
-//        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
-//            self.currentTopicId = [[self.dataSource lastObject] topicId];
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView beginHeaderRefreshing];
-//    
-//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    _hud.label.text = @"正在加载";
+//    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+//    [self.dataSource addObjectsFromArray:modelArray];
+//    [self.tableView reloadData];
+    
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentTopicId = @"";
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+            self.currentTopicId = [[self.dataSource lastObject] topicId];
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView beginHeaderRefreshing];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.label.text = @"正在加载";
 }
 
 - (void)commentTableViewTouchInSide{

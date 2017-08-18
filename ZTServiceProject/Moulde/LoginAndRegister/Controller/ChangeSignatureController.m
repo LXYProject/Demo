@@ -8,7 +8,7 @@
 
 #import "ChangeSignatureController.h"
 #import "RegisterFourController.h"
-
+#import "LoginHttpManager.h"
 
 @interface ChangeSignatureController ()<UITextFieldDelegate>
 
@@ -34,13 +34,36 @@
 - (void)rightBarClick
 {
     NSLog(@"确定");
+    
+    NSDictionary  *dict = @{@"selfIntroduction":self.textField.text};
+    
+    NSString *jsonStr = [Tools convertToJsonData:dict];
+    
+    NSLog(@"=================%@", [Tools convertToJsonData:dict]);
+    
     @weakify(self);
+    [LoginHttpManager requestProps:jsonStr
+                           success:^(id response) {
+                               //操作失败的原因
+                               @strongify(self);
+                               NSString *information = [response objectForKey:@"information"];
+                               //状态码
+                               NSString *status = [response objectForKey:@"status"];
+                               
+                               if ([status integerValue]==0) {
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }else{
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }
+                           } failure:^(NSError *error, NSString *message) {
+                               
+                           }];
     [PushManager popViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
-        @strongify(self);
         viewController.signatureStr = self.textField.text;
     }];
-
+    
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     

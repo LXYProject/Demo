@@ -25,11 +25,13 @@
 
 @property (nonatomic,copy)NSString *relationship;
 @property (nonatomic,copy)NSString *userAge;
+@property (nonatomic,copy)NSString *userId;
 @property (nonatomic,copy)NSString *isOnline;
 @property (nonatomic,copy)NSString *userGender;
 @property (nonatomic,copy)NSString *userProfile;
 @property (nonatomic,copy)NSString *userHuanxinId;
 @property (nonatomic,copy)NSString *userImgUrl;
 @property (nonatomic,copy)NSString *userName;
+
 
 @end

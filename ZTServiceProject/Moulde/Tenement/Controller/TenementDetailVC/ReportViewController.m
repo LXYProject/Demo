@@ -246,4 +246,12 @@
     return nil;
 }
 
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
+    MKCoordinateRegion region;
+    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+    region.center= centerCoordinate;
+    
+    NSLog(@" regionDidChangeAnimated %f,%f",centerCoordinate.latitude, centerCoordinate.longitude);
+}
 @end

@@ -88,9 +88,10 @@
 //    for (NSString *basicStr in rentHouseModel.basicFacilities) {
 //        [tagArrays addObject:basicStr];
 //    }
-//    for (NSString *extendedStr in rentHouseModel.extendedFacilities) {
-//        [tagArrays addObject:extendedStr];
-//    }
+    for (NSString *extendedStr in rentHouseModel.extendedFacilities) {
+        
+        NSLog(@"extendedStr==%@", extendedStr);
+    }
 //    for (NSString *rentLimitStr in rentHouseModel.rentLimit) {
 //        [tagArrays addObject:rentLimitStr];
 //    }

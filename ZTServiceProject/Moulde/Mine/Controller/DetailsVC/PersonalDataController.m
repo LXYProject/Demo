@@ -11,6 +11,7 @@
 #import "NumberOfPostsCell.h"
 #import "PostCollectionViewCell.h"
 #import "ChatViewController.h"
+#import "LoginHttpManager.h"
 
 @interface PersonalDataController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,6 +32,15 @@
     
 }
 
+//通过手机号查询用户信息
+- (void)request{
+    [LoginHttpManager requestPhone:@""
+                           success:^(id response) {
+                           
+                           } failure:^(NSError *error, NSString *message) {
+                           
+                           }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 3;
 }

@@ -26,7 +26,7 @@
 
                                };
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_loadTopic paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_loadTopic paramter:paramter success:^(id response) {
         NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:response[@"topicList"]];
         success(modelArray);
     } failure:^(NSError *error, NSString *message) {

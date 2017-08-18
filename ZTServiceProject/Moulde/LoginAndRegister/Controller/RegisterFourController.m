@@ -30,10 +30,11 @@
     NSArray *_sectionOneArr;
     NSArray *_sectionTwoArr;
     NSArray *_sectionThreeArr;
-
+    
     UIImage *_headImage;
     NSArray *_genderArr;
     NSString *_resourceId;
+    int _age;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -45,8 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
     
-
-
+    
     if (_experience==0) {
         self.navigationItem.leftBarButtonItem = nil;
         UIButton *leftMask =[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 45)];
@@ -56,12 +56,13 @@
         [self titleViewWithTitle:@"恭喜您 注册成功" titleColor:[UIColor whiteColor]];
     }else{
         [self titleViewWithTitle:@"个人信息" titleColor:[UIColor whiteColor]];
-
+        
     }
     _sectionOneArr = @[@"昵称", @"性别", @"生日"];
     _sectionTwoArr = @[@"个性签名", @"故乡"];
     _sectionThreeArr = @[@"联系方式", @"我的地址"];
     _genderArr = @[@"男", @"女"];
+    
     [self.tableView reloadData];
     [self createUI];
 }
@@ -88,11 +89,13 @@
     if (_experience==0) {
         NSLog(@"立即体验");
         [self.navigationController  popToRootViewControllerAnimated:YES];
-
+        
     }else{
         NSLog(@"退出登录");
+        
     }
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 4;
@@ -120,45 +123,45 @@
     }else{
         return [self sectionThreeWithTableView:tableView indexPath:indexPath];
     }
-//    }else{
-//        static NSString *ID = @"cell";
-//        // 根据标识去缓存池找cell
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//        // 不写这句直接崩掉，找不到循环引用的cell
-//        if (cell == nil) {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-//        }
-//        if (indexPath.section==1) {
-//            cell.textLabel.text = _sectionOneArr[indexPath.row];
-//            if (indexPath.row==0) {
-////                cell.detailTextLabel.text = GetValueForKey(NickNameKey);
-//            }else if (indexPath.row==1){
-////                cell.detailTextLabel.text = GetValueForKey(GenderKey);
-//            }else{
-//                return nil;
-//            }
-//        }else if (indexPath.section==2){
-//            cell.textLabel.text = _sectionTwoArr[indexPath.row];
-//        }else{
-//            cell.textLabel.text = _sectionThreeArr[indexPath.row];
-//            if (indexPath.row==0) {
-////                cell.detailTextLabel.text = GetValueForKey(PhoneNumberKey);
-//            }
-//        }
-//        if (IS_IPHONE_4 || IS_IPHONE_5) {
-//            cell.textLabel.font = [UIFont systemFontOfSize:13];
-//            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-//        }else{
-//            cell.textLabel.font = [UIFont systemFontOfSize:14];
-//            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-//        }
-//        cell.detailTextLabel.text = @"hhh";
-//        cell.textLabel.textColor = TEXT_COLOR;
-//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        return cell;
-//
-//    }
-
+    //    }else{
+    //        static NSString *ID = @"cell";
+    //        // 根据标识去缓存池找cell
+    //        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    //        // 不写这句直接崩掉，找不到循环引用的cell
+    //        if (cell == nil) {
+    //            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    //        }
+    //        if (indexPath.section==1) {
+    //            cell.textLabel.text = _sectionOneArr[indexPath.row];
+    //            if (indexPath.row==0) {
+    ////                cell.detailTextLabel.text = GetValueForKey(NickNameKey);
+    //            }else if (indexPath.row==1){
+    ////                cell.detailTextLabel.text = GetValueForKey(GenderKey);
+    //            }else{
+    //                return nil;
+    //            }
+    //        }else if (indexPath.section==2){
+    //            cell.textLabel.text = _sectionTwoArr[indexPath.row];
+    //        }else{
+    //            cell.textLabel.text = _sectionThreeArr[indexPath.row];
+    //            if (indexPath.row==0) {
+    ////                cell.detailTextLabel.text = GetValueForKey(PhoneNumberKey);
+    //            }
+    //        }
+    //        if (IS_IPHONE_4 || IS_IPHONE_5) {
+    //            cell.textLabel.font = [UIFont systemFontOfSize:13];
+    //            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
+    //        }else{
+    //            cell.textLabel.font = [UIFont systemFontOfSize:14];
+    //            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+    //        }
+    //        cell.detailTextLabel.text = @"hhh";
+    //        cell.textLabel.textColor = TEXT_COLOR;
+    //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //        return cell;
+    //
+    //    }
+    
 }
 
 //第0组
@@ -168,11 +171,11 @@
     cell.headIcon.layer.masksToBounds = YES;
     cell.headIcon.layer.cornerRadius = cell.headIcon.bounds.size.width * 0.5;
     cell.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-
+    
     if (_headImage) {
         cell.headIcon.image = _headImage;
     }else{
-//        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
+        //        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
         [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:GetValueForKey(HeadImageKey)?GetValueForKey(HeadImageKey):@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
     }
     return cell;
@@ -203,11 +206,11 @@
     }else{
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-
+        
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
-
+    
 }
 
 //第2组
@@ -234,12 +237,12 @@
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
-
+    
 }
 
 //第3组
 - (UITableViewCell *)sectionThreeWithTableView:(UITableView *)tableView
-                                   indexPath:(NSIndexPath *)indexPath {
+                                     indexPath:(NSIndexPath *)indexPath {
     static NSString *ID = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
@@ -310,7 +313,7 @@
                                                
                                            } failure:^(NSError *error, NSString *message) {
                                            }];
-
+                    
                 }else{
                     [AlertViewController alertControllerWithTitle:@"提示" message:@"稍等" preferredStyle:UIAlertControllerStyleAlert controller:self];
                 }
@@ -320,15 +323,20 @@
         }];
     }else if (indexPath.section==1) {
         if (indexPath.row==0) {
-           [PushManager pushViewControllerWithName:@"ChangeNickNameController" animated:YES block:nil];
+            [PushManager pushViewControllerWithName:@"ChangeNickNameController" animated:YES block:nil];
         }else if (indexPath.row==1){
             // 选择性别
             [YJSelectionView showWithTitle:@"性别" options:@[@"男", @"女"] singleSelection:YES delegate:self completionHandler:^(NSInteger index, NSArray *array) {
                 NSLog(@"index==%ld", index);
                 if (index==0) {
                     self.ageStr = @"男";
+                    _age = 0;
+                    [self requestGender];
                 }else if(index==1){
                     self.ageStr = @"女";
+                    _age = 1;
+                    [self requestGender];
+                    
                 }else{
                     self.ageStr = @"";
                 }
@@ -348,6 +356,9 @@
                 //NSDate转NSString
                 self.birthdayStr = [dateFormatter stringFromDate:date];
                 [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+                [self requestBirth];
+                
             } cancelBlock:^{
                 
             }];
@@ -374,17 +385,17 @@
     NSString *url = @"http://192.168.1.96:8080/ZtscApp/Service?service=file&function=upload";
     
     [manager POST:url parameters:paramter constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
-
-    NSData *imageData = UIImageJPEGRepresentation(_headImage, 0.5);
         
-    [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        NSData *imageData = UIImageJPEGRepresentation(_headImage, 0.5);
         
-    NSString*size=@"1000";
-
-    NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
-
-
-    [formData appendPartWithFormData:data name:@"size"];
+        [formData appendPartWithFileData:imageData name:@"file" fileName:@"file.png" mimeType:@"image/png"];
+        
+        NSString*size=@"1000";
+        
+        NSData *data = [size dataUsingEncoding:NSUTF8StringEncoding];
+        
+        
+        [formData appendPartWithFormData:data name:@"size"];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         //显示进度
@@ -409,6 +420,94 @@
     
 }
 
+// 修改性别
+- (void)requestGender{
+    
+    
+    //    NSString *testStr = @"{\"nickName\":\"1545454sdasd\",\"gender\":\"1\", \"selfIntroduction\":\"哈哈\",\"birth\":\"2015-05-05\", \"hometown\":\"成都市\",\"hometownCode\":\"510100\"}";
+    
+    
+    NSDictionary  *dict = @{@"gender":@(_age)};
+    
+    NSString *jsonStr = [Tools convertToJsonData:dict];
+    
+    NSLog(@"=================%@", [Tools convertToJsonData:dict]);
+    
+    @weakify(self);
+    [LoginHttpManager requestProps:jsonStr
+                           success:^(id response) {
+                               //操作失败的原因
+                               @strongify(self);
+                               NSString *information = [response objectForKey:@"information"];
+                               //状态码
+                               NSString *status = [response objectForKey:@"status"];
+                               
+                               if ([status integerValue]==0) {
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }else{
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }
+                           } failure:^(NSError *error, NSString *message) {
+                               
+                           }];
+}
+
+// 修改性别
+- (void)requestBirth{
+    
+    NSDictionary  *dict = @{@"birth":self.birthdayStr};
+    
+    NSString *jsonStr = [Tools convertToJsonData:dict];
+    
+    NSLog(@"=================%@", [Tools convertToJsonData:dict]);
+    
+    @weakify(self);
+    [LoginHttpManager requestProps:jsonStr
+                           success:^(id response) {
+                               //操作失败的原因
+                               @strongify(self);
+                               NSString *information = [response objectForKey:@"information"];
+                               //状态码
+                               NSString *status = [response objectForKey:@"status"];
+                               
+                               if ([status integerValue]==0) {
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }else{
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }
+                           } failure:^(NSError *error, NSString *message) {
+                               
+                           }];
+}
+
+//self.hometownStr
+- (void)requestHometown{
+    
+    NSDictionary  *dict = @{@"hometown":self.hometownStr};
+    
+    NSString *jsonStr = [Tools convertToJsonData:dict];
+    
+    NSLog(@"=================%@", [Tools convertToJsonData:dict]);
+    
+    @weakify(self);
+    [LoginHttpManager requestProps:jsonStr
+                           success:^(id response) {
+                               //操作失败的原因
+                               @strongify(self);
+                               NSString *information = [response objectForKey:@"information"];
+                               //状态码
+                               NSString *status = [response objectForKey:@"status"];
+                               
+                               if ([status integerValue]==0) {
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }else{
+                                   [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+                               }
+                           } failure:^(NSError *error, NSString *message) {
+                               
+                           }];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section==0) {
@@ -416,7 +515,7 @@
     }else{
         return 44;
     }
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -460,6 +559,7 @@
 - (void)didClickedWithCityName:(NSString*)cityName
 {
     self.hometownStr = cityName;
+    [self requestHometown];
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
