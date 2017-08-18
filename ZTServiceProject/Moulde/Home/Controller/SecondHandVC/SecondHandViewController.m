@@ -42,7 +42,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"SecondMessageCell" bundle:nil] forCellReuseIdentifier:@"SecondMessageCell"];
     self.secondCellCurrentPage = 1;
 
-//    [self requestDataSecondCellData];
+    [self requestDataSecondCellData];
     
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
@@ -681,9 +681,9 @@
                                    ]
                            };
     
-        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
-        self.secondCellDataSource = modelArray;
-        [self.tableView reloadData];
+//        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
+//        self.secondCellDataSource = modelArray;
+//        [self.tableView reloadData];
     
 
 }
