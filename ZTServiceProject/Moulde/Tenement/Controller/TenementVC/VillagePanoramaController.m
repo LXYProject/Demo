@@ -12,7 +12,7 @@
 #import "TOPageTitleView.h"
 #import "ReportViewController.h"
 
-@interface VillagePanoramaController ()<CLLocationManagerDelegate,MAMultiPointOverlayRendererDelegate, MAMapViewDelegate>
+@interface VillagePanoramaController ()<CLLocationManagerDelegate,MAMultiPointOverlayRendererDelegate, MAMapViewDelegate,TOPageTitleViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *navBgView;
 
@@ -24,11 +24,18 @@
 @property (nonatomic, strong) UIButton *navBtn;
 @property (nonatomic, strong) UILabel *redLine;
 
-//查看查看小区全景 的数据相关的
+//请求完成的数据源
 @property (nonatomic,strong)NSMutableArray *dataSource;
+//title处理的数据源
 @property (nonatomic,strong)NSMutableArray *featureCategoryArr;
-@property (nonatomic, copy) NSString *navStr;
+//处理完类别的数据源
+@property (nonatomic,strong)NSDictionary *fillterDataDictionary;
+//当前选中的数据源
+@property (nonatomic,strong)NSArray *currentDataSourceArray;
 
+@property (nonatomic, copy) NSString *navStr;
+//所有大头针位置的，x，y数组
+@property (nonatomic,strong)NSMutableArray *pointArray;
 @property (nonatomic,strong) TOPageTitleView *titleView;
 @property (nonatomic,strong) NSMutableArray<TOPageItem *> *titles;
 
@@ -44,6 +51,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.mapView];
+    //测试数据
+   
+    
+    
 //    NSMutableArray *pointArray = [NSMutableArray arrayWithCapacity:1];
 //    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
 //    pointAnnotation.coordinate = CLLocationCoordinate2DMake(featureX, featureY);
@@ -60,8 +72,8 @@
         [self titleViewWithTitle:@"岷阳小区全景" titleColor:[UIColor whiteColor]];
     }
     if (self.x.length==0) {
-        self.x = @"103.888554";
-        self.y = @"30.807603";
+        self.x = @"103.88842301";
+        self.y = @"30.80872819";
     }
     [self rightItemWithNormalName:@""
                             title:@"上报设施"
@@ -70,13 +82,77 @@
                            target:self];
     
 
-    [self initMapView];
+    
     
     [self requestLookVillagePanorama];
     
     [self reverseGeocoder];
+    
+    
+    [self testData];
 
 }
+
+
+- (void)testData {
+    NSDictionary *dict =@{ @"featureList":@[
+    @{
+      @"featureCategory": @"饮料售卖机",
+        @"featureId": @"20170628173228",
+        @"featureName": @"售水机",
+        @"featureX": @(103.88842301),
+        @"featureY": @(38.80872819)
+        },
+    @{
+      @"featureCategory": @"饮料售卖机",
+        @"featureId": @"20170628173228",
+        @"featureName": @"售水机",
+        @"featureX": @(103.88842301),
+        @"featureY": @(36.60872819)
+        },
+  @{
+    @"featureCategory": @"超市",
+      @"featureId": @"20170628173228",
+      @"featureName": @"售水机",
+      @"featureX": @(103.88842301),
+      @"featureY": @(37.50872821)
+      },
+  @{
+    @"featureCategory": @"饮料售卖机",
+      @"featureId": @"20170628173228",
+      @"featureName": @"售水机",
+      @"featureX": @(103.88842301),
+      @"featureY": @(32.40872818)
+      },@{
+          @"featureCategory": @"超市",
+            @"featureId": @"20170628173228",
+            @"featureName": @"售水机",
+            @"featureX": @(103.88842301),
+            @"featureY": @(33.30872810)
+            },
+  @{
+    @"featureCategory": @"加油站",
+      @"featureId": @"20170628173228",
+      @"featureName": @"售水机",
+      @"featureX": @(103.88842301),
+      @"featureY": @(34.20872811)
+      },
+    
+  @{
+    @"featureCategory": @"共享单车",
+      @"featureId": @"20170628173228",
+      @"featureName": @"售水机",
+      @"featureX": @(103.88842301),
+      @"featureY": @(35.10872812)
+      },
+    
+    ]
+};
+    self.dataSource = [VillagePanoramaModel mj_objectArrayWithKeyValuesArray:dict[@"featureList"]];
+    [self filterDataSource];
+
+}
+
 
 - (void)rightBarClick{
     [PushManager pushViewControllerWithName:@"ReportViewController" animated:YES block:^(ReportViewController* viewController) {
@@ -100,7 +176,8 @@
                                            NSLog(@"self.dataSource==%@", self.dataSource);
                                            
                                            // 创建 WSFSlideTitlesView
-                                           [self createTitlesView];
+//                                           [self createTitlesView];
+                                           [self filterDataSource];
                                            
                                            
                                        } failure:^(NSError *error, NSString *message) {
@@ -113,35 +190,41 @@
     for (int i=0; i<self.dataSource.count; i++) {
         [self.featureCategoryArr addObject:[TOPageItem itemWithTitle:[self.dataSource[i] featureCategory]]];
     }
+
+}
+
+- (void)filterDataSource {
+    NSMutableDictionary *fillterDict = [NSMutableDictionary dictionaryWithCapacity:1];
+    for (VillagePanoramaModel *model in self.dataSource) {
+        if ([fillterDict.allKeys containsObject:model.featureCategory]) {
+            NSMutableArray *filterChilds = [NSMutableArray arrayWithArray:fillterDict[model.featureCategory]];
+            if (!filterChilds) {
+                filterChilds = [NSMutableArray arrayWithCapacity:1];
+            }
+            [filterChilds addObject:model];
+            [fillterDict setValue:filterChilds forKey:model.featureCategory];
+        }
+        else {
+            NSMutableArray *fillterChilds = [NSMutableArray arrayWithCapacity:1];
+            [fillterChilds addObject:model];
+            [fillterDict setValue:fillterChilds forKey:model.featureCategory];
+        }
+    }
+    self.fillterDataDictionary = fillterDict;
+     [self.featureCategoryArr addObject:[TOPageItem itemWithTitle:@"全部"]];
+    for (NSString *key in fillterDict.allKeys) {
+        [self.featureCategoryArr addObject:[TOPageItem itemWithTitle:key]];
+    }
     self.titleView.titles = self.titles;
     self.titleView.frame = CGRectMake(0, 0, self.view.frame.size.width, 49);
     self.titleView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.view addSubview:self.titleView];
+    self.currentDataSourceArray = self.dataSource;
+    [self setPonitAnnView];
 }
 
 //将GPS转成高德坐标
 //        CLLocationCoordinate2D amapcoord = AMapCoordinateConvert(CLLocationCoordinate2DMake(39.989612,116.480972), AMapCoordinateType);
-
-
-#pragma mark - Initialization
-
-- (void)initMapView
-{
-    if (self.mapView == nil)
-    {
-        
-        ///地图需要v4.5.0及以上版本才必须要打开此选项（v4.5.0以下版本，需要手动配置info.plist）
-        [AMapServices sharedServices].enableHTTPS = YES;
-
-//        self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
-        self.mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, SCREEN_HEIGHT-119)];
-//        self.mapView.showsUserLocation = YES;//这句就是开启定位
-
-        [self.mapView setDelegate:self];
-        
-        [self.view addSubview:self.mapView];
-    }
-}
 
 /**
  地理反编码
@@ -179,15 +262,6 @@
 //            pointAnnotation.subtitle = placemark.name;
 //            [self.mapView addAnnotation:pointAnnotation];
             
-            if (self.pointAnnotaiton == nil)
-            {
-                self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
-                [self.pointAnnotaiton setCoordinate:location.coordinate];
-                [self.mapView addAnnotation:self.pointAnnotaiton];
-            }
-            
-            [self.pointAnnotaiton setCoordinate:location.coordinate];
-            
             [self.mapView setCenterCoordinate:location.coordinate];
             [self.mapView setZoomLevel:16.1 animated:NO];
 
@@ -198,29 +272,50 @@
 
 #pragma mark - MAMapView Delegate
 
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MAPointAnnotation class]])
     {
-        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
-        
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+        static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
+        MAPinAnnotationView*annotationView = (MAPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
         if (annotationView == nil)
         {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
+            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
         }
-        
-        annotationView.canShowCallout   = NO;
-        annotationView.animatesDrop     = NO;
-        annotationView.draggable        = NO;
+        annotationView.canShowCallout= YES;       //设置气泡可以弹出，默认为NO
+        annotationView.animatesDrop = YES;        //设置标注动画显示，默认为NO
+        annotationView.draggable = YES;        //设置标注可以拖动，默认为NO
         annotationView.pinColor = MAPinAnnotationColorPurple;
-//        annotationView.image            = [UIImage imageNamed:@"icon_location"];
-        
         return annotationView;
     }
-    
     return nil;
 }
+
+#pragma mark - 设置大头针
+- (void)setPonitAnnView {
+    NSMutableArray *pointAnnotations = [NSMutableArray arrayWithCapacity:1];
+    for (VillagePanoramaModel *model in self.currentDataSourceArray) {
+        MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
+        pointAnnotation.coordinate = CLLocationCoordinate2DMake([model.featureY doubleValue], [model.featureX doubleValue]);
+        [pointAnnotations addObject:pointAnnotation];
+    }
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    [self.mapView addAnnotations:pointAnnotations];
+}
+
+#pragma mark - 标题的点击代理
+- (void)pageTitleView:(TOPageTitleView *)pageTitleView didSelecteIndex:(NSInteger)index oldIndex:(NSInteger)oldIndex {
+    if (index ==0) {
+        self.currentDataSourceArray = self.dataSource;
+    }
+    else {
+        NSString *key = [[pageTitleView.titles objectAtIndex:index] title];
+        NSLog(@"%@",key);
+        self.currentDataSourceArray = self.fillterDataDictionary[key];
+    }
+    [self setPonitAnnView];
+}
+
 
 - (void)setFeatureCategory:(NSString *)featureCategory{
     _featureCategory = featureCategory;
@@ -250,6 +345,7 @@
     if (!_titleView) {
         _titleView = [[TOPageTitleView alloc] init];
         _titleView.miniGap = 10;
+        _titleView.titleViewDelegate = self;
     }
     return _titleView;
 }
@@ -258,6 +354,31 @@
         _titles = [NSMutableArray arrayWithArray:self.featureCategoryArr];
     }
     return _titles;
+}
+
+- (NSMutableArray *)pointArray {
+    if (!_pointArray) {
+        _pointArray = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _pointArray;
+}
+
+- (MAMapView *)mapView {
+    if (!_mapView) {
+        
+            
+            ///地图需要v4.5.0及以上版本才必须要打开此选项（v4.5.0以下版本，需要手动配置info.plist）
+            [AMapServices sharedServices].enableHTTPS = YES;
+            
+            //        self.mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
+            _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, SCREEN_HEIGHT-119)];
+    
+        _mapView.delegate = self;
+        
+        
+
+    }
+    return _mapView;
 }
 
 @end

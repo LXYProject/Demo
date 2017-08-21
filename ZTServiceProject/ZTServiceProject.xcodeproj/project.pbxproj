@@ -165,6 +165,8 @@
 		7B1C41B71F29EDCF00866558 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1C41B01F29EDCF00866558 /* openssl_wrapper.m */; };
 		7B1C41B81F29EDCF00866558 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1C41B21F29EDCF00866558 /* RSADataSigner.m */; };
 		7B1C41B91F29EDCF00866558 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1C41B41F29EDCF00866558 /* RSADataVerifier.m */; };
+		7B1D66EC1F46E7C000843ED8 /* wateRedBlank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1D66EA1F46E7C000843ED8 /* wateRedBlank@2x.png */; };
+		7B1D66ED1F46E7C000843ED8 /* wateRedBlank@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1D66EB1F46E7C000843ED8 /* wateRedBlank@3x.png */; };
 		7B1D8DF01F1DAF0B00D79F46 /* AnnounceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D8DEF1F1DAF0B00D79F46 /* AnnounceModel.m */; };
 		7B1D8DF31F1DDB5900D79F46 /* DoorServiceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D8DF21F1DDB5900D79F46 /* DoorServiceModel.m */; };
 		7B1D8E0E1F1DDCF200D79F46 /* AnnounceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1D8DF71F1DDCF200D79F46 /* AnnounceViewController.m */; };
@@ -1096,6 +1098,8 @@
 		7B1C41B21F29EDCF00866558 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
 		7B1C41B31F29EDCF00866558 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		7B1C41B41F29EDCF00866558 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
+		7B1D66EA1F46E7C000843ED8 /* wateRedBlank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wateRedBlank@2x.png"; sourceTree = "<group>"; };
+		7B1D66EB1F46E7C000843ED8 /* wateRedBlank@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wateRedBlank@3x.png"; sourceTree = "<group>"; };
 		7B1D8DEE1F1DAF0B00D79F46 /* AnnounceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnounceModel.h; sourceTree = "<group>"; };
 		7B1D8DEF1F1DAF0B00D79F46 /* AnnounceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnounceModel.m; sourceTree = "<group>"; };
 		7B1D8DF11F1DDB5900D79F46 /* DoorServiceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoorServiceModel.h; sourceTree = "<group>"; };
@@ -2851,6 +2855,8 @@
 		7B5C92241EF8B8EC00C545A8 /* Imgs */ = {
 			isa = PBXGroup;
 			children = (
+				7B1D66EA1F46E7C000843ED8 /* wateRedBlank@2x.png */,
+				7B1D66EB1F46E7C000843ED8 /* wateRedBlank@3x.png */,
 				7B63010F1F45767F009F77D2 /* add_disable@2x.png */,
 				7B6301101F45767F009F77D2 /* add_disable@3x.png */,
 				7B6301111F45767F009F77D2 /* add_normal@2x.png */,
@@ -4104,6 +4110,7 @@
 				7B21B7191F3ABF1F00A0F708 /* wy_ts@2x.png in Resources */,
 				7B21B70E1F3ABF1F00A0F708 /* wy_bmxx@3x.png in Resources */,
 				7B38627A1F317F4E0094A350 /* dx_checkbox_gray_on.png in Resources */,
+				7B1D66EC1F46E7C000843ED8 /* wateRedBlank@2x.png in Resources */,
 				7B8B109D1F26E91200F09678 /* PayCostController.xib in Resources */,
 				7B11F1391F3454C2001EADC1 /* ServiceDescriptionController.xib in Resources */,
 				7B14F8941F175F3B00821281 /* SearchPeopleController.xib in Resources */,
@@ -4312,6 +4319,7 @@
 				7B11F1221F341084001EADC1 /* PublishServiceCell.xib in Resources */,
 				7B205E1B1F00E6C900E46B74 /* home_eswp_wyxn@2x.png in Resources */,
 				7B1EFE661F429BA600454AF2 /* wd_tjfw1@3x.png in Resources */,
+				7B1D66ED1F46E7C000843ED8 /* wateRedBlank@3x.png in Resources */,
 				7B14F88F1F175E9C00821281 /* ActivePeopleController.xib in Resources */,
 				7B38627B1F317F4E0094A350 /* dx_checkbox_off.png in Resources */,
 				7B6FB32D1F0CC8CF009F5F49 /* MineBtnCell.xib in Resources */,

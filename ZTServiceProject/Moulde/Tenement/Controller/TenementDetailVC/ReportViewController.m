@@ -9,6 +9,8 @@
 #import "ReportViewController.h"
 #import "ReportCell.h"
 
+#define TITLE_HEIGHT                    32.f
+
 @interface ReportViewController ()<CLLocationManagerDelegate, MAMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) MAMapView *mapView;
@@ -18,7 +20,10 @@
 @end
 
 @implementation ReportViewController
-
+{
+    // 地图中心点的标记
+    UIImageView *_centerMaker;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -80,6 +85,17 @@
     self.mapView = [[MAMapView alloc] initWithFrame:cell.bounds];
     self.mapView.delegate = self;
     [cell.contentView addSubview:self.mapView];
+    
+    UIImage *image = [UIImage imageNamed:@"wateRedBlank"];
+    _centerMaker = [[UIImageView alloc] initWithImage:image];
+    _centerMaker.frame = CGRectMake(ScreenWidth/2-image.size.width/2,150-image.size.height/2, image.size.width, image.size.height);
+    //_centerMaker.frame = CGRectMake(self.view.frame.size.width/2-image.size.width/2, _mapView.bounds.size.height/2-image.size.height, image.size.width, image.size.height);
+    //_centerMaker.center = CGPointMake(self.view.frame.size.width / 2, (CGRectGetHeight(_mapView.bounds) -  _centerMaker.frame.size.height - TITLE_HEIGHT) * 0.5);
+    
+    
+    [cell.contentView addSubview:_centerMaker];
+
+
     return cell;
 }
 
@@ -203,14 +219,14 @@
             //            pointAnnotation.subtitle = placemark.name;
             //            [self.mapView addAnnotation:pointAnnotation];
             
-            if (self.pointAnnotaiton == nil)
-            {
-                self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
-                [self.pointAnnotaiton setCoordinate:location.coordinate];
-                [self.mapView addAnnotation:self.pointAnnotaiton];
-            }
-            
-            [self.pointAnnotaiton setCoordinate:location.coordinate];
+//            if (self.pointAnnotaiton == nil)
+//            {
+//                self.pointAnnotaiton = [[MAPointAnnotation alloc] init];
+//                [self.pointAnnotaiton setCoordinate:location.coordinate];
+//                [self.mapView addAnnotation:self.pointAnnotaiton];
+//            }
+//            
+//            [self.pointAnnotaiton setCoordinate:location.coordinate];
             
             [self.mapView setCenterCoordinate:location.coordinate];
             [self.mapView setZoomLevel:16.1 animated:NO];
@@ -221,37 +237,32 @@
 }
 
 #pragma mark - MAMapView Delegate
+//
+//- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+//{
+//    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+//    {
+//        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
+//        
+//        MAPinAnnotationView *annotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
+//        if (annotationView == nil)
+//        {
+//            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
+//        }
+//        
+//        annotationView.canShowCallout   = NO;
+//        annotationView.animatesDrop     = NO;
+//        annotationView.draggable        = NO;
+//        annotationView.pinColor = MAPinAnnotationColorPurple;
+//        //        annotationView.image            = [UIImage imageNamed:@"icon_location"];
+//        
+//        return annotationView;
+//    }
+//    
+//    return nil;
+//}
 
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation
+- (void)initCenterMarker
 {
-    if ([annotation isKindOfClass:[MAPointAnnotation class]])
-    {
-        static NSString *pointReuseIndetifier = @"pointReuseIndetifier";
-        
-        MAPinAnnotationView *annotationView = (MAPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndetifier];
-        if (annotationView == nil)
-        {
-            annotationView = [[MAPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndetifier];
-        }
-        
-        annotationView.canShowCallout   = NO;
-        annotationView.animatesDrop     = NO;
-        annotationView.draggable        = NO;
-        annotationView.pinColor = MAPinAnnotationColorPurple;
-        //        annotationView.image            = [UIImage imageNamed:@"icon_location"];
-        
-        return annotationView;
-    }
-    
-    return nil;
-}
-
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
-    MKCoordinateRegion region;
-    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
-    region.center= centerCoordinate;
-    
-    NSLog(@" regionDidChangeAnimated %f,%f",centerCoordinate.latitude, centerCoordinate.longitude);
 }
 @end

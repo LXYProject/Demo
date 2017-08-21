@@ -32,16 +32,8 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     
-    if (textField==self.textField1) {
-        NSLog(@"textField1==%@", textField.text);
-        if (self.textFieldBlock) {
-            self.textFieldBlock(textField.text);
-        }
-    }else{
-        if (self.textFieldBlock) {
-            NSLog(@"textField2==%@", textField.text);
-            self.textFieldBlock(textField.text);
-        }
+    if (self.textFieldBlock) {
+        self.textFieldBlock(textField,textField==_textField1?1:2);
     }
 
 }

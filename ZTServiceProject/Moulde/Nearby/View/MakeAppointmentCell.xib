@@ -52,8 +52,11 @@
                                 <state key="normal" title="+">
                                     <color key="titleColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <state key="disabled" title="+">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="addBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3Dw-D7-lXu"/>
+                                    <action selector="addBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uMU-Vr-XBf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SAU-gu-cR6">
@@ -62,8 +65,11 @@
                                 <state key="normal" title="-">
                                     <color key="titleColor" red="0.90196078430000004" green="0.30588235289999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <state key="disabled" title="-">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.69803921570000005" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="reductionBtnClick" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0hE-4c-yUd"/>
+                                    <action selector="reductionBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7I2-Fp-uoq"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-dU-nei">

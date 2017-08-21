@@ -21,7 +21,10 @@
 
 @interface MakeAppointmentCell : UITableViewCell
 
-@property (nonatomic,weak)  id<MakeAppointmentDelegate> delegate;//代理
+@property (nonatomic,assign)NSInteger maxNum;
 
+@property (nonatomic,copy)Int_Block selectFinishedBlock;
+
+@property (nonatomic,assign)NSInteger currentNum;
 
 @end

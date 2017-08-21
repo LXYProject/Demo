@@ -16,7 +16,7 @@
 
 @optional
 - (BOOL)pageTitleView:(TOPageTitleView *)pageTitleView shouldSelectedIndex:(NSUInteger)index;
-- (void)pageTitleView:(TOPageTitleView *)pageTitleView didSelecteIndex:(NSInteger)index oldIndex:(NSInteger)index;
+- (void)pageTitleView:(TOPageTitleView *)pageTitleView didSelecteIndex:(NSInteger)index oldIndex:(NSInteger)oldIndex;
 - (void)pageTitleView:(TOPageTitleView *)pageTitleView willShowButton:(UIButton *)button forItem:(TOPageItem *)item;
 
 @end

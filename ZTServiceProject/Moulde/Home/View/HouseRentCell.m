@@ -79,19 +79,19 @@
     NSMutableArray *tagArrays = [NSMutableArray arrayWithCapacity:1];
 
     
-    [tagArrays addObjectsFromArray:rentHouseModel.basicFacilities];
-    [tagArrays addObjectsFromArray:rentHouseModel.extendedFacilities];
-    [tagArrays addObjectsFromArray:rentHouseModel.rentLimit];
+    [tagArrays addObjectsFromArray:rentHouseModel.basicFacilities.count>0?[rentHouseModel.basicFacilities firstObject]:@[]];
+    [tagArrays addObjectsFromArray:rentHouseModel.extendedFacilities.count>0?[rentHouseModel.extendedFacilities firstObject]:@[]];
+    [tagArrays addObjectsFromArray:rentHouseModel.rentLimit.count>0?[rentHouseModel.rentLimit firstObject]:@[]];
     
     
     
 //    for (NSString *basicStr in rentHouseModel.basicFacilities) {
 //        [tagArrays addObject:basicStr];
 //    }
-    for (NSString *extendedStr in rentHouseModel.extendedFacilities) {
-        
-        NSLog(@"extendedStr==%@", extendedStr);
-    }
+//    for (NSString *extendedStr in rentHouseModel.extendedFacilities) {
+//        
+//        NSLog(@"extendedStr==%@", extendedStr);
+//    }
 //    for (NSString *rentLimitStr in rentHouseModel.rentLimit) {
 //        [tagArrays addObject:rentLimitStr];
 //    }

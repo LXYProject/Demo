@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TextFiledEndEdit)(UITextField *textField,NSInteger index);
+
 @interface SolicitOneRowCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *textField1;
 @property (weak, nonatomic) IBOutlet UITextField *textField2;
 
-@property (nonatomic,copy)Id_Block textFieldBlock;
+@property (nonatomic,copy)TextFiledEndEdit textFieldBlock;
 
 @end

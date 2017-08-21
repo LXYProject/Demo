@@ -136,18 +136,17 @@
     }
     if (indexPath.row==0) {
         SolicitOneRowCell *cell = (SolicitOneRowCell *)[self creatCell:tableView indenty:@"SolicitOneRowCell"];
+        cell.textField1.text = _textStr1;
+        cell.textField2.text = _textStr2;
         if (cell.textField1) {
-            cell.textFieldBlock = ^(id obj) {
-                NSLog(@"obj==%@", obj);
-                _textStr1 = obj;
+            cell.textFieldBlock = ^(UITextField *textField, NSInteger index) {
+                if (index ==1) {
+                    _textStr1 = textField.text;
+                }
+                else {
+                    _textStr2 = textField.text;
+                }
             };
-            cell.textField1.text = _textStr1;
-        }else{
-            cell.textFieldBlock = ^(id obj) {
-                NSLog(@"obj==%@", obj);
-                _textStr2 = obj;
-            };
-            cell.textField2.text = _textStr2;
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

@@ -180,7 +180,6 @@
 // 菜单按钮
 - (void)createMenuBtn{
     _ISShowMenuButton = NO;
-    
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-80, SCREEN_HEIGHT-190, 50, 50)];
 //    button.layer.cornerRadius = 27.5;
 //    button.backgroundColor = [UIColor greenColor];

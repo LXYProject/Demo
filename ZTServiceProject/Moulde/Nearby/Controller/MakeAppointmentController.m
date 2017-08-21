@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSString *titleStr;
 @property (nonatomic, copy) NSString *phoneNumberStr;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+//当前数量
+@property (nonatomic,assign)NSInteger currentNumber;
 @end
 
 @implementation MakeAppointmentController
@@ -62,6 +64,15 @@
     if (indexPath.row==1) {
         MakeAppointmentCell *cell = (MakeAppointmentCell *)[self creatCell:tableView indenty:@"MakeAppointmentCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        @weakify(self);
+        cell.selectFinishedBlock = ^(NSInteger value) {
+            @strongify(self);
+            self.currentNumber = value;
+            self.priceLabel.text = [NSString stringWithFormat:@"合计：%.2f",10.0*self.currentNumber];
+        };
+        cell.currentNum = self.currentNumber;
+        
+        
         return cell;
     }else{
         static NSString *ID = @"cell";

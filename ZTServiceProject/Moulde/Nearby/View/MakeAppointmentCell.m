@@ -22,6 +22,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    if (_maxNum ==0) {
+        _maxNum = 10;
+    }
     // Initialization code
 }
 
@@ -31,25 +34,42 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)addBtnClick {
-    
-//    self.countLabel.text = [NSString stringWithFormat:@"%ld",self.bookModel.count];
-//    self.addBtn.enabled = YES;
-//    
-//    [self.delegate bookCellDidClickPlusButton:self];
-
+- (IBAction)addBtnClick:(UIButton *)sender {
+    self.currentNum++;
+    if (_currentNum>=_maxNum) {
+        sender.enabled = NO;
+    }
+    else {
+        sender.enabled  = YES;
+    }
+    self.reductionBtn.enabled = YES;
 }
 
-- (IBAction)reductionBtnClick {
-    
-//    self.bookModel.count--;
-//    self.countLabel.text = [NSString stringWithFormat:@"%ld",self.bookModel.count];
-//    if (self.bookModel.count == 0) {
-//        self.addBtn.enabled = NO;
-//    }
-//    
-//    [self.delegate bookCellDidClickMinusButton:self];
+- (IBAction)reductionBtnClick:(UIButton *)sender {
+    self.currentNum--;
+    if (_currentNum<=1) {
+        sender.enabled = NO;
+    }
+    else {
+        sender.enabled = YES;
+    }
+    self.addBtn.enabled = YES;
+}
 
+- (void)setCurrentNum:(NSInteger)currentNum {
+    _currentNum = currentNum;
+    if (_currentNum==0) {
+        _currentNum = 1;
+        self.reductionBtn.enabled = NO;
+    }
+    if (self.selectFinishedBlock) {
+        self.selectFinishedBlock(_currentNum);
+    }
+    _countLabel.text = [NSString stringWithFormat:@"%ld",_currentNum];
+}
+
+- (void)setMaxNum:(NSInteger)maxNum {
+    _maxNum = maxNum;
 }
 
 @end

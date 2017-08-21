@@ -126,7 +126,7 @@
     NSTimeInterval animationDuration;
     [animationDurationValue getValue:&animationDuration];
     [UIView animateWithDuration:animationDuration animations:^{
-        self.keyBoardToolsView.transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height-39);
+        self.keyBoardToolsView.transform = CGAffineTransformMakeTranslation(0, -keyboardRect.size.height-44);
     } completion:^(BOOL finished) {
         
     }];
@@ -367,7 +367,7 @@
 
 - (UIView *)keyBoardToolsView {
     if (!_keyBoardToolsView) {
-        _keyBoardToolsView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height, ScreenWidth, 44)];
+        _keyBoardToolsView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight-64, ScreenWidth, 44)];
         _keyBoardToolsView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 //        _keyBoardToolsView.layer.borderWidth = 0.5;
 //        _keyBoardToolsView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
