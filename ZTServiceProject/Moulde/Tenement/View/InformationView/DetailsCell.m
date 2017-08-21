@@ -38,6 +38,11 @@
 }
 
 - (IBAction)callBtnClick {
+    
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@", _phoneNumber.text];
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.contentView addSubview:callWebview];
 }
 
 @end

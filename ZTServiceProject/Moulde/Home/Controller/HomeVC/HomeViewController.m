@@ -217,7 +217,8 @@
                               success:^(id response) {
                                   @strongify(self);
                                   self.secondCellDataSource = response;
-                                  [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                  [self.tableView reloadData];
+                                  //[self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
                               } failure:^(NSError *error, NSString *message) {
                               }];
 }
@@ -269,7 +270,7 @@
     }else if (section == 3){
         return 2;
     }else if (section == 4){
-        return 10;
+        return self.secondCellDataSource.count;
     }else if (section == 5){
         return self.rentHouseDataSource.count+1;
     }else{

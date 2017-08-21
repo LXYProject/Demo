@@ -35,6 +35,12 @@
     // Configure the view for the selected state
 }
 - (IBAction)callBtnClick:(id)sender {
+    
+    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"400-132-131"];
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.contentView addSubview:callWebview];
+
 }
 
 @end

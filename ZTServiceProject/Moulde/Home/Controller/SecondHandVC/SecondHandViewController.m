@@ -681,9 +681,9 @@
                                    ]
                            };
     
-        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
-        self.secondCellDataSource = modelArray;
-        [self.tableView reloadData];
+//        NSArray *modelArray = [SecondHandModel mj_objectArrayWithKeyValuesArray:dict[@"secondHandList"]];
+//        self.secondCellDataSource = modelArray;
+//        [self.tableView reloadData];
     
 
 }
