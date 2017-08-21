@@ -38,6 +38,7 @@
     int  online;
     NSString *_price;
     NSString *_resourceId;
+    MBProgressHUD *_hud;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -194,6 +195,8 @@
 // 多表单上传图片
 - (void)upImageArr{
     
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.mode = MBProgressHUDModeDeterminateHorizontalBar;
     
     AFHTTPSessionManager *manager =[[AFHTTPSessionManager alloc]init];
     
@@ -207,9 +210,9 @@
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         //显示进度
-        
+          [uploadProgress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:nil];
     }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-        
+        [_hud hideAnimated:YES];
         //显示返回对象
         NSLog(@"-------->%@",responseObject);
         
@@ -220,14 +223,27 @@
         NSLog(@"resourceId==%@", _resourceId);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [_hud hideAnimated:YES];
         //显示错误信息
         NSLog(@"-------->%@",error);
         
     }];
     
 }
+#pragma mark 上传进度
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+
+{
+    
+    if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+        
+        NSProgress *progress = (NSProgress *)object;
+        
+        _hud.progress = progress.fractionCompleted;
+    }
+    
+}
 //第1组
 - (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
                                    indexPath:(NSIndexPath *)indexPath {
@@ -444,5 +460,7 @@
     }
     return _chooseImgArr;
 }
+
+
 
 @end

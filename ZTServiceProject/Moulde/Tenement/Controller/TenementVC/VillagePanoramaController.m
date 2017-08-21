@@ -148,8 +148,8 @@
     
     ]
 };
-    self.dataSource = [VillagePanoramaModel mj_objectArrayWithKeyValuesArray:dict[@"featureList"]];
-    [self filterDataSource];
+//    self.dataSource = [VillagePanoramaModel mj_objectArrayWithKeyValuesArray:dict[@"featureList"]];
+//    [self filterDataSource];
 
 }
 
