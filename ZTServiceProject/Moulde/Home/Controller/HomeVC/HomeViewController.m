@@ -268,7 +268,7 @@
     }else if (section ==2 ){
         return self.dataSource.count+2;
     }else if (section == 3){
-        return 2;
+        return self.secondCellDataSource.count>0?2:1;
     }else if (section == 4){
         return self.secondCellDataSource.count;
     }else if (section == 5){
