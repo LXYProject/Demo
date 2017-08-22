@@ -244,8 +244,7 @@
             [sender setTransform:rotate];
         }];
         [_tlMenuView showItems];
-        self.btn.hidden = NO;
-
+        self.btn.hidden = YES;
     }else{
         
         [UIView animateWithDuration:0.2 animations:^{
@@ -254,6 +253,7 @@
         } completion:^(BOOL finished) {
             [_maskView removeFromSuperview];
             [_tlMenuView dismiss];
+            self.btn.hidden = NO;
         }];
     }
     _ISShowMenuButton = !_ISShowMenuButton;
