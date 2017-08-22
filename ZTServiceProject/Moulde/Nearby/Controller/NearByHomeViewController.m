@@ -156,6 +156,7 @@
     [_maskView removeFromSuperview];
     [_tlMenuView dismiss];
     _ISShowMenuButton = NO;
+    self.btn.hidden = NO;
 }
 -(void)segmentClick:(UISegmentedControl *)segment{
     
