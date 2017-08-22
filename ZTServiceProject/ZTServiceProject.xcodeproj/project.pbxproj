@@ -10,6 +10,7 @@
 		06B79DB6DA195EC61E73756A /* libPods-ZTServiceProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66D9467C18BBC85FA9CA649 /* libPods-ZTServiceProject.a */; };
 		291627F71F4580DA001FBC76 /* CommentTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 291627F51F4580DA001FBC76 /* CommentTextCell.m */; };
 		291627F81F4580DA001FBC76 /* CommentTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291627F61F4580DA001FBC76 /* CommentTextCell.xib */; };
+		291628031F4C0B15001FBC76 /* HyphenateLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291628021F4C0B15001FBC76 /* HyphenateLite.framework */; };
 		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
 		299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */; };
 		299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */; };
@@ -780,6 +781,7 @@
 		291627F41F4580DA001FBC76 /* CommentTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTextCell.h; sourceTree = "<group>"; };
 		291627F51F4580DA001FBC76 /* CommentTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTextCell.m; sourceTree = "<group>"; };
 		291627F61F4580DA001FBC76 /* CommentTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTextCell.xib; sourceTree = "<group>"; };
+		291628021F4C0B15001FBC76 /* HyphenateLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateLite.framework; sourceTree = "<group>"; };
 		299E2C9C1EE7C5620045A884 /* YYRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYRequest.h; sourceTree = "<group>"; };
 		299E2C9D1EE7C5620045A884 /* YYRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYRequest.m; sourceTree = "<group>"; };
 		299E2C9F1EE7CBCA0045A884 /* AdvertisementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementModel.h; sourceTree = "<group>"; };
@@ -1932,6 +1934,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291628031F4C0B15001FBC76 /* HyphenateLite.framework in Frameworks */,
 				7B1C40F01F29BEE500866558 /* CoreMotion.framework in Frameworks */,
 				7B1C40EE1F29BEDA00866558 /* CFNetwork.framework in Frameworks */,
 				7B1C40EC1F29BECE00866558 /* Foundation.framework in Frameworks */,
@@ -1970,6 +1973,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		291628011F4C0B15001FBC76 /* HyphenateSDK */ = {
+			isa = PBXGroup;
+			children = (
+				291628021F4C0B15001FBC76 /* HyphenateLite.framework */,
+			);
+			path = HyphenateSDK;
+			sourceTree = "<group>";
+		};
 		299E2CA51EE7CD5D0045A884 /* NJKWebViewProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -3713,6 +3724,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				291628011F4C0B15001FBC76 /* HyphenateSDK */,
 				7B1C405E1F298CFA00866558 /* AlipaySDK */,
 				7B45E7B31F2721D100380F61 /* TOPageItem */,
 				7B243A301F1C67F4003A237F /* LPFiltrate */,
@@ -5023,6 +5035,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Base/Lib/AlipaySDK",
+					"$(PROJECT_DIR)/Base/Lib/HyphenateSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
@@ -5070,6 +5083,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Base/Lib/AlipaySDK",
+					"$(PROJECT_DIR)/Base/Lib/HyphenateSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ZTServiceProject/ZTServiceProject.pch";
