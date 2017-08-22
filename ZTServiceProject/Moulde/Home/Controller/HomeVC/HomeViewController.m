@@ -58,26 +58,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _nearBySelectIndex = 0;
-
+    
     self.currentPage = 1;
     self.secondCellCurrentPage = 1;
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
-        if (_nearBySelectIndex==1) {
+        if (_nearBySelectIndex==0) {
             [self requestServiceData];
+        }else{
+            [self requestData];
         }
-        [self requestData];
         [self requestDataSecondCellData];
         [self requestRentHouseData];
     }];
     
     [self.tableView setFooterRefreshBlock:^{
         self.currentPage++;
-        if (_nearBySelectIndex==1) {
+        if (_nearBySelectIndex==0) {
             [self requestServiceData];
+        }else{
+            [self requestData];
         }
-        [self requestData];
         [self requestDataSecondCellData];
         [self requestRentHouseData];
     }];
@@ -368,21 +370,20 @@
         cell.btnClickBlock = ^(NSInteger value) {
             @strongify(self);
             self.nearBySelectIndex = value;
+            NSLog(@"value==%ld", value);
             NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
             [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
         };
         return cell;
     }
     else {
-        if (_nearBySelectIndex==1) {
-            ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+        ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
+        if (_nearBySelectIndex==0) {
             cell.serviceModel = self.dataSource[indexPath.row-2];
-            return cell;
         }else{
-            ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
             cell.model = self.dataSource[indexPath.row-2];
-            return cell;
         }
+        return cell;
 
     }
 }
@@ -445,6 +446,7 @@
     if (indexPath.section==2) {
         if (_nearBySelectIndex==0) {
             [PushManager pushViewControllerWithName:@"ServiceDetailsController" animated:YES block:^(ServiceDetailsController* serviceDetailsVC) {
+                serviceDetailsVC.currentVC = 0;
                 serviceDetailsVC.model = self.dataSource[indexPath.row];
             }];
 
@@ -568,34 +570,38 @@
  }
 - (void)setCategoryId:(NSString *)categoryId {
     _categoryId = categoryId;
-    if (_nearBySelectIndex==1) {
+    if (_nearBySelectIndex==0) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (void)setKeywords:(NSString *)keywords {
     _keywords = keywords;
-    if (_nearBySelectIndex==1) {
+    if (_nearBySelectIndex==0) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (void)setDistrict:(NSString *)district {
     _district = district;
-    if (_nearBySelectIndex==1) {
+    if (_nearBySelectIndex==0) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 -(void)setCity:(NSString *)city {
     _city = city;
-    if (_nearBySelectIndex==1) {
+    if (_nearBySelectIndex==0) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (NSArray *)dataSource {

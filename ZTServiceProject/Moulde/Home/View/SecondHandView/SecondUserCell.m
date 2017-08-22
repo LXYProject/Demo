@@ -26,7 +26,7 @@
 - (void)setModel:(SecondHandModel *)model {
     _model = model;
         
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _name.text = model.onwerName;
     _time.text = model.createTime;
     _presentPrice.text = [NSString stringWithFormat:@"￥%.0f",[model.secPrice doubleValue]];

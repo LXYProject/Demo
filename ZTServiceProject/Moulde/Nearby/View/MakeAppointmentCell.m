@@ -7,6 +7,7 @@
 //
 
 #import "MakeAppointmentCell.h"
+#import "ServiceModel.h"    
 
 @interface MakeAppointmentCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headIcon;
@@ -34,6 +35,13 @@
     // Configure the view for the selected state
 }
 
+- (void)setModel:(ServiceModel *)model {
+    _model = model;
+    _titleLable.text = model.userName;
+    _detailsLabel.text = model.createDate;
+    _priceLabel.text = [NSString stringWithFormat:@"%2f/%@", [model.price doubleValue], model.unit];
+    
+}
 - (IBAction)addBtnClick:(UIButton *)sender {
     self.currentNum++;
     if (_currentNum>=_maxNum) {

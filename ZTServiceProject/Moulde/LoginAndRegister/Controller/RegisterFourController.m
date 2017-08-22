@@ -92,7 +92,6 @@
         
     }else{
         NSLog(@"退出登录");
-        [PushManager pushViewControllerWithName:@"MakeAppointmentController" animated:YES block:nil];
         
     }
 }

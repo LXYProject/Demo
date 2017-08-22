@@ -39,12 +39,12 @@
         self.url = imageUrl;
     }
 
-    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     _headIcon.layer.masksToBounds = YES;
     _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
     _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     
 //    _price.text = model.price;

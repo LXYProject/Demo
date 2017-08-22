@@ -34,7 +34,7 @@
 - (void)setModel:(NearByItemModel *)model {
     _model = model;
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _headTitle.text = model.title;
     _detailsContent.text = model.content;
     _placeLabel.text = model.address;
@@ -51,12 +51,11 @@
         NSString *imageUrl = [dic objectForKey:@"url"];
         self.url = imageUrl;
     }
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _headTitle.text = serviceModel.title;
     _detailsContent.text = serviceModel.content;
     _placeLabel.text = serviceModel.address;
     _priceLabel.text = [NSString stringWithFormat:@"￥%@/个", serviceModel.price];
-    //    _placeLabel.text = [NSString stringWithFormat:@"%.0f/个",[serviceModel.price doubleValue]];
     _timeLabel.text = [serviceModel.createDate substringToIndex:10];//截取掉下标7之后的字符串
 
 }
@@ -70,7 +69,7 @@
         self.url = model.url;
     }
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _headTitle.text = secondModel.secondHandTitle;
     _detailsContent.text = secondModel.secondHandContent;
     _placeLabel.text = secondModel.address;
@@ -90,7 +89,7 @@
         self.url = imageUrl;
     }
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _headTitle.text = rentHouseModel.houseUseful;
     _detailsContent.text = rentHouseModel.houseType;
     _placeLabel.text = rentHouseModel.address;

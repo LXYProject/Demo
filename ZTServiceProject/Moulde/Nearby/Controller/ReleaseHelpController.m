@@ -100,7 +100,7 @@
                             content:self.content    
                             address:self.locationInfo
                               price:_bounty
-                         categoryId:self.categoryId
+                         categoryId:self.cateId //self.categoryId
                        categoryName:self.serviceTypeStr
                           validDate:self.timeStr
                              cityId:@"11000"

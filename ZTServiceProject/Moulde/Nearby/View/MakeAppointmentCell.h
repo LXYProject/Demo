@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class MakeAppointmentCell;
-
+@class ServiceModel;
 @protocol MakeAppointmentDelegate <NSObject>
 
 - (void)bookCellDidClickPlusButton:(MakeAppointmentCell * )bookCell;
@@ -26,5 +26,7 @@
 @property (nonatomic,copy)Int_Block selectFinishedBlock;
 
 @property (nonatomic,assign)NSInteger currentNum;
+
+@property (nonatomic, strong) ServiceModel *model;
 
 @end

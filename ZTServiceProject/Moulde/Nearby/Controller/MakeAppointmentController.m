@@ -9,6 +9,7 @@
 #import "MakeAppointmentController.h"
 #import "MakeAppointmentCell.h"
 #import "MakeAppointDescripCell.h"
+#import "ServiceModel.h"
 
 @interface MakeAppointmentController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -71,8 +72,7 @@
             self.priceLabel.text = [NSString stringWithFormat:@"合计：%.2f",10.0*self.currentNumber];
         };
         cell.currentNum = self.currentNumber;
-        
-        
+        cell.model = self.model;
         return cell;
     }else{
         static NSString *ID = @"cell";
@@ -83,7 +83,8 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
         }
         if (indexPath.row==0) {
-            cell.textLabel.text = self.titleStr;
+            //cell.textLabel.text = self.titleStr;
+            cell.textLabel.text = [self.model userName];
         }else{
             cell.textLabel.text = @"联系方式:";
             cell.detailTextLabel.text = self.phoneNumberStr;
@@ -139,9 +140,11 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 

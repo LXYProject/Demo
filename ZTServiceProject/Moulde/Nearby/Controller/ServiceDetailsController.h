@@ -11,6 +11,8 @@
 @class ServiceModel;
 @interface ServiceDetailsController : BaseViewController
 
+@property (nonatomic, assign) NSInteger currentVC;
+
 @property (nonatomic,strong)ServiceModel *model;
 
 @end

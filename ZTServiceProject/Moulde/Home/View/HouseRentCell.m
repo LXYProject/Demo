@@ -54,7 +54,7 @@
         self.url = imageUrl;
     }
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _headTitle.text = rentHouseModel.houseType;
 //    _detailsContent.text = rentHouseModel.houseType;
 //    _placeLabel.text = rentHouseModel.address;

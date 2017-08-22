@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class ServiceModel;
 @interface MakeAppointmentController : BaseViewController
+
+@property (nonatomic, strong) ServiceModel *model;
 
 @end

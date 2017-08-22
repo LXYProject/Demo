@@ -13,4 +13,11 @@
 @property (nonatomic,copy)NSString *categoryId;
 @property (nonatomic,copy)NSString *categoryName;
 
+@property (nonatomic,assign) int *cateId;
+
+@property (nonatomic,copy)NSString *code;
+@property (nonatomic,copy)NSString *icon;
+@property (nonatomic,copy)NSString *name;
+
+
 @end

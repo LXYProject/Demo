@@ -17,4 +17,6 @@
 @property (nonatomic, copy) NSString *serviceScopeStr;
 @property (nonatomic, copy) NSString *locationInfo;
 
+@property (nonatomic, assign) int cateId;
+
 @end

@@ -72,6 +72,32 @@
 }
 
 
+//根据类型获取系统字典
++ (void)requestDictType:(NSString *)dictType
+           parentDictId:(NSString *)parentDictId
+              machineId:(NSString *)machineId
+            machineName:(NSString *)machineName
+             clientType:(NSString *)clientType
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"dictType":dictType?dictType:@"",
+                               @"parentDictId":parentDictId?parentDictId:@"",
+                               @"parentDictId":parentDictId?parentDictId:@"",
+                               @"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                                };
+
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_querySystemDict paramter:paramter success:^(id response) {
+        NSArray *modelArray = [NearByTitleModel mj_objectArrayWithKeyValuesArray:response[@"dictItemList"]];
+        success(modelArray);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+    
+}
 //发布服务
 + (void)rqeuestTitle:(NSString *)title
              content:(NSString *)content
@@ -79,7 +105,7 @@
               online:(int)online
                price:(NSString *)price
                 unit:(NSString *)unit
-          categoryId:(NSString *)categoryId
+          categoryId:(int)categoryId
         categoryName:(NSString *)categoryName
                 area:(NSString *)area
               cityId:(NSString *)cityId
@@ -98,7 +124,7 @@
                                @"online":@(online),
                                @"price":price?price:@"",
                                @"unit":unit?unit:@"",
-                               @"categoryId":categoryId?categoryId:@"",
+                               @"categoryId":@(categoryId),
                                @"categoryName":categoryName?categoryName:@"",
                                @"area":area?area:@"",
                                @"cityId":cityId?cityId:@"",
@@ -124,7 +150,7 @@
              content:(NSString *)content
              address:(NSString *)address
                price:(NSString *)price
-          categoryId:(NSString *)categoryId
+          categoryId:(int)categoryId
         categoryName:(NSString *)categoryName
            validDate:(NSString *)validDate
               cityId:(NSString *)cityId
@@ -137,11 +163,13 @@
              success:(HttpRequestSuccess)success
              failure:(HttpRequestFailure)failure{
     
+    //  @"categoryId":categoryId?categoryId:@"",
+
     NSDictionary *paramter = @{@"title":title?title:@"",
                                @"content":content?content:@"",
                                @"address":address?address:@"",
                                @"price":price?price:@"",
-                               @"categoryId":categoryId?categoryId:@"",
+                               @"categoryId":@(categoryId),
                                @"categoryName":categoryName?categoryName:@"",
                                @"validDate":validDate?validDate:@"",
                                @"cityId":cityId?cityId:@"",

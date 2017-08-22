@@ -85,7 +85,8 @@
 - (IBAction)releaseBtnClick {
     NSLog(@"online=%d", online);
 
-    if (_serviceTitle.length>0 && self.content.length>0 && _price.length>0 && self.unitStr.length>0 && self.categoryId.length>0 && self.serviceTypeStr>0) {
+    // && self.categoryId.length>0
+    if (_serviceTitle.length>0 && self.content.length>0 && _price.length>0 && self.unitStr.length>0 && self.serviceTypeStr>0) {
        
         // 发布
         @weakify(self);
@@ -95,7 +96,7 @@
                                  online:online
                                   price:_price
                                    unit:self.unitStr
-                             categoryId:self.categoryId
+                             categoryId:self.cateId //self.categoryId
                            categoryName:self.serviceTypeStr
                                    area:@"110108"
                                  cityId:@"11000"

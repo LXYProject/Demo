@@ -50,7 +50,7 @@
     _userImageView.layer.cornerRadius = _userImageView.bounds.size.width * 0.5;
     _userImageView.layer.borderColor = [UIColor whiteColor].CGColor;
 
-    [_userImageView sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_userImageView sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     _userNameLabel.text = model.ownerName;
     _timeLabel.text = model.createTime;

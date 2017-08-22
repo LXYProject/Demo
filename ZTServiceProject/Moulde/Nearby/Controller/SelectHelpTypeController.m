@@ -32,7 +32,7 @@
     queryType = 1;
     
     [self.tableView setHeaderRefreshBlock:^{
-        [self requestTitleArrayData];
+        [self requestQuerySystemDict];
     }];
     [self.tableView beginHeaderRefreshing];
 
@@ -58,6 +58,29 @@
                                     [_hud hideAnimated:YES];
                                 }];
 }
+- (void)requestQuerySystemDict{
+    @weakify(self);
+    [NearByHttpManager requestDictType:@"helpType"
+                          parentDictId:@""
+                             machineId:@"0"
+                           machineName:@"0"
+                            clientType:@"0"
+                               success:^(id response) {
+                                   
+                                   @strongify(self);
+                                   [self.tableView endRefreshing];
+                                   [_hud hideAnimated:YES];
+                                   
+                                   [self.tagTitles removeAllObjects];
+                                   [self.tagTitles addObjectsFromArray:response];
+                                   [self.tableView reloadData];
+                                   
+                               } failure:^(NSError *error, NSString *message) {
+                                   [self.tableView endRefreshing];
+                                   _hud.label.text = message;
+                                   [_hud hideAnimated:YES];
+                               }];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -78,7 +101,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [self.tagTitles[indexPath.row] categoryName];
+    cell.textLabel.text = [self.tagTitles[indexPath.row] name];
     return cell;
     
 }
@@ -86,10 +109,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"%ld", indexPath.row);
+    
     [PushManager popViewControllerWithName:@"ReleaseHelpController" animated:YES block:^(ReleaseHelpController* viewController) {
-        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] categoryName];
-        viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
-
+        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] name];
+        //viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
+        viewController.cateId = (int)indexPath.row+1;
     }];
     
 }

@@ -10,6 +10,12 @@
 #import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
+    HelpTitle,   //去帮忙
+    ServiceTitle //找服务
+} TitleType;
+
+
+typedef enum : NSUInteger {
     ToHelp,        //去帮忙 搜索发布的服务
     LookingService //找服务 搜索发布的求助
 } NaerType;
@@ -47,6 +53,15 @@ typedef enum : NSUInteger {
                  failure:(HttpRequestFailure)failure;
 
 
+//根据类型获取系统字典
++ (void)requestDictType:(NSString *)dictType
+           parentDictId:(NSString *)parentDictId
+              machineId:(NSString *)machineId
+            machineName:(NSString *)machineName
+             clientType:(NSString *)clientType
+                success:(HttpRequestSuccess)success
+                failure:(HttpRequestFailure)failure;
+ 
 
 //发布服务
 + (void)rqeuestTitle:(NSString *)title
@@ -55,7 +70,7 @@ typedef enum : NSUInteger {
               online:(int)online
                price:(NSString *)price
                 unit:(NSString *)unit
-          categoryId:(NSString *)categoryId
+          categoryId:(int)categoryId
         categoryName:(NSString *)categoryName
                 area:(NSString *)area
               cityId:(NSString *)cityId
@@ -74,7 +89,7 @@ typedef enum : NSUInteger {
              content:(NSString *)content
              address:(NSString *)address
                price:(NSString *)price
-          categoryId:(NSString *)categoryId
+          categoryId:(int)categoryId
         categoryName:(NSString *)categoryName
            validDate:(NSString *)validDate
               cityId:(NSString *)cityId

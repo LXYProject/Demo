@@ -36,7 +36,7 @@
     _headIcon.layer.masksToBounds = YES;
     _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
     _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.ownerImageUrl?model.ownerImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _name.text = model.onwerName;
     _time.text = model.createTime;
     _content.text = model.secondHandContent;

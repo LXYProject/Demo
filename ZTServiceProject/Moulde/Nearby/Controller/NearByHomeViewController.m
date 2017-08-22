@@ -12,7 +12,8 @@
 #import "NearByViewController.h"
 #import "TLMenuButtonView.h"
 
-@interface NearByHomeViewController ()<GLViewPagerViewControllerDataSource,GLViewPagerViewControllerDelegate>
+@interface NearByHomeViewController ()<GLViewPagerViewControllerDataSource,GLViewPagerViewControllerDelegate, CLLocationManagerDelegate, MAMapViewDelegate, AMapSearchDelegate,AMapLocationManagerDelegate>
+
 @property (nonatomic,strong)NSMutableArray *vcDataArray;
 @property (nonatomic,strong)NSMutableArray *viewControllers;
 @property (nonatomic,strong)NSMutableArray *tagTitles;
@@ -22,9 +23,13 @@
 @property (nonatomic,copy)NSString *district;
 
 @property (nonatomic, strong) TLMenuButtonView *tlMenuView ;
+@property (nonatomic, strong) MAMapView *mapView;
+@property (nonatomic, strong) AMapLocationManager *localManager;
+@property (nonatomic, assign) CLLocationCoordinate2D currentSelectPoint;
 
-@property(nonatomic,strong)UIButton *btn;
-@property(nonatomic,assign)NSInteger a;
+@property (nonatomic, strong)UIButton *btn;
+@property (nonatomic, strong)UIButton *releaseBtn;
+@property (nonatomic,assign)NSInteger a;
 
 @end
 
@@ -33,7 +38,7 @@
     NSInteger queryType;
     BOOL _ISShowMenuButton;
     UIView *_maskView;
- 
+    NSString *_dictType;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -100,7 +105,8 @@
     [segment addTarget:self action:@selector(segmentClick:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.titleView = segment;
     queryType = 1;
-    [self requestTitleArrayData];
+    _dictType = @"helpType";
+    [self requestQuerySystemDict];
 //    response = [NSMutableArray arrayWithArray:@[@"的观点",@"十大",@"第三方",@"奥术大师多"]];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        
@@ -118,8 +124,22 @@
 //        [self reloadData];
 //    });
 
-    [self switchButton];
+    
+   
+    [self.view addSubview:self.mapView];
+    
+    self.mapView.hidden = YES;
+    
+    //持续定位
+    self.localManager = [[AMapLocationManager alloc] init];
+    self.localManager.delegate = self;
+    //开启持续定位
+    [self.localManager startUpdatingLocation];
+    
     [self createMenuBtn];
+
+    [self switchButton];
+
 }
 - (void)leftBarClick
 {
@@ -141,10 +161,12 @@
     
     if (segment.selectedSegmentIndex==0) {
         queryType=1;
+        _dictType = @"helpType";
     }else{
         queryType=0;
+        _dictType = @"serviceType";
     }
-    [self requestTitleArrayData];
+    [self requestQuerySystemDict];
 }
 
 // 切换列表按钮
@@ -157,17 +179,23 @@
     [self.btn addTarget:self action:@selector(dragMoving:withEvent: )forControlEvents: UIControlEventTouchDragInside];
     [self.btn addTarget:self action:@selector(doClick:) forControlEvents:UIControlEventTouchUpInside];
     self.a=0;
-    [self.view addSubview:self.btn];
+    //[self.view addSubview:self.btn];
+    [self.view insertSubview:self.btn atIndex:999];
 }
 
 -(void)doClick:(UIButton*)sender
 {
     sender.selected = !sender.selected;
-    if (self.a==0)
-    {
-        NSLog(@"1111");
+    if (sender.selected) {
+        NSLog(@"11111");
+        self.mapView.hidden = NO;
+        self.releaseBtn.hidden = YES;
+    }else{
+        NSLog(@"22222");
+        self.mapView.hidden = YES;
+        self.releaseBtn.hidden = NO;
     }
-    self.a=0;
+
 }
 
 - (void) dragMoving: (UIButton *) c withEvent:ev
@@ -180,16 +208,16 @@
 // 菜单按钮
 - (void)createMenuBtn{
     _ISShowMenuButton = NO;
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-80, SCREEN_HEIGHT-190, 50, 50)];
+    self.releaseBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-80, SCREEN_HEIGHT-190, 50, 50)];
 //    button.layer.cornerRadius = 27.5;
 //    button.backgroundColor = [UIColor greenColor];
-    [button addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"zbfw_yjfb"] forState:UIControlStateNormal];
-    button.tag = 1000;
-    [self.view addSubview:button];
+    [self.releaseBtn addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.releaseBtn setImage:[UIImage imageNamed:@"zbfw_yjfb"] forState:UIControlStateNormal];
+    self.releaseBtn.tag = 1000;
+    [self.view addSubview:self.releaseBtn];
     
     TLMenuButtonView *tlMenuView =[TLMenuButtonView standardMenuView];
-    tlMenuView.centerPoint = button.center;
+    tlMenuView.centerPoint = self.releaseBtn.center;
     @weakify(self);
     tlMenuView.clickAddButton = ^(NSInteger tag, UIColor *color){
         @strongify(self);
@@ -200,7 +228,7 @@
             [PushManager pushViewControllerWithName:@"ReleaseHelpController" animated:YES block:nil];
         }
         _ISShowMenuButton = YES;
-        [self clickAddButton:button];
+        [self clickAddButton:self.releaseBtn];
     };
     _tlMenuView = tlMenuView;
 
@@ -208,7 +236,6 @@
 
 - (void)clickAddButton:(UIButton *)sender{
     _maskView.backgroundColor = [UIColor clearColor];
-    
     [self.view insertSubview:_maskView belowSubview:[self.view viewWithTag:1000]];
     if (!_ISShowMenuButton) {
         [UIView animateWithDuration:0.2 animations:^{
@@ -217,6 +244,8 @@
             [sender setTransform:rotate];
         }];
         [_tlMenuView showItems];
+        self.btn.hidden = NO;
+
     }else{
         
         [UIView animateWithDuration:0.2 animations:^{
@@ -230,7 +259,7 @@
     _ISShowMenuButton = !_ISShowMenuButton;
 }
 
-// 请求周边上面的滚动title
+// 请求周边上面的滚动title=======弃用
 - (void)requestTitleArrayData {
     @weakify(self);
     [NearByHttpManager rqeuestQueryType:queryType success:^(NSArray * response) {
@@ -255,6 +284,40 @@
         
     }];
 }
+
+// 请求周边上面的滚动title
+- (void)requestQuerySystemDict{
+    
+    //GetValueForKey(DeviceUUIDKey)
+    //GetValueForKey(DeviceModelKey)
+    @weakify(self);
+    [NearByHttpManager requestDictType:_dictType
+                          parentDictId:@""
+                             machineId:@"0"
+                           machineName:@"0"
+                            clientType:@"0"
+                               success:^(NSArray * response) {
+                                   @strongify(self);
+                                   [self.tagTitles removeAllObjects];
+                                           [self.viewControllers removeAllObjects];
+                                   self.titleArray = response;
+                                   if (self.titleArray.count != self.viewControllers.count) {
+                                       [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                           NearByTitleModel *model = obj;
+                                           [self.tagTitles addObject:model.name];
+                                           if(self.viewControllers.count<response.count) {
+                                               [self.viewControllers addObject:[[NearByViewController alloc]init]];
+                                           }
+                                       }];
+                                       NSInteger differencCount = self.viewControllers.count - response.count;
+                                       [self.viewControllers removeObjectsInRange:NSMakeRange(self.viewControllers.count - differencCount -1 , differencCount)];
+                                   }
+                                   [self reloadData];
+                                   
+                               } failure:^(NSError *error, NSString *message) {
+                               }];
+}
+
 
 #pragma mark - GLViewPagerViewControllerDataSource
 - (NSUInteger)numberOfTabsForViewPager:(GLViewPagerViewController *)viewPager {
@@ -348,5 +411,28 @@ contentViewControllerForTabAtIndex:(NSUInteger)index {
         _vcDataArray = [NSMutableArray arrayWithCapacity:1];
     }
     return _vcDataArray;
+}
+
+- (MAMapView *)mapView {
+    if (!_mapView) {
+        _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREEN_HEIGHT)];
+        _mapView.delegate = self;
+        _mapView.zoomLevel = 13.1;
+        _mapView.showsUserLocation = YES;
+        _mapView.userTrackingMode = MAUserTrackingModeFollow;
+        
+        _mapView.showsScale = NO;
+        _mapView.showsCompass = NO;
+    }
+    return _mapView;
+}
+
+- (void)amapLocationManager:(AMapLocationManager *)manager didUpdateLocation:(CLLocation *)location
+{
+    // 定位结果
+    NSLog(@"location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    self.currentSelectPoint = location.coordinate;
+    // 停止定位
+    [self.localManager stopUpdatingLocation];
 }
 @end

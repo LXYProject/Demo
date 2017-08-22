@@ -67,6 +67,10 @@
 // 查看区域的发布的求助数量
 #define A_lookAppealNumByArea   @"?service=adPhotoService&function=lookAppealNumByArea"
 
+// 根据类型获取系统字典
+#define A_querySystemDict       @"?service=systemDict&function=querySystemDict"
+
+
 //============================用户接口===========================================
 // 注册发送验证码
 #define A_registerUrl           @"?service=user&function=getCodeForRegister"

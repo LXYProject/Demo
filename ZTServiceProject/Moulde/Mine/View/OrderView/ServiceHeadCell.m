@@ -35,7 +35,7 @@
     _userIcon.layer.masksToBounds = YES;
     _userIcon.layer.cornerRadius = _userIcon.bounds.size.width * 0.5;
     _userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_userIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_userIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
 
     _userName.text = model.userName;
     _orderTime.text = model.createTime;
@@ -50,7 +50,7 @@
     _userIcon.layer.masksToBounds = YES;
     _userIcon.layer.cornerRadius = _userIcon.bounds.size.width * 0.5;
     _userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_userIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_userIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     _userName.text = helpOrderModel.serviceUserName;
     _orderTime.text = helpOrderModel.serviceTime;

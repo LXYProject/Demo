@@ -33,7 +33,7 @@
     queryType = 0;
     
     [self.tableView setHeaderRefreshBlock:^{
-        [self requestTitleArrayData];
+        [self requestQuerySystemDict];
     }];
     [self.tableView beginHeaderRefreshing];
     
@@ -60,6 +60,29 @@
                                 }];
 }
 
+- (void)requestQuerySystemDict{
+    @weakify(self);
+    [NearByHttpManager requestDictType:@"serviceType"
+                          parentDictId:@""
+                             machineId:@"0"
+                           machineName:@"0"
+                            clientType:@"0"
+                               success:^(id response) {
+                               
+                                   @strongify(self);
+                                   [self.tableView endRefreshing];
+                                   [_hud hideAnimated:YES];
+                                   
+                                   [self.tagTitles removeAllObjects];
+                                   [self.tagTitles addObjectsFromArray:response];
+                                   [self.tableView reloadData];
+
+                               } failure:^(NSError *error, NSString *message) {
+                                   [self.tableView endRefreshing];
+                                   _hud.label.text = message;
+                                   [_hud hideAnimated:YES];
+                               }];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -79,17 +102,19 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [self.tagTitles[indexPath.row] categoryName];
+    cell.textLabel.text = [self.tagTitles[indexPath.row] name];
     return cell;
 
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(PublishServiceController* viewController) {
-        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] categoryName];
-        viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
 
+    [PushManager popViewControllerWithName:@"PublishServiceController" animated:YES block:^(PublishServiceController* viewController) {
+        viewController.serviceTypeStr = [self.tagTitles[indexPath.row] name];
+        //viewController.categoryId = [self.tagTitles[indexPath.row] categoryId];
+        //viewController.categoryId = self.tagTitles[indexPath.row+1];
+        viewController.cateId = (int)indexPath.row+1;
     }];
     
 }
