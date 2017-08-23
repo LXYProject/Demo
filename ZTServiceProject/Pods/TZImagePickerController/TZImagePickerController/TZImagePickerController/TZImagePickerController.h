@@ -4,7 +4,8 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 1.8.0 - 2017.06.03
+//  version 1.8.3 - 2017.07.15
+//  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 /*
  经过测试，比起xib的方式，把TZAssetCell改用纯代码的方式来写，滑动帧数明显提高了（约提高10帧左右）
@@ -23,6 +24,8 @@
 #define iOS8Later ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
 #define iOS9Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.0f)
 #define iOS9_1Later ([UIDevice currentDevice].systemVersion.floatValue >= 9.1f)
+
+#define TZ_isGlobalHideStatusBar [[[NSBundle mainBundle] objectForInfoDictionaryKey:@"UIStatusBarHidden"] boolValue]
 
 @protocol TZImagePickerControllerDelegate;
 @interface TZImagePickerController : UINavigationController
@@ -51,7 +54,7 @@
 /// 对照片排序，按修改时间升序，默认是YES。如果设置为NO,最新的照片会显示在最前面，内部的拍照按钮会排在第一个
 @property (nonatomic, assign) BOOL sortAscendingByModificationDate;
 
-/// Default is 828px / 默认828像素宽
+/// The pixel width of output image, Default is 828px / 导出图片的宽度，默认828像素宽
 @property (nonatomic, assign) CGFloat photoWidth;
 
 /// Default is 600px / 默认600像素宽
@@ -112,7 +115,8 @@
 @property (nonatomic, assign) NSInteger circleCropRadius;  ///< 圆形裁剪框半径大小
 @property (nonatomic, copy) void (^cropViewSettingBlock)(UIView *cropView);     ///< 自定义裁剪框的其他属性
 
-- (void)showAlertWithTitle:(NSString *)title;
+- (id)showAlertWithTitle:(NSString *)title;
+- (void)hideAlertView:(id)alertView;
 - (void)showProgressHUD;
 - (void)hideProgressHUD;
 @property (nonatomic, assign) BOOL isSelectOriginalPhoto;
@@ -199,6 +203,14 @@
 // If user picking a gif image, this callback will be called.
 // 如果用户选择了一个gif图片，下面的handle会被执行
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingGifImage:(UIImage *)animatedImage sourceAssets:(id)asset;
+
+// Decide album show or not't
+// 决定相册显示与否 albumName:相册名字 result:相册原始数据
+- (BOOL)isAlbumCanSelect:(NSString *)albumName result:(id)result;
+
+// Decide asset show or not't
+// 决定照片显示与否
+- (BOOL)isAssetCanSelect:(id)asset;
 @end
 
 

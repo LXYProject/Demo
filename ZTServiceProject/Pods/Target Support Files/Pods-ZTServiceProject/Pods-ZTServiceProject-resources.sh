@@ -82,13 +82,11 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "AMap3DMap/MAMapKit.framework/AMap.bundle"
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
-  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "AMap3DMap/MAMapKit.framework/AMap.bundle"
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
-  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle"
 fi
 

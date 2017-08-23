@@ -128,11 +128,11 @@
             MWPhoto *photo = [MWPhoto photoWithImage:model.image];
             photo.caption = model.name;
             if (model.isVideo) {
-                if (model.mediaURL) {
-                    photo.videoURL = model.mediaURL;
-                }else {
-                    photo = [photo initWithAsset:model.asset targetSize:CGSizeZero];
-                }
+//                if (model.mediaURL) {
+//                    photo.videoURL = model.mediaURL;
+//                }else {
+//                    photo = [photo initWithAsset:model.asset targetSize:CGSizeZero];
+//                }
             }
             [_photos addObject:photo];
         }

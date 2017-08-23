@@ -139,12 +139,10 @@ static CGSize AssetGridThumbnailSize;
     CGFloat collectionViewHeight = 0;
     if (self.navigationController.navigationBar.isTranslucent) {
         top = 44;
-        if (iOS7Later) top += 20;
+        if (iOS7Later && !TZ_isGlobalHideStatusBar) top += 20;
         collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - 50 - top : self.view.tz_height - top;;
     } else {
-        CGFloat navigationHeight = 44;
-        if (iOS7Later) navigationHeight += 20;
-        collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - 50 - navigationHeight : self.view.tz_height - navigationHeight;
+        collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - 50 : self.view.tz_height;
     }
     
     _collectionView = [[TZCollectionView alloc] initWithFrame:CGRectMake(0, top, self.view.tz_width, collectionViewHeight) collectionViewLayout:layout];
@@ -191,7 +189,7 @@ static CGSize AssetGridThumbnailSize;
     if (!tzImagePickerVc.showSelectBtn) return;
     
     CGFloat yOffset = 0;
-    if (self.navigationController.navigationBar.isTranslucent) {
+    if (!self.navigationController.navigationBar.isHidden) {
         yOffset = self.view.tz_height - 50;
     } else {
         CGFloat navigationHeight = 44;
@@ -312,6 +310,7 @@ static CGSize AssetGridThumbnailSize;
     
     __block BOOL havenotShowAlert = YES;
     [TZImageManager manager].shouldFixOrientation = YES;
+    __block id alertView;
     for (NSInteger i = 0; i < tzImagePickerVc.selectedModels.count; i++) {
         TZAssetModel *model = tzImagePickerVc.selectedModels[i];
         [[TZImageManager manager] getPhotoWithAsset:model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
@@ -326,15 +325,19 @@ static CGSize AssetGridThumbnailSize;
             for (id item in photos) { if ([item isKindOfClass:[NSNumber class]]) return; }
             
             if (havenotShowAlert) {
+                [tzImagePickerVc hideAlertView:alertView];
                 [self didGetAllPhotos:photos assets:assets infoArr:infoArr];
             }
         } progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
             // 如果图片正在从iCloud同步中,提醒用户
-            if (progress < 1 && havenotShowAlert) {
+            if (progress < 1 && havenotShowAlert && !alertView) {
                 [tzImagePickerVc hideProgressHUD];
-                [tzImagePickerVc showAlertWithTitle:[NSBundle tz_localizedStringForKey:@"Synchronizing photos from iCloud"]];
+                alertView = [tzImagePickerVc showAlertWithTitle:[NSBundle tz_localizedStringForKey:@"Synchronizing photos from iCloud"]];
                 havenotShowAlert = NO;
                 return;
+            }
+            if (progress >= 1) {
+                havenotShowAlert = YES;
             }
         } networkAccessAllowed:YES];
     }
@@ -522,10 +525,11 @@ static CGSize AssetGridThumbnailSize;
 // 调用相机
 - (void)pushImagePickerController {
     // 提前定位
+    __weak typeof(self) weakSelf = self;
     [[TZLocationManager manager] startLocationWithSuccessBlock:^(CLLocation *location, CLLocation *oldLocation) {
-        _location = location;
+        weakSelf.location = location;
     } failureBlock:^(NSError *error) {
-        _location = nil;
+        weakSelf.location = nil;
     }];
     
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;

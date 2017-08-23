@@ -213,7 +213,7 @@
         //显示进度
           [uploadProgress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:nil];
     }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         //显示返回对象
         NSLog(@"-------->%@",responseObject);
         
@@ -224,7 +224,7 @@
         NSLog(@"resourceId==%@", _resourceId);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         //显示错误信息
         NSLog(@"-------->%@",error);
         

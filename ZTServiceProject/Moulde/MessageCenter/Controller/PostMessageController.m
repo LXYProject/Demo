@@ -260,7 +260,7 @@
     [[HttpAPIManager sharedHttpAPIManager] uploadDataArrayWithUrl:@"?service=file&function=upload" fileData:imageDatas type:@"image/png" name:@"file" mimeType:@"file.png" paramter:nil progressBlock:^(CGFloat progress) {
         _hud.progress = progress;
     } success:^(id response) {
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         
         NSDictionary *dictResult = response[@"result"];
         
@@ -270,7 +270,7 @@
         
     } failure:^(NSArray *failure) {
         NSLog(@"failure==%@", failure);
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
     }];
 }
 // 多表单上传图片

@@ -24,7 +24,7 @@
 #import "HHAlertView.h"
 
 //第三方
-#import <MJRefresh.h>
+#import "MJRefresh.h"
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import <UIButton+WebCache.h>
@@ -33,7 +33,7 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <IQKeyboardManager.h>
 #import "XLPhotoBrowser.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "MBProgressHUD.h"
 #import <MAMapKit/MAMapKit.h>
 #import "Masonry.h"
 #import <AMapSearchKit/AMapSearchKit.h>

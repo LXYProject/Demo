@@ -7,29 +7,15 @@
 //
 
 #ifndef ZTServiceProject_pch
-#define ZTServiceProject_pch
-@import UIKit;
-@import MessageUI;
-@import QuartzCore;
-@import Foundation;
-@import CoreGraphics;
-@import Security;
-@import AddressBook;
-@import AddressBookUI;
-@import MapKit;
-@import LocalAuthentication;
-@import CoreLocation;
-@import AudioToolbox;
-@import CoreText;
-@import CoreImage;
-@import ImageIO;
-@import AssetsLibrary;
-@import CoreTelephony;
-
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight    [UIScreen mainScreen].bounds.size.height
-#import "CommonTools.h"
-#import "CommonHeaderFile.h"
-
+#define ZTServiceProject_pch    
 
 #endif
+
+#ifdef __OBJC__
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight    [UIScreen mainScreen].bounds.size.height
+
+#import "CommonTools.h"
+#import "CommonHeaderFile.h"
+#endif
+
