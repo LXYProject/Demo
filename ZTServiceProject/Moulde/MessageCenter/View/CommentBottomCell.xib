@@ -90,6 +90,9 @@
                                     <constraint firstAttribute="width" constant="15" id="nYY-KL-lat"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="comments.png"/>
+                                <connections>
+                                    <action selector="commentBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8ca-42-bLU"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGG-Y0-wHA">
                                 <rect key="frame" x="258" y="15" width="15" height="15"/>

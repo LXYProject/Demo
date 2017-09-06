@@ -86,13 +86,40 @@
 }
 
 - (IBAction)thumbUp:(UIButton *)sender {
+    //测试代码开始  测试专用
+    if (self.commentSuccessBlock) {
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+        CommentUserModel * model = [[CommentUserModel alloc]init];
+        model.userName = @"李小艳";
+        if (_model.likeList.count==0) {
+            [array addObject:model];
+        }
+        else {
+            [array addObjectsFromArray:_model.likeList];
+            [array addObject:model];
+        }
+        _model.likeList = array;
+        self.commentSuccessBlock(_model);   //测试代码结束，网络请求的时候请注释
+    }
+    
     [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_model.topicId success:^(id response) {
         //状态码
         NSString *status = [response objectForKey:@"status"];
         if ([status integerValue]==0) {
             //这个代码放在网络请求的成功回调里面
             if (self.commentSuccessBlock) {
-                self.commentSuccessBlock(response);
+                NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+                CommentUserModel * model = [[CommentUserModel alloc]init];
+                model.userName = @"李小艳";
+                if (_model.likeList.count==0) {
+                    [array addObject:model];
+                }
+                else {
+                    [array addObjectsFromArray:_model.likeList];
+                    [array addObject:model];
+                }
+                _model.likeList = array;
+                self.commentSuccessBlock(_model);
                 
             }
         }
@@ -119,6 +146,12 @@
     return NO;
 }
 
+- (IBAction)commentBtnClick:(id)sender {
+    if (self.commentBtnClickBlock) {
+        self.commentBtnClickBlock(sender);
+    }
+}
+
 #pragma mark - 评论的请求
 
 /**
@@ -132,6 +165,22 @@
     NSLog(@"评论的commentType==%@", _commentType);
     NSLog(@"评论的targetUserId==%@", _targetUserId);
     @weakify(self);
+//    if (self.commentSuccessBlock) {
+//        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+//        CommentUserModel * model = [[CommentUserModel alloc]init];
+//        model.userName = @"李小艳";
+//        model.comment = text;
+//        if (_model.commentList.count==0) {
+//            [array addObject:model];
+//        }
+//        else {
+//            [array addObjectsFromArray:_model.commentList];
+//            [array addObject:model];
+//        }
+//        _model.commentList = array;
+//        self.commentSuccessBlock(_model);
+//    }
+
     [MesssgeHttpManager requestTopicId:_model.topicId comment:text commentType:@"0" targetUserId:_model.ownerId success:^(id response) {
         @strongify(self);
         //网络请求的成功回调里面

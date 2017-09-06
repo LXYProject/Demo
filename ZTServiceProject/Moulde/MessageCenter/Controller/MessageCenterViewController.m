@@ -29,7 +29,9 @@
 @property (nonatomic,assign)NSInteger currentPage;
 @property (nonatomic,copy)NSString *selectTopicId;
 @property (nonatomic,copy)NSString *currentTopicId;
-
+@property (nonatomic,strong)MessageModel *currentModel;
+@property (nonatomic,strong)NSIndexPath *currentIndexPath;
+@property (nonatomic,strong)NSArray *currentTopticDataArray;
 
 @end
 
@@ -79,23 +81,23 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
     
-//    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-//    [self.dataSource addObjectsFromArray:modelArray];
-//    [self.tableView reloadData];
+    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+    [self.dataSource addObjectsFromArray:modelArray];
+    [self.tableView reloadData];
     
-    [self.tableView setHeaderRefreshBlock:^{
-        self.currentTopicId = @"";
-        [self requestMessageData:self.currentTopicId];
-    }];
-    [self.tableView setFooterRefreshBlock:^{
-        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
-            self.currentTopicId = [[self.dataSource lastObject] topicId];
-        [self requestMessageData:self.currentTopicId];
-    }];
-    [self.tableView beginHeaderRefreshing];
+//    [self.tableView setHeaderRefreshBlock:^{
+//        self.currentTopicId = @"";
+//        [self requestMessageData:self.currentTopicId];
+//    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+//            self.currentTopicId = [[self.dataSource lastObject] topicId];
+//        [self requestMessageData:self.currentTopicId];
+//    }];
+//    [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
+//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    _hud.labelText = @"正在加载";
 }
 
 - (void)commentTableViewTouchInSide{
@@ -136,8 +138,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
-    
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
@@ -423,13 +423,30 @@
  */
 - (void)requestReplyData:(NSString *)topicId
                     text:(NSString *)text
-            targetUserId:(NSString *)targetUserId{
+            targetUserId:(NSString *)targetUserId
+               indexPath:(NSIndexPath *)indexPath{
+//    self.commentTextField.text = @"";
+//    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+//    CommentUserModel * model = [[CommentUserModel alloc]init];
+//    model.userName = @"李小艳";
+//    model.comment = text;
+//    if (_currentModel.commentList.count==0) {
+//        [array addObject:model];
+//    }
+//    else {
+//        [array addObjectsFromArray:_currentModel.commentList];
+//        [array addObject:model];
+//    }
+//    _currentModel.commentList = array;
+//    [self.dataSource replaceObjectAtIndex:indexPath.section withObject:_currentModel];
+//    [self.tableView reloadData];
+    
     [MesssgeHttpManager requestTopicId:self.selectTopicId
                                comment:text
                            commentType:@"1"
                           targetUserId:targetUserId
                                success:^(id response) {
-                                   [self.tableView reloadData];
+                                   [self requestMessageData:@""];
                                } failure:^(NSError *error, NSString *message) {
                                    
                                }];
@@ -460,6 +477,12 @@
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.commentSuccessBlock = ^(id obj) {
+            [self requestMessageData:@""];
+        };
+        cell.commentBtnClickBlock = ^(UIButton *sender) {
+            [self commentTopic:indexPath];
+        };
         return cell;
     }
     else {
@@ -538,8 +561,7 @@
         self.selectTopicId = [self.dataSource[indexPath.section] topicId];
 
         if ((3+[[self.dataSource[indexPath.section] commentList] count])>indexPath.row) {
-            
-            
+            return;
             NSArray *commentList = [self.dataSource[indexPath.section] commentList];
             CommentUserModel *model = commentList[indexPath.row - 3];
             self.commentTextField.placeholder = [NSString stringWithFormat:@"回复:%@",model.userName];
@@ -548,29 +570,38 @@
         }
         //评论某个人
         else{
+//            return;
             self.selectTopicId = [self.dataSource[indexPath.section] topicId];
             _currentTargetUserId =[self.dataSource[indexPath.section] ownerId];
+            self.currentModel = self.dataSource[indexPath.section];
+            _currentIndexPath = indexPath;
             self.commentTextField.placeholder = @"评论:";
         }
         if (!_isShowKeyBoard) {
             [self.commentTextField becomeFirstResponder];
         }
-        
-        
-        
-        
     }
 }
 
-
-
+- (void)commentTopic:(NSIndexPath *)indexPath {
+    [IQKeyboardManager sharedManager].enable = NO;
+    self.keyBoardToolsView.hidden = NO;
+    self.selectTopicId = [self.dataSource[indexPath.section] topicId];
+    _currentTargetUserId =[self.dataSource[indexPath.section] ownerId];
+    self.currentModel = self.dataSource[indexPath.section];
+    _currentIndexPath = indexPath;
+    self.commentTextField.placeholder = @"评论:";
+    if (!_isShowKeyBoard) {
+        [self.commentTextField becomeFirstResponder];
+    }
+}
 
 - (void)sendBtnClick {
     [self.commentTextField endEditing:YES];
     NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
     if ([self.commentTextField.text stringByTrimmingCharactersInSet:set].length>0) {
         NSLog(@"没有空格");
-        [self requestReplyData:self.selectTopicId text:self.commentTextField.text targetUserId:_currentTargetUserId];
+        [self requestReplyData:self.selectTopicId text:self.commentTextField.text targetUserId:_currentTargetUserId indexPath:_currentIndexPath];
     }
     
 }
