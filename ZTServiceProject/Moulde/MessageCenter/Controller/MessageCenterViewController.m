@@ -446,6 +446,7 @@
                            commentType:@"1"
                           targetUserId:targetUserId
                                success:^(id response) {
+                                   self.currentTopicId = @"";
                                    [self requestMessageData:@""];
                                } failure:^(NSError *error, NSString *message) {
                                    
@@ -478,6 +479,7 @@
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.commentSuccessBlock = ^(id obj) {
+            self.currentTopicId = @"";
             [self requestMessageData:@""];
         };
         cell.commentBtnClickBlock = ^(UIButton *sender) {
@@ -636,6 +638,7 @@
     }
     return _keyBoardToolsView;
 }
+
 - (UIButton *)senderBtn {
     if(!_senderBtn) {
         _senderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
