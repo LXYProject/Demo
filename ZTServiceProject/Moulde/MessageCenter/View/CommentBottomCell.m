@@ -84,40 +84,7 @@
     //    NSLog(@"str2==%@", str2);
 }
 
-- (IBAction)thumbUp:(UIButton *)sender {
-    //测试代码开始  测试专用
-<<<<<<< HEAD
-//    if (self.commentSuccessBlock) {
-//        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-//        CommentUserModel * model = [[CommentUserModel alloc]init];
-//        model.userName = @"李小艳";
-//        if (_model.likeList.count==0) {
-//            [array addObject:model];
-//        }
-//        else {
-//            [array addObjectsFromArray:_model.likeList];
-//            [array addObject:model];
-//        }
-//        _model.likeList = array;
-//        self.commentSuccessBlock(_model);   //测试代码结束，网络请求的时候请注释
-//    }
-=======
-    if (self.commentSuccessBlock) {
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-        CommentUserModel * model = [[CommentUserModel alloc]init];
-        model.userName = @"李小艳";
-        if (_model.likeList.count==0) {
-            [array addObject:model];
-        }
-        else {
-            [array addObjectsFromArray:_model.likeList];
-            [array addObject:model];
-        }
-        _model.likeList = array;
-        self.commentSuccessBlock(_model);   //测试代码结束，网络请求的时候请注释
-    }
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
-    
+- (IBAction)thumbUp:(UIButton *)sender {    
     [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_model.topicId success:^(id response) {
         //状态码
         NSString *status = [response objectForKey:@"status"];
@@ -181,41 +148,6 @@
     NSLog(@"评论的commentType==%@", _commentType);
     NSLog(@"评论的targetUserId==%@", _targetUserId);
     @weakify(self);
-<<<<<<< HEAD
-    //    if (self.commentSuccessBlock) {
-    //        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-    //        CommentUserModel * model = [[CommentUserModel alloc]init];
-    //        model.userName = @"李小艳";
-    //        model.comment = text;
-    //        if (_model.commentList.count==0) {
-    //            [array addObject:model];
-    //        }
-    //        else {
-    //            [array addObjectsFromArray:_model.commentList];
-    //            [array addObject:model];
-    //        }
-    //        _model.commentList = array;
-    //        self.commentSuccessBlock(_model);
-    //    }
-    
-=======
-//    if (self.commentSuccessBlock) {
-//        NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-//        CommentUserModel * model = [[CommentUserModel alloc]init];
-//        model.userName = @"李小艳";
-//        model.comment = text;
-//        if (_model.commentList.count==0) {
-//            [array addObject:model];
-//        }
-//        else {
-//            [array addObjectsFromArray:_model.commentList];
-//            [array addObject:model];
-//        }
-//        _model.commentList = array;
-//        self.commentSuccessBlock(_model);
-//    }
-
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
     [MesssgeHttpManager requestTopicId:_model.topicId comment:text commentType:@"0" targetUserId:_model.ownerId success:^(id response) {
         @strongify(self);
         //网络请求的成功回调里面

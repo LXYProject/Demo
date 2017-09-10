@@ -135,29 +135,8 @@ static CGFloat itemMargin = 5;
 - (void)configCollectionView {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     
-<<<<<<< HEAD
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[TZCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
-=======
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    CGFloat margin = 5;
-    CGFloat itemWH = (self.view.tz_width - (self.columnNumber + 1) * margin) / self.columnNumber;
-    layout.itemSize = CGSizeMake(itemWH, itemWH);
-    layout.minimumInteritemSpacing = margin;
-    layout.minimumLineSpacing = margin;
-    
-    CGFloat top = 0;
-    CGFloat collectionViewHeight = 0;
-    if (self.navigationController.navigationBar.isTranslucent) {
-        top = 44;
-        if (iOS7Later && !TZ_isGlobalHideStatusBar) top += 20;
-        collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - 50 - top : self.view.tz_height - top;;
-    } else {
-        collectionViewHeight = tzImagePickerVc.showSelectBtn ? self.view.tz_height - 50 : self.view.tz_height;
-    }
-    
-    _collectionView = [[TZCollectionView alloc] initWithFrame:CGRectMake(0, top, self.view.tz_width, collectionViewHeight) collectionViewLayout:layout];
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
@@ -199,22 +178,8 @@ static CGFloat itemMargin = 5;
 - (void)configBottomToolBar {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     if (!tzImagePickerVc.showSelectBtn) return;
-<<<<<<< HEAD
 
     _bottomToolBar = [[UIView alloc] initWithFrame:CGRectZero];
-=======
-    
-    CGFloat yOffset = 0;
-    if (!self.navigationController.navigationBar.isHidden) {
-        yOffset = self.view.tz_height - 50;
-    } else {
-        CGFloat navigationHeight = 44;
-        if (iOS7Later) navigationHeight += 20;
-        yOffset = self.view.tz_height - 50 - navigationHeight;
-    }
-    
-    UIView *bottomToolBar = [[UIView alloc] initWithFrame:CGRectMake(0, yOffset, self.view.tz_width, 50)];
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
     CGFloat rgb = 253 / 255.0;
     _bottomToolBar.backgroundColor = [UIColor colorWithRed:rgb green:rgb blue:rgb alpha:1.0];
 

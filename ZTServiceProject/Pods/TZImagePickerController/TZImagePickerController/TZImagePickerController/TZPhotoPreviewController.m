@@ -328,15 +328,11 @@
 - (void)doneButtonClick {
     TZImagePickerController *_tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     // 如果图片正在从iCloud同步中,提醒用户
-<<<<<<< HEAD
     if (_progress > 0 && _progress < 1 && (_selectButton.isSelected || !_tzImagePickerVc.selectedModels.count )) {
-=======
-    if (_progress > 0 && _progress < 1) {
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
         _alertView = [_tzImagePickerVc showAlertWithTitle:[NSBundle tz_localizedStringForKey:@"Synchronizing photos from iCloud"]];
         return;
     }
-
+    
     // 如果没有选中过照片 点击确定时选中当前预览的照片
     if (_tzImagePickerVc.selectedModels.count == 0 && _tzImagePickerVc.minImagesCount <= 0) {
         TZAssetModel *model = _models[_currentIndex];
@@ -435,22 +431,10 @@
             }
         }];
     }
-<<<<<<< HEAD
     
     cell.model = model;
     [cell setSingleTapGestureBlock:^{
         [weakSelf didTapPreviewCell];
-=======
-    __weak typeof(_tzImagePickerVc) weakTzImagePickerVc = _tzImagePickerVc;
-    [cell setImageProgressUpdateBlock:^(double progress) {
-        weakSelf.progress = progress;
-        if (progress >= 1) {
-            if (weakSelf.alertView) {
-                [weakTzImagePickerVc hideAlertView:weakSelf.alertView];
-                [weakSelf doneButtonClick];
-            }
-        }
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
     }];
     return cell;
 }

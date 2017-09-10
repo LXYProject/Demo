@@ -81,7 +81,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
     
-<<<<<<< HEAD
+
     [self.tableView setHeaderRefreshBlock:^{
         self.currentTopicId = @"";
         [self requestMessageData:self.currentTopicId];
@@ -93,24 +93,6 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-    [self.dataSource addObjectsFromArray:modelArray];
-    [self.tableView reloadData];
-    
-    //    [self.tableView setHeaderRefreshBlock:^{
-    //        self.currentTopicId = @"";
-    //        [self requestMessageData:self.currentTopicId];
-    //    }];
-    //    [self.tableView setFooterRefreshBlock:^{
-    //        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
-    //            self.currentTopicId = [[self.dataSource lastObject] topicId];
-    //        [self requestMessageData:self.currentTopicId];
-    //    }];
-    //    [self.tableView beginHeaderRefreshing];
-    
-    //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //    _hud.labelText = @"正在加载";
-=======
     NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
     [self.dataSource addObjectsFromArray:modelArray];
     [self.tableView reloadData];
@@ -128,22 +110,22 @@
     
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    _hud.labelText = @"正在加载";
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
 }
 
 - (void)commentTableViewTouchInSide:(UITapGestureRecognizer *)tap{
     [self.view endEditing:YES];
 }
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
-//    
-//    if([NSStringFromClass([touch.view class])isEqual:@"UITableViewCellContentView"]){
-//        
-//        return NO;
-//        
-//    }
-//    
-//    return YES;
-//}
+-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
+    
+    if([NSStringFromClass([touch.view class])isEqual:@"UITableViewCellContentView"]){
+        
+        return NO;
+        
+    }
+    
+    return YES;
+}
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -466,50 +448,18 @@
                     text:(NSString *)text
             targetUserId:(NSString *)targetUserId
                indexPath:(NSIndexPath *)indexPath{
-<<<<<<< HEAD
-    //    self.commentTextField.text = @"";
-    //    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-    //    CommentUserModel * model = [[CommentUserModel alloc]init];
-    //    model.userName = @"李小艳";
-    //    model.comment = text;
-    //    if (_currentModel.commentList.count==0) {
-    //        [array addObject:model];
-    //    }
-    //    else {
-    //        [array addObjectsFromArray:_currentModel.commentList];
-    //        [array addObject:model];
-    //    }
-    //    _currentModel.commentList = array;
-    //    [self.dataSource replaceObjectAtIndex:indexPath.section withObject:_currentModel];
-    //    [self.tableView reloadData];
-=======
-//    self.commentTextField.text = @"";
-//    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
-//    CommentUserModel * model = [[CommentUserModel alloc]init];
-//    model.userName = @"李小艳";
-//    model.comment = text;
-//    if (_currentModel.commentList.count==0) {
-//        [array addObject:model];
-//    }
-//    else {
-//        [array addObjectsFromArray:_currentModel.commentList];
-//        [array addObject:model];
-//    }
-//    _currentModel.commentList = array;
-//    [self.dataSource replaceObjectAtIndex:indexPath.section withObject:_currentModel];
-//    [self.tableView reloadData];
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
     
     [MesssgeHttpManager requestTopicId:self.selectTopicId
                                comment:text
                            commentType:@"1"
                           targetUserId:targetUserId
                                success:^(id response) {
-<<<<<<< HEAD
+
                                    self.commentTextField.text = @"";
-=======
+
                                    self.currentTopicId = @"";
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
                                    [self requestMessageData:@""];
                                } failure:^(NSError *error, NSString *message) {
                                    
@@ -543,22 +493,20 @@
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-<<<<<<< HEAD
-        
-        cell.commentSuccessBlock = ^(id obj) {
-=======
+
+
         cell.commentSuccessBlock = ^(id obj) {
             self.currentTopicId = @"";
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
             [self requestMessageData:@""];
         };
         cell.commentBtnClickBlock = ^(UIButton *sender) {
             [self commentTopic:indexPath];
         };
-<<<<<<< HEAD
+
         
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
+
         return cell;
     }
     else {
@@ -638,11 +586,11 @@
         self.selectTopicId = [self.dataSource[indexPath.section] topicId];
         
         if ((3+[[self.dataSource[indexPath.section] commentList] count])>indexPath.row) {
-<<<<<<< HEAD
+
             //return;
-=======
-            return;
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
+//            return;
+
             NSArray *commentList = [self.dataSource[indexPath.section] commentList];
             CommentUserModel *model = commentList[indexPath.row - 3];
             self.commentTextField.placeholder = [NSString stringWithFormat:@"回复:%@",model.userName];
@@ -651,11 +599,11 @@
         }
         //评论某个人
         else{
-<<<<<<< HEAD
+
             //            return;
-=======
+
 //            return;
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
             self.selectTopicId = [self.dataSource[indexPath.section] topicId];
             _currentTargetUserId =[self.dataSource[indexPath.section] ownerId];
             self.currentModel = self.dataSource[indexPath.section];

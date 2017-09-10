@@ -102,11 +102,8 @@
 /// 获取asset的资源类型
 - (TZAssetModelMediaType)getAssetType:(id)asset;
 
-<<<<<<< HEAD
 @end
 
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 //@interface TZSortDescriptor : NSSortDescriptor
 //
 //@end

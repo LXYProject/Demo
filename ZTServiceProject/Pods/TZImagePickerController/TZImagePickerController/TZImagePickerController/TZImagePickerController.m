@@ -4,11 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-<<<<<<< HEAD
 //  version 1.8.9 - 2017.08.16
-=======
-//  version 1.8.3 - 2017.07.15
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 #import "TZImagePickerController.h"
@@ -48,10 +44,6 @@
     self.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationBar.translucent = YES;
     [TZImageManager manager].shouldFixOrientation = NO;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 
     // Default appearance, you can reset these after this method
     // 默认的外观，你可以在这个方法后重置
@@ -620,23 +612,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (!_tableView) {
-<<<<<<< HEAD
                     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-=======
-                    CGFloat top = 0;
-                    CGFloat tableViewHeight = 0;
-                    if (self.navigationController.navigationBar.isTranslucent) {
-                        top = 44;
-                        if (iOS7Later && !TZ_isGlobalHideStatusBar) top += 20;
-                        tableViewHeight = self.view.tz_height - top;
-                    } else {
-                        CGFloat navigationHeight = 44;
-                        if (iOS7Later && !TZ_isGlobalHideStatusBar) navigationHeight += 20;
-                        tableViewHeight = self.view.tz_height - navigationHeight;
-                    }
-                    
-                    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, top, self.view.tz_width, tableViewHeight) style:UITableViewStylePlain];
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
                     _tableView.rowHeight = 70;
                     _tableView.tableFooterView = [[UIView alloc] init];
                     _tableView.dataSource = self;

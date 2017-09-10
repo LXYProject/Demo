@@ -26,9 +26,6 @@ CGFloat TZScreenScale;
 static TZImageManager *manager;
 static dispatch_once_t onceToken;
 
-static TZImageManager *manager;
-static dispatch_once_t onceToken;
-
 + (instancetype)manager {
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
@@ -190,12 +187,8 @@ static dispatch_once_t onceToken;
                     }
                 }
                 
-<<<<<<< HEAD
                 if ([collection.localizedTitle tz_containsString:@"Hidden"] || [collection.localizedTitle isEqualToString:@"已隐藏"]) continue;
                 if ([collection.localizedTitle tz_containsString:@"Deleted"] || [collection.localizedTitle isEqualToString:@"最近删除"]) continue;
-=======
-                if ([collection.localizedTitle containsString:@"Deleted"] || [collection.localizedTitle isEqualToString:@"最近删除"]) continue;
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
                 if ([self isCameraRollAlbum:collection.localizedTitle]) {
                     [albumArr insertObject:[self modelWithResult:fetchResult name:collection.localizedTitle] atIndex:0];
                 } else {
@@ -345,12 +338,7 @@ static dispatch_once_t onceToken;
             return model;
         }
         /// Allow picking video
-<<<<<<< HEAD
         if (type == TZAssetModelMediaTypeVideo) {
-=======
-        if ([[asset valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypeVideo]) {
-            type = TZAssetModelMediaTypeVideo;
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
             NSTimeInterval duration = [[asset valueForProperty:ALAssetPropertyDuration] doubleValue];
             NSString *timeLength = [NSString stringWithFormat:@"%0.0f",duration];
             timeLength = [self getNewTimeFromDurationSecond:timeLength.integerValue];
@@ -416,13 +404,9 @@ static dispatch_once_t onceToken;
     for (NSInteger i = 0; i < photos.count; i++) {
         TZAssetModel *model = photos[i];
         if ([model.asset isKindOfClass:[PHAsset class]]) {
-<<<<<<< HEAD
             PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
             options.resizeMode = PHImageRequestOptionsResizeModeFast;
             [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:options resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
-=======
-            [[PHImageManager defaultManager] requestImageDataForAsset:model.asset options:nil resultHandler:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
                 if (model.type != TZAssetModelMediaTypeVideo) dataLength += imageData.length;
                 assetCount ++;
                 if (assetCount >= photos.count) {

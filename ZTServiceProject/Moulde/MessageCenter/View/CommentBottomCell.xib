@@ -87,11 +87,11 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="comments.png"/>
                                 <connections>
-<<<<<<< HEAD
+
                                     <action selector="commentBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g80-Jn-IPS"/>
-=======
+
                                     <action selector="commentBtnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8ca-42-bLU"/>
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIH-HQ-n9L">

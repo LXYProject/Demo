@@ -650,6 +650,9 @@
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
 		7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */; };
 		7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26C31EE3C3230090BE5C /* NearByViewController.m */; };
+		7B6C65891F65414800B16D5D /* Hyphenate.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C65871F65414800B16D5D /* Hyphenate.podspec */; };
+		7B6C658A1F65415500B16D5D /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C65861F65414800B16D5D /* Hyphenate.framework */; };
+		7B6C658B1F65415500B16D5D /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C65861F65414800B16D5D /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B6FB2C71F0CB793009F5F49 /* DataPickerViewDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FB2C61F0CB793009F5F49 /* DataPickerViewDemo.m */; };
 		7B6FB3261F0CC8CF009F5F49 /* GroupNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FB30E1F0CC8CF009F5F49 /* GroupNumberCell.m */; };
 		7B6FB3271F0CC8CF009F5F49 /* GroupNumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6FB30F1F0CC8CF009F5F49 /* GroupNumberCell.xib */; };
@@ -879,6 +882,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7B6C658B1F65415500B16D5D /* Hyphenate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1959,6 +1963,8 @@
 		7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		7B6C26C21EE3C3230090BE5C /* NearByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByViewController.h; sourceTree = "<group>"; };
 		7B6C26C31EE3C3230090BE5C /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
+		7B6C65861F65414800B16D5D /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
+		7B6C65871F65414800B16D5D /* Hyphenate.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hyphenate.podspec; sourceTree = "<group>"; };
 		7B6FB2C51F0CB793009F5F49 /* DataPickerViewDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPickerViewDemo.h; sourceTree = "<group>"; };
 		7B6FB2C61F0CB793009F5F49 /* DataPickerViewDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPickerViewDemo.m; sourceTree = "<group>"; };
 		7B6FB30D1F0CC8CF009F5F49 /* GroupNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupNumberCell.h; sourceTree = "<group>"; };
@@ -2277,6 +2283,7 @@
 				291629AB1F4C0EAC001FBC76 /* libsqlite3.tbd in Frameworks */,
 				291629A91F4C0E98001FBC76 /* libstdc++.6.0.9.tbd in Frameworks */,
 				291629A71F4C0E8A001FBC76 /* AVFoundation.framework in Frameworks */,
+				7B6C658A1F65415500B16D5D /* Hyphenate.framework in Frameworks */,
 				29162CA01F4D32DC001FBC76 /* libopencore-amrnb.a in Frameworks */,
 				291629A51F4C0E84001FBC76 /* libicucore.tbd in Frameworks */,
 				7B1C40F01F29BEE500866558 /* CoreMotion.framework in Frameworks */,
@@ -2428,7 +2435,6 @@
 			sourceTree = "<group>";
 		};
 		29162B941F4D32DB001FBC76 /* opencore-amrwb */ = {
-<<<<<<< HEAD
 			isa = PBXGroup;
 			children = (
 				29162B951F4D32DB001FBC76 /* dec_if.h */,
@@ -2446,25 +2452,6 @@
 				29162B9B1F4D32DB001FBC76 /* MBProgressHUD.h */,
 				29162B9C1F4D32DB001FBC76 /* MBProgressHUD.m */,
 			);
-=======
-			isa = PBXGroup;
-			children = (
-				29162B951F4D32DB001FBC76 /* dec_if.h */,
-				29162B961F4D32DB001FBC76 /* if_rom.h */,
-				29162B971F4D32DB001FBC76 /* libopencore-amrwb.a */,
-			);
-			path = "opencore-amrwb";
-			sourceTree = "<group>";
-		};
-		29162B981F4D32DB001FBC76 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				29162B991F4D32DB001FBC76 /* MBProgressHUD+Add.h */,
-				29162B9A1F4D32DB001FBC76 /* MBProgressHUD+Add.m */,
-				29162B9B1F4D32DB001FBC76 /* MBProgressHUD.h */,
-				29162B9C1F4D32DB001FBC76 /* MBProgressHUD.m */,
-			);
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -4320,6 +4307,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7B6C65851F65414800B16D5D /* HyphenateFullSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7B6C65861F65414800B16D5D /* Hyphenate.framework */,
+				7B6C65871F65414800B16D5D /* Hyphenate.podspec */,
+			);
+			path = HyphenateFullSDK;
+			sourceTree = "<group>";
+		};
 		7B6FB2C41F0CB793009F5F49 /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4624,10 +4620,8 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
+				7B6C65851F65414800B16D5D /* HyphenateFullSDK */,
 				7BF83B001F52A7E800095374 /* YBAttributeTextTapAction */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				29162B6C1F4D32DB001FBC76 /* EaseUI */,
 				7B1C405E1F298CFA00866558 /* AlipaySDK */,
 				7B45E7B31F2721D100380F61 /* TOPageItem */,
@@ -5096,13 +5090,10 @@
 				7B205E1C1F00E6C900E46B74 /* home_eswp_yssc@2x.png in Resources */,
 				7B8F2A751F039A7D00D5D1DF /* selech_icon@2x.png in Resources */,
 				7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */,
-<<<<<<< HEAD
 				7B3B41DA1F5FCE19009B3089 /* gpssearchbutton@2x.png in Resources */,
 				29162D0B1F4D32DC001FBC76 /* EaseUIResource.bundle in Resources */,
 				7B3B41D91F5FCE19009B3089 /* gpsnormal@3x.png in Resources */,
-=======
 				29162D0B1F4D32DC001FBC76 /* EaseUIResource.bundle in Resources */,
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				7B3E2D711F41732C00562252 /* zbfw_qhqz@2x.png in Resources */,
 				7B3E2D6D1F41732C00562252 /* zbfw_qhdt@2x.png in Resources */,
 				7B1C40611F298CFA00866558 /* AlipaySDK.bundle in Resources */,
@@ -5159,6 +5150,7 @@
 				7B6FB3431F0CD153009F5F49 /* phone@2x.png in Resources */,
 				7B6FB3271F0CC8CF009F5F49 /* GroupNumberCell.xib in Resources */,
 				7B205E2F1F00E6C900E46B74 /* tabbar_zb_normal@3x.png in Resources */,
+				7B6C65891F65414800B16D5D /* Hyphenate.podspec in Resources */,
 				7B1D8E1B1F1DDCF200D79F46 /* PublicThingsController.xib in Resources */,
 				7B966A6D1EFF8BA900326C88 /* CommentBottomCell.xib in Resources */,
 				7B8F2A761F039A7D00D5D1DF /* setting_btn@2x.png in Resources */,
@@ -5586,10 +5578,7 @@
 				7B16D27E1F185AAD0070F88A /* BuildingListModel.m in Sources */,
 				7B1F114E1F30303600963AAC /* PostCollectionViewCell.m in Sources */,
 				29162CA91F4D32DC001FBC76 /* MJRefreshAutoGifFooter.m in Sources */,
-<<<<<<< HEAD
 				7B3B41CD1F5FC951009B3089 /* MapPoiTableView.m in Sources */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				29162CDA1F4D32DC001FBC76 /* PSTGridLayoutItem.m in Sources */,
 				299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */,
 				7B6FB3281F0CC8CF009F5F49 /* HeadBackCell.m in Sources */,
@@ -5632,10 +5621,7 @@
 				7B8B10971F26E5EB00F09678 /* HomePageController.m in Sources */,
 				29162CCA1F4D32DC001FBC76 /* UIImage+EMGIF.m in Sources */,
 				29162CB41F4D32DC001FBC76 /* UIScrollView+MJExtension.m in Sources */,
-<<<<<<< HEAD
 				7B3B41CC1F5FC951009B3089 /* LocationDetailVC.m in Sources */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				29162CB31F4D32DC001FBC76 /* MJRefreshConst.m in Sources */,
 				29162D001F4D32DC001FBC76 /* EaseBubbleView+Voice.m in Sources */,
 				7B0C71FF1F15CBD800CE8AEC /* MyDoorServiceController.m in Sources */,
@@ -5679,10 +5665,7 @@
 				7BBB101B1F04FF7900BCCF4B /* RegisterOneController.m in Sources */,
 				7B1C41B61F29EDCF00866558 /* NSDataEx.m in Sources */,
 				29162CF01F4D32DC001FBC76 /* EaseLocationViewController.m in Sources */,
-<<<<<<< HEAD
 				7B3DD4C51F623A8C000E5AF5 /* MatterTypeModel.m in Sources */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				29162CBC1F4D32DC001FBC76 /* MWTapDetectingImageView.m in Sources */,
 				7B3CCA7E1EFCADCF00E21BAC /* MessageModel.m in Sources */,
 				7B1D8E1C1F1DDCF200D79F46 /* TenementViewController.m in Sources */,
@@ -5860,19 +5843,13 @@
 				7BFE48451EE937BA0006FF3B /* MessageCell.m in Sources */,
 				7B33B7A01EF37657005FBBBB /* StaticlCell.m in Sources */,
 				29162C9F1F4D32DC001FBC76 /* EMVoiceConverter.mm in Sources */,
-<<<<<<< HEAD
 				7B3B41CF1F5FC951009B3089 /* SearchResultTableVC.m in Sources */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				291627F71F4580DA001FBC76 /* CommentTextCell.m in Sources */,
 				7BA868291F65135C0026C3E1 /* ZTKeyBoardManager.m in Sources */,
 				7B6FB32C1F0CC8CF009F5F49 /* MineBtnCell.m in Sources */,
 				7B1C40F61F29E96200866558 /* APAuthV2Info.m in Sources */,
 				29162CF21F4D32DC001FBC76 /* EaseRefreshTableViewController.m in Sources */,
-<<<<<<< HEAD
 				7BF83B031F52A7E800095374 /* UILabel+YBAttributeTextTapAction.m in Sources */,
-=======
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 				7B1F113F1F301B6100963AAC /* PersonalDataHeadCell.m in Sources */,
 				29162CE61F4D32DC001FBC76 /* UIViewController+HUD.m in Sources */,
 				7B5C92201EF8B5E200C545A8 /* PinYinForObjc.m in Sources */,

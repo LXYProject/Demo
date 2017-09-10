@@ -85,13 +85,13 @@
 ////    }];
 //    [self.tableView beginHeaderRefreshing];
     
-<<<<<<< HEAD
+
 //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 //    _hud.labelText = @"正在加载";
-=======
+
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+
 
     
 }
