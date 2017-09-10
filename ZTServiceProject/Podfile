@@ -15,12 +15,6 @@ pod 'Masonry'
 pod 'AMap3DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
-<<<<<<< HEAD
 pod 'TTTAttributedLabel'
 pod 'Reachability'
-
-=======
-#pod 'HyphenateLite_CN'
-#pod 'EaseUILite', :git =>'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
->>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 end
