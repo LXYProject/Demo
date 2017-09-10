@@ -223,7 +223,27 @@
                          @"topicTitle": @"我想要租房子\n我能接受的租金价格为:1577元至8968元/月\n我想要的户型为:3室0厅0卫\n我想要我的房子门口朝向:无所谓了\n我想合租\n我可以接受的房屋来源为：房东\n另外我想说的是：一诺孙女\n标签要求：有天然气, 三人以下合租, 生活便利",
                          @"createTime": @"2017-06-22 16:39:32",
                          @"topicStatus": @1,
-                         @"likeList": @[],
+                         @"likeList": @[@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            },@{
+                                            @"userImageUrl": @"http://192.168.1.96:8080/ZtscApp/file/headImage/005600-20170527151108.png",
+                                            @"likeId": @"tup20170622144423",
+                                            @"userId": @"005600",
+                                            @"userName": @"其实我很帅"
+                                            }],
                          @"zoneId": @"1",
                          @"ownerId": @"005600",
                          @"commentList": @[@{
@@ -548,10 +568,10 @@
     else {
         if((currentSectionCommentListCount+3>indexPath.row)&&currentSectionCommentListCount>0){
             NSArray *commentList = [self.dataSource[indexPath.section] commentList];
-            return [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
+            return commentList.count>0?[tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
                 
                 cell.model = commentList[indexPath.row - 3];
-            }];
+            }]:0;
         }
         return 49;
     }

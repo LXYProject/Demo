@@ -25,12 +25,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJk-rU-Abn" customClass="TTTAttributeLabelView">
-                        <rect key="frame" x="15" y="0.0" width="295" height="38.5"/>
+                        <rect key="frame" x="15" y="5" width="295" height="33.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SJk-rU-Abn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kb9-Te-f0L"/>
+                    <constraint firstItem="SJk-rU-Abn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Kb9-Te-f0L"/>
                     <constraint firstAttribute="trailing" secondItem="n6H-WH-cQa" secondAttribute="trailing" constant="10" id="LST-nU-e0U"/>
                     <constraint firstItem="SJk-rU-Abn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="SCd-sV-wkl"/>
                     <constraint firstAttribute="bottom" secondItem="n6H-WH-cQa" secondAttribute="bottom" constant="5" id="WGg-LP-VyE"/>

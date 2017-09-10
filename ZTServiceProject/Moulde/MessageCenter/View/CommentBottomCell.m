@@ -84,7 +84,7 @@
     //    NSLog(@"str2==%@", str2);
 }
 
-- (IBAction)thumbUp:(UIButton *)sender {    
+- (IBAction)thumbUp:(UIButton *)sender {
     [MesssgeHttpManager requestTypeInterface:Thumb_Up TopicId:_model.topicId success:^(id response) {
         //状态码
         NSString *status = [response objectForKey:@"status"];
