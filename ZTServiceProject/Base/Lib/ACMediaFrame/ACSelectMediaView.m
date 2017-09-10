@@ -30,6 +30,18 @@
 
 @implementation ACSelectMediaView
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        _mediaArray = [NSMutableArray array];
+        rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
+        [self configureCollectionView];
+
+    }
+    return self;
+}
+
 #pragma mark - Init
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -44,16 +56,19 @@
 
 - (void)configureCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-    layout.itemSize = CGSizeMake(self.width/4, self.width/4);
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
-    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    _collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+    [self addSubview:_collectionView];
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
     [_collectionView registerClass:[ACMediaImageCell class] forCellWithReuseIdentifier:NSStringFromClass([ACMediaImageCell class])];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
-    [self addSubview:_collectionView];
+    layout.itemSize = CGSizeMake(self.width/4, self.width/4);
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,7 +120,7 @@
 #pragma mark - collection view delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == _mediaArray.count && _mediaArray.count >= 3) {
+    if (indexPath.row == _mediaArray.count && _mediaArray.count >= _maxCount) {
         [UIAlertController showAlertWithTitle:@"最多只能选择3张" message:nil actionTitles:@[@"确定"] cancelTitle:nil style:UIAlertControllerStyleAlert completion:nil];
         return;
     }
@@ -128,11 +143,11 @@
             MWPhoto *photo = [MWPhoto photoWithImage:model.image];
             photo.caption = model.name;
             if (model.isVideo) {
-                if (model.mediaURL) {
-                    photo.videoURL = model.mediaURL;
-                }else {
-                    photo = [photo initWithAsset:model.asset targetSize:CGSizeZero];
-                }
+//                if (model.mediaURL) {
+//                    photo.videoURL = model.mediaURL;
+//                }else {
+//                    photo = [photo initWithAsset:model.asset targetSize:CGSizeZero];
+//                }
             }
             [_photos addObject:photo];
         }
@@ -142,20 +157,36 @@
 }
 
 - (void)showSelectMediaView {
-    ACShowMediaTypeView *fileView = [[ACShowMediaTypeView alloc] init];
-    [fileView show];
-    __weak typeof(self) weakSelf = self;
-    [fileView selectedIndexBlock:^(NSInteger itemIndex) {
-        if (itemIndex == 0) {
-            [weakSelf openAlbum];
-        }else if (itemIndex == 1) {
-            [weakSelf openCamera];
-        }else if (itemIndex == 2) {
-            //                [weakSelf openVideotape];
-        }else {
-            //                [weakSelf openVideo];
-        }
-    }];
+    
+//    ACShowMediaTypeView *fileView = [[ACShowMediaTypeView alloc] init];
+//    [fileView show];
+//    __weak typeof(self) weakSelf = self;
+//    [fileView selectedIndexBlock:^(NSInteger itemIndex) {
+//        if (itemIndex == 0) {
+//            [weakSelf openAlbum];
+//        }else if (itemIndex == 1) {
+//            [weakSelf openCamera];
+//        }else if (itemIndex == 2) {
+//            //                [weakSelf openVideotape];
+//        }else {
+//            //                [weakSelf openVideo];
+//        }
+//    }];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self openCamera];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self openAlbum];
+    }]];
+    
+    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    [appRootVC presentViewController:alertController animated:YES completion:nil];
+    
 }
 
 #pragma mark - <MWPhotoBrowserDelegate>
@@ -185,6 +216,18 @@
     !_block ?  : _block(_collectionView.height);
     !_backBlock ?  : _backBlock(_mediaArray);
     
+    [_collectionView reloadData];
+}
+
+///添加选中的image，然后重新布局collectionview
+- (void)layoutCollectionImages: (NSArray *)images {
+    [_mediaArray addObjectsFromArray:images];
+    NSInteger allImageCount = _mediaArray.count + 1;
+    NSInteger maxRow = (allImageCount - 1) / 4 + 1;
+    _collectionView.height = maxRow * ACMedia_ScreenWidth/4;
+    self.height = _collectionView.height;
+    //block回调
+//    !_block ?  : _block(_collectionView.height);
     [_collectionView reloadData];
 }
 

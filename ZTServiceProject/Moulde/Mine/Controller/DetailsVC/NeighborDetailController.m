@@ -88,7 +88,7 @@
         NSArray *smallImgs = self.model.topicSmallImageList;
         if (smallImgs.count>0) {
             NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
-            return count *100+(count-1)*15;
+            return count *((ScreenWidth - 30 )- 2*3)/3+(count-1)*15;
         }
         return 0;
     }

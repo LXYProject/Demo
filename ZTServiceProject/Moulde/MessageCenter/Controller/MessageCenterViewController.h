@@ -16,5 +16,5 @@
 
 @property (nonatomic,copy)NSString *targetUserId;
 
-
+@property (nonatomic,assign)BOOL isShowKeyBoard;
 @end

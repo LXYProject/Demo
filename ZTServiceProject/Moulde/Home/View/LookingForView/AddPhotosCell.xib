@@ -18,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT6-NG-nVL" customClass="ACSelectMediaView">
+                        <rect key="frame" x="5" y="5" width="310" height="89.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="koM-JL-Not">
                         <rect key="frame" x="77" y="0.0" width="167" height="100"/>
                         <subviews>
@@ -29,7 +33,7 @@
                                 </constraints>
                                 <state key="normal" image="tjzp.png"/>
                                 <connections>
-                                    <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f0x-aJ-fsg"/>
+                                    <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pii-Ev-eqq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,11 +47,18 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="koM-JL-Not" secondAttribute="bottom" id="F7Z-EV-cF7"/>
+                    <constraint firstItem="DT6-NG-nVL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="JM7-2S-Doe"/>
+                    <constraint firstAttribute="bottom" secondItem="DT6-NG-nVL" secondAttribute="bottom" constant="5" id="VyT-m5-mMA"/>
+                    <constraint firstItem="DT6-NG-nVL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Wew-BH-XTm"/>
                     <constraint firstItem="koM-JL-Not" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aT6-Sk-L0z"/>
                     <constraint firstItem="koM-JL-Not" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="c6Z-Ms-BDd"/>
+                    <constraint firstAttribute="trailing" secondItem="DT6-NG-nVL" secondAttribute="trailing" constant="5" id="dlj-yJ-396"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="addPhotoBtn" destination="kqN-R8-Ctz" id="cwm-Sn-6Uz"/>
+                <outlet property="mediaView" destination="DT6-NG-nVL" id="lgG-nc-P4k"/>
                 <outlet property="placeholdView" destination="koM-JL-Not" id="KkI-pU-afK"/>
             </connections>
         </tableViewCell>

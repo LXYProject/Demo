@@ -14,7 +14,7 @@
 #import "ReleaseHelpCell.h"
 #import "LocationChoiceController.h"
 #import "AddPhotosCell.h"
-
+#import "ACSelectMediaView.h"
 #define LabelY 515
 @interface ReleaseHelpController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,6 +23,11 @@
 @property (nonatomic, strong) NSArray *timeDataArr;
 @property (nonatomic, copy) NSString *timeStr;
 @property (nonatomic, strong) NSMutableArray *chooseImgArr;
+
+@property (nonatomic,strong)NSArray *imageModelArray;
+
+@property (nonatomic,assign)CGFloat cellHight;
+
 @end
 
 @implementation ReleaseHelpController
@@ -38,26 +43,59 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
    // [self.tableView reloadData];
 
 }
 
 - (void)setLocationInfo:(NSString *)locationInfo{
     _locationInfo = locationInfo;
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"发布求助" titleColor:[UIColor whiteColor]];
-    
     _sectionOneArr = @[@"我要", @"描述", @"赏金", @"我在", @"求助类型", @"有效期至"];
-    
     [self createLabel];
     [self weekTime];
+    
+//    self.tableView.tableHeaderView = [self headerView];
 }
+
+//- (UIView *)headerView {
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 10, ScreenWidth, 100)];
+//    AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:self.tableView indenty:@"AddPhotosCell"];
+//    cell.maxCount = 9;
+//    cell.frame = view.bounds;
+//    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+//        view.frame = CGRectMake(0, 0, ScreenWidth, mediaHeight);
+//        cell.frame = view.bounds;
+//        self.tableView.tableHeaderView=view;
+//    }];
+//    cell.finishedBlock = ^(NSArray *images) {
+//        NSLog(@"images==%@", images);
+//        
+//        if (images.count==0) {
+//            return;
+//        }
+//        if (self.chooseImgArr.count>0) {
+//            [self.chooseImgArr removeAllObjects];
+//        }
+//        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            
+//            ACMediaModel *model = obj;
+//            [self.chooseImgArr addObject:model.image];
+//        }];
+//        
+//        // 上传图片
+//        [self upImageArr];
+//    };
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    [view addSubview:cell];
+//    return view;
+//}
 
 - (void)weekTime{
     
@@ -105,8 +143,8 @@
                           validDate:self.timeStr
                              cityId:@"11000"
                          districtId:@"110108"
-                                  x:@"116.32"
-                                  y:@"39.98"
+                                  x:GetValueForKey(@"longitude") //@"116.32"
+                                  y:GetValueForKey(@"latitude")  //@"39.98"
                               resId:@"510018177815"
                             resName:@"岷阳小区"
                              images:_resourceId
@@ -153,9 +191,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+    if (indexPath.section==0) {
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
-    }else {
+    }else{
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
     }
 }
@@ -166,12 +204,17 @@
                                     indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    [cell setImageMaxCount:3 imageArray:self.imageModelArray];
+    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+        self.cellHight = mediaHeight;
+    }];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
         
         if (images.count==0) {
             return;
         }
+        self.imageModelArray = images;
         if (self.chooseImgArr.count>0) {
             [self.chooseImgArr removeAllObjects];
         }
@@ -180,13 +223,13 @@
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
         }];
-        
         // 上传图片
         [self upImageArr];
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-
     
 }
 
@@ -303,7 +346,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section==1) {
+    if (indexPath.section==0) {
         if (indexPath.row==0) {
         }else if (indexPath.row==1){
             [PushManager pushViewControllerWithName:@"HelpDescriptionController" animated:YES block:nil];
@@ -332,7 +375,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section==0) {
-        return 210;
+        return self.cellHight==0?100:self.cellHight;
     }else{
         return 50;
     }
@@ -346,6 +389,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 5;
 }
+
 
 - (NSMutableArray *)timeDataSource{
     if (!_timeDataSource) {

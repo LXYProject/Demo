@@ -30,6 +30,7 @@
         }
     }];
     
+    self.textView.returnKeyType = UIReturnKeyDone;
     [self.contentView addSubview:self.textView];
 }
 

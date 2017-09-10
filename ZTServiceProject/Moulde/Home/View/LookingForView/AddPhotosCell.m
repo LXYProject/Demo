@@ -12,6 +12,7 @@
 @interface AddPhotosCell()
 @property (weak, nonatomic) IBOutlet UIView *placeholdView;
 
+
 @property (nonatomic,strong)NSArray *dataSource;
 @end
 
@@ -19,22 +20,40 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     // Initialization code
-    [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[ACSelectMediaView class]]) {
-            [obj removeFromSuperview];
-        }
-    }];
-    [self.contentView addSubview:self.mediaView];
 }
 - (IBAction)btnClick:(id)sender {
+    
+    [[PushManager currentViewController].view endEditing:YES];
     [self.mediaView showSelectMediaView];
+    
 }
 
 - (void)setImagesArray:(NSArray *)imagesArray {
-    [self.mediaView layoutCollection:imagesArray];
+    self.mediaView.hidden = NO;
+    self.placeholdView.hidden = YES;
+    [self.mediaView layoutCollectionImages:imagesArray];
 }
 
+//-(void)setMaxCount:(NSInteger)maxCount {
+//    if (maxCount == _maxCount) {
+//        return;
+//    }
+//    _maxCount = maxCount;
+//    [self initViewMediaView];
+//    self.mediaView.maxCount = maxCount;
+//}
+
+- (void)setImageMaxCount:(NSInteger)imageMaxCount imageArray:(NSArray *)imageArray {
+    [self initViewMediaView];
+    self.mediaView.maxCount = imageMaxCount;
+    if (imageArray.count>0) {
+        self.mediaView.hidden = NO;
+        self.placeholdView.hidden = YES;
+        [self.mediaView layoutCollectionImages:imageArray];
+    }
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,39 +67,32 @@
     
  }
 
-- (ACSelectMediaView *)mediaView {
-    if (!_mediaView) {
-        _mediaView = [[ACSelectMediaView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, self.contentView.frame.size.height)];
-        _mediaView.maxCount = 9;
+- (void)initViewMediaView {
+    [_mediaView observeViewHeight:^(CGFloat value) {
+    self.contentView.height = value;
+    }];
+    //4、随时获取已经选择的媒体文件
+    __weak ACSelectMediaView *weakMediaView = _mediaView;
+    [_mediaView observeSelectedMediaArray:^(NSArray<ACMediaModel *> *list) {
         
-        [_mediaView observeViewHeight:^(CGFloat value) {
-        self.contentView.height = value;
-        }];
-        //4、随时获取已经选择的媒体文件
-        __weak ACSelectMediaView *weakMediaView = _mediaView;
-        [_mediaView observeSelectedMediaArray:^(NSArray<ACMediaModel *> *list) {
-            
-            for (ACMediaModel *model in list) {
-                NSLog(@"%@",model);
-            
-            }
-            self.dataSource = list;
-            if (list.count>0) {
-                weakMediaView.hidden = NO;
-                self.placeholdView.hidden = YES;
-            }
-            else {
-                weakMediaView.hidden = YES;
-                self.placeholdView.hidden = NO;
-            }
-            if (self.finishedBlock) {
-                self.finishedBlock(list);
-            }
-        }];
+        for (ACMediaModel *model in list) {
+            NSLog(@"%@",model);
         
-        _mediaView.hidden = YES;
-    }
-    return _mediaView;
+        }
+        self.dataSource = list;
+        if (list.count>0) {
+            weakMediaView.hidden = NO;
+            self.placeholdView.hidden = YES;
+        }
+        else {
+            weakMediaView.hidden = YES;
+            self.placeholdView.hidden = NO;
+        }
+        if (self.finishedBlock) {
+            self.finishedBlock(list);
+        }
+    }];
+    _mediaView.hidden = YES;
 }
 
 //- (nsa *)dataSource {

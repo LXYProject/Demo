@@ -48,8 +48,14 @@
 }
 
 - (IBAction)publishedBtnClick {
+    
+    //发送消息
+    EMMessage *aMessage;
+    
+    [[EMClient sharedClient].chatManager sendMessage:aMessage progress:nil completion:^(EMMessage *aMessage, EMError *aError) {
+    
+    }];
 }
-
 
 
 @end

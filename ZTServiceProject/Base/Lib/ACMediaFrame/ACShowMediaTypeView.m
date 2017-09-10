@@ -64,6 +64,7 @@ static CGFloat space = 30;
     return _collectionView;
 }
 
+
 #pragma mark - init method
 
 - (instancetype)init {
@@ -83,6 +84,7 @@ static CGFloat space = 30;
 #pragma mark - action
 
 - (void)show {
+    
     UIView *window = [[UIApplication sharedApplication] keyWindow].rootViewController.view;
     [window addSubview:self];
     [self addSubview:self.collectionView];

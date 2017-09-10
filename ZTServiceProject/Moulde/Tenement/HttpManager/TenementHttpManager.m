@@ -12,6 +12,7 @@
 #import "ConvenServiceModel.h"
 #import "VillagePanoramaModel.h"
 #import "DoorServiceModel.h"
+#import "MatterTypeModel.h"
 
 @implementation TenementHttpManager
 
@@ -42,7 +43,7 @@
             NSArray *modelArray = [DoorServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceCategoryList"]];
             success(modelArray);
         }else if (ListOrPanorama==ListThings){
-            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"affairCategoryList"]];
+            NSArray *modelArray = [MatterTypeModel mj_objectArrayWithKeyValuesArray:response[@"affairCategoryList"]];
             success(modelArray);
         }else if (ListOrPanorama==AnnouncementList){
             NSArray *modelArray = [AnnounceModel mj_objectArrayWithKeyValuesArray:response[@"bulletinList"]];

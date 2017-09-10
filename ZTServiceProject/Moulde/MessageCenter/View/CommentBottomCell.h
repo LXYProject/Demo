@@ -13,6 +13,9 @@
 
 @interface CommentBottomCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
+
+
 @property (nonatomic,strong)MessageModel* model;
 
 //@property (nonatomic,copy)Int_Block btnClickBlock;
@@ -24,8 +27,11 @@
 //这个block专门给而外界调用的
 @property (nonatomic,copy)Id_Block commentSuccessBlock;
 
+@property (nonatomic,copy)BtnClickBlock commentBtnClickBlock;
+
 
 @property (nonatomic,copy)Void_Block beginEditing;
+
 
 
 @end

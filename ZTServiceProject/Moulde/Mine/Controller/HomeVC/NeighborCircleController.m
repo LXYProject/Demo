@@ -36,57 +36,62 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerNib:[UINib nibWithNibName:@"NeighborCircleCell" bundle:nil] forCellReuseIdentifier:@"NeighborCircleCell"];
-//        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-//    self.listArray = (NSMutableArray *)modelArray;
-//    
-//    NSMutableArray  *yearArray = [NSMutableArray arrayWithCapacity:1];
-//    //取出年份 tableView的section 以年份+月份为分组条件   day为每组内容
-//    [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NeighborCircleModel *model = obj;
-//        if (![yearArray containsObject:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
-//            [yearArray addObject:[self yearAndMonth:[self dateformatter:model.createTime]]];
-//        }
-//    }];
-//    //这里将数组进行排序，防止服务器数据有问题
-//    NSArray *result = [yearArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-//        return [obj2 compare:obj1]; //降序
-//    }];
-//    [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSString *year = obj;
-//        NSMutableArray *mothArr = [NSMutableArray arrayWithCapacity:1];
-//        [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            NeighborCircleModel *model = obj;
-//            if ([year isEqualToString:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
-//                [mothArr addObject:model];
-//            }
-//        }];
-//        [self.topicHisDataSource addObject:mothArr];
-//        
-//    }];
+        NSArray *modelArray = [NeighborCircleModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+    self.listArray = (NSMutableArray *)modelArray;
+    
+    NSMutableArray  *yearArray = [NSMutableArray arrayWithCapacity:1];
+    //取出年份 tableView的section 以年份+月份为分组条件   day为每组内容
+    [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NeighborCircleModel *model = obj;
+        if (![yearArray containsObject:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+            [yearArray addObject:[self yearAndMonth:[self dateformatter:model.createTime]]];
+        }
+    }];
+    //这里将数组进行排序，防止服务器数据有问题
+    NSArray *result = [yearArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj2 compare:obj1]; //降序
+    }];
+    [result enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *year = obj;
+        NSMutableArray *mothArr = [NSMutableArray arrayWithCapacity:1];
+        [self.listArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NeighborCircleModel *model = obj;
+            if ([year isEqualToString:[self yearAndMonth:[self dateformatter:model.createTime]]]) {
+                [mothArr addObject:model];
+            }
+        }];
+        [self.topicHisDataSource addObject:mothArr];
+        
+    }];
 
 //        [self.topicHisDataSource addObjectsFromArray:self.listArray];
 //        [self.tableView reloadData];
     // Do any additional setup after loading the view from its nib.
-    self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"我的邻里圈" titleColor:[UIColor whiteColor]];
-    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.0001)];
-//    self.tableView.tableFooterView = [[UIView alloc]init];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-//    self.currentPage = 1;
-    [self.tableView setHeaderRefreshBlock:^{
-        self.currentPage = 1;
-        [self requestTopicHis];
-    }];
-//    [self.tableView setFooterRefreshBlock:^{
-//        self.currentPage++;
+//    self.tableView.backgroundColor = RGB(247, 247, 247);
+//    [self titleViewWithTitle:@"我的邻里圈" titleColor:[UIColor whiteColor]];
+//    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0.0001)];
+////    self.tableView.tableFooterView = [[UIView alloc]init];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//    
+////    self.currentPage = 1;
+//    [self.tableView setHeaderRefreshBlock:^{
+//        self.currentPage = 1;
 //        [self requestTopicHis];
 //    }];
-    [self.tableView beginHeaderRefreshing];
+////    [self.tableView setFooterRefreshBlock:^{
+////        self.currentPage++;
+////        [self requestTopicHis];
+////    }];
+//    [self.tableView beginHeaderRefreshing];
     
+<<<<<<< HEAD
+//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    _hud.labelText = @"正在加载";
+=======
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.label.text = @"正在加载";
+    _hud.labelText = @"正在加载";
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 
     
 }
@@ -301,7 +306,7 @@
     [MineHttpManager requestTopicId:@"" success:^(NSArray* response) {
         @strongify(self);
         [self.tableView endRefreshing];
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         
         self.listArray = (NSMutableArray *)response;
         
@@ -334,8 +339,8 @@
         
     } failure:^(NSError *error, NSString *message) {
         [self.tableView endRefreshing];
-        _hud.label.text = message;
-        [_hud hideAnimated:YES];
+        _hud.labelText = message;
+        [_hud hide:YES];
     }];
 }
 

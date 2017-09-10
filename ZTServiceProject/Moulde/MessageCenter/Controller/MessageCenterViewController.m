@@ -9,7 +9,7 @@
 #import "MessageCenterViewController.h"
 #import "MessageCell.h"
 #import "NearByItemModel.h"
-#import "MesssgeHttpManager.h"  
+#import "MesssgeHttpManager.h"
 #import "MessageModel.h"
 #import "CommentPhotoCell.h"
 #import "CommentBottomCell.h"
@@ -18,7 +18,7 @@
 #import "CommentUserModel.h"
 #import "CommentTextCell.h"
 
-@interface MessageCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MessageCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic,strong)UIView *keyBoardToolsView;
 @property (nonatomic,strong)UIButton *senderBtn;
 @property (weak, nonatomic) IBOutlet BaseTableView *tableView;
@@ -29,16 +29,16 @@
 @property (nonatomic,assign)NSInteger currentPage;
 @property (nonatomic,copy)NSString *selectTopicId;
 @property (nonatomic,copy)NSString *currentTopicId;
-
+@property (nonatomic,strong)MessageModel *currentModel;
+@property (nonatomic,strong)NSIndexPath *currentIndexPath;
+@property (nonatomic,strong)NSArray *currentTopticDataArray;
 
 @end
 
-@implementation MessageCenterViewController
-{
+@implementation MessageCenterViewController {
     BOOL ReplyComment;
     MBProgressHUD *_hud;
     NSString *_currentTargetUserId;
-    BOOL _isShowKeyBoard;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,9 +54,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide)];
+    
+    UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(commentTableViewTouchInSide:)];
     tableViewGesture.numberOfTapsRequired = 1;
     tableViewGesture.cancelsTouchesInView = NO;
+    tableViewGesture.delegate = self;
     [self.tableView addGestureRecognizer:tableViewGesture];
     
     
@@ -79,10 +81,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentBottomCell" bundle:nil] forCellReuseIdentifier:@"CommentBottomCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
     
-//    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-//    [self.dataSource addObjectsFromArray:modelArray];
-//    [self.tableView reloadData];
-    
+<<<<<<< HEAD
     [self.tableView setHeaderRefreshBlock:^{
         self.currentTopicId = @"";
         [self requestMessageData:self.currentTopicId];
@@ -94,13 +93,57 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.label.text = @"正在加载";
+    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+    [self.dataSource addObjectsFromArray:modelArray];
+    [self.tableView reloadData];
+    
+    //    [self.tableView setHeaderRefreshBlock:^{
+    //        self.currentTopicId = @"";
+    //        [self requestMessageData:self.currentTopicId];
+    //    }];
+    //    [self.tableView setFooterRefreshBlock:^{
+    //        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+    //            self.currentTopicId = [[self.dataSource lastObject] topicId];
+    //        [self requestMessageData:self.currentTopicId];
+    //    }];
+    //    [self.tableView beginHeaderRefreshing];
+    
+    //    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //    _hud.labelText = @"正在加载";
+=======
+    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+    [self.dataSource addObjectsFromArray:modelArray];
+    [self.tableView reloadData];
+    
+//    [self.tableView setHeaderRefreshBlock:^{
+//        self.currentTopicId = @"";
+//        [self requestMessageData:self.currentTopicId];
+//    }];
+//    [self.tableView setFooterRefreshBlock:^{
+//        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+//            self.currentTopicId = [[self.dataSource lastObject] topicId];
+//        [self requestMessageData:self.currentTopicId];
+//    }];
+//    [self.tableView beginHeaderRefreshing];
+    
+//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    _hud.labelText = @"正在加载";
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 }
 
-- (void)commentTableViewTouchInSide{
-    [self.view endEditing:YES] ;
+- (void)commentTableViewTouchInSide:(UITapGestureRecognizer *)tap{
+    [self.view endEditing:YES];
 }
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
+//    
+//    if([NSStringFromClass([touch.view class])isEqual:@"UITableViewCellContentView"]){
+//        
+//        return NO;
+//        
+//    }
+//    
+//    return YES;
+//}
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
@@ -121,12 +164,12 @@
     self.tableView.scrollEnabled = YES;
     self.tableView.contentInset = contentInsets;
     self.tableView.scrollIndicatorInsets = contentInsets;
-//    CGRect aRect = self.view.frame;
-//    aRect.size.height -= keyboardRect.size.height;
-//    if (!CGRectContainsPoint(aRect, activeField.superview.superview.frame.origin) ) {
-//        CGPoint scrollPoint = CGPointMake(0.0, activeField.superview.superview.frame.origin.y-aRect.size.height+44);
-//        [displayTable setContentOffset:scrollPoint animated:YES];
-//    }
+    //    CGRect aRect = self.view.frame;
+    //    aRect.size.height -= keyboardRect.size.height;
+    //    if (!CGRectContainsPoint(aRect, activeField.superview.superview.frame.origin) ) {
+    //        CGPoint scrollPoint = CGPointMake(0.0, activeField.superview.superview.frame.origin.y-aRect.size.height+44);
+    //        [displayTable setContentOffset:scrollPoint animated:YES];
+    //    }
     // 获取键盘弹出动画时间
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
@@ -136,8 +179,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
-    
 }
 
 - (void)keyboardWillHide:(NSNotification *)noti {
@@ -382,8 +423,8 @@
 {
     NSLog(@"rightBarClick");
     [PushManager pushViewControllerWithName:@"PostMessageController" animated:YES block:nil];
-
-
+    
+    
 }
 
 //请求帖子
@@ -396,7 +437,7 @@
                               success:^(NSArray *response) {
                                   @strongify(self);
                                   [self.tableView endRefreshing];
-                                  [_hud hideAnimated:YES];
+                                  [_hud hide:YES];
                                   
                                   if (topicid.length==0){
                                       [self.dataSource removeAllObjects];
@@ -408,28 +449,68 @@
                                   [self.tableView reloadData];
                               } failure:^(NSError *error, NSString *message) {
                                   [self.tableView endRefreshing];
-                                  _hud.label.text = message;
-                                  [_hud hideAnimated:YES];
+                                  _hud.labelText = message;
+                                  [_hud hide:YES];
                               }];
 }
 
 
 /**
  回复评论
-
+ 
  @param topicId 评论的帖子
  @param text 内容
  @param targetUserId 指定评论的人
  */
 - (void)requestReplyData:(NSString *)topicId
                     text:(NSString *)text
-            targetUserId:(NSString *)targetUserId{
+            targetUserId:(NSString *)targetUserId
+               indexPath:(NSIndexPath *)indexPath{
+<<<<<<< HEAD
+    //    self.commentTextField.text = @"";
+    //    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+    //    CommentUserModel * model = [[CommentUserModel alloc]init];
+    //    model.userName = @"李小艳";
+    //    model.comment = text;
+    //    if (_currentModel.commentList.count==0) {
+    //        [array addObject:model];
+    //    }
+    //    else {
+    //        [array addObjectsFromArray:_currentModel.commentList];
+    //        [array addObject:model];
+    //    }
+    //    _currentModel.commentList = array;
+    //    [self.dataSource replaceObjectAtIndex:indexPath.section withObject:_currentModel];
+    //    [self.tableView reloadData];
+=======
+//    self.commentTextField.text = @"";
+//    NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
+//    CommentUserModel * model = [[CommentUserModel alloc]init];
+//    model.userName = @"李小艳";
+//    model.comment = text;
+//    if (_currentModel.commentList.count==0) {
+//        [array addObject:model];
+//    }
+//    else {
+//        [array addObjectsFromArray:_currentModel.commentList];
+//        [array addObject:model];
+//    }
+//    _currentModel.commentList = array;
+//    [self.dataSource replaceObjectAtIndex:indexPath.section withObject:_currentModel];
+//    [self.tableView reloadData];
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+    
     [MesssgeHttpManager requestTopicId:self.selectTopicId
                                comment:text
                            commentType:@"1"
                           targetUserId:targetUserId
                                success:^(id response) {
-                                   [self.tableView reloadData];
+<<<<<<< HEAD
+                                   self.commentTextField.text = @"";
+=======
+                                   self.currentTopicId = @"";
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+                                   [self requestMessageData:@""];
                                } failure:^(NSError *error, NSString *message) {
                                    
                                }];
@@ -448,11 +529,13 @@
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else if (indexPath.row == 1) {
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
         [cell smallImgs:[self.dataSource[indexPath.section] topicSmallImageList] normalImgs:[self.dataSource[indexPath.section] topicNormalImageList]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else  if (indexPath.row ==2){
@@ -460,6 +543,22 @@
         cell.model = self.dataSource[indexPath.section];
         cell.fd_isTemplateLayoutCell = YES;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+<<<<<<< HEAD
+        
+        cell.commentSuccessBlock = ^(id obj) {
+=======
+        cell.commentSuccessBlock = ^(id obj) {
+            self.currentTopicId = @"";
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
+            [self requestMessageData:@""];
+        };
+        cell.commentBtnClickBlock = ^(UIButton *sender) {
+            [self commentTopic:indexPath];
+        };
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
         return cell;
     }
     else {
@@ -471,6 +570,7 @@
         }
         else {
             CommentTextCell *textCell  = (CommentTextCell *)[self creatCell:tableView indenty:@"CommentTextCell"];
+            textCell.selectionStyle = UITableViewCellSelectionStyleNone;
             return textCell;
         }
     }
@@ -480,7 +580,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger currentSectionCommentListCount = [self.dataSource[indexPath.section] commentList].count;
     if (indexPath.row==0) {
-       return  [tableView fd_heightForCellWithIdentifier:@"HeaderCell" cacheByIndexPath:indexPath configuration:^(HeaderCell* cell) {
+        return  [tableView fd_heightForCellWithIdentifier:@"HeaderCell" cacheByIndexPath:indexPath configuration:^(HeaderCell* cell) {
             cell.model = self.dataSource[indexPath.section];
         }];
     }
@@ -488,7 +588,7 @@
         NSArray *smallImgs = [self.dataSource[indexPath.section] topicSmallImageList];
         if (smallImgs.count>0) {
             NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
-            return count *100+(count-1)*15;
+            return count *((ScreenWidth - 30 )- 2*3)/3+(count-1)*15;
         }
         return 0;
     }
@@ -530,16 +630,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     if (indexPath.row>=3) {
         //给帖子进行评论
         [IQKeyboardManager sharedManager].enable = NO;
         self.keyBoardToolsView.hidden = NO;
         self.selectTopicId = [self.dataSource[indexPath.section] topicId];
-
+        
         if ((3+[[self.dataSource[indexPath.section] commentList] count])>indexPath.row) {
-            
-            
+<<<<<<< HEAD
+            //return;
+=======
+            return;
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
             NSArray *commentList = [self.dataSource[indexPath.section] commentList];
             CommentUserModel *model = commentList[indexPath.row - 3];
             self.commentTextField.placeholder = [NSString stringWithFormat:@"回复:%@",model.userName];
@@ -548,29 +651,42 @@
         }
         //评论某个人
         else{
+<<<<<<< HEAD
+            //            return;
+=======
+//            return;
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
             self.selectTopicId = [self.dataSource[indexPath.section] topicId];
             _currentTargetUserId =[self.dataSource[indexPath.section] ownerId];
+            self.currentModel = self.dataSource[indexPath.section];
+            _currentIndexPath = indexPath;
             self.commentTextField.placeholder = @"评论:";
         }
         if (!_isShowKeyBoard) {
             [self.commentTextField becomeFirstResponder];
         }
-        
-        
-        
-        
     }
 }
 
-
-
+- (void)commentTopic:(NSIndexPath *)indexPath {
+    [IQKeyboardManager sharedManager].enable = NO;
+    self.keyBoardToolsView.hidden = NO;
+    self.selectTopicId = [self.dataSource[indexPath.section] topicId];
+    _currentTargetUserId =[self.dataSource[indexPath.section] ownerId];
+    self.currentModel = self.dataSource[indexPath.section];
+    _currentIndexPath = indexPath;
+    self.commentTextField.placeholder = @"评论:";
+    if (!_isShowKeyBoard) {
+        [self.commentTextField becomeFirstResponder];
+    }
+}
 
 - (void)sendBtnClick {
     [self.commentTextField endEditing:YES];
     NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
     if ([self.commentTextField.text stringByTrimmingCharactersInSet:set].length>0) {
         NSLog(@"没有空格");
-        [self requestReplyData:self.selectTopicId text:self.commentTextField.text targetUserId:_currentTargetUserId];
+        [self requestReplyData:self.selectTopicId text:self.commentTextField.text targetUserId:_currentTargetUserId indexPath:_currentIndexPath];
     }
     
 }
@@ -605,6 +721,7 @@
     }
     return _keyBoardToolsView;
 }
+
 - (UIButton *)senderBtn {
     if(!_senderBtn) {
         _senderBtn = [UIButton buttonWithType:UIButtonTypeCustom];

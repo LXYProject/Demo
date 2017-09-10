@@ -27,6 +27,7 @@
     _divLineHeight.constant = 1;
     self.textView.delegate = self;
     
+    self.textView.returnKeyType = UIReturnKeyDone;
     self.textCountLabel.hidden = YES;
 }
 

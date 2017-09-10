@@ -30,7 +30,6 @@
 }
 - (IBAction)appointmentBtnClick {
     NSLog(@"立即预约");
-    [PushManager pushViewControllerWithName:@"MakeAppointmentController" animated:YES block:nil];
     [PushManager pushViewControllerWithName:@"MakeAppointmentController" animated:YES block:^(MakeAppointmentController* makeAppointVC) {
         makeAppointVC.model = self.model;
     }];

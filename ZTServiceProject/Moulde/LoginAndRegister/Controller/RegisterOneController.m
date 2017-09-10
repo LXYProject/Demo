@@ -85,7 +85,7 @@
             
             _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             //_hud.mode = MBProgressHUDModeAnnularDeterminate;
-            _hud.label.text = @"正在加载";
+            _hud.labelText = @"正在加载";
             
             // 用户注册获取验证码
             [LoginHttpManager requestLoginRegisterCode:RegisterCode
@@ -94,7 +94,7 @@
                                            machineName:_deviceModel
                                                success:^(id response) {
                                                    
-                                                   [_hud hideAnimated:YES];
+                                                   [_hud hide:YES];
                                                    NSLog(@"response==%@", response);_phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
                                                    
                                                    // 成功
@@ -109,7 +109,7 @@
                                                        [AlertViewController alertControllerWithTitle:@"提示" message:@"注册失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                    }
                                                } failure:^(NSError *error, NSString *message) {
-                                                   [_hud hideAnimated:YES];
+                                                   [_hud hide:YES];
                                                }];
         }else{
             [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];

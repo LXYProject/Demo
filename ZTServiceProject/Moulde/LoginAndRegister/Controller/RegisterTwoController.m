@@ -79,7 +79,7 @@
                                            NSLog(@"注册发送验证码==%@", response);
                                            
                                        } failure:^(NSError *error, NSString *message) {
-                                           //[_hud hideAnimated:YES];
+                                           //[_hud hide:YES];
                                        }];
 }
 

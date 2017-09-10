@@ -22,9 +22,10 @@
 #import "RegularTool.h"
 #import "AlertViewController.h"
 #import "HHAlertView.h"
+#import "ZTKeyBoardManager.h"
 
 //第三方
-#import <MJRefresh.h>
+#import "MJRefresh.h"
 #import <MJExtension.h>
 #import <UIImageView+WebCache.h>
 #import <UIButton+WebCache.h>
@@ -33,12 +34,13 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <IQKeyboardManager.h>
 #import "XLPhotoBrowser.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "MBProgressHUD.h"
 #import <MAMapKit/MAMapKit.h>
 #import "Masonry.h"
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <Hyphenate/Hyphenate.h>
 
 //类别
 #import "UIImage+Size.h"

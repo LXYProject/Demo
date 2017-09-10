@@ -10,4 +10,6 @@
 
 @interface MessagePhotoCell : UICollectionViewCell
 @property (nonatomic,copy)NSString *url;
+
+@property (nonatomic,copy)Id_Block clickPhoto;
 @end

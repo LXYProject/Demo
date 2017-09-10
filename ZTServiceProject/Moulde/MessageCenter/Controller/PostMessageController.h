@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *locationInfo;
 
+@property (nonatomic, strong) NSString *position;
 
 @end

@@ -9,6 +9,7 @@
 #import "PublicTypeController.h"
 #import "PublicThingsController.h"
 #import "TenementHttpManager.h"
+#import "MatterTypeModel.h"
 
 @interface PublicTypeController ()
 
@@ -41,7 +42,7 @@
     [self.tableView beginHeaderRefreshing];
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.label.text = @"正在加载";
+    _hud.labelText = @"正在加载";
 }
 
 // 报事类型列表
@@ -52,7 +53,7 @@
                                        success:^(id response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
-                                           [_hud hideAnimated:YES];
+                                           [_hud hide:YES];
                                            
                                            [self.dataSource removeAllObjects];
                                            
@@ -61,8 +62,8 @@
                                            
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
-                                           _hud.label.text = message;
-                                           [_hud hideAnimated:YES];
+                                           _hud.labelText = message;
+                                           [_hud hide:YES];
                                        }];
     
 }
@@ -86,8 +87,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    //cell.textLabel.text = [self.dataSource[indexPath.row] serviceCategory];
-    cell.textLabel.text = @"hahah";
+    cell.textLabel.text = [self.dataSource[indexPath.row] affairCategory];
+//    cell.textLabel.text = @"hahah";
     return cell;
     
 }
@@ -96,7 +97,7 @@
 {
     
     [PushManager popViewControllerWithName:@"PublicThingsController" animated:YES block:^(PublicThingsController* viewController) {
-        //viewController.publicType = [self.dataSource[indexPath.row] serviceCategory];
+        viewController.publicType = [self.dataSource[indexPath.row] affairCategory];
     }];
 }
 

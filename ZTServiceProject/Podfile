@@ -1,11 +1,9 @@
 platform :ios, '7.0'
+source 'https://github.com/CocoaPods/Specs.git'
 target “ZTServiceProject” do
 pod 'AFNetworking', '~> 3.1.0'
 pod 'MJExtension'
-#pod 'CYLTabBarController', '~> 1.6.0'
-pod 'MJRefresh', '~> 3.1.12'
 pod 'SDWebImage', '~> 4.0.0'
-pod 'MBProgressHUD', '~> 1.0.0'
 pod 'YYCache', '~> 1.0.3'
 pod 'GTMBase64', '~> 1.0.0'
 pod 'UITableView+FDTemplateLayoutCell','~> 1.4'
@@ -13,14 +11,16 @@ pod 'IQKeyboardManager','~> 3.3.7'
 pod 'TZImagePickerController'
 pod 'RTRootNavigationController'
 pod 'SDCycleScrollView'
-#pod 'XLPhotoBrowser+CoderXL','~> 1.2.0'
-#pod 'MWPhotoBrowser'
-pod 'DACircularProgress'
-pod 'MBProgressHUD', '~> 1.0.0'
 pod 'Masonry'
 pod 'AMap3DMap'
 pod 'AMapSearch'
 pod 'AMapLocation'
+<<<<<<< HEAD
+pod 'TTTAttributedLabel'
+pod 'Reachability'
 
-
+=======
+#pod 'HyphenateLite_CN'
+#pod 'EaseUILite', :git =>'https://github.com/easemob/easeui-ios-hyphenate-cocoapods.git'
+>>>>>>> 483ee302b738dfd810067b6aefeffceac044f52e
 end

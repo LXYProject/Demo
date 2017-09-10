@@ -8,12 +8,14 @@
 
 #ifndef CommonTools_h
 #define CommonTools_h
-
+#endif
 
 /**********公用的Block************/
 //登录成功的回调
 
-
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 typedef void (^LoginSuccess)();
 typedef void (^PushBlock)(id viewController);
 typedef void (^Void_Block)(void);

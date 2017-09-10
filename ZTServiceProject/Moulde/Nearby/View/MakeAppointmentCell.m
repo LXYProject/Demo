@@ -39,7 +39,11 @@
     _model = model;
     _titleLable.text = model.userName;
     _detailsLabel.text = model.createDate;
-    _priceLabel.text = [NSString stringWithFormat:@"%2f/%@", [model.price doubleValue], model.unit];
+    //_priceLabel.text = [NSString stringWithFormat:@"%2f/%@", [model.price doubleValue], model.unit];
+    //_priceLabel.text = [NSString stringWithFormat:@"￥%.0f/%@",[model.price doubleValue], model.unit];
+
+    _priceLabel.text = [NSString stringWithFormat:@"%@/%@", model.price, model.unit];
+
     
 }
 - (IBAction)addBtnClick:(UIButton *)sender {

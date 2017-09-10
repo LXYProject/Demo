@@ -103,7 +103,7 @@
                    @"timg.jpeg",
                    @"timg.jpeg",
                    @"timg.jpeg",
-                    ];
+                   ];
     
     [self startLocation];
     [self requestBanner];
@@ -113,7 +113,7 @@
     [super viewWillAppear:animated];
     //开始定位
     //[self.locationManager startUpdatingLocation];
-
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -128,7 +128,7 @@
     self.navigationController.navigationBar.subviews.firstObject.alpha = alpha;
     self.navigationBarBackGroudColor = [UIColorFromRGB(0xe64e51) colorWithAlphaComponent:alpha];
     self.navigationBarTitleColor = [[UIColor whiteColor] colorWithAlphaComponent:alpha];
-
+    
 }
 //请求广告图
 - (void)requestBanner {
@@ -167,6 +167,9 @@
                                                [self.tableView endRefreshingWithNoMoreData];
                                            }
                                            [self.tableView reloadData];
+                                           
+                                           //                                           [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                           
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
                                        }];
@@ -186,7 +189,7 @@
                                        success:^(NSArray * response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
-
+                                           
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
                                            }
@@ -195,6 +198,13 @@
                                                [self.tableView endRefreshingWithNoMoreData];
                                            }
                                            [self.tableView reloadData];
+                                           
+                                           //                                           [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                                           
+                                           
+                                           //                                           NSIndexPath *index=[NSIndexPath indexPathForRow:2 inSection:2];//刷新
+                                           //                                           [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:index,nil] withRowAnimation:UITableViewRowAnimationNone];
+                                           
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
                                        }];
@@ -327,10 +337,10 @@
 
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
-                       indexPath:(NSIndexPath *)indexPath {
+                                    indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         BannerHeaderCell *cell = (BannerHeaderCell *)[self creatCell:tableView indenty:@"BannerHeaderCell"];
-//        cell.modelArray = imageNames;
+        //        cell.modelArray = imageNames;
         cell.modelArray = self.imageURLArray;
         return cell;
     }
@@ -348,7 +358,7 @@
 
 //第1组
 - (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
-                      indexPath:(NSIndexPath *)indexPath {
+                                   indexPath:(NSIndexPath *)indexPath {
     SectionHeaderCell *cell = (SectionHeaderCell *)[self creatCell:tableView indenty:@"SectionHeaderCell"];
     cell.notificationNews = self.notificationNewsArray;
     return cell;
@@ -356,7 +366,7 @@
 
 //第2组
 - (UITableViewCell *)sectionTwoWithTableView:(UITableView *)tableView
-                      indexPath:(NSIndexPath *)indexPath {
+                                   indexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
         cell.cellHeadIcon.image = [UIImage imageNamed:@"peripheral_services_img"];
@@ -371,6 +381,12 @@
             @strongify(self);
             self.nearBySelectIndex = value;
             NSLog(@"value==%ld", value);
+            if (_nearBySelectIndex==0) {
+                [self requestServiceData];
+            }else{
+                [self requestData];
+            }
+            
             NSIndexSet *set = [[NSIndexSet alloc]initWithIndex:indexPath.section];
             [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
         };
@@ -384,14 +400,14 @@
             cell.model = self.dataSource[indexPath.row-2];
         }
         return cell;
-
+        
     }
 }
 
 //第3组
 - (UITableViewCell *)sectionThirdTableView:(UITableView *)tableView
-                        indexPath:(NSIndexPath *)indexPath {
-
+                                 indexPath:(NSIndexPath *)indexPath {
+    
     if(indexPath.row == 0) {
         NearByHeaderCell *cell = (NearByHeaderCell *)[self creatCell:tableView indenty:@"NearByHeaderCell"];
         cell.cellHeadIcon.image = [UIImage imageNamed:@"Item_recom_img"];
@@ -407,7 +423,7 @@
 
 //第4组
 - (UITableViewCell *)sectionFourWithTableView:(UITableView *)tableView
-                       indexPath:(NSIndexPath *)indexPath {
+                                    indexPath:(NSIndexPath *)indexPath {
     
     ProductItemCell *cell = (ProductItemCell *)[self creatCell:tableView indenty:@"ProductItemCell"];
     cell.secondModel = self.secondCellDataSource[indexPath.row];
@@ -442,17 +458,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     if (indexPath.section==2) {
         if (_nearBySelectIndex==0) {
             [PushManager pushViewControllerWithName:@"ServiceDetailsController" animated:YES block:^(ServiceDetailsController* serviceDetailsVC) {
                 serviceDetailsVC.currentVC = 0;
-                serviceDetailsVC.model = self.dataSource[indexPath.row];
+                serviceDetailsVC.model = self.dataSource[indexPath.row-2];
             }];
-
+            
         }else{
             [PushManager pushViewControllerWithName:@"HelpDetailsController" animated:YES block:^(HelpDetailsController* helpDetailsVC) {
-                helpDetailsVC.model = self.dataSource[indexPath.row];
+                helpDetailsVC.model = self.dataSource[indexPath.row-2];
             }];
         }
     }
@@ -491,7 +507,7 @@
         }
         return 120;
     }
-
+    
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -567,7 +583,7 @@
                                    @"奥术大师多"];
     }
     return _notificationNewsArray;
- }
+}
 - (void)setCategoryId:(NSString *)categoryId {
     _categoryId = categoryId;
     if (_nearBySelectIndex==0) {
@@ -644,6 +660,14 @@
     
     NSLog(@"经度=%f 纬度=%f 高度=%f", currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude);
     
+    double latitude = currLocation.coordinate.latitude;
+    double longitude = currLocation.coordinate.longitude;
+    
+    [[NSUserDefaults standardUserDefaults] setDouble:latitude forKey:@"latitude"];
+    [[NSUserDefaults standardUserDefaults] setDouble:longitude forKey:@"longitude"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
     //根据经纬度反向地理编译出地址信息
     CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
     @weakify(self);
@@ -691,26 +715,26 @@
     cityListView.delegate = self;
     //热门城市列表
     cityListView.arrayHotCity = [NSMutableArray arrayWithObjects:@"广州",
-                                                                 @"北京",
-                                                                 @"天津",
-                                                                 @"厦门",
-                                                                 @"重庆",
-                                                                 @"福州",
-                                                                 @"泉州",
-                                                                 @"济南",
-                                                                 @"深圳",
-                                                                 @"长沙",
-                                                                 @"无锡", nil];
+                                 @"北京",
+                                 @"天津",
+                                 @"厦门",
+                                 @"重庆",
+                                 @"福州",
+                                 @"泉州",
+                                 @"济南",
+                                 @"深圳",
+                                 @"长沙",
+                                 @"无锡", nil];
     //历史选择城市列表
     cityListView.arrayHistoricalCity = [NSMutableArray arrayWithObjects:@"福州",
-                                                                        @"厦门",
-                                                                        @"泉州", nil];
+                                        @"厦门",
+                                        @"泉州", nil];
     //定位城市列表
     cityListView.arrayLocatingCity   = [NSMutableArray arrayWithObjects:_LocatingCity, nil];
-
+    
     
     [self presentViewController:cityListView animated:YES completion:nil];
-
+    
 }
 
 - (void)didClickedWithCityName:(NSString*)cityName

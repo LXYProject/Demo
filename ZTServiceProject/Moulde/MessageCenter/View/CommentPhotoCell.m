@@ -18,9 +18,11 @@
 @implementation CommentPhotoCell
 {
     NSArray *_smallModes;
+    ZTKeyBoardManager *_keyBoardManager;
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _keyBoardManager = [ZTKeyBoardManager sharedZTKeyBoardManager];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerNib:[UINib nibWithNibName:@"MessagePhotoCell" bundle:nil] forCellWithReuseIdentifier:@"MessagePhotoCell"];
@@ -53,23 +55,32 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagePhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MessagePhotoCell" forIndexPath:indexPath];
     MessagePhotoModel *model = _smallModes[indexPath.row];
+    @weakify(self);
+    cell.clickPhoto = ^(id obj) {
+        @strongify(self);
+        if (_keyBoardManager.keyBoardIsShowing) {
+            [[PushManager currentViewController].view endEditing:YES];
+            return;
+        }
+        [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
+    };
     cell.url = model.url;
     return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((ScreenWidth-15*4)/3, 100);
+    return CGSizeMake(((ScreenWidth - 30 )- 2*3)/3, ((ScreenWidth - 30 )- 2*3)/3);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15;
+    return 2;
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 15;
+    return 2;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
+   
 }
 
 - ( UIEdgeInsets )collectionView:( UICollectionView *)collectionView
@@ -87,4 +98,7 @@
     return _imgUrlArray;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
 @end

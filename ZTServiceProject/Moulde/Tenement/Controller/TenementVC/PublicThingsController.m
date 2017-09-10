@@ -19,6 +19,11 @@
 @interface PublicThingsController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *chooseImgArr;
+
+@property (nonatomic,strong)NSArray *imageModelArray;
+
+@property (nonatomic,assign)CGFloat cellHight;
+
 @end
 
 @implementation PublicThingsController
@@ -36,6 +41,11 @@
     [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void)setPublicType:(NSString *)publicType{
+    _publicType = publicType;
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -63,8 +73,8 @@
         @weakify(self);
         [TenementHttpManager requestZoneId:self.zoneId
                                affairTitle:@"公共报事"
-                            affairDiscribe:@"公共环境"//_affairDiscribe
-                            affairCategory:@"1"
+                            affairDiscribe:_affairDiscribe
+                            affairCategory:self.publicType
                                userAddress:self.locationInfo
                               userRealName:_userRealName
                               userPhoneNum:_userPhoneNum
@@ -142,7 +152,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
     cell.textLabel.text = @"报事类型";
-    cell.detailTextLabel.text = @"请选择报事类型";
+    if (self.publicType.length>0) {
+        cell.detailTextLabel.text = self.publicType;
+    }else{
+        cell.detailTextLabel.text = @"请选择报事类型";
+    }
     if (IS_IPHONE_4 || IS_IPHONE_5) {
         cell.textLabel.font = [UIFont systemFontOfSize:11];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
@@ -173,12 +187,17 @@
 - (UITableViewCell *)sectionTwoTableView:(UITableView *)tableView
                                indexPath:(NSIndexPath *)indexPath {
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    [cell setImageMaxCount:3 imageArray:self.imageModelArray];
+    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+        self.cellHight = mediaHeight;
+    }];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
         
         if (images.count==0) {
             return;
         }
+        self.imageModelArray = images;
         if (self.chooseImgArr.count>0) {
             [self.chooseImgArr removeAllObjects];
         }
@@ -187,9 +206,10 @@
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
         }];
-        
         // 上传图片
         [self upImageArr];
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:2];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -323,7 +343,7 @@
     }else if (indexPath.section ==3) {
         return 49;
     }else {
-        return 100;
+        return self.cellHight==0?100:self.cellHight;
     }
 }
 

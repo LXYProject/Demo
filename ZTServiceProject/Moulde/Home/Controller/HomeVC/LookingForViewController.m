@@ -22,6 +22,10 @@
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, strong) NSMutableArray *chooseImgArr;
 
+@property (nonatomic,strong)NSArray *imageModelArray;
+
+@property (nonatomic,assign)CGFloat cellHight;
+
 @end
 
 @implementation LookingForViewController
@@ -185,12 +189,17 @@
                                    indexPath:(NSIndexPath *)indexPath {
     
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    [cell setImageMaxCount:3 imageArray:self.imageModelArray];
+    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+        self.cellHight = mediaHeight;
+    }];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
         
         if (images.count==0) {
             return;
         }
+        self.imageModelArray = images;
         if (self.chooseImgArr.count>0) {
             [self.chooseImgArr removeAllObjects];
         }
@@ -199,9 +208,10 @@
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
         }];
-        
         // 上传图片
         [self upImageArr];
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:2];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -305,7 +315,7 @@
         return 85;
     }
     else {
-        return 100;
+        return self.cellHight==0?100:self.cellHight;
     }
 }
 

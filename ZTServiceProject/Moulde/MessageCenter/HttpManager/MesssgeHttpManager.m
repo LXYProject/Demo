@@ -120,7 +120,7 @@
                failure:(HttpRequestFailure)failure{
     
     NSDictionary *paramter = @{@"content":content?content:@"",
-                               @"photos":photos?photos:@"",
+                               @"imageGroupId":photos?photos:@"",
                                @"cityId":cityId?cityId:@"",
                                @"districtId":districtId?districtId:@"",
                                @"address":address?address:@"",

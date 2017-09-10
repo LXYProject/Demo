@@ -43,13 +43,33 @@
     self.tableView.tableFooterView = [[UIView alloc]init];
     queryType = 0;
     
-
 }
 -(void)segmentClick:(UISegmentedControl *)segment{
     
     currentIndex = _segment. selectedSegmentIndex;
     [self.tableView reloadData];
     NSLog(@"_segment==%ld", currentIndex);
+    
+    if (_segment.selectedSegmentIndex==0){
+        
+        //获取会话列表
+        //获取所有会话(内存中有则从内存中取，没有则从db中取)
+        NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+        NSLog(@"获取会话列表%@", conversations);
+        
+    }else{
+       
+        //从服务器获取所有的好友
+        EMError *error = nil;
+        NSArray *userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+        if (!error) {
+            NSLog(@"获取所有的好友成功 -- %@",userlist);
+        }else{
+            NSLog(@"获取所有的好友失败 -- %@",error);
+        }
+
+    }
+
     
 }
 
@@ -120,6 +140,12 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_segment.selectedSegmentIndex==0) {
+        
+        // 新建/获取一个会话
+        [[EMClient sharedClient].chatManager getConversation:@"2017080809572087" type:EMConversationTypeChat createIfNotExist:YES];
+        //EMConversationTypeChat            单聊会话
+        //EMConversationTypeGroupChat       群聊会话
+        //EMConversationTypeChatRoom        聊天室会话
         
     }else{
         [PushManager pushViewControllerWithName:@"PersonalDataController" animated:YES block:nil];

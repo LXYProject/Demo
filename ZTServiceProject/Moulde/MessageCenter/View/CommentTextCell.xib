@@ -15,19 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XR1-Bw-Wdg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWQ-Gk-RfP">
-                                <rect key="frame" x="12" y="0.0" width="295" height="1"/>
-                                <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="0.5" id="5by-rX-tgb"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="评论" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaB-oI-2R5">
                                 <rect key="frame" x="15" y="10" width="290" height="30"/>
                                 <nil key="textColor"/>
@@ -37,12 +30,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RWQ-Gk-RfP" firstAttribute="centerX" secondItem="YaB-oI-2R5" secondAttribute="centerX" id="0QA-dA-54t"/>
                             <constraint firstAttribute="trailing" secondItem="YaB-oI-2R5" secondAttribute="trailing" constant="15" id="1od-lk-6gg"/>
                             <constraint firstItem="YaB-oI-2R5" firstAttribute="centerX" secondItem="XR1-Bw-Wdg" secondAttribute="centerX" id="AhX-WK-eAd"/>
                             <constraint firstItem="YaB-oI-2R5" firstAttribute="leading" secondItem="XR1-Bw-Wdg" secondAttribute="leading" constant="15" id="FEa-JT-b2L"/>
-                            <constraint firstItem="RWQ-Gk-RfP" firstAttribute="top" secondItem="XR1-Bw-Wdg" secondAttribute="top" id="pUT-wa-9MJ"/>
-                            <constraint firstItem="RWQ-Gk-RfP" firstAttribute="leading" secondItem="XR1-Bw-Wdg" secondAttribute="leading" constant="12" id="rzA-6V-lKV"/>
                             <constraint firstItem="YaB-oI-2R5" firstAttribute="centerY" secondItem="XR1-Bw-Wdg" secondAttribute="centerY" id="uxC-hI-EoY"/>
                         </constraints>
                     </view>

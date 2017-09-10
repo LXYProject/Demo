@@ -22,7 +22,9 @@
 @end
 
 @implementation MakeAppointmentController
-
+{
+    CGFloat floatString;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -33,6 +35,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.priceLabel.text = [self.model price];
+    NSLog(@"price==%@", [self.model price]);
+    
+    floatString = [[self.model price] floatValue];
 }
 - (IBAction)confirmAppointBtnClick {
 }
@@ -69,7 +75,10 @@
         cell.selectFinishedBlock = ^(NSInteger value) {
             @strongify(self);
             self.currentNumber = value;
-            self.priceLabel.text = [NSString stringWithFormat:@"合计：%.2f",10.0*self.currentNumber];
+            //self.priceLabel.text = [NSString stringWithFormat:@"合计：%.2f",10.0*self.currentNumber];
+            self.priceLabel.text = [NSString stringWithFormat:@"合计：%.2f",floatString*self.currentNumber];
+            
+            
         };
         cell.currentNum = self.currentNumber;
         cell.model = self.model;
@@ -84,7 +93,7 @@
         }
         if (indexPath.row==0) {
             //cell.textLabel.text = self.titleStr;
-            cell.textLabel.text = [self.model userName];
+            cell.textLabel.text = [self.model title];
         }else{
             cell.textLabel.text = @"联系方式:";
             cell.detailTextLabel.text = self.phoneNumberStr;
@@ -104,7 +113,7 @@
 
 //第1组
 - (UITableViewCell *)sectionOneWithTableView:(UITableView *)tableView
-                                    indexPath:(NSIndexPath *)indexPath {
+                                   indexPath:(NSIndexPath *)indexPath {
     if (indexPath.row==0) {
         static NSString *ID = @"cell";
         // 根据标识去缓存池找cell
@@ -124,11 +133,11 @@
         }
         cell.textLabel.textColor = TEXT_COLOR;
         return cell;
-
+        
     }else{
         MakeAppointDescripCell *cell = (MakeAppointDescripCell *)[self creatCell:tableView indenty:@"MakeAppointDescripCell"];
         return cell;
-     }
+    }
 }
 
 //公共创建cell的方法
@@ -147,7 +156,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     if (indexPath.section==0) {
         return 50;
     }else{

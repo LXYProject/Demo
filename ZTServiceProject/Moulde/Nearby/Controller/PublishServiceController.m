@@ -26,6 +26,10 @@
 @property (nonatomic, strong) NSMutableArray *chooseImgArr;
 @property (nonatomic,assign)NSInteger nearBySelectIndex;
 
+@property (nonatomic,strong)NSArray *imageModelArray;
+
+@property (nonatomic,assign)CGFloat cellHight;
+
 @end
 
 @implementation PublishServiceController
@@ -44,14 +48,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     //[self.tableView reloadData];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
 
 }
 
 - (void)setLocationInfo:(NSString *)locationInfo{
     _locationInfo = locationInfo;
-    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[[NSIndexSet alloc]initWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)viewDidLoad {
@@ -66,7 +70,42 @@
     
     [self createLabel];
     
+//    self.tableView.tableHeaderView = [self headerView];
+
 }
+
+//- (UIView *)headerView {
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 10, ScreenWidth, 100)];
+//    AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:self.tableView indenty:@"AddPhotosCell"];
+//    cell.maxCount = 9;
+//    cell.frame = view.bounds;
+//    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+//        view.frame = CGRectMake(0, 0, ScreenWidth, mediaHeight);
+//        cell.frame = view.bounds;
+//        self.tableView.tableHeaderView=view;
+//    }];
+//    cell.finishedBlock = ^(NSArray *images) {
+//        NSLog(@"images==%@", images);
+//        
+//        if (images.count==0) {
+//            return;
+//        }
+//        if (self.chooseImgArr.count>0) {
+//            [self.chooseImgArr removeAllObjects];
+//        }
+//        [images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            
+//            ACMediaModel *model = obj;
+//            [self.chooseImgArr addObject:model.image];
+//        }];
+//        
+//        // 上传图片
+//        [self upImageArr];
+//    };
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    [view addSubview:cell];
+//    return view;
+//}
 
 - (void)createLabel{
     
@@ -85,6 +124,8 @@
 - (IBAction)releaseBtnClick {
     NSLog(@"online=%d", online);
 
+    NSLog(@"latitude==%@", GetValueForKey(@"latitude"));
+
     // && self.categoryId.length>0
     if (_serviceTitle.length>0 && self.content.length>0 && _price.length>0 && self.unitStr.length>0 && self.serviceTypeStr>0) {
        
@@ -101,8 +142,8 @@
                                    area:@"110108"
                                  cityId:@"11000"
                              districtId:@"110108"
-                                      x:@"116.32"
-                                      y:@"39.98"
+                                      x:GetValueForKey(@"longitude") //@"116.32"
+                                      y:GetValueForKey(@"latitude")  //@"39.98"
                                   resId:@"510018177815"
                                 resName:@"岷阳小区"
                                  images:_resourceId
@@ -144,9 +185,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0) {
+   if (section==0){
         return 1;
-    }else if (section==1){
+    }else if(section==1){
         return 3;
     }else{
         return 5;
@@ -155,9 +196,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+    if (indexPath.section ==0) {
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
-    }else if (indexPath.section ==1) {
+    }else if(indexPath.section==1){
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
     }else{
         return [self sectionTwoWithTableView:tableView indexPath:indexPath];
@@ -170,12 +211,17 @@
                                     indexPath:(NSIndexPath *)indexPath {
 
     AddPhotosCell *cell = (AddPhotosCell *)[self creatCell:tableView indenty:@"AddPhotosCell"];
+    [cell setImageMaxCount:3 imageArray:self.imageModelArray];
+    [cell.mediaView observeViewHeight:^(CGFloat mediaHeight) {
+        self.cellHight = mediaHeight;
+    }];
     cell.finishedBlock = ^(NSArray *images) {
         NSLog(@"images==%@", images);
         
         if (images.count==0) {
             return;
         }
+        self.imageModelArray = images;
         if (self.chooseImgArr.count>0) {
             [self.chooseImgArr removeAllObjects];
         }
@@ -184,12 +230,14 @@
             ACMediaModel *model = obj;
             [self.chooseImgArr addObject:model.image];
         }];
-        
         // 上传图片
         [self upImageArr];
+        NSIndexSet *set = [NSIndexSet indexSetWithIndex:0];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationNone];
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+
 }
 
 
@@ -213,7 +261,7 @@
         //显示进度
           [uploadProgress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:nil];
     }success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         //显示返回对象
         NSLog(@"-------->%@",responseObject);
         
@@ -224,7 +272,7 @@
         NSLog(@"resourceId==%@", _resourceId);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [_hud hideAnimated:YES];
+        [_hud hide:YES];
         //显示错误信息
         NSLog(@"-------->%@",error);
         
@@ -372,7 +420,6 @@
     
     if (indexPath.section==0) {
         
-    }else if (indexPath.section==1) {
         if (indexPath.row==0) {
             
         }else if (indexPath.row==1){
@@ -432,11 +479,12 @@
 
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     if (indexPath.section==0) {
-        return self.addPhotoHeight;
-    }else if(indexPath.section==1){
+        return self.cellHight==0?100:self.cellHight;
+    }else if (indexPath.section==1){
         return 50;
     }else{
         if (indexPath.row==0) {
@@ -445,6 +493,15 @@
             return 50;
         }
     }
+//    if(indexPath.section==0){
+//        return 50;
+//    }else{
+//        if (indexPath.row==0) {
+//            return 150;
+//        }else{
+//            return 50;
+//        }
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

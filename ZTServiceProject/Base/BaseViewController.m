@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.rt_disableInteractivePop = NO;
     [self initNavigation];
 }
 

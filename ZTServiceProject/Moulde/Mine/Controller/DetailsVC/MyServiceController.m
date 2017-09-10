@@ -43,7 +43,7 @@
     [self.tableView beginHeaderRefreshing];
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.label.text = @"正在加载";
+    _hud.labelText = @"正在加载";
 }
 
 // 我发布的服务
@@ -60,7 +60,7 @@
                                        success:^(NSArray * response) {
                                            @strongify(self);
                                            [self.tableView endRefreshing];
-                                           [_hud hideAnimated:YES];
+                                           [_hud hide:YES];
                                            
                                            if (self.currentPage==1){
                                                [self.dataSource removeAllObjects];
@@ -72,8 +72,8 @@
                                            [self.tableView reloadData];
                                        } failure:^(NSError *error, NSString *message) {
                                            [self.tableView endRefreshing];
-                                           _hud.label.text = message;
-                                           [_hud hideAnimated:YES];
+                                           _hud.labelText = message;
+                                           [_hud hide:YES];
                                        }];
 
 }

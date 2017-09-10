@@ -34,6 +34,9 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:229.0/255 green:229.0/255 blue:229.0/255 alpha:1.0f];
     
+    self.textView.returnKeyType = UIReturnKeyDone;
+
+    
     [self.view addSubview:self.oneLabel];
     [self.view addSubview:self.twoLabel];
     [self.view addSubview:self.threeLabel];
