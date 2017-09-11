@@ -93,9 +93,9 @@
 //    }];
 //    [self.tableView beginHeaderRefreshing];
     
-    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-    [self.dataSource addObjectsFromArray:modelArray];
-    [self.tableView reloadData];
+//    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+//    [self.dataSource addObjectsFromArray:modelArray];
+//    [self.tableView reloadData];
     
 //    [self.tableView setHeaderRefreshBlock:^{
 //        self.currentTopicId = @"";
