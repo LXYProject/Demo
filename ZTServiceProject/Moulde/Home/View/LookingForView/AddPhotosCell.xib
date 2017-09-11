@@ -57,7 +57,6 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="addPhotoBtn" destination="kqN-R8-Ctz" id="cwm-Sn-6Uz"/>
                 <outlet property="mediaView" destination="DT6-NG-nVL" id="lgG-nc-P4k"/>
                 <outlet property="placeholdView" destination="koM-JL-Not" id="KkI-pU-afK"/>
             </connections>

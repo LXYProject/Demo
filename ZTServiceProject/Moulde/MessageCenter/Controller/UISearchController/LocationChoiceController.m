@@ -199,6 +199,20 @@
     return YES;
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    searchBar.showsCancelButton = YES;
+    for (id cencelButton in [searchBar.subviews[0] subviews])
+    {
+        if([cencelButton isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn = (UIButton *)cencelButton;
+            [btn setTitle:@"取消"  forState:UIControlStateNormal];
+        }
+    }
+    
+}
+
 #pragma mark - SearchResultTableVCDelegate
 - (void)setSelectedLocationWithLocation:(AMapPOI *)poi
 {
@@ -260,6 +274,7 @@
     
     _searchResultTableVC = [[SearchResultTableVC alloc] init];
     _searchResultTableVC.delegate = self;
+    _searchController.searchBar.placeholder = @"搜索";
     _searchController = [[UISearchController alloc] initWithSearchResultsController:_searchResultTableVC];
     _searchController.searchResultsUpdater = _searchResultTableVC;
     

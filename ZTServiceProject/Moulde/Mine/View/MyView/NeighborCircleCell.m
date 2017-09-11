@@ -45,10 +45,11 @@
     
     for  (MessagePhotoModel*dic in model.topicSmallImageList) {
         
-        self.url = dic.url;
+        //self.url = dic.url;
+        [self.imgArr addObject:dic.url];
 
     }
-    
+
     if (model.topicSmallImageList.count==0) {
         self.imgH.constant = 10;
         self.imgW.constant = 0;
@@ -60,10 +61,12 @@
         self.imgH.constant = 74;
         self.imgW.constant = 88;
         _textLeft.constant = 15;
-        
         _headIcon.hidden = NO;
         _photosCount.hidden = NO;
-        [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+        
+        self.url = [self.imgArr objectAtIndex:0];
+        [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
     }
     _createTime = model.createTime;
     _year = [model.createTime substringToIndex:4];

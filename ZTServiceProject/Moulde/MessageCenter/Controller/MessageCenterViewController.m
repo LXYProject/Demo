@@ -93,9 +93,9 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
-    [self.dataSource addObjectsFromArray:modelArray];
-    [self.tableView reloadData];
+//    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
+//    [self.dataSource addObjectsFromArray:modelArray];
+//    [self.tableView reloadData];
     
 //    [self.tableView setHeaderRefreshBlock:^{
 //        self.currentTopicId = @"";
@@ -115,6 +115,7 @@
 
 - (void)commentTableViewTouchInSide:(UITapGestureRecognizer *)tap{
     [self.view endEditing:YES];
+
 }
 -(BOOL)gestureRecognizer:(UIGestureRecognizer*)gestureRecognizer shouldReceiveTouch:(UITouch*)touch {
     
