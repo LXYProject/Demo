@@ -13,7 +13,6 @@ typedef void(^SelectFinishedBlock)(NSArray* images);
 
 @interface AddPhotosCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet ACSelectMediaView *mediaView;
-@property (weak, nonatomic) IBOutlet UIButton *addPhotoBtn;
 @property (nonatomic,copy)Int_Block btnClickBlock;
 @property (nonatomic,copy)SelectFinishedBlock finishedBlock;
 @property (nonatomic,assign)NSInteger maxCount;

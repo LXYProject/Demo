@@ -136,7 +136,6 @@
 		29162D081F4D32DC001FBC76 /* EaseChatBarMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29162C8B1F4D32DC001FBC76 /* EaseChatBarMoreView.m */; };
 		29162D091F4D32DC001FBC76 /* EaseRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29162C8E1F4D32DC001FBC76 /* EaseRecordView.m */; };
 		29162D0A1F4D32DC001FBC76 /* EaseConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29162C911F4D32DC001FBC76 /* EaseConversationCell.m */; };
-		29162D0B1F4D32DC001FBC76 /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29162C931F4D32DC001FBC76 /* EaseUIResource.bundle */; };
 		299E2C9E1EE7C5620045A884 /* YYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2C9D1EE7C5620045A884 /* YYRequest.m */; };
 		299E2CA11EE7CBCA0045A884 /* AdvertisementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA01EE7CBCA0045A884 /* AdvertisementModel.m */; };
 		299E2CA41EE7CD3D0045A884 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CA31EE7CD3D0045A884 /* BaseWebViewController.m */; };
@@ -150,6 +149,10 @@
 		299E2CDF1EE7FDBE0045A884 /* NearByItemsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CDD1EE7FDBE0045A884 /* NearByItemsCell.m */; };
 		299E2CE01EE7FDBE0045A884 /* NearByItemsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */; };
 		299E2CE91EE806B00045A884 /* NearByHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E2CE81EE806B00045A884 /* NearByHttpManager.m */; };
+		29E302C81F6628BD00387E88 /* Hyphenate.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 29E302C61F6628BD00387E88 /* Hyphenate.podspec */; };
+		29E302C91F6628C800387E88 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E302C51F6628BD00387E88 /* Hyphenate.framework */; };
+		29E302CA1F6628C800387E88 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 29E302C51F6628BD00387E88 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29E302CB1F662EAF00387E88 /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29162C931F4D32DC001FBC76 /* EaseUIResource.bundle */; };
 		7B062F0D1F3BFFB300B9DBA8 /* HHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B062F0C1F3BFFB300B9DBA8 /* HHAlertView.m */; };
 		7B062F111F3C3C7500B9DBA8 /* ReleaseHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B062F0F1F3C3C7400B9DBA8 /* ReleaseHelpCell.m */; };
 		7B062F121F3C3C7500B9DBA8 /* ReleaseHelpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B062F101F3C3C7500B9DBA8 /* ReleaseHelpCell.xib */; };
@@ -650,9 +653,6 @@
 		7B6C26BB1EE3C3070090BE5C /* MessageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26B91EE3C3070090BE5C /* MessageCenterViewController.m */; };
 		7B6C26BC1EE3C3070090BE5C /* MessageCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */; };
 		7B6C26C51EE3C3230090BE5C /* NearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C26C31EE3C3230090BE5C /* NearByViewController.m */; };
-		7B6C65891F65414800B16D5D /* Hyphenate.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C65871F65414800B16D5D /* Hyphenate.podspec */; };
-		7B6C658A1F65415500B16D5D /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C65861F65414800B16D5D /* Hyphenate.framework */; };
-		7B6C658B1F65415500B16D5D /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C65861F65414800B16D5D /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7B6FB2C71F0CB793009F5F49 /* DataPickerViewDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FB2C61F0CB793009F5F49 /* DataPickerViewDemo.m */; };
 		7B6FB3261F0CC8CF009F5F49 /* GroupNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FB30E1F0CC8CF009F5F49 /* GroupNumberCell.m */; };
 		7B6FB3271F0CC8CF009F5F49 /* GroupNumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6FB30F1F0CC8CF009F5F49 /* GroupNumberCell.xib */; };
@@ -882,7 +882,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7B6C658B1F65415500B16D5D /* Hyphenate.framework in Embed Frameworks */,
+				29E302CA1F6628C800387E88 /* Hyphenate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1181,6 +1181,8 @@
 		299E2CDE1EE7FDBE0045A884 /* NearByItemsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NearByItemsCell.xib; sourceTree = "<group>"; };
 		299E2CE71EE806B00045A884 /* NearByHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByHttpManager.h; sourceTree = "<group>"; };
 		299E2CE81EE806B00045A884 /* NearByHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByHttpManager.m; sourceTree = "<group>"; };
+		29E302C51F6628BD00387E88 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
+		29E302C61F6628BD00387E88 /* Hyphenate.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hyphenate.podspec; sourceTree = "<group>"; };
 		3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTServiceProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZTServiceProject/Pods-ZTServiceProject.debug.xcconfig"; sourceTree = "<group>"; };
 		7B062F0B1F3BFFB300B9DBA8 /* HHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHAlertView.h; sourceTree = "<group>"; };
 		7B062F0C1F3BFFB300B9DBA8 /* HHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHAlertView.m; sourceTree = "<group>"; };
@@ -1963,8 +1965,6 @@
 		7B6C26BA1EE3C3070090BE5C /* MessageCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCenterViewController.xib; sourceTree = "<group>"; };
 		7B6C26C21EE3C3230090BE5C /* NearByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearByViewController.h; sourceTree = "<group>"; };
 		7B6C26C31EE3C3230090BE5C /* NearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearByViewController.m; sourceTree = "<group>"; };
-		7B6C65861F65414800B16D5D /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
-		7B6C65871F65414800B16D5D /* Hyphenate.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hyphenate.podspec; sourceTree = "<group>"; };
 		7B6FB2C51F0CB793009F5F49 /* DataPickerViewDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPickerViewDemo.h; sourceTree = "<group>"; };
 		7B6FB2C61F0CB793009F5F49 /* DataPickerViewDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPickerViewDemo.m; sourceTree = "<group>"; };
 		7B6FB30D1F0CC8CF009F5F49 /* GroupNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupNumberCell.h; sourceTree = "<group>"; };
@@ -2283,7 +2283,7 @@
 				291629AB1F4C0EAC001FBC76 /* libsqlite3.tbd in Frameworks */,
 				291629A91F4C0E98001FBC76 /* libstdc++.6.0.9.tbd in Frameworks */,
 				291629A71F4C0E8A001FBC76 /* AVFoundation.framework in Frameworks */,
-				7B6C658A1F65415500B16D5D /* Hyphenate.framework in Frameworks */,
+				29E302C91F6628C800387E88 /* Hyphenate.framework in Frameworks */,
 				29162CA01F4D32DC001FBC76 /* libopencore-amrnb.a in Frameworks */,
 				291629A51F4C0E84001FBC76 /* libicucore.tbd in Frameworks */,
 				7B1C40F01F29BEE500866558 /* CoreMotion.framework in Frameworks */,
@@ -2958,6 +2958,15 @@
 				7B16D28D1F18C5EC0070F88A /* TenementHttpManager.m */,
 			);
 			path = HttpManager;
+			sourceTree = "<group>";
+		};
+		29E302C41F6628BD00387E88 /* HyphenateFullSDK */ = {
+			isa = PBXGroup;
+			children = (
+				29E302C51F6628BD00387E88 /* Hyphenate.framework */,
+				29E302C61F6628BD00387E88 /* Hyphenate.podspec */,
+			);
+			path = HyphenateFullSDK;
 			sourceTree = "<group>";
 		};
 		61FDE1498E5ED572E89BB93D /* Pods */ = {
@@ -4307,15 +4316,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		7B6C65851F65414800B16D5D /* HyphenateFullSDK */ = {
-			isa = PBXGroup;
-			children = (
-				7B6C65861F65414800B16D5D /* Hyphenate.framework */,
-				7B6C65871F65414800B16D5D /* Hyphenate.podspec */,
-			);
-			path = HyphenateFullSDK;
-			sourceTree = "<group>";
-		};
 		7B6FB2C41F0CB793009F5F49 /* PickerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -4620,7 +4620,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				7B6C65851F65414800B16D5D /* HyphenateFullSDK */,
+				29E302C41F6628BD00387E88 /* HyphenateFullSDK */,
 				7BF83B001F52A7E800095374 /* YBAttributeTextTapAction */,
 				29162B6C1F4D32DB001FBC76 /* EaseUI */,
 				7B1C405E1F298CFA00866558 /* AlipaySDK */,
@@ -4994,6 +4994,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E302CB1F662EAF00387E88 /* EaseUIResource.bundle in Resources */,
 				7B2AEA9E1F0F2DB20008D9AC /* SaleOrderDetailsController.xib in Resources */,
 				7B21B7101F3ABF1F00A0F708 /* wy_by@3x.png in Resources */,
 				7B1F114A1F30208000963AAC /* NumberOfPostsCell.xib in Resources */,
@@ -5091,9 +5092,7 @@
 				7B8F2A751F039A7D00D5D1DF /* selech_icon@2x.png in Resources */,
 				7B4634051F0200A40023E7F2 /* peripheral_services_img@2x.png in Resources */,
 				7B3B41DA1F5FCE19009B3089 /* gpssearchbutton@2x.png in Resources */,
-				29162D0B1F4D32DC001FBC76 /* EaseUIResource.bundle in Resources */,
 				7B3B41D91F5FCE19009B3089 /* gpsnormal@3x.png in Resources */,
-				29162D0B1F4D32DC001FBC76 /* EaseUIResource.bundle in Resources */,
 				7B3E2D711F41732C00562252 /* zbfw_qhqz@2x.png in Resources */,
 				7B3E2D6D1F41732C00562252 /* zbfw_qhdt@2x.png in Resources */,
 				7B1C40611F298CFA00866558 /* AlipaySDK.bundle in Resources */,
@@ -5150,7 +5149,7 @@
 				7B6FB3431F0CD153009F5F49 /* phone@2x.png in Resources */,
 				7B6FB3271F0CC8CF009F5F49 /* GroupNumberCell.xib in Resources */,
 				7B205E2F1F00E6C900E46B74 /* tabbar_zb_normal@3x.png in Resources */,
-				7B6C65891F65414800B16D5D /* Hyphenate.podspec in Resources */,
+				29E302C81F6628BD00387E88 /* Hyphenate.podspec in Resources */,
 				7B1D8E1B1F1DDCF200D79F46 /* PublicThingsController.xib in Resources */,
 				7B966A6D1EFF8BA900326C88 /* CommentBottomCell.xib in Resources */,
 				7B8F2A761F039A7D00D5D1DF /* setting_btn@2x.png in Resources */,

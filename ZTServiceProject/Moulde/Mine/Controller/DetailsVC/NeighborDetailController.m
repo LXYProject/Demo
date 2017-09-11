@@ -16,9 +16,23 @@
 #import "HeaderCell.h"
 #import "CommentInfoCell.h"
 #import "NeighborCircleModel.h"
+#import "CommentTextCell.h"
+
 @interface NeighborDetailController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic,strong)UITextField *commentTextField;
+
+//加载帖子数据相关
+@property (nonatomic,strong)NSMutableArray *dataSource;
+@property (nonatomic,assign)NSInteger currentPage;
+@property (nonatomic,copy)NSString *selectTopicId;
+@property (nonatomic,copy)NSString *currentTopicId;
+@property (nonatomic,strong)MessageModel *currentModel;
+@property (nonatomic,strong)NSIndexPath *currentIndexPath;
+@property (nonatomic,strong)NSArray *currentTopticDataArray;
+
 
 @end
 
@@ -35,25 +49,41 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
 }
 
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return 1;
+//}
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    return 3;
+//}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    
+    return 3+self.model.commentList.count+1;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //NSInteger currentSectionCommentListCount = [self.dataSource[indexPath.section] commentList].count;
+    NSInteger currentSectionCommentListCount = self.model.commentList.count;
+
     if (indexPath.row ==0) {
         HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell" forIndexPath:indexPath];
         cell.neighborCircleModel = self.model;
         cell.fd_isTemplateLayoutCell = YES;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else if (indexPath.row == 1) {
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
         [cell smallImgs:self.model.topicSmallImageList normalImgs:self.model.topicNormalImageList];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    else  if (indexPath.row ==2){
+    else  if (indexPath.row == 2){
         NeighborDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NeighborDetailCell" forIndexPath:indexPath];
         cell.model = self.model;
         cell.fd_isTemplateLayoutCell = YES;
@@ -69,11 +99,18 @@
         return cell;
     }
     else {
-        CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
-        NSArray *commentList = self.model.commentList;
-        cell.model = commentList[indexPath.row - 3];
-//        cell.model = self.model.commentList;
-        return cell;
+        if ((currentSectionCommentListCount+3>indexPath.row)&&currentSectionCommentListCount>0) {
+            //NSArray *commentList = [self.dataSource[indexPath.section] commentList];
+            NSArray *commentList = self.model.commentList;
+            CommentInfoCell *cell = (CommentInfoCell *)[self creatCell:tableView indenty:@"CommentInfoCell"];
+            cell.model = commentList[indexPath.row - 3];
+            return cell;
+        }
+        else {
+            CommentTextCell *textCell  = (CommentTextCell *)[self creatCell:tableView indenty:@"CommentTextCell"];
+            textCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return textCell;
+        }
     }
     return nil;
 }
@@ -92,19 +129,24 @@
         }
         return 0;
     }
-    else if (indexPath.row ==2){
+    else if (indexPath.row == 2){
         return  [tableView fd_heightForCellWithIdentifier:@"NeighborDetailCell" cacheByIndexPath:indexPath configuration:^(NeighborDetailCell* cell) {
-//            cell.model = self.dataSource[indexPath.section];
+            cell.model = self.model;
         }];
     }
     else{
-        return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
-            NSArray *commentList = self.model.commentList;
-            cell.model = commentList[indexPath.row - 3];
-        }];
+        NSInteger currentSectionCommentListCount = self.model.commentList.count;
+        if ((currentSectionCommentListCount+3>indexPath.row)&&currentSectionCommentListCount>0) {
+            return  [tableView fd_heightForCellWithIdentifier:@"CommentInfoCell" cacheByIndexPath:indexPath configuration:^(CommentInfoCell* cell) {
+                NSArray *commentList = self.model.commentList;
+                cell.model = commentList[indexPath.row - 3];
+            }];
+        }
+        return 49;
     }
     return 0;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -122,5 +164,11 @@
     return cell;
 }
 
+- (NSMutableArray *)dataSource {
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _dataSource;
+}
 
 @end

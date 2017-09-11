@@ -252,7 +252,7 @@
 // 加载帖子//?service=topic&function=loadTopic
 #define A_loadTopic            @"?service=topic&function=queryTopic"
 // 发帖记录
-#define A_topicHis             @"?service=topic&function=topicHis"
+#define A_topicHis             @"?service=topic&function=myTopic"
 // 删除帖子
 #define A_deleteTopic          @"?service=topic&function=deleteTopic"
 // 删除回复

@@ -91,6 +91,7 @@
     [self initLocationButton];
     [self initTableView];
     [self initSearch];
+    
 }
 
 #pragma mark - MAMapViewDelegate
@@ -185,6 +186,7 @@
         }];
     }
     [_searchDisplayController.searchResultsTableView reloadData];
+    
 }
 
 #pragma mark - MapPoiTableViewDelegate
@@ -279,7 +281,19 @@
     return YES;
 }
 
-
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    
+    searchBar.showsCancelButton = YES;
+    for (id cencelButton in [searchBar.subviews[0] subviews])
+    {
+        if([cencelButton isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn = (UIButton *)cencelButton;
+            [btn setTitle:@"取消"  forState:UIControlStateNormal];
+        }
+    }
+    
+}
 #pragma mark - 初始化
 - (void)initMapView
 {
@@ -338,6 +352,7 @@
     _searchDisplayController.delegate = self;
     _searchDisplayController.searchResultsDelegate = self;
     _searchDisplayController.searchResultsDataSource = self;
+    _searchDisplayController.searchBar.placeholder = @"搜索";
     _searchDisplayController.searchResultsTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [self.view addSubview:_searchBar];
 //    _searchController.searchBar.delegate = self;

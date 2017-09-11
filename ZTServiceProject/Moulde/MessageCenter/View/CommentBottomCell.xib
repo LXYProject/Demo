@@ -29,7 +29,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="laksjdajsdja按实际打了卡时间段来看就按了快速登录卡几点啦姜是老的辣" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hN-q3-Kzs">
-                                <rect key="frame" x="15" y="5.5" width="295" height="49"/>
+                                <rect key="frame" x="15" y="8.5" width="295" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -40,10 +40,10 @@
                             <constraint firstAttribute="trailing" secondItem="yo8-co-Ila" secondAttribute="trailing" constant="10" id="CY6-Cj-zQB"/>
                             <constraint firstItem="yo8-co-Ila" firstAttribute="leading" secondItem="nmD-Pl-Q7T" secondAttribute="leading" constant="15" id="INE-0d-SGl"/>
                             <constraint firstAttribute="trailing" secondItem="6hN-q3-Kzs" secondAttribute="trailing" constant="10" id="KoY-rb-kW3"/>
-                            <constraint firstItem="6hN-q3-Kzs" firstAttribute="top" secondItem="yo8-co-Ila" secondAttribute="bottom" constant="5" id="XnC-ph-XqT"/>
+                            <constraint firstItem="6hN-q3-Kzs" firstAttribute="top" secondItem="yo8-co-Ila" secondAttribute="bottom" constant="8" id="XnC-ph-XqT"/>
                             <constraint firstItem="yo8-co-Ila" firstAttribute="top" secondItem="nmD-Pl-Q7T" secondAttribute="top" id="d2Z-41-sRH"/>
                             <constraint firstItem="6hN-q3-Kzs" firstAttribute="leading" secondItem="nmD-Pl-Q7T" secondAttribute="leading" constant="15" id="dmX-2E-HkG"/>
-                            <constraint firstAttribute="bottom" secondItem="6hN-q3-Kzs" secondAttribute="bottom" id="pOk-8i-x9J"/>
+                            <constraint firstAttribute="bottom" secondItem="6hN-q3-Kzs" secondAttribute="bottom" constant="3" id="pOk-8i-x9J"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Wh-3m-9Yh">
