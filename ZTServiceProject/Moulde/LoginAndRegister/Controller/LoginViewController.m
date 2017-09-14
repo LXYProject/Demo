@@ -140,8 +140,30 @@
                                           if ([_passwordLoginStatus integerValue]==0) {
                                               
                                               // 成功
+                                              NSString *gender = [response objectForKey:GenderKey];
+                                              NSString *headImageUrl = [response objectForKey:HeadImageKey];
+                                              NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
+                                              NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
+                                              NSString *isIdentification = [response objectForKey:IsIdentificationKey];
+                                              NSString *nickName = [response objectForKey:NickNameKey];
+                                              NSString *phoneNum = [response objectForKey:PhoneNumKey];
+                                              NSString *token = [response objectForKey:TokenKey];
+                                              NSString *userId = [response objectForKey:UserIdKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
+
+                                              [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
+                                              [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
+                                              [[NSUserDefaults standardUserDefaults]synchronize];
+                                              NSLog(@"密码登录token==%@", GetValueForKey(TokenKey));
+
                                               //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
-                                              [self.navigationController popViewControllerAnimated:YES];
+                                              [PushManager popToRootViewControllerAnimated:YES];
                                               
                                               }else{
                                                   [AlertViewController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
@@ -164,8 +186,33 @@
                                       
                                       NSString *checkCodeStatus = [response objectForKey:@"status"];
                                       if ([checkCodeStatus integerValue]==0) {
-                                          //成功
-                                          [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                          
+                                          // 成功
+                                          NSString *gender = [response objectForKey:GenderKey];
+                                          NSString *headImageUrl = [response objectForKey:HeadImageKey];
+                                          NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
+                                          NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
+                                          NSString *isIdentification = [response objectForKey:IsIdentificationKey];
+                                          NSString *nickName = [response objectForKey:NickNameKey];
+                                          NSString *phoneNum = [response objectForKey:PhoneNumKey];
+                                          NSString *token = [response objectForKey:TokenKey];
+                                          NSString *userId = [response objectForKey:UserIdKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
+                                          
+                                          [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
+                                          [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
+                                          [[NSUserDefaults standardUserDefaults]synchronize];
+
+                                          NSLog(@"验证码登录token==%@", GetValueForKey(TokenKey));
+                                          //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                          [PushManager popToRootViewControllerAnimated:YES];
+
 
                                       }else{
                                           [AlertViewController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert controller:self];

@@ -27,10 +27,19 @@
     NSArray *_sectionOneImg;
     NSArray *_sectionTwoImg;
     NSArray *_sectionThreeImg;
-   
     NSString *_token;
     BOOL login;
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    _token = GetValueForKey(TokenKey);
+    NSLog(@"我的token==%@", GetValueForKey(TokenKey));
+
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -47,7 +56,8 @@
     _sectionOneImg = @[@"wd_wdxx", @"wd_wdllq", @"wd_wdfb"];
     _sectionTwoImg= @[@"wd_wdfw", @"wd_wdxq", @"wd_wdwy"];
     _sectionThreeImg = @[@"wd_fwdd", @"wd_qzdd"];
-    _token = GetValueForKey(TokenKey);
+    
+
     login = YES;
     
 
@@ -62,7 +72,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (login) {
+    if (_token) {
         if (section==0 || section==1) {
             return 2;
         }else if (section==4){
@@ -83,7 +93,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (login) {
+    if (_token) {
         return 5;
     }else{
         return 4;
@@ -97,7 +107,7 @@
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
         
     }else{
-        if (login) {
+        if (_token) {
             if (indexPath.section==1) {
 //                MineBtnCell *cell = (MineBtnCell *)[self creatCell:tableView indenty:@"MineBtnCell"];
 //                return cell;
@@ -175,9 +185,10 @@
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     
-    if (login) {
+    if (_token) {
         if (indexPath.row==0) {
             HeadOtherCell *cell = (HeadOtherCell *)[self creatCell:tableView indenty:@"HeadOtherCell"];
+            [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:GetValueForKey(HeadImageKey)?GetValueForKey(HeadImageKey):@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
  
@@ -210,7 +221,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (login) {
+    if (_token) {
         if (indexPath.section==0) {
             if (indexPath.row ==0) {
                 [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
@@ -270,7 +281,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (login) {
+    if (_token) {
         if (indexPath.section==0) {
             if (indexPath.row==0) {
                 return 118;

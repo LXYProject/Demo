@@ -14,13 +14,14 @@
 #import "YJSelectionView.h"
 #import "UICustomDatePicker.h"
 #import "CityListViewController.h"
+#import "MineViewController.h"
 
 #define btnY 420
 @interface RegisterFourController ()<CityListViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, copy) NSString* ageStr;
+@property (nonatomic, copy) NSString* genderStr;
 @property (nonatomic, copy) NSString* birthdayStr;
 @property (nonatomic, copy) NSString* hometownStr;
 @end
@@ -45,6 +46,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
+    NSLog(@"%@", GetValueForKey(NickNameKey));
+    NSLog(@"%@", GetValueForKey(GenderKey));
+    NSLog(@"%@", GetValueForKey(TokenKey));
+    NSLog(@"%@", GetValueForKey(UserIdKey));
+
+
+
     
     
     if (_experience==0) {
@@ -92,7 +100,39 @@
         
     }else{
         NSLog(@"退出登录");
+        [self createAlertView];
     }
+}
+
+- (void)createAlertView{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"退出登录" message:@"你确定要退出登录吗？" preferredStyle:(UIAlertControllerStyleAlert)];
+    // 创建按钮
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction *action) {
+    }];
+    UIAlertAction *determineAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"哈哈");
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GenderKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HeadImageKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserNameKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserpasswordKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:IsIdentificationKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:NickNameKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:PhoneNumKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:TokenKey];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserIdKey];
+
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        NSLog(@"移除token==%@", GetValueForKey(TokenKey));
+        [PushManager popToRootViewControllerAnimated:YES];
+        
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:determineAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -122,55 +162,51 @@
     }else{
         return [self sectionThreeWithTableView:tableView indexPath:indexPath];
     }
-    //    }else{
-    //        static NSString *ID = @"cell";
-    //        // 根据标识去缓存池找cell
-    //        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    //        // 不写这句直接崩掉，找不到循环引用的cell
-    //        if (cell == nil) {
-    //            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-    //        }
-    //        if (indexPath.section==1) {
-    //            cell.textLabel.text = _sectionOneArr[indexPath.row];
-    //            if (indexPath.row==0) {
-    ////                cell.detailTextLabel.text = GetValueForKey(NickNameKey);
-    //            }else if (indexPath.row==1){
-    ////                cell.detailTextLabel.text = GetValueForKey(GenderKey);
-    //            }else{
-    //                return nil;
-    //            }
-    //        }else if (indexPath.section==2){
-    //            cell.textLabel.text = _sectionTwoArr[indexPath.row];
-    //        }else{
-    //            cell.textLabel.text = _sectionThreeArr[indexPath.row];
-    //            if (indexPath.row==0) {
-    ////                cell.detailTextLabel.text = GetValueForKey(PhoneNumberKey);
-    //            }
-    //        }
-    //        if (IS_IPHONE_4 || IS_IPHONE_5) {
-    //            cell.textLabel.font = [UIFont systemFontOfSize:13];
-    //            cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
-    //        }else{
-    //            cell.textLabel.font = [UIFont systemFontOfSize:14];
-    //            cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
-    //        }
-    //        cell.detailTextLabel.text = @"hhh";
-    //        cell.textLabel.textColor = TEXT_COLOR;
-    //        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    //        return cell;
-    //
-    //    }
-    
+//        }else{
+//            static NSString *ID = @"cell";
+//            // 根据标识去缓存池找cell
+//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//            // 不写这句直接崩掉，找不到循环引用的cell
+//            if (cell == nil) {
+//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+//            }
+//            if (indexPath.section==1) {
+//                cell.textLabel.text = _sectionOneArr[indexPath.row];
+//                if (indexPath.row==0) {
+//                    cell.detailTextLabel.text = GetValueForKey(NickNameKey);
+//                }else if (indexPath.row==1){
+//                    cell.detailTextLabel.text = GetValueForKey(GenderKey);
+//                }else{
+//                    return nil;
+//                }
+//            }else if (indexPath.section==2){
+//                cell.textLabel.text = _sectionTwoArr[indexPath.row];
+//            }else{
+//                cell.textLabel.text = _sectionThreeArr[indexPath.row];
+//                if (indexPath.row==0) {
+//                    cell.detailTextLabel.text = GetValueForKey(PhoneNumKey);
+//                }
+//            }
+//            if (IS_IPHONE_4 || IS_IPHONE_5) {
+//                cell.textLabel.font = [UIFont systemFontOfSize:13];
+//                cell.detailTextLabel.font = [UIFont systemFontOfSize:11];
+//            }else{
+//                cell.textLabel.font = [UIFont systemFontOfSize:14];
+//                cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
+//            }
+//            cell.detailTextLabel.text = @"hhh";
+//            cell.textLabel.textColor = TEXT_COLOR;
+//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//            return cell;
+//    
+//        }
+//    
 }
 
 //第0组
 - (UITableViewCell *)sectionZeroWithTableView:(UITableView *)tableView
                                     indexPath:(NSIndexPath *)indexPath {
     RegisterHeadCell *cell = (RegisterHeadCell *)[self creatCell:tableView indenty:@"RegisterHeadCell"];
-    cell.headIcon.layer.masksToBounds = YES;
-    cell.headIcon.layer.cornerRadius = cell.headIcon.bounds.size.width * 0.5;
-    cell.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    
     if (_headImage) {
         cell.headIcon.image = _headImage;
     }else{
@@ -190,9 +226,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
     if (indexPath.row==0) {
-        cell.detailTextLabel.text = self.nickNameStr;
+        //cell.detailTextLabel.text = self.nickNameStr;
+        cell.detailTextLabel.text = GetValueForKey(NickNameKey);
     }else if (indexPath.row==1){
-        cell.detailTextLabel.text = self.ageStr;
+        //cell.detailTextLabel.text = self.genderStr;
+        if ([GetValueForKey(GenderKey) integerValue]==0) {
+            cell.detailTextLabel.text = @"女";
+        }else{
+            cell.detailTextLabel.text = @"男";
+        }
     }else{
         cell.detailTextLabel.text = self.birthdayStr;
     }
@@ -246,6 +288,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    }
+    if (indexPath.row==0) {
+        cell.detailTextLabel.text = GetValueForKey(PhoneNumKey);
     }
     cell.textLabel.textColor = TEXT_COLOR;
     cell.textLabel.text = _sectionThreeArr[indexPath.row];
@@ -328,16 +373,16 @@
             [YJSelectionView showWithTitle:@"性别" options:@[@"男", @"女"] singleSelection:YES delegate:self completionHandler:^(NSInteger index, NSArray *array) {
                 NSLog(@"index==%ld", index);
                 if (index==0) {
-                    self.ageStr = @"男";
+                    self.genderStr = @"男";
                     _age = 0;
                     [self requestGender];
                 }else if(index==1){
-                    self.ageStr = @"女";
+                    self.genderStr = @"女";
                     _age = 1;
                     [self requestGender];
                     
                 }else{
-                    self.ageStr = @"";
+                    self.genderStr = @"";
                 }
                 for (id obj in array) {
                     NSLog(@"obj==%@", obj);

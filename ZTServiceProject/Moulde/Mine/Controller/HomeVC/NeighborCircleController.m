@@ -86,8 +86,8 @@
     [self.tableView beginHeaderRefreshing];
     
 
-//    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    _hud.labelText = @"正在加载";
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
 
 
     

@@ -45,12 +45,13 @@
     NSLog(@"deviceModel==%@", deviceModel);
 
     [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:DeviceUUIDKey];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceUUIDKey];
-    NSLog(@"deviceID==%@", _deviceUUID);
     [[NSUserDefaults standardUserDefaults] setObject:deviceModel forKey:DeviceModelKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
+
+
+    _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceUUIDKey];
     _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceModelKey];
+    NSLog(@"deviceID==%@", _deviceUUID);
     NSLog(@"deviceM==%@", _deviceModel);
 
     
@@ -84,7 +85,6 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            //_hud.mode = MBProgressHUDModeAnnularDeterminate;
             _hud.labelText = @"正在加载";
             
             // 用户注册获取验证码

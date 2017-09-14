@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.headIcon.layer.masksToBounds = YES;
+    self.headIcon.layer.cornerRadius = self.headIcon.bounds.size.width * 0.5;
+    self.headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

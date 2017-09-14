@@ -85,17 +85,17 @@
 }
 
 - (IBAction)thumbUp:(UIButton *)sender {
-    sender.selected = !sender.selected;
-    if (sender.tag==1) {
-        NSLog(@"11111");
-        if (sender.selected) {
-            [sender setBackgroundImage:[UIImage imageNamed:@"warn_press_40px"] forState:UIControlStateSelected];
-        }
-        else {
-            [sender setBackgroundImage:[UIImage imageNamed:@"address"] forState:UIControlStateNormal];
-
-        }
-    }
+//    sender.selected = !sender.selected;
+//    if (sender.tag==1) {
+//        NSLog(@"11111");
+//        if (sender.selected) {
+//            [sender setBackgroundImage:[UIImage imageNamed:@"warn_press_40px"] forState:UIControlStateSelected];
+//        }
+//        else {
+//            [sender setBackgroundImage:[UIImage imageNamed:@"address"] forState:UIControlStateNormal];
+//
+//        }
+//    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

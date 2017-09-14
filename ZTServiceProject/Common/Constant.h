@@ -9,19 +9,20 @@
 #ifndef weishi_Constant_h
 #define weishi_Constant_h
 
-//注册验证码核对 属性保存
-#define PhoneNumberKey @"phoneNumber"
-#define DeviceUUIDKey  @"deviceUUID"
-#define DeviceModelKey    @"deviceModel"
-#define TokenKey       @"token"
 
-#define GenderKey @"gender"
-#define HeadImageKey @"headImage"
-#define HuanxinUserNameKey @"huanxinUserName"
+#define PhoneNumberKey         @"phoneNumber"
+#define DeviceUUIDKey          @"deviceUUID"
+#define DeviceModelKey         @"deviceModel"
+//注册验证码核对 属性保存
+#define GenderKey              @"gender"
+#define HeadImageKey           @"headImage"
+#define HuanxinUserNameKey     @"huanxinUserName"
 #define HuanxinUserpasswordKey @"huanxinUserpassword"
-#define IsIdentificationKey @"isIdentification"
-#define NickNameKey @"nickName"
-#define UserIdKey @"userId"
+#define IsIdentificationKey    @"isIdentification"
+#define NickNameKey            @"nickName"
+#define PhoneNumKey            @"phoneNum"
+#define TokenKey               @"token"
+#define UserIdKey              @"userId"
 
 #define BALANCE @"balance"
 
@@ -100,8 +101,10 @@
 #define A_findUserInfoByPhone   @"?service=user&function=findUserInfoByPhone"
 
 //============================房屋接口===========================================
-// 查看所有与我有关的房屋
-#define A_lookAllHouseWithMe    @"?service=userHouse&function=lookAllHouseWithMe"
+// 查看所有与我有关的房屋           
+//#define A_lookAllHouseWithMe    @"?service=userHouse&function=lookAllHouseWithMe"
+#define A_lookAllHouseWithMe    @"?service=userHouse&function=queryMyHouse"
+
 // 新增绑定房屋
 #define A_addBindHouse          @"?service=userHouse&function=addBindHouse"
 // 添加房屋关注
@@ -111,8 +114,10 @@
 
 
 //============================小区接口===========================================
-// 查看所有与我有关的小区
-#define A_lookAllVillageWithMe  @"?service=userVillage&function=lookAllVillageWithMe"
+// 查看所有与我有关的小区 
+//#define A_lookAllVillageWithMe  @"?service=userVillage&function=lookAllVillageWithMe"
+#define A_lookAllVillageWithMe  @"?service=userVillage&function=queryMyVillage"
+
 // 添加小区关注
 #define A_addConcernVillage     @"?service=userVillage&function=addConcernVillage"
 // 取消小区关注

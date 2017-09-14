@@ -82,16 +82,16 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CommentInfoCell" bundle:nil] forCellReuseIdentifier:@"CommentInfoCell"];
     
 
-//    [self.tableView setHeaderRefreshBlock:^{
-//        self.currentTopicId = @"";
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView setFooterRefreshBlock:^{
-//        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
-//            self.currentTopicId = [[self.dataSource lastObject] topicId];
-//        [self requestMessageData:self.currentTopicId];
-//    }];
-//    [self.tableView beginHeaderRefreshing];
+    [self.tableView setHeaderRefreshBlock:^{
+        self.currentTopicId = @"";
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView setFooterRefreshBlock:^{
+        if (self.dataSource.count>0&&[[self.dataSource lastObject] topicId])
+            self.currentTopicId = [[self.dataSource lastObject] topicId];
+        [self requestMessageData:self.currentTopicId];
+    }];
+    [self.tableView beginHeaderRefreshing];
     
 //    NSArray *modelArray = [MessageModel mj_objectArrayWithKeyValuesArray:[self messageDataarray][@"topicList"]];
 //    [self.dataSource addObjectsFromArray:modelArray];

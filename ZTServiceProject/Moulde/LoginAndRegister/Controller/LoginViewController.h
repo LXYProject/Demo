@@ -11,6 +11,4 @@
 @interface LoginViewController : BaseViewController
 @property (nonatomic,copy)LoginSuccess loginSuccess;
 
-
-
 @end

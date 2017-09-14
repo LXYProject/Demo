@@ -69,11 +69,11 @@
                                           // 成功
                                           if ([_successStatus integerValue] ==0) {
                                               
-                                             // [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
-                                              [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
-                                                  
-                                                  viewController.experience = 0;
-                                              }];
+                                              [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+//                                              [PushManager pushViewControllerWithName:@"RegisterFourController" animated:YES block:^(RegisterFourController* viewController) {
+//                                                  
+//                                                  viewController.experience = 0;
+//                                              }];
 
                                           }else{
                                               [AlertViewController alertControllerWithTitle:@"提示" message:@"修改失败" preferredStyle:UIAlertControllerStyleAlert controller:self];

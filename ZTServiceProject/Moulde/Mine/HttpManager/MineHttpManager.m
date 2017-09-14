@@ -91,6 +91,32 @@
     }];
 }
 
++ (void)requestHouseAddVillage:(HouseAddVillage)houseAddVillage
+                     machineId:(NSString *)machineId
+                   machineName:(NSString *)machineName
+                    clientType:(NSString *)clientType
+                       success:(HttpRequestSuccess)success
+                       failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@""
+                               };
+    
+    NSString *url = nil;
+    if (houseAddVillage == House) {
+        url = A_lookAllHouseWithMe;
+    }else{
+        url = A_lookAllVillageWithMe;
+    }
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
+
 // 新增，添加，取消房屋关注
 + (void)requestAddToCancelHouse:(AddToCancelHouse)addToCancelHouse
                         houseId:(NSString *)houseId

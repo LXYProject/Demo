@@ -735,6 +735,38 @@
                                        [_hud hide:YES];
 
                                    }];
+//    // 获取设备唯一标识符
+//    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+//    NSLog(@"deviceUUID==%@", deviceUUID);
+//    NSString *deviceModel = [[UIDevice currentDevice] model];
+//    NSLog(@"deviceModel==%@", deviceModel);
+//
+//    @weakify(self);
+//    [MineHttpManager requestHouseAddVillage:House machineId:deviceUUID machineName:deviceModel clientType:@"0" success:^(id response) {
+//        @strongify(self);
+//        [self.tableView endRefreshing];
+//        [_hud hide:YES];
+//        
+//        NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+//        NSMutableArray *attentionHousesArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"attentionHouses"]];
+//        
+//        //                                       if (self.currentPage==1){
+//        [self.bindHousesDataSource removeAllObjects];
+//        [self.attentionHousesDataSource removeAllObjects];
+//        //                                       }
+//        [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
+//        [self.attentionHousesDataSource addObjectsFromArray:attentionHousesArray];
+//        //                                       if (response.count<10) {
+//        //                                           [self.tableView endRefreshingWithNoMoreData];
+//        //                                       }
+//        [self.tableView reloadData];
+//
+//    } failure:^(NSError *error, NSString *message) {
+//        [self.tableView endRefreshing];
+//        _hud.labelText = message;
+//        [_hud hide:YES];
+//
+//    }];
 }
 // 新增绑定房屋
 - (void)requestAddBindHouse{

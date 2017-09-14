@@ -12,7 +12,7 @@
 #import "TZImagePickerController.h"
 #import "MWPhotoBrowser.h"
 
-@interface ACSelectMediaView ()<UICollectionViewDelegate, UICollectionViewDataSource, TZImagePickerControllerDelegate,UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate>
+@interface ACSelectMediaView ()<UICollectionViewDelegate, UICollectionViewDataSource, TZImagePickerControllerDelegate,UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MWPhotoBrowserDelegate, UIActionSheetDelegate>
 {
     UIViewController *rootVC;
 }
@@ -173,19 +173,49 @@
 //        }
 //    }];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//    }]];
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self openCamera];
+//    }]];
+//    [alertController addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        [self openAlbum];
+//    }]];
+//    
+//    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+//    
+//    [appRootVC presentViewController:alertController animated:YES completion:nil];
+    
+    UIActionSheet *sheet = nil;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                            delegate:self
+                                   cancelButtonTitle:@"取消"
+                              destructiveButtonTitle:nil
+                                   otherButtonTitles:@"拍照", @"从相册选择", nil];
+    }else {
+        sheet = [[UIActionSheet alloc] initWithTitle:nil
+                                            delegate:self
+                                   cancelButtonTitle:@"取消"
+                              destructiveButtonTitle:nil
+                                   otherButtonTitles:@"从相册选择", nil];
+    }
+    
+    UIView *window = [UIApplication sharedApplication].keyWindow;
+    [sheet showInView:window];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if ([title isEqualToString:@"拍照"]) {
         [self openCamera];
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }else if ([title isEqualToString:@"从相册选择"]) {
         [self openAlbum];
-    }]];
-    
-    UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    [appRootVC presentViewController:alertController animated:YES completion:nil];
+    }else{
+        return;
+    }
     
 }
 

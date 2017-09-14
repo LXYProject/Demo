@@ -72,7 +72,7 @@
 - (void)sendCode{
     
     [LoginHttpManager requestLoginRegisterCode:RegisterCode
-                                      phoneNum:GetValueForKey(@"phoneNumber")
+                                      phoneNum:GetValueForKey(PhoneNumberKey)
                                      machineId:GetValueForKey(DeviceUUIDKey)
                                    machineName:GetValueForKey(DeviceModelKey)
                                        success:^(id response) {
@@ -137,30 +137,41 @@
                               success:^(id response) {
                                   NSLog(@"注册验证码核对==%@", response);
                                   _status = [response objectForKey:@"status"];
-                                  
-                                  NSString *token = [response objectForKey:TokenKey];
-                                  NSString *gender = [response objectForKey:GenderKey];
-                                  NSString *headImageUrl = [response objectForKey:HeadImageKey];
-                                  NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
-                                  NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
-                                  NSString *isIdentification = [response objectForKey:IsIdentificationKey];
-                                  NSString *nickName = [response objectForKey:NickNameKey];
-                                  NSString *userId = [response objectForKey:UserIdKey];
-
-                                  [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
-                                  DefaultSaveKeyValue(gender, GenderKey);
-                                  DefaultSaveKeyValue(headImageUrl, HeadImageKey);
-                                  DefaultSaveKeyValue(huanxinUserName, HuanxinUserNameKey);
-                                  DefaultSaveKeyValue(huanxinUserpassword, HuanxinUserpasswordKey);
-                                  DefaultSaveKeyValue(isIdentification, IsIdentificationKey);
-                                  DefaultSaveKeyValue(nickName, NickNameKey);
-                                  DefaultSaveKeyValue(userId, UserIdKey);
-                                  [[NSUserDefaults standardUserDefaults]synchronize];
-                                  
                                   //LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
                                   
                                   // 成功
                                   if ([_status integerValue]==0) {
+                                      
+                                      NSString *gender = [response objectForKey:GenderKey];
+                                      NSString *headImageUrl = [response objectForKey:HeadImageKey];
+                                      NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
+                                      NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
+                                      NSString *isIdentification = [response objectForKey:IsIdentificationKey];
+                                      NSString *nickName = [response objectForKey:NickNameKey];
+                                      NSString *phoneNum = [response objectForKey:PhoneNumKey];
+                                      NSString *token = [response objectForKey:TokenKey];
+                                      NSString *userId = [response objectForKey:UserIdKey];
+                                      
+                                      [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
+                                      [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
+                                      [[NSUserDefaults standardUserDefaults]synchronize];
+
+
+//                                      DefaultSaveKeyValue(gender, GenderKey);
+//                                      DefaultSaveKeyValue(headImageUrl, HeadImageKey);
+//                                      DefaultSaveKeyValue(huanxinUserName, HuanxinUserNameKey);
+//                                      DefaultSaveKeyValue(huanxinUserpassword, HuanxinUserpasswordKey);
+//                                      DefaultSaveKeyValue(isIdentification, IsIdentificationKey);
+//                                      DefaultSaveKeyValue(nickName, NickNameKey);
+//                                      DefaultSaveKeyValue(userId, UserIdKey);
+                                      
                                       
                                       [self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
 
