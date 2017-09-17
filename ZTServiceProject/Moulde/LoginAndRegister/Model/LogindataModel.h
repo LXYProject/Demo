@@ -26,6 +26,7 @@
 @property (nonatomic,copy)NSString *gender;
 @property (nonatomic,copy)NSString *headImage;
 @property (nonatomic,copy)NSString *huanxinUserName;
+@property (nonatomic,copy)NSString *huanxinUserpassword;
 @property (nonatomic,copy)NSString *isIdentification;
 @property (nonatomic,copy)NSString *nickName;
 @property (nonatomic,copy)NSString *phoneNum;

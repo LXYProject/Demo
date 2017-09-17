@@ -68,6 +68,20 @@
             }
         }];
         
+        NSMutableArray *likeUserList = [NSMutableArray arrayWithCapacity:1];
+        [_model.likeList enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            CommentUserModel *userModel = obj;
+            [likeUserList addObject:userModel.userId];
+        }];
+        if ([likeUserList containsObject:[UserInfoManager sharedUserInfoManager].userInfoModel.userId]) {
+            self.btn1.selected = YES;
+            self.thumbUpNumber.textColor = UIColorFromRGB(0xE64E51);
+        }
+        else {
+            self.btn1.selected  = NO;
+            self.thumbUpNumber.textColor = UIColorFromRGB(0xb2b2b2);
+        }
+        
         
         NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]init];
         NSAttributedString *attr1 = [[NSAttributedString alloc]initWithString:likeStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12],NSForegroundColorAttributeName:UIColorFromRGB(0xE64E51)}];

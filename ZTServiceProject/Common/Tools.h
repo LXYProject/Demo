@@ -25,4 +25,6 @@ typedef void(^AppToolBlock)(NSString *string);
 
 + (NSString *)convertToJsonData:(NSDictionary *)dict;
 
++ (NSString*)deviceVersion;
+
 @end

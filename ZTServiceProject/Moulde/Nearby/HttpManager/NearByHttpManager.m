@@ -58,6 +58,43 @@
 
 }
 
++ (void)requestDataWithNearType:(NaerType)nearType
+                      machineId:(NSString *)machineId
+                    machineName:(NSString *)machineName
+                     clientType:(NSString *)clientType
+                          query:(NSInteger)query
+                     categoryId:(NSString *)categoryId
+                           page:(NSInteger)page
+                        success:(HttpRequestSuccess)success
+                        failure:(HttpRequestFailure)failure{
+    
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                               @"query":@(query),
+                               @"page":@(page),
+                               @"pageCount":@(10),
+                               };
+    
+    if (nearType == ToHelp) {
+        
+        [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_HelpUrl paramter:paramter success:^(id response) {
+            NSArray *modelArray = [NearByItemModel mj_objectArrayWithKeyValuesArray:response[@"appealList"]];
+            success(modelArray);
+        } failure:^(NSError *error, NSString *message) {
+            failure(error,message);
+        }];
+    }else {
+        [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_FindUrl paramter:paramter success:^(id response) {
+            NSArray *modelArray = [ServiceModel mj_objectArrayWithKeyValuesArray:response[@"serviceList"]];
+            success(modelArray);
+        } failure:^(NSError *error, NSString *message) {
+            failure(error,message);
+        }];
+        
+    }
+
+}
 // 请求周边上面的滚动title
 + (void)rqeuestQueryType:(NSInteger)queryType
                  success:(HttpRequestSuccess)success

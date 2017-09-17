@@ -10,5 +10,7 @@
 
 @interface HeadOtherCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headIcon;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end

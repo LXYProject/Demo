@@ -34,7 +34,9 @@
 - (void)setModel:(NearByItemModel *)model {
     _model = model;
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    //[_iconImage sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl?model.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
     _headTitle.text = model.title;
     _detailsContent.text = model.content;
     _placeLabel.text = model.address;
@@ -47,15 +49,19 @@
 {
     _serviceModel =  serviceModel;
     
-    for (NSDictionary *dic in serviceModel.smallImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-        self.url = imageUrl;
-    }
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    for (NSDictionary *dic in serviceModel.smallImageList) {
+//        NSString *imageUrl = [dic objectForKey:@"url"];
+//        self.url = imageUrl;
+//    }
+//    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:serviceModel.imageUrl?serviceModel.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
     _headTitle.text = serviceModel.title;
     _detailsContent.text = serviceModel.content;
     _placeLabel.text = serviceModel.address;
-    _priceLabel.text = [NSString stringWithFormat:@"￥%@/个", serviceModel.price];
+    //_priceLabel.text = [NSString stringWithFormat:@"￥%@/个", serviceModel.price];
+    _priceLabel.text = [NSString stringWithFormat:@"%@/%@", serviceModel.price, serviceModel.unit];
     _timeLabel.text = [serviceModel.createDate substringToIndex:10];//截取掉下标7之后的字符串
 
 }

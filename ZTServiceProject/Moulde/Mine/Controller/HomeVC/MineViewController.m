@@ -34,8 +34,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    _token = GetValueForKey(TokenKey);
-    NSLog(@"我的token==%@", GetValueForKey(TokenKey));
+    _token = [UserInfoManager sharedUserInfoManager].userInfoModel.token;
+
 
     [self.tableView reloadData];
 }
@@ -60,7 +60,6 @@
 
     login = YES;
     
-
 //    "images": {"list" : [
 //                         {	"type":"png", "image":"image_content_base64_ bytes" },
 //                         {	"type":"png", "image":"image_content_base64_ bytes" },
@@ -188,7 +187,9 @@
     if (_token) {
         if (indexPath.row==0) {
             HeadOtherCell *cell = (HeadOtherCell *)[self creatCell:tableView indenty:@"HeadOtherCell"];
-            [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:GetValueForKey(HeadImageKey)?GetValueForKey(HeadImageKey):@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
+            [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:[UserInfoManager sharedUserInfoManager].userInfoModel.headImage?[UserInfoManager sharedUserInfoManager].userInfoModel.headImage:@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
+            cell.userName.text = [UserInfoManager sharedUserInfoManager].userInfoModel.nickName;
+            cell.userName.text = @"朱元璋";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
  

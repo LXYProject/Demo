@@ -23,6 +23,7 @@
 #import "AlertViewController.h"
 #import "HHAlertView.h"
 #import "ZTKeyBoardManager.h"
+#import "UserInfoManager.h"
 
 //第三方
 #import "MJRefresh.h"

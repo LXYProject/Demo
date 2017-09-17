@@ -82,7 +82,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="detailLabel" destination="j8z-cx-rvw" id="Ioc-1n-hwE"/>
                 <outlet property="headIcon" destination="VUH-cL-KvZ" id="31G-mg-bDR"/>
+                <outlet property="userName" destination="xoD-sx-ldf" id="8FQ-ue-yvL"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -803,6 +803,7 @@
 		7BBB10261F05018E00BCCF4B /* RegisterTwoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBB10241F05018E00BCCF4B /* RegisterTwoController.xib */; };
 		7BBB102A1F0502CF00BCCF4B /* RegisterThreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB10281F0502CF00BCCF4B /* RegisterThreeController.m */; };
 		7BBB102B1F0502CF00BCCF4B /* RegisterThreeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBB10291F0502CF00BCCF4B /* RegisterThreeController.xib */; };
+		7BC48D031F6E3EC400D32894 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC48D021F6E3EC400D32894 /* UserInfoManager.m */; };
 		7BC844071F0B66E100ADF5C6 /* 隐藏密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */; };
 		7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */; };
 		7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F71EE3D26C0058185F /* BaseTabbarController.m */; };
@@ -2195,6 +2196,8 @@
 		7BBB10281F0502CF00BCCF4B /* RegisterThreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterThreeController.m; sourceTree = "<group>"; };
 		7BBB10291F0502CF00BCCF4B /* RegisterThreeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterThreeController.xib; sourceTree = "<group>"; };
 		7BBE15721EE3C56A0064BEF3 /* ZTServiceProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZTServiceProject.pch; sourceTree = "<group>"; };
+		7BC48D011F6E3EC400D32894 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
+		7BC48D021F6E3EC400D32894 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "隐藏密码@2x.png"; sourceTree = "<group>"; };
 		7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
@@ -3928,6 +3931,8 @@
 				7BF83B051F52B86600095374 /* TTTAttributeLabelView.m */,
 				7BA868271F65135C0026C3E1 /* ZTKeyBoardManager.h */,
 				7BA868281F65135C0026C3E1 /* ZTKeyBoardManager.m */,
+				7BC48D011F6E3EC400D32894 /* UserInfoManager.h */,
+				7BC48D021F6E3EC400D32894 /* UserInfoManager.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -5790,6 +5795,7 @@
 				7B8F2A801F039F1E00D5D1DF /* DialheadCell.m in Sources */,
 				299E2CCF1EE7E07A0045A884 /* NearByItemModel.m in Sources */,
 				7BF7D76C1EE8554700DB1486 /* HomeHttpManager.m in Sources */,
+				7BC48D031F6E3EC400D32894 /* UserInfoManager.m in Sources */,
 				7B11F1211F341084001EADC1 /* PublishServiceCell.m in Sources */,
 				7B0C72041F15CC5600CE8AEC /* MyDoorServiceCell.m in Sources */,
 				7B966A701EFF902D00326C88 /* CommentUserModel.m in Sources */,

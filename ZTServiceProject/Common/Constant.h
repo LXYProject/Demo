@@ -9,20 +9,11 @@
 #ifndef weishi_Constant_h
 #define weishi_Constant_h
 
-
+//注册保存
 #define PhoneNumberKey         @"phoneNumber"
 #define DeviceUUIDKey          @"deviceUUID"
 #define DeviceModelKey         @"deviceModel"
-//注册验证码核对 属性保存
-#define GenderKey              @"gender"
-#define HeadImageKey           @"headImage"
-#define HuanxinUserNameKey     @"huanxinUserName"
-#define HuanxinUserpasswordKey @"huanxinUserpassword"
-#define IsIdentificationKey    @"isIdentification"
-#define NickNameKey            @"nickName"
-#define PhoneNumKey            @"phoneNum"
-#define TokenKey               @"token"
-#define UserIdKey              @"userId"
+
 
 #define BALANCE @"balance"
 
@@ -52,8 +43,8 @@
 // 物业轮播图
 #define A_UrlB                  @"?service=adPhotoService&function=propertyAdList"
 // 去帮忙
-#define A_HelpUrl               @"?service=serviceService&function=searchAppeal"
-// 找服务
+#define A_HelpUrl               @"?service=serviceService&function=queryAppeal"
+// 找服务//
 #define A_FindUrl               @"?service=serviceService&function=searchService"
 // 服务或求助类型列 //服务或求助类型列(0-服务,1-求助,2-单位)
 #define A_Leixin                @"?service=serviceService&function=serviceOrAppealCategory"

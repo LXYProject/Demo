@@ -134,35 +134,12 @@
                             machineId:GetValueForKey(DeviceUUIDKey)
                           machineName:GetValueForKey(DeviceModelKey)
                                  code:self.phoneNumberField.text
-                              success:^(id response) {
+                              success:^(LoginDataModel* response) {
                                   NSLog(@"注册验证码核对==%@", response);
-                                  _status = [response objectForKey:@"status"];
                                   //LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
-                                  
                                   // 成功
-                                  if ([_status integerValue]==0) {
-                                      
-                                      NSString *gender = [response objectForKey:GenderKey];
-                                      NSString *headImageUrl = [response objectForKey:HeadImageKey];
-                                      NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
-                                      NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
-                                      NSString *isIdentification = [response objectForKey:IsIdentificationKey];
-                                      NSString *nickName = [response objectForKey:NickNameKey];
-                                      NSString *phoneNum = [response objectForKey:PhoneNumKey];
-                                      NSString *token = [response objectForKey:TokenKey];
-                                      NSString *userId = [response objectForKey:UserIdKey];
-                                      
-                                      [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
-                                      [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
-                                      [[NSUserDefaults standardUserDefaults]synchronize];
-
+                                  if ([response.status integerValue]==0) {
+                                      [[UserInfoManager sharedUserInfoManager]saveUserModel:response];
 
 //                                      DefaultSaveKeyValue(gender, GenderKey);
 //                                      DefaultSaveKeyValue(headImageUrl, HeadImageKey);

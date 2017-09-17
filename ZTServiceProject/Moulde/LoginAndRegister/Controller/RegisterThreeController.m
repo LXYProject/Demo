@@ -59,7 +59,7 @@
             [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
                                     machineId:GetValueForKey(DeviceUUIDKey)
                                   machineName:GetValueForKey(DeviceModelKey)
-                                        token:GetValueForKey(TokenKey)
+                                        token:[UserInfoManager sharedUserInfoManager].userInfoModel.token
                                   newPassWord:self.phoneNumberField.text
                                       success:^(id response) {
                                           NSLog(@"修改密码%@", response);

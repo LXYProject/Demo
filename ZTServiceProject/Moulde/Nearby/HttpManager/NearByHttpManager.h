@@ -46,6 +46,15 @@ typedef enum : NSUInteger {
                      success:(HttpRequestSuccess)success
                      failure:(HttpRequestFailure)failure;
 
++ (void)requestDataWithNearType:(NaerType)nearType
+                      machineId:(NSString *)machineId
+                    machineName:(NSString *)machineName
+                     clientType:(NSString *)clientType
+                          query:(NSInteger)query
+                     categoryId:(NSString *)categoryId
+                           page:(NSInteger)page
+                        success:(HttpRequestSuccess)success
+                        failure:(HttpRequestFailure)failure;
 
 //请求周边上面的滚动title
 + (void)rqeuestQueryType:(NSInteger)queryType

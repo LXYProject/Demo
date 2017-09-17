@@ -25,12 +25,19 @@
 @implementation NearByViewController
 {
     MBProgressHUD *_hud;
+    NSString *_deviceUUID;
+    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentPage = 1;
 
- 
+    // 获取设备唯一标识符和手机型号
+    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"设备唯一码deviceUUID==%@", _deviceUUID);
+    _deviceModel = [Tools deviceVersion];
+    NSLog(@"手机型号deviceModel==%@", _deviceModel);
+    
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
         if (_isFindService) {
@@ -56,65 +63,102 @@
 }
 // 去帮忙
 - (void)requestData{
+//    @weakify(self);
+//    [NearByHttpManager requestDataWithNearType:ToHelp
+//                                         query:2
+//                                       keyWord:_keywords
+//                                          city:_city
+//                                      district:_district
+//                                    categoryId:@""
+//                                          sort:@""
+//                                          page:self.currentPage
+//                                       success:^(NSArray * response) {
+//                                           @strongify(self);
+//                                           [self.tableView endRefreshing];
+//                                           [_hud hide:YES];
+//                                           
+//                                           if (self.currentPage==1){
+//                                               [self.dataSource removeAllObjects];
+//                                           }
+//                                           [self.dataSource addObjectsFromArray:response];
+//                                           if (response.count<10) {
+//                                               [self.tableView endRefreshingWithNoMoreData];
+//                                           }
+//                                           [self.tableView reloadData];
+//                                       } failure:^(NSError *error, NSString *message) {
+//                                           [self.tableView endRefreshing];
+//                                           _hud.labelText = message;
+//                                           [_hud hide:YES];
+//                                       }];
+    
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:ToHelp
-                                         query:2
-                                       keyWord:_keywords
-                                          city:_city
-                                      district:_district
-                                    categoryId:@""
-                                          sort:@""
-                                          page:self.currentPage
-                                       success:^(NSArray * response) {
-                                           @strongify(self);
-                                           [self.tableView endRefreshing];
-                                           [_hud hide:YES];
-                                           
-                                           if (self.currentPage==1){
-                                               [self.dataSource removeAllObjects];
-                                           }
-                                           [self.dataSource addObjectsFromArray:response];
-                                           if (response.count<10) {
-                                               [self.tableView endRefreshingWithNoMoreData];
-                                           }
-                                           [self.tableView reloadData];
-                                       } failure:^(NSError *error, NSString *message) {
-                                           [self.tableView endRefreshing];
-                                           _hud.labelText = message;
-                                           [_hud hide:YES];
-                                       }];
+    [NearByHttpManager requestDataWithNearType:ToHelp machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        if (self.currentPage==1){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+    }];
+
 }
 // 找服务
 - (void)requestServiceData
 {
+//    @weakify(self);
+//    [NearByHttpManager requestDataWithNearType:LookingService
+//                                         query:2
+//                                       keyWord:_keywords
+//                                          city:_city
+//                                      district:_district
+//                                    categoryId:@""
+//                                          sort:@""
+//                                          page:self.currentPage
+//                                       success:^(NSArray * response) {
+//                                           @strongify(self);
+//                                           [self.tableView endRefreshing];
+//                                           [_hud hide:YES];
+//                                           
+//                                           if (self.currentPage==1){
+//                                               [self.dataSource removeAllObjects];
+//                                           }
+//                                           [self.dataSource addObjectsFromArray:response];
+//                                           if (response.count<10) {
+//                                               [self.tableView endRefreshingWithNoMoreData];
+//                                           }
+//                                           [self.tableView reloadData];
+//                                       } failure:^(NSError *error, NSString *message) {
+//                                           [self.tableView endRefreshing];
+//                                           _hud.labelText = message;
+//                                           [_hud hide:YES];
+//                                       }];
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:LookingService
-                                         query:2
-                                       keyWord:_keywords
-                                          city:_city
-                                      district:_district
-                                    categoryId:@""
-                                          sort:@""
-                                          page:self.currentPage
-                                       success:^(NSArray * response) {
-                                           @strongify(self);
-                                           [self.tableView endRefreshing];
-                                           [_hud hide:YES];
-                                           
-                                           if (self.currentPage==1){
-                                               [self.dataSource removeAllObjects];
-                                           }
-                                           [self.dataSource addObjectsFromArray:response];
-                                           if (response.count<10) {
-                                               [self.tableView endRefreshingWithNoMoreData];
-                                           }
-                                           [self.tableView reloadData];
-                                       } failure:^(NSError *error, NSString *message) {
-                                           [self.tableView endRefreshing];
-                                           _hud.labelText = message;
-                                           [_hud hide:YES];
-                                       }];
-
+    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        if (self.currentPage==1){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+    }];
 }
 - (void)setCategoryId:(NSString *)categoryId {
     _categoryId = categoryId;

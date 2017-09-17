@@ -60,10 +60,8 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithTwoUrl:A_registerCheck paramter:paramter success:^(id response) {
-        
-        success(response);
-//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-//        success(modelArray);
+        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+        success(model);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -88,9 +86,8 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_loginCheck paramter:paramter success:^(id response) {
-        success(response);
-//        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-//        success(modelArray);
+         LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+        success(model);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
@@ -114,11 +111,9 @@
                                };
     
     
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_phoneNumLogin paramter:paramter success:^(id response) {
-        
-        success(response);
-//        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
-//        success(model);
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_phoneNumLogin paramter:paramter success:^(id response) {        
+        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+        success(model);
         
         
     } failure:^(NSError *error, NSString *message) {
@@ -141,8 +136,8 @@
     
     
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_tokenLogin paramter:paramter success:^(id response) {
-        NSArray *modelArray = [LoginDataModel mj_objectArrayWithKeyValuesArray:response];
-        success(modelArray);
+        LoginDataModel *model = [LoginDataModel mj_objectWithKeyValues:response];
+        success(model);
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];

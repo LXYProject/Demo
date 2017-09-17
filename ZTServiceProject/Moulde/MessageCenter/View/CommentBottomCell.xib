@@ -134,7 +134,7 @@
                 <outlet property="supportLable" destination="6hN-q3-Kzs" id="oPB-gB-zlj"/>
                 <outlet property="thumbUpNumber" destination="0lw-yf-4t8" id="rSM-8e-POa"/>
             </connections>
-            <point key="canvasLocation" x="34" y="53.5"/>
+            <point key="canvasLocation" x="-76" y="-139"/>
         </tableViewCell>
     </objects>
     <resources>

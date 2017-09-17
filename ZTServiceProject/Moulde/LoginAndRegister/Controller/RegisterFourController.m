@@ -46,14 +46,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    NSLog(@"%@", GetValueForKey(NickNameKey));
-    NSLog(@"%@", GetValueForKey(GenderKey));
-    NSLog(@"%@", GetValueForKey(TokenKey));
-    NSLog(@"%@", GetValueForKey(UserIdKey));
-
-
-
-    
     
     if (_experience==0) {
         self.navigationItem.leftBarButtonItem = nil;
@@ -112,20 +104,21 @@
     }];
     UIAlertAction *determineAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"哈哈");
+//        [ZX_CALL_SINGLETON(UserInfoManager) removeUserInfo];
+        [[UserInfoManager sharedUserInfoManager] removeUserInfo];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GenderKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HeadImageKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserNameKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserpasswordKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:IsIdentificationKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:NickNameKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:PhoneNumKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:TokenKey];
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserIdKey];
+//
+//        [[NSUserDefaults standardUserDefaults]synchronize];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:GenderKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HeadImageKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserNameKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:HuanxinUserpasswordKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:IsIdentificationKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:NickNameKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:PhoneNumKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:TokenKey];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserIdKey];
-
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        
-        NSLog(@"移除token==%@", GetValueForKey(TokenKey));
+//        NSLog(@"移除token==%@", GetValueForKey(TokenKey));
         [PushManager popToRootViewControllerAnimated:YES];
         
     }];
@@ -211,7 +204,7 @@
         cell.headIcon.image = _headImage;
     }else{
         //        cell.headIcon.image = [UIImage imageNamed:@"Oval 3 Copy"];
-        [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:GetValueForKey(HeadImageKey)?GetValueForKey(HeadImageKey):@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
+        [cell.headIcon sd_setImageWithURL:[NSURL URLWithString:[UserInfoManager sharedUserInfoManager].userInfoModel.headImage?[UserInfoManager sharedUserInfoManager].userInfoModel.headImage:@""] placeholderImage:[UIImage imageNamed:@"Oval 3 Copy"]];
     }
     return cell;
 }
@@ -227,10 +220,10 @@
     }
     if (indexPath.row==0) {
         //cell.detailTextLabel.text = self.nickNameStr;
-        cell.detailTextLabel.text = GetValueForKey(NickNameKey);
+        cell.detailTextLabel.text = [UserInfoManager sharedUserInfoManager].userInfoModel.nickName;
     }else if (indexPath.row==1){
         //cell.detailTextLabel.text = self.genderStr;
-        if ([GetValueForKey(GenderKey) integerValue]==0) {
+        if ([[UserInfoManager sharedUserInfoManager].userInfoModel.gender integerValue]==0) {
             cell.detailTextLabel.text = @"女";
         }else{
             cell.detailTextLabel.text = @"男";
@@ -290,7 +283,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
     if (indexPath.row==0) {
-        cell.detailTextLabel.text = GetValueForKey(PhoneNumKey);
+        //cell.detailTextLabel.text = GetValueForKey(PhoneNumKey);
+        //字符串的截取
+        NSString *string = [[UserInfoManager sharedUserInfoManager].userInfoModel.phoneNum substringWithRange:NSMakeRange(3,4)];
+        //字符串的替换
+        cell.detailTextLabel.text = [[UserInfoManager sharedUserInfoManager].userInfoModel.phoneNum stringByReplacingOccurrencesOfString:string withString:@"****"];
     }
     cell.textLabel.textColor = TEXT_COLOR;
     cell.textLabel.text = _sectionThreeArr[indexPath.row];

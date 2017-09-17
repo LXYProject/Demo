@@ -107,18 +107,21 @@
     queryType = 1;
     _dictType = @"helpType";
     [self requestQuerySystemDict];
-//    response = [NSMutableArray arrayWithArray:@[@"的观点",@"十大",@"第三方",@"奥术大师多"]];
+    
+//   NSMutableArray * response = [NSMutableArray arrayWithArray:@[@"的观点",@"十大",@"第三方",@"奥术大师多"]];
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        
 //        self.titleArray = response;
+//        [self.tagTitles addObject:@"全部"];
+//        [self.viewControllers addObject:[[NearByViewController alloc]init]];
 //        if (self.titleArray.count != self.viewControllers.count) {
 //            [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //                [self.tagTitles addObject:response[idx]];
-//                if(self.viewControllers.count<response.count) {
+//                if(self.viewControllers.count<response.count+1) {
 //                    [self.viewControllers addObject:[[NearByViewController alloc]init]];
 //                }
 //            }];
-//            NSInteger differencCount = self.viewControllers.count - response.count;
+//            NSInteger differencCount = self.viewControllers.count - response.count-1;
 //            [self.viewControllers removeObjectsInRange:NSMakeRange(self.viewControllers.count - differencCount -1 , differencCount)];
 //        }
 //        [self reloadData];
@@ -289,8 +292,6 @@
 // 请求周边上面的滚动title
 - (void)requestQuerySystemDict{
     
-    //GetValueForKey(DeviceUUIDKey)
-    //GetValueForKey(DeviceModelKey)
     @weakify(self);
     [NearByHttpManager requestDictType:_dictType
                           parentDictId:@""
@@ -300,17 +301,19 @@
                                success:^(NSArray * response) {
                                    @strongify(self);
                                    [self.tagTitles removeAllObjects];
-                                           [self.viewControllers removeAllObjects];
+                                   [self.viewControllers removeAllObjects];
                                    self.titleArray = response;
-                                   if (self.titleArray.count != self.viewControllers.count) {
+                                   [self.tagTitles addObject:@"全部"];
+                                   [self.viewControllers addObject:[[NearByViewController alloc]init]];
+                                   if (self.titleArray.count != self.viewControllers.count-1) {
                                        [response enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                            NearByTitleModel *model = obj;
                                            [self.tagTitles addObject:model.name];
-                                           if(self.viewControllers.count<response.count) {
+                                           if(self.viewControllers.count<response.count+1) {
                                                [self.viewControllers addObject:[[NearByViewController alloc]init]];
                                            }
                                        }];
-                                       NSInteger differencCount = self.viewControllers.count - response.count;
+                                       NSInteger differencCount = self.viewControllers.count - 1-response.count;
                                        [self.viewControllers removeObjectsInRange:NSMakeRange(self.viewControllers.count - differencCount -1 , differencCount)];
                                    }
                                    [self reloadData];
@@ -340,6 +343,7 @@
 
 - (UIViewController *)viewPager:(GLViewPagerViewController *)viewPager
 contentViewControllerForTabAtIndex:(NSUInteger)index {
+    
     return self.viewControllers[index];
 }
 #pragma mark - GLViewPagerViewControllerDelegate
@@ -359,8 +363,7 @@ contentViewControllerForTabAtIndex:(NSUInteger)index {
     vc.keywords = self.keywords;
     vc.city = self.city;
     vc.district = self.district;
-    vc.categoryId = [self.titleArray[index] categoryId];
-    
+    vc.categoryId = index==0?@"":[self.titleArray[index] categoryId];
 }
 
 - (void)viewPager:(GLViewPagerViewController *)viewPager willChangeTabToIndex:(NSUInteger)index fromTabIndex:(NSUInteger)fromTabIndex withTransitionProgress:(CGFloat)progress {

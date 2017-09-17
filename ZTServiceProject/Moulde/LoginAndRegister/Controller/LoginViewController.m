@@ -38,6 +38,9 @@
     NSString *_phoneNumStatus;
     
     NSString *_passwordLoginStatus;
+    NSString *_deviceUUID;
+    NSString *_deviceModel;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,6 +66,12 @@
     self.codeLabel.multipleTouchEnabled = YES;
     [self.codeLabel addGestureRecognizer:tapGestureRecognizer];
     
+    // 获取设备唯一标识符和手机型号
+    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"设备唯一码deviceUUID==%@", _deviceUUID);
+    _deviceModel = [Tools deviceVersion];
+    NSLog(@"手机型号deviceModel==%@", _deviceModel);
+
 }
 - (void)rightBarClick
 {
@@ -111,7 +120,7 @@
 // 发送验证码
 - (void)sendCode
 {
-    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:GetValueForKey(DeviceUUIDKey) machineName:GetValueForKey(DeviceModelKey)  success:^(id response) {
+    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:_deviceUUID machineName:_deviceModel  success:^(id response) {
         NSLog(@"发送验证码==%@",response);
         _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
         
@@ -121,7 +130,7 @@
 }
 
 - (IBAction)loginBtnClick {
-    
+
     if (_selectIndex==0) {
         if ([RegularTool isValidateMobile:self.textField1.text]){
             
@@ -129,40 +138,12 @@
             //密码登录
             [LoginHttpManager requestPhoneNum:self.textField1.text
                                      passWord:self.textField2.text
-                                    machineId:GetValueForKey(DeviceUUIDKey)
-                                  machineName:GetValueForKey(DeviceModelKey)
+                                    machineId:_deviceUUID
+                                  machineName:_deviceModel
                                    clientType:@"0"
-                                      success:^(id response) {
-                                          NSLog(@"手机号密码登录==%@", response);//status
-                                          _passwordLoginStatus = [response objectForKey:@"status"];
-                                          _loginDataSource = response;
-                                          NSLog(@"_loginDataSource==%@", _loginDataSource);
-                                          if ([_passwordLoginStatus integerValue]==0) {
-                                              
-                                              // 成功
-                                              NSString *gender = [response objectForKey:GenderKey];
-                                              NSString *headImageUrl = [response objectForKey:HeadImageKey];
-                                              NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
-                                              NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
-                                              NSString *isIdentification = [response objectForKey:IsIdentificationKey];
-                                              NSString *nickName = [response objectForKey:NickNameKey];
-                                              NSString *phoneNum = [response objectForKey:PhoneNumKey];
-                                              NSString *token = [response objectForKey:TokenKey];
-                                              NSString *userId = [response objectForKey:UserIdKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
-
-                                              [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
-                                              [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
-                                              [[NSUserDefaults standardUserDefaults]synchronize];
-                                              NSLog(@"密码登录token==%@", GetValueForKey(TokenKey));
-
-                                              //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
+                                      success:^(LoginDataModel* response) {
+                                          if ([response.status integerValue]==0) {
+                                              [[UserInfoManager sharedUserInfoManager]saveUserModel:response];
                                               [PushManager popToRootViewControllerAnimated:YES];
                                               
                                               }else{
@@ -177,39 +158,15 @@
         //验证码核对
         NSLog(@"验证码核对");
         [LoginHttpManager requestPhoneNum:self.textField1.text
-                                machineId:GetValueForKey(DeviceUUIDKey)
-                              machineName:GetValueForKey(DeviceModelKey)
+                                machineId:_deviceUUID
+                              machineName:_deviceModel
                                      code:self.textField2.text
                                clientType:@"0"
-                                  success:^(id response) {
+                                  success:^(LoginDataModel* response) {
                                       NSLog(@"登陆验证码核对==%@",response);
-                                      
-                                      NSString *checkCodeStatus = [response objectForKey:@"status"];
-                                      if ([checkCodeStatus integerValue]==0) {
+                                      if ([response.status integerValue]==0) {
                                           
-                                          // 成功
-                                          NSString *gender = [response objectForKey:GenderKey];
-                                          NSString *headImageUrl = [response objectForKey:HeadImageKey];
-                                          NSString *huanxinUserName = [response objectForKey:HuanxinUserNameKey];
-                                          NSString *huanxinUserpassword = [response objectForKey:HuanxinUserpasswordKey];
-                                          NSString *isIdentification = [response objectForKey:IsIdentificationKey];
-                                          NSString *nickName = [response objectForKey:NickNameKey];
-                                          NSString *phoneNum = [response objectForKey:PhoneNumKey];
-                                          NSString *token = [response objectForKey:TokenKey];
-                                          NSString *userId = [response objectForKey:UserIdKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:gender forKey:GenderKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:headImageUrl forKey:HeadImageKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:huanxinUserName forKey:HuanxinUserNameKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:huanxinUserpassword forKey:HuanxinUserpasswordKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:isIdentification forKey:IsIdentificationKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:nickName forKey:NickNameKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:phoneNum forKey:PhoneNumKey];
-                                          
-                                          [[NSUserDefaults standardUserDefaults] setObject:token forKey:TokenKey];
-                                          [[NSUserDefaults standardUserDefaults] setObject:userId forKey:UserIdKey];
-                                          [[NSUserDefaults standardUserDefaults]synchronize];
-
-                                          NSLog(@"验证码登录token==%@", GetValueForKey(TokenKey));
+                                          [[UserInfoManager sharedUserInfoManager]saveUserModel:response];
                                           //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
                                           [PushManager popToRootViewControllerAnimated:YES];
 

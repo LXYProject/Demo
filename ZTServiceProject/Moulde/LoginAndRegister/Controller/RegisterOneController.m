@@ -41,7 +41,7 @@
     // 获取设备唯一标识符
     NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
     NSLog(@"deviceUUID==%@", deviceUUID);
-    NSString *deviceModel = [[UIDevice currentDevice] model];
+    NSString *deviceModel = [Tools deviceVersion];
     NSLog(@"deviceModel==%@", deviceModel);
 
     [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:DeviceUUIDKey];

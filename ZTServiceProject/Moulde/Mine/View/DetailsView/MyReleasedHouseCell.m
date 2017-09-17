@@ -65,18 +65,20 @@
     
     _serviceModel = serviceModel;
     
-    for (NSDictionary *dic in serviceModel.smallImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-        self.url = imageUrl;
-    }
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    for (NSDictionary *dic in serviceModel.smallImageList) {
+//        NSString *imageUrl = [dic objectForKey:@"url"];
+//        self.url = imageUrl;
+//    }
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:serviceModel.imageUrl?serviceModel.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
     _title.text = serviceModel.title;
     _details.text = serviceModel.content;
     _price.text = [NSString stringWithFormat:@"￥%.0f/%@",[serviceModel.price doubleValue], serviceModel.unit];
     _leaseState.text = serviceModel.statusDesc;
     
-    if ([serviceModel.statusInt intValue] == 0) {
+    if ([serviceModel.status intValue] == 0) {
         [_StopRentBtn setTitle:@"暂停服务" forState:UIControlStateNormal];
     }else{
         [_StopRentBtn setTitle:@"恢复服务" forState:UIControlStateNormal];
@@ -88,11 +90,14 @@
     
     _nearByItemModel = nearByItemModel;
     
-    for (NSDictionary *dic in nearByItemModel.normalImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-        self.url = imageUrl;
-    }
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    for (NSDictionary *dic in nearByItemModel.normalImageList) {
+//        NSString *imageUrl = [dic objectForKey:@"url"];
+//        self.url = imageUrl;
+//    }
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:nearByItemModel.userHeaderImageUrl?nearByItemModel.userHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     _title.text = nearByItemModel.title;
     _details.text = nearByItemModel.content;
     _price.text = [NSString stringWithFormat:@"%@元/次", nearByItemModel.price];

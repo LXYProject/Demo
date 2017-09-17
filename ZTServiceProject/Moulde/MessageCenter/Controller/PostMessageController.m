@@ -113,6 +113,7 @@
 - (void)rightBarClick
 {
     NSLog(@"发布帖子");
+    [self.view endEditing:YES];
     
     if (self.textView.text.length>0) {
         

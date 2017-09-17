@@ -109,5 +109,8 @@ return _sharedInstance; \
 
 #define GetValueForKey(key) [[NSUserDefaults standardUserDefaults]objectForKey:key]
 
+#define DefaultRemoveValueForKey(key) [[NSUserDefaults standardUserDefaults]removeObjectForKey:key];\
+[[NSUserDefaults standardUserDefaults]synchronize];
+
 
 #endif /* CommonTools_h */

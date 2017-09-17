@@ -37,27 +37,25 @@
     
     //self.itemDataSourceArray[value][@"vcName"]
 
-    for (NSDictionary *dic in model.smallImageList) {
-        NSString *imageUrl = [dic objectForKey:@"url"];
-//        NSLog(@"imageUrl==%@", imageUrl);
-        self.url = imageUrl;
-    }
-    
-    
-    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    for (NSDictionary *dic in model.smallImageList) {
+//        NSString *imageUrl = [dic objectForKey:@"url"];
+//        self.url = imageUrl;
+//    }
+//    [_icon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
 
     
-//    [_icon sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"message_tabbar_default"]];
+    [_icon sd_setImageWithURL:[NSURL URLWithString:model.imageUrl?model.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     _headImg.layer.masksToBounds = YES;
     _headImg.layer.cornerRadius = _headImg.bounds.size.width * 0.5;
     _headImg.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_headImg sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    [_headImg sd_setImageWithURL:[NSURL URLWithString:model.userHeaderImageUrl?model.userHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     _title.text = model.title;
     _userName.text = model.userName;
-    _price.text = [NSString stringWithFormat:@"%@/单", model.price];
+    //_price.text = [NSString stringWithFormat:@"%@/单", model.price];
 //    _price.text = [NSString stringWithFormat:@"%.0f/单",[model.price doubleValue]];
+    _price.text = [NSString stringWithFormat:@"%@/%@", model.price, model.unit];
     _content.text = model.content;
 }
 
