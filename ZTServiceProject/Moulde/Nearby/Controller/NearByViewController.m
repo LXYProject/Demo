@@ -142,7 +142,7 @@
 //                                           [_hud hide:YES];
 //                                       }];
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];
