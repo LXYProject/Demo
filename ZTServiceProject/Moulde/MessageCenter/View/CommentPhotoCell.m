@@ -42,11 +42,14 @@
             [self.collectionView reloadData];
         }
         [normalImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *imageString = obj;
-            [self.imgUrlArray addObject:imageString];
+            if ([obj isKindOfClass:[MessagePhotoModel class]]) {
+                MessagePhotoModel *model = obj;
+                [self.imgUrlArray addObject:model.url];
+            }
         }];
     }
 }
+
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return _smallModes.count;
@@ -54,7 +57,14 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagePhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MessagePhotoCell" forIndexPath:indexPath];
-    NSString *imageString = _smallModes[indexPath.row];
+    MessagePhotoModel *model = nil;
+    NSString *imageString = nil;
+    if ([_smallModes[indexPath.row] isKindOfClass:[MessagePhotoModel class]]) {
+        model = _smallModes[indexPath.row];
+    }
+    else {
+        imageString = _smallModes[indexPath.row];
+    }
     @weakify(self);
     cell.clickPhoto = ^(id obj) {
         @strongify(self);
@@ -62,11 +72,14 @@
             [[PushManager currentViewController].view endEditing:YES];
             return;
         }
-        //不进入大图的操作！
-//        [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
-        //
+        if (self.imgUrlArray.count>0) {
+            [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
+        }
+        else {
+            return;
+        }
     };
-     cell.url = imageString;
+    cell.url = imageString?imageString:model.url;
     return cell;
 }
 

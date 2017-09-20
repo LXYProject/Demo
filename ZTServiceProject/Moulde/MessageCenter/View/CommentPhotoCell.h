@@ -19,4 +19,5 @@
  */
 - (void)smallImgs:(NSArray *)smallImgs
        normalImgs:(NSArray *)normalImg;
+
 @end
