@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class MyDoorServiceModel;
-
+@class MyPublicThingsModel;
 @interface MyDoorServiceCell : UITableViewCell
 
 @property (nonatomic,strong)MyDoorServiceModel *model;
+@property (nonatomic,strong)MyPublicThingsModel *publicModel;
 
 
 @end

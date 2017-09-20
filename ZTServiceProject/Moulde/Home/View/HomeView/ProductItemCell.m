@@ -35,8 +35,18 @@
     _model = model;
     
     //[_iconImage sd_setImageWithURL:[NSURL URLWithString:model.userImgUrl?model.userImgUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:model.imageUrl?model.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
-
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [model.imageUrl componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _iconImage.contentMode=UIViewContentModeScaleAspectFill;
+    _iconImage.clipsToBounds=YES;
+    
     _headTitle.text = model.title;
     _detailsContent.text = model.content;
     _placeLabel.text = model.address;
@@ -55,7 +65,15 @@
 //    }
 //    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:serviceModel.imageUrl?serviceModel.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [serviceModel.imageUrl componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
 
     _headTitle.text = serviceModel.title;
     _detailsContent.text = serviceModel.content;
@@ -71,11 +89,24 @@
 - (void)setSecondModel:(SecondHandModel *)secondModel{
     _secondModel = secondModel;
     
-    for (MessagePhotoModel *model in secondModel.secondHandSmallImageList) {
-        self.url = model.url;
+//    for (MessagePhotoModel *model in secondModel.secondHandSmallImageList) {
+//        self.url = model.url;
+//    }
+//    
+//    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [secondModel.imageUrlList componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
     }
     
-    [_iconImage sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    [_iconImage sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _iconImage.contentMode=UIViewContentModeScaleAspectFill;
+    _iconImage.clipsToBounds=YES;
+
     _headTitle.text = secondModel.secondHandTitle;
     _detailsContent.text = secondModel.secondHandContent;
     _placeLabel.text = secondModel.address;

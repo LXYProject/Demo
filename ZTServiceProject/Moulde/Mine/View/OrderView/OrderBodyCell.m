@@ -35,9 +35,11 @@
     _headIcon.layer.masksToBounds = YES;
     _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
     _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
-    _name.text = model.userName;
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:model.salerHeaderImageUrl?model.salerHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
+    _name.text = model.salerName;
     _time.text = model.appointmentTime;
 }
 
@@ -48,10 +50,15 @@
     _headIcon.layer.masksToBounds = YES;
     _headIcon.layer.cornerRadius = _headIcon.bounds.size.width * 0.5;
     _headIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    
+//    _name.text = helpOrderModel.serviceUserName;
+//    _time.text = helpOrderModel.serviceTime;
     
-    _name.text = helpOrderModel.serviceUserName;
-    _time.text = helpOrderModel.serviceTime;
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.appealerHeaderImageUrl?helpOrderModel.appealerHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+
+    _name.text = helpOrderModel.appealerName;
+    _time.text = helpOrderModel.orderCreateDate;
 }
 
 // 电话

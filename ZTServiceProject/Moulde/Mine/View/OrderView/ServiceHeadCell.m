@@ -35,11 +35,17 @@
     _userIcon.layer.masksToBounds = YES;
     _userIcon.layer.cornerRadius = _userIcon.bounds.size.width * 0.5;
     _userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_userIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_userIcon sd_setImageWithURL:[NSURL URLWithString:model.userIcon?model.userIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//
+//    _userName.text = model.userName;
+//    _orderTime.text = model.createTime;
+//    _orderStatus.text = model.statusStr;
+    
+    
+    _userName.text = model.salerName;
+    _orderTime.text = model.createDate;
+    _orderStatus.text = model.status;
 
-    _userName.text = model.userName;
-    _orderTime.text = model.createTime;
-    _orderStatus.text = model.statusStr;
 
 }
 
@@ -50,10 +56,14 @@
     _userIcon.layer.masksToBounds = YES;
     _userIcon.layer.cornerRadius = _userIcon.bounds.size.width * 0.5;
     _userIcon.layer.borderColor = [UIColor whiteColor].CGColor;
-    [_userIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_userIcon sd_setImageWithURL:[NSURL URLWithString:helpOrderModel.serviceUserIcon?helpOrderModel.serviceUserIcon:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    
+//    _userName.text = helpOrderModel.serviceUserName;
+//    _orderTime.text = helpOrderModel.serviceTime;
+//    _orderStatus.text = helpOrderModel.indentStatusStr;
     
-    _userName.text = helpOrderModel.serviceUserName;
-    _orderTime.text = helpOrderModel.serviceTime;
-    _orderStatus.text = helpOrderModel.indentStatusStr;
+    _userName.text = helpOrderModel.appealerName;
+    _orderTime.text = helpOrderModel.orderCreateDate;
+    _orderStatus.text = helpOrderModel.orderStatus;
 }
 @end

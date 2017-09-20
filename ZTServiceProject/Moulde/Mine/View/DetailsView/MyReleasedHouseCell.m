@@ -71,7 +71,21 @@
 //    }
 //    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:serviceModel.imageUrl?serviceModel.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:serviceModel.imageUrl?serviceModel.imageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [serviceModel.imageUrl componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _headIcon.contentMode=UIViewContentModeScaleAspectFill;
+    _headIcon.clipsToBounds=YES;
+
 
     _title.text = serviceModel.title;
     _details.text = serviceModel.content;
@@ -97,7 +111,20 @@
 //    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
     
     
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:nearByItemModel.userHeaderImageUrl?nearByItemModel.userHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:nearByItemModel.userHeaderImageUrl?nearByItemModel.userHeaderImageUrl:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [nearByItemModel.imageUrl componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _headIcon.contentMode=UIViewContentModeScaleAspectFill;
+    _headIcon.clipsToBounds=YES;
+
     _title.text = nearByItemModel.title;
     _details.text = nearByItemModel.content;
     _price.text = [NSString stringWithFormat:@"%@元/次", nearByItemModel.price];

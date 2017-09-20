@@ -83,7 +83,11 @@
     
     if (indexPath.row == 0) {
         SecondBannerCell *cell = (SecondBannerCell *)[self creatCell:tableView indenty:@"SecondBannerCell"];
-        cell.secondModelArray = self.model.secondHandNormalImageList;
+        NSArray *array = [self.model.imageUrlList componentsSeparatedByString:@","];
+        if (array.count>0) {
+            cell.secondModelArray = array;
+        }
+        //cell.secondModelArray = self.model.secondHandNormalImageList;
 //        cell.secondModelArray = imageNames;
         return cell;
     }else if (indexPath.row==1){

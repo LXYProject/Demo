@@ -13,6 +13,7 @@
 #import "MyNeighborModel.h"
 #import "NeighborCircleModel.h"
 #import "MyDoorServiceModel.h"
+#import "MyPublicThingsModel.h"
 #import "MyPraiseModel.h"
 #import "VillagesModel.h"
 #import "BuildingListModel.h"
@@ -51,6 +52,44 @@
     } failure:^(NSError *error, NSString *message) {
         failure(error,message);
     }];
+
+}
+
++ (void)requestLoginCustomerOrders:(CustomerOrders)customerOrders
+                         machineId:(NSString *)machineId
+                       machineName:(NSString *)machineName
+                        clientType:(NSString *)clientType
+                           success:(HttpRequestSuccess)success
+                           failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@""
+                               };
+    NSString *url = nil;
+    if (customerOrders == BuyOrder) {
+        url = A_lookBuyOrderForm;
+    }else if(customerOrders == SaleOrder){
+        url = A_lookSaleOrderForm;
+    }else if (customerOrders == HelpOrder){
+        url = A_lookHelpOrderForm;
+    }else{
+        url = A_lookMyAppealOrderForm;
+    }
+    
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        
+        if (customerOrders==BuyOrder || customerOrders==SaleOrder) {
+            NSArray *modelArray = [BuyOrderModel mj_objectArrayWithKeyValuesArray:response[@"serviceOrderList"]];
+            success(modelArray);
+        }else{
+            NSArray *modelArray = [HelpOrderModel mj_objectArrayWithKeyValuesArray:response[@"appealOrderList"]];
+            success(modelArray);
+        }
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
 
 }
 
@@ -181,11 +220,17 @@
     [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
         NSLog(@"查看上门服务，公共报事，表扬，投诉信息==%@", response);
         
-        if (typeInformation==DoorService || typeInformation==PublicThings) {
-            NSArray *modelArray = [MyDoorServiceModel mj_objectArrayWithKeyValuesArray:response];
+        if (typeInformation==DoorService) {
+            NSArray *modelArray = [MyDoorServiceModel mj_objectArrayWithKeyValuesArray:response[@"visitServiceList"]];
+            success(modelArray);
+        }else if(typeInformation==PublicThings){
+            NSArray *modelArray = [MyPublicThingsModel mj_objectArrayWithKeyValuesArray:response[@"publicAffairList"]];
+            success(modelArray);
+        }else if (typeInformation==Praises){
+            NSArray *modelArray = [MyPraiseModel mj_objectArrayWithKeyValuesArray:response[@"praiseList"]];
             success(modelArray);
         }else{
-            NSArray *modelArray = [MyPraiseModel mj_objectArrayWithKeyValuesArray:response];
+            NSArray *modelArray = [MyPraiseModel mj_objectArrayWithKeyValuesArray:response[@"complainList"]];
             success(modelArray);
         }
         

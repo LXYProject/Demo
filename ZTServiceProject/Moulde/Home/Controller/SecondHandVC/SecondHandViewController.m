@@ -809,7 +809,11 @@
     else if (indexPath.row ==1){
         SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
-        [cell smallImgs:model.secondHandSmallImageList normalImgs:model.secondHandNormalImageList];
+        
+//        [cell smallImgs:model.secondHandSmallImageList normalImgs:model.secondHandNormalImageList];
+        
+        NSArray *array = [model.imageUrlList componentsSeparatedByString:@","];
+        [cell smallImgs:array normalImgs:array];
         cell.collectionView.userInteractionEnabled = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -870,7 +874,11 @@
             }];
         }
         else if (indexPath.row == 1){
-            NSArray *smallImgs = [self.secondCellDataSource[indexPath.section - 3] secondHandSmallImageList];
+            //NSArray *smallImgs = [self.secondCellDataSource[indexPath.section - 3] secondHandSmallImageList];
+            
+            SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
+            NSArray *smallImgs = [model.imageUrlList componentsSeparatedByString:@","];
+
             if (smallImgs.count>0) {
                 NSInteger count = smallImgs.count%3>0?((smallImgs.count/3)+1):smallImgs.count/3;
                 return count *((ScreenWidth - 30 )- 2*3)/3+(count-1)*15;

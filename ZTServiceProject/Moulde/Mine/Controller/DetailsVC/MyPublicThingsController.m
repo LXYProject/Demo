@@ -42,13 +42,13 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 //我请求的公共报事
 - (void)reuqestPublicThings
 {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [MineHttpManager requestTypeInformation:PublicThings
                                      status:@""
@@ -91,7 +91,7 @@
                                     indexPath:(NSIndexPath *)indexPath {
     MyDoorServiceCell *cell = (MyDoorServiceCell *)[self creatCell:tableView indenty:@"MyDoorServiceCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = self.dataSource[indexPath.row];
+    cell.publicModel = self.dataSource[indexPath.section];
     return cell;
 }
 

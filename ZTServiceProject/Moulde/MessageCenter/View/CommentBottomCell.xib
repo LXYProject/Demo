@@ -69,6 +69,7 @@
                                     <constraint firstAttribute="width" constant="20" id="rcg-Fy-1m9"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="thumb_up.png"/>
+                                <state key="selected" backgroundImage="warn_press_40px.png"/>
                                 <connections>
                                     <action selector="thumbUp:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HzJ-jz-70Z"/>
                                 </connections>
@@ -141,5 +142,6 @@
         <image name="address.png" width="10" height="10"/>
         <image name="comments.png" width="10" height="10"/>
         <image name="thumb_up.png" width="10" height="10"/>
+        <image name="warn_press_40px.png" width="20" height="20"/>
     </resources>
 </document>

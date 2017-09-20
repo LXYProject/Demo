@@ -22,6 +22,8 @@
 @implementation MyServiceController
 {
     MBProgressHUD *_hud;
+    NSString *_deviceUUID;
+    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +31,6 @@
     self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"我发布的服务" titleColor:[UIColor whiteColor]];
     self.tableView.tableFooterView = [[UIView alloc]init];
-
     
     self.currentPage = 1;
     [self.tableView setHeaderRefreshBlock:^{
@@ -42,39 +43,62 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 我发布的服务
 - (void)requestPublishedService{
+//    @weakify(self);
+//    [NearByHttpManager requestDataWithNearType:LookingService
+//                                         query:0
+//                                       keyWord:@""
+//                                          city:@""
+//                                      district:@""
+//                                    categoryId:@""
+//                                          sort:@""
+//                                          page:self.currentPage
+//                                       success:^(NSArray * response) {
+//                                           @strongify(self);
+//                                           [self.tableView endRefreshing];
+//                                           [_hud hide:YES];
+//                                           
+//                                           if (self.currentPage==1){
+//                                               [self.dataSource removeAllObjects];
+//                                           }
+//                                           [self.dataSource addObjectsFromArray:response];
+//                                           if (response.count<10) {
+//                                               [self.tableView endRefreshingWithNoMoreData];
+//                                           }
+//                                           [self.tableView reloadData];
+//                                       } failure:^(NSError *error, NSString *message) {
+//                                           [self.tableView endRefreshing];
+//                                           _hud.labelText = message;
+//                                           [_hud hide:YES];
+//                                       }];
+    
+    // 获取设备唯一标识符和手机型号
+    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    _deviceModel = [Tools deviceVersion];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:LookingService
-                                         query:0
-                                       keyWord:@""
-                                          city:@""
-                                      district:@""
-                                    categoryId:@""
-                                          sort:@""
-                                          page:self.currentPage
-                                       success:^(NSArray * response) {
-                                           @strongify(self);
-                                           [self.tableView endRefreshing];
-                                           [_hud hide:YES];
-                                           
-                                           if (self.currentPage==1){
-                                               [self.dataSource removeAllObjects];
-                                           }
-                                           [self.dataSource addObjectsFromArray:response];
-                                           if (response.count<10) {
-                                               [self.tableView endRefreshingWithNoMoreData];
-                                           }
-                                           [self.tableView reloadData];
-                                       } failure:^(NSError *error, NSString *message) {
-                                           [self.tableView endRefreshing];
-                                           _hud.labelText = message;
-                                           [_hud hide:YES];
-                                       }];
+    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:0 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        if (self.currentPage==1){
+            [self.dataSource removeAllObjects];
+        }
+        [self.dataSource addObjectsFromArray:response];
+        if (response.count<10) {
+            [self.tableView endRefreshingWithNoMoreData];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+    }];
+
 
 }
 

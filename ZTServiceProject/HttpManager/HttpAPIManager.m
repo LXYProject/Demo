@@ -193,10 +193,15 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
         return nil;
     }
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
-    //    [newParamter setValuesForKeysWithDictionary:paramter];
-    [newParamter setValue:@"IMwMF9OpWmvOCzOofFSwAA==" forKey:@"token"];
+//    [newParamter setValuesForKeysWithDictionary:paramter];
 //    [newParamter setValue:@"20170607093552" forKey:@"userId"];
+    
+    [newParamter setValue:@"IMwMF9OpWmvOCzOofFSwAA==" forKey:@"token"];
     [newParamter setValue:@"1362111422120170322120834" forKey:@"userId"];
+
+    //[UserInfoManager sharedUserInfoManager].userInfoModel.userId
+//    [newParamter setValue:[UserInfoManager sharedUserInfoManager].userInfoModel.token forKey:@"token"];
+//    [newParamter setValue:[UserInfoManager sharedUserInfoManager].userInfoModel.userId forKey:@"userId"];
 
     NSString *token = [newParamter objectForKey:@"token"];
     NSString *userId = [newParamter objectForKey:@"userId"];
@@ -212,7 +217,11 @@ ZX_IMPLEMENT_SINGLETON(HttpAPIManager);
     NSMutableDictionary *newParamter = [[NSMutableDictionary alloc]initWithDictionary:paramter];
     //    [newParamter setValuesForKeysWithDictionary:paramter];
     //    [newParamter setValue:@"20170607093552" forKey:@"userId"];
+    
     [newParamter setValue:@"1362111422120170322120834" forKey:@"userId"];
+    
+//    [newParamter setValue:[UserInfoManager sharedUserInfoManager].userInfoModel.userId forKey:@"userId"];
+
     
     NSString *userId = [newParamter objectForKey:@"userId"];
     NSAssert(userId.length>0, @"userId不能为空");

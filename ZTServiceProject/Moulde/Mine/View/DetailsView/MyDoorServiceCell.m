@@ -8,6 +8,7 @@
 
 #import "MyDoorServiceCell.h"
 #import "MyDoorServiceModel.h"
+#import "MyPublicThingsModel.h"
 
 @interface MyDoorServiceCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *headIcon;
@@ -38,12 +39,47 @@
     
     _model = model;
     
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [model.imageList componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _headIcon.contentMode=UIViewContentModeScaleAspectFill;
+    _headIcon.clipsToBounds=YES;
+
     _title.text = model.houseName;
     _ServiceType.text = model.serviceCategory;
     _theEvent.text = model.serviceDiscribe;
     [_initiateBtn setTitle:model.status forState:UIControlStateNormal];
     
+}
+
+- (void)setPublicModel:(MyPublicThingsModel *)publicModel{
+    
+    _publicModel = publicModel;
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [publicModel.imageList componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
+    }
+    
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _headIcon.contentMode=UIViewContentModeScaleAspectFill;
+    _headIcon.clipsToBounds=YES;
+    
+    _title.text = publicModel.villageName;
+    _ServiceType.text = publicModel.affairCategory;
+    _theEvent.text = publicModel.affairDiscribe;
+    [_initiateBtn setTitle:publicModel.status forState:UIControlStateNormal];
 }
 - (IBAction)initiateBtnClick {
 }

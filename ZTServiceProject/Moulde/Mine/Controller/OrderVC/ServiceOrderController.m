@@ -34,7 +34,8 @@
     //0  代表我的购买 1、我的出售
     NSInteger _selectIndexNum;
     MBProgressHUD *_hud;
-
+    NSString *_deviceUUID;
+    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +45,10 @@
     
     [self headerBtnClick:self.buyBtn];
     self.currentPage = 1;
+    
+    // 获取设备唯一标识符
+    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    _deviceModel = [Tools deviceVersion];
 }
 
 - (IBAction)headerBtnClick:(UIButton *)sender {
@@ -77,8 +82,6 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
     
 //    [self requestData];
     //测试的用的
@@ -88,57 +91,87 @@
 
 //查看我购买的服务订单
 - (void)requestBuyOrder{
+//    @weakify(self);
+//    [MineHttpManager requestLoginCustomerOrders:BuyOrder
+//                                        success:^(NSArray *response) {
+//                                            @strongify(self);
+//                                            [self.tableView endRefreshing];
+//                                            [_hud hide:YES];
+//
+//                                            self.dataSource = (NSMutableArray *)response;
+//
+//                                            
+////                                            if (self.currentPage==1){
+////                                                [self.dataSource removeAllObjects];
+////                                            }
+////                                            [self.dataSource addObjectsFromArray:response];
+////                                            if (response.count<10) {
+////                                                [self.tableView endRefreshingWithNoMoreData];
+////                                            }
+//                                            [self.tableView reloadData];
+//                                            
+//                                        } failure:^(NSError *error, NSString *message) {
+//                                            [self.tableView endRefreshing];
+//                                            _hud.labelText = message;
+//                                            [_hud hide:YES];
+//                                        }];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:BuyOrder
-                                        success:^(NSArray *response) {
-                                            @strongify(self);
-                                            [self.tableView endRefreshing];
-                                            [_hud hide:YES];
-
-                                            self.dataSource = (NSMutableArray *)response;
-
-                                            
-//                                            if (self.currentPage==1){
-//                                                [self.dataSource removeAllObjects];
-//                                            }
-//                                            [self.dataSource addObjectsFromArray:response];
-//                                            if (response.count<10) {
-//                                                [self.tableView endRefreshingWithNoMoreData];
-//                                            }
-                                            [self.tableView reloadData];
-                                            
-                                        } failure:^(NSError *error, NSString *message) {
-                                            [self.tableView endRefreshing];
-                                            _hud.labelText = message;
-                                            [_hud hide:YES];
-                                        }];
+    [MineHttpManager requestLoginCustomerOrders:BuyOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        self.dataSource = (NSMutableArray *)response;
+        
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+    }];
 }
 //查看我出售的服务订单
 - (void)requestSaleOrder{
+//    @weakify(self);
+//    [MineHttpManager requestLoginCustomerOrders:SaleOrder
+//                                        success:^(NSArray *response) {
+//                                            @strongify(self);
+//                                            [self.tableView endRefreshing];
+//                                            [_hud hide:YES];
+//                                            
+//                                            self.dataSource = (NSMutableArray *)response;
+//
+//                                            
+////                                            if (self.currentPage==1){
+////                                                [self.dataSource removeAllObjects];
+////                                            }
+////                                            [self.dataSource addObjectsFromArray:response];
+////                                            if (response.count<10) {
+////                                                [self.tableView endRefreshingWithNoMoreData];
+////                                            }
+//                                            [self.tableView reloadData];
+//                                            
+//                                        } failure:^(NSError *error, NSString *message) {
+//                                            [self.tableView endRefreshing];
+//                                            _hud.labelText = message;
+//                                            [_hud hide:YES];
+//                                        }];
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:SaleOrder
-                                        success:^(NSArray *response) {
-                                            @strongify(self);
-                                            [self.tableView endRefreshing];
-                                            [_hud hide:YES];
-                                            
-                                            self.dataSource = (NSMutableArray *)response;
+    [MineHttpManager requestLoginCustomerOrders:SaleOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        self.dataSource = (NSMutableArray *)response;
+        
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
 
-                                            
-//                                            if (self.currentPage==1){
-//                                                [self.dataSource removeAllObjects];
-//                                            }
-//                                            [self.dataSource addObjectsFromArray:response];
-//                                            if (response.count<10) {
-//                                                [self.tableView endRefreshingWithNoMoreData];
-//                                            }
-                                            [self.tableView reloadData];
-                                            
-                                        } failure:^(NSError *error, NSString *message) {
-                                            [self.tableView endRefreshing];
-                                            _hud.labelText = message;
-                                            [_hud hide:YES];
-                                        }];
+    }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //    return 10;

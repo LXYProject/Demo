@@ -72,6 +72,7 @@
                                @"machineName":machineName?machineName:@"",
                                @"clientType":clientType?clientType:@"",
                                @"query":@(query),
+                               @"categoryId":categoryId?categoryId:@"",
                                @"page":@(page),
                                @"pageCount":@(10),
                                };

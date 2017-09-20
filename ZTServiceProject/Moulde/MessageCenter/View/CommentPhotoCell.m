@@ -64,7 +64,7 @@
         }
         [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
     };
-    cell.url = model.url;
+     cell.url = model.url;
     return cell;
 }
 

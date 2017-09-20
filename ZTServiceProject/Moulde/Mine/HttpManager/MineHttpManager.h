@@ -62,6 +62,13 @@ typedef enum : NSUInteger {
                          success:(HttpRequestSuccess)success
                          failure:(HttpRequestFailure)failure;
 
++ (void)requestLoginCustomerOrders:(CustomerOrders)customerOrders
+                         machineId:(NSString *)machineId
+                       machineName:(NSString *)machineName
+                        clientType:(NSString *)clientType
+                           success:(HttpRequestSuccess)success
+                           failure:(HttpRequestFailure)failure;
+
 
 // 查看所有与我有关的房屋,小区
 + (void)requesHouseAddVillage:(HouseAddVillage)HouseAddVillage

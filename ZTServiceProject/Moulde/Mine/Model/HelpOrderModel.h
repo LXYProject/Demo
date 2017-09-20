@@ -44,33 +44,80 @@
 //serviceUserId = 005600;
 //serviceUserName = "其实我很帅";
 //serviceUserPhone = 13212345678;
+//==========================================================================
+
+
+//"appealOrderList": [
+//                    {
+
+//"helperPhoneNum": "13687654321",
+//"orderCreateDate": "2017-09-18 00:00:00",
+//"orderStatus": "100000",
+//"orderStatusStr": "",
+//"orderUpdateDate": "",
+//"appealTitle": "去旅行",
+//"appealContent": "去旅行了，没有导游唉，不要哭，你愿意做我导游么！带上你去旅行",
+//"appealImageUrl": "http://192.168.1.96:8080/ZtscApp/file/jpg/20170911165355.jpg,http://192.168.1.96:8080/ZtscApp/file/jpg/201709111653551.jpg,",
+//"appealPrice": 500,
+//"appealerHeaderImageUrl": "",
+//"appealerName": "",
+//"appealerHuanxinId": "",
+//"helperHeaderImageUrl": "",
+//"helperName": "",
+//"helperHuanxinId": "",
+//"remark": "我来帮你",
+//"appealerId": "",
+//"helperId": "",
+//"appealId": "201709111653552",
+//"orderId": "20170918134658",
+//"appointmentTime": "2017-09-18 13:45:53"
+
 
 @interface HelpOrderModel : NSObject
 
+//@property (nonatomic,copy)NSString *appealId;
+//@property (nonatomic,copy)NSString *appealUserHuanXinId;
+//@property (nonatomic,copy)NSString *appealUserIcon;
+//@property (nonatomic,copy)NSString *appealUserId;
+//@property (nonatomic,copy)NSString *appealUserName;
+//@property (nonatomic,copy)NSString *appealUserPhone;
+//@property (nonatomic,copy)NSString *indentCreateTime;
+//@property (nonatomic,copy)NSString *indentNum;
+//@property (nonatomic,copy)NSString *indentStatusStr;
+//@property (nonatomic,copy)NSString *leaveWords;
+//@property (nonatomic,copy)NSString *serviceDescribe;
+//@property (nonatomic,copy)NSString *serviceImg;
+//@property (nonatomic,copy)NSString *servicePrice;
+//@property (nonatomic,copy)NSString *serviceQuantity;
+//@property (nonatomic,copy)NSString *serviceTime;
+//@property (nonatomic,copy)NSString *serviceTitle;
+
+
+//@property (nonatomic,copy)NSString *serviceUserHuanXinId;
+//@property (nonatomic,copy)NSString *serviceUserIcon;
+//@property (nonatomic,copy)NSString *serviceUserId;
+//@property (nonatomic,copy)NSString *serviceUserName;
+//@property (nonatomic,copy)NSString *serviceUserPhone;
+
+@property (nonatomic,copy)NSString *helperPhoneNum;
+@property (nonatomic,copy)NSString *orderCreateDate;
+@property (nonatomic,copy)NSString *orderStatus;
+@property (nonatomic,copy)NSString *orderStatusStr;
+@property (nonatomic,copy)NSString *orderUpdateDate;
+@property (nonatomic,copy)NSString *appealTitle;
+@property (nonatomic,copy)NSString *appealContent;
+@property (nonatomic,copy)NSString *appealImageUrl;
+@property (nonatomic,copy)NSString *appealPrice;
+@property (nonatomic,copy)NSString *appealerHeaderImageUrl;
+@property (nonatomic,copy)NSString *appealerName;
+@property (nonatomic,copy)NSString *appealerHuanxinId;
+@property (nonatomic,copy)NSString *helperHeaderImageUrl;
+@property (nonatomic,copy)NSString *helperName;
+@property (nonatomic,copy)NSString *helperHuanxinId;
+@property (nonatomic,copy)NSString *remark;
+@property (nonatomic,copy)NSString *appealerId;
+@property (nonatomic,copy)NSString *helperId;
 @property (nonatomic,copy)NSString *appealId;
-@property (nonatomic,copy)NSString *appealUserHuanXinId;
-@property (nonatomic,copy)NSString *appealUserIcon;
-@property (nonatomic,copy)NSString *appealUserId;
-@property (nonatomic,copy)NSString *appealUserName;
-@property (nonatomic,copy)NSString *appealUserPhone;
-@property (nonatomic,copy)NSString *indentCreateTime;
-@property (nonatomic,copy)NSString *indentNum;
-@property (nonatomic,copy)NSString *indentStatusStr;
-@property (nonatomic,copy)NSString *leaveWords;
-@property (nonatomic,copy)NSString *serviceDescribe;
-@property (nonatomic,copy)NSString *serviceImg;
-@property (nonatomic,copy)NSString *servicePrice;
-@property (nonatomic,copy)NSString *serviceQuantity;
-@property (nonatomic,copy)NSString *serviceTime;
-@property (nonatomic,copy)NSString *serviceTitle;
-
-
-
-@property (nonatomic,copy)NSString *serviceUserHuanXinId;
-@property (nonatomic,copy)NSString *serviceUserIcon;
-@property (nonatomic,copy)NSString *serviceUserId;
-@property (nonatomic,copy)NSString *serviceUserName;
-@property (nonatomic,copy)NSString *serviceUserPhone;
-
-
+@property (nonatomic,copy)NSString *orderId;
+@property (nonatomic,copy)NSString *appointmentTime;
 @end

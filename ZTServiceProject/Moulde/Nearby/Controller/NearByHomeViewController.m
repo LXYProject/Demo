@@ -363,7 +363,8 @@ contentViewControllerForTabAtIndex:(NSUInteger)index {
     vc.keywords = self.keywords;
     vc.city = self.city;
     vc.district = self.district;
-    vc.categoryId = index==0?@"":[self.titleArray[index] categoryId];
+    vc.categoryId = index==0?@"":[self.titleArray[index-1] categoryId];
+    NSLog(@"categoryId==%@", vc.categoryId);
 }
 
 - (void)viewPager:(GLViewPagerViewController *)viewPager willChangeTabToIndex:(NSUInteger)index fromTabIndex:(NSUInteger)fromTabIndex withTransitionProgress:(CGFloat)progress {

@@ -63,6 +63,7 @@
     self.addPhotoHeight = 100;
     // Do any additional setup after loading the view from its nib.
     [self titleViewWithTitle:@"发布服务" titleColor:[UIColor whiteColor]];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
     
     _sectionOneArr = @[@"描述", @"我在"];
     _sectionTwoArr = @[@"单位", @"服务类型", @"服务范围"];

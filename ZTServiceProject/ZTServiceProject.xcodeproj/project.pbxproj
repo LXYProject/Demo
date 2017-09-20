@@ -550,6 +550,7 @@
 		7B3E2D771F4179A200562252 /* dw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E2D751F4179A200562252 /* dw@2x.png */; };
 		7B3E2D781F4179A200562252 /* dw@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3E2D761F4179A200562252 /* dw@3x.png */; };
 		7B3E2D7B1F41910200562252 /* DataPickerViewTwoDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3E2D7A1F41910200562252 /* DataPickerViewTwoDemo.m */; };
+		7B4522771F721928008151D6 /* MyPublicThingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4522761F721928008151D6 /* MyPublicThingsModel.m */; };
 		7B45E7BA1F2721D100380F61 /* TOPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B45E7B51F2721D100380F61 /* TOPageItem.m */; };
 		7B45E7BB1F2721D100380F61 /* TOPageTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B45E7B71F2721D100380F61 /* TOPageTitleButton.m */; };
 		7B45E7BC1F2721D100380F61 /* TOPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B45E7B91F2721D100380F61 /* TOPageTitleView.m */; };
@@ -1810,6 +1811,8 @@
 		7B3E2D761F4179A200562252 /* dw@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dw@3x.png"; sourceTree = "<group>"; };
 		7B3E2D791F41910200562252 /* DataPickerViewTwoDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPickerViewTwoDemo.h; sourceTree = "<group>"; };
 		7B3E2D7A1F41910200562252 /* DataPickerViewTwoDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPickerViewTwoDemo.m; sourceTree = "<group>"; };
+		7B4522751F721928008151D6 /* MyPublicThingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPublicThingsModel.h; sourceTree = "<group>"; };
+		7B4522761F721928008151D6 /* MyPublicThingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPublicThingsModel.m; sourceTree = "<group>"; };
 		7B45E7B41F2721D100380F61 /* TOPageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOPageItem.h; sourceTree = "<group>"; };
 		7B45E7B51F2721D100380F61 /* TOPageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOPageItem.m; sourceTree = "<group>"; };
 		7B45E7B61F2721D100380F61 /* TOPageTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOPageTitleButton.h; sourceTree = "<group>"; };
@@ -4079,6 +4082,8 @@
 				7B0A7FBF1F14654A0056F1FF /* MyNeighborModel.m */,
 				7B0C721F1F160A5300CE8AEC /* MyDoorServiceModel.h */,
 				7B0C72201F160A5300CE8AEC /* MyDoorServiceModel.m */,
+				7B4522751F721928008151D6 /* MyPublicThingsModel.h */,
+				7B4522761F721928008151D6 /* MyPublicThingsModel.m */,
 				7B0C72221F16149100CE8AEC /* MyPraiseModel.h */,
 				7B0C72231F16149100CE8AEC /* MyPraiseModel.m */,
 				7B14F8A91F177B5E00821281 /* VillagesModel.h */,
@@ -5750,6 +5755,7 @@
 				29162CF51F4D32DC001FBC76 /* EaseUserCell.m in Sources */,
 				29162CE21F4D32DC001FBC76 /* NSDate+Category.m in Sources */,
 				7B205E691F00EDFE00E46B74 /* ACMediaModel.m in Sources */,
+				7B4522771F721928008151D6 /* MyPublicThingsModel.m in Sources */,
 				7B69294F1F061EBA000108F3 /* ChangeNickNameController.m in Sources */,
 				29162CE11F4D32DC001FBC76 /* EaseUserModel.m in Sources */,
 				7B5C92561EF8F97100C545A8 /* Model.m in Sources */,

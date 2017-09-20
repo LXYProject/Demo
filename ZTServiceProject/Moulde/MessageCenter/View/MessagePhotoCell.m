@@ -24,11 +24,11 @@
 }
 
 - (void)setUrl:(NSString *)url {
+    
     if (url) {
         [self.icon sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
         
         self.icon.layer.contentsGravity = kCAGravityResizeAspectFill;
-        
         
         //        self.icon.contentMode = UIViewContentModeScaleAspectFill;
         //        self.icon.clipsToBounds = YES;
@@ -36,6 +36,7 @@
         //        [self.icon setContentScaleFactor:[[UIScreen mainScreen] scale]];
     }
 }
+
 
 - (void)commentTableViewTouchInSide {
     if (self.clickPhoto) {

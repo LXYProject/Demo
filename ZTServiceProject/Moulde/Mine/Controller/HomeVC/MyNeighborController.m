@@ -60,10 +60,6 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    //_hud.mode = MBProgressHUDModeDeterminate;
-    _hud.labelText = @"正在加载";
-    
 }
 
 - (void)rightBarClick{
@@ -71,32 +67,66 @@
 }
 // 查看所有与我有关的小区
 - (void)requestLookAllVillageWithMe{
+//    @weakify(self);
+//    [MineHttpManager requesHouseAddVillage:Village
+//                                   success:^(NSDictionary *response) {
+//                                       @strongify(self);
+//                                       [self.tableView endRefreshing];
+//                                       [_hud hide:YES];
+//
+//                                       NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
+//                                       NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
+////                                       if (self.currentPage==1){
+//                                           [self.myZonesDataSource removeAllObjects];
+//                                           [self.attentionZonesDataSource removeAllObjects];
+////                                       }
+//                                       [self.myZonesDataSource addObjectsFromArray:myZonesArray];
+//                                       [self.attentionZonesDataSource addObjectsFromArray:attentionZonesArray];
+////                                       if (response.count<10) {
+////                                           [self.tableView endRefreshingWithNoMoreData];
+////                                       }
+//                                       [self.tableView reloadData];
+//                                       
+//                                   } failure:^(NSError *error, NSString *message) {
+//                                       [self.tableView endRefreshing];
+//                                       _hud.labelText = message;
+//                                       [_hud hide:YES];
+//
+//                                   }];
+    
+    // 获取设备唯一标识符
+    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    NSLog(@"deviceUUID==%@", deviceUUID);
+    NSString *deviceModel = [Tools deviceVersion];
+    NSLog(@"deviceModel==%@", deviceModel);
+
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //_hud.mode = MBProgressHUDModeDeterminate;
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requesHouseAddVillage:Village
-                                   success:^(NSDictionary *response) {
-                                       @strongify(self);
-                                       [self.tableView endRefreshing];
-                                       [_hud hide:YES];
+    [MineHttpManager requestHouseAddVillage:Village machineId:deviceUUID machineName:deviceModel clientType:@"0" success:^(id response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
+        NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
+        //                                       if (self.currentPage==1){
+        [self.myZonesDataSource removeAllObjects];
+        [self.attentionZonesDataSource removeAllObjects];
+        //                                       }
+        [self.myZonesDataSource addObjectsFromArray:myZonesArray];
+        [self.attentionZonesDataSource addObjectsFromArray:attentionZonesArray];
+        //                                       if (response.count<10) {
+        //                                           [self.tableView endRefreshingWithNoMoreData];
+        //                                       }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+        _hud.labelText = message;
+        [_hud hide:YES];
 
-                                       NSArray *myZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"myZones"]];
-                                       NSArray *attentionZonesArray = [MyNeighborModel mj_objectArrayWithKeyValuesArray:response[@"attentionZones"]];
-//                                       if (self.currentPage==1){
-                                           [self.myZonesDataSource removeAllObjects];
-                                           [self.attentionZonesDataSource removeAllObjects];
-//                                       }
-                                       [self.myZonesDataSource addObjectsFromArray:myZonesArray];
-                                       [self.attentionZonesDataSource addObjectsFromArray:attentionZonesArray];
-//                                       if (response.count<10) {
-//                                           [self.tableView endRefreshingWithNoMoreData];
-//                                       }
-                                       [self.tableView reloadData];
-                                       
-                                   } failure:^(NSError *error, NSString *message) {
-                                       [self.tableView endRefreshing];
-                                       _hud.labelText = message;
-                                       [_hud hide:YES];
-
-                                   }];
+    }];
 }
 // 添加小区关注
 - (void)requestAddVillage{

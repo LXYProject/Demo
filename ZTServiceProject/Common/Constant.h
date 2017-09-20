@@ -93,7 +93,6 @@
 
 //============================房屋接口===========================================
 // 查看所有与我有关的房屋           
-//#define A_lookAllHouseWithMe    @"?service=userHouse&function=lookAllHouseWithMe"
 #define A_lookAllHouseWithMe    @"?service=userHouse&function=queryMyHouse"
 
 // 新增绑定房屋
@@ -106,7 +105,6 @@
 
 //============================小区接口===========================================
 // 查看所有与我有关的小区 
-//#define A_lookAllVillageWithMe  @"?service=userVillage&function=lookAllVillageWithMe"
 #define A_lookAllVillageWithMe  @"?service=userVillage&function=queryMyVillage"
 
 // 添加小区关注
@@ -195,7 +193,7 @@
 // 投诉
 #define A_complain              @"?service=propertyService&function=complain"
 // 查看上门服务信息
-#define A_lookvisitService      @"?service=propertyService&function=lookvisitService"
+#define A_lookvisitService      @"?service=propertyService&function=queryVisitService"
 // 查看报事信息
 #define A_publicAffairList      @"?service=propertyService&function=publicAffairList"
 // 查看表扬信息
@@ -311,13 +309,13 @@
 
 //============================用户订单service===========================================
 // 查看我出售的服务订单
-#define A_lookSaleOrderForm     @"?service=userOrderForm&function=lookSaleOrderForm"
+#define A_lookSaleOrderForm     @"?service=userOrderForm&function=queryServiveOrderBySaler"
 // 查看我购买的服务订单
-#define A_lookBuyOrderForm      @"?service=userOrderForm&function=lookBuyOrderForm"
+#define A_lookBuyOrderForm      @"?service=userOrderForm&function=queryServiveOrderByBuyer"
 // 查看我帮助的订单
-#define A_lookHelpOrderForm     @"?service=userOrderForm&function=lookHelpOrderForm"
+#define A_lookHelpOrderForm     @"?service=userOrderForm&function=queryAppealOrderByHelper"
 // 查看我求助的订单
-#define A_lookMyAppealOrderForm @"?service=userOrderForm&function=lookMyAppealOrderForm"
+#define A_lookMyAppealOrderForm @"?service=userOrderForm&function=queryAppealOrderByAppealer"
 
 
 //============================用户消息接口===========================================

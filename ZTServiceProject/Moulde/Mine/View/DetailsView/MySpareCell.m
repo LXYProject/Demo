@@ -37,11 +37,24 @@
     
     _model = model;
     
-    for (MessagePhotoModel *photoModel in model.secondHandNormalImageList) {
-        self.url = photoModel.url;
+//    for (MessagePhotoModel *photoModel in model.secondHandNormalImageList) {
+//        self.url = photoModel.url;
+//    }
+//    
+//    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    
+    //这string 就是你获取imgae的字符串
+    NSArray *array = [model.imageUrlList componentsSeparatedByString:@","];
+    if (array.count>0) {
+        
+        //写你要取值神马的！
+        _url = array[0];
     }
     
-    [_headIcon sd_setImageWithURL:[NSURL URLWithString:self.url?self.url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    [_headIcon sd_setImageWithURL:[NSURL URLWithString:_url?_url:@""] placeholderImage:[UIImage imageNamed:@"Pic_blank_328px"]];
+    _headIcon.contentMode=UIViewContentModeScaleAspectFill;
+    _headIcon.clipsToBounds=YES;
+
     _title.text = model.secondHandTitle;
     _details.text = model.secondHandContent;
     _price.text = [NSString stringWithFormat:@"￥%.0f",[model.secPrice doubleValue]];

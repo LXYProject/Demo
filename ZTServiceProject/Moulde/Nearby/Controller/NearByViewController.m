@@ -34,24 +34,24 @@
 
     // 获取设备唯一标识符和手机型号
     _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"设备唯一码deviceUUID==%@", _deviceUUID);
     _deviceModel = [Tools deviceVersion];
-    NSLog(@"手机型号deviceModel==%@", _deviceModel);
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
         if (_isFindService) {
             [self requestServiceData];
+        }else{
+            [self requestData];
         }
-        [self requestData];
     }];
     
     [self.tableView setFooterRefreshBlock:^{
         self.currentPage++;
         if (_isFindService) {
             [self requestServiceData];
+        }else{
+            [self requestData];
         }
-        [self requestData];
     }];
     [self.tableView beginHeaderRefreshing];
     
@@ -164,32 +164,36 @@
     _categoryId = categoryId;
     if (_isFindService) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (void)setKeywords:(NSString *)keywords {
     _keywords = keywords;
     if (_isFindService) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (void)setDistrict:(NSString *)district {
     _district = district;
     if (_isFindService) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 -(void)setCity:(NSString *)city {
     _city = city;
     if (_isFindService) {
         [self requestServiceData];
+    }else{
+        [self requestData];
     }
-    [self requestData];
 }
 
 - (void)setIsFindService:(BOOL)isFindService {
@@ -214,15 +218,14 @@
         cell.model = self.dataSource[indexPath.section];
         return cell;
 
+    }else{
+        NearByItemsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NearByItemsCell"];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"NearByItemsCell" owner:nil options:nil] lastObject];
+        }
+        cell.model = self.dataSource[indexPath.section];
+        return cell;
     }
-    
-    NearByItemsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NearByItemsCell"];
-    if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"NearByItemsCell" owner:nil options:nil] lastObject];
-    }
-    cell.model = self.dataSource[indexPath.section];
-    return cell;
-    
 
 }
 

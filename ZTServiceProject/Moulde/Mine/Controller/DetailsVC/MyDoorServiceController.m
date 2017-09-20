@@ -43,12 +43,12 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 //我请求的上门服务
 - (void)requestDoorService{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [MineHttpManager requestTypeInformation:DoorService
                                      status:@""
