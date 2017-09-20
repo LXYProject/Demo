@@ -810,10 +810,11 @@
         SecondHandModel *model =  self.secondCellDataSource[indexPath.section -3];
         CommentPhotoCell *cell = (CommentPhotoCell *)[self creatCell:tableView indenty:@"CommentPhotoCell"];
         
-//        [cell smallImgs:model.secondHandSmallImageList normalImgs:model.secondHandNormalImageList];
-        
-        NSArray *array = [model.imageUrlList componentsSeparatedByString:@","];
-        [cell smallImgs:array normalImgs:array];
+//        [cell smallImgs:model.imageUrlList normalImgs:model.secondHandNormalImageList];
+        if(model.imageUrlList.length>0) {
+            NSArray *array = [model.imageUrlList componentsSeparatedByString:@","];
+            [cell smallImgs:array normalImgs:array];
+        }
         cell.collectionView.userInteractionEnabled = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

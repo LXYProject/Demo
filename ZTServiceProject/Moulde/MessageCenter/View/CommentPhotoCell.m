@@ -42,8 +42,8 @@
             [self.collectionView reloadData];
         }
         [normalImg enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            MessagePhotoModel *model = obj;
-            [self.imgUrlArray addObject:model.url];
+            NSString *imageString = obj;
+            [self.imgUrlArray addObject:imageString];
         }];
     }
 }
@@ -54,7 +54,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MessagePhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MessagePhotoCell" forIndexPath:indexPath];
-    MessagePhotoModel *model = _smallModes[indexPath.row];
+    NSString *imageString = _smallModes[indexPath.row];
     @weakify(self);
     cell.clickPhoto = ^(id obj) {
         @strongify(self);
@@ -62,9 +62,11 @@
             [[PushManager currentViewController].view endEditing:YES];
             return;
         }
-        [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
+        //不进入大图的操作！
+//        [XLPhotoBrowser showPhotoBrowserWithImages:self.imgUrlArray currentImageIndex:indexPath.row];
+        //
     };
-     cell.url = model.url;
+     cell.url = imageString;
     return cell;
 }
 
