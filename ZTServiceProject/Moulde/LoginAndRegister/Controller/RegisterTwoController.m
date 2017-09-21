@@ -73,8 +73,8 @@
     
     [LoginHttpManager requestLoginRegisterCode:RegisterCode
                                       phoneNum:GetValueForKey(PhoneNumberKey)
-                                     machineId:GetValueForKey(DeviceUUIDKey)
-                                   machineName:GetValueForKey(DeviceModelKey)
+                                     machineId:[getUUID getUUID]
+                                   machineName:[Tools deviceVersion]
                                        success:^(id response) {
                                            NSLog(@"注册发送验证码==%@", response);
                                            
@@ -131,8 +131,8 @@
     // 注册验证码核对
     NSLog(@"phoneNumberField==%@", self.phoneNumberField.text);
     [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
-                            machineId:GetValueForKey(DeviceUUIDKey)
-                          machineName:GetValueForKey(DeviceModelKey)
+                            machineId:[getUUID getUUID]
+                          machineName:[Tools deviceVersion]
                                  code:self.phoneNumberField.text
                               success:^(LoginDataModel* response) {
                                   NSLog(@"注册验证码核对==%@", response);

@@ -75,13 +75,11 @@
 //                                           _hud.labelText = message;
 //                                           [_hud hide:YES];
 //                                       }];
-    // 获取设备唯一标识符和手机型号
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    _deviceModel = [Tools deviceVersion];
+    
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:ToHelp machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:0 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:ToHelp machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" query:0 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];

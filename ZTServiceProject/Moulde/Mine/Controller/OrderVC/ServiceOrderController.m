@@ -34,8 +34,6 @@
     //0  代表我的购买 1、我的出售
     NSInteger _selectIndexNum;
     MBProgressHUD *_hud;
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,9 +44,6 @@
     [self headerBtnClick:self.buyBtn];
     self.currentPage = 1;
     
-    // 获取设备唯一标识符
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    _deviceModel = [Tools deviceVersion];
 }
 
 - (IBAction)headerBtnClick:(UIButton *)sender {
@@ -119,7 +114,7 @@
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:BuyOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+    [MineHttpManager requestLoginCustomerOrders:BuyOrder machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];
@@ -159,7 +154,7 @@
 //                                            [_hud hide:YES];
 //                                        }];
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:SaleOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+    [MineHttpManager requestLoginCustomerOrders:SaleOrder machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];

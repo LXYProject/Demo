@@ -11,8 +11,6 @@
 
 //注册保存
 #define PhoneNumberKey         @"phoneNumber"
-#define DeviceUUIDKey          @"deviceUUID"
-#define DeviceModelKey         @"deviceModel"
 
 
 #define BALANCE @"balance"

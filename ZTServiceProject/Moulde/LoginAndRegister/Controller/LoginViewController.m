@@ -38,9 +38,6 @@
     NSString *_phoneNumStatus;
     
     NSString *_passwordLoginStatus;
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
-
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,12 +63,6 @@
     self.codeLabel.multipleTouchEnabled = YES;
     [self.codeLabel addGestureRecognizer:tapGestureRecognizer];
     
-    // 获取设备唯一标识符和手机型号
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"设备唯一码deviceUUID==%@", _deviceUUID);
-    _deviceModel = [Tools deviceVersion];
-    NSLog(@"手机型号deviceModel==%@", _deviceModel);
-
 }
 - (void)rightBarClick
 {
@@ -120,7 +111,7 @@
 // 发送验证码
 - (void)sendCode
 {
-    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:_deviceUUID machineName:_deviceModel  success:^(id response) {
+    [LoginHttpManager requestLoginRegisterCode:LoginCode phoneNum:self.textField1.text machineId:[getUUID getUUID] machineName:[Tools deviceVersion]  success:^(id response) {
         NSLog(@"发送验证码==%@",response);
         _phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
         
@@ -138,8 +129,8 @@
             //密码登录
             [LoginHttpManager requestPhoneNum:self.textField1.text
                                      passWord:self.textField2.text
-                                    machineId:_deviceUUID
-                                  machineName:_deviceModel
+                                    machineId:[getUUID getUUID]
+                                  machineName:[Tools deviceVersion]
                                    clientType:@"0"
                                       success:^(LoginDataModel* response) {
                                           if ([response.status integerValue]==0) {
@@ -158,8 +149,8 @@
         //验证码核对
         NSLog(@"验证码核对");
         [LoginHttpManager requestPhoneNum:self.textField1.text
-                                machineId:_deviceUUID
-                              machineName:_deviceModel
+                                machineId:[getUUID getUUID]
+                              machineName:[Tools deviceVersion]
                                      code:self.textField2.text
                                clientType:@"0"
                                   success:^(LoginDataModel* response) {

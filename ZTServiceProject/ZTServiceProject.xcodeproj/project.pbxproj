@@ -806,6 +806,8 @@
 		7BBB102B1F0502CF00BCCF4B /* RegisterThreeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBB10291F0502CF00BCCF4B /* RegisterThreeController.xib */; };
 		7BC48D031F6E3EC400D32894 /* UserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC48D021F6E3EC400D32894 /* UserInfoManager.m */; };
 		7BC844071F0B66E100ADF5C6 /* 隐藏密码@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */; };
+		7BEC0E4A1F73A8F200AD39DA /* getUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC0E471F73A8F200AD39DA /* getUUID.m */; };
+		7BEC0E4B1F73A8F200AD39DA /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC0E491F73A8F200AD39DA /* KeyChainStore.m */; };
 		7BF4B1F51EE3D0F00058185F /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */; };
 		7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1F71EE3D26C0058185F /* BaseTabbarController.m */; };
 		7BF4B1FB1EE3D2F00058185F /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4B1FA1EE3D2F00058185F /* Tools.m */; };
@@ -2202,6 +2204,11 @@
 		7BC48D011F6E3EC400D32894 /* UserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoManager.h; sourceTree = "<group>"; };
 		7BC48D021F6E3EC400D32894 /* UserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoManager.m; sourceTree = "<group>"; };
 		7BC844061F0B66E100ADF5C6 /* 隐藏密码@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "隐藏密码@2x.png"; sourceTree = "<group>"; };
+		7BEC0E441F73A88E00AD39DA /* ZTServiceProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZTServiceProject.entitlements; sourceTree = "<group>"; };
+		7BEC0E461F73A8F200AD39DA /* getUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getUUID.h; sourceTree = "<group>"; };
+		7BEC0E471F73A8F200AD39DA /* getUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getUUID.m; sourceTree = "<group>"; };
+		7BEC0E481F73A8F200AD39DA /* KeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainStore.h; sourceTree = "<group>"; };
+		7BEC0E491F73A8F200AD39DA /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
 		7BF4B1F31EE3D0F00058185F /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		7BF4B1F41EE3D0F00058185F /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		7BF4B1F61EE3D26C0058185F /* BaseTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabbarController.h; sourceTree = "<group>"; };
@@ -4451,6 +4458,7 @@
 		7B8F0D101EE3BE1F00ED16E3 /* ZTServiceProject */ = {
 			isa = PBXGroup;
 			children = (
+				7BEC0E441F73A88E00AD39DA /* ZTServiceProject.entitlements */,
 				7B8F0D141EE3BE1F00ED16E3 /* AppDelegate.h */,
 				7B8F0D151EE3BE1F00ED16E3 /* AppDelegate.m */,
 				7B8F0D171EE3BE1F00ED16E3 /* ViewController.h */,
@@ -4630,6 +4638,7 @@
 		7BA167721EE64AEA000ECCE6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				7BEC0E451F73A8F200AD39DA /* KeyChain */,
 				29E302C41F6628BD00387E88 /* HyphenateFullSDK */,
 				7BF83B001F52A7E800095374 /* YBAttributeTextTapAction */,
 				29162B6C1F4D32DB001FBC76 /* EaseUI */,
@@ -4715,6 +4724,17 @@
 				7BBB100C1F04F29200BCCF4B /* UIColor+Additions.m */,
 			);
 			path = HCTextView;
+			sourceTree = "<group>";
+		};
+		7BEC0E451F73A8F200AD39DA /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				7BEC0E461F73A8F200AD39DA /* getUUID.h */,
+				7BEC0E471F73A8F200AD39DA /* getUUID.m */,
+				7BEC0E481F73A8F200AD39DA /* KeyChainStore.h */,
+				7BEC0E491F73A8F200AD39DA /* KeyChainStore.m */,
+			);
+			path = KeyChain;
 			sourceTree = "<group>";
 		};
 		7BF4B1FE1EE3D45A0058185F /* TabbarIcon */ = {
@@ -4966,6 +4986,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 2TQWE9ET85;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					7B8F0D261EE3BE1F00ED16E3 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -5560,6 +5585,7 @@
 				29162CE41F4D32DC001FBC76 /* NSString+Valid.m in Sources */,
 				29162CFC1F4D32DC001FBC76 /* EaseBubbleView+Image.m in Sources */,
 				7BF4B1F81EE3D26C0058185F /* BaseTabbarController.m in Sources */,
+				7BEC0E4A1F73A8F200AD39DA /* getUUID.m in Sources */,
 				7B6FB3301F0CC8CF009F5F49 /* BtnSelectCell.m in Sources */,
 				7B0C71E01F15B78900CE8AEC /* SettingViewController.m in Sources */,
 				7BFBDE671EF5946200F2D354 /* HouseRentCell.m in Sources */,
@@ -5616,6 +5642,7 @@
 				29162CE91F4D32DC001FBC76 /* EaseMessageReadManager.m in Sources */,
 				7B243A361F1C67F4003A237F /* FiltrateCell.m in Sources */,
 				29162CAB1F4D32DC001FBC76 /* MJRefreshAutoStateFooter.m in Sources */,
+				7BEC0E4B1F73A8F200AD39DA /* KeyChainStore.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7B3E2D7B1F41910200562252 /* DataPickerViewTwoDemo.m in Sources */,
 				29162CD31F4D32DC001FBC76 /* PSTCollectionViewController.m in Sources */,
@@ -6045,6 +6072,7 @@
 			baseConfigurationReference = 3F7ADC54A2E51FC0A0219683 /* Pods-ZTServiceProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZTServiceProject/ZTServiceProject.entitlements;
 				DEVELOPMENT_TEAM = 2TQWE9ET85;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6097,6 +6125,7 @@
 			baseConfigurationReference = C3BD98F5879C4BF8E3589FE4 /* Pods-ZTServiceProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZTServiceProject/ZTServiceProject.entitlements;
 				DEVELOPMENT_TEAM = 2TQWE9ET85;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

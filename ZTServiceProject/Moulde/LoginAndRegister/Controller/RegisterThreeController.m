@@ -57,8 +57,8 @@
         
             // 修改密码
             [LoginHttpManager requestPhoneNum:GetValueForKey(PhoneNumberKey)
-                                    machineId:GetValueForKey(DeviceUUIDKey)
-                                  machineName:GetValueForKey(DeviceModelKey)
+                                    machineId:[getUUID getUUID]
+                                  machineName:[Tools deviceVersion]
                                         token:[UserInfoManager sharedUserInfoManager].userInfoModel.token
                                   newPassWord:self.phoneNumberField.text
                                       success:^(id response) {

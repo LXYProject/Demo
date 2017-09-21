@@ -94,17 +94,12 @@
 //
 //                                   }];
     
-    // 获取设备唯一标识符
-    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"deviceUUID==%@", deviceUUID);
-    NSString *deviceModel = [Tools deviceVersion];
-    NSLog(@"deviceModel==%@", deviceModel);
 
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //_hud.mode = MBProgressHUDModeDeterminate;
     _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requestHouseAddVillage:Village machineId:deviceUUID machineName:deviceModel clientType:@"0" success:^(id response) {
+    [MineHttpManager requestHouseAddVillage:Village machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];

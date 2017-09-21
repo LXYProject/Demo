@@ -54,9 +54,6 @@
     NSArray *noticeNews;
     NSInteger _times;
     NSString *_LocatingCity;
-    
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,13 +61,6 @@
     
     self.currentPage = 1;
     self.secondCellCurrentPage = 1;
-    
-    // 获取设备唯一标识符和手机型号
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"设备唯一码deviceUUID==%@", _deviceUUID);
-    _deviceModel = [Tools deviceVersion];
-    NSLog(@"手机型号deviceModel==%@", _deviceModel);
-
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
@@ -185,7 +175,7 @@
 //                                       }];
     
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:ToHelp machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:ToHelp machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         
@@ -237,7 +227,7 @@
 //                                       }];
     
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:LookingService machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" query:2 categoryId:@"" page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         

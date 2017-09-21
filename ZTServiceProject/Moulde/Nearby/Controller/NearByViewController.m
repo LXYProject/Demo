@@ -25,16 +25,10 @@
 @implementation NearByViewController
 {
     MBProgressHUD *_hud;
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentPage = 1;
-
-    // 获取设备唯一标识符和手机型号
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    _deviceModel = [Tools deviceVersion];
     
     [self.tableView setHeaderRefreshBlock:^{
         self.currentPage = 1;
@@ -92,7 +86,7 @@
 //                                       }];
     
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:ToHelp machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:ToHelp machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];
@@ -142,7 +136,7 @@
 //                                           [_hud hide:YES];
 //                                       }];
     @weakify(self);
-    [NearByHttpManager requestDataWithNearType:LookingService machineId:_deviceUUID machineName:_deviceModel clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
+    [NearByHttpManager requestDataWithNearType:LookingService machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" query:2 categoryId:_categoryId page:self.currentPage success:^(NSArray * response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];

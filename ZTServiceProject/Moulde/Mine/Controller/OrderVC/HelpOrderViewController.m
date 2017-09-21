@@ -33,8 +33,6 @@
     //0  代表我帮助的 1、我求助的
     NSInteger _selectIndexNum;
     MBProgressHUD *_hud;
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,12 +42,6 @@
     [self headerBtnClick:self.buyBtn];
     
     self.currentPage = 1;
-    
-    // 获取设备唯一标识符
-    _deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    _deviceModel = [Tools deviceVersion];
-
-
 }
 
 - (IBAction)headerBtnClick:(UIButton *)sender {
@@ -118,7 +110,7 @@
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:HelpOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+    [MineHttpManager requestLoginCustomerOrders:HelpOrder machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];
@@ -159,7 +151,7 @@
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requestLoginCustomerOrders:MyAppealOrder machineId:_deviceUUID machineName:_deviceModel clientType:@"0" success:^(id response) {
+    [MineHttpManager requestLoginCustomerOrders:MyAppealOrder machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
         @strongify(self);
         [self.tableView endRefreshing];
         [_hud hide:YES];

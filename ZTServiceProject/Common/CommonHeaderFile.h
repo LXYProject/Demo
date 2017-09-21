@@ -24,6 +24,7 @@
 #import "HHAlertView.h"
 #import "ZTKeyBoardManager.h"
 #import "UserInfoManager.h"
+#import "getUUID.h"
 
 //第三方
 #import "MJRefresh.h"

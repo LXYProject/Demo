@@ -21,8 +21,6 @@
     NSString    *_previousTextFieldContent;
     UITextRange *_previousSelection;
     NSInteger _inter;
-    NSString *_deviceUUID;
-    NSString *_deviceModel;
     NSString *_phoneNumStatus;
     UIButton *_button;
     MBProgressHUD *_hud;
@@ -37,24 +35,6 @@
     self.sendBtn.layer.cornerRadius = self.sendBtn.bounds.size.width * 0.01;
     self.sendBtn.layer.borderColor = [UIColor clearColor].CGColor;
 
-    
-    // 获取设备唯一标识符
-    NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    NSLog(@"deviceUUID==%@", deviceUUID);
-    NSString *deviceModel = [Tools deviceVersion];
-    NSLog(@"deviceModel==%@", deviceModel);
-
-    [[NSUserDefaults standardUserDefaults] setObject:deviceUUID forKey:DeviceUUIDKey];
-    [[NSUserDefaults standardUserDefaults] setObject:deviceModel forKey:DeviceModelKey];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-
-
-    _deviceUUID = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceUUIDKey];
-    _deviceModel = [[NSUserDefaults standardUserDefaults] objectForKey:DeviceModelKey];
-    NSLog(@"deviceID==%@", _deviceUUID);
-    NSLog(@"deviceM==%@", _deviceModel);
-
-    
     self.sendBtn.enabled = NO;
     [self.phoneNumberField addTarget:self action:@selector(reformatAsPhoneNumber:) forControlEvents:UIControlEventEditingChanged];
 
@@ -90,8 +70,8 @@
             // 用户注册获取验证码
             [LoginHttpManager requestLoginRegisterCode:RegisterCode
                                               phoneNum:self.phoneNumberField.text
-                                             machineId:_deviceUUID
-                                           machineName:_deviceModel
+                                             machineId:[getUUID getUUID]
+                                           machineName:[Tools deviceVersion]
                                                success:^(id response) {
                                                    
                                                    [_hud hide:YES];
