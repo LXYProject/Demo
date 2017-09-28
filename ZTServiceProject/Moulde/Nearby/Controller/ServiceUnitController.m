@@ -36,14 +36,13 @@
         [self requestQuerySystemDict];
     }];
     [self.tableView beginHeaderRefreshing];
-    
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 
 }
 
 // 请求单位
 - (void)requestTitleArrayData {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [NearByHttpManager rqeuestQueryType:queryType
                                 success:^(NSArray * response) {
@@ -62,11 +61,13 @@
 }
 
 - (void)requestQuerySystemDict{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [NearByHttpManager requestDictType:@"serviceUnit"
                           parentDictId:@""
-                             machineId:@"0"
-                           machineName:@"0"
+                             machineId:[getUUID getUUID]
+                           machineName:[Tools deviceVersion]
                             clientType:@"0"
                                success:^(id response) {
                                    

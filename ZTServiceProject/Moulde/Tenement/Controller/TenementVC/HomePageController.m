@@ -36,29 +36,46 @@
 
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 查看所有与我有关的房屋
 - (void)requestLookAllHouseWithMe{
+//    @weakify(self);
+//    [MineHttpManager requesHouseAddVillage:House
+//                                   success:^(NSDictionary* response) {
+//                                       @strongify(self);
+//                                       [self.tableView endRefreshing];
+//                                       [_hud hide:YES];
+//                                       
+//                                       NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+//                                       [self.bindHousesDataSource removeAllObjects];
+//                                       [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
+//                                       [self.tableView reloadData];
+//                                       
+//                                   } failure:^(NSError *error, NSString *message) {
+//                                       [self.tableView endRefreshing];
+//                                       _hud.labelText = message;
+//                                       [_hud hide:YES];
+//                                   }];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requesHouseAddVillage:House
-                                   success:^(NSDictionary* response) {
-                                       @strongify(self);
-                                       [self.tableView endRefreshing];
-                                       [_hud hide:YES];
-                                       
-                                       NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
-                                       [self.bindHousesDataSource removeAllObjects];
-                                       [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
-                                       [self.tableView reloadData];
-                                       
-                                   } failure:^(NSError *error, NSString *message) {
-                                       [self.tableView endRefreshing];
-                                       _hud.labelText = message;
-                                       [_hud hide:YES];
-                                   }];
+    [MineHttpManager requestHouseAddVillage:House machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+        [self.bindHousesDataSource removeAllObjects];
+        [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSString *message) {
+        [self.tableView endRefreshing];
+        _hud.labelText = message;
+        [_hud hide:YES];
+        
+    }];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

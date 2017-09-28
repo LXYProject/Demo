@@ -45,8 +45,7 @@
 }
 
 //我请求的公共报事
-- (void)reuqestPublicThings
-{
+- (void)reuqestPublicThings{
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"正在加载";
     @weakify(self);

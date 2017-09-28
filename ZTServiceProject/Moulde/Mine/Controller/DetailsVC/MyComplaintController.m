@@ -42,13 +42,12 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
-
 }
 
 // 查看投诉信息
 - (void)requestComplaintsList{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [MineHttpManager requestTypeInformation:Complaints
                                      status:@""

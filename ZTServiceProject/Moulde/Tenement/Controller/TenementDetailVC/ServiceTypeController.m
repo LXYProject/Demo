@@ -39,13 +39,12 @@
         }
     }];
     [self.tableView beginHeaderRefreshing];
-
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 服务类型列表
 - (void)requestServiceList{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [TenementHttpManager requestListOrPanorama:ServiceList
                                         zoneId:self.zoneId

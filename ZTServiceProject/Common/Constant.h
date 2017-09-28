@@ -92,11 +92,14 @@
 //============================房屋接口===========================================
 // 查看所有与我有关的房屋           
 #define A_lookAllHouseWithMe    @"?service=userHouse&function=queryMyHouse"
-
-// 新增绑定房屋
+// 绑定房屋
 #define A_addBindHouse          @"?service=userHouse&function=addBindHouse"
-// 添加房屋关注
+// 取消绑定
+#define A_deleteBindHouse       @"?service=userHouse&function=deleteBindHouse"
+// 关注房屋
 #define A_addLikeHouse          @"?service=userHouse&function=addLikeHouse"
+// 取消关注
+#define A_deleteLikeHouse       @"?service=userHouse&function=deleteLikeHouse"
 // 取消绑定，取消关注
 #define A_unHouse               @"?service=userHouse&function=unHouse"
 
@@ -104,20 +107,25 @@
 //============================小区接口===========================================
 // 查看所有与我有关的小区 
 #define A_lookAllVillageWithMe  @"?service=userVillage&function=queryMyVillage"
-
 // 添加小区关注
 #define A_addConcernVillage     @"?service=userVillage&function=addConcernVillage"
 // 取消小区关注
-#define A_unConcernVillage      @"?service=userVillage&function=unConcernVillage"
+#define A_unConcernVillage      @"?service=userVillage&function=deleteConcernVillage"
 
 
 //============================共通接口===========================================
-// 关键字搜索小区
+// 小区-关键字搜索
 #define A_searchVillagesByKeyWords  @"?service=common&function=searchVillagesByKeyWords"
-// 小区id搜索楼
+// 楼栋-根据小区ID搜索
 #define A_searchBuildingByVillage   @"?service=common&function=searchBuildingByVillage"
+// 单元-根据楼栋ID搜索
+#define A_searchUnitByBuilding      @"?service=common&function=searchUnitByBuilding"
+// 楼层-根据单元ID搜索
+#define A_searchFloorByBuilding     @"?service=common&function=searchFloorByBuilding"
+// 房屋-根据楼层ID查询
+#define A_queryHouseByFloor         @"?service=common&function=queryHouseByFloor"
 // 根据楼查询房屋表
-#define A_searchHouses          @"?service=common&function=searchHouses"
+#define A_searchHouses              @"?service=common&function=searchHouses"
 
 
 //============================好友接口===========================================
@@ -174,13 +182,14 @@
 
 //============================物业接口===========================================
 // 服务类型列表
-#define A_serviceList         @"?service=propertyService&function=serviceList"
+#define A_serviceList           @"?service=propertyService&function=serviceList"
 // 报事类型列表
-#define A_affairCategoryList   @"?service=propertyService&function=affairCategoryList"
+#define A_affairCategoryList    @"?service=propertyService&function=affairCategoryList"
 // 公告列表
-#define A_bulletinList        @"?service=propertyService&function=bulletinList"
+#define A_bulletinList          @"?service=propertyService&function=queryBulletin"
 // 便民服务
-#define A_convenience         @"?service=propertyService&function=convenience"
+#define A_convenience           @"?service=propertyService&function=convenience"
+#define A_queryConvenience      @"?service=propertyService&function=queryConvenience"
 
 // 发送上门服务信息
 #define A_visitService          @"?service=propertyService&function=visitService"

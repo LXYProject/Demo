@@ -44,32 +44,46 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
-
 }
 
 // 便民服务
 - (void)requestConvenience{
+//    @weakify(self);
+//    [TenementHttpManager requestListOrPanorama:ConvenienceService
+//                                        zoneId:self.zoneId
+//                                       success:^(id response) {
+//                                           @strongify(self);
+//                                           [self.tableView endRefreshing];
+//                                           [_hud hide:YES];
+//                                           
+//                                           [self.dataSource removeAllObjects];
+//                                           
+//                                           [self.dataSource addObjectsFromArray:response];
+//                                           [self.tableView reloadData];
+//
+//                                       
+//                                       } failure:^(NSError *error, NSString *message) {
+//                                           [self.tableView endRefreshing];
+//                                           _hud.labelText = message;
+//                                           [_hud hide:YES];
+//                                       }];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [TenementHttpManager requestListOrPanorama:ConvenienceService
-                                        zoneId:self.zoneId
-                                       success:^(id response) {
-                                           @strongify(self);
-                                           [self.tableView endRefreshing];
-                                           [_hud hide:YES];
-                                           
-                                           [self.dataSource removeAllObjects];
-                                           
-                                           [self.dataSource addObjectsFromArray:response];
-                                           [self.tableView reloadData];
+    [TenementHttpManager requestMachineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" villageId:self.zoneId success:^(id response) {
+        @strongify(self);
+        [self.tableView endRefreshing];
+        [_hud hide:YES];
+        
+        [self.dataSource removeAllObjects];
+        
+        [self.dataSource addObjectsFromArray:response];
+        [self.tableView reloadData];
 
-                                       
-                                       } failure:^(NSError *error, NSString *message) {
-                                           [self.tableView endRefreshing];
-                                           _hud.labelText = message;
-                                           [_hud hide:YES];
-                                       }];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+    }];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     

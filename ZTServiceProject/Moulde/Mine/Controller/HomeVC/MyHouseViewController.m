@@ -797,8 +797,35 @@
  
                                      } failure:^(NSError *error, NSString *message) {
                                      }];
+    
 }
 
+//取消绑定
+- (void)requestMachineId:(NSString *)machineId machineName:(NSString *)machineName clientType:(NSString *)clientType VillageId:(NSString *)villageId houseId:(NSString *)houseId{
+    // 绑定房屋
+    @weakify(self);
+    [MineHttpManager requestBindToCancelHouse:CancelBind machineId:machineId machineName:machineName clientType:clientType villageId:villageId houseId:houseId success:^(id response) {
+        @strongify(self);
+        //操作失败的原因
+        NSString *information = [response objectForKey:@"information"];
+        //状态码
+        NSString *status = [response objectForKey:@"status"];
+        
+        if ([status integerValue]==0) {
+            
+            [self requestLookAllHouseWithMe];
+            [self.tableView reloadData];
+            
+            [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+        }else{
+            [AlertViewController alertControllerWithTitle:@"提示" message:information preferredStyle:UIAlertControllerStyleAlert controller:self];
+        }
+        
+    } failure:^(NSError *error, NSString *message) {
+        
+    }];
+
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -828,8 +855,9 @@
         cell.btnClickBlock = ^(UIButton *sender) {
             // 取消绑定
             @strongify(self);
-            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
-            NSLog(@"取消绑定houseId==%@", [self.bindHousesDataSource[indexPath.row] houseId]);
+            //[self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
+            [self requestMachineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" VillageId:[self.bindHousesDataSource[indexPath.row] zoneId] houseId:[self.bindHousesDataSource[indexPath.row] houseId]];
+            NSLog(@"取消绑定VillageId==%@houseId==%@", [self.bindHousesDataSource[indexPath.row] zoneId],[self.bindHousesDataSource[indexPath.row] houseId]);
             NSLog(@"%ld%ld", indexPath.section,indexPath.row);
         };
     }else{
@@ -845,22 +873,6 @@
         };
     }
     return cell;
-    
-    
-//    @weakify(self);
-//    cell.btnClickBlock = ^(UIButton *sender) {
-//        // 取消绑定，取消关注
-//        @strongify(self);
-//        if (indexPath.section ==0) {
-//            [self requestunHouse:[self.bindHousesDataSource[indexPath.row] houseId]];
-//        }
-//        else {
-//            // 取消绑定，取消关注
-//            [self requestunHouse:[self.attentionHousesDataSource[indexPath.row] houseId]];
-//        }
-//    };
-
-    
 }
 
 - (void)createAlertView{

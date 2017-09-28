@@ -622,6 +622,15 @@
 		7B5C925B1EF8FE5800C545A8 /* SecondAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C92591EF8FE5800C545A8 /* SecondAddressCell.xib */; };
 		7B5C925F1EF90D9F00C545A8 /* DQTextFild.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C925E1EF90D9F00C545A8 /* DQTextFild.m */; };
 		7B5C92611EF90F8A00C545A8 /* 搜索-背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5C92601EF90F8A00C545A8 /* 搜索-背景@2x.png */; };
+		7B5FD2FD1F78EF8B007BC248 /* UnitModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD2FC1F78EF8B007BC248 /* UnitModel.m */; };
+		7B5FD3001F78F04F007BC248 /* FloorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD2FF1F78F04F007BC248 /* FloorModel.m */; };
+		7B5FD3031F78F0F6007BC248 /* HousingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD3021F78F0F6007BC248 /* HousingModel.m */; };
+		7B5FD3071F78F5B1007BC248 /* UnitListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD3051F78F5B1007BC248 /* UnitListController.m */; };
+		7B5FD3081F78F5B1007BC248 /* UnitListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FD3061F78F5B1007BC248 /* UnitListController.xib */; };
+		7B5FD30C1F78FA6F007BC248 /* FloorListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD30A1F78FA6F007BC248 /* FloorListController.m */; };
+		7B5FD30D1F78FA6F007BC248 /* FloorListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FD30B1F78FA6F007BC248 /* FloorListController.xib */; };
+		7B5FD3111F78FCCE007BC248 /* HousingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5FD30F1F78FCCE007BC248 /* HousingListController.m */; };
+		7B5FD3121F78FCCE007BC248 /* HousingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5FD3101F78FCCE007BC248 /* HousingListController.xib */; };
 		7B6300F91F4534E3009F77D2 /* ServiceDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6300F71F4534E3009F77D2 /* ServiceDetailsController.m */; };
 		7B6300FA1F4534E3009F77D2 /* ServiceDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6300F81F4534E3009F77D2 /* ServiceDetailsController.xib */; };
 		7B6300FE1F453A76009F77D2 /* HelpDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6300FC1F453A76009F77D2 /* HelpDetailsController.m */; };
@@ -1921,6 +1930,21 @@
 		7B5C925D1EF90D9F00C545A8 /* DQTextFild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DQTextFild.h; sourceTree = "<group>"; };
 		7B5C925E1EF90D9F00C545A8 /* DQTextFild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DQTextFild.m; sourceTree = "<group>"; };
 		7B5C92601EF90F8A00C545A8 /* 搜索-背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索-背景@2x.png"; sourceTree = "<group>"; };
+		7B5FD2FB1F78EF8B007BC248 /* UnitModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitModel.h; sourceTree = "<group>"; };
+		7B5FD2FC1F78EF8B007BC248 /* UnitModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitModel.m; sourceTree = "<group>"; };
+		7B5FD2FE1F78F04F007BC248 /* FloorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorModel.h; sourceTree = "<group>"; };
+		7B5FD2FF1F78F04F007BC248 /* FloorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorModel.m; sourceTree = "<group>"; };
+		7B5FD3011F78F0F6007BC248 /* HousingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HousingModel.h; sourceTree = "<group>"; };
+		7B5FD3021F78F0F6007BC248 /* HousingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HousingModel.m; sourceTree = "<group>"; };
+		7B5FD3041F78F5B1007BC248 /* UnitListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitListController.h; sourceTree = "<group>"; };
+		7B5FD3051F78F5B1007BC248 /* UnitListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitListController.m; sourceTree = "<group>"; };
+		7B5FD3061F78F5B1007BC248 /* UnitListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UnitListController.xib; sourceTree = "<group>"; };
+		7B5FD3091F78FA6F007BC248 /* FloorListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloorListController.h; sourceTree = "<group>"; };
+		7B5FD30A1F78FA6F007BC248 /* FloorListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloorListController.m; sourceTree = "<group>"; };
+		7B5FD30B1F78FA6F007BC248 /* FloorListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FloorListController.xib; sourceTree = "<group>"; };
+		7B5FD30E1F78FCCE007BC248 /* HousingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HousingListController.h; sourceTree = "<group>"; };
+		7B5FD30F1F78FCCE007BC248 /* HousingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HousingListController.m; sourceTree = "<group>"; };
+		7B5FD3101F78FCCE007BC248 /* HousingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HousingListController.xib; sourceTree = "<group>"; };
 		7B6300F61F4534E3009F77D2 /* ServiceDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceDetailsController.h; sourceTree = "<group>"; };
 		7B6300F71F4534E3009F77D2 /* ServiceDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailsController.m; sourceTree = "<group>"; };
 		7B6300F81F4534E3009F77D2 /* ServiceDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServiceDetailsController.xib; sourceTree = "<group>"; };
@@ -3018,6 +3042,15 @@
 				7B16D2771F1857980070F88A /* BuildingListController.h */,
 				7B16D2781F1857980070F88A /* BuildingListController.m */,
 				7B16D2791F1857980070F88A /* BuildingListController.xib */,
+				7B5FD3041F78F5B1007BC248 /* UnitListController.h */,
+				7B5FD3051F78F5B1007BC248 /* UnitListController.m */,
+				7B5FD3061F78F5B1007BC248 /* UnitListController.xib */,
+				7B5FD3091F78FA6F007BC248 /* FloorListController.h */,
+				7B5FD30A1F78FA6F007BC248 /* FloorListController.m */,
+				7B5FD30B1F78FA6F007BC248 /* FloorListController.xib */,
+				7B5FD30E1F78FCCE007BC248 /* HousingListController.h */,
+				7B5FD30F1F78FCCE007BC248 /* HousingListController.m */,
+				7B5FD3101F78FCCE007BC248 /* HousingListController.xib */,
 				7B16D27F1F185CD60070F88A /* HouseListController.h */,
 				7B16D2801F185CD60070F88A /* HouseListController.m */,
 				7B16D2811F185CD60070F88A /* HouseListController.xib */,
@@ -4097,6 +4130,12 @@
 				7B14F8AA1F177B5E00821281 /* VillagesModel.m */,
 				7B16D27C1F185AAD0070F88A /* BuildingListModel.h */,
 				7B16D27D1F185AAD0070F88A /* BuildingListModel.m */,
+				7B5FD2FB1F78EF8B007BC248 /* UnitModel.h */,
+				7B5FD2FC1F78EF8B007BC248 /* UnitModel.m */,
+				7B5FD2FE1F78F04F007BC248 /* FloorModel.h */,
+				7B5FD2FF1F78F04F007BC248 /* FloorModel.m */,
+				7B5FD3011F78F0F6007BC248 /* HousingModel.h */,
+				7B5FD3021F78F0F6007BC248 /* HousingModel.m */,
 				7B16D2841F185EA20070F88A /* HouseListModel.h */,
 				7B16D2851F185EA20070F88A /* HouseListModel.m */,
 				7B1F115A1F30500400963AAC /* CommunityPeopleModel.h */,
@@ -5080,6 +5119,7 @@
 				7B205E281F00E6C900E46B74 /* tabbar_wd_selected@2x.png in Resources */,
 				7B6301141F45767F009F77D2 /* add_disable@3x.png in Resources */,
 				7B28CA591F3D652E0070A5BB /* wd_sz@3x.png in Resources */,
+				7B5FD3121F78FCCE007BC248 /* HousingListController.xib in Resources */,
 				7B3E2D6F1F41732C00562252 /* zbfw_qhlb@2x.png in Resources */,
 				7B4633F41F01FFDD0023E7F2 /* Item_recom_img@2x.png in Resources */,
 				7B28CA301F3D60690070A5BB /* wy_xl@2x.png in Resources */,
@@ -5195,6 +5235,7 @@
 				7BF4B2381EE3DCD50058185F /* unLoginVCList.plist in Resources */,
 				7B205E2C1F00E6C900E46B74 /* tabbar_wy_normal@2x.png in Resources */,
 				7BA02BAA1F04D704004F8AB9 /* DetailsCell.xib in Resources */,
+				7B5FD30D1F78FA6F007BC248 /* FloorListController.xib in Resources */,
 				7B1F114F1F30303600963AAC /* PostCollectionViewCell.xib in Resources */,
 				7BF4B2301EE3D6470058185F /* warn_40px@2x.png in Resources */,
 				7B21B71E1F3ABF1F00A0F708 /* wy_xqgg@3x.png in Resources */,
@@ -5365,6 +5406,7 @@
 				7B205E151F00E6C900E46B74 /* home_eswp_fzxm@2x.png in Resources */,
 				7B0C71E11F15B78900CE8AEC /* SettingViewController.xib in Resources */,
 				7B0C71EC1F15BC4800CE8AEC /* MyReleasedHouseController.xib in Resources */,
+				7B5FD3081F78F5B1007BC248 /* UnitListController.xib in Resources */,
 				7B1D8E221F1DDD5700D79F46 /* ServiceTypeController.xib in Resources */,
 				7B16D27B1F1857980070F88A /* BuildingListController.xib in Resources */,
 				7B0C72051F15CC5600CE8AEC /* MyDoorServiceCell.xib in Resources */,
@@ -5534,6 +5576,7 @@
 				29162CAF1F4D32DC001FBC76 /* MJRefreshGifHeader.m in Sources */,
 				7B16620A1EF2862300644A7B /* ImageCell.m in Sources */,
 				29162CC91F4D32DC001FBC76 /* UIButton+EMWebCache.m in Sources */,
+				7B5FD3071F78F5B1007BC248 /* UnitListController.m in Sources */,
 				7B1D8DF31F1DDB5900D79F46 /* DoorServiceModel.m in Sources */,
 				7B69295E1F064061000108F3 /* TwoLabelBtn.m in Sources */,
 				7B1E48CD1F173F7800AECF41 /* ChatFriendsController.m in Sources */,
@@ -5607,6 +5650,7 @@
 				7B14F8931F175F3B00821281 /* SearchPeopleController.m in Sources */,
 				29162C941F4D32DC001FBC76 /* EaseUI.m in Sources */,
 				299E2CD81EE7EB590045A884 /* HttpAPIManager.m in Sources */,
+				7B5FD2FD1F78EF8B007BC248 /* UnitModel.m in Sources */,
 				7B11F1421F3455D6001EADC1 /* SelectServiceTypeController.m in Sources */,
 				7B8B10921F26E0FC00F09678 /* FacilitiesTypeController.m in Sources */,
 				7B0C71DA1F15B78900CE8AEC /* MyReleaseViewController.m in Sources */,
@@ -5631,6 +5675,7 @@
 				7B8F2A4F1F0386D000D5D1DF /* CommentsHeadCell.m in Sources */,
 				7B6301031F4547A1009F77D2 /* MakeAppointmentController.m in Sources */,
 				29162D081F4D32DC001FBC76 /* EaseChatBarMoreView.m in Sources */,
+				7B5FD30C1F78FA6F007BC248 /* FloorListController.m in Sources */,
 				7B6929451F0600F2000108F3 /* RegisterFourController.m in Sources */,
 				7B31D7031F3863D400FF8442 /* SecondCommentModel.m in Sources */,
 				29162C961F4D32DC001FBC76 /* EMAudioPlayerUtil.m in Sources */,
@@ -5639,9 +5684,11 @@
 				29162CA31F4D32DC001FBC76 /* MBProgressHUD.m in Sources */,
 				7B2D3C651F0F5AD700409DD7 /* HelpDetailsViewController.m in Sources */,
 				7B5C921C1EF8B5E200C545A8 /* ChineseToPinyinResource.m in Sources */,
+				7B5FD3111F78FCCE007BC248 /* HousingListController.m in Sources */,
 				29162CE91F4D32DC001FBC76 /* EaseMessageReadManager.m in Sources */,
 				7B243A361F1C67F4003A237F /* FiltrateCell.m in Sources */,
 				29162CAB1F4D32DC001FBC76 /* MJRefreshAutoStateFooter.m in Sources */,
+				7B5FD3001F78F04F007BC248 /* FloorModel.m in Sources */,
 				7BEC0E4B1F73A8F200AD39DA /* KeyChainStore.m in Sources */,
 				7B6C26B21EE3C2DC0090BE5C /* BaseViewController.m in Sources */,
 				7B3E2D7B1F41910200562252 /* DataPickerViewTwoDemo.m in Sources */,
@@ -5669,6 +5716,7 @@
 				7B249F951EEFEF05003B4E1B /* LoginDataModel.m in Sources */,
 				7B52C6B51F2057450078EE32 /* VillagePanoramaController.m in Sources */,
 				29162CEF1F4D32DC001FBC76 /* EaseConversationListViewController.m in Sources */,
+				7B5FD3031F78F0F6007BC248 /* HousingModel.m in Sources */,
 				7B45E7BF1F27236500380F61 /* AutoLayoutHelper.m in Sources */,
 				299E2CD51EE7E6040045A884 /* BaseTableView.m in Sources */,
 				7B28CA6D1F3D87E00070A5BB /* LookingDescriptionCell.m in Sources */,

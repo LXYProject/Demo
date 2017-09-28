@@ -23,7 +23,7 @@
                        zoneId:(NSString *)zoneId
                       success:(HttpRequestSuccess)success
                       failure:(HttpRequestFailure)failure{
-    NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
+    NSDictionary *paramter = @{@"villageId":zoneId?zoneId:@""};
     
     NSString *url = nil;
     if (ListOrPanorama == ServiceList) {
@@ -60,6 +60,26 @@
     }];
 
 }
+
+// 便民信息-查询
++ (void)requestMachineId:(NSString *)machineId
+             machineName:(NSString *)machineName
+              clientType:(NSString *)clientType
+               villageId:(NSString *)villageId
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                               @"villageId":villageId?villageId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_queryConvenience paramter:paramter success:^(id response) {
+        NSArray *modelArray = [ConvenServiceModel mj_objectArrayWithKeyValuesArray:response[@"convenienceList"]];
+        success(modelArray);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
 // 发送上门服务信息
 + (void)requestZoneId:(NSString *)zoneId
          serviceTitle:(NSString *)serviceTitle

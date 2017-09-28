@@ -85,12 +85,6 @@
 //    }];
     [self.tableView beginHeaderRefreshing];
     
-
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
-
-
-    
 }
 
 
@@ -299,6 +293,8 @@
 
 // 发帖记录
 - (void)requestTopicHis{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [MineHttpManager requestTopicId:@"" success:^(NSArray* response) {
         @strongify(self);

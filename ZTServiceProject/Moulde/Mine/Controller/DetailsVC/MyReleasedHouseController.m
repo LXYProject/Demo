@@ -43,12 +43,12 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 我发布的出租屋
 - (void)reuqestReleaseHouse{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [HomeHttpManager requestQueryType:0
                              keywords:@""

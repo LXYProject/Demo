@@ -54,9 +54,6 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
-
 }
 
 - (void)rightBarClick
@@ -65,8 +62,9 @@
 }
 
 //请求租房查询
-- (void)requestRentHouseData
-{
+- (void)requestRentHouseData{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [HomeHttpManager requestQueryType:2
                              keywords:@""

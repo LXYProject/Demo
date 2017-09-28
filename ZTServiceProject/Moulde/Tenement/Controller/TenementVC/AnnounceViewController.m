@@ -41,9 +41,6 @@
         }
     }];
     [self.tableView beginHeaderRefreshing];
-
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 - (void)rightBarClick
@@ -53,6 +50,8 @@
 
 // 请求小区公告
 - (void)requestBulletinList{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [TenementHttpManager requestListOrPanorama:AnnouncementList
                                         zoneId:self.zoneId

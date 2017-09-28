@@ -37,12 +37,12 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 请求周边上面的滚动title
 - (void)requestTitleArrayData {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [NearByHttpManager rqeuestQueryType:queryType
                                 success:^(NSArray * response) {
@@ -61,6 +61,8 @@
 }
 
 - (void)requestQuerySystemDict{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [NearByHttpManager requestDictType:@"serviceType"
                           parentDictId:@""

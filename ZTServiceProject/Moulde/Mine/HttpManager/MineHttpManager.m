@@ -17,6 +17,9 @@
 #import "MyPraiseModel.h"
 #import "VillagesModel.h"
 #import "BuildingListModel.h"
+#import "UnitModel.h"
+#import "FloorModel.h"
+#import "HousingModel.h"
 #import "HouseListModel.h"
 #import "CommunityPeopleModel.h"
 
@@ -179,6 +182,62 @@
 
 }
 
+// 绑定房屋, 取消绑定
++ (void)requestBindToCancelHouse:(BindToCancelHouse)bindToCancelHouse
+                       machineId:(NSString *)machineId
+                     machineName:(NSString *)machineName
+                      clientType:(NSString *)clientType
+                       villageId:(NSString *)villageId
+                         houseId:(NSString *)houseId
+                         success:(HttpRequestSuccess)success
+                         failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                               @"villageId":villageId?villageId:@"",
+                               @"houseId":houseId?houseId:@"",
+                               };
+    NSString *url = nil;
+    if (bindToCancelHouse == BindHouse) {
+        url = A_addBindHouse;
+    }else{
+        url = A_deleteBindHouse;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+ 
+}
+
+// 关注房屋, 取消关注
++ (void)requestFocusToCancelHouse:(FocusToCancelHouse)focusToCancelHouse
+                        machineId:(NSString *)machineId
+                      machineName:(NSString *)machineName
+                       clientType:(NSString *)clientType
+                          houseId:(NSString *)houseId
+                          success:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                               @"houseId":houseId?houseId:@"",
+                               };
+    NSString *url = nil;
+    if (focusToCancelHouse == FocusHouse) {
+        url = A_addBindHouse;
+    }else{
+        url = A_deleteLikeHouse;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
 // 添加，取消小区关注
 + (void)requestAddToCancelVillage:(AddToCancelVillage)addToCancelVillage
                       communityId:(NSString *)communityId
@@ -200,6 +259,33 @@
 
 }
 
+
+// 添加，取消小区关注
++ (void)requestAddToCancelVillage:(AddToCancelVillage)addToCancelVillage
+                        machineId:(NSString *)machineId
+                      machineName:(NSString *)machineName
+                       clientType:(NSString *)clientType
+                        villageId:(NSString *)villageId
+                          success:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"machineId":machineId?machineId:@"",
+                               @"machineName":machineName?machineName:@"",
+                               @"clientType":clientType?clientType:@"",
+                               @"villageId":villageId?villageId:@"",
+                               };
+    NSString *url = nil;
+    if (addToCancelVillage == AddVillage) {
+        url = A_addConcernVillage;
+    }else{
+        url = A_unConcernVillage;
+    }
+    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:url paramter:paramter success:^(id response) {
+        success(response);
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+
+}
 // 查看上门服务，公共报事，表扬，投诉信息
 + (void)requestTypeInformation:(TypeInformation)typeInformation
                         status:(NSString *)status
@@ -240,7 +326,7 @@
 
 }
 
-// 关键字搜索小区
+// 小区-关键字搜索
 + (void)requestKeywords:(NSString *)keywords
                    city:(NSString *)city
                 success:(HttpRequestSuccess)success
@@ -248,7 +334,7 @@
     NSDictionary *paramter = @{@"keywords":keywords?keywords:@"",
                                @"city":city?city:@""
                                };
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchVillagesByKeyWords paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_searchVillagesByKeyWords paramter:paramter success:^(id response) {
         
         NSArray *modelArray = [VillagesModel mj_objectArrayWithKeyValuesArray:response[@"zoneList"]];
         success(modelArray);
@@ -258,12 +344,12 @@
     }];
 }
 
-// 小区id搜索楼
+// 楼栋-根据小区ID搜索
 + (void)requestZoneId:(NSString *)zoneId
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure{
     NSDictionary *paramter = @{@"zoneId":zoneId?zoneId:@""};
-    [[HttpAPIManager sharedHttpAPIManager]getWithUrl:A_searchBuildingByVillage paramter:paramter success:^(id response) {
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_searchBuildingByVillage paramter:paramter success:^(id response) {
         
         NSArray *modelArray = [BuildingListModel mj_objectArrayWithKeyValuesArray:response[@"buildingList"]];
         success(modelArray);
@@ -273,6 +359,53 @@
     }];
 
 }
+
+// 单元-根据楼栋ID搜索
++ (void)requestBuildingId:(NSString *)buildingId
+                  success:(HttpRequestSuccess)success
+                  failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"buildingId":buildingId?buildingId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_searchUnitByBuilding paramter:paramter success:^(id response) {
+        
+        NSArray *modelArray = [UnitModel mj_objectArrayWithKeyValuesArray:response[@"buildingUnitList"]];
+        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+    
+}
+
+// 楼层-根据单元ID搜索
++ (void)requestBuildingUnitId:(NSString *)buildingUnitId
+                      success:(HttpRequestSuccess)success
+                      failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"buildingUnitId":buildingUnitId?buildingUnitId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_searchFloorByBuilding paramter:paramter success:^(id response) {
+        
+        NSArray *modelArray = [FloorModel mj_objectArrayWithKeyValuesArray:response[@"buildingFloorList"]];
+        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
+// 房屋-根据楼层ID查询
++ (void)requestBuildingFloorId:(NSString *)buildingFloorId
+                       success:(HttpRequestSuccess)success
+                       failure:(HttpRequestFailure)failure{
+    NSDictionary *paramter = @{@"buildingFloorId":buildingFloorId?buildingFloorId:@""};
+    [[HttpAPIManager sharedHttpAPIManager]getWithOneUrl:A_queryHouseByFloor paramter:paramter success:^(id response) {
+        
+        NSArray *modelArray = [HousingModel mj_objectArrayWithKeyValuesArray:response[@"houseList"]];
+        success(modelArray);
+        
+    } failure:^(NSError *error, NSString *message) {
+        failure(error,message);
+    }];
+}
+
 
 // 根据楼查询房屋表
 + (void)requestZoneId:(NSString *)zoneId

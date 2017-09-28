@@ -28,6 +28,7 @@
 {
     NSArray *_titleArr;
     NSArray *_detailArr;
+    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,21 +67,40 @@
 }
 // 查看所有与我有关的房屋
 - (void)requestLookAllHouseWithMe{
+//    @weakify(self);
+//    [MineHttpManager requesHouseAddVillage:House
+//                                   success:^(NSDictionary* response) {
+//                                       @strongify(self);
+//                                       
+//                                       NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+//                                       
+//                                       [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
+//                                       
+//                                       // 创建 TitlesView
+//                                       [self createTitlesView];
+//
+//                                       
+//                                   } failure:^(NSError *error, NSString *message) {
+//                                   }];
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
-    [MineHttpManager requesHouseAddVillage:House
-                                   success:^(NSDictionary* response) {
-                                       @strongify(self);
-                                       
-                                       NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
-                                       
-                                       [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
-                                       
-                                       // 创建 TitlesView
-                                       [self createTitlesView];
+    [MineHttpManager requestHouseAddVillage:House machineId:[getUUID getUUID] machineName:[Tools deviceVersion] clientType:@"0" success:^(id response) {
+        @strongify(self);
+        
+        NSMutableArray *bindHouseArray = [MyHouseModel mj_objectArrayWithKeyValuesArray:response[@"bindHouses"]];
+        
+        [self.bindHousesDataSource addObjectsFromArray:bindHouseArray];
+        
+        // 创建 TitlesView
+        [self createTitlesView];
+    } failure:^(NSError *error, NSString *message) {
+        _hud.labelText = message;
+        [_hud hide:YES];
+        
+    }];
 
-                                       
-                                   } failure:^(NSError *error, NSString *message) {
-                                   }];
 }
 
 

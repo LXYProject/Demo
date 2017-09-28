@@ -14,7 +14,7 @@
 @interface HouseListController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//搜索到楼的数据
+//搜索到房屋的数据
 @property (nonatomic,strong)NSMutableArray *dataSource;
 
 @end
@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = RGB(247, 247, 247);
+    self.tableView.backgroundColor = RGB(247, 247, 247);
     [self titleViewWithTitle:@"房屋列表" titleColor:[UIColor whiteColor]];
     self.tableView.tableFooterView = [[UIView alloc]init];
 

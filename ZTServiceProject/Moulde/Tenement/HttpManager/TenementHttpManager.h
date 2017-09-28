@@ -33,6 +33,13 @@ typedef enum : NSUInteger {
                       success:(HttpRequestSuccess)success
                       failure:(HttpRequestFailure)failure;
 
+// 便民信息-查询
++ (void)requestMachineId:(NSString *)machineId
+             machineName:(NSString *)machineName
+              clientType:(NSString *)clientType
+               villageId:(NSString *)villageId
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
 
 // 发送上门服务信息
 + (void)requestZoneId:(NSString *)zoneId

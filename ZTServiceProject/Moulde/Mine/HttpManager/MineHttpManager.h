@@ -29,6 +29,18 @@ typedef enum : NSUInteger {
     unHouse          //取消绑定，取消关注
 } AddToCancelHouse;
 
+// 房屋接口
+typedef enum : NSUInteger {
+    BindHouse,       //绑定房屋
+    CancelBind,      //取消绑定
+} BindToCancelHouse;
+
+// 房屋接口
+typedef enum : NSUInteger {
+    FocusHouse,       //关注房屋
+    CancelFocus,      //取消关注
+} FocusToCancelHouse;
+
 // 小区接口
 typedef enum : NSUInteger {
     AddVillage,      //添加小区关注
@@ -88,11 +100,38 @@ typedef enum : NSUInteger {
                         success:(HttpRequestSuccess)success
                         failure:(HttpRequestFailure)failure;
 
+// 绑定房屋, 取消绑定
++ (void)requestBindToCancelHouse:(BindToCancelHouse)bindToCancelHouse
+                       machineId:(NSString *)machineId
+                     machineName:(NSString *)machineName
+                      clientType:(NSString *)clientType
+                       villageId:(NSString *)villageId
+                         houseId:(NSString *)houseId
+                         success:(HttpRequestSuccess)success
+                         failure:(HttpRequestFailure)failure;
 
+// 关注房屋, 取消关注
++ (void)requestFocusToCancelHouse:(FocusToCancelHouse)focusToCancelHouse
+                        machineId:(NSString *)machineId
+                      machineName:(NSString *)machineName
+                       clientType:(NSString *)clientType
+                          houseId:(NSString *)houseId
+                          success:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure;
 
 // 添加，取消小区关注
 + (void)requestAddToCancelVillage:(AddToCancelVillage)addToCancelVillage
                       communityId:(NSString *)communityId
+                          success:(HttpRequestSuccess)success
+                          failure:(HttpRequestFailure)failure;
+
+
+// 添加，取消小区关注
++ (void)requestAddToCancelVillage:(AddToCancelVillage)addToCancelVillage
+                        machineId:(NSString *)machineId
+                      machineName:(NSString *)machineName
+                       clientType:(NSString *)clientType
+                        villageId:(NSString *)villageId
                           success:(HttpRequestSuccess)success
                           failure:(HttpRequestFailure)failure;
 
@@ -103,16 +142,33 @@ typedef enum : NSUInteger {
                        success:(HttpRequestSuccess)success
                        failure:(HttpRequestFailure)failure;
 
-// 关键字搜索小区
+// 小区-关键字搜索
 + (void)requestKeywords:(NSString *)keywords
                    city:(NSString *)city
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure;
 
-// 小区id搜索楼
+// 楼栋-根据小区ID搜索
 + (void)requestZoneId:(NSString *)zoneId
               success:(HttpRequestSuccess)success
               failure:(HttpRequestFailure)failure;
+
+
+// 单元-根据楼栋ID搜索
++ (void)requestBuildingId:(NSString *)buildingId
+                  success:(HttpRequestSuccess)success
+                  failure:(HttpRequestFailure)failure;
+
+// 楼层-根据单元ID搜索
++ (void)requestBuildingUnitId:(NSString *)buildingUnitId
+                      success:(HttpRequestSuccess)success
+                      failure:(HttpRequestFailure)failure;
+
+// 房屋-根据楼层ID查询
++ (void)requestBuildingFloorId:(NSString *)buildingFloorId
+                       success:(HttpRequestSuccess)success
+                       failure:(HttpRequestFailure)failure;
+
 
 // 根据楼查询房屋表
 + (void)requestZoneId:(NSString *)zoneId

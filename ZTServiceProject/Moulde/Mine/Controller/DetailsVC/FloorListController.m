@@ -1,50 +1,48 @@
 //
-//  BuildingListController.m
+//  FloorListController.m
 //  ZTServiceProject
 //
-//  Created by ZT on 2017/7/14.
+//  Created by ZT on 2017/9/25.
 //  Copyright © 2017年 ZT. All rights reserved.
 //
 
-#import "BuildingListController.h"
+#import "FloorListController.h"
 #import "MineHttpManager.h"
-#import "BuildingListModel.h"
-#import "HouseListController.h"
-#import "UnitListController.h"
+#import "FloorModel.h"
+#import "HousingListController.h"
 
-@interface BuildingListController ()
+@interface FloorListController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-//搜索到楼的数据
+//搜索到楼层的数据
 @property (nonatomic,strong)NSMutableArray *dataSource;
-
 @end
 
-@implementation BuildingListController
+@implementation FloorListController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.tableView.backgroundColor = RGB(247, 247, 247);
-    [self titleViewWithTitle:@"楼栋列表" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"楼层列表" titleColor:[UIColor whiteColor]];
     self.tableView.tableFooterView = [[UIView alloc]init];
-
     
-    [self searchStoriedBuilding];
+    
+    [self searchFloorBuilding];
+
 }
 
-// 小区id搜索楼
-- (void)searchStoriedBuilding{
+// 楼层-根据单元ID搜索
+- (void)searchFloorBuilding{
     @weakify(self);
-    [MineHttpManager requestZoneId:self.zoneId
-                           success:^(NSArray* response) {
-                               @strongify(self);
-                               [self.dataSource addObjectsFromArray:response];
-                               [self.tableView reloadData];
-
-                           } failure:^(NSError *error, NSString *message) {
-                               
-                           }];
+    [MineHttpManager requestBuildingUnitId:self.buildingUnitId
+                               success:^(NSArray* response) {
+                                   @strongify(self);
+                                   [self.dataSource addObjectsFromArray:response];
+                                   [self.tableView reloadData];
+                                   
+                               } failure:^(NSError *error, NSString *message) {
+                                   
+                               }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -62,7 +60,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
-    cell.textLabel.text = [self.dataSource[indexPath.row] buildingName];
+    cell.textLabel.text = [self.dataSource[indexPath.row] floorName];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;//文字居中
     return cell;
     
@@ -72,18 +70,11 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-//    @weakify(self);
-//    [PushManager pushViewControllerWithName:@"HouseListController" animated:YES block:^(HouseListController* viewController) {
-//        @strongify(self);
-//        viewController.zoneId = self.zoneId;
-//        viewController.buildingId = [self.dataSource[indexPath.row] buildingId];
-//    }];
-    
     @weakify(self);
-    [PushManager pushViewControllerWithName:@"UnitListController" animated:YES block:^(UnitListController* viewController) {
+    [PushManager pushViewControllerWithName:@"HousingListController" animated:YES block:^(HousingListController* viewController) {
         @strongify(self);
         viewController.zoneId = self.zoneId;
-        viewController.buildingId = [self.dataSource[indexPath.row] buildingId];
+        viewController.buildingFloorId = [self.dataSource[indexPath.row] floorId];
     }];
     
 }
@@ -96,5 +87,6 @@
     }
     return _dataSource;
 }
+
 
 @end

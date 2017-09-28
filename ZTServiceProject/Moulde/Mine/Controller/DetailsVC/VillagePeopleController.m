@@ -38,13 +38,12 @@
     }];
     [self.tableView beginHeaderRefreshing];
     
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
-    
 }
 
 // 根据小区查看附近的人
 - (void)requestLookPepoleByVillage{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [MineHttpManager requestPeopleZoneId:@"510018177815"
                                  success:^(NSArray* response) {

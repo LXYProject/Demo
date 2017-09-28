@@ -41,12 +41,12 @@
     }];
     [self.tableView beginHeaderRefreshing];
 
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在加载";
 }
 
 // 报事类型列表
 - (void)requestAffairCategoryList{
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在加载";
     @weakify(self);
     [TenementHttpManager requestListOrPanorama:ListThings
                                         zoneId:self.zoneId

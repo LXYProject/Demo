@@ -294,10 +294,8 @@
         return [self sectionZeroWithTableView:tableView indexPath:indexPath];
     }else if (indexPath.section ==1) {
         return [self sectionOneWithTableView:tableView indexPath:indexPath];
-    }else if (indexPath.section ==2) {
+    }else {
         return [self sectionTwoTableView:tableView indexPath:indexPath];
-    }else{
-        return nil;
     }
 }
 

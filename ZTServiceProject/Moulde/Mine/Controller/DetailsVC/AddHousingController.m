@@ -126,6 +126,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.textLabel.text = [self.dataSource[indexPath.row] zoneName];
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;//文字居中
     return cell;
 
 }
