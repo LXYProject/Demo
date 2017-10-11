@@ -842,7 +842,6 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section>2) {
-       
         [PushManager pushViewControllerWithName:@"SecondDetailsController" animated:YES block:^(SecondDetailsController* viewController) {
             viewController.model = self.secondCellDataSource[indexPath.section-3];
 
