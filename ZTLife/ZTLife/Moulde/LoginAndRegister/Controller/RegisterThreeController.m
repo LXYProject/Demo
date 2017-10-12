@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"激活账号" titleColor:[UIColor whiteColor]];
     
     self.sureBtn.layer.masksToBounds = YES;
     self.sureBtn.layer.cornerRadius = self.sureBtn.bounds.size.width * 0.01;

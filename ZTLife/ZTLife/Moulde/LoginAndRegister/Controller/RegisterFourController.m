@@ -8,13 +8,12 @@
 
 #import "RegisterFourController.h"
 #import "RegisterHeadCell.h"
-#import "MineViewController.h"
 #import "BDImagePicker.h"
 #import "LoginHttpManager.h"
 #import "YJSelectionView.h"
 #import "UICustomDatePicker.h"
 #import "CityListViewController.h"
-#import "MineViewController.h"
+//#import "MineViewController.h"
 
 #define btnY 420
 @interface RegisterFourController ()<CityListViewDelegate>

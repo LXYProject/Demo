@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginHttpManager.h"
 #import "LoginDataModel.h"  
+#import "RegisterOneController.h"
 
 @interface LoginViewController ()<UITextFieldDelegate>
 
@@ -43,7 +44,7 @@
     [super viewDidLoad];
     self.loginBtn.enabled = NO;
     [self titleViewWithTitle:@"登录" titleColor:[UIColor whiteColor]];
-    [self rightItemWithNormalName:@"" title:@"注册" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
+    [self rightItemWithNormalName:@"" title:@"账号激活" titleColor:[UIColor whiteColor] selector:@selector(rightBarClick) target:self];
     
     //圆角
     [self roundedCorners];
@@ -66,8 +67,10 @@
 }
 - (void)rightBarClick
 {
-    NSLog(@"rightBarClick");
-//    [PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
+    NSLog(@"账号激活");
+    //[PushManager pushViewControllerWithName:@"RegisterOneController" animated:YES block:nil];
+    RegisterOneController *registerOneVC = [[RegisterOneController alloc] init];
+    [self.navigationController pushViewController:registerOneVC animated:YES];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -135,7 +138,7 @@
                                       success:^(LoginDataModel* response) {
                                           if ([response.status integerValue]==0) {
                                               [[UserInfoManager sharedUserInfoManager]saveUserModel:response];
-//                                              [PushManager popToRootViewControllerAnimated:YES];
+                                              [PushManager popToRootViewControllerAnimated:YES];
                                               
                                               }else{
                                                   [AlertViewController alertControllerWithTitle:@"提示" message:@"登录失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
@@ -159,7 +162,7 @@
                                           
                                           [[UserInfoManager sharedUserInfoManager]saveUserModel:response];
                                           //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
-//                                          [PushManager popToRootViewControllerAnimated:YES];
+                                          [PushManager popToRootViewControllerAnimated:YES];
 
 
                                       }else{
@@ -183,9 +186,9 @@
     _selectedBtn.selected  = NO;
     sender.selected = YES;
     _selectedBtn = sender;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.lineView.transform = CGAffineTransformMakeTranslation(sender==self.btn1?0:ScreenWidth/2, 0);
-//    }];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.lineView.transform = CGAffineTransformMakeTranslation(sender==self.btn1?0:SCREEN_WIDTH/2, 0);
+    }];
     
     //根据点击不同的btn赋值不同的数据
     if (sender == self.btn1) {

@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+//用户注册登录获取验证码
 typedef enum : NSUInteger {
     RegisterCode,
     LoginCode
 } LoginRegisterCode;
+
+//退出登录, 物业用户手机令牌登陆
+typedef enum : NSUInteger {
+    Exit,
+    TokenLogin
+} ExitTokenLogin;
 
 @interface LoginHttpManager : NSObject
 
@@ -48,13 +55,6 @@ typedef enum : NSUInteger {
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure;
 
-//token登陆
-+ (void)requestMachineId:(NSString *)machineId
-             machineName:(NSString *)machineName
-              clientType:(NSString *)clientType
-                 success:(HttpRequestSuccess)success
-                 failure:(HttpRequestFailure)failure;
-
 //修改密码
 + (void)requestPhoneNum:(NSString *)phoneNum
               machineId:(NSString *)machineId
@@ -63,6 +63,25 @@ typedef enum : NSUInteger {
             newPassWord:(NSString *)newPassWord
                 success:(HttpRequestSuccess)success
                 failure:(HttpRequestFailure)failure;
+
+
+
+//退出登录, 物业用户手机令牌登陆
++ (void)requestExitTokenLogin:(ExitTokenLogin)exitTokenLogin
+                     phoneNum:(NSString *)phoneNum
+                    machineId:(NSString *)machineId
+                  machineName:(NSString *)machineName
+                   clientType:(NSString *)clientType
+                      success:(HttpRequestSuccess)success
+                      failure:(HttpRequestFailure)failure;
+
+
+//token登陆
++ (void)requestMachineId:(NSString *)machineId
+             machineName:(NSString *)machineName
+              clientType:(NSString *)clientType
+                 success:(HttpRequestSuccess)success
+                 failure:(HttpRequestFailure)failure;
 
 //修改个人信息
 + (void)requestProps:(NSString *)props

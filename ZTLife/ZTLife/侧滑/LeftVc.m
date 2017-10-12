@@ -30,7 +30,7 @@
     self.tableView.tableFooterView = [[UIView alloc]init];
 
 //    UIImageView * bgimageview = [[UIImageView alloc] initWithFrame:self.view.frame];
-//    bgimageview.image = [UIImage imageNamed:@"BG.png"];
+//    bgimageview.image = [UIImage imageNamed:@"timg.jpeg"];
 //    [self.view addSubview:bgimageview];
     
     self.titleArr = @[@"使用指南", @"我的消息", @"版本消息", @"我的奖励", @"考勤签到", @"设置"];
@@ -46,13 +46,15 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 //    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"timg.jpeg"]];
+
     [self.view addSubview:self.tableView];
 }
 
 
 - (void)createHeadView{
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width *2/3, 100)];
-    headView.backgroundColor = [UIColor cyanColor];
+    headView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:headView];
     UIButton *headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     headBtn.frame = CGRectMake(15, 25, 50, 50);
@@ -91,11 +93,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
     cell.textLabel.text = self.titleArr[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     subVC * svc = [[subVC alloc] init];
     svc.showtext = @[@"跳转到下一页了"];
     //这里跳转需要调用方法跳转，不能直接跳转，否者。。。，想知道试一下你就知道了

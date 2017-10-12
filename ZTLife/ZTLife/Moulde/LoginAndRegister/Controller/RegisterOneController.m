@@ -8,8 +8,9 @@
 
 #import "RegisterOneController.h"
 #import "LoginHttpManager.h"
+#import "RegisterTwoController.h"
 
-@interface RegisterOneController ()<UITextFieldDelegate, MBProgressHUDDelegate>
+@interface RegisterOneController ()<UITextFieldDelegate>//MBProgressHUDDelegate
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
@@ -23,12 +24,12 @@
     NSInteger _inter;
     NSString *_phoneNumStatus;
     UIButton *_button;
-    MBProgressHUD *_hud;
+//    MBProgressHUD *_hud;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"账号激活" titleColor:[UIColor whiteColor]];
     
     self.phoneNumberField.keyboardType = UIKeyboardTypeNumberPad;
     self.sendBtn.layer.masksToBounds = YES;
@@ -64,8 +65,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:self.phoneNumberField.text forKey:@"phoneNumber"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            _hud.labelText = @"正在加载";
+//            _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//            _hud.labelText = @"正在加载";
             
             // 用户注册获取验证码
             [LoginHttpManager requestLoginRegisterCode:RegisterCode
@@ -74,13 +75,15 @@
                                            machineName:[Tools deviceVersion]
                                                success:^(id response) {
                                                    
-                                                   [_hud hide:YES];
+//                                                   [_hud hide:YES];
                                                    NSLog(@"response==%@", response);_phoneNumStatus = [response objectForKey:@"phoneNumStatus"];
                                                    
                                                    // 成功
                                                    if ([_phoneNumStatus integerValue] ==0) {
                                                        //[self performSelector:@selector(delayMethod) withObject:nil afterDelay:2.0f];
-                                                       [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+//                                                       [PushManager pushViewControllerWithName:@"RegisterTwoController" animated:YES block:nil];
+                                                       RegisterTwoController *registerTwoVC = [[RegisterTwoController alloc] init];
+                                                       [self.navigationController pushViewController:registerTwoVC animated:YES];
 
                                                    }else if([_phoneNumStatus integerValue] ==1){
                                                        
@@ -89,7 +92,7 @@
                                                        [AlertViewController alertControllerWithTitle:@"提示" message:@"注册失败" preferredStyle:UIAlertControllerStyleAlert controller:self];
                                                    }
                                                } failure:^(NSError *error, NSString *message) {
-                                                   [_hud hide:YES];
+//                                                   [_hud hide:YES];
                                                }];
         }else{
             [AlertViewController alertControllerWithTitle:@"提示" message:@"手机号格式错误" preferredStyle:UIAlertControllerStyleAlert controller:self];

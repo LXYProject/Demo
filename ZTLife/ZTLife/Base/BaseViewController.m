@@ -45,6 +45,7 @@
 
 - (void)navBackAction {
     //[PushManager popCurrentViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)setNavigationBarBackGroudColor:(UIColor *)navigationBarBackGroudColor {

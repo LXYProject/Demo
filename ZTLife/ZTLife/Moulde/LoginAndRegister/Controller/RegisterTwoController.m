@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self titleViewWithTitle:@"注册" titleColor:[UIColor whiteColor]];
+    [self titleViewWithTitle:@"激活账号" titleColor:[UIColor whiteColor]];
     
     self.codeLabel.layer.masksToBounds = YES;
     self.codeLabel.layer.cornerRadius = self.codeLabel.bounds.size.width * 0.01;

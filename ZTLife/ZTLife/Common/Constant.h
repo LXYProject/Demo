@@ -61,21 +61,27 @@
 #define A_querySystemDict       @"?service=systemDict&function=querySystemDict"
 
 
-//============================用户接口===========================================
-// 注册发送验证码
-#define A_registerUrl           @"?service=user&function=getCodeForRegister"
-// 注册验证码核对
-#define A_registerCheck         @"?service=user&function=checkZCCode"
-// 登录发送验证码
-#define A_loginUrl              @"?service=user&function=getCodeForLogin"
-// 登录验证码核对
-#define A_loginCheck            @"?service=user&function=checkLoginCode"
-// 密码登录
-#define A_phoneNumLogin         @"?service=user&function=phoneNumLogin"
+//============================物业公司员工App登录和===========================================
+// 物业用户获取激活验证码
+#define A_registerUrl           @"?service=PropertyLogin&function=activateCode"
+// 物业用户激活验证码核对
+#define A_registerCheck         @"?service=PropertyLogin&function=checkActivateCode"
+// 物业用户获取登录验证码
+#define A_loginUrl              @"?service=PropertyLogin&function=loginCode"
+// 物业用户登录验证码核对
+#define A_loginCheck            @"?service=PropertyLogin&function=checkLoginCode"
+// 物业用户手机号密码登陆
+#define A_phoneNumLogin         @"?service=PropertyLogin&function=loginWithPhoneNum"
+// 退出登录
+#define A_exit                  @"?service=PropertyLogin&function=exit"
+// 物业用户手机令牌登陆
+#define A_loginWithToken        @"?service=PropertyLogin&function=loginWithToken"
+// 设置或修改密码
+#define A_updatePassWord        @"?service=user&function=updatePassWord"
+
+
 // token登录
 #define A_tokenLogin            @"?service=user&function=tokenLogin"
-// 修改密码
-#define A_updatePassWord        @"?service=user&function=updatePassWord"
 // 修改个人信息
 #define A_updateUser            @"?service=user&function=updateUser"
 // 修改个人头像

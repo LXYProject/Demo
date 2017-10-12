@@ -8,6 +8,11 @@
 
 #import "BaseViewController.h"
 
+typedef void(^SelectedItem)(NSString *item);
 @interface AddressBookController : BaseViewController
+
+@property (strong, nonatomic) SelectedItem block;
+
+- (void)didSelectedItem:(SelectedItem)block;
 
 @end
